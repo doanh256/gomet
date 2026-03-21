@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DineDate - Find a Date</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#fdf9f3",
+              "surface-container-high": "#ebe8e2",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-dim": "#dddad4",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "inverse-primary": "#ffb3b0",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "background": "#fdf9f3",
+              "on-secondary-container": "#656464",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary-fixed": "#370e08",
+              "on-primary-fixed": "#410006",
+              "inverse-surface": "#31302d",
+              "surface-container-low": "#f7f3ed",
+              "surface-variant": "#e6e2dc",
+              "surface-tint": "#ae2f34",
+              "on-primary-container": "#6d0010",
+              "secondary-container": "#e4e2e1",
+              "surface": "#fdf9f3",
+              "on-surface-variant": "#584140",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "secondary-fixed": "#e4e2e1",
+              "secondary-fixed-dim": "#c8c6c6",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-fixed": "#1b1c1c",
+              "secondary": "#5f5e5e",
+              "primary-container": "#ff6b6b",
+              "surface-container-highest": "#e6e2dc",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed-variant": "#474747",
+              "outline-variant": "#e0bfbd",
+              "primary": "#ae2f34",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-container": "#f1ede7",
+              "tertiary": "#894e45",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1c18",
+              "tertiary-container": "#cf8a7f",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-background": "#1c1c18",
+              "outline": "#8c706f"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .editorial-shadow {
+            box-shadow: 0 24px 48px -12px rgba(174, 47, 52, 0.08);
+        }
+        .bg-primary-gradient {
+            background: linear-gradient(45deg, #ae2f34 0%, #ff6b6b 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md shadow-sm dark:shadow-none bg-surface-container-low">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-black text-primary italic font-headline">DineDate</span>
+</div>
+<!-- Desktop Nav Items -->
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant hover:bg-surface-container-highest transition-colors px-3 py-1 rounded-full font-headline font-bold" href="#">Home</a>
+<a class="text-primary font-bold px-3 py-1 rounded-full font-headline" href="#">Discover</a>
+<a class="text-on-surface-variant hover:bg-surface-container-highest transition-colors px-3 py-1 rounded-full font-headline font-bold" href="#">Dates</a>
+<a class="text-on-surface-variant hover:bg-surface-container-highest transition-colors px-3 py-1 rounded-full font-headline font-bold" href="#">Appointments</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-highest rounded-full transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-highest rounded-full transition-colors" data-icon="payments">payments</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Close up portrait of a young woman with a smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBG4zD8tFDQ8Uc8qoiKxuKZvsszcZcoJ5vZBbjfgkWXqIxElq07UcfzU8mG-_XyOFkfjrnVEDAHINQ0u7ub_aSk241aUlgWkWwyOaAM7c0J4KhpghE545rTL1fbLhA4YCfpEu60G8vZoxWqqtCEr8LDYuiOFLo42dcgaqfUl-o8GeUUwXOZrLLlSXE5Pych_-e9cwEBXmaTCOMl_wKkp7h4oLMuswLq0sqqw8-1NHQd_L5ucrQAHU1Dq_Ek98FV19c0e8S8cwpzh8o"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="hidden lg:flex h-screen w-64 fixed left-0 top-0 z-40 bg-surface dark:bg-zinc-950 flex-col p-6 space-y-2 bg-surface-container-low">
+<div class="text-primary font-bold text-xl mb-8 font-headline">DineDate</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-plus-jakarta font-medium text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-full font-bold" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-plus-jakarta font-medium text-label-md">Discover</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-plus-jakarta font-medium text-label-md">Dates</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-plus-jakarta font-medium text-label-md">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-plus-jakarta font-medium text-label-md">Profile</span>
+</a>
+</nav>
+<div class="mt-auto pt-8">
+<button class="w-full bg-primary-gradient text-white py-4 rounded-xl font-bold font-headline shadow-lg active:translate-x-1 duration-150">
+                New Date Request
+            </button>
+<p class="text-center mt-4 text-xs text-on-surface-variant uppercase tracking-widest opacity-60">Alpha Version</p>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="pt-24 pb-32 px-6 lg:ml-64 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12">
+<h1 class="text-display-lg font-headline font-extrabold tracking-tighter text-on-background leading-none mb-2 md:text-6xl lg:text-7xl">
+                Find <span class="text-primary italic">a Date</span>
+</h1>
+<p class="text-on-surface-variant text-lg max-w-md">Browse curated invitations or post your own dining request.</p>
+</header>
+<!-- Category Tabs -->
+<div class="flex gap-3 mb-10 overflow-x-auto pb-2 no-scrollbar">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-bold whitespace-nowrap">All Requests</button>
+<button class="bg-surface-container-high text-on-surface-variant px-6 py-2 rounded-full font-bold whitespace-nowrap hover:bg-surface-container-highest">Find Love</button>
+<button class="bg-surface-container-high text-on-surface-variant px-6 py-2 rounded-full font-bold whitespace-nowrap hover:bg-surface-container-highest">Find Friends</button>
+<button class="bg-surface-container-high text-on-surface-variant px-6 py-2 rounded-full font-bold whitespace-nowrap hover:bg-surface-container-highest">Paid Requests</button>
+</div>
+<!-- Date Feed: Bento Style Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+<!-- Card 1: Find Love (High Impact) -->
+<div class="group relative bg-surface-container-lowest rounded-lg overflow-hidden editorial-shadow flex flex-col">
+<div class="relative h-80 overflow-hidden">
+<img alt="Sophie's profile" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Portrait of a woman in a sunset field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiakWHO850tIOUWYLL3eAv7xi4cKPUW0EzpiVVqZ3InU5DkBCus1Ndn1cLmufuhz6ppUMvYzGHkT197zE5XtDQumy-BpnOakuLL-v_u_dtlrPGTrYKlD0ziRWaAJKzdjN_aFuT3YHhJ4kXQnPsc_Kt9kdbUTYMEIpXbLsEVHoxwax6vwmtkDeIY6k4_pPhqZPc1fOnlPt3IJ6KTAu-GGc5S5bCrxWabku-R1tcVhcGvC72vBo6gUAj4LYvme1DciIfoIjp0ug0tOM"/>
+<div class="absolute top-4 left-4 bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Find Love</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline text-2xl font-bold">Sophie, 26</h3>
+<p class="text-on-surface-variant text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+                                Soho, New York
+                            </p>
+</div>
+<div class="flex gap-1">
+<span class="bg-surface-container-high text-[10px] font-bold px-2 py-1 rounded-md">VEGAN</span>
+</div>
+</div>
+<p class="text-on-surface-variant mb-6 text-sm line-clamp-2 italic">"Looking for someone who appreciates a good rooftop candlelit dinner and deep conversations about architecture."</p>
+<div class="mt-auto pt-4 flex gap-3">
+<button class="flex-1 bg-primary-gradient text-white py-3 rounded font-bold transition-all active:scale-95">Apply</button>
+<button class="w-12 h-12 flex items-center justify-center bg-surface-container-high rounded-full hover:bg-surface-container-highest">
+<span class="material-symbols-outlined text-primary" data-icon="favorite">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Card 2: Paid Request (Feature Card) -->
+<div class="group relative bg-surface-container-lowest rounded-lg overflow-hidden editorial-shadow flex flex-col border-2 border-primary/5">
+<div class="relative h-80 overflow-hidden">
+<img alt="Marcus's profile" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Professional man in a suit looking at camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1T70JoHJZ8Nrbekb7sSWnmCzkynZIcTOoLdrev9Ss1MGjDMXfNX8eFVqKRS6K_Ad7j1Kv4mCPsea1gP-WoUX1Bg7TKf_q65dtJFqcD42J4ftp_RemmJenllKt6fKV4wmGj9wPZiVUthm47Lx0VbC3oIdiyrwbxLTQxLQFk8HCKTErON-DDAxEGAkPMhY-XsyvQvEumO-CtsKZzjIJetQlxEMhDvdHkQoxEjvhBa4lLDP-1Dr5OGB5pYu53xNDqPwpS0leVxt44fI"/>
+<div class="absolute top-4 left-4 bg-tertiary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Paid Request</div>
+<div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl">
+<span class="text-primary font-black text-xl">$500</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline text-2xl font-bold">Marcus, 32</h3>
+<p class="text-on-surface-variant text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="event">event</span>
+                                Charity Gala Guest
+                            </p>
+</div>
+</div>
+<p class="text-on-surface-variant mb-6 text-sm">Need a companion for a Black-tie Gala event next Saturday. Formal attire required. Dinner and drinks covered.</p>
+<div class="mt-auto pt-4 flex gap-3">
+<button class="flex-1 bg-primary-gradient text-white py-3 rounded font-bold transition-all active:scale-95">Apply Now</button>
+</div>
+</div>
+</div>
+<!-- Card 3: Find Friends (Casual Style) -->
+<div class="group relative bg-surface-container-lowest rounded-lg overflow-hidden editorial-shadow flex flex-col">
+<div class="relative h-80 overflow-hidden">
+<img alt="Elena's profile" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Smiling woman holding a coffee cup outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDZdK1tAgPqrLrncqyoFpQAwXUQndxBTpRGiNWgP-p4tcquR52PWLarceH05xDtHopJE4VXBEfp2BbpWILNuF8j7rLStm9C2AwNi1NQFoJ5w5qEsQ4VU74UbPzZPqJx7DcW5WY_uKajrLnXuBwV9CC_jtrycaGN3vTCsdGVTkJoea37c7HzB3RUMIY2uBzqFbCA3RbJxNbyhAyBWK7Dx9svP-E5W4QXEWkqWSQO2IFsHXx-S8dsUQ6mqwQtphcxTKDRBQfksvI25E"/>
+<div class="absolute top-4 left-4 bg-secondary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Find Friends</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline text-2xl font-bold">Elena, 24</h3>
+<p class="text-on-surface-variant text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="restaurant">restaurant</span>
+                                Taco Tuesday Group
+                            </p>
+</div>
+</div>
+<p class="text-on-surface-variant mb-6 text-sm italic">"Organizing a casual group dinner at 'La Esquina'. Looking for 3 more fun people to join the table!"</p>
+<div class="mt-auto pt-4 flex gap-3">
+<button class="flex-1 bg-surface-container-high text-on-surface font-bold py-3 rounded hover:bg-surface-container-highest transition-all">Join Group</button>
+</div>
+</div>
+</div>
+<!-- Card 4: Paid Request (Short Form) -->
+<div class="group relative bg-surface-container-lowest rounded-lg overflow-hidden editorial-shadow flex flex-col">
+<div class="relative h-80 overflow-hidden">
+<img alt="David's profile" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Stylish man walking on a city street" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW5pK4Fi3JhdXoNsL_QeAzQGC7CbP_nR4ykFT0oSDHTJSAK9hJYJkkJM27n28ccalOb9d74d3yTubi1-eYefjmluare6e_GljGRNjeW6DvPyoNPZ-Zkk0Ry-EBO2nTadruo9R75EzihAbSR4Q2dwxSTc2AYL0PeMjZtCDf-vd_aOngO7j8QvzYvRtBwDI_Bppzv2ko9QWyG1zn8tdp4dF2YSWccfjABd6TRl53OAD_fnTBSiRvRlFRR9QdOUdCq2YjXKbqc6aYkWg"/>
+<div class="absolute top-4 left-4 bg-tertiary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">Paid Request</div>
+<div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl">
+<span class="text-primary font-black text-xl">$150</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline text-2xl font-bold">David, 29</h3>
+<p class="text-on-surface-variant text-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="movie">movie</span>
+                                Film Festival Premiere
+                            </p>
+</div>
+</div>
+<p class="text-on-surface-variant mb-6 text-sm italic">"Have an extra ticket for the indie premiere. Looking for a cinema buff to join and discuss over drinks after."</p>
+<div class="mt-auto pt-4 flex gap-3">
+<button class="flex-1 bg-primary-gradient text-white py-3 rounded font-bold transition-all active:scale-95">Apply</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-24 right-6 md:bottom-12 md:right-12 w-16 h-16 bg-primary-gradient text-white rounded-full flex items-center justify-center shadow-2xl z-50 transform hover:rotate-90 transition-transform active:scale-90">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md z-50 rounded-t-3xl shadow-[0_-8px_24px_rgba(174,47,52,0.05)] bg-surface-container-low">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-white rounded-2xl p-3 transform -translate-y-2 shadow-lg scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Dates</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="person_2">person_2</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DineDate - Appointments Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#fdf9f3",
+              "surface-container-high": "#ebe8e2",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-dim": "#dddad4",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "inverse-primary": "#ffb3b0",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "background": "#fdf9f3",
+              "on-secondary-container": "#656464",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary-fixed": "#370e08",
+              "on-primary-fixed": "#410006",
+              "inverse-surface": "#31302d",
+              "surface-container-low": "#f7f3ed",
+              "surface-variant": "#e6e2dc",
+              "surface-tint": "#ae2f34",
+              "on-primary-container": "#6d0010",
+              "secondary-container": "#e4e2e1",
+              "surface": "#fdf9f3",
+              "on-surface-variant": "#584140",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "secondary-fixed": "#e4e2e1",
+              "secondary-fixed-dim": "#c8c6c6",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-fixed": "#1b1c1c",
+              "secondary": "#5f5e5e",
+              "primary-container": "#ff6b6b",
+              "surface-container-highest": "#e6e2dc",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed-variant": "#474747",
+              "outline-variant": "#e0bfbd",
+              "primary": "#ae2f34",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-container": "#f1ede7",
+              "tertiary": "#894e45",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1c18",
+              "tertiary-container": "#cf8a7f",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-background": "#1c1c18",
+              "outline": "#8c706f"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- Desktop Side Navigation -->
+<aside class="hidden md:flex flex-col p-6 space-y-2 h-screen w-64 fixed left-0 top-0 z-40 bg-surface dark:bg-zinc-950 no-line bg-surface-container-low">
+<div class="text-primary font-bold text-xl mb-8 font-headline">DineDate</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-medium text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-medium text-label-md">Discover</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-medium text-label-md">Dates</span>
+</a>
+<!-- Active State: Appointments -->
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-full font-bold active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="font-medium text-label-md">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-medium text-label-md">Profile</span>
+</a>
+</nav>
+<button class="mt-auto w-full py-4 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-full shadow-lg hover:scale-[1.02] active:scale-95 transition-all">
+            New Date Request
+        </button>
+</aside>
+<!-- Top AppBar (Mobile/Web) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md no-border tonal-shift bg-surface-container-low shadow-sm dark:shadow-none flex justify-between items-center px-6 py-4 md:pl-72">
+<div class="flex items-center gap-4">
+<h1 class="font-headline text-display-sm font-bold tracking-tight text-on-surface">Appointments</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-highest transition-colors rounded-full active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-highest transition-colors rounded-full active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">payments</span>
+</button>
+</div>
+<img alt="User profile avatar" class="w-10 h-10 rounded-full object-cover" data-alt="Close up portrait of a smiling young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDN__eyQyPoPpj4sfz7JOhjCGle-RASZNSnN-94qvkpQC-7lKnlmyVWqWF_zTSNlJJmc__NabXM8H8MrvrkkyEPC828omFEIE5HN7yOtQSOzyCjlHJi308QvJ5mLMD6LDYCCRd36QB9rj7nXDg4WO5K2f_TN0OJOo4naZ0UA4Mv7UcvXr4IxjFplENO7PwapTiohpsK2lFyqHRp4e0YzefSuEQPmNNNw0u8HrUos73nQu8lIkrngeXLfJ2x8uDMMn6y58mONYRSzTI"/>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="pt-24 pb-28 px-4 md:pl-72 md:pr-12 max-w-7xl mx-auto">
+<!-- Tabs Section -->
+<div class="flex gap-4 mb-8 overflow-x-auto hide-scrollbar pb-2">
+<button class="flex-none px-6 py-2.5 bg-primary text-white rounded-full font-bold text-sm shadow-md">
+                All Requests
+            </button>
+<button class="flex-none px-6 py-2.5 bg-surface-container-high text-on-surface-variant rounded-full font-medium text-sm hover:bg-surface-container-highest transition-colors">
+                Pending Applications (3)
+            </button>
+<button class="flex-none px-6 py-2.5 bg-surface-container-high text-on-surface-variant rounded-full font-medium text-sm hover:bg-surface-container-highest transition-colors">
+                Confirmed Dates
+            </button>
+<button class="flex-none px-6 py-2.5 bg-surface-container-high text-on-surface-variant rounded-full font-medium text-sm hover:bg-surface-container-highest transition-colors">
+                Past Dates
+            </button>
+</div>
+<!-- Bento Grid Layout for Appointments -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- SECTION: Pending Applications (Primary Focus) -->
+<div class="lg:col-span-2 space-y-6">
+<div class="flex items-center justify-between">
+<h2 class="font-headline text-xl font-extrabold text-on-surface flex items-center gap-2">
+                        Pending Applications
+                        <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+</h2>
+</div>
+<!-- Application Card 1 (Paid Request Context) -->
+<div class="bg-surface-container-lowest rounded-lg p-6 flex flex-col md:flex-row gap-6 group transition-all duration-300 hover:bg-white shadow-[0_8px_24px_rgba(174,47,52,0.04)]">
+<div class="relative flex-none">
+<img alt="Applicant profile" class="w-24 h-24 md:w-32 md:h-32 rounded-md object-cover" data-alt="Portrait of a young woman with a warm smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhpGJmb_lL_MCL8aMOlcKxGjyY40sUd_iHBzDJx79D9MpxuyhzPVy0Kmo1j_PRUz9HnnmYKngJFEsL3jwBm2qyYJAl5YpbYrbNC2y8q16W0gnVp2LJECHjdh8jfNQxeRJFWYdQr8LwUOZfd7cJd6yntyD9vDDOCe90w71NjroIATiMZ3jEWaiqNg_VJXLcPdUxmrGumheqJY8ZLAdpmDe0x5Umlyx6dRIaJYdXLp6fQA25TLWrr__g0u6ozgQjSOe_IgoWYWcsBWA"/>
+<div class="absolute -bottom-2 -right-2 bg-primary-container text-on-primary-container text-[10px] font-black uppercase px-2 py-1 rounded-md shadow-sm">
+                            Premium
+                        </div>
+</div>
+<div class="flex-1 space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-lg font-bold text-on-surface">Sophia Chen, 26</h3>
+<p class="text-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">restaurant</span> 
+                                    Applied for: Dinner at Le Bernardin
+                                </p>
+</div>
+<div class="text-right">
+<span class="text-primary font-bold text-sm">$150.00 Request</span>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Paid Date</p>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm italic leading-relaxed">
+                            "I've always wanted to try their tasting menu! I'm a huge fan of seafood and great wine pairings."
+                        </p>
+<div class="flex flex-wrap gap-2 pt-1">
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant rounded-full text-xs font-medium">Sushi Lover</span>
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant rounded-full text-xs font-medium">Wine Tasting</span>
+<span class="px-3 py-1 bg-surface-container-low text-on-surface-variant rounded-full text-xs font-medium">Verified</span>
+</div>
+<div class="flex gap-3 pt-4 border-t border-surface-container-high">
+<button class="flex-1 py-3 bg-primary text-white font-bold rounded-full hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                                Accept &amp; Chat
+                            </button>
+<button class="flex-none px-6 py-3 bg-surface-container-high text-on-surface-variant font-bold rounded-full hover:bg-surface-variant transition-all">
+                                View Profile
+                            </button>
+</div>
+</div>
+</div>
+<!-- Application Card 2 -->
+<div class="bg-surface-container-low/50 rounded-lg p-6 flex flex-col md:flex-row gap-6 opacity-90 grayscale-[0.2] hover:grayscale-0 hover:bg-surface-container-lowest transition-all">
+<img alt="Applicant profile" class="w-24 h-24 md:w-32 md:h-32 rounded-md object-cover" data-alt="Portrait of a handsome man in a casual shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6WwCq6s4SFt0nwKYKsGA7VlcjaM2t5E7UrZjVERXySnTGAeB4r12SDDoZbYchlcyNgeKL1i8Ip-e2RnrKX9_5va6fIUNz9gk6GwIQzv1HaTkUr1NsLCRzw6a4-HtBbDPKCHHm_esXN60gNVJywnJx8fRxRhVlM8przMI2-CBquMidAWOLjxkVfWfxhG1UIvMy1tj3QLfGFprzqpmrzQkiALM9UF7eWazQl9fIWvsGgEO2UMKoD4u-IBaSkiLlTNeOM2st6CxTL3s"/>
+<div class="flex-1 space-y-3">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-lg font-bold text-on-surface">Marcus Thorne, 29</h3>
+<p class="text-sm text-on-surface-variant">Applied for: Rooftop Cocktails</p>
+</div>
+<span class="text-tertiary font-bold text-sm italic">Standard Request</span>
+</div>
+<p class="text-on-surface-variant text-sm italic">"Let's grab a drink and see where the night takes us. I know a great spot with a view."</p>
+<div class="flex gap-3 pt-4">
+<button class="flex-1 py-3 bg-surface-container-highest text-on-surface font-bold rounded-full active:scale-[0.98] transition-all">Review</button>
+<button class="flex-none px-4 py-3 text-error font-bold rounded-full hover:bg-error/5">Decline</button>
+</div>
+</div>
+</div>
+</div>
+<!-- SIDEBAR: Confirmed & Stats -->
+<div class="space-y-6">
+<!-- Confirmed Date Widget -->
+<div class="bg-primary text-white rounded-lg p-6 shadow-xl relative overflow-hidden">
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-primary-container rounded-full opacity-20"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-center mb-6">
+<span class="px-3 py-1 bg-white/20 rounded-full text-[10px] font-black uppercase tracking-widest">Next Date</span>
+<span class="material-symbols-outlined">event</span>
+</div>
+<h4 class="font-headline text-2xl font-bold mb-1">Tonight, 8:00 PM</h4>
+<p class="text-primary-fixed mb-6 opacity-90">With Isabella M.</p>
+<div class="bg-white/10 backdrop-blur-md rounded-lg p-4 mb-6">
+<p class="text-xs uppercase font-bold opacity-70 mb-1">Location</p>
+<p class="text-sm font-medium">The NoMad Bar, Broadway</p>
+</div>
+<button class="w-full py-3 bg-white text-primary font-bold rounded-full hover:bg-surface-bright transition-colors active:scale-95">
+                            View Reservation
+                        </button>
+</div>
+</div>
+<!-- Mini Stats / Summary -->
+<div class="bg-surface-container-high rounded-lg p-6 space-y-4">
+<h4 class="font-headline font-bold text-on-surface-variant">Overview</h4>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-md">
+<p class="text-[10px] uppercase font-bold text-on-surface-variant/60">Success Rate</p>
+<p class="text-2xl font-black text-primary">84%</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-md">
+<p class="text-[10px] uppercase font-bold text-on-surface-variant/60">Total Dates</p>
+<p class="text-2xl font-black text-on-surface">12</p>
+</div>
+</div>
+</div>
+<!-- Past Dates Feed -->
+<div class="space-y-4">
+<h4 class="font-headline font-bold text-on-surface flex items-center justify-between">
+                        Past Dates
+                        <a class="text-xs font-bold text-primary hover:underline" href="#">View All</a>
+</h4>
+<div class="space-y-3">
+<!-- Past Item 1 -->
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-md">
+<img alt="Past date profile" class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a young woman with curly hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0a-ERthzB7HinrYnBXqAx3kBRfJ1gla_Cwd2R1G9x01fKnLoaPZGIfrDzPv-YNd-0gJxRqD3unrkV1kfz3zcWtUgHsurXnIeJfqINtzEOh3pRaYOwPTaVY7mwMeHABqI4Dbe_qbTRuzQ50uyxnZC1Ds1zom_oxmgrL0fIJrMNtQHRTYMcwpPJxchHxtje7VkmBMmMVKc1FXob170NYBfDurcgRPO6wJiWFFOrH9GCXaISgaNxIj7x0K6TEYzRC1mDb0fYYe1tN10"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Elena Rose</p>
+<p class="text-[10px] text-on-surface-variant">Oct 14 • Sushi Seki</p>
+</div>
+<div class="ml-auto">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-tertiary">4.9</span>
+</div>
+</div>
+<!-- Past Item 2 -->
+<div class="flex items-center gap-3 p-3 bg-surface-container-low rounded-md">
+<img alt="Past date profile" class="w-12 h-12 rounded-full object-cover" data-alt="Close up of a man's face looking away" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHRLdwDQJqtqEpKANBwNeotCfXaQ3W_BS3HV61wS0YMRqR6r_bAiNurTRkAKC6cENw_9C1ajghRAEzDmBp3GqjwT0Eurep1jNQtEcTGdboL8yKzaErACtkjxkxa2E6SzQk3A_hX39lB1FRV5crSVzlJ_SpDDjQolcvv9_UozIdG0hfQuad_YGxWBvupWPPdJPlcLWimxHZ0zlPODBBZOKJ4OaYjPRF-zcmtXYJA92W7sgxgHA0M6nNBrBe2n2wT-PiIQC_TD-bNaw"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Julian V.</p>
+<p class="text-[10px] text-on-surface-variant">Oct 02 • Dante NYC</p>
+</div>
+<div class="ml-auto">
+<span class="material-symbols-outlined text-tertiary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-xs font-bold text-tertiary">5.0</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md z-50 rounded-t-3xl shadow-[0_-8px_24px_rgba(174,47,52,0.05)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Dates</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-white rounded-2xl p-3 transform -translate-y-2 shadow-lg active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event_available</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">person_2</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+</body></html>

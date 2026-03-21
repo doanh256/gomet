@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Wallet, Plus, ArrowDownLeft, ArrowUpRight, CreditCard } from 'lucide-react';
 import { api } from '../../api/client';
 import { useToast } from '../../components/ToastNotification';
 import { useAppContext } from '../../AppContext';
@@ -12,7 +11,6 @@ const WalletPage = () => {
   const [balance, setBalance] = useState(0);
   const [transactions, setTransactions] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [topupAmount, setTopupAmount] = useState(null);
 
   useEffect(() => {
     loadWallet();
@@ -23,7 +21,7 @@ const WalletPage = () => {
       const data = await api.get('/wallet');
       if (data) {
         setBalance(data.balance);
-        setTransactions(data.transactions);
+        setTransactions(data.transactions || []);
       }
     } catch (err) {
       console.error(err);
@@ -36,103 +34,299 @@ const WalletPage = () => {
     try {
       const data = await api.post('/wallet/topup', { amount });
       setBalance(data.balance);
-      addToast(`Nạp ${amount.toLocaleString('vi-VN')}d thành công!`, 'success');
+      addToast(`Nap ${amount.toLocaleString('vi-VN')}d thanh cong!`, 'success');
       loadWallet();
-      setTopupAmount(null);
     } catch (err) {
       addToast(err.message, 'error');
     }
   };
 
-  const txIcon = (type) => {
-    switch (type) {
-      case 'topup': return <ArrowDownLeft size={18} color="#4ecdc4" />;
-      case 'payment': return <ArrowUpRight size={18} color="#fd5068" />;
-      case 'earning': return <ArrowDownLeft size={18} color="#2e7d32" />;
-      case 'refund': return <ArrowDownLeft size={18} color="#ff7854" />;
-      default: return <CreditCard size={18} />;
-    }
+  const txIconMap = {
+    topup: { icon: 'account_balance_wallet', color: '#4ecdc4' },
+    payment: { icon: 'receipt_long', color: 'var(--primary)' },
+    earning: { icon: 'stars', color: '#2e7d32' },
+    refund: { icon: 'replay', color: '#ff7854' },
+  };
+
+  const s = {
+    page: {
+      flex: 1,
+      backgroundColor: 'var(--surface)',
+      overflowY: 'auto',
+      padding: '40px 32px 80px',
+    },
+    pageTitle: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '28px',
+      fontWeight: 800,
+      color: 'var(--on-surface)',
+      margin: '0 0 32px',
+    },
+    balanceCard: {
+      background: 'var(--primary-gradient)',
+      borderRadius: 'var(--radius-lg)',
+      padding: '36px',
+      color: 'white',
+      marginBottom: '32px',
+      boxShadow: 'var(--editorial-shadow)',
+      position: 'relative',
+      overflow: 'hidden',
+    },
+    balanceDecor: {
+      position: 'absolute',
+      top: '-40px',
+      right: '-40px',
+      width: '160px',
+      height: '160px',
+      borderRadius: 'var(--radius-full)',
+      backgroundColor: 'rgba(255,255,255,0.08)',
+    },
+    balanceDecor2: {
+      position: 'absolute',
+      bottom: '-30px',
+      right: '60px',
+      width: '100px',
+      height: '100px',
+      borderRadius: 'var(--radius-full)',
+      backgroundColor: 'rgba(255,255,255,0.05)',
+    },
+    balanceLabel: {
+      fontFamily: 'var(--font-body)',
+      fontSize: '14px',
+      fontWeight: 600,
+      opacity: 0.85,
+      margin: 0,
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+    },
+    balanceAmount: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '42px',
+      fontWeight: 800,
+      margin: '12px 0 4px',
+      position: 'relative',
+    },
+    balanceSub: {
+      fontFamily: 'var(--font-body)',
+      fontSize: '13px',
+      opacity: 0.6,
+      margin: 0,
+    },
+    topupSection: {
+      marginBottom: '40px',
+    },
+    sectionTitle: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '20px',
+      fontWeight: 700,
+      color: 'var(--on-surface)',
+      margin: '0 0 16px',
+    },
+    topupRow: {
+      display: 'flex',
+      gap: '12px',
+      alignItems: 'center',
+      flexWrap: 'wrap',
+    },
+    topupBtn: {
+      background: 'var(--primary-gradient)',
+      border: 'none',
+      color: 'white',
+      padding: '14px 28px',
+      borderRadius: 'var(--radius-full)',
+      fontFamily: 'var(--font-body)',
+      fontSize: '15px',
+      fontWeight: 700,
+      cursor: 'pointer',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+      boxShadow: 'var(--editorial-shadow)',
+      transition: 'transform 0.2s ease',
+    },
+    quickChip: (hover) => ({
+      padding: '12px 20px',
+      borderRadius: 'var(--radius-full)',
+      backgroundColor: hover ? 'var(--primary)' : 'var(--surface-container-lowest)',
+      color: hover ? 'white' : 'var(--on-surface)',
+      border: 'none',
+      cursor: 'pointer',
+      fontSize: '14px',
+      fontWeight: 700,
+      fontFamily: 'var(--font-body)',
+      boxShadow: 'var(--card-shadow)',
+      transition: 'all 0.2s ease',
+    }),
+    disclaimer: {
+      fontFamily: 'var(--font-body)',
+      fontSize: '12px',
+      color: 'var(--on-surface-variant)',
+      marginTop: '12px',
+    },
+    txSection: {
+      marginBottom: '40px',
+    },
+    card: {
+      backgroundColor: 'var(--surface-container-lowest)',
+      borderRadius: 'var(--radius)',
+      padding: '8px 20px',
+      boxShadow: 'var(--card-shadow)',
+    },
+    txItem: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '14px',
+      padding: '14px 0',
+    },
+    txDivider: {
+      height: '1px',
+      backgroundColor: 'var(--surface-container-high)',
+      border: 'none',
+    },
+    txIcon: {
+      width: '44px',
+      height: '44px',
+      borderRadius: 'var(--radius)',
+      backgroundColor: 'var(--surface-container-low)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      flexShrink: 0,
+    },
+    txDesc: {
+      fontSize: '14px',
+      fontWeight: 600,
+      color: 'var(--on-surface)',
+      fontFamily: 'var(--font-body)',
+    },
+    txDate: {
+      fontSize: '12px',
+      color: 'var(--on-surface-variant)',
+      fontFamily: 'var(--font-body)',
+      marginTop: '2px',
+    },
+    txAmount: (positive) => ({
+      fontSize: '15px',
+      fontWeight: 700,
+      fontFamily: 'var(--font-headline)',
+      color: positive ? '#2e7d32' : 'var(--primary)',
+    }),
+    emptyState: {
+      textAlign: 'center',
+      padding: '40px 0',
+      color: 'var(--on-surface-variant)',
+    },
+    loadingState: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '80px 0',
+      fontFamily: 'var(--font-body)',
+      color: 'var(--on-surface-variant)',
+      fontSize: '15px',
+    },
   };
 
   if (loading) {
-    return <div className="main-area" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}><p>Đang tải...</p></div>;
+    return (
+      <div style={s.page}>
+        <div style={s.loadingState}>
+          <span className="material-symbols-outlined" style={{ fontSize: '24px', marginRight: '8px', animation: 'spin 1s linear infinite' }}>progress_activity</span>
+          Dang tai vi...
+        </div>
+      </div>
+    );
   }
 
   return (
-    <div className="main-area" style={{ padding: '24px', overflowY: 'auto' }}>
-      {/* Balance Card */}
-      <div style={{
-        background: 'linear-gradient(135deg, #1f1140 0%, #3d1f6d 100%)',
-        borderRadius: '24px', padding: '32px', color: 'white', marginBottom: '24px',
-        boxShadow: '0 8px 32px rgba(31, 17, 64, 0.3)',
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-          <Wallet size={24} />
-          <span style={{ fontSize: '16px', fontWeight: 600, opacity: 0.8 }}>Số dư ví Gomet</span>
-        </div>
-        <div style={{ fontSize: '36px', fontWeight: 800, marginBottom: '8px' }}>
-          {balance.toLocaleString('vi-VN')}d
-        </div>
-        <p style={{ fontSize: '14px', opacity: 0.6, margin: 0 }}>{currentUser?.name} - {currentUser?.email}</p>
-      </div>
+    <div style={s.page}>
+      <h1 style={s.pageTitle}>Vi Gomet</h1>
 
-      {/* Top up */}
-      <div style={{ marginBottom: '32px' }}>
-        <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#111418', margin: '0 0 16px' }}>Nạp tiền vào ví</h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '12px' }}>
-          {TOPUP_AMOUNTS.map(amount => (
-            <button
-              key={amount}
-              onClick={() => handleTopup(amount)}
-              style={{
-                padding: '16px', borderRadius: '16px',
-                border: '2px solid #e1e4e8', background: 'white',
-                cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-                fontSize: '16px', fontWeight: 700, color: '#111418',
-                transition: 'all 0.2s',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = '#fd5068'; e.currentTarget.style.background = '#fff5f6'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = '#e1e4e8'; e.currentTarget.style.background = 'white'; }}
-            >
-              <Plus size={18} color="#fd5068" />
-              {amount.toLocaleString('vi-VN')}d
-            </button>
-          ))}
-        </div>
-        <p style={{ fontSize: '12px', color: '#656e7b', marginTop: '8px', textAlign: 'center' }}>
-          * Đây là ví demo. Trong phiên bản chính thức sẽ tích hợp MoMo/ZaloPay.
+      {/* Balance Card */}
+      <div style={s.balanceCard}>
+        <div style={s.balanceDecor} />
+        <div style={s.balanceDecor2} />
+        <p style={s.balanceLabel}>
+          <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>account_balance_wallet</span>
+          So du hien tai
+        </p>
+        <p style={s.balanceAmount}>
+          {balance.toLocaleString('vi-VN')}d
+        </p>
+        <p style={s.balanceSub}>
+          {currentUser?.name} &middot; {currentUser?.email}
         </p>
       </div>
 
-      {/* Transactions */}
-      <div>
-        <h2 style={{ fontSize: '18px', fontWeight: 700, color: '#111418', margin: '0 0 16px' }}>Lịch sử giao dịch</h2>
-        {transactions.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '40px', color: '#656e7b' }}>
-            <p>Chưa có giao dịch nào</p>
-          </div>
-        ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {transactions.map(tx => (
-              <div key={tx.id} style={{
-                display: 'flex', alignItems: 'center', gap: '12px',
-                padding: '14px 16px', background: 'white', borderRadius: '14px',
-                border: '1px solid #f0f2f5',
-              }}>
-                <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#f5f7f9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  {txIcon(tx.type)}
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: '14px', fontWeight: 600, color: '#111418' }}>{tx.description || tx.type}</div>
-                  <div style={{ fontSize: '12px', color: '#656e7b' }}>{new Date(tx.createdAt).toLocaleDateString('vi-VN')}</div>
-                </div>
-                <div style={{ fontSize: '15px', fontWeight: 700, color: tx.amount > 0 ? '#2e7d32' : '#fd5068' }}>
-                  {tx.amount > 0 ? '+' : ''}{tx.amount.toLocaleString('vi-VN')}d
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+      {/* Top Up Section */}
+      <div style={s.topupSection}>
+        <h2 style={s.sectionTitle}>Nap Credits</h2>
+        <div style={s.topupRow}>
+          <button
+            style={s.topupBtn}
+            onClick={() => handleTopup(100000)}
+            onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.03)'}
+            onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>add_circle</span>
+            Nap Credits
+          </button>
+        </div>
+
+        {/* Quick Top-up Chips */}
+        <div style={{ display: 'flex', gap: '10px', marginTop: '16px', flexWrap: 'wrap' }}>
+          {TOPUP_AMOUNTS.map(amount => (
+            <button
+              key={amount}
+              style={s.quickChip(false)}
+              onClick={() => handleTopup(amount)}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--primary)'; e.currentTarget.style.color = 'white'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--surface-container-lowest)'; e.currentTarget.style.color = 'var(--on-surface)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+            >
+              {amount >= 1000 ? `${(amount / 1000).toLocaleString()}k` : amount.toLocaleString('vi-VN')}d
+            </button>
+          ))}
+        </div>
+
+        <p style={s.disclaimer}>
+          * Day la vi demo. Phien ban chinh thuc se tich hop MoMo/ZaloPay.
+        </p>
+      </div>
+
+      {/* Transaction History */}
+      <div style={s.txSection}>
+        <h2 style={s.sectionTitle}>Lich Su Giao Dich</h2>
+
+        <div style={s.card}>
+          {transactions.length === 0 ? (
+            <div style={s.emptyState}>
+              <span className="material-symbols-outlined" style={{ fontSize: '48px', color: 'var(--outline-variant)', display: 'block', marginBottom: '12px' }}>receipt_long</span>
+              <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', margin: 0 }}>Chua co giao dich nao</p>
+            </div>
+          ) : (
+            transactions.map((tx, idx) => {
+              const txMeta = txIconMap[tx.type] || { icon: 'credit_card', color: 'var(--on-surface-variant)' };
+              return (
+                <React.Fragment key={tx.id}>
+                  <div style={s.txItem}>
+                    <div style={s.txIcon}>
+                      <span className="material-symbols-outlined" style={{ fontSize: '22px', color: txMeta.color }}>{txMeta.icon}</span>
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <div style={s.txDesc}>{tx.description || tx.type}</div>
+                      <div style={s.txDate}>{new Date(tx.createdAt).toLocaleDateString('vi-VN')}</div>
+                    </div>
+                    <div style={s.txAmount(tx.amount > 0)}>
+                      {tx.amount > 0 ? '+' : ''}{tx.amount.toLocaleString('vi-VN')}d
+                    </div>
+                  </div>
+                  {idx < transactions.length - 1 && <hr style={s.txDivider} />}
+                </React.Fragment>
+              );
+            })
+          )}
+        </div>
       </div>
     </div>
   );

@@ -22,7 +22,14 @@
       "Bash(git commit -m \"Gomet v1.0 - Dating & Social Meetup Platform:*)",
       "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" repo create gomet --public --source=. --remote=origin --push)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(railway --version)",
+      "Bash(npx railway:*)",
+      "Bash(railway login:*)",
+      "WebFetch(domain:stitch.withgoogle.com)",
+      "Bash(mkdir -p /tmp/stitch)",
+      "Read(//tmp/**)",
+      "Bash(unzip -o \"/c/Users/doanh/Downloads/stitch.zip\")"
     ]
   }
 }

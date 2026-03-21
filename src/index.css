@@ -1,102 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
 :root {
-  --primary-color: #fd5068;
-  --secondary-color: #ff7854;
-  --accent-gold: #fec142;
-  --bg-color: #f7f7f7;
-  --text-dark: #111418;
-  --text-light: #505965;
-  --text-muted: #767676; /* WCAG AA compliant */
-  --gold-header: #e5a720;
-  --purple-brand: #d21774;
-  --card-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  --border-color: #e8e8e8;
-  --radius-sm: 12px;
-  --radius-md: 20px;
-  --radius-lg: 30px;
-  --app-gradient: linear-gradient(260deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-  /* Type Scale */
-  --fs-xs: 12px;
-  --fs-sm: 14px;
-  --fs-md: 16px;
-  --fs-lg: 20px;
-  --fs-xl: 28px;
-  --fs-2xl: 36px;
+  --primary: #ae2f34;
+  --primary-container: #ff6b6b;
+  --on-primary: #ffffff;
+  --on-primary-container: #6d0010;
+  --primary-fixed: #ffdad8;
+  --secondary: #5f5e5e;
+  --secondary-container: #e4e2e1;
+  --tertiary: #894e45;
+  --tertiary-container: #cf8a7f;
+  --surface: #fdf9f3;
+  --surface-dim: #dddad4;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f7f3ed;
+  --surface-container: #f1ede7;
+  --surface-container-high: #ebe8e2;
+  --surface-container-highest: #e6e2dc;
+  --on-surface: #1c1c18;
+  --on-surface-variant: #584140;
+  --on-background: #1c1c18;
+  --outline: #8c706f;
+  --outline-variant: #e0bfbd;
+  --error: #ba1a1a;
+  --error-container: #ffdad6;
+  --inverse-surface: #31302d;
+  --inverse-on-surface: #f4f0ea;
+  --primary-gradient: linear-gradient(45deg, #ae2f34, #ff6b6b);
+  --editorial-shadow: 0 24px 48px -12px rgba(174, 47, 52, 0.08);
+  --card-shadow: 0 8px 24px rgba(174, 47, 52, 0.04);
+  --radius: 1rem;
+  --radius-lg: 2rem;
+  --radius-full: 9999px;
+  --font-headline: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  /* Legacy compat */
+  --primary-color: #ae2f34;
+  --secondary-color: #ff6b6b;
+  --accent-gold: #894e45;
+  --bg-color: #fdf9f3;
+  --text-color: #1c1c18;
+  --text-light: #584140;
+  --border-color: #e0bfbd;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-dark);
-  overflow: hidden; /* Prevent scrolling on body, scroll inside Sidebar if needed */
+  font-family: var(--font-body);
+  background-color: var(--surface);
+  color: var(--on-surface);
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-headline); }
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+.material-symbols-outlined.filled {
+  font-variation-settings: 'FILL' 1;
 }
 
-ul {
-  list-style: none;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
-  font-family: inherit;
-}
-
-/* Placeholder contrast fix — WCAG AA */
-::placeholder {
-  color: var(--text-muted);
-  opacity: 1;
-}
-
-/* Screen reader only — accessibility */
-.sr-only {
-  position: absolute;
-  width: 1px; height: 1px;
-  padding: 0; margin: -1px;
-  overflow: hidden; clip: rect(0,0,0,0);
-  white-space: nowrap; border: 0;
-}
-
-/* Shimmer loading placeholder for images */
-.shimmer {
-  background: linear-gradient(90deg, #1a1a2e 25%, #2a2a3e 50%, #1a1a2e 75%);
-  background-size: 200% 100%;
-  animation: shimmerMove 1.5s infinite;
-}
-
-@keyframes shimmerMove {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
-}
-
-/* Card enter animation */
-@keyframes cardEnter {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.card-entering {
-  animation: cardEnter 0.35s ease-out;
-}
-
-/* Empty state */
-.empty-state {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  padding: 40px;
-  text-align: center;
-  color: var(--text-light);
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--outline-variant); border-radius: 3px; }
+::selection { background: var(--primary-fixed); color: var(--on-primary-container); }

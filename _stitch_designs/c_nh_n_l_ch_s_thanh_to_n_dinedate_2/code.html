@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DineDate - Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#fdf9f3",
+              "surface-container-high": "#ebe8e2",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-dim": "#dddad4",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "inverse-primary": "#ffb3b0",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "background": "#fdf9f3",
+              "on-secondary-container": "#656464",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary-fixed": "#370e08",
+              "on-primary-fixed": "#410006",
+              "inverse-surface": "#31302d",
+              "surface-container-low": "#f7f3ed",
+              "surface-variant": "#e6e2dc",
+              "surface-tint": "#ae2f34",
+              "on-primary-container": "#6d0010",
+              "secondary-container": "#e4e2e1",
+              "surface": "#fdf9f3",
+              "on-surface-variant": "#584140",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "secondary-fixed": "#e4e2e1",
+              "secondary-fixed-dim": "#c8c6c6",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-fixed": "#1b1c1c",
+              "secondary": "#5f5e5e",
+              "primary-container": "#ff6b6b",
+              "surface-container-highest": "#e6e2dc",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed-variant": "#474747",
+              "outline-variant": "#e0bfbd",
+              "primary": "#ae2f34",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-container": "#f1ede7",
+              "tertiary": "#894e45",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1c18",
+              "tertiary-container": "#cf8a7f",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-background": "#1c1c18",
+              "outline": "#8c706f"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        vertical-align: middle;
+      }
+      body { font-family: 'Inter', sans-serif; }
+      h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+      .bg-primary-gradient {
+        background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+      }
+      .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+      .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+      .custom-scrollbar::-webkit-scrollbar-thumb { background: #e6e2dc; border-radius: 10px; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Desktop Sidebar -->
+<aside class="hidden md:flex flex-col p-6 space-y-2 h-screen w-64 fixed left-0 top-0 z-40 bg-surface dark:bg-zinc-950 no-line bg-surface-container-low">
+<div class="text-primary font-bold text-xl mb-8 font-plus-jakarta">DineDate</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150 font-plus-jakarta font-medium text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span>Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150 font-plus-jakarta font-medium text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span>Discover</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150 font-plus-jakarta font-medium text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span>Dates</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150 font-plus-jakarta font-medium text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span>Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-full font-bold transition-all active:translate-x-1 duration-150 font-plus-jakarta text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span>Profile</span>
+</a>
+</nav>
+<div class="mt-auto">
+<button class="w-full bg-primary-gradient text-white py-4 rounded-full font-bold shadow-lg flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+            New Date Request
+        </button>
+<div class="mt-4 p-4 rounded-xl bg-surface-container-high">
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold mb-1">Alpha Version</p>
+<p class="text-xs text-on-surface-variant">© 2024 DineDate Inc.</p>
+</div>
+</div>
+</aside>
+<!-- Top App Bar (Mobile) -->
+<header class="md:hidden fixed top-0 w-full z-50 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md shadow-sm flex justify-between items-center px-6 py-4 tonal-shift bg-surface-container-low">
+<div class="text-2xl font-black text-primary italic font-plus-jakarta">DineDate</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+<img class="w-8 h-8 rounded-full border-2 border-primary/20" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoUhKV4f_WP4FlmVyZozacOQDiGGf6R_bDlysx6pg89TvSNU1BkEnUxbiRQTLPCjoufQq8x2XE2WJOjavyWKPBFDYg2QYUWwqXkLvny__bY4MfciM02a5Q7BuzAgux_x0auEB2zkIwh_kIx3rvSaXvdbjAsp36xfohL_pkmbbbfi_VLse4Q447v7lew0iTm84Ta-UM1QzHegYGkah9nD-yOAF3s_3EW80HZGOyPb_L8L7PEi7K1KJYW5vOoaS4zVFX5Z77Y6PTOyA"/>
+</div>
+</header>
+<!-- Main Canvas -->
+<main class="md:ml-64 pb-24 md:pb-8 pt-20 md:pt-8 px-6 min-h-screen">
+<div class="max-w-6xl mx-auto">
+<!-- Hero Profile Section: Intentional Asymmetry -->
+<div class="relative mb-12 flex flex-col md:flex-row gap-8 items-end">
+<div class="relative group">
+<div class="w-48 h-48 md:w-64 md:h-64 rounded-xl overflow-hidden shadow-2xl rotate-2 group-hover:rotate-0 transition-transform duration-500">
+<img class="w-full h-full object-cover" data-alt="Main profile portrait of a smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCclFjG_xYYRepJywitd0cizAjZvliMM22fxFMrcRaQcyh8swE1_-d0GmqZns9gAj-QH-a5hNlGtHsMxFv-q3SyfuzosTiMYIXGmndGbugcWxfh-ybciRJt-nZC5IiULp5O42y2HSDZnNJ4DuVc4-9R3GZHJdK0UD_EkN8pE4BvYxAs26Bd0Ist4LerKLcXOqI9H_meKrGD8vS1gbhNXvTUNXY0r3vUthZyipV-gNfVS6guDbby8R7-i0Wdui0SrR83uNxItVrTUfU"/>
+</div>
+<button class="absolute -bottom-4 -right-4 bg-primary text-white p-4 rounded-full shadow-xl active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="photo_camera">photo_camera</span>
+</button>
+</div>
+<div class="flex-1 space-y-4">
+<div class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary font-bold text-xs uppercase tracking-widest font-label">Verified Member</div>
+<h1 class="text-display-sm md:text-display-lg font-black tracking-tighter text-on-background leading-none">Sophia <span class="text-primary">Chen</span>, 26</h1>
+<p class="text-on-surface-variant max-w-md font-body leading-relaxed">Art director &amp; brunch enthusiast. Looking for someone who knows the difference between a café latte and a flat white.</p>
+</div>
+<!-- Wallet Bento Section -->
+<div class="w-full md:w-72 bg-surface-container-lowest p-6 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] border border-outline-variant/10">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-md font-bold uppercase tracking-wider text-on-surface-variant">Credits Balance</span>
+<span class="material-symbols-outlined text-primary" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div class="text-4xl font-black text-on-background mb-6">4,250 <span class="text-sm font-medium text-on-surface-variant tracking-normal">pts</span></div>
+<button class="w-full bg-primary-gradient text-white py-3 rounded-full font-bold text-sm flex items-center justify-center gap-2 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                    Top Up Credits
+                </button>
+</div>
+</div>
+<!-- Content Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Photos Gallery (Bento Large) -->
+<div class="md:col-span-8 bg-surface-container-low p-8 rounded-lg">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold tracking-tight">Your Moments</h2>
+<button class="text-primary font-bold text-sm hover:underline">Edit Photos</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<div class="aspect-square rounded-md overflow-hidden bg-surface-container-high group relative">
+<img class="w-full h-full object-cover" data-alt="Photo of a delicious italian pasta dish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEYkDbHXQ6ry-84fmR3u-cqp8OhU7-H-zQIndU9qp-eyEN_xOgVRboeAWfaz-FkfMVHWI8gKBEvdqDqP8miAemedVKy-vYJIaZCen68ZeG5KPVV7f6rueK3_raPD9PeY1Ql9dVbGN4RK2vnj3i5PDlbuRGKOyoVo3p9_qsxPe_7bdKz_6Vx76BpOpZpyl5HE_xjHuqJU8t5xZqSPnNWeeT-5tjUpmSZuo1ku-lQ2LWLckFXVxtJBrsu2sHTjH_EGODl_sUPAMff7A"/>
+<div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="aspect-square rounded-md overflow-hidden bg-surface-container-high group relative">
+<img class="w-full h-full object-cover" data-alt="Atmospheric interior of a luxury restaurant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3p3Yg3ltUkRWhHEcNfLfdWA2GTInRZACnef6ZErU4H7uOkuJVANYjOPib_oVU_ef6sjP830-YEH7nmn9CVqfzBr6cp_U8pyyhM5FcAg5TBVXgJE-Frwz80IyTDAEm38ConspWsNGr96aM6IpcWBKGajtY63jlArFNByW-o246QxVpXd0Xv9zD2dQBnwnJHYpdGkR1rBh0KDiq_r02Mdmt6E6-aNWo43aY5eY5VGyQa5FKLx04tlNxapV-fbcIfJP9fR7fjL4ReIw"/>
+</div>
+<div class="aspect-square rounded-md overflow-hidden bg-surface-container-high border-2 border-dashed border-outline-variant flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-3xl" data-icon="add_a_photo">add_a_photo</span>
+<span class="text-[10px] font-bold mt-2 uppercase">Add New</span>
+</div>
+</div>
+</div>
+<!-- Interests (Bento Small) -->
+<div class="md:col-span-4 bg-surface-container-lowest p-8 rounded-lg shadow-sm">
+<h2 class="text-2xl font-bold tracking-tight mb-6">Dine Interests</h2>
+<div class="flex flex-wrap gap-2">
+<div class="px-4 py-2 bg-primary text-white rounded-full text-xs font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="restaurant">restaurant</span> Fine Dining
+                    </div>
+<div class="px-4 py-2 bg-surface-container-high text-on-surface rounded-full text-xs font-bold hover:bg-surface-container-highest transition-colors cursor-pointer">Sushi</div>
+<div class="px-4 py-2 bg-surface-container-high text-on-surface rounded-full text-xs font-bold hover:bg-surface-container-highest transition-colors cursor-pointer">Vegan</div>
+<div class="px-4 py-2 bg-surface-container-high text-on-surface rounded-full text-xs font-bold hover:bg-surface-container-highest transition-colors cursor-pointer">Wine Tasting</div>
+<div class="px-4 py-2 bg-surface-container-high text-on-surface rounded-full text-xs font-bold hover:bg-surface-container-highest transition-colors cursor-pointer">Rooftop Bars</div>
+<button class="px-4 py-2 border border-outline-variant text-primary rounded-full text-xs font-bold">+ Explore</button>
+</div>
+</div>
+<!-- Transaction History Section -->
+<div class="md:col-span-12 bg-surface-container-low p-8 rounded-lg">
+<div class="flex justify-between items-center mb-6">
+<h2 class="text-2xl font-bold tracking-tight">Transaction History</h2>
+<button class="text-primary font-bold text-sm hover:underline">View All</button>
+</div><div class="flex flex-wrap gap-2 mb-6">
+<button class="px-4 py-1.5 bg-primary text-white rounded-full text-xs font-bold transition-all active:scale-95">All</button>
+<button class="px-4 py-1.5 bg-surface-container-high text-on-surface hover:bg-surface-container-highest rounded-full text-xs font-bold transition-all active:scale-95">Top-ups</button>
+<button class="px-4 py-1.5 bg-surface-container-high text-on-surface hover:bg-surface-container-highest rounded-full text-xs font-bold transition-all active:scale-95">Bookings</button>
+<button class="px-4 py-1.5 bg-surface-container-high text-on-surface hover:bg-surface-container-highest rounded-full text-xs font-bold transition-all active:scale-95">Boosts</button>
+</div>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="add_card">add_card</span>
+</div>
+<div>
+<p class="font-bold text-on-surface text-sm">Top Up Credits</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Oct 24, 2024 • 2:15 PM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-black text-primary text-sm">+1,000 pts</p>
+<p class="text-[10px] text-on-surface-variant">Completed</p>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+</div>
+<div>
+<p class="font-bold text-on-surface text-sm">Date Booking: "The Grill House"</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Oct 22, 2024 • 8:00 PM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-black text-on-surface text-sm">-500 pts</p>
+<p class="text-[10px] text-on-surface-variant">Confirmed</p>
+</div>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="favorite_border">favorite_border</span>
+</div>
+<div>
+<p class="font-bold text-on-surface text-sm">Priority Match Boost</p>
+<p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Oct 19, 2024 • 11:30 AM</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-black text-on-surface text-sm">-250 pts</p>
+<p class="text-[10px] text-on-surface-variant">Active</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Account Settings List (The No-Line Rule) -->
+<div class="md:col-span-12 space-y-6">
+<h2 class="text-2xl font-bold tracking-tight mt-6">Settings &amp; Preferences</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Setting Item -->
+<div class="p-6 bg-surface-container-lowest rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer flex justify-between items-center">
+<div class="flex gap-4 items-center">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="manage_accounts">manage_accounts</span>
+</div>
+<div>
+<h3 class="font-bold text-on-background">Personal Information</h3>
+<p class="text-xs text-on-surface-variant">Update your name, bio, and dating goals</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer flex justify-between items-center">
+<div class="flex gap-4 items-center">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+</div>
+<div>
+<h3 class="font-bold text-on-background">Privacy &amp; Security</h3>
+<p class="text-xs text-on-surface-variant">Manage blocked users and data visibility</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer flex justify-between items-center">
+<div class="flex gap-4 items-center">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="feedback">feedback</span>
+</div>
+<div>
+<h3 class="font-bold text-on-background">Feedback &amp; Support</h3>
+<p class="text-xs text-on-surface-variant">Tell us what to improve or report a bug</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-lg hover:bg-surface-container-low transition-colors group cursor-pointer flex justify-between items-center">
+<div class="flex gap-4 items-center">
+<div class="w-12 h-12 rounded-full bg-error-container/30 flex items-center justify-center text-error">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+</div>
+<div>
+<h3 class="font-bold text-on-background">Sign Out</h3>
+<p class="text-xs text-on-surface-variant">Securely log out of your session</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Danger Zone Asymmetric Section -->
+<div class="md:col-span-12 mt-12 mb-8 bg-error-container/10 p-8 rounded-xl border border-error/10 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-center md:text-left">
+<h3 class="text-error font-black text-xl mb-2">Delete Account</h3>
+<p class="text-on-surface-variant text-sm">Once you delete your account, there is no going back. All date history and credits will be lost forever.</p>
+</div>
+<button class="px-8 py-3 border-2 border-error text-error font-bold rounded-full hover:bg-error hover:text-white transition-all active:scale-95">
+                    Deactivate Profile
+                </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md z-50 rounded-t-3xl shadow-[0_-8px_24px_rgba(174,47,52,0.05)] bg-surface-container-low">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all font-inter text-[10px] font-bold uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all font-inter text-[10px] font-bold uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all font-inter text-[10px] font-bold uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="mt-1">Dates</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all font-inter text-[10px] font-bold uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="mt-1">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-white rounded-2xl p-3 transform -translate-y-2 shadow-lg active:scale-90 duration-200 font-inter text-[10px] font-bold uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined" data-icon="person_2" style="font-variation-settings: 'FILL' 1;">person_2</span>
+<span class="mt-1">Profile</span>
+</a>
+</nav>
+</body></html>
