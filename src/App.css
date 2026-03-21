@@ -4,7 +4,8 @@
 @media (min-width: 768px) {
   .desktop-sidebar { display: flex !important; }
   .mobile-bottom-nav { display: none !important; }
-  .main-content-area { margin-left: 256px; padding-bottom: 0 !important; }
+  .mobile-top-bar { display: none !important; }
+  .main-content-area { margin-left: 288px; padding-bottom: 0 !important; padding-top: 0 !important; }
   .fab-button { bottom: 24px !important; right: 24px !important; }
 }
 

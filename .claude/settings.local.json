@@ -29,7 +29,10 @@
       "WebFetch(domain:stitch.withgoogle.com)",
       "Bash(mkdir -p /tmp/stitch)",
       "Read(//tmp/**)",
-      "Bash(unzip -o \"/c/Users/doanh/Downloads/stitch.zip\")"
+      "Bash(unzip -o \"/c/Users/doanh/Downloads/stitch.zip\")",
+      "Bash(mkdir -p /tmp/stitch2)",
+      "Bash(unzip -o \"/c/Users/doanh/Downloads/stitch \\(1\\).zip\")",
+      "Bash(cp /tmp/stitch2/* /c/Users/doanh/Desktop/ungdungmoi/_stitch_designs/new_screen/)"
     ]
   }
 }
