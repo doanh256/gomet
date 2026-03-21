@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install express cors bcryptjs jsonwebtoken @prisma/client multer socket.io socket.io-client)",
+      "Bash(npm install -D prisma concurrently nodemon)",
+      "Bash(npm install prisma@^6.0.0 @prisma/client@^6.0.0)",
+      "Bash(npx prisma migrate dev --schema=server/prisma/schema.prisma --name init)",
+      "Bash(node server/prisma/seed.js)",
+      "Bash(node -e \"import\\(''express''\\).then\\(e => console.log\\(''Express version:'', e.default ? ''has default'' : ''no default''\\)\\)\")",
+      "Bash(timeout 5 node server/index.js)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(node server/index.js)",
+      "Bash(timeout 10 npx vite)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //F //PID 9984)",
+      "Bash(taskkill //F //PID 51344)",
+      "WebSearch",
+      "Bash(npx vite:*)",
+      "Bash(xargs -I{} taskkill //F //PID {})",
+      "Bash(npx prisma:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"Gomet v1.0 - Dating & Social Meetup Platform:*)"
+    ]
+  }
+}

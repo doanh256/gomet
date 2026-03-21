@@ -1,0 +1,17 @@
+{
+  "name": "Gomet - Go & Meet",
+  "short_name": "Gomet",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#fd5068",
+  "description": "Định mệnh chỉ cách một phương trời. Khám phá hàng ngàn hồ sơ và trò chuyện trên Gomet.",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
