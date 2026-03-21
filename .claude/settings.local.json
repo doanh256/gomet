@@ -19,7 +19,10 @@
       "Bash(xargs -I{} taskkill //F //PID {})",
       "Bash(npx prisma:*)",
       "Bash(git add:*)",
-      "Bash(git commit -m \"Gomet v1.0 - Dating & Social Meetup Platform:*)"
+      "Bash(git commit -m \"Gomet v1.0 - Dating & Social Meetup Platform:*)",
+      "Bash(\"/c/Program Files/GitHub CLI/gh.exe\" repo create gomet --public --source=. --remote=origin --push)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }
