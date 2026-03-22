@@ -64,10 +64,20 @@ const StorytellingPage = lazy(() => import('./pages/User/StorytellingPage'));
 const HelpCenterPage = lazy(() => import('./pages/User/HelpCenterPage'));
 const CommunityRulesPage = lazy(() => import('./pages/User/CommunityRulesPage'));
 
+// Phase 6 pages
+const FlashMeetPage = lazy(() => import('./pages/User/FlashMeetPage'));
+const PersonalInsightsPage = lazy(() => import('./pages/User/PersonalInsightsPage'));
+const ConciergePage = lazy(() => import('./pages/User/ConciergePage'));
+const FoodPreferencePage = lazy(() => import('./pages/User/FoodPreferencePage'));
+
 // Partner portal
 const PartnerDashboard = lazy(() => import('./pages/Partner/PartnerDashboard'));
 const ManageEvents = lazy(() => import('./pages/Partner/ManageEvents'));
 const ManageMenu = lazy(() => import('./pages/Partner/ManageMenu'));
+const VenueAnalytics = lazy(() => import('./pages/Partner/VenueAnalytics'));
+const PromotionManager = lazy(() => import('./pages/Partner/PromotionManager'));
+const GuestManager = lazy(() => import('./pages/Partner/GuestManager'));
+const RevenueReport = lazy(() => import('./pages/Partner/RevenueReport'));
 
 import './App.css';
 import './index.css';
@@ -146,6 +156,10 @@ function App() {
               <Route path="stories" element={<StorytellingPage />} />
               <Route path="help" element={<HelpCenterPage />} />
               <Route path="community-rules" element={<CommunityRulesPage />} />
+              <Route path="flash-meet" element={<FlashMeetPage />} />
+              <Route path="insights" element={<PersonalInsightsPage />} />
+              <Route path="concierge" element={<ConciergePage />} />
+              <Route path="food-preferences" element={<FoodPreferencePage />} />
             </Route>
 
             {/* Admin */}
@@ -167,6 +181,10 @@ function App() {
               <Route index element={<PartnerDashboard />} />
               <Route path="events" element={<ManageEvents />} />
               <Route path="menu" element={<ManageMenu />} />
+              <Route path="analytics" element={<VenueAnalytics />} />
+              <Route path="promotions" element={<PromotionManager />} />
+              <Route path="guests" element={<GuestManager />} />
+              <Route path="revenue" element={<RevenueReport />} />
             </Route>
 
             <Route path="*" element={<NotFound />} />
