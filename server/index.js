@@ -58,23 +58,50 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
+// Debug endpoint
+app.get('/api/debug', async (req, res) => {
+  const fs = await import('fs');
+  const distPath = path.resolve(__dirname, '..', 'dist');
+  const indexFile = path.join(distPath, 'index.html');
+  const distExists = fs.existsSync(distPath);
+  const indexExists = fs.existsSync(indexFile);
+  let files = [];
+  let indexPreview = '';
+  if (distExists) {
+    files = fs.readdirSync(distPath);
+    if (indexExists) indexPreview = fs.readFileSync(indexFile, 'utf8').substring(0, 500);
+  }
+  res.json({ distPath, distExists, indexExists, files, indexPreview, cwd: process.cwd(), dirname: __dirname });
+});
+
 // Socket.io
 setupSocket(io);
 
 // Serve static frontend in production
 if (isProd) {
   const distPath = path.resolve(__dirname, '..', 'dist');
-  console.log('📁 Serving static files from:', distPath);
+  const indexFile = path.join(distPath, 'index.html');
 
-  // Serve built assets
-  app.use(express.static(distPath, { index: 'index.html' }));
+  // Check if dist exists
+  import('fs').then(fs => {
+    const exists = fs.existsSync(indexFile);
+    console.log('📁 Dist path:', distPath);
+    console.log('📁 index.html exists:', exists);
+    if (exists) {
+      const content = fs.readFileSync(indexFile, 'utf8');
+      console.log('📁 index.html has assets:', content.includes('/assets/'));
+    }
+  });
 
-  // SPA catch-all - must be after API routes (Express 5 syntax)
+  // Serve built assets (CSS, JS, images from dist/)
+  app.use(express.static(distPath));
+
+  // SPA catch-all - serve dist/index.html for all non-API routes
   app.get('{*path}', (req, res, next) => {
     if (req.path.startsWith('/api') || req.path.startsWith('/uploads') || req.path.startsWith('/socket.io')) {
       return next();
     }
-    res.sendFile(path.join(distPath, 'index.html'));
+    res.sendFile(indexFile);
   });
 }
 
