@@ -45,6 +45,10 @@ const RateExperiencePage = lazy(() => import('./pages/User/RateExperiencePage'))
 const FirstDateGuidePage = lazy(() => import('./pages/User/FirstDateGuidePage'));
 const MoodStatusPage = lazy(() => import('./pages/User/MoodStatusPage'));
 const ReferralPage = lazy(() => import('./pages/User/ReferralPage'));
+const AIMatchInsightsPage = lazy(() => import('./pages/User/AIMatchInsightsPage'));
+const IceBreakerPage = lazy(() => import('./pages/User/IceBreakerPage'));
+const AdvancedSettingsPage = lazy(() => import('./pages/User/AdvancedSettingsPage'));
+const EscrowPaymentPage = lazy(() => import('./pages/User/EscrowPaymentPage'));
 
 import './App.css';
 import './index.css';
@@ -107,6 +111,10 @@ function App() {
               <Route path="guide" element={<FirstDateGuidePage />} />
               <Route path="mood" element={<MoodStatusPage />} />
               <Route path="referral" element={<ReferralPage />} />
+              <Route path="ai-match/:id" element={<AIMatchInsightsPage />} />
+              <Route path="icebreaker/:id" element={<IceBreakerPage />} />
+              <Route path="advanced-settings" element={<AdvancedSettingsPage />} />
+              <Route path="escrow/:id" element={<EscrowPaymentPage />} />
             </Route>
 
             {/* Admin */}

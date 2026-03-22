@@ -1,0 +1,367 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const Toggle = ({ value, onChange }) => (
+  <div
+    onClick={() => onChange(!value)}
+    style={{
+      width: 48,
+      height: 28,
+      borderRadius: 'var(--radius-full)',
+      backgroundColor: value ? 'var(--primary)' : 'var(--surface-container-high)',
+      position: 'relative',
+      cursor: 'pointer',
+      transition: 'background 0.2s',
+      flexShrink: 0,
+    }}
+  >
+    <div
+      style={{
+        width: 22,
+        height: 22,
+        borderRadius: '50%',
+        backgroundColor: value ? 'var(--on-primary)' : 'var(--surface-container-lowest)',
+        position: 'absolute',
+        top: 3,
+        left: value ? 23 : 3,
+        transition: 'left 0.2s',
+        boxShadow: '0 1px 3px rgba(0,0,0,0.15)',
+      }}
+    />
+  </div>
+);
+
+const AdvancedSettingsPage = () => {
+  const navigate = useNavigate();
+
+  const [gender, setGender] = useState('all');
+  const [ageMin, setAgeMin] = useState(18);
+  const [ageMax, setAgeMax] = useState(45);
+  const [distance, setDistance] = useState(10);
+  const [verifiedOnly, setVerifiedOnly] = useState(false);
+
+  const [hideActivity, setHideActivity] = useState(false);
+  const [hideDistance, setHideDistance] = useState(false);
+  const [anonView, setAnonView] = useState(false);
+  const [msgAccess, setMsgAccess] = useState('all');
+
+  const [notifMatch, setNotifMatch] = useState(true);
+  const [notifMsg, setNotifMsg] = useState(true);
+  const [notifLike, setNotifLike] = useState(true);
+  const [notifEvent, setNotifEvent] = useState(false);
+  const [notifPromo, setNotifPromo] = useState(false);
+
+  const s = {
+    page: {
+      flex: 1,
+      backgroundColor: 'var(--surface)',
+      overflowY: 'auto',
+      padding: '40px 24px 80px',
+      maxWidth: 720,
+      margin: '0 auto',
+    },
+    backBtn: {
+      background: 'none',
+      border: 'none',
+      cursor: 'pointer',
+      color: 'var(--on-surface-variant)',
+      display: 'flex',
+      alignItems: 'center',
+      gap: 4,
+      fontFamily: 'var(--font-body)',
+      fontSize: 14,
+      marginBottom: 24,
+      padding: 0,
+    },
+    heading: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: 28,
+      fontWeight: 800,
+      color: 'var(--on-surface)',
+      marginBottom: 32,
+    },
+    card: {
+      backgroundColor: 'var(--surface-container-lowest)',
+      borderRadius: 'var(--radius)',
+      padding: '24px',
+      marginBottom: 20,
+      boxShadow: 'var(--card-shadow)',
+    },
+    sectionHeader: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 10,
+      marginBottom: 20,
+    },
+    sectionIcon: {
+      fontSize: 22,
+      color: 'var(--primary)',
+    },
+    sectionTitle: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: 17,
+      fontWeight: 700,
+      color: 'var(--on-surface)',
+    },
+    row: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '14px 0',
+      borderBottom: '1px solid var(--outline-variant)',
+    },
+    rowLast: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '14px 0',
+    },
+    rowLabel: {
+      fontFamily: 'var(--font-body)',
+      fontSize: 14,
+      color: 'var(--on-surface)',
+      display: 'flex',
+      alignItems: 'center',
+      gap: 8,
+    },
+    premiumBadge: {
+      fontSize: 10,
+      fontWeight: 700,
+      background: 'var(--primary-gradient)',
+      color: '#fff',
+      padding: '2px 8px',
+      borderRadius: 'var(--radius-full)',
+      textTransform: 'uppercase',
+      letterSpacing: '0.05em',
+    },
+    chipGroup: {
+      display: 'flex',
+      gap: 8,
+    },
+    chip: (active) => ({
+      padding: '8px 18px',
+      borderRadius: 'var(--radius-full)',
+      border: active ? 'none' : '1px solid var(--outline-variant)',
+      background: active ? 'var(--primary-gradient)' : 'transparent',
+      color: active ? 'var(--on-primary)' : 'var(--on-surface)',
+      fontFamily: 'var(--font-body)',
+      fontSize: 13,
+      fontWeight: 600,
+      cursor: 'pointer',
+    }),
+    numberInput: {
+      width: 64,
+      padding: '8px 10px',
+      border: '1px solid var(--outline-variant)',
+      borderRadius: 'var(--radius)',
+      fontFamily: 'var(--font-body)',
+      fontSize: 14,
+      color: 'var(--on-surface)',
+      backgroundColor: 'var(--surface-container-low)',
+      textAlign: 'center',
+      outline: 'none',
+    },
+    rangeRow: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 12,
+    },
+    rangeSep: {
+      fontSize: 14,
+      color: 'var(--on-surface-variant)',
+    },
+    sliderDisplay: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 12,
+    },
+    sliderTrack: {
+      flex: 1,
+      height: 6,
+      borderRadius: 3,
+      background: 'var(--outline-variant)',
+      position: 'relative',
+    },
+    sliderFill: (pct) => ({
+      height: '100%',
+      width: `${pct}%`,
+      borderRadius: 3,
+      background: 'var(--primary-gradient)',
+    }),
+    sliderValue: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: 15,
+      fontWeight: 700,
+      color: 'var(--primary)',
+      minWidth: 50,
+      textAlign: 'right',
+    },
+    slider: {
+      flex: 1,
+      accentColor: 'var(--primary)',
+    },
+    saveBtn: {
+      width: '100%',
+      background: 'var(--primary-gradient)',
+      color: 'var(--on-primary)',
+      border: 'none',
+      borderRadius: 'var(--radius-full)',
+      padding: '16px',
+      fontFamily: 'var(--font-headline)',
+      fontWeight: 700,
+      fontSize: 16,
+      cursor: 'pointer',
+      marginTop: 12,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: 8,
+    },
+  };
+
+  return (
+    <div style={s.page}>
+      <button style={s.backBtn} onClick={() => navigate(-1)}>
+        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        Quay lai
+      </button>
+
+      <h1 style={s.heading}>Cai dat nang cao</h1>
+
+      {/* Section 1 - Dating */}
+      <div style={s.card}>
+        <div style={s.sectionHeader}>
+          <span className="material-symbols-outlined" style={s.sectionIcon}>favorite</span>
+          <span style={s.sectionTitle}>Cai dat hen ho</span>
+        </div>
+
+        <div style={s.row}>
+          <span style={s.rowLabel}>Gioi tinh quan tam</span>
+          <div style={s.chipGroup}>
+            <button style={s.chip(gender === 'male')} onClick={() => setGender('male')}>Nam</button>
+            <button style={s.chip(gender === 'female')} onClick={() => setGender('female')}>Nu</button>
+            <button style={s.chip(gender === 'all')} onClick={() => setGender('all')}>Tat ca</button>
+          </div>
+        </div>
+
+        <div style={s.row}>
+          <span style={s.rowLabel}>Do tuoi</span>
+          <div style={s.rangeRow}>
+            <input
+              type="number"
+              style={s.numberInput}
+              value={ageMin}
+              min={18}
+              max={99}
+              onChange={(e) => setAgeMin(Number(e.target.value))}
+            />
+            <span style={s.rangeSep}>-</span>
+            <input
+              type="number"
+              style={s.numberInput}
+              value={ageMax}
+              min={18}
+              max={99}
+              onChange={(e) => setAgeMax(Number(e.target.value))}
+            />
+          </div>
+        </div>
+
+        <div style={s.row}>
+          <span style={s.rowLabel}>Khoang cach</span>
+          <div style={s.sliderDisplay}>
+            <input
+              type="range"
+              min={1}
+              max={100}
+              value={distance}
+              onChange={(e) => setDistance(Number(e.target.value))}
+              style={s.slider}
+            />
+            <span style={s.sliderValue}>{distance} km</span>
+          </div>
+        </div>
+
+        <div style={s.rowLast}>
+          <span style={s.rowLabel}>Chi hien thi da xac minh</span>
+          <Toggle value={verifiedOnly} onChange={setVerifiedOnly} />
+        </div>
+      </div>
+
+      {/* Section 2 - Privacy */}
+      <div style={s.card}>
+        <div style={s.sectionHeader}>
+          <span className="material-symbols-outlined" style={s.sectionIcon}>shield</span>
+          <span style={s.sectionTitle}>Quyen rieng tu</span>
+        </div>
+
+        <div style={s.row}>
+          <span style={s.rowLabel}>An trang thai hoat dong</span>
+          <Toggle value={hideActivity} onChange={setHideActivity} />
+        </div>
+
+        <div style={s.row}>
+          <span style={s.rowLabel}>An khoang cach</span>
+          <Toggle value={hideDistance} onChange={setHideDistance} />
+        </div>
+
+        <div style={s.row}>
+          <span style={s.rowLabel}>
+            Che do an danh khi xem
+            <span style={s.premiumBadge}>Premium</span>
+          </span>
+          <Toggle value={anonView} onChange={setAnonView} />
+        </div>
+
+        <div style={s.rowLast}>
+          <span style={s.rowLabel}>Ai co the nhan tin</span>
+          <div style={s.chipGroup}>
+            <button style={s.chip(msgAccess === 'all')} onClick={() => setMsgAccess('all')}>Tat ca</button>
+            <button style={s.chip(msgAccess === 'match')} onClick={() => setMsgAccess('match')}>Chi match</button>
+            <button style={s.chip(msgAccess === 'none')} onClick={() => setMsgAccess('none')}>Khong ai</button>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 3 - Notifications */}
+      <div style={s.card}>
+        <div style={s.sectionHeader}>
+          <span className="material-symbols-outlined" style={s.sectionIcon}>notifications</span>
+          <span style={s.sectionTitle}>Thong bao</span>
+        </div>
+
+        <div style={s.row}>
+          <span style={s.rowLabel}>Match moi</span>
+          <Toggle value={notifMatch} onChange={setNotifMatch} />
+        </div>
+
+        <div style={s.row}>
+          <span style={s.rowLabel}>Tin nhan moi</span>
+          <Toggle value={notifMsg} onChange={setNotifMsg} />
+        </div>
+
+        <div style={s.row}>
+          <span style={s.rowLabel}>Luot thich</span>
+          <Toggle value={notifLike} onChange={setNotifLike} />
+        </div>
+
+        <div style={s.row}>
+          <span style={s.rowLabel}>Su kien gan ban</span>
+          <Toggle value={notifEvent} onChange={setNotifEvent} />
+        </div>
+
+        <div style={s.rowLast}>
+          <span style={s.rowLabel}>Khuyen mai</span>
+          <Toggle value={notifPromo} onChange={setNotifPromo} />
+        </div>
+      </div>
+
+      <button style={s.saveBtn}>
+        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>save</span>
+        Luu thay doi
+      </button>
+    </div>
+  );
+};
+
+export default AdvancedSettingsPage;
