@@ -54,6 +54,16 @@ const LeaderboardPage = lazy(() => import('./pages/User/LeaderboardPage'));
 const MemoriesPage = lazy(() => import('./pages/User/MemoriesPage'));
 const GiftShopPage = lazy(() => import('./pages/User/GiftShopPage'));
 
+// Phase 5 pages
+const BookingConfirmPage = lazy(() => import('./pages/User/BookingConfirmPage'));
+const SplitPaymentPage = lazy(() => import('./pages/User/SplitPaymentPage'));
+const EventTicketPage = lazy(() => import('./pages/User/EventTicketPage'));
+const WaitlistPage = lazy(() => import('./pages/User/WaitlistPage'));
+const SpotlightPage = lazy(() => import('./pages/User/SpotlightPage'));
+const StorytellingPage = lazy(() => import('./pages/User/StorytellingPage'));
+const HelpCenterPage = lazy(() => import('./pages/User/HelpCenterPage'));
+const CommunityRulesPage = lazy(() => import('./pages/User/CommunityRulesPage'));
+
 // Partner portal
 const PartnerDashboard = lazy(() => import('./pages/Partner/PartnerDashboard'));
 const ManageEvents = lazy(() => import('./pages/Partner/ManageEvents'));
@@ -128,6 +138,14 @@ function App() {
               <Route path="leaderboard" element={<LeaderboardPage />} />
               <Route path="memories" element={<MemoriesPage />} />
               <Route path="gifts" element={<GiftShopPage />} />
+              <Route path="booking-confirm" element={<BookingConfirmPage />} />
+              <Route path="split-payment/:id" element={<SplitPaymentPage />} />
+              <Route path="ticket/:id" element={<EventTicketPage />} />
+              <Route path="waitlist" element={<WaitlistPage />} />
+              <Route path="spotlight" element={<SpotlightPage />} />
+              <Route path="stories" element={<StorytellingPage />} />
+              <Route path="help" element={<HelpCenterPage />} />
+              <Route path="community-rules" element={<CommunityRulesPage />} />
             </Route>
 
             {/* Admin */}
