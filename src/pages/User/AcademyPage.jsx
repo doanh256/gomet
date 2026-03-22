@@ -1,0 +1,402 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const AcademyPage = () => {
+  const navigate = useNavigate();
+  const [activeCategory, setActiveCategory] = useState('Tat ca');
+
+  const categories = ['Tat ca', 'Giao tiep', 'Phong cach', 'Am thuc', 'Tam ly'];
+
+  const courses = [
+    { id: 1, title: 'Ngon ngu co the', instructor: 'Tran Minh', duration: '20 phut', lessons: 6, difficulty: 'Co ban', progress: 60, rating: 4.8, category: 'Giao tiep' },
+    { id: 2, title: 'Chon trang phuc hen ho', instructor: 'Le Hoa', duration: '15 phut', lessons: 5, difficulty: 'Co ban', progress: 100, rating: 4.9, category: 'Phong cach' },
+    { id: 3, title: 'An uong thanh lich', instructor: 'Pham Duc', duration: '25 phut', lessons: 8, difficulty: 'Nang cao', progress: 0, rating: 4.7, category: 'Am thuc' },
+    { id: 4, title: 'Doc vi cam xuc', instructor: 'Nguyen Lan', duration: '18 phut', lessons: 7, difficulty: 'Nang cao', progress: 30, rating: 4.6, category: 'Tam ly' },
+    { id: 5, title: 'Pha bang khi gap mat', instructor: 'Vo Thanh', duration: '12 phut', lessons: 4, difficulty: 'Co ban', progress: 0, rating: 4.5, category: 'Giao tiep' },
+    { id: 6, title: 'Chon nha hang phu hop', instructor: 'Hoang Yen', duration: '15 phut', lessons: 5, difficulty: 'Co ban', progress: 0, rating: 4.8, category: 'Am thuc' },
+  ];
+
+  const achievements = [
+    { emoji: '🎓', label: 'Hoc vien xuat sac' },
+    { emoji: '📚', label: 'Doc gia cham chi' },
+    { emoji: '💡', label: 'Nguoi sang tao' },
+  ];
+
+  const filtered = activeCategory === 'Tat ca' ? courses : courses.filter(c => c.category === activeCategory);
+
+  const s = {
+    page: {
+      flex: 1,
+      backgroundColor: 'var(--surface)',
+      overflowY: 'auto',
+      padding: '40px 32px 80px',
+    },
+    header: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '12px',
+      marginBottom: '8px',
+    },
+    backBtn: {
+      background: 'none',
+      border: 'none',
+      cursor: 'pointer',
+      color: 'var(--on-surface)',
+      display: 'flex',
+      alignItems: 'center',
+    },
+    pageTitle: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '28px',
+      fontWeight: 800,
+      color: 'var(--on-surface)',
+    },
+    schoolIcon: {
+      color: 'var(--primary)',
+      fontSize: '28px',
+    },
+    subtitle: {
+      fontSize: '14px',
+      color: 'var(--on-surface-variant)',
+      marginBottom: '32px',
+      paddingLeft: '44px',
+    },
+    featuredCard: {
+      borderRadius: 'var(--radius-lg)',
+      overflow: 'hidden',
+      backgroundColor: 'var(--surface-container-lowest)',
+      boxShadow: 'var(--editorial-shadow)',
+      marginBottom: '32px',
+    },
+    featuredImage: {
+      width: '100%',
+      height: '300px',
+      background: 'var(--primary-gradient)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      position: 'relative',
+    },
+    featuredImageText: {
+      color: 'var(--on-primary)',
+      fontSize: '48px',
+      opacity: 0.3,
+    },
+    featuredBody: {
+      padding: '20px',
+    },
+    featuredTitle: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '22px',
+      fontWeight: 700,
+      color: 'var(--on-surface)',
+      marginBottom: '12px',
+    },
+    featuredInstructor: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+      marginBottom: '12px',
+    },
+    instructorAvatar: {
+      width: '32px',
+      height: '32px',
+      borderRadius: 'var(--radius-full)',
+      backgroundColor: 'var(--primary-container)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'var(--on-primary)',
+      fontSize: '14px',
+      fontWeight: 700,
+    },
+    instructorName: {
+      fontSize: '14px',
+      color: 'var(--on-surface-variant)',
+      fontWeight: 500,
+    },
+    featuredMeta: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '16px',
+      marginBottom: '16px',
+    },
+    metaItem: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '4px',
+      fontSize: '13px',
+      color: 'var(--on-surface-variant)',
+    },
+    progressBarWrap: {
+      width: '100%',
+      height: '6px',
+      backgroundColor: 'var(--outline-variant)',
+      borderRadius: 'var(--radius-full)',
+      marginBottom: '16px',
+    },
+    progressBarFill: (pct) => ({
+      width: `${pct}%`,
+      height: '100%',
+      background: 'var(--primary-gradient)',
+      borderRadius: 'var(--radius-full)',
+      transition: 'width 0.5s ease',
+    }),
+    startBtn: {
+      width: '100%',
+      padding: '14px',
+      background: 'var(--primary-gradient)',
+      color: 'var(--on-primary)',
+      border: 'none',
+      borderRadius: 'var(--radius)',
+      fontSize: '15px',
+      fontWeight: 700,
+      fontFamily: 'var(--font-headline)',
+      cursor: 'pointer',
+    },
+    chipsRow: {
+      display: 'flex',
+      gap: '8px',
+      marginBottom: '24px',
+      overflowX: 'auto',
+      paddingBottom: '4px',
+    },
+    chip: (active) => ({
+      padding: '8px 18px',
+      borderRadius: 'var(--radius-full)',
+      backgroundColor: active ? 'var(--primary)' : 'var(--surface-container-high)',
+      color: active ? 'var(--on-primary)' : 'var(--on-surface-variant)',
+      border: 'none',
+      cursor: 'pointer',
+      fontSize: '13px',
+      fontWeight: 600,
+      whiteSpace: 'nowrap',
+      transition: 'all 0.2s',
+    }),
+    sectionTitle: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '20px',
+      fontWeight: 700,
+      color: 'var(--on-surface)',
+      marginBottom: '16px',
+    },
+    courseGrid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(2, 1fr)',
+      gap: '16px',
+      marginBottom: '36px',
+    },
+    courseCard: {
+      backgroundColor: 'var(--surface-container-lowest)',
+      borderRadius: 'var(--radius)',
+      overflow: 'hidden',
+      boxShadow: 'var(--card-shadow)',
+    },
+    courseImage: {
+      width: '100%',
+      height: '120px',
+      background: 'var(--surface-container-high)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    courseImageIcon: {
+      fontSize: '36px',
+      color: 'var(--on-surface-variant)',
+      opacity: 0.4,
+    },
+    courseBody: {
+      padding: '12px',
+    },
+    courseTitle: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '14px',
+      fontWeight: 700,
+      color: 'var(--on-surface)',
+      marginBottom: '4px',
+    },
+    courseInstructor: {
+      fontSize: '12px',
+      color: 'var(--on-surface-variant)',
+      marginBottom: '8px',
+    },
+    courseMeta: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '6px',
+      marginBottom: '8px',
+    },
+    courseMetaChip: {
+      fontSize: '11px',
+      padding: '2px 8px',
+      borderRadius: 'var(--radius-full)',
+      backgroundColor: 'var(--surface-container-high)',
+      color: 'var(--on-surface-variant)',
+    },
+    difficultyChip: (adv) => ({
+      fontSize: '11px',
+      padding: '2px 8px',
+      borderRadius: 'var(--radius-full)',
+      backgroundColor: adv ? 'var(--error-container)' : 'var(--primary-fixed)',
+      color: adv ? 'var(--error)' : 'var(--on-primary-container)',
+      fontWeight: 600,
+    }),
+    courseProgress: {
+      width: '100%',
+      height: '4px',
+      backgroundColor: 'var(--outline-variant)',
+      borderRadius: 'var(--radius-full)',
+      marginBottom: '6px',
+    },
+    completionBadge: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '4px',
+      fontSize: '11px',
+      color: '#2e7d32',
+      fontWeight: 600,
+    },
+    ratingRow: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '2px',
+      marginTop: '4px',
+    },
+    ratingStar: {
+      fontSize: '14px',
+      color: '#ffd700',
+    },
+    ratingText: {
+      fontSize: '12px',
+      color: 'var(--on-surface-variant)',
+      marginLeft: '4px',
+    },
+    achievementsRow: {
+      display: 'flex',
+      gap: '16px',
+      justifyContent: 'center',
+    },
+    achievementBadge: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '8px',
+    },
+    achievementCircle: {
+      width: '72px',
+      height: '72px',
+      borderRadius: 'var(--radius-full)',
+      backgroundColor: 'var(--primary-fixed)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: '32px',
+      boxShadow: 'var(--card-shadow)',
+    },
+    achievementLabel: {
+      fontSize: '12px',
+      color: 'var(--on-surface-variant)',
+      fontWeight: 500,
+      textAlign: 'center',
+    },
+  };
+
+  return (
+    <div style={s.page}>
+      <div style={s.header}>
+        <button style={s.backBtn} onClick={() => navigate(-1)}>
+          <span className="material-symbols-outlined">arrow_back</span>
+        </button>
+        <h1 style={s.pageTitle}>Hoc vien GOMET</h1>
+        <span className="material-symbols-outlined filled" style={s.schoolIcon}>school</span>
+      </div>
+      <p style={s.subtitle}>Nang cao ky nang hen ho</p>
+
+      {/* Featured Course */}
+      <div style={s.featuredCard}>
+        <div style={s.featuredImage}>
+          <span className="material-symbols-outlined" style={s.featuredImageText}>auto_stories</span>
+        </div>
+        <div style={s.featuredBody}>
+          <div style={s.featuredTitle}>Nghe thuat tro chuyen</div>
+          <div style={s.featuredInstructor}>
+            <div style={s.instructorAvatar}>TM</div>
+            <span style={s.instructorName}>Tran Minh</span>
+          </div>
+          <div style={s.featuredMeta}>
+            <span style={s.metaItem}>
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>menu_book</span>
+              8 bai hoc
+            </span>
+            <span style={s.metaItem}>
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>schedule</span>
+              30 phut
+            </span>
+          </div>
+          <div style={s.progressBarWrap}>
+            <div style={s.progressBarFill(40)} />
+          </div>
+          <button style={s.startBtn}>Bat dau</button>
+        </div>
+      </div>
+
+      {/* Category Chips */}
+      <h2 style={s.sectionTitle}>Danh muc</h2>
+      <div style={s.chipsRow}>
+        {categories.map(cat => (
+          <button key={cat} style={s.chip(activeCategory === cat)} onClick={() => setActiveCategory(cat)}>
+            {cat}
+          </button>
+        ))}
+      </div>
+
+      {/* Course Grid */}
+      <div style={s.courseGrid}>
+        {filtered.map(course => (
+          <div key={course.id} style={s.courseCard}>
+            <div style={s.courseImage}>
+              <span className="material-symbols-outlined" style={s.courseImageIcon}>play_circle</span>
+            </div>
+            <div style={s.courseBody}>
+              <div style={s.courseTitle}>{course.title}</div>
+              <div style={s.courseInstructor}>{course.instructor}</div>
+              <div style={s.courseMeta}>
+                <span style={s.courseMetaChip}>{course.duration}</span>
+                <span style={s.courseMetaChip}>{course.lessons} bai</span>
+                <span style={s.difficultyChip(course.difficulty === 'Nang cao')}>{course.difficulty}</span>
+              </div>
+              {course.progress > 0 && course.progress < 100 && (
+                <div style={s.courseProgress}>
+                  <div style={s.progressBarFill(course.progress)} />
+                </div>
+              )}
+              {course.progress === 100 && (
+                <div style={s.completionBadge}>
+                  <span className="material-symbols-outlined filled" style={{ fontSize: '14px', color: '#2e7d32' }}>check_circle</span>
+                  Hoan thanh
+                </div>
+              )}
+              <div style={s.ratingRow}>
+                <span className="material-symbols-outlined filled" style={s.ratingStar}>star</span>
+                <span style={s.ratingText}>{course.rating}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Achievements */}
+      <h2 style={s.sectionTitle}>Thanh tuu</h2>
+      <div style={s.achievementsRow}>
+        {achievements.map((a, i) => (
+          <div key={i} style={s.achievementBadge}>
+            <div style={s.achievementCircle}>{a.emoji}</div>
+            <span style={s.achievementLabel}>{a.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default AcademyPage;

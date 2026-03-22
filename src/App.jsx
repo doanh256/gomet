@@ -70,6 +70,16 @@ const StorytellingPage = lazy(() => import('./pages/User/StorytellingPage'));
 const HelpCenterPage = lazy(() => import('./pages/User/HelpCenterPage'));
 const CommunityRulesPage = lazy(() => import('./pages/User/CommunityRulesPage'));
 
+// Phase 8 pages
+const ARMenuPage = lazy(() => import('./pages/User/ARMenuPage'));
+const DisputeResolutionPage = lazy(() => import('./pages/User/DisputeResolutionPage'));
+const MemoryPlannerPage = lazy(() => import('./pages/User/MemoryPlannerPage'));
+const GroupDiningPage = lazy(() => import('./pages/User/GroupDiningPage'));
+const KarmaPage = lazy(() => import('./pages/User/KarmaPage'));
+const AcademyPage = lazy(() => import('./pages/User/AcademyPage'));
+const AlphaTestPage = lazy(() => import('./pages/User/AlphaTestPage'));
+const TrendingPage = lazy(() => import('./pages/User/TrendingPage'));
+
 // Phase 7 pages
 const LivestreamPage = lazy(() => import('./pages/User/LivestreamPage'));
 const SommelierPage = lazy(() => import('./pages/User/SommelierPage'));
@@ -176,6 +186,14 @@ function App() {
               <Route path="sommelier" element={<SommelierPage />} />
               <Route path="elite" element={<EliteClubPage />} />
               <Route path="date-planner" element={<DatePlannerPage />} />
+              <Route path="ar-menu" element={<ARMenuPage />} />
+              <Route path="dispute" element={<DisputeResolutionPage />} />
+              <Route path="memory-planner" element={<MemoryPlannerPage />} />
+              <Route path="group-dining" element={<GroupDiningPage />} />
+              <Route path="karma" element={<KarmaPage />} />
+              <Route path="academy" element={<AcademyPage />} />
+              <Route path="alpha" element={<AlphaTestPage />} />
+              <Route path="trending" element={<TrendingPage />} />
             </Route>
 
             {/* Admin */}
