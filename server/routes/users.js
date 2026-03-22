@@ -43,7 +43,10 @@ router.get('/profiles', async (req, res) => {
       take: limit,
     });
 
-    const cleaned = profiles.map(({ password, ...rest }) => rest);
+    const cleaned = profiles.map(({ password, ...rest }) => ({
+      ...rest,
+      interests: rest.interests ? JSON.parse(rest.interests) : [],
+    }));
     res.json({ profiles: cleaned });
   } catch (err) {
     console.error('Get profiles error:', err);
@@ -72,7 +75,10 @@ router.get('/matches', async (req, res) => {
       include: { images: { orderBy: { order: 'asc' } } },
     });
 
-    const cleaned = users.map(({ password, ...rest }) => rest);
+    const cleaned = users.map(({ password, ...rest }) => ({
+      ...rest,
+      interests: rest.interests ? JSON.parse(rest.interests) : [],
+    }));
     res.json({ matches: cleaned });
   } catch (err) {
     console.error('Get matches error:', err);
@@ -91,6 +97,7 @@ router.get('/:id', async (req, res) => {
     if (!user) return res.status(404).json({ error: 'User không tồn tại' });
 
     const { password, ...cleaned } = user;
+    cleaned.interests = cleaned.interests ? JSON.parse(cleaned.interests) : [];
     res.json({ user: cleaned });
   } catch (err) {
     console.error('Get user error:', err);
@@ -117,6 +124,7 @@ router.put('/me', async (req, res) => {
     });
 
     const { password, ...cleaned } = updated;
+    cleaned.interests = cleaned.interests ? JSON.parse(cleaned.interests) : [];
     res.json({ user: cleaned });
   } catch (err) {
     console.error('Update user error:', err);

@@ -34,8 +34,9 @@ router.post('/register', async (req, res) => {
       { expiresIn: '7d' }
     );
 
-    const { password: _, ...userWithoutPassword } = user;
-    res.json({ token, user: userWithoutPassword });
+    const { password: _, ...u } = user;
+    u.interests = u.interests ? JSON.parse(u.interests) : [];
+    res.json({ token, user: u });
   } catch (err) {
     console.error('Register error:', err);
     res.status(500).json({ error: 'Lỗi server' });
@@ -71,8 +72,9 @@ router.post('/login', async (req, res) => {
       { expiresIn: '7d' }
     );
 
-    const { password: _, ...userWithoutPassword } = user;
-    res.json({ token, user: userWithoutPassword });
+    const { password: _, ...u } = user;
+    u.interests = u.interests ? JSON.parse(u.interests) : [];
+    res.json({ token, user: u });
   } catch (err) {
     console.error('Login error:', err);
     res.status(500).json({ error: 'Lỗi server' });
@@ -91,8 +93,9 @@ router.get('/me', authMiddleware, async (req, res) => {
       return res.status(404).json({ error: 'User không tồn tại' });
     }
 
-    const { password: _, ...userWithoutPassword } = user;
-    res.json({ user: userWithoutPassword });
+    const { password: _, ...u } = user;
+    u.interests = u.interests ? JSON.parse(u.interests) : [];
+    res.json({ user: u });
   } catch (err) {
     console.error('Get me error:', err);
     res.status(500).json({ error: 'Lỗi server' });
