@@ -70,6 +70,18 @@ const StorytellingPage = lazy(() => import('./pages/User/StorytellingPage'));
 const HelpCenterPage = lazy(() => import('./pages/User/HelpCenterPage'));
 const CommunityRulesPage = lazy(() => import('./pages/User/CommunityRulesPage'));
 
+// Final Phase pages
+const MatchSuccessPage = lazy(() => import('./pages/User/MatchSuccessPage'));
+const EventRegistrationPage = lazy(() => import('./pages/User/EventRegistrationPage'));
+const MapExplorePage = lazy(() => import('./pages/User/MapExplorePage'));
+const DateInvitePage = lazy(() => import('./pages/User/DateInvitePage'));
+const DealSplitPage = lazy(() => import('./pages/User/DealSplitPage'));
+const CheckInPage = lazy(() => import('./pages/User/CheckInPage'));
+const NotificationSettingsPage = lazy(() => import('./pages/User/NotificationSettingsPage'));
+const RefundStatusPage = lazy(() => import('./pages/User/RefundStatusPage'));
+const ActivityHeatmapPage = lazy(() => import('./pages/User/ActivityHeatmapPage'));
+const SecretEventPage = lazy(() => import('./pages/User/SecretEventPage'));
+
 // Phase 8 pages
 const ARMenuPage = lazy(() => import('./pages/User/ARMenuPage'));
 const DisputeResolutionPage = lazy(() => import('./pages/User/DisputeResolutionPage'));
@@ -194,6 +206,16 @@ function App() {
               <Route path="academy" element={<AcademyPage />} />
               <Route path="alpha" element={<AlphaTestPage />} />
               <Route path="trending" element={<TrendingPage />} />
+              <Route path="match-success/:id" element={<MatchSuccessPage />} />
+              <Route path="event-register/:id" element={<EventRegistrationPage />} />
+              <Route path="map-explore" element={<MapExplorePage />} />
+              <Route path="date-invite" element={<DateInvitePage />} />
+              <Route path="deal-split/:id" element={<DealSplitPage />} />
+              <Route path="check-in/:id" element={<CheckInPage />} />
+              <Route path="notification-settings" element={<NotificationSettingsPage />} />
+              <Route path="refund/:id" element={<RefundStatusPage />} />
+              <Route path="activity-heatmap" element={<ActivityHeatmapPage />} />
+              <Route path="secret-event/:id" element={<SecretEventPage />} />
             </Route>
 
             {/* Admin */}
