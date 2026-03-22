@@ -34,7 +34,8 @@
       "Bash(unzip -o \"/c/Users/doanh/Downloads/stitch \\(1\\).zip\")",
       "Bash(cp /tmp/stitch2/* /c/Users/doanh/Desktop/ungdungmoi/_stitch_designs/new_screen/)",
       "Bash(unzip -o \"/c/Users/doanh/Downloads/stitch_kh_m_ph_dinedate.zip\" -d _stitch_designs/kham_pha_new/)",
-      "WebFetch(domain:web-production-745ab4.up.railway.app)"
+      "WebFetch(domain:web-production-745ab4.up.railway.app)",
+      "WebFetch(domain:www.gomet.vn)"
     ]
   }
 }

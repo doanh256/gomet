@@ -1,47 +1,10 @@
-const CACHE_NAME = 'gomet-cache-v1';
-const urlsToCache = [
-  '/',
-  '/index.html',
-  '/favicon.svg'
-];
-
-// Cài đặt Service Worker và lưu cache các file tĩnh cơ bản
-self.addEventListener('install', event => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Opened cache');
-        return cache.addAll(urlsToCache);
-      })
-  );
-});
-
-// Chặn các Request fetch để trả dữ liệu từ Cache nếu mạng Offline
-self.addEventListener('fetch', event => {
-  event.respondWith(
-    caches.match(event.request)
-      .then(response => {
-        // Cache hit - return response
-        if (response) {
-          return response;
-        }
-        return fetch(event.request);
-      })
-  );
-});
-
-// Cập nhật Service Worker
+// Self-destructing service worker - clears all caches and unregisters itself
+self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', event => {
-  const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
-    caches.keys().then(cacheNames => {
-      return Promise.all(
-        cacheNames.map(cacheName => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    caches.keys().then(names => Promise.all(names.map(n => caches.delete(n))))
+      .then(() => self.registration.unregister())
+      .then(() => self.clients.matchAll())
+      .then(clients => clients.forEach(c => c.navigate(c.url)))
   );
 });
