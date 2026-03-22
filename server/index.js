@@ -59,15 +59,19 @@ setupSocket(io);
 
 // Serve static frontend in production
 if (isProd) {
-  const distPath = path.join(process.cwd(), 'dist');
-  app.use(express.static(distPath));
-  // Express 5 catch-all for SPA routing
-  app.use((req, res, next) => {
-    if (!req.path.startsWith('/api') && !req.path.startsWith('/uploads') && !req.path.startsWith('/socket.io')) {
-      res.sendFile(path.join(distPath, 'index.html'));
-    } else {
-      next();
+  const __dirname = path.dirname(new URL(import.meta.url).pathname);
+  const distPath = path.resolve(__dirname, '..', 'dist');
+  console.log('📁 Serving static files from:', distPath);
+
+  // Serve built assets
+  app.use(express.static(distPath, { index: 'index.html' }));
+
+  // SPA catch-all - must be after API routes
+  app.get('*', (req, res, next) => {
+    if (req.path.startsWith('/api') || req.path.startsWith('/uploads') || req.path.startsWith('/socket.io')) {
+      return next();
     }
+    res.sendFile(path.join(distPath, 'index.html'));
   });
 }
 
