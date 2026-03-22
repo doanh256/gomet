@@ -54,6 +54,11 @@ const LeaderboardPage = lazy(() => import('./pages/User/LeaderboardPage'));
 const MemoriesPage = lazy(() => import('./pages/User/MemoriesPage'));
 const GiftShopPage = lazy(() => import('./pages/User/GiftShopPage'));
 
+// Partner portal
+const PartnerDashboard = lazy(() => import('./pages/Partner/PartnerDashboard'));
+const ManageEvents = lazy(() => import('./pages/Partner/ManageEvents'));
+const ManageMenu = lazy(() => import('./pages/Partner/ManageMenu'));
+
 import './App.css';
 import './index.css';
 
@@ -137,6 +142,13 @@ function App() {
               <Route index element={<Dashboard />} />
               <Route path="users" element={<UserManagement />} />
               <Route path="reports" element={<Reports />} />
+            </Route>
+
+            {/* Partner Portal */}
+            <Route path="/partner" element={<UserGuard><UserLayout /></UserGuard>}>
+              <Route index element={<PartnerDashboard />} />
+              <Route path="events" element={<ManageEvents />} />
+              <Route path="menu" element={<ManageMenu />} />
             </Route>
 
             <Route path="*" element={<NotFound />} />
