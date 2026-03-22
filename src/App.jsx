@@ -38,6 +38,13 @@ import SafetyPage from './pages/Legal/SafetyPage';
 // Lazy loaded pages
 const NotificationsPage = lazy(() => import('./pages/User/NotificationsPage'));
 const MatchesPage = lazy(() => import('./pages/User/MatchesPage'));
+const EventDetailPage = lazy(() => import('./pages/User/EventDetailPage'));
+const VenueProfilePage = lazy(() => import('./pages/User/VenueProfilePage'));
+const VerifyIdentityPage = lazy(() => import('./pages/User/VerifyIdentityPage'));
+const RateExperiencePage = lazy(() => import('./pages/User/RateExperiencePage'));
+const FirstDateGuidePage = lazy(() => import('./pages/User/FirstDateGuidePage'));
+const MoodStatusPage = lazy(() => import('./pages/User/MoodStatusPage'));
+const ReferralPage = lazy(() => import('./pages/User/ReferralPage'));
 
 import './App.css';
 import './index.css';
@@ -93,6 +100,13 @@ function App() {
               <Route path="notifications" element={<NotificationsPage />} />
               <Route path="settings" element={<SettingsPage />} />
               <Route path="premium" element={<PremiumPage />} />
+              <Route path="event/:id" element={<EventDetailPage />} />
+              <Route path="venue/:id" element={<VenueProfilePage />} />
+              <Route path="verify" element={<VerifyIdentityPage />} />
+              <Route path="rate/:id" element={<RateExperiencePage />} />
+              <Route path="guide" element={<FirstDateGuidePage />} />
+              <Route path="mood" element={<MoodStatusPage />} />
+              <Route path="referral" element={<ReferralPage />} />
             </Route>
 
             {/* Admin */}
