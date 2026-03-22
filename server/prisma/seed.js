@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcryptjs';
+import { VENUES, MOVIES, EVENTS } from './seedData.js';
 
 const prisma = new PrismaClient();
 
@@ -136,7 +137,12 @@ const MOCK_USERS = [
 async function main() {
   console.log('🌱 Seeding database...');
 
-  // Clear existing data
+  // Clear existing data (order matters for FK constraints)
+  await prisma.event.deleteMany();
+  await prisma.movie.deleteMany();
+  await prisma.venue.deleteMany();
+  await prisma.report.deleteMany();
+  await prisma.block.deleteMany();
   await prisma.message.deleteMany();
   await prisma.conversationMember.deleteMany();
   await prisma.conversation.deleteMany();
@@ -244,6 +250,27 @@ async function main() {
       },
     });
   }
+
+  // Seed venues
+  console.log('🏪 Seeding venues...');
+  for (const venue of VENUES) {
+    await prisma.venue.create({ data: venue });
+  }
+  console.log(`   ✅ ${VENUES.length} venues created`);
+
+  // Seed movies
+  console.log('🎬 Seeding movies...');
+  for (const movie of MOVIES) {
+    await prisma.movie.create({ data: movie });
+  }
+  console.log(`   ✅ ${MOVIES.length} movies created`);
+
+  // Seed events
+  console.log('🎉 Seeding events...');
+  for (const event of EVENTS) {
+    await prisma.event.create({ data: event });
+  }
+  console.log(`   ✅ ${EVENTS.length} events created`);
 
   console.log('✅ Database seeded successfully!');
   console.log('📧 Login accounts: [any_user_id]@gomet.vn / password123');

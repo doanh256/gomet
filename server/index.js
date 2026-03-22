@@ -20,6 +20,9 @@ import walletRoutes from './routes/wallet.js';
 import adminRoutes from './routes/admin.js';
 import blockReportRoutes from './routes/blockReport.js';
 import passwordResetRoutes from './routes/passwordReset.js';
+import venueRoutes from './routes/venues.js';
+import movieRoutes from './routes/movies.js';
+import eventRoutes from './routes/events.js';
 import { setupSocket } from './socket.js';
 
 export const prisma = new PrismaClient();
@@ -52,6 +55,9 @@ app.use('/api/date-applications', dateAppRoutes);
 app.use('/api/conversations', conversationRoutes);
 app.use('/api/wallet', walletRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/venues', venueRoutes);
+app.use('/api/movies', movieRoutes);
+app.use('/api/events', eventRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

@@ -170,3 +170,65 @@ model Report {
   reported   User     @relation("ReportsReceived", fields: [reportedId], references: [id])
   createdAt  DateTime @default(now())
 }
+
+model Venue {
+  id          String   @id @default(uuid())
+  name        String
+  category    String
+  description String?
+  address     String
+  district    String
+  city        String   @default("TP.HCM")
+  latitude    Float?
+  longitude   Float?
+  priceRange  String?
+  rating      Float    @default(0)
+  reviewCount Int      @default(0)
+  phone       String?
+  openHours   String?
+  images      String?
+  tags        String?
+  isVerified  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model Movie {
+  id          String   @id @default(uuid())
+  title       String
+  genre       String
+  description String?
+  director    String?
+  duration    Int?
+  rating      Float    @default(0)
+  releaseDate String?
+  posterUrl   String?
+  trailerUrl  String?
+  isShowing   Boolean  @default(true)
+  cinema      String?
+  showTimes   String?
+  price       Int?
+  tags        String?
+  createdAt   DateTime @default(now())
+}
+
+model Event {
+  id               String   @id @default(uuid())
+  title            String
+  category         String
+  description      String?
+  venueId          String?
+  venueName        String?
+  address          String?
+  date             DateTime
+  endDate          DateTime?
+  price            Int      @default(0)
+  maxAttendees     Int      @default(50)
+  currentAttendees Int      @default(0)
+  hostId           String?
+  hostName         String?
+  images           String?
+  tags             String?
+  status           String   @default("upcoming")
+  isHot            Boolean  @default(false)
+  createdAt        DateTime @default(now())
+}
