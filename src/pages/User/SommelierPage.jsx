@@ -1,0 +1,436 @@
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const SommelierPage = () => {
+  const navigate = useNavigate();
+  const [sweetness, setSweetness] = useState(50);
+  const [intensity, setIntensity] = useState(50);
+  const [temperature, setTemperature] = useState(50);
+  const [occasion, setOccasion] = useState('Hen do dau tien');
+
+  const occasions = ['Hen do dau tien', 'Ky niem', 'Nhom ban be', 'Thuong thuc rieng'];
+
+  const recommendations = [
+    {
+      id: 1,
+      name: 'Chateau Dalat Reserve',
+      origin: 'Da Lat, Viet Nam',
+      price: '350.000 - 500.000 VND',
+      match: 94,
+      notes: 'Vi nho chin mem, huong vani nhe nhang, hau vi trai cay nhiet doi.',
+      emoji: '🍷',
+    },
+    {
+      id: 2,
+      name: 'Sake Junmai Daiginjo',
+      origin: 'Niigata, Nhat Ban',
+      price: '600.000 - 900.000 VND',
+      match: 87,
+      notes: 'Trong suot, tinh te, huong hoa nhe, vi ngot tu nhien tu gao.',
+      emoji: '🍶',
+    },
+    {
+      id: 3,
+      name: 'Espresso Martini',
+      origin: 'Cocktail',
+      price: '150.000 - 250.000 VND',
+      match: 82,
+      notes: 'Dang nhe cua ca phe, ngot cua liqueur, nang luong cho buoi toi.',
+      emoji: '🍸',
+    },
+  ];
+
+  const s = {
+    page: {
+      minHeight: '100vh',
+      background: 'var(--surface)',
+      fontFamily: 'var(--font-body)',
+      color: 'var(--on-surface)',
+    },
+    header: {
+      padding: '16px 20px',
+      display: 'flex',
+      alignItems: 'center',
+      gap: 12,
+    },
+    backBtn: {
+      background: 'var(--surface-container-low)',
+      border: 'none',
+      color: 'var(--on-surface)',
+      borderRadius: 'var(--radius-full)',
+      width: 40,
+      height: 40,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      cursor: 'pointer',
+    },
+    hero: {
+      padding: '20px 20px 32px',
+      textAlign: 'center',
+    },
+    heroIcon: {
+      fontSize: 48,
+      color: 'var(--primary)',
+      marginBottom: 8,
+    },
+    heroTitle: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: 26,
+      fontWeight: 800,
+      color: 'var(--on-surface)',
+      marginBottom: 8,
+    },
+    heroSub: {
+      fontSize: 14,
+      color: 'var(--on-surface-variant)',
+      maxWidth: 360,
+      margin: '0 auto',
+      lineHeight: 1.5,
+    },
+    section: {
+      padding: '0 20px 24px',
+    },
+    sectionTitle: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: 17,
+      fontWeight: 700,
+      marginBottom: 16,
+      display: 'flex',
+      alignItems: 'center',
+      gap: 8,
+    },
+    sliderGroup: {
+      background: 'var(--surface-container-low)',
+      borderRadius: 'var(--radius)',
+      padding: 20,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 20,
+    },
+    sliderRow: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 8,
+    },
+    sliderLabels: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      fontSize: 13,
+      color: 'var(--on-surface-variant)',
+      fontWeight: 500,
+    },
+    sliderTrack: {
+      position: 'relative',
+      height: 6,
+      borderRadius: 3,
+      background: 'var(--outline-variant)',
+      cursor: 'pointer',
+    },
+    sliderFill: (val) => ({
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      height: '100%',
+      width: `${val}%`,
+      borderRadius: 3,
+      background: 'var(--primary-gradient)',
+      transition: 'width 0.15s',
+    }),
+    sliderThumb: (val) => ({
+      position: 'absolute',
+      top: '50%',
+      left: `${val}%`,
+      transform: 'translate(-50%, -50%)',
+      width: 20,
+      height: 20,
+      borderRadius: '50%',
+      background: 'var(--primary)',
+      border: '3px solid var(--surface)',
+      boxShadow: 'var(--card-shadow)',
+    }),
+    sliderInput: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      opacity: 0,
+      cursor: 'pointer',
+      margin: 0,
+    },
+    chipRow: {
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: 8,
+    },
+    chip: (active) => ({
+      padding: '8px 16px',
+      borderRadius: 'var(--radius-full)',
+      border: active ? '2px solid var(--primary)' : '1px solid var(--outline-variant)',
+      background: active ? 'var(--primary-fixed)' : 'var(--surface-container-lowest)',
+      color: active ? 'var(--primary)' : 'var(--on-surface)',
+      fontSize: 13,
+      fontWeight: active ? 600 : 400,
+      cursor: 'pointer',
+    }),
+    recCards: {
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 16,
+    },
+    recCard: {
+      background: 'var(--surface-container-lowest)',
+      borderRadius: 'var(--radius)',
+      boxShadow: 'var(--card-shadow)',
+      overflow: 'hidden',
+    },
+    recImage: {
+      height: 120,
+      background: 'var(--primary-gradient)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      fontSize: 48,
+    },
+    recBody: {
+      padding: 16,
+    },
+    recTop: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'flex-start',
+      marginBottom: 6,
+    },
+    recName: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: 16,
+      fontWeight: 700,
+    },
+    matchBadge: (pct) => ({
+      background: pct >= 90 ? 'var(--primary)' : pct >= 80 ? 'var(--tertiary)' : 'var(--on-surface-variant)',
+      color: '#fff',
+      padding: '3px 10px',
+      borderRadius: 'var(--radius-full)',
+      fontSize: 12,
+      fontWeight: 700,
+    }),
+    recOrigin: {
+      fontSize: 12,
+      color: 'var(--on-surface-variant)',
+      marginBottom: 2,
+    },
+    recPrice: {
+      fontSize: 13,
+      fontWeight: 600,
+      color: 'var(--primary)',
+      marginBottom: 8,
+    },
+    recNotes: {
+      fontSize: 13,
+      fontStyle: 'italic',
+      color: 'var(--on-surface-variant)',
+      lineHeight: 1.5,
+      marginBottom: 12,
+    },
+    orderBtn: {
+      background: 'var(--primary-gradient)',
+      color: 'var(--on-primary)',
+      border: 'none',
+      padding: '8px 20px',
+      borderRadius: 'var(--radius-full)',
+      fontSize: 13,
+      fontWeight: 600,
+      cursor: 'pointer',
+    },
+    paletteCard: {
+      background: 'var(--surface-container-low)',
+      borderRadius: 'var(--radius)',
+      padding: 20,
+      display: 'flex',
+      alignItems: 'center',
+      gap: 16,
+    },
+    paletteAvatars: {
+      display: 'flex',
+    },
+    paletteAvatar: (idx) => ({
+      width: 40,
+      height: 40,
+      borderRadius: '50%',
+      background: idx === 0 ? 'var(--primary-gradient)' : 'var(--tertiary-container)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#fff',
+      fontWeight: 700,
+      fontSize: 14,
+      marginLeft: idx > 0 ? -10 : 0,
+      border: '2px solid var(--surface-container-low)',
+    }),
+    paletteBody: {
+      flex: 1,
+    },
+    paletteTitle: {
+      fontWeight: 700,
+      fontSize: 14,
+      marginBottom: 4,
+    },
+    paletteSub: {
+      fontSize: 12,
+      color: 'var(--on-surface-variant)',
+    },
+    compareBtn: {
+      background: 'var(--surface-container-highest)',
+      border: 'none',
+      padding: '8px 16px',
+      borderRadius: 'var(--radius-full)',
+      fontSize: 12,
+      fontWeight: 600,
+      cursor: 'pointer',
+      color: 'var(--on-surface)',
+    },
+    funCard: {
+      background: 'var(--primary-fixed)',
+      borderRadius: 'var(--radius)',
+      padding: 20,
+      display: 'flex',
+      gap: 12,
+      alignItems: 'flex-start',
+    },
+    funIcon: {
+      fontSize: 28,
+      color: 'var(--primary)',
+    },
+    funTitle: {
+      fontFamily: 'var(--font-headline)',
+      fontWeight: 700,
+      fontSize: 14,
+      marginBottom: 4,
+      color: 'var(--on-primary-container)',
+    },
+    funText: {
+      fontSize: 13,
+      lineHeight: 1.5,
+      color: 'var(--on-primary-container)',
+    },
+  };
+
+  const Slider = ({ label1, label2, value, onChange }) => (
+    <div style={s.sliderRow}>
+      <div style={s.sliderLabels}><span>{label1}</span><span>{label2}</span></div>
+      <div style={s.sliderTrack}>
+        <div style={s.sliderFill(value)} />
+        <div style={s.sliderThumb(value)} />
+        <input
+          type="range"
+          min={0}
+          max={100}
+          value={value}
+          onChange={e => onChange(Number(e.target.value))}
+          style={s.sliderInput}
+        />
+      </div>
+    </div>
+  );
+
+  return (
+    <div style={s.page}>
+      <div style={s.header}>
+        <button style={s.backBtn} onClick={() => navigate(-1)}>
+          <span className="material-symbols-outlined">arrow_back</span>
+        </button>
+      </div>
+
+      <div style={s.hero}>
+        <span className="material-symbols-outlined" style={s.heroIcon}>wine_bar</span>
+        <h1 style={s.heroTitle}>Sommelier thong minh</h1>
+        <p style={s.heroSub}>De AI chon do uong hoan hao cho buoi hen cua ban</p>
+      </div>
+
+      {/* Preferences */}
+      <div style={s.section}>
+        <div style={s.sectionTitle}>
+          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>tune</span>
+          Khau vi cua ban
+        </div>
+        <div style={s.sliderGroup}>
+          <Slider label1="Ngot" label2="Kho" value={sweetness} onChange={setSweetness} />
+          <Slider label1="Nhe" label2="Dam" value={intensity} onChange={setIntensity} />
+          <Slider label1="Lanh" label2="Nong" value={temperature} onChange={setTemperature} />
+        </div>
+      </div>
+
+      {/* Occasion */}
+      <div style={s.section}>
+        <div style={s.sectionTitle}>
+          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>celebration</span>
+          Dip su dung
+        </div>
+        <div style={s.chipRow}>
+          {occasions.map(o => (
+            <button key={o} style={s.chip(occasion === o)} onClick={() => setOccasion(o)}>{o}</button>
+          ))}
+        </div>
+      </div>
+
+      {/* Recommendations */}
+      <div style={s.section}>
+        <div style={s.sectionTitle}>
+          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>auto_awesome</span>
+          AI goi y
+        </div>
+        <div style={s.recCards}>
+          {recommendations.map(rec => (
+            <div key={rec.id} style={s.recCard}>
+              <div style={s.recImage}>{rec.emoji}</div>
+              <div style={s.recBody}>
+                <div style={s.recTop}>
+                  <div>
+                    <div style={s.recName}>{rec.name}</div>
+                    <div style={s.recOrigin}>{rec.origin}</div>
+                  </div>
+                  <span style={s.matchBadge(rec.match)}>Tuong thich {rec.match}%</span>
+                </div>
+                <div style={s.recPrice}>{rec.price}</div>
+                <div style={s.recNotes}>{rec.notes}</div>
+                <button style={s.orderBtn}>Dat ngay</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Shared Palette */}
+      <div style={s.section}>
+        <div style={s.paletteCard}>
+          <div style={s.paletteAvatars}>
+            <div style={s.paletteAvatar(0)}>B</div>
+            <div style={s.paletteAvatar(1)}>?</div>
+          </div>
+          <div style={s.paletteBody}>
+            <div style={s.paletteTitle}>Chia se khau vi voi doi phuong</div>
+            <div style={s.paletteSub}>Xem ban va nguoi ay hop nhau bao nhieu</div>
+          </div>
+          <button style={s.compareBtn}>So sanh 78%</button>
+        </div>
+      </div>
+
+      {/* Fun Fact */}
+      <div style={{ ...s.section, paddingBottom: 32 }}>
+        <div style={s.funCard}>
+          <span className="material-symbols-outlined" style={s.funIcon}>auto_awesome</span>
+          <div>
+            <div style={s.funTitle}>Ban co biet?</div>
+            <div style={s.funText}>
+              Ruou vang do o nhiet do phong (16-18°C) se toa huong thom tot nhat.
+              Nhung khi o Viet Nam, hay lam lanh nhe 15 phut truoc khi thuong thuc!
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SommelierPage;

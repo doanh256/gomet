@@ -29,6 +29,12 @@ import OnboardingPage from './pages/Auth/OnboardingPage';
 import LandingPage from './pages/Auth/LandingPage';
 import NotFound from './pages/NotFound';
 
+// Admin new pages
+const AIAnalytics = lazy(() => import('./pages/Admin/AIAnalytics'));
+const SafetyProtocol = lazy(() => import('./pages/Admin/SafetyProtocol'));
+const EventApproval = lazy(() => import('./pages/Admin/EventApproval'));
+const SystemHealth = lazy(() => import('./pages/Admin/SystemHealth'));
+
 // Legal pages
 import TermsPage from './pages/Legal/TermsPage';
 import PrivacyPage from './pages/Legal/PrivacyPage';
@@ -63,6 +69,12 @@ const SpotlightPage = lazy(() => import('./pages/User/SpotlightPage'));
 const StorytellingPage = lazy(() => import('./pages/User/StorytellingPage'));
 const HelpCenterPage = lazy(() => import('./pages/User/HelpCenterPage'));
 const CommunityRulesPage = lazy(() => import('./pages/User/CommunityRulesPage'));
+
+// Phase 7 pages
+const LivestreamPage = lazy(() => import('./pages/User/LivestreamPage'));
+const SommelierPage = lazy(() => import('./pages/User/SommelierPage'));
+const EliteClubPage = lazy(() => import('./pages/User/EliteClubPage'));
+const DatePlannerPage = lazy(() => import('./pages/User/DatePlannerPage'));
 
 // Phase 6 pages
 const FlashMeetPage = lazy(() => import('./pages/User/FlashMeetPage'));
@@ -160,6 +172,10 @@ function App() {
               <Route path="insights" element={<PersonalInsightsPage />} />
               <Route path="concierge" element={<ConciergePage />} />
               <Route path="food-preferences" element={<FoodPreferencePage />} />
+              <Route path="livestream/:id" element={<LivestreamPage />} />
+              <Route path="sommelier" element={<SommelierPage />} />
+              <Route path="elite" element={<EliteClubPage />} />
+              <Route path="date-planner" element={<DatePlannerPage />} />
             </Route>
 
             {/* Admin */}
@@ -174,6 +190,10 @@ function App() {
               <Route index element={<Dashboard />} />
               <Route path="users" element={<UserManagement />} />
               <Route path="reports" element={<Reports />} />
+              <Route path="ai-analytics" element={<AIAnalytics />} />
+              <Route path="safety" element={<SafetyProtocol />} />
+              <Route path="event-approval" element={<EventApproval />} />
+              <Route path="system-health" element={<SystemHealth />} />
             </Route>
 
             {/* Partner Portal */}
