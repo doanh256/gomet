@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline-variant": "#e0bfbd",
+              "surface-tint": "#ae2f34",
+              "on-secondary-fixed": "#1b1c1c",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container-high": "#ebe8e2",
+              "surface-container": "#f1ede7",
+              "error": "#ba1a1a",
+              "surface-container-highest": "#e6e2dc",
+              "error-container": "#ffdad6",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "secondary-container": "#e4e2e1",
+              "on-secondary-container": "#656464",
+              "inverse-surface": "#31302d",
+              "on-tertiary": "#ffffff",
+              "inverse-primary": "#ffb3b0",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "tertiary": "#894e45",
+              "on-tertiary-fixed": "#370e08",
+              "on-error-container": "#93000a",
+              "on-error": "#ffffff",
+              "on-surface-variant": "#584140",
+              "tertiary-container": "#cf8a7f",
+              "surface-container-lowest": "#ffffff",
+              "primary-container": "#ff6b6b",
+              "on-secondary": "#ffffff",
+              "background": "#fdf9f3",
+              "inverse-on-surface": "#f4f0ea",
+              "on-secondary-fixed-variant": "#474747",
+              "primary": "#ae2f34",
+              "tertiary-fixed": "#ffdad4",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#e4e2e1",
+              "primary-fixed": "#ffdad8",
+              "on-surface": "#1c1c18",
+              "secondary": "#5f5e5e",
+              "on-primary": "#ffffff",
+              "surface-variant": "#e6e2dc",
+              "surface-container-low": "#f7f3ed",
+              "surface-bright": "#fdf9f3",
+              "primary-fixed-dim": "#ffb3b0",
+              "outline": "#8c706f",
+              "on-primary-fixed": "#410006",
+              "on-primary-container": "#6d0010",
+              "on-background": "#1c1c18",
+              "surface-dim": "#dddad4"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-sm shadow-[#ae2f34]/5 font-plus-jakarta-sans antialiased tracking-tight">
+<div class="flex items-center justify-between px-6 h-16 w-full max-w-[1920px] mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#ae2f34] dark:text-[#FF6B6B]">GOMET Security Admin</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors" href="#">Bảng điều khiển</a>
+<a class="text-[#ae2f34] font-semibold border-b-2 border-[#ae2f34] transition-colors" href="#">Sự cố</a>
+<a class="text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-100 transition-colors" href="#">Thiết bị</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 text-zinc-500 hover:bg-zinc-100/50 rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined p-2 text-zinc-500 hover:bg-zinc-100/50 rounded-full transition-colors">settings</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="Admin profile avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkEOiNgzj53qomSQsfYezDMaJcM7QZTXxKsGYEBAocRfXOjp2KmGvh2oyJE5Yl2I8PibU91erikf-Z9hBVg3wHW20OVPUZqq5zF_Zhe-BbgvGdDifoNEyA4aOM6xSMbIi_ugHbuwjyASVBFt2g3kIkZSsEyE7m1rekmgM3nfcjPcmjWo7sC3Oi_j3iTJmj2ukGancoF7AOVL-SA8jaOZpEkSa-_xNqi65FFXNQkp_s3IfM6MMY6qA5lQa7I5cEoD0p3RNCVYcDk_Q"/>
+</div>
+<button class="bg-[#ae2f34] text-white px-4 py-2 rounded-full text-sm font-semibold active:scale-95 transition-all shadow-lg shadow-[#ae2f34]/20">Báo cáo mới</button>
+</div>
+</div>
+<div class="bg-zinc-100 dark:bg-zinc-900 h-[1px]"></div>
+</header>
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r border-zinc-200 dark:border-zinc-800 bg-[#fdf9f3] dark:bg-zinc-950 z-40 hidden lg:block">
+<div class="flex flex-col h-full pt-20 pb-6 space-y-4">
+<div class="px-6 mb-4">
+<h2 class="text-lg font-black text-[#ae2f34]">Quản trị GOMET</h2>
+<p class="text-xs text-tertiary opacity-70">Hệ thống An ninh</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 py-3 px-4 text-zinc-600 dark:text-zinc-400 hover:bg-[#f7f3ed] dark:hover:bg-zinc-900 rounded-full mx-2 transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-medium text-sm">Bảng điều khiển</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 bg-[#ae2f34] text-white rounded-full mx-2 shadow-lg shadow-[#ae2f34]/20 transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-medium text-sm">Sự cố</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 text-zinc-600 dark:text-zinc-400 hover:bg-[#f7f3ed] dark:hover:bg-zinc-900 rounded-full mx-2 transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">videocam</span>
+<span class="font-medium text-sm">Thiết bị</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 text-zinc-600 dark:text-zinc-400 hover:bg-[#f7f3ed] dark:hover:bg-zinc-900 rounded-full mx-2 transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-medium text-sm">Nhân sự</span>
+</a>
+<a class="flex items-center gap-3 py-3 px-4 text-zinc-600 dark:text-zinc-400 hover:bg-[#f7f3ed] dark:hover:bg-zinc-900 rounded-full mx-2 transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-medium text-sm">Lưu trữ</span>
+</a>
+</nav>
+<div class="px-4 mt-auto">
+<div class="bg-surface-container-high p-4 rounded-xl mb-4">
+<p class="text-xs font-semibold text-tertiary mb-2">Hệ thống Premium</p>
+<button class="w-full py-2 bg-[#ae2f34] text-white text-xs font-bold rounded-full">Nâng cấp hệ thống</button>
+</div>
+<div class="space-y-1">
+<a class="flex items-center gap-3 py-2 px-4 text-zinc-600 hover:bg-[#f7f3ed] rounded-full text-sm" href="#">
+<span class="material-symbols-outlined text-lg">settings</span> Cài đặt
+                    </a>
+<a class="flex items-center gap-3 py-2 px-4 text-zinc-600 hover:bg-[#f7f3ed] rounded-full text-sm" href="#">
+<span class="material-symbols-outlined text-lg">logout</span> Đăng xuất
+                    </a>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-24 pb-12 px-6 max-w-7xl mx-auto">
+<!-- Section 1: Header - Bento Style -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="md:col-span-2 flex flex-col justify-center">
+<nav class="flex items-center gap-2 text-sm text-tertiary mb-4">
+<span class="opacity-60">Sự cố</span>
+<span class="material-symbols-outlined text-xs">chevron_right</span>
+<span class="font-semibold">Báo cáo Tổng kết #882-C</span>
+</nav>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-on-surface mb-4">
+                    Recap Sự cố <span class="text-primary">#882-C</span>
+</h1>
+<div class="flex flex-wrap gap-3">
+<span class="inline-flex items-center gap-1 px-4 py-1.5 bg-error text-white text-xs font-bold rounded-full uppercase tracking-widest shadow-lg shadow-error/20">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">error</span> Critical
+                    </span>
+<span class="inline-flex items-center gap-1 px-4 py-1.5 bg-emerald-600 text-white text-xs font-bold rounded-full uppercase tracking-widest shadow-lg shadow-emerald-600/20">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span> Resolved
+                    </span>
+<span class="inline-flex items-center gap-1 px-4 py-1.5 bg-surface-container-highest text-on-surface-variant text-xs font-bold rounded-full uppercase tracking-widest">
+                        Giao thức G-12
+                    </span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col items-center justify-center text-center relative overflow-hidden group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center shadow-sm mb-4">
+<span class="material-symbols-outlined text-primary text-3xl">picture_as_pdf</span>
+</div>
+<p class="text-sm font-semibold mb-1">Xuất báo cáo lưu trữ</p>
+<p class="text-xs text-tertiary mb-4">Lần cuối: 14:20 - 24/10/2023</p>
+<button class="w-full py-2 bg-on-surface text-surface text-sm font-bold rounded-full hover:bg-primary transition-colors">Tải xuống PDF</button>
+</div>
+</div>
+<!-- Section 2: Summary - Asymmetric Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<div class="md:col-span-1 bg-surface-container-lowest p-6 rounded-xl shadow-sm border border-outline-variant/10">
+<p class="text-xs font-bold text-tertiary uppercase tracking-widest mb-4">Thời gian sự cố</p>
+<div class="space-y-4">
+<div>
+<p class="text-xs text-on-surface-variant">Bắt đầu</p>
+<p class="text-lg font-bold">22:15:04</p>
+<p class="text-xs opacity-60">23/10/2023</p>
+</div>
+<div class="h-8 border-l-2 border-dashed border-outline-variant ml-2 my-1"></div>
+<div>
+<p class="text-xs text-on-surface-variant">Kết thúc</p>
+<p class="text-lg font-bold">22:58:30</p>
+<p class="text-xs opacity-60">23/10/2023</p>
+</div>
+</div>
+</div>
+<div class="md:col-span-2 relative h-full rounded-xl overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Modern high-end bistro interior with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs4e8MB3mYrCwz5jR_-8fnMXf002SyntCVPrnDfFq3Dn1mLp3DpV04LInTAFANffzNfQsyQhqQSoF0z4--dGPwV-zMa20qLfidiY7V58JpcfjSpDpX5unCrP9zGiZ-VIDHglIkQM77gPkpgcAk-qwQUO4Xys0FOer-6XlSWjFK29CbWH7McwRfEYTozuhaJUGo8j_Ateje44-AGRF3v2i_-B_C8kl2UBaZiSp7tvy3_TBoqFNuDksCA2bbeb_hfAmeaoZaJiF56Qc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-8">
+<div class="flex items-center gap-2 text-white/80 text-xs font-bold tracking-widest uppercase mb-2">
+<span class="material-symbols-outlined text-sm">location_on</span> Địa điểm cụ thể
+                    </div>
+<h3 class="text-3xl font-black text-white">Le Petit Bistro</h3>
+<p class="text-white/60 text-sm">Khu vực A2 - Sảnh chính tầng trệt</p>
+</div>
+</div>
+<div class="md:col-span-1 bg-primary text-white p-6 rounded-xl flex flex-col justify-between shadow-xl shadow-primary/20">
+<div>
+<p class="text-xs font-bold uppercase tracking-widest text-white/70 mb-4">Quản lý trực ban</p>
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full border-2 border-white/20 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Head of security officer portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ-s1IVqYFu2i1ViEko4mVVGNcY1thdGTTjq2BqcUT37wy7KaO261sQ0PBYiXLALrZP8Io3ThIzk3y2ge7t4v-91Pl_tRwWWgGHJyDDY8Q00g0-0UPp2bY2xC6L7fFEuVZPWA91RJBVN-4pNbucVCr-4xIlzJ6wUxxq5lDLPa6HskY5vZb1SIgzPhNFzoVYnQyXOPTRKbaQV_4SYEfuNL97asWo8j8LsUGJL6vE-XPRoAKwn8K0HUIz9mNQHfnOE1IW0HvZmNIKGQ"/>
+</div>
+<div>
+<p class="font-bold">Trần Hoàng Minh</p>
+<p class="text-xs text-white/60">Cấp bậc: Senior Security</p>
+</div>
+</div>
+</div>
+<div class="mt-8 border-t border-white/10 pt-4">
+<p class="text-xs text-white/60 mb-1">Xác nhận bằng vân tay</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">fingerprint</span>
+<span class="text-[10px] font-mono opacity-50">AUTH-882-99-XM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 3 & 4: Timeline and Root Cause -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+<!-- Timeline -->
+<div class="lg:col-span-2">
+<div class="flex items-baseline justify-between mb-8">
+<h2 class="text-2xl font-bold tracking-tight">Dòng thời gian chi tiết</h2>
+<span class="text-xs text-tertiary font-bold px-3 py-1 bg-surface-container rounded-full">43 PHÚT TỔNG CỘNG</span>
+</div>
+<div class="space-y-0 relative before:absolute before:left-3 before:top-2 before:bottom-2 before:w-[2px] before:bg-surface-container-high">
+<!-- Item 1 -->
+<div class="relative pl-10 pb-8">
+<div class="absolute left-0 top-1.5 w-6 h-6 bg-error rounded-full border-4 border-white flex items-center justify-center"></div>
+<div class="flex items-center gap-3 mb-1">
+<span class="text-sm font-bold text-primary">22:15:04</span>
+<span class="h-1 w-1 bg-outline-variant rounded-full"></span>
+<span class="text-xs font-semibold uppercase tracking-wider opacity-60">Hệ thống kích hoạt</span>
+</div>
+<p class="font-bold mb-1">Cảnh báo xâm nhập trái phép: Cửa kho B1</p>
+<p class="text-sm text-on-surface-variant leading-relaxed">Cảm biến PIR ghi nhận chuyển động ngoài giờ làm việc. Camera số #04 tự động quay quét khu vực.</p>
+</div>
+<!-- Item 2 -->
+<div class="relative pl-10 pb-8">
+<div class="absolute left-0 top-1.5 w-6 h-6 bg-primary rounded-full border-4 border-white flex items-center justify-center"></div>
+<div class="flex items-center gap-3 mb-1">
+<span class="text-sm font-bold text-primary">22:18:30</span>
+<span class="h-1 w-1 bg-outline-variant rounded-full"></span>
+<span class="text-xs font-semibold uppercase tracking-wider opacity-60">Admin tiếp nhận</span>
+</div>
+<p class="font-bold mb-1">Xác minh hình ảnh bởi Ops Center</p>
+<p class="text-sm text-on-surface-variant leading-relaxed">Phát hiện lỗi chớp nháy từ cảm biến. Nhân viên an ninh được điều động kiểm tra trực tiếp.</p>
+</div>
+<!-- Item 3 -->
+<div class="relative pl-10 pb-8">
+<div class="absolute left-0 top-1.5 w-6 h-6 bg-emerald-600 rounded-full border-4 border-white flex items-center justify-center"></div>
+<div class="flex items-center gap-3 mb-1">
+<span class="text-sm font-bold text-emerald-600">22:58:30</span>
+<span class="h-1 w-1 bg-outline-variant rounded-full"></span>
+<span class="text-xs font-semibold uppercase tracking-wider opacity-60">Đóng hồ sơ</span>
+</div>
+<p class="font-bold mb-1">Xác nhận sự cố kỹ thuật - Đã xử lý</p>
+<p class="text-sm text-on-surface-variant leading-relaxed">Cảm biến được reset. Hệ thống báo động trở về trạng thái ổn định.</p>
+</div>
+</div>
+</div>
+<!-- Root Cause Analysis -->
+<div class="lg:col-span-1">
+<div class="bg-surface-container-low p-8 rounded-xl h-full border border-primary/10">
+<h2 class="text-2xl font-bold tracking-tight mb-6">Phân tích nguyên nhân</h2>
+<div class="space-y-6">
+<div class="p-4 bg-white rounded-lg shadow-sm">
+<p class="text-xs font-bold text-primary uppercase tracking-widest mb-2">Loại vấn đề</p>
+<p class="text-lg font-bold">Lỗi phần cứng (Hardware Fault)</p>
+</div>
+<div>
+<p class="text-sm font-semibold text-on-surface mb-2">Mô tả chi tiết</p>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                                Cảm biến hồng ngoại mẫu #SN-401 tại cửa kho B1 bị nhiễu điện do hệ thống máy lạnh tầng hầm hoạt động quá tải, gây ra tín hiệu giả (false positive).
+                            </p>
+</div>
+<div class="pt-6 border-t border-outline-variant">
+<p class="text-sm font-semibold text-on-surface mb-4">Mức độ ảnh hưởng</p>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-xs text-on-surface-variant">An ninh khu vực</span>
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-error h-full w-[85%]"></div>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xs text-on-surface-variant">Hoạt động kinh doanh</span>
+<div class="w-24 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[15%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 5: Performance Metrics - Clean Row -->
+<div class="bg-white p-8 rounded-xl shadow-sm border border-outline-variant/20 mb-12">
+<h2 class="text-xl font-bold mb-8">Hiệu quả ứng phó</h2>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-12">
+<div class="flex flex-col gap-1">
+<span class="text-xs font-bold text-tertiary uppercase tracking-widest">Avg Response Time</span>
+<span class="text-4xl font-black text-primary">03:26</span>
+<span class="text-xs text-emerald-600 font-semibold">▼ 12% so với trung bình</span>
+</div>
+<div class="flex flex-col gap-1 border-x border-outline-variant/30 px-0 sm:px-12">
+<span class="text-xs font-bold text-tertiary uppercase tracking-widest">Responder Count</span>
+<span class="text-4xl font-black">04</span>
+<span class="text-xs text-on-surface-variant">2 Admin + 2 Field Security</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-xs font-bold text-tertiary uppercase tracking-widest">Hiệu quả đánh giá</span>
+<div class="flex gap-1 text-primary mb-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined">star_half</span>
+</div>
+<span class="text-xs text-on-surface-variant font-medium">Quy trình tuân thủ 95%</span>
+</div>
+</div>
+</div>
+<!-- Section 6: Action Plan - Bento List -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+<div class="space-y-6">
+<h2 class="text-2xl font-bold tracking-tight flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">assignment_turned_in</span>
+                    Kế hoạch hành động (Action Plan)
+                </h2>
+<div class="space-y-4">
+<div class="flex gap-4 p-5 bg-surface-container rounded-xl">
+<div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="text-primary font-bold">01</span>
+</div>
+<div>
+<p class="font-bold text-sm mb-1">Nâng cấp Firmware cảm biến</p>
+<p class="text-xs text-on-surface-variant">Áp dụng bộ lọc nhiễu mới cho tất cả các thiết bị dòng #SN-400 trong tháng 11.</p>
+</div>
+</div>
+<div class="flex gap-4 p-5 bg-surface-container rounded-xl">
+<div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="text-primary font-bold">02</span>
+</div>
+<div>
+<p class="font-bold text-sm mb-1">Đào tạo lại nhân viên tại chỗ</p>
+<p class="text-xs text-on-surface-variant">Huấn luyện kỹ năng phân biệt báo động giả và báo động thật qua camera nhiệt.</p>
+</div>
+</div>
+<div class="flex gap-4 p-5 bg-surface-container rounded-xl">
+<div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="text-primary font-bold">03</span>
+</div>
+<div>
+<p class="font-bold text-sm mb-1">Kiểm tra hạ tầng điện</p>
+<p class="text-xs text-on-surface-variant">Lắp đặt bộ ổn áp riêng cho hệ thống an ninh tại tầng hầm A2.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Section 7: Approvals -->
+<div class="bg-surface-container-high/50 p-8 rounded-xl border-2 border-dashed border-outline-variant flex flex-col items-center justify-center text-center">
+<p class="text-xs font-bold text-tertiary uppercase tracking-widest mb-10">Chữ ký số &amp; Phê duyệt</p>
+<div class="mb-8">
+<div class="italic font-headline text-3xl opacity-20 mb-2 select-none">H. Minh Tran</div>
+<div class="w-48 h-[1px] bg-on-surface mx-auto"></div>
+<p class="mt-4 font-bold">Trần Hoàng Minh</p>
+<p class="text-xs text-tertiary">Senior Admin - GOMET Security</p>
+</div>
+<div class="bg-white/50 px-6 py-4 rounded-lg flex items-center gap-4 border border-outline-variant">
+<div class="text-left">
+<p class="text-[10px] font-bold text-on-surface-variant uppercase mb-1">Mã xác thực chuỗi</p>
+<p class="text-xs font-mono text-primary truncate w-40">sha256:7f8e9a2b1c3d4e5f6a7b8c9d0e1f2a3b...</p>
+</div>
+<span class="material-symbols-outlined text-emerald-600" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<button class="mt-8 px-10 py-3 bg-primary text-white font-bold rounded-full shadow-lg shadow-primary/30 active:scale-95 transition-all">
+                    Xác nhận báo cáo
+                </button>
+</div>
+</div>
+</main>
+<!-- Navigation Shell Support for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-zinc-100 flex justify-around items-center h-16 z-50 px-2">
+<a class="flex flex-col items-center gap-1 text-zinc-500" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium">Bảng tin</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="text-[10px] font-bold">Sự cố</span>
+</a>
+<div class="-mt-8 bg-primary p-3 rounded-full shadow-lg shadow-primary/40 text-white">
+<span class="material-symbols-outlined">add</span>
+</div>
+<a class="flex flex-col items-center gap-1 text-zinc-500" href="#">
+<span class="material-symbols-outlined">videocam</span>
+<span class="text-[10px] font-medium">Thiết bị</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-zinc-500" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px] font-medium">Lưu trữ</span>
+</a>
+</nav>
+</body></html>

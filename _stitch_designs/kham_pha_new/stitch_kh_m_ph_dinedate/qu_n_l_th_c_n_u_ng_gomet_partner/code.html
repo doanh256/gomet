@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET Hub | Partner Menu Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,700;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#cf8a7f",
+              "on-secondary-container": "#656464",
+              "surface-container": "#f1ede7",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-primary-fixed": "#410006",
+              "outline-variant": "#e0bfbd",
+              "tertiary": "#894e45",
+              "on-error": "#ffffff",
+              "on-surface": "#1c1c18",
+              "secondary": "#5f5e5e",
+              "inverse-primary": "#ffb3b0",
+              "surface-dim": "#dddad4",
+              "primary-container": "#ff6b6b",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#55251e",
+              "on-primary": "#ffffff",
+              "primary-fixed": "#ffdad8",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-container-highest": "#e6e2dc",
+              "secondary-container": "#e4e2e1",
+              "on-tertiary-fixed": "#370e08",
+              "on-surface-variant": "#584140",
+              "on-primary-fixed-variant": "#8c1520",
+              "secondary-fixed": "#e4e2e1",
+              "error-container": "#ffdad6",
+              "tertiary-fixed": "#ffdad4",
+              "outline": "#8c706f",
+              "surface-variant": "#e6e2dc",
+              "secondary-fixed-dim": "#c8c6c6",
+              "primary": "#ae2f34",
+              "surface-container-high": "#ebe8e2",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-tint": "#ae2f34",
+              "surface": "#fdf9f3",
+              "surface-bright": "#fdf9f3",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#474747",
+              "on-error-container": "#93000a",
+              "background": "#fdf9f3",
+              "error": "#ba1a1a",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f7f3ed",
+              "inverse-surface": "#31302d",
+              "on-primary-container": "#6d0010",
+              "on-background": "#1c1c18"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Side Navigation Shell -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-zinc-50 dark:bg-zinc-900 flex flex-col p-4 gap-2 z-40 tonal-shift bg-zinc-100 dark:bg-zinc-800 border-r-0">
+<div class="mb-8 px-2">
+<h1 class="text-lg font-bold text-zinc-900 dark:text-zinc-100 tracking-tight">GOMET Hub</h1>
+<p class="text-xs text-zinc-500 font-medium">Curator Tools</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 rounded-lg hover:translate-x-1 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span class="font-['Inter'] text-sm">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 bg-white dark:bg-zinc-800 text-[#ae2f34] dark:text-[#ff6b6b] font-semibold rounded-lg shadow-sm scale-[0.98]" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">storefront</span>
+<span class="font-['Inter'] text-sm">Venue Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 rounded-lg hover:translate-x-1 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span class="font-['Inter'] text-sm">Manage Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 rounded-lg hover:translate-x-1 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px]">leaderboard</span>
+<span class="font-['Inter'] text-sm">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200/50 dark:hover:bg-zinc-800/50 rounded-lg hover:translate-x-1 transition-transform duration-200 group" href="#">
+<span class="material-symbols-outlined text-[20px]">contact_support</span>
+<span class="font-['Inter'] text-sm">Support</span>
+</a>
+</nav>
+<div class="mt-auto pt-4 border-t border-outline-variant/20">
+<div class="flex items-center gap-3 px-2 mb-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Chef Avatar" class="w-full h-full object-cover" data-alt="Portrait of a professional chef in white uniform" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6RSVJI6TXTluNDyLOnETJdS9-TB7_92oGIlEIBaue7dopi37cd91i6m3sW3Zrr7BtQI3-3SoCInzl8uW4vgnvsKaaIJVXymPRH8o46MHhs17jfx5ukV9C5sU2zMJkwMzS5Nc2RWWIVKsh5ACM7Hi41fd31fN293fSIffM5dKeAKIM3VrwUKXiwyfn_FG7i74EPZl2tpen1loAJF9ZTNefBbcTJfgY1tBVNkhnDuHEU78XRxx-mlAmcHzG4llAOhmc0TpiQ4OXDWQ"/>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Chef Marco</p>
+<p class="text-xs text-secondary">Head Curator</p>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-white py-3 rounded-DEFAULT font-headline text-sm font-bold shadow-lg hover:shadow-xl transition-all active:scale-95">
+                Upgrade Plan
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen pb-20">
+<!-- Header Section -->
+<header class="sticky top-0 z-30 bg-surface/80 backdrop-blur-md px-12 py-8 flex justify-between items-end">
+<div>
+<span class="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-2 block">Culinary Management</span>
+<h2 class="text-5xl font-extrabold font-headline tracking-tighter text-on-surface">Partner Menu Manager</h2>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 rounded-DEFAULT bg-surface-container-highest text-on-surface font-headline font-bold text-sm hover:bg-surface-container-high transition-colors">
+                    Preview Menu
+                </button>
+<button class="px-6 py-3 rounded-DEFAULT bg-primary text-on-primary font-headline font-bold text-sm flex items-center gap-2 hover:opacity-90 transition-all shadow-md">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    Add New Dish
+                </button>
+</div>
+</header>
+<div class="px-12 space-y-16">
+<!-- Bento Grid Section: Featured & Stats -->
+<section class="grid grid-cols-12 gap-6">
+<!-- Large Feature Card: Chef's Recommendations -->
+<div class="col-span-8 bg-surface-container-low rounded-lg p-8 relative overflow-hidden group">
+<div class="relative z-10 flex flex-col h-full">
+<div class="flex justify-between items-start mb-12">
+<div>
+<h3 class="text-3xl font-bold font-headline mb-2">Chef's Recommendations</h3>
+<p class="text-secondary max-w-sm">Items marked for premium placement in the guest app discovery feed.</p>
+</div>
+<span class="bg-primary-container/20 text-on-primary-container px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Active Now</span>
+</div>
+<div class="flex gap-6 mt-auto">
+<div class="flex-1 bg-surface-container-lowest p-4 rounded-lg flex gap-4 items-center group-hover:translate-y-[-4px] transition-transform duration-300">
+<img alt="Steak dish" class="w-16 h-16 rounded-md object-cover" data-alt="T-bone steak with rosemary and roasted garlic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_GM-uOwHTGqrx4uUmCXZfevyWI_rou5nzZkufnWwlm-VjEo7WRrPOg_X5ZT3EmO3qP3ouH5OH5HLiAqvgXX2mQDUjzOYot9qhSDO5GxsC25RTEEMhAXe-06qDMImL0qx8VxzS-H9tGsJe3rWaSup9ErCJklhLcZjuli0PAeNldP7D7QXWur1HY9csoaBs3GWXEnzlCuU7ZWct8tSHrXnrGyf9lG8uG7UmXxSC0dxnRfbJWymLxyoRUaHn8-wP0NFsYroM0eotZ-4"/>
+<div>
+<h4 class="font-bold text-on-surface">Dry-Aged Ribeye</h4>
+<p class="text-xs text-secondary">$58.00</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-primary opacity-0 group-hover:opacity-100 transition-opacity">edit</span>
+</div>
+<div class="flex-1 bg-surface-container-lowest p-4 rounded-lg flex gap-4 items-center group-hover:translate-y-[-4px] transition-transform duration-300 delay-75">
+<img alt="Salmon dish" class="w-16 h-16 rounded-md object-cover" data-alt="Seared salmon with asparagus and lemon butter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Va7f8C9knCdBNb627SW9s5opl1rmIMpi9vfSQVNADji0zCuE7wNueDKWzAU-ftuintMIBz9b_n7vbjOp-ChvgEllnS97AZcTjHuRUhPKI88p56LpCtYCrTZ3a75Ofh2WnIjLU3WwWBIaHKOFKIXFP5zkZR8HOvt6w11M6XIzzl9t-r4UqsqIe4PjMoLoLs9ijvBx1qG_1kV-v_Qfi3vXuHowVgEcPqbXKpfq2iyz8X3Tg0KrVfCR6NH7aaCG8uf8d7SDOT4ExcE"/>
+<div>
+<h4 class="font-bold text-on-surface">Miso Salmon</h4>
+<p class="text-xs text-secondary">$42.00</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-primary opacity-0 group-hover:opacity-100 transition-opacity">edit</span>
+</div>
+</div>
+</div>
+<!-- Aesthetic Background Element -->
+<div class="absolute -right-12 -top-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-700"></div>
+</div>
+<!-- Small Info Card: Daily Special Slot -->
+<div class="col-span-4 bg-[#894e45]/10 rounded-lg p-8 flex flex-col justify-between border border-primary/5">
+<div>
+<div class="flex items-center gap-2 text-tertiary mb-4">
+<span class="material-symbols-outlined">stars</span>
+<span class="text-xs font-bold uppercase tracking-widest">Daily Special</span>
+</div>
+<h3 class="text-2xl font-bold font-headline leading-tight">Create Tonight's Experience</h3>
+</div>
+<button class="w-full py-4 border-2 border-dashed border-tertiary/30 rounded-DEFAULT text-tertiary font-bold hover:bg-tertiary/5 transition-all text-sm">
+                        Set Special Item
+                    </button>
+</div>
+</section>
+<!-- Main Menu List: Asymmetric Editorial Layout -->
+<section class="space-y-12">
+<div class="flex items-baseline justify-between">
+<h3 class="text-4xl font-extrabold font-headline tracking-tight">Main Course Catalog</h3>
+<div class="flex gap-4">
+<span class="text-sm font-medium text-secondary">Showing 24 items</span>
+<div class="h-4 w-[1px] bg-outline-variant"></div>
+<button class="text-sm font-bold text-primary hover:underline">Sort by Category</button>
+</div>
+</div>
+<div class="space-y-6">
+<!-- Menu Item Row 1 -->
+<div class="grid grid-cols-12 gap-8 items-center bg-surface-container-low/40 p-6 rounded-lg group hover:bg-surface-container-low transition-colors">
+<div class="col-span-3">
+<div class="relative rounded-lg overflow-hidden h-48">
+<img alt="Healthy salad" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Vibrant healthy salad bowl with avocado and seeds" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCI5QhW3r6NrhQ_wHbqMM7089LMgXT2OrdrWntcypmb0ueG6ABJNqN_UUPKO-Hy8NNdpbAMN8_GUDL7uSPOh4vDaVKxnuYnvERhnGO4PL3Buw3GQeWxZKx9nZHB6DqMczoCJNeT2dQ7G4ZgC_0O286k8hIyUi9VpwzOSG6tqNDSP-0ECh8uoqyXq0w24eg8VumQ1vnNUREwvXsA7wzQW_K6TTJ89SG9BhVCmb8458-0ZuKUp4pDN9gTd2FBKoDkfkXPtc1PDe2KkLQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/40 to-transparent"></div>
+<button class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-md text-white p-2 rounded-full hover:bg-white/40 transition-all">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+</button>
+</div>
+</div>
+<div class="col-span-5 space-y-3">
+<div class="flex items-center gap-3">
+<h4 class="text-2xl font-bold font-headline">Heirloom Burrata Salad</h4>
+<span class="bg-surface-container-highest px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Vegetarian</span>
+</div>
+<p class="text-on-surface-variant line-clamp-2 font-body text-sm leading-relaxed">
+                                Locally sourced burrata, organic heirloom tomatoes, aged balsamic glaze, and fresh basil picked from our own garden. Served with sourdough crisp.
+                            </p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-semibold text-secondary">Lunch</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-semibold text-secondary">Appetizer</span>
+</div>
+</div>
+<div class="col-span-2">
+<div class="space-y-1">
+<p class="text-xs uppercase font-bold tracking-widest text-secondary">Base Price</p>
+<p class="text-2xl font-bold font-headline">$24.00</p>
+</div>
+</div>
+<div class="col-span-2 flex flex-col gap-2">
+<div class="p-3 bg-primary/5 rounded-lg border border-primary/10">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[10px] font-bold text-primary uppercase">AI Pairing</span>
+</div>
+<p class="text-[11px] font-medium leading-tight">Chardonnay Reserve or Basil Martini</p>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-container-highest py-2 rounded-md hover:bg-outline-variant/30 transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="flex-1 bg-surface-container-highest py-2 rounded-md hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Menu Item Row 2 -->
+<div class="grid grid-cols-12 gap-8 items-center bg-surface-container-low/40 p-6 rounded-lg group hover:bg-surface-container-low transition-colors">
+<div class="col-span-3">
+<div class="relative rounded-lg overflow-hidden h-48">
+<img alt="Truffle Pasta" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Handmade tagliatelle with black truffle shavings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0Cs-4-zUs3Oljk4oyvkK2tPCT3m3JIkVE1XejaRABvceer_mgejBa99R0kYnPCtzJZUew8NWQ33yqrSJWy_H_7OWRw2O9q1PR_bzdhSy6pGeAuHPHLZnjt0AZliS6RE33_9QR-wIyUTOEMEv9YkWQ5NBltaedX1OdRTgDb83Y-YuXi70QBb8fXFdYbRx6hAwcJPV4SNPrnF6cHmQW4CnexZcoXRkhYHGUWuFdAk_tZFwGYWmzwr3SGYtDfKiI98lrVleyAOjYa1M"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/40 to-transparent"></div>
+<button class="absolute bottom-4 right-4 bg-white/20 backdrop-blur-md text-white p-2 rounded-full hover:bg-white/40 transition-all">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+</button>
+</div>
+</div>
+<div class="col-span-5 space-y-3">
+<div class="flex items-center gap-3">
+<h4 class="text-2xl font-bold font-headline">Black Truffle Tagliatelle</h4>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Top Rated</span>
+</div>
+<p class="text-on-surface-variant line-clamp-2 font-body text-sm leading-relaxed">
+                                Hand-rolled pasta tossed in a velvety butter sauce with shaved Perigord black truffles and 24-month aged Parmigiano Reggiano.
+                            </p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-semibold text-secondary">Dinner</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-xs font-semibold text-secondary">Signature</span>
+</div>
+</div>
+<div class="col-span-2">
+<div class="space-y-1">
+<p class="text-xs uppercase font-bold tracking-widest text-secondary">Base Price</p>
+<p class="text-2xl font-bold font-headline">$36.00</p>
+</div>
+</div>
+<div class="col-span-2 flex flex-col gap-2">
+<div class="p-3 bg-primary/5 rounded-lg border border-primary/10">
+<div class="flex items-center gap-2 mb-1">
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[10px] font-bold text-primary uppercase">AI Pairing</span>
+</div>
+<p class="text-[11px] font-medium leading-tight">Barolo or Truffle-infused Negroni</p>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 bg-surface-container-highest py-2 rounded-md hover:bg-outline-variant/30 transition-colors">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+<button class="flex-1 bg-surface-container-highest py-2 rounded-md hover:text-error transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Load More / Empty State Asymmetry -->
+<div class="flex justify-center pt-8">
+<button class="flex flex-col items-center group">
+<div class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all group-hover:scale-110">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest mt-4 text-secondary group-hover:text-primary transition-colors">Load More Dishes</span>
+</button>
+</div>
+</section>
+<!-- Bottom Floating Action Bar for AI Suggestions -->
+<section class="sticky bottom-8 z-40 max-w-2xl mx-auto">
+<div class="bg-on-background/95 backdrop-blur-xl text-white p-4 rounded-xl shadow-2xl flex items-center gap-6 border border-white/10">
+<div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div class="flex-1">
+<h5 class="text-sm font-bold font-headline">AI Curator Suggestion</h5>
+<p class="text-xs text-white/60">Based on recent trends, adding a 'Natural Wine' section could increase beverage revenue by 12%.</p>
+</div>
+<button class="bg-white text-on-background px-4 py-2 rounded-lg text-xs font-bold hover:bg-primary-container transition-colors shrink-0">
+                        Explore Strategy
+                    </button>
+<button class="text-white/40 hover:text-white transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Navigation Overlay logic check - No FAB needed here as it's a dashboard management screen -->
+</body></html>

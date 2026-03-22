@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Shared Palette | GOMET AI Sommelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#e6e2dc",
+              "on-secondary-fixed": "#1b1c1c",
+              "tertiary-fixed": "#ffdad4",
+              "on-tertiary-fixed": "#370e08",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1c1c18",
+              "surface-container": "#f1ede7",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-primary": "#ffffff",
+              "secondary-container": "#e4e2e1",
+              "on-secondary-fixed-variant": "#474747",
+              "surface": "#fdf9f3",
+              "secondary-fixed": "#e4e2e1",
+              "outline": "#8c706f",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-surface-variant": "#584140",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-tint": "#ae2f34",
+              "surface-bright": "#fdf9f3",
+              "on-secondary-container": "#656464",
+              "tertiary": "#894e45",
+              "surface-dim": "#dddad4",
+              "on-error": "#ffffff",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-variant": "#e6e2dc",
+              "tertiary-container": "#cf8a7f",
+              "on-tertiary": "#ffffff",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-primary-container": "#6d0010",
+              "error": "#ba1a1a",
+              "outline-variant": "#e0bfbd",
+              "background": "#fdf9f3",
+              "primary-fixed": "#ffdad8",
+              "on-error-container": "#93000a",
+              "primary-container": "#ff6b6b",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-tertiary-container": "#55251e",
+              "error-container": "#ffdad6",
+              "primary": "#ae2f34",
+              "surface-container-low": "#f7f3ed",
+              "on-primary-fixed": "#410006",
+              "inverse-surface": "#31302d",
+              "on-background": "#1c1c18",
+              "inverse-primary": "#ffb3b0",
+              "secondary": "#5f5e5e"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .radar-chart {
+            clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-[#ae2f34] dark:text-[#ff6b6b] font-headline">GOMET</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 font-['Plus_Jakarta_Sans'] tracking-tight hover:text-[#ff6b6b] transition-colors duration-300" href="#">Discover</a>
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] font-bold font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Shared Palette</a>
+<a class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 font-['Plus_Jakarta_Sans'] tracking-tight hover:text-[#ff6b6b] transition-colors duration-300" href="#">Elite Club</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant/50">search</span>
+<input class="bg-surface-container-high border-none rounded-full py-2 pl-10 pr-4 w-64 focus:ring-2 focus:ring-primary/20 text-sm" placeholder="Search pairings..." type="text"/>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-full text-on-surface hover:bg-surface-container-highest transition-colors active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-full text-on-surface hover:bg-surface-container-highest transition-colors active:scale-95">
+<span class="material-symbols-outlined">auto_awesome</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-surface-container-highest overflow-hidden border-2 border-primary/10">
+<img alt="Profile" class="h-full w-full object-cover" data-alt="User profile avatar image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkrdGZkVRdagFfW4kY9C7viDOLMyqQQwif9Gh-bRe2mo0hL3orBSz6nc4NfAxOc02hPUvup5MORs1C65_JkADW-dqVQTm6rcOq8Onjlgm6wLncoyACNomyPwMWVDBh9i1B6HaucfvfdY8z8Isr0w1IKRetCFZzg-8sbplvbqU_uiNSSFic2h3XuQ-Zy_jwUXllNYS4zUXkeEmr4QBi6wPTY0EcLJdCGZms9D6xWtfjEEyUAaBZJcNqjiSvWNqQYkA1h5W-vovOyLY"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Hero Header -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="max-w-2xl">
+<div class="flex items-center gap-2 mb-4">
+<span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold tracking-widest uppercase font-label">AI Sommelier</span>
+<span class="text-on-surface-variant/40 text-sm">•</span>
+<span class="text-on-surface-variant text-sm font-medium">Updated 2 hours ago</span>
+</div>
+<h1 class="text-5xl md:text-7xl font-black font-headline tracking-tighter text-on-background mb-4 leading-tight">Shared <span class="text-primary">Palette</span></h1>
+<p class="text-lg text-on-surface-variant leading-relaxed">Discover where your tastes converge. We've analyzed your flavor profiles to curate the perfect evening for two.</p>
+</div>
+<div class="flex -space-x-4 mb-2">
+<div class="h-16 w-16 rounded-full border-4 border-surface shadow-xl overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of Julian profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFKQKlU_7VVGENnoPQkwuekaV-RT3x-F-PmXgfGb5v-9JfWmBJA7xj3OY2_Sb2AWIAiHzqA2VNwHk_w_tLLVyefVc-0eOT7LGK1W6ppWhNXuCh-kBEsf6m6J1L9xGwYq2AQ_JW_aEqkIBN5RgKaQTbX5ESvRF-JxhyCJHoqKxSU5EK46K7kiCLSoLRh9Q8-FIHZSJDGteVustYXYDt-anGjiwdSjZXKuyWqUOkxiaBiHQ-Sj01dL4HNt9YGtYYk4I_qF2iilxnOeg"/>
+</div>
+<div class="h-16 w-16 rounded-full border-4 border-surface shadow-xl overflow-hidden z-10">
+<img class="w-full h-full object-cover" data-alt="Portrait of Elena profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw8zN7_KrxHxwkS1eyXHYA9HtQxVXaI3n1TpXSUKdctOIyb75_5l9jYNpgH27lwcDEGNfosxBB42gYkNFhvxmwkY4KRdl2zXxhBWqmefwdp0dYjVfkaWq-sFoVQ11VRlSdvtXiz_uqPpdK_mRlGvzi4HH17e069ZnCVIBZwwIOFA7GCU6nccStgidCwdrWJSpDwFOm4Y0JBIjQh6PX_Ci31InC5gpxt3ozvnx6RUuzDc3BIp_kEn3RJ1EFkd-uiLXoGTW_FcBKiJ8"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Analysis -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Compatibility Radar -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-lg p-8 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] relative overflow-hidden">
+<div class="flex justify-between items-start mb-12">
+<div>
+<h2 class="text-2xl font-bold font-headline mb-1">Flavor Alignment</h2>
+<p class="text-on-surface-variant text-sm">94% Overlap in Umami &amp; Spice</p>
+</div>
+<button class="p-2 rounded-full bg-surface-container-low hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</button>
+</div>
+<div class="flex flex-col lg:flex-row items-center justify-around gap-12 py-4">
+<!-- Custom Radar Visualization -->
+<div class="relative w-64 h-64 flex items-center justify-center">
+<div class="absolute inset-0 bg-primary/5 radar-chart scale-110 opacity-50"></div>
+<div class="absolute inset-0 bg-tertiary/5 radar-chart scale-90 opacity-50"></div>
+<div class="absolute inset-0 border border-outline-variant/20 radar-chart"></div>
+<!-- Data Points Mock -->
+<div class="absolute top-0 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Sweet</div>
+<div class="absolute right-0 top-1/3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Acidic</div>
+<div class="absolute bottom-0 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Bitter</div>
+<div class="absolute left-0 top-1/3 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Spicy</div>
+<div class="absolute bottom-1/4 right-0 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Salty</div>
+<!-- Intersection Shape -->
+<div class="w-32 h-32 bg-gradient-to-br from-primary/40 to-primary_container/40 radar-chart blur-sm"></div>
+</div>
+<div class="space-y-6 flex-1 max-w-xs">
+<div class="p-4 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-bold text-sm">Top Harmony: Umami</span>
+</div>
+<p class="text-xs text-on-surface-variant">Both profiles show a strong preference for aged cheeses and truffles.</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-bold text-sm">Divergence: Acidity</span>
+</div>
+<p class="text-xs text-on-surface-variant">Elena prefers high-acid citrus, while Julian leans toward creamy, low-acid notes.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Regional Preferences -->
+<div class="md:col-span-4 bg-tertiary text-white rounded-lg p-8 flex flex-col justify-between">
+<div>
+<h2 class="text-2xl font-bold font-headline mb-2">Terroir Roots</h2>
+<p class="text-tertiary-fixed-dim text-sm mb-8">Shared affinity for Old World regions.</p>
+<ul class="space-y-4">
+<li class="flex items-center justify-between group">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-medium">Tuscany, IT</span>
+</div>
+<span class="text-xs font-bold py-1 px-2 bg-white/10 rounded-full">Shared</span>
+</li>
+<li class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-white/20"></span>
+<span class="font-medium text-white/80">Bordeaux, FR</span>
+</div>
+</li>
+<li class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+<span class="font-medium">Mendoza, AR</span>
+</div>
+<span class="text-xs font-bold py-1 px-2 bg-white/10 rounded-full">Shared</span>
+</li>
+</ul>
+</div>
+<div class="mt-8 pt-8 border-t border-white/10">
+<p class="text-xs font-label uppercase tracking-widest text-tertiary-fixed-dim mb-4">Recommended Region</p>
+<div class="flex items-center gap-4">
+<div class="h-12 w-12 rounded-lg overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Vineyard in Tuscany landscape" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC348cXqa48Sgje7rNFrrJIRz5HTkO7X17riZWD3GvivXDOOMg9ZKRcb88XN7bqoJLNXK3rNTaHzI59ZyG3AhOGe5unYRtC0vnlnut-j9eTu-DiiFZF7qmpppYN7zAxEkT29sXVE3-3rRNBwQa30FKmW2nZmD_81ks4SOYXza16bET--tbdeX6HbEMUcyQk3iuWowIlpDTboC3NHW7ANF_ItbjOk-NVmMjZ9THoI2chcRB7hbaBoHG1TAk-JBA_rJXNwtOwT4pS-pY"/>
+</div>
+<div>
+<p class="font-bold">Valpolicella</p>
+<p class="text-xs text-white/60">Veneto, Italy</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Daily Recommendation -->
+<div class="md:col-span-12 bg-surface-container-low rounded-lg p-8 relative overflow-hidden min-h-[400px]">
+<div class="absolute top-0 right-0 w-1/2 h-full hidden lg:block">
+<img class="w-full h-full object-cover rounded-l-3xl shadow-2xl" data-alt="Fine dining table setting with wine" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9Cn_66Zi1NUssJP1MfXu5zSsWbnfeBW4cwbSqSl-6rxGbjl45Vc42UfMQg-B2ia_zXsM7M5sfu8wgwwyCL9OGWanN7IK1qnhkHDdQL55yQQ0-95UVJKTaB_Pdehkqr0YRUwFKJLihTMi5I98niN8JySd7hXqsXLlcVb9qIJaQSS1AnIWhlLvtlM9flN6ha_Ez9A1Jl39dM06ABytWnTqVRcYNNkFjoRF298kEgYY12BZGnrNbxljWI7YkSQ1UTqET7pp7MirG4No"/>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-low to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-xl">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface-variant rounded-full text-[10px] font-bold tracking-widest uppercase font-label inline-block mb-6">Signature Pairing</span>
+<h2 class="text-4xl font-black font-headline tracking-tighter mb-4">The Velvet &amp; Ember<br/>Pairing</h2>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Based on your joint preference for bold tannins and smoked botanicals, we recommend starting your next date with a 2018 Reserva Rioja paired with charred octopus and chorizo oil.</p>
+<div class="grid grid-cols-2 gap-4 mb-10">
+<div class="p-4 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary mb-2">restaurant</span>
+<p class="text-xs font-bold uppercase tracking-wider text-on-surface-variant/60 mb-1">Cuisine</p>
+<p class="font-bold">Contemporary Spanish</p>
+</div>
+<div class="p-4 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary mb-2">wine_bar</span>
+<p class="text-xs font-bold uppercase tracking-wider text-on-surface-variant/60 mb-1">Wine</p>
+<p class="font-bold">Tempranillo Blend</p>
+</div>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-primary/20 flex items-center gap-3 active:scale-95 transition-transform">
+<span>Reserve This Experience</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Bottle Gallery -->
+<div class="md:col-span-12 overflow-x-auto no-scrollbar py-4 -mx-6 px-6">
+<div class="flex gap-6 min-w-max">
+<div class="w-72 bg-surface-container-lowest rounded-lg p-6 group cursor-pointer shadow-sm hover:shadow-md transition-shadow">
+<div class="h-64 mb-6 relative">
+<img class="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform" data-alt="Bottle of premium red wine photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZ0564heOnhXWx20YHLKhunuaYrbvCRdMOVfbMKyPTWuRd4mXwrPUqeFt_2vuRl4gjyYpe21O33lXjeO0Mz8Pc-0wlsgeFBOmCw0xO4rzQREdoofxbH-gT9lxfvV7_DRzHbWdNZOZmxP01erCFXatugj6E6prTj27vEq2p8L79HbBRqMca4ImFHklIbUFSqMmtoJKl7Kdd6kilZrCL7PcS4WYh-fm1LZ3S1RAjhBHndr5_7_nqK6-PveV7HVEiThcA8258memqsaA"/>
+<div class="absolute top-2 right-2 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full">Top Match</div>
+</div>
+<h3 class="font-bold text-lg leading-tight mb-1">Chateau Margaux 2015</h3>
+<p class="text-sm text-on-surface-variant mb-4">Margaux, France</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Complex</span>
+<span class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Floral</span>
+</div>
+</div>
+<div class="w-72 bg-surface-container-lowest rounded-lg p-6 group cursor-pointer shadow-sm hover:shadow-md transition-shadow">
+<div class="h-64 mb-6 relative">
+<img class="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform" data-alt="Bottle of luxury champagne photography" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjGqRD1ChXrToppv0WHpUyBi4s4_ODuDOk6fwnj5_WeqWyIEwW4ej-wjcUMPWru03RzDiuwGaVKWeDzFTfhCSTqJf5wqJEf7NCYjcgJ12Vh42skk2w82AsPl6wrjHS82ExnKec-WDT0lGKukv6NgYMOmRJ3FV8fcTi-GwIg0qCTiWkBB8uVgSquCycpEvsQlSt4Lvw1p-t12P1gbHYyvM_TPrqpFORKM_G3lk9dvRzYp9f0JXK_P0zGgDn5IqTzlOdmDW9jffY25s"/>
+</div>
+<h3 class="font-bold text-lg leading-tight mb-1">Dom Pérignon P2</h3>
+<p class="text-sm text-on-surface-variant mb-4">Champagne, France</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Crisp</span>
+<span class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Brioche</span>
+</div>
+</div>
+<div class="w-72 bg-surface-container-lowest rounded-lg p-6 group cursor-pointer shadow-sm hover:shadow-md transition-shadow">
+<div class="h-64 mb-6 relative">
+<img class="w-full h-full object-contain mix-blend-multiply group-hover:scale-110 transition-transform" data-alt="Glass of red wine on table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnc39ZL4eQJxHvVaG081UQ3yxj9KBAHajnZrDn3lLZjxMub6vk7N-LdrErB1LZEsYRrWwv668p0UQme-i8N6WX6eHJZgXRFOWcctGJmqjXMBmUkb4l9tOjyazQeN7NFPHO9-C8vbYksu4ClpGXU9ft5nNh1Sa1sXWro04HNPLtHBRdOgHzNrKxpieS9UBez-Q8L3I0FNYCcLCfKA081jx75AVz9uj670RPvbnd-eZ4mQRRpRGlw5LoQyoSzUCAREYBpdGwZc6nDHk"/>
+</div>
+<h3 class="font-bold text-lg leading-tight mb-1">Sassicaia Tenuta San Guido</h3>
+<p class="text-sm text-on-surface-variant mb-4">Bolgheri, Italy</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Bold</span>
+<span class="px-2 py-1 bg-surface-container-high rounded text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Herbal</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-end px-4 pb-6 pt-2 bg-[#fdf9f3] dark:bg-[#1c1c18] border-t border-[#e0bfbd]/15 shadow-[0_-24px_48px_-12px_rgba(174,47,52,0.08)] z-50">
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 dark:text-[#fdf9f3]/40 p-2 hover:text-[#ae2f34] transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-2 shadow-lg shadow-[#ae2f34]/20 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">palette</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Palette</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 dark:text-[#fdf9f3]/40 p-2 hover:text-[#ae2f34] transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">star</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Elite</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 dark:text-[#fdf9f3]/40 p-2 hover:text-[#ae2f34] transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Curators</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 dark:text-[#fdf9f3]/40 p-2 hover:text-[#ae2f34] transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">school</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Academy</span>
+</a>
+</nav>
+</body></html>

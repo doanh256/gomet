@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET Partner Portal | VIP Waitlist Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface": "#1c1c18",
+                        "tertiary-container": "#cf8a7f",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#474747",
+                        "on-secondary-container": "#656464",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e4e2e1",
+                        "primary-fixed-dim": "#ffb3b0",
+                        "on-tertiary-container": "#55251e",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#ae2f34",
+                        "inverse-surface": "#31302d",
+                        "on-background": "#1c1c18",
+                        "tertiary-fixed": "#ffdad4",
+                        "primary": "#ae2f34",
+                        "surface-dim": "#dddad4",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "on-primary-container": "#6d0010",
+                        "surface-container-highest": "#e6e2dc",
+                        "surface-bright": "#fdf9f3",
+                        "background": "#fdf9f3",
+                        "on-primary-fixed": "#410006",
+                        "on-primary-fixed-variant": "#8c1520",
+                        "surface-container": "#f1ede7",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f4f0ea",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f7f3ed",
+                        "tertiary": "#894e45",
+                        "primary-fixed": "#ffdad8",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#c8c6c6",
+                        "inverse-primary": "#ffb3b0",
+                        "secondary": "#5f5e5e",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#e4e2e1",
+                        "error": "#ba1a1a",
+                        "outline": "#8c706f",
+                        "outline-variant": "#e0bfbd",
+                        "on-tertiary-fixed": "#370e08",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "primary-container": "#ff6b6b",
+                        "surface": "#fdf9f3",
+                        "surface-container-high": "#ebe8e2",
+                        "on-tertiary-fixed-variant": "#6d3830",
+                        "surface-variant": "#e6e2dc",
+                        "on-surface-variant": "#584140"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .premium-gradient {
+            background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- SideNavBar (The Anchor) -->
+<aside class="fixed left-0 top-0 flex flex-col h-full p-4 bg-stone-50 dark:bg-stone-950 h-screen w-64 border-r-0 z-40 transition-all duration-200 ease-in-out">
+<div class="mb-10 px-4">
+<span class="text-xl font-bold text-stone-900 dark:text-stone-50 font-headline">GOMET</span>
+<p class="text-[10px] uppercase tracking-widest text-tertiary font-bold mt-1">Partner Portal</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all font-jakarta text-sm font-medium" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-white dark:bg-stone-900 text-rose-600 dark:text-rose-400 rounded-xl px-4 py-3 shadow-sm font-jakarta text-sm font-medium" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span>Reservations</span>
+</a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all font-jakarta text-sm font-medium" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Venue Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all font-jakarta text-sm font-medium" href="#">
+<span class="material-symbols-outlined">group_add</span>
+<span>Member Requests</span>
+</a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all font-jakarta text-sm font-medium" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-stone-200/20 dark:bg-stone-800/20 rounded-xl flex items-center gap-3">
+<img alt="Partner Profile" class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a professional male venue manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF4tBaQ7ltU-RBOfNGWE4O5uWWtPgrTJvsp7-7ouvZd7fUktz3SpZk2pTuWdLgBK8Uu-ycB-TGb9KXvKz2PxY1f-Vu6WWfCAyD9pUWUYS9XegZgxN31H-AVfj3V2FWiuDuEFu1EWD4EwuhEFrOAfcO5rg-sBymP9tawCEKbMtr0k8aVlxs_lEUiAZwruDbRQ0T71SuztrMKYyfeHRiFK4TVGHgv6gupcZ1f32O4oH_P_NXWrU9vqbVNP4mtJ15M9r9Uivy8XrjmQI"/>
+<div>
+<p class="text-sm font-bold text-stone-900 dark:text-stone-50">Partner Portal</p>
+<p class="text-[10px] text-stone-500">GOMET Premium</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="ml-64 min-h-screen p-8 lg:p-12">
+<!-- Top Navigation / Header -->
+<header class="flex justify-between items-end mb-12">
+<div>
+<h1 class="text-4xl font-extrabold tracking-tighter text-on-surface mb-2">Waitlist Manager</h1>
+<p class="text-secondary font-medium">Managing high-demand access for <span class="text-primary">The Velvet Room • Friday Soirée</span></p>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-container-highest text-on-surface px-6 py-3 rounded-full font-semibold text-sm hover:opacity-80 transition-opacity">
+                    Export Guestlist
+                </button>
+<button class="premium-gradient text-white px-8 py-3 rounded-full font-bold text-sm shadow-lg shadow-primary/20 hover:scale-[0.98] transition-all">
+                    Add VIP Guest
+                </button>
+</div>
+</header>
+<!-- Stats Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<!-- Capacity Meter Card -->
+<div class="md:col-span-2 bg-surface-container-low p-8 rounded-lg relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="text-sm font-bold uppercase tracking-widest text-secondary mb-6">Venue Capacity</h3>
+<div class="flex items-baseline gap-2 mb-2">
+<span class="text-5xl font-extrabold tracking-tighter">142</span>
+<span class="text-secondary font-medium">/ 180 Guests</span>
+</div>
+<div class="w-full bg-surface-container-highest h-3 rounded-full mt-4 overflow-hidden">
+<div class="premium-gradient h-full rounded-full" style="width: 78%"></div>
+</div>
+<p class="text-xs text-secondary mt-4 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+                        Peak entry expected in 45 minutes
+                    </p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5">
+<span class="material-symbols-outlined text-[160px]">restaurant</span>
+</div>
+</div>
+<!-- Total Waitlist -->
+<div class="bg-surface-container-low p-8 rounded-lg">
+<h3 class="text-sm font-bold uppercase tracking-widest text-secondary mb-6">In Queue</h3>
+<div class="text-5xl font-extrabold tracking-tighter mb-2">38</div>
+<p class="text-xs text-secondary">Average wait: 22 mins</p>
+</div>
+<!-- Premium Ratio -->
+<div class="bg-surface-container-low p-8 rounded-lg">
+<h3 class="text-sm font-bold uppercase tracking-widest text-secondary mb-6">Premium Tier</h3>
+<div class="text-5xl font-extrabold tracking-tighter text-tertiary mb-2">12</div>
+<p class="text-xs text-secondary">Priority processing active</p>
+</div>
+</section>
+<!-- Waitlist Table / List -->
+<section class="bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden">
+<div class="p-6 border-b-0 flex justify-between items-center bg-surface-container-low/30">
+<div class="flex items-center gap-6">
+<h2 class="font-bold text-lg">Active Waitlist</h2>
+<div class="flex bg-surface-container-highest p-1 rounded-full">
+<button class="px-4 py-1.5 rounded-full text-xs font-bold bg-white shadow-sm text-primary">All (38)</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-bold text-secondary hover:text-on-surface">Premium (12)</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-bold text-secondary hover:text-on-surface">Standard (26)</button>
+</div>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-secondary text-sm">search</span>
+<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm w-64 focus:ring-1 focus:ring-primary" placeholder="Search members..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-secondary text-[10px] uppercase tracking-widest font-bold">
+<th class="px-8 py-4">Member Info</th>
+<th class="px-8 py-4">Tier</th>
+<th class="px-8 py-4">GOMET Score</th>
+<th class="px-8 py-4 text-center">Party Size</th>
+<th class="px-8 py-4">Wait Time</th>
+<th class="px-8 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1 -->
+<tr class="group hover:bg-surface-container-low/50 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="User Avatar" class="w-12 h-12 rounded-full object-cover" data-alt="Close up portrait of a smiling elegant woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvuGs-KgA4IGr0gs9OSPWUh3qIx_5wjUSUvEFF7F_-wZFgysr9SuywN3q6evXiBUAdsZpKEK_iK5kwpufb7_xWvDC8ggE4jHO0bQJ0CNZH5ewCLSk-RcCux4DTCYcwE0YWOdQ-q8NDCE3Ha-wyUnHWJfmESMomHyRqWgWg7oohSsXMWtoN34u7boyFo6LIqTCCXSkdFP9kynkDqdgeiL4IAZ9uY2cJdMaOn7hgNLb0ASgyKUXNcu10neWNmv0YbQ_X5kCd0FFxn0U"/>
+<div class="absolute -bottom-1 -right-1 bg-green-500 border-4 border-white w-4 h-4 rounded-full"></div>
+</div>
+<div>
+<p class="font-bold text-on-surface">Elena Rodriguez</p>
+<p class="text-xs text-secondary">Verified Member</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-tighter">Premium Elite</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">984</span>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-bold">2</td>
+<td class="px-8 py-6 text-secondary text-sm">8 mins</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-surface-container-highest text-on-surface p-2 rounded-full hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined text-sm">notifications</span>
+</button>
+<button class="bg-on-surface text-white px-4 py-2 rounded-full text-xs font-bold hover:premium-gradient transition-all">
+                                        Approve for Entry
+                                    </button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-surface-container-low/50 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<img alt="User Avatar" class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a young man with glasses and professional style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrrMyxZyHZimjPcgQnlRNc96FCjGRE3JMlBstA5CzUYgfRWs-kaGhUFJU1J9xnvttg5Gd_xarSkl9wpGITxnbPLRwl_ML1O9_Skq4kFgxO8jPmkpQM8xcCZvzmui36m0njG3LXNsvHK0Tird-nukLO5UB4LaAjWwdQjx670gt59Me7RHBr_LGJjdw5dj7E6maF57oPC7tn-vKHcWGAqCc1I43vYTadBewM-zcmNult3lyAUHRsSs_wO9XjCEY0eFaqZdlga4MOkFg"/>
+<div>
+<p class="font-bold text-on-surface">Julian Chen</p>
+<p class="text-xs text-secondary">Regular Guest</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="bg-surface-container-highest text-secondary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter">Standard</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold text-secondary">742</span>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-bold">4</td>
+<td class="px-8 py-6 text-secondary text-sm">15 mins</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-surface-container-highest text-on-surface p-2 rounded-full">
+<span class="material-symbols-outlined text-sm">notifications</span>
+</button>
+<button class="bg-on-surface text-white px-4 py-2 rounded-full text-xs font-bold">
+                                        Approve for Entry
+                                    </button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-surface-container-low/50 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<img alt="User Avatar" class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a woman with curly hair looking confident" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCr6fiQHUBCHX-7k9AkK8Vk5WcD6b4WKkSpA-s50UYRB6VDsQEun4kPC50qvhMuePTi_9YpltV7NXKfzhEE2tFi1qQnQGyrfZsjR4uLk8ZuHsfY_A64tUZqNozp5Pdj_tnqGkENN76x92iyIcTVDx2SJuPGKYvTCyhurDi_ylr7u2qhYlGNgZLD-WZz-tuHsczA74evcljwFCjvOJEihBkQvCovP77rTQxmuMK9IrjLgEF1wBnryH5S73gzUcZPjdwwH2ozXTcZ0cM"/>
+<div>
+<p class="font-bold text-on-surface">Sophia Vance</p>
+<p class="text-xs text-secondary">GOMET Ambassador</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-tighter">Premium Black</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-amber-500 text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-bold">1,250</span>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-bold">3</td>
+<td class="px-8 py-6 text-secondary text-sm">2 mins</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="bg-surface-container-highest text-on-surface p-2 rounded-full">
+<span class="material-symbols-outlined text-sm">notifications</span>
+</button>
+<button class="bg-on-surface text-white px-4 py-2 rounded-full text-xs font-bold">
+                                        Approve for Entry
+                                    </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-6 bg-surface-container-low/30 text-center">
+<button class="text-primary text-xs font-bold uppercase tracking-widest hover:underline underline-offset-4">Load More Guests</button>
+</div>
+</section>
+</main>
+<!-- Footer (The Bottom) -->
+<footer class="ml-64 w-auto py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 bg-stone-100 dark:bg-stone-900 border-t-0 font-inter text-xs uppercase tracking-widest">
+<div class="flex flex-col gap-2">
+<span class="font-plus-jakarta font-bold text-lg text-stone-900 dark:text-stone-50">GOMET</span>
+<p class="text-stone-500 dark:text-stone-400 normal-case tracking-normal">© 2024 GOMET Culinary Network. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 underline-offset-4 underline transition-all" href="#">Privacy</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 underline-offset-4 underline transition-all" href="#">Terms</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 underline-offset-4 underline transition-all" href="#">Concierge</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 underline-offset-4 underline transition-all" href="#">Press</a>
+</div>
+</footer>
+</body></html>

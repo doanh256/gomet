@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#ae2f34",
+              "surface-variant": "#e6e2dc",
+              "surface-container-low": "#f7f3ed",
+              "inverse-surface": "#31302d",
+              "on-primary-fixed": "#410006",
+              "secondary-container": "#e4e2e1",
+              "on-primary-container": "#6d0010",
+              "on-secondary-container": "#656464",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "background": "#fdf9f3",
+              "on-tertiary-fixed": "#370e08",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "error-container": "#ffdad6",
+              "inverse-primary": "#ffb3b0",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#dddad4",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "tertiary-container": "#cf8a7f",
+              "on-surface": "#1c1c18",
+              "tertiary": "#894e45",
+              "surface-container": "#f1ede7",
+              "on-tertiary": "#ffffff",
+              "outline": "#8c706f",
+              "on-background": "#1c1c18",
+              "primary": "#ae2f34",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-container-highest": "#e6e2dc",
+              "on-secondary-fixed-variant": "#474747",
+              "on-error-container": "#93000a",
+              "secondary": "#5f5e5e",
+              "primary-container": "#ff6b6b",
+              "outline-variant": "#e0bfbd",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#e4e2e1",
+              "on-error": "#ffffff",
+              "error": "#ba1a1a",
+              "on-surface-variant": "#584140",
+              "surface": "#fdf9f3",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-fixed": "#1b1c1c"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-gradient {
+            background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-primary-gradient {
+            background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-xl fixed top-0 w-full z-50">
+<nav class="flex justify-between items-center px-8 h-20 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-[#ae2f34] dark:text-[#ff6b6b]">GOMET</div>
+<div class="hidden md:flex items-center gap-8 font-['Plus_Jakarta_Sans'] tracking-tight font-bold text-sm uppercase">
+<a class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 hover:text-[#ae2f34] transition-colors" href="#">Concierge</a>
+<a class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 hover:text-[#ae2f34] transition-colors" href="#">Profile</a>
+<a class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 hover:text-[#ae2f34] transition-colors" href="#">Planner</a>
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] border-b-2 border-[#ae2f34] pb-1" href="#">Insights</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-[#f7f3ed]/50 dark:hover:bg-[#2a2a24]/50 transition-all rounded-full">
+<span class="material-symbols-outlined text-[#1c1c18]/60 dark:text-[#fdf9f3]/60">notifications</span>
+</button>
+<button class="p-2 hover:bg-[#f7f3ed]/50 dark:hover:bg-[#2a2a24]/50 transition-all rounded-full">
+<span class="material-symbols-outlined text-[#1c1c18]/60 dark:text-[#fdf9f3]/60">settings</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+<div class="flex flex-col lg:flex-row gap-12">
+<!-- Left Sidebar Navigation (Desktop) -->
+<aside class="hidden lg:block w-72 shrink-0">
+<div class="bg-surface-container-low rounded-lg p-6 sticky top-32">
+<h2 class="font-headline font-extrabold text-2xl tracking-tighter mb-8 text-on-surface">Notifications</h2>
+<nav class="space-y-2">
+<button class="w-full flex items-center gap-4 px-4 py-3 bg-surface-container-lowest text-primary rounded-full shadow-sm font-medium transition-all duration-300">
+<span class="material-symbols-outlined">all_inbox</span>
+<span class="font-label text-sm uppercase tracking-wider">All Updates</span>
+</button>
+<button class="w-full flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-label text-sm uppercase tracking-wider">Alpha News</span>
+</button>
+<button class="w-full flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">security</span>
+<span class="font-label text-sm uppercase tracking-wider">Security</span>
+</button>
+<button class="w-full flex items-center gap-4 px-4 py-3 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label text-sm uppercase tracking-wider">Account</span>
+</button>
+</nav>
+<div class="mt-12 p-6 bg-primary-gradient rounded-lg text-on-primary">
+<p class="font-headline font-bold mb-2">Alpha Member</p>
+<p class="text-xs opacity-90 leading-relaxed mb-4">You have access to exclusive culinary previews.</p>
+<button class="w-full bg-surface-container-lowest text-primary py-2 rounded-full font-label text-xs font-bold uppercase tracking-widest">Upgrade</button>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<section class="flex-1">
+<div class="flex items-end justify-between mb-12">
+<div>
+<span class="font-label text-xs font-bold tracking-[0.2em] text-primary uppercase mb-2 block">Central Hub</span>
+<h1 class="font-headline text-5xl font-black tracking-tighter leading-tight">System <br/>Notifications</h1>
+</div>
+<button class="hidden sm:flex items-center gap-2 font-label text-xs font-bold text-on-surface-variant uppercase tracking-widest hover:text-primary transition-colors">
+                        Mark all as read
+                        <span class="material-symbols-outlined text-sm">done_all</span>
+</button>
+</div>
+<!-- Featured Update (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="md:col-span-2 relative h-80 bg-surface-container-highest rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover opacity-60 mix-blend-multiply group-hover:scale-105 transition-transform duration-700" data-alt="Modern upscale restaurant interior with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6WS1-1e-3DR29OZqV84ZzqldxiUyHAgZBZJdE6LH8Y2fccG8WTw7QyVPmHnboj4eeNBgC4DFNwLLomrn3uPI-UdN92I0QmxDWvfu3luDZ9hUSGeMjJIq-ZhBbYR3kSnp_dZdPesCPR-DILUXTKEn7SBoSZpltyu4_PDLQsPhnCK-RrrTPyK_ZJu_NxThLZn_T9WIut7RDy-zsYacayQLM2CwRfPPVQ4mFUGQ_74_FL8VKOt-IdJRFDPr0WGC2yQVeuErG8sarzoA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-8 flex flex-col justify-end">
+<span class="inline-block px-3 py-1 bg-primary text-on-primary text-[10px] font-black uppercase tracking-widest rounded-full w-fit mb-4">Alpha News</span>
+<h3 class="text-white font-headline text-3xl font-bold tracking-tight mb-2">Winter Reservation Season is Live</h3>
+<p class="text-white/80 font-body text-sm max-w-md">Priority access for GOMET Alpha members is now active for over 500 Michelin-starred venues.</p>
+</div>
+</div>
+<div class="bg-tertiary-container/20 rounded-lg p-8 flex flex-col justify-between border border-outline-variant/10">
+<span class="material-symbols-outlined text-tertiary text-4xl" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div>
+<h4 class="font-headline font-bold text-xl mb-2 text-on-tertiary-container">Biometric Security</h4>
+<p class="text-sm text-on-tertiary-container/70 mb-4">We've enhanced your account protection with 2FA layers.</p>
+<a class="text-xs font-black uppercase tracking-widest text-tertiary hover:underline" href="#">Review Settings</a>
+</div>
+</div>
+</div>
+<!-- Notifications List -->
+<div class="space-y-4">
+<!-- Security Update Item -->
+<div class="group bg-surface-container-lowest p-6 rounded-lg transition-all hover:bg-surface-container-low flex gap-6 items-start relative overflow-hidden">
+<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary transform scale-y-0 group-hover:scale-y-100 transition-transform"></div>
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-error-container">security</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant">Security Update • 2h ago</span>
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+</div>
+<h4 class="font-headline font-bold text-lg text-on-surface group-hover:text-primary transition-colors">New Login Detected in Paris, FR</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed mt-1">A new sign-in was detected from a Chrome browser on MacOS. If this wasn't you, please secure your account immediately.</p>
+<div class="mt-4 flex gap-4">
+<button class="px-5 py-2 bg-on-background text-background rounded-full text-xs font-bold uppercase tracking-widest hover:opacity-90 transition-opacity">That was me</button>
+<button class="px-5 py-2 border border-outline-variant text-on-surface-variant rounded-full text-xs font-bold uppercase tracking-widest hover:bg-surface-container-high transition-all">Secure Account</button>
+</div>
+</div>
+</div>
+<!-- Alpha News Item -->
+<div class="group bg-surface-container-lowest p-6 rounded-lg transition-all hover:bg-surface-container-low flex gap-6 items-start">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant">Alpha News • Yesterday</span>
+</div>
+<h4 class="font-headline font-bold text-lg text-on-surface">The Concierge Intelligence Upgrade</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed mt-1">GOMET's AI concierge now understands regional Italian dialects for more precise venue recommendations in the Tuscan countryside.</p>
+</div>
+</div>
+<!-- Account Alert Item -->
+<div class="group bg-surface-container-lowest p-6 rounded-lg transition-all hover:bg-surface-container-low flex gap-6 items-start">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-secondary-container">credit_card</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant">Account Alert • 3 days ago</span>
+</div>
+<h4 class="font-headline font-bold text-lg text-on-surface">Subscription Renewal Success</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed mt-1">Your Alpha Membership has been successfully renewed. Thank you for being a part of the elite culinary community.</p>
+<button class="mt-4 text-xs font-black uppercase tracking-widest text-primary hover:underline">Download Invoice</button>
+</div>
+</div>
+<!-- System Update Item -->
+<div class="group bg-surface-container-lowest p-6 rounded-lg transition-all hover:bg-surface-container-low flex gap-6 items-start">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant">terminal</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start mb-1">
+<span class="font-label text-[10px] font-black uppercase tracking-[0.15em] text-on-surface-variant">System • 1 week ago</span>
+</div>
+<h4 class="font-headline font-bold text-lg text-on-surface">Scheduled Maintenance</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed mt-1">GOMET will undergo brief maintenance on Sunday between 2:00 AM and 4:00 AM GMT to optimize our reservation engines.</p>
+</div>
+</div>
+</div>
+<!-- Load More Asymmetric CTA -->
+<div class="mt-16 flex justify-center">
+<div class="relative group cursor-pointer">
+<div class="absolute -inset-1 bg-primary-gradient rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+<button class="relative px-12 py-5 bg-background rounded-full border border-primary/20 font-headline font-bold text-primary tracking-tight group-hover:scale-105 transition-transform duration-300">
+                            Explore Archive
+                        </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Contextual FAB (Only for main news/actions) -->
+<div class="fixed bottom-10 right-10 z-50">
+<button class="w-16 h-16 bg-primary-gradient rounded-full flex items-center justify-center text-on-primary shadow-2xl hover:scale-110 transition-transform active:scale-95 duration-200">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">edit_notifications</span>
+</button>
+</div>
+<!-- Mobile Navigation Shell Placeholder -->
+<footer class="md:hidden fixed bottom-0 w-full bg-[#fdf9f3]/95 backdrop-blur-md px-6 py-4 flex justify-around items-center border-t border-transparent z-50">
+<span class="material-symbols-outlined text-primary">dashboard</span>
+<span class="material-symbols-outlined text-on-surface-variant">restaurant</span>
+<span class="material-symbols-outlined text-on-surface-variant">insights</span>
+<span class="material-symbols-outlined text-on-surface-variant">settings</span>
+</footer>
+</body></html>

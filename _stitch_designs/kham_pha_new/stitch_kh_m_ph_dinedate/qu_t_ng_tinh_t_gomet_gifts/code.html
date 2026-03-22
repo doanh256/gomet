@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#ff6b6b",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "outline": "#8c706f",
+              "inverse-on-surface": "#f4f0ea",
+              "on-surface": "#1c1c18",
+              "secondary-fixed": "#e4e2e1",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "outline-variant": "#e0bfbd",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-dim": "#dddad4",
+              "secondary-fixed-dim": "#c8c6c6",
+              "tertiary": "#894e45",
+              "on-background": "#1c1c18",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#410006",
+              "secondary": "#5f5e5e",
+              "on-tertiary-fixed": "#370e08",
+              "surface-bright": "#fdf9f3",
+              "on-secondary-container": "#656464",
+              "secondary-container": "#e4e2e1",
+              "on-error": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "background": "#fdf9f3",
+              "on-secondary-fixed-variant": "#474747",
+              "on-tertiary-container": "#55251e",
+              "on-primary-container": "#6d0010",
+              "error": "#ba1a1a",
+              "tertiary-container": "#cf8a7f",
+              "surface-variant": "#e6e2dc",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-highest": "#e6e2dc",
+              "surface": "#fdf9f3",
+              "on-secondary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed": "#ffdad8",
+              "error-container": "#ffdad6",
+              "surface-container": "#f1ede7",
+              "primary": "#ae2f34",
+              "inverse-surface": "#31302d",
+              "inverse-primary": "#ffb3b0",
+              "surface-container-low": "#f7f3ed",
+              "on-tertiary-fixed-variant": "#6d3830"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .gradient-primary {
+        background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+      }
+      body {
+        background-color: #fdf9f3;
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+</head>
+<body class="text-on-background">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-950/80 backdrop-blur-xl shadow-sm shadow-rose-900/5">
+<div class="flex justify-between items-center px-6 h-20 w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-rose-800 dark:text-rose-500 uppercase font-['Plus_Jakarta_Sans']">
+                GOMET Alpha
+            </div>
+<div class="hidden md:flex items-center space-x-8 font-['Plus_Jakarta_Sans'] tracking-tight">
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-colors" href="#">Dating</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-colors" href="#">Events</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-colors" href="#">Bistro</a>
+<a class="text-rose-700 dark:text-rose-400 font-semibold border-b-2 border-rose-700" href="#">Gifts</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400">search</span>
+<input class="pl-10 pr-4 py-2 bg-stone-100/50 border-none rounded-full text-sm focus:ring-primary w-64" placeholder="Tìm quà tặng..." type="text"/>
+</div>
+<button class="p-2 text-stone-500 hover:bg-rose-50/50 rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-stone-500 hover:bg-rose-50/50 rounded-full transition-colors">
+<span class="material-symbols-outlined">calendar_month</span>
+</button>
+</div>
+</div>
+</header>
+<!-- SideNavBar Shell (Desktop) -->
+<aside class="hidden lg:flex h-screen w-72 fixed left-0 top-0 z-[60] flex-col p-6 space-y-8 bg-stone-50 dark:bg-stone-900 shadow-2xl shadow-stone-900/20">
+<div class="flex flex-col items-center pt-4">
+<div class="w-20 h-20 rounded-full overflow-hidden mb-4 ring-4 ring-rose-100">
+<img class="w-full h-full object-cover" data-alt="User profile photo of a premium member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAi_1yugXon_WiN6VsjXu6G58-GwNePmA1o_i-W-krfSEAUvsyEMNFrUNNpFuIsloTNdwB8Nl3_E8GHZ50t7mzgET1sBpDfOoAr34evHBNQUKdXgJIaT0dUd_23853rzrMQoN74VfOGk3pFOvlWSZ2fvTzoF-GmhZUQ7cbKGqGgfQX2gNuS8ldd9ThWrCUirYko2vN0IKUgAQzA-Ar7h-v3r2Al2Srjr0NnnsM9SC-nOvKAahG4Azhp_cwq6kRzhJVGFBgXn8Xjw_Q"/>
+</div>
+<h2 class="text-xl font-extrabold text-rose-800 font-headline">Velvet Lounge</h2>
+<p class="text-xs text-stone-500 uppercase tracking-widest font-medium">Premium Member</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-stone-400 hover:translate-x-1 hover:bg-stone-200/50 rounded-full transition-all duration-300 font-label" href="#">
+<span class="material-symbols-outlined">favorite</span> Dating
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-stone-400 hover:translate-x-1 hover:bg-stone-200/50 rounded-full transition-all duration-300 font-label" href="#">
+<span class="material-symbols-outlined">event_upcoming</span> Events
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-stone-400 hover:translate-x-1 hover:bg-stone-200/50 rounded-full transition-all duration-300 font-label" href="#">
+<span class="material-symbols-outlined">restaurant</span> Bistro
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-200 rounded-full font-label font-semibold" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">card_giftcard</span> GOMET Gifts
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-stone-400 hover:translate-x-1 hover:bg-stone-200/50 rounded-full transition-all duration-300 font-label" href="#">
+<span class="material-symbols-outlined">person</span> Profile
+            </a>
+</nav>
+<div class="pt-6 space-y-2 border-t border-stone-200/30">
+<button class="w-full gradient-primary text-white py-4 rounded-xl font-bold tracking-tight shadow-lg shadow-rose-900/20 active:scale-95 transition-transform">
+                Book a Table
+            </button>
+<div class="flex justify-around pt-4">
+<span class="material-symbols-outlined text-stone-400 hover:text-rose-700 cursor-pointer">settings</span>
+<span class="material-symbols-outlined text-stone-400 hover:text-rose-700 cursor-pointer">contact_support</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-72 pt-28 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
+<!-- Hero Header -->
+<section class="mb-16 relative">
+<div class="absolute -top-10 -left-10 w-64 h-64 bg-rose-200/20 rounded-full blur-3xl -z-10"></div>
+<div class="max-w-2xl">
+<span class="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">Hệ thống Quà tặng Tinh tế</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold tracking-tighter text-on-background mb-6 leading-tight">
+                    GOMET <span class="text-primary">Gifts.</span>
+</h1>
+<p class="text-lg text-on-surface-variant font-body leading-relaxed">
+                    Gói trọn chân thành trong từng món quà được tuyển chọn kỹ lưỡng. Từ hương rượu vang nồng nàn đến sắc hoa tinh khôi, hãy để chúng tôi giúp bạn tạo nên khoảnh khắc đáng nhớ.
+                </p>
+</div>
+</section>
+<!-- Category Filter Chips -->
+<div class="flex flex-wrap gap-3 mb-12">
+<button class="px-6 py-2.5 gradient-primary text-white rounded-full text-sm font-semibold shadow-md">Tất cả</button>
+<button class="px-6 py-2.5 bg-surface-container-high text-on-surface rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Hoa tươi</button>
+<button class="px-6 py-2.5 bg-surface-container-high text-on-surface rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Rượu vang</button>
+<button class="px-6 py-2.5 bg-surface-container-high text-on-surface rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Socola</button>
+<button class="px-6 py-2.5 bg-surface-container-high text-on-surface rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Combo Đặc biệt</button>
+</div>
+<!-- Bento Grid Gift Items -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Item 1: Wine -->
+<div class="group relative bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
+<div class="relative h-80 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Premium red wine bottle with elegant glass" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdXEh_RkyrBmVCCtIMQRXq2ZI68RtJr9V7WUTu8lSJ_WDho4jL2nrUnQkSN7V0vVcixkih8ucU3a_FOgI0v6rab0mT9OC9v9sDhSQQ6RF5uxb9N86UkUvN4H9U3RKg1ueE2pJDdOSpw2zoqwTb1kYe6EwkXBE7DnGnq6D-BhPvqD35rX4dH2iofKtnn712FTlvZySjfBRCIv-VEBTjne0RG_i44m3R1wsijy5NbwA7PNXJZnwR3TCZboO5bI5xWEB9Z765lfTxwPs"/>
+<div class="absolute top-4 right-4 bg-white/90 glass-effect px-3 py-1 rounded-full text-xs font-bold text-primary">BEST SELLER</div>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-xl font-headline font-bold text-on-background">Château Margaux 2015</h3>
+<span class="text-primary font-bold text-lg">2.450k</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Vị chát mượt mà, hương gỗ sồi và trái cây chín mọng, sự lựa chọn hoàn hảo cho buổi tối lãng mạn.</p>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-3 bg-surface-container text-on-surface font-semibold rounded-lg hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+                            Gửi kèm lời nhắn
+                        </button>
+<button class="w-12 h-12 gradient-primary text-white rounded-lg flex items-center justify-center shadow-lg shadow-rose-900/10">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 2: Flowers (Large) -->
+<div class="md:col-span-2 group relative bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row">
+<div class="relative md:w-1/2 h-80 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Elegant bouquet of red roses and lilies" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEdrEQLm54iPa38_ac80nIQAoHCdILoAdbusR3QyWSqIwupit9oWUBBa2fI4PGfa7_oZL6hjHrCFVGgL5sNEv2DbGPuU4gT_iyNbR69l5-g2cob04uv8KK_8aeruzl02HTW9BoA38C_76lvEWXjc_xi5pBTHcTWKEtdLnF57ZdVlZbmGreWSrJsLzwwa2q0bqQbUtrC06MnK34cFME5JkxAifQiUGzepONwMtr9dJ-oFfFBIaGCqql0mC4BiR_dl_KPEFRi0ALZKg"/>
+</div>
+<div class="p-8 md:w-1/2 flex flex-col justify-center">
+<div class="mb-4">
+<span class="text-xs uppercase tracking-tighter text-tertiary font-bold">Premium Bouquet</span>
+<h3 class="text-3xl font-headline font-extrabold text-on-background mt-2">Eternal Romance</h3>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">99 bông hồng Ecuador đỏ thẫm được cắm nghệ thuật trong hộp nhung cao cấp. Biểu tượng của tình yêu vĩnh cửu và sự trân trọng tuyệt đối.</p>
+<div class="flex items-center gap-4 mb-8">
+<span class="text-3xl font-bold text-on-background">1.800k</span>
+<span class="text-stone-400 line-through text-sm">2.200k</span>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 py-4 gradient-primary text-white font-bold rounded-lg shadow-lg shadow-rose-900/20 active:scale-95 transition-transform">
+                            Chọn Quà Ngay
+                        </button>
+<button class="px-6 py-4 bg-surface-container-high text-on-surface font-semibold rounded-lg hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined align-middle">edit_note</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 3: Chocolate -->
+<div class="group relative bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
+<div class="relative h-80 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Artisanal luxury chocolates in a gold box" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQgZme4Z7b13F6tfQuckGgDpDqrU3XacayitQi3uaa_pZRWvuQd9YbbO-uyVbald6_K1lpLvPv0emMOOJxQzuU3furr-E4_7rt2fBMpE0c7TQAWWwRkLLjC2HgAfrMbHwKnvZa2xvkhSB28b0Zj-nmMjVCfu_Pf5belN3TKe2YV6sW9wOM9rHM1YUvkeHyAC9gNzJ-6SswurdbVkdzxg10rcek425fr_fSR0YDcG3iFD88nrVcpr_vQ82H_2GMBm2Cuh5LQC0UJik"/>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-xl font-headline font-bold text-on-background">Velvet Truffles Box</h3>
+<span class="text-primary font-bold text-lg">650k</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Socola thủ công từ nghệ nhân Bỉ, tan chảy nhẹ nhàng với nhân kem hạt dẻ và muối biển.</p>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-3 bg-surface-container text-on-surface font-semibold rounded-lg hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+                            Gửi kèm lời nhắn
+                        </button>
+<button class="w-12 h-12 gradient-primary text-white rounded-lg flex items-center justify-center shadow-lg shadow-rose-900/10">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Item 4: Bistro Combo -->
+<div class="group relative bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col">
+<div class="relative h-80 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Wine, flowers and gift box arrangement" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBF7TWciwaNJSOSLPBov7bS9TFjjO1EC0xzM8dzTeY3aE3QQzWXk54HaqSz3kdVZSeQv5qrJyqcMjsHnpuNyNA4Q2zSJU2DXmQMbfgfwyck5AM7TDzm77ZC6S02a0DLn4Lm9C0j6IAq3VUjryWLSPtvqH2bymu0wv-zi1p7D2NVKV3NH40qLcr04HmRKbrBFXuT8ThlAdvR8zWF3UpDz_LsebFUeaBXaPnRDTaTFKkL3s9JMZhcn9QAIMKdLnFk5sfzHN_hSUFqy0o"/>
+</div>
+<div class="p-6 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-xl font-headline font-bold text-on-background">Midnight Velvet Combo</h3>
+<span class="text-primary font-bold text-lg">3.200k</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Sự kết hợp hoàn hảo gồm 1 chai vang Pháp, 1 bó hồng mini và hộp nến thơm cao cấp.</p>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-3 bg-surface-container text-on-surface font-semibold rounded-lg hover:bg-surface-container-highest transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">edit_note</span>
+                            Gửi kèm lời nhắn
+                        </button>
+<button class="w-12 h-12 gradient-primary text-white rounded-lg flex items-center justify-center shadow-lg shadow-rose-900/10">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Promotion Card -->
+<div class="relative rounded-lg p-8 gradient-primary text-white flex flex-col justify-between overflow-hidden">
+<div class="absolute -right-10 -bottom-10 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
+<div>
+<span class="material-symbols-outlined text-4xl mb-4">stars</span>
+<h3 class="text-2xl font-headline font-bold mb-4 leading-tight">Gói Quà &amp; Thiệp Tay Miễn Phí</h3>
+<p class="text-white/80 font-body text-sm mb-6">Mọi đơn hàng quà tặng đều được Velvet Bistro đóng gói thủ công và viết thiệp tay theo yêu cầu của bạn.</p>
+</div>
+<button class="w-full py-3 bg-white text-primary font-bold rounded-lg hover:bg-rose-50 transition-colors">
+                    Tìm hiểu thêm
+                </button>
+</div>
+</div>
+<!-- Floating Message Preview Section (Asymmetric UI) -->
+<section class="mt-24 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<div class="lg:col-span-7">
+<div class="relative">
+<div class="absolute -top-6 -left-6 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white z-10 shadow-xl">
+<span class="material-symbols-outlined">format_quote</span>
+</div>
+<div class="bg-surface-container-low p-10 rounded-xl border-l-8 border-primary shadow-lg">
+<h4 class="text-2xl font-headline font-bold mb-6 italic text-on-surface">"Gửi đi tâm tình, nhận lại chân tình."</h4>
+<div class="space-y-6">
+<div class="bg-white p-4 rounded-lg shadow-sm">
+<p class="text-sm font-label text-stone-400 mb-2 uppercase tracking-widest">Tin nhắn mẫu</p>
+<p class="text-on-surface font-medium">"Hy vọng món quà nhỏ này sẽ mang lại nụ cười rạng rỡ trên môi em hôm nay. Mong sớm được gặp lại em tại Velvet Bistro."</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest"></div>
+<div class="h-4 w-32 bg-surface-container-highest rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5">
+<h2 class="text-3xl font-headline font-bold mb-6 text-on-background">Tạo dấu ấn riêng</h2>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Đừng chỉ gửi quà, hãy gửi cả những lời nhắn nhủ chân thành. Chúng tôi hỗ trợ in lời nhắn cá nhân trên giấy mỹ thuật cao cấp, đảm bảo đối phương sẽ cảm nhận được sự tinh tế của bạn.</p>
+<div class="space-y-4">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface font-medium">Giấy viết tay nghệ thuật (Calligraphy)</span>
+</div>
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-on-surface font-medium">Giao hàng bí mật trong vòng 2h</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl border-t-0 flex justify-around items-center h-20 px-6 z-50">
+<a class="flex flex-col items-center gap-1 text-stone-500" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Dating</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-stone-500" href="#">
+<span class="material-symbols-outlined">event_upcoming</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Events</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">card_giftcard</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Gifts</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-stone-500" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Bistro</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-stone-500" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Profile</span>
+</a>
+</nav>
+<!-- FAB for quick contact (Suppressed based on context but useful for help) -->
+<button class="fixed bottom-24 right-6 md:bottom-10 md:right-10 w-16 h-16 gradient-primary text-white rounded-full shadow-2xl flex items-center justify-center glass-effect active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined text-3xl">chat_bubble</span>
+</button>
+</body></html>

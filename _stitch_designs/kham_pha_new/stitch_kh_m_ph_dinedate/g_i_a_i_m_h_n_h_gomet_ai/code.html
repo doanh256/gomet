@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET Alpha - Venue Recommender</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#1b1c1c",
+              "on-primary-container": "#6d0010",
+              "primary": "#ae2f34",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-bright": "#fdf9f3",
+              "background": "#fdf9f3",
+              "on-primary": "#ffffff",
+              "surface-container-low": "#f7f3ed",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-lowest": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "primary-container": "#ff6b6b",
+              "on-primary-fixed": "#410006",
+              "on-secondary-container": "#656464",
+              "on-tertiary-fixed": "#370e08",
+              "surface-variant": "#e6e2dc",
+              "secondary-fixed": "#e4e2e1",
+              "surface": "#fdf9f3",
+              "inverse-surface": "#31302d",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-primary-fixed-variant": "#8c1520",
+              "inverse-primary": "#ffb3b0",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-container": "#cf8a7f",
+              "on-error-container": "#93000a",
+              "outline-variant": "#e0bfbd",
+              "secondary-container": "#e4e2e1",
+              "secondary": "#5f5e5e",
+              "primary-fixed": "#ffdad8",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "surface-container-highest": "#e6e2dc",
+              "surface-dim": "#dddad4",
+              "on-secondary-fixed-variant": "#474747",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "outline": "#8c706f",
+              "tertiary": "#894e45",
+              "on-surface": "#1c1c18",
+              "surface-container-high": "#ebe8e2",
+              "on-background": "#1c1c18",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "secondary-fixed-dim": "#c8c6c6",
+              "on-secondary": "#ffffff",
+              "surface-container": "#f1ede7"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased mb-24 md:mb-0 md:pt-20">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-xl shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black italic text-[#ae2f34] dark:text-[#ff6b6b] font-['Plus_Jakarta_Sans'] tracking-tight">GOMET Alpha</span>
+<div class="hidden md:flex gap-6">
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] border-b-2 border-[#ae2f34] font-['Plus_Jakarta_Sans'] tracking-tight font-bold hover:opacity-100 transition-opacity duration-300 active:scale-95 transition-transform" href="#">Venues</a>
+<a class="text-[#1c1c18] dark:text-[#fdf9f3] opacity-70 font-['Plus_Jakarta_Sans'] tracking-tight font-bold hover:opacity-100 transition-opacity duration-300 active:scale-95 transition-transform" href="#">Referrals</a>
+<a class="text-[#1c1c18] dark:text-[#fdf9f3] opacity-70 font-['Plus_Jakarta_Sans'] tracking-tight font-bold hover:opacity-100 transition-opacity duration-300 active:scale-95 transition-transform" href="#">Feedback</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex bg-surface-container-high rounded-full px-4 py-2 items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-body" placeholder="Search venues..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-secondary hover:opacity-100 transition-opacity" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-secondary hover:opacity-100 transition-opacity" data-icon="account_circle">account_circle</button>
+</div>
+</nav>
+<main class="max-w-7xl mx-auto px-6 py-12">
+<!-- Hero Section & Questionnaire -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<div class="lg:col-span-5 space-y-8">
+<div class="relative">
+<h1 class="text-6xl md:text-7xl font-headline font-black tracking-tighter text-on-surface leading-[0.9] -ml-1">
+                        Where <br/> <span class="text-primary">should we go?</span>
+</h1>
+<div class="mt-6 flex items-center gap-3">
+<span class="bg-primary-container/20 text-primary px-4 py-1.5 rounded-full text-xs font-bold font-label tracking-widest uppercase">AI-Driven Selection</span>
+<div class="h-[1px] flex-grow bg-outline-variant/30"></div>
+</div>
+</div>
+<p class="text-lg text-on-surface-variant leading-relaxed font-body max-w-md">
+                    Skip the endless scroll. Answer three quick questions and let our curator find the perfect table for your connection.
+                </p>
+<!-- Questionnaire Shell -->
+<div class="bg-surface-container-low p-8 rounded-lg shadow-sm space-y-8">
+<!-- Vibe Selection -->
+<div class="space-y-4">
+<label class="block font-headline font-bold text-xl tracking-tight">The Vibe</label>
+<div class="flex flex-wrap gap-3">
+<button class="px-6 py-3 rounded-full bg-primary text-on-primary font-label text-sm font-bold shadow-lg shadow-primary/20 transition-transform active:scale-95">Romantic</button>
+<button class="px-6 py-3 rounded-full bg-surface-container-highest text-on-surface font-label text-sm font-bold hover:bg-surface-variant transition-colors">Quiet</button>
+<button class="px-6 py-3 rounded-full bg-surface-container-highest text-on-surface font-label text-sm font-bold hover:bg-surface-variant transition-colors">Party</button>
+</div>
+</div>
+<!-- Cuisine Preference -->
+<div class="space-y-4">
+<label class="block font-headline font-bold text-xl tracking-tight">Cuisine</label>
+<div class="relative">
+<select class="w-full bg-surface-container-highest border-none rounded-lg p-4 font-body text-on-surface focus:ring-2 focus:ring-primary/20 appearance-none">
+<option>Modern Italian</option>
+<option>Japanese Fusion</option>
+<option>Traditional French</option>
+<option>Mediterranean Mezze</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-secondary" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Budget Slider -->
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<label class="font-headline font-bold text-xl tracking-tight">Budget</label>
+<span class="text-primary font-bold font-label">Moderate ($$$)</span>
+</div>
+<input class="w-full h-2 bg-surface-container-highest rounded-full appearance-none cursor-pointer accent-primary" max="4" min="1" type="range" value="2"/>
+<div class="flex justify-between text-xs font-label text-secondary font-bold uppercase tracking-widest">
+<span>$</span>
+<span>$$</span>
+<span>$$$</span>
+<span>$$$$</span>
+</div>
+</div>
+<button class="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-extrabold text-lg rounded-full shadow-xl shadow-primary/20 transition-all hover:scale-[1.02] active:scale-95">
+                        Find My Perfect Venue
+                    </button>
+</div>
+</div>
+<!-- Results Section - Asymmetric Bento Grid -->
+<div class="lg:col-span-7 space-y-8">
+<div class="flex justify-between items-end">
+<h2 class="font-headline font-bold text-2xl tracking-tight">Curated for you</h2>
+<span class="text-secondary font-label text-sm font-semibold italic">Based on your mood today</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Venue Card 1: Large Feature -->
+<div class="md:col-span-2 group relative overflow-hidden bg-surface-container-lowest rounded-lg shadow-sm">
+<div class="aspect-[21/9] overflow-hidden">
+<img alt="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="High-end cocktail bar with warm mood lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCleFkCE1_WkIn7yr8sBAENkSJMW1EzIg27wd5LVPr3MFwwJVsk5-3uqeo8DsolUuUqJDO5jcJhNmLQU1SGfGthcGxAwuR4FQGJ8XQUJ22U0wQv4n9N3bQYkZyoOKi3KFkyZ3HwAOGwzWeaLIasHJd8gG68jvymV8uoM0EByMudA3JjMPimKhE2BpOEFmEJ7jTfZgxnqRJu8QvK3iol6MsD2tcxEAsNgbYMV_ilqlP1FToQlehsuHnWWWm6xbFBqr-Uz_epYlrETn0"/>
+</div>
+<div class="p-8 relative">
+<div class="absolute -top-6 left-8 flex gap-2">
+<span class="bg-primary text-on-primary px-4 py-1.5 rounded-full text-xs font-bold font-label tracking-widest uppercase shadow-lg shadow-primary/20">Best for First Impressions</span>
+</div>
+<div class="flex justify-between items-start mt-2">
+<div>
+<h3 class="text-3xl font-headline font-bold tracking-tight text-on-surface">The Velvet Lounge</h3>
+<p class="text-on-surface-variant font-body mt-1">Mayfair • Cocktails &amp; Small Plates</p>
+</div>
+<div class="bg-surface-container-low px-4 py-2 rounded-lg text-center">
+<div class="flex text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-sm" data-icon="star_half" data-weight="fill" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<span class="text-xs font-bold text-on-surface-variant">4.8 Rating</span>
+</div>
+</div>
+<div class="mt-6 flex gap-4">
+<button class="flex-grow py-3 bg-surface-container-highest text-on-surface font-label text-sm font-bold rounded-full hover:bg-surface-variant transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="visibility">visibility</span> View Venue
+                                </button>
+<button class="flex-grow py-3 bg-primary text-on-primary font-label text-sm font-bold rounded-full hover:shadow-lg transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="send">send</span> Suggest to Match
+                                </button>
+</div>
+</div>
+</div>
+<!-- Venue Card 2 -->
+<div class="group bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden flex flex-col">
+<div class="aspect-square overflow-hidden relative">
+<img alt="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Intimate italian dining room with candlelight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSfWY2VsLNHgx5heCk0WdNQLuFIzHgTQOkax-1UobyLFwDm-wRPkq8gyuNL5iFVui0mu2htj1SNtiFFUNb_tywbilT3qNFXcAGUmOg8g9KvEaKUB2f9qAeFoycRpk-R6Rx6kpt-1p3wWQ4S7e4SOtXTWudcGyFo8yaY6OOcpETcq2-X5MoLbiL0DfzuBhwd6Kcph4tOVkX2SODyqjb5_wqWWwAEBiDZMO-WJLeBHXTguRkDoyGe5IAmx5KjmacacYPp2V1S9pwJOw"/>
+<div class="absolute top-4 left-4">
+<span class="bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface px-3 py-1 rounded-full text-[10px] font-bold font-label tracking-widest uppercase">Best for Romance</span>
+</div>
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between">
+<div>
+<h3 class="text-xl font-headline font-bold tracking-tight">Osteria Bianca</h3>
+<p class="text-sm text-on-surface-variant font-body">Soho • Modern Italian</p>
+</div>
+<button class="mt-6 w-full py-3 border-2 border-outline-variant/30 text-primary font-label text-sm font-bold rounded-full hover:bg-primary/5 transition-colors">
+                                Suggest to Match
+                            </button>
+</div>
+</div>
+<!-- Venue Card 3 -->
+<div class="group bg-surface-container-lowest rounded-lg shadow-sm overflow-hidden flex flex-col">
+<div class="aspect-square overflow-hidden relative">
+<img alt="" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Plated fine dining dish with artistic presentation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVKefQDZzbE6o3Hv25m2gIWSO_syVObx84_ELtHptw8Kh0mrM48XdYVE_WQg5a6RiaXS33-IjoVJa12BgM74LGYMXQ2f2aNY0sNZcvyQFPV_aUGAxPdYw5-J8GDM9fAewipPCASeSsfzvLfwGPYQmFhiCSIFQDsVXzev-Id2PDPkE1Rkn0LCm2jp3mrlw6j4pXG6DcWIQeKAKOeiVXj1njn1IltzNX5r0_k0YGcjIW8O-QgMmP9zpXgsQHMIU7BNOWVPqv6sDwi1A"/>
+<div class="absolute top-4 left-4">
+<span class="bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface px-3 py-1 rounded-full text-[10px] font-bold font-label tracking-widest uppercase">Best for Deep Chat</span>
+</div>
+</div>
+<div class="p-6 flex-grow flex flex-col justify-between">
+<div>
+<h3 class="text-xl font-headline font-bold tracking-tight">The Library Room</h3>
+<p class="text-sm text-on-surface-variant font-body">Marylebone • British Fusion</p>
+</div>
+<button class="mt-6 w-full py-3 border-2 border-outline-variant/30 text-primary font-label text-sm font-bold rounded-full hover:bg-primary/5 transition-colors">
+                                Suggest to Match
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bottom Banner / CTA -->
+<section class="mt-20 bg-tertiary-container/10 p-12 rounded-lg relative overflow-hidden">
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="max-w-xl text-center md:text-left">
+<h2 class="text-3xl font-headline font-extrabold tracking-tight text-on-tertiary-container">Not feeling these?</h2>
+<p class="mt-2 text-on-tertiary-container/80 font-body">Tell our AI a bit more about your date's personality and we'll dig deeper into our 500+ premium venues.</p>
+</div>
+<button class="px-8 py-4 bg-tertiary text-on-tertiary font-headline font-bold rounded-full shadow-lg shadow-tertiary/20 hover:scale-105 transition-transform">
+                    Refine AI Search
+                </button>
+</div>
+<div class="absolute -right-20 -bottom-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-end pb-6 px-4 bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-xl rounded-t-[2rem] z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.03)]">
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-2 hover:scale-110 transition-transform active:scale-90">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="text-[11px] font-['Inter'] font-bold uppercase tracking-widest mt-1">Discover</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#1c1c18] dark:text-[#fdf9f3] opacity-60 hover:scale-110 transition-transform active:scale-90 pb-3">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="text-[11px] font-['Inter'] font-bold uppercase tracking-widest mt-1">Dates</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#1c1c18] dark:text-[#fdf9f3] opacity-60 hover:scale-110 transition-transform active:scale-90 pb-3">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-[11px] font-['Inter'] font-bold uppercase tracking-widest mt-1">Network</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#1c1c18] dark:text-[#fdf9f3] opacity-60 hover:scale-110 transition-transform active:scale-90 pb-3">
+<span class="material-symbols-outlined" data-icon="bug_report">bug_report</span>
+<span class="text-[11px] font-['Inter'] font-bold uppercase tracking-widest mt-1">Beta</span>
+</div>
+</nav>
+</body></html>

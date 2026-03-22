@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quản lý Danh sách Chờ - GOMET Host</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#e4e2e1",
+              "error": "#ba1a1a",
+              "outline": "#8c706f",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary-fixed": "#1b1c1c",
+              "outline-variant": "#e0bfbd",
+              "primary-container": "#ff6b6b",
+              "surface": "#fdf9f3",
+              "surface-container-high": "#ebe8e2",
+              "surface-variant": "#e6e2dc",
+              "on-surface-variant": "#584140",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-container": "#f1ede7",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f7f3ed",
+              "inverse-on-surface": "#f4f0ea",
+              "error-container": "#ffdad6",
+              "tertiary": "#894e45",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-primary": "#ffb3b0",
+              "primary-fixed": "#ffdad8",
+              "on-tertiary": "#ffffff",
+              "secondary": "#5f5e5e",
+              "on-primary": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "inverse-surface": "#31302d",
+              "tertiary-fixed": "#ffdad4",
+              "primary": "#ae2f34",
+              "on-background": "#1c1c18",
+              "surface-dim": "#dddad4",
+              "on-primary-container": "#6d0010",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container-highest": "#e6e2dc",
+              "surface-bright": "#fdf9f3",
+              "background": "#fdf9f3",
+              "on-primary-fixed": "#410006",
+              "on-surface": "#1c1c18",
+              "tertiary-container": "#cf8a7f",
+              "on-error": "#ffffff",
+              "on-secondary-fixed-variant": "#474747",
+              "on-secondary-container": "#656464",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#e4e2e1",
+              "on-secondary": "#ffffff",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 24px 48px -12px rgba(174, 47, 52, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-black text-rose-700 dark:text-rose-500 tracking-tighter font-headline">Culinary Curator</span>
+<div class="hidden md:flex items-center gap-6 ml-8">
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-colors font-plus-jakarta text-sm font-bold tracking-tight" href="#">Dashboard</a>
+<a class="text-rose-700 dark:text-rose-400 font-bold border-b-2 border-rose-600 font-plus-jakarta text-sm tracking-tight" href="#">Waitlist</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-colors font-plus-jakarta text-sm font-bold tracking-tight" href="#">Floor Plan</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-stone-50 dark:hover:bg-stone-800/50 rounded-full transition-colors">
+<span class="material-symbols-outlined text-stone-600" data-icon="notifications">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="Host profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHitA1oxynz4EAcWVJTZu7aZDnwen9WiHfmrXwQm7SbhPksLBQRMDL8dT5bn5lkwDWDZR8sElIBx9Sk9XBptCyS0j2RhdaeT8kezppLWqm-fvFzUhPuov98bVQmMJtkPyzsmoGb359WRqodSOn3zcOOlVdqPvvCwWkm7RWTj9OHq9CSi7Zhl5ij2lLGAaoDC1GSIBHZ0E3fn8stUN-GQHRM4CKuqR8I9AUVSfbcKttV1p9ldEjWiXDXI_I-FXcIINlqOhv0hsRykk"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden lg:flex flex-col fixed left-0 top-0 h-full pt-20 pb-8 h-screen w-64 border-r border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 space-y-4 px-4 z-40">
+<div class="px-4 mb-6">
+<h2 class="text-lg font-bold text-stone-900 dark:text-stone-100 font-headline">The Gilded Rose</h2>
+<p class="text-xs text-stone-500 tracking-wide uppercase font-medium">Premium Host Portal</p>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 rounded-full transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-plus-jakarta text-sm tracking-wide">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-300 rounded-full font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="hourglass_empty">hourglass_empty</span>
+<span class="font-plus-jakarta text-sm tracking-wide">Waitlist</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 rounded-full transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-plus-jakarta text-sm tracking-wide">Floor Plan</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 rounded-full transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+<span class="font-plus-jakarta text-sm tracking-wide">Guestbook</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 rounded-full transition-all hover:translate-x-1 duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="query_stats">query_stats</span>
+<span class="font-plus-jakarta text-sm tracking-wide">Analytics</span>
+</a>
+</nav>
+<div class="mt-auto px-4">
+<button class="w-full py-3 bg-primary text-on-primary rounded-full font-bold text-sm tracking-wide shadow-lg shadow-rose-200/50 hover:scale-[1.02] active:scale-95 transition-all">
+                Open Reservations
+            </button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="lg:pl-64 pt-24 pb-32 px-6 min-h-screen">
+<div class="max-w-6xl mx-auto">
+<!-- Header Section -->
+<div class="mb-12">
+<h1 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-on-background mb-2">Quản lý Danh sách Chờ - GOMET Host</h1>
+<p class="text-stone-500 font-medium">Reviewing curated potential guests for <span class="text-rose-600 font-bold">Midnight Jazz &amp; Oysters Night</span></p>
+</div>
+<!-- Summary Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="bg-surface-container-low p-8 rounded-lg editorial-shadow border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-9xl" data-icon="hourglass_top">hourglass_top</span>
+</div>
+<p class="text-xs font-bold text-tertiary uppercase tracking-widest mb-4">Waitlist Count</p>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-black font-headline text-rose-700">24</span>
+<span class="text-stone-400 font-bold">People</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg editorial-shadow border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-9xl" data-icon="chair_alt">chair_alt</span>
+</div>
+<p class="text-xs font-bold text-tertiary uppercase tracking-widest mb-4">Available Spots</p>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-black font-headline text-rose-700">06</span>
+<span class="text-stone-400 font-bold">Left</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-lg editorial-shadow border border-outline-variant/10 relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-9xl" data-icon="favorite">favorite</span>
+</div>
+<p class="text-xs font-bold text-tertiary uppercase tracking-widest mb-4">Avg Compatibility</p>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-black font-headline text-rose-700">88</span>
+<span class="text-stone-400 font-bold">% Score</span>
+</div>
+</div>
+</div>
+<!-- List Section -->
+<div class="space-y-6">
+<div class="flex justify-between items-center px-4">
+<h3 class="text-xl font-bold font-headline">Pending Applications</h3>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container-highest text-sm font-bold rounded-full text-on-surface">Newest First</button>
+<button class="px-4 py-2 text-sm font-bold text-stone-500">Filter</button>
+</div>
+</div>
+<!-- Waitlist Cards -->
+<div class="grid grid-cols-1 gap-4">
+<!-- Entry 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg editorial-shadow flex flex-col md:flex-row items-center gap-8 border border-outline-variant/20 group hover:translate-y-[-2px] transition-all">
+<div class="relative">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female potential attendee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9tUCwJHKLBGyvOpg9Fv_NXcQn7BlPwNYskmakcq7Ohbh_QWNWTUd4c4W_yC1ulpPvia7HL0JisUwv38Kin8BR62tvCt8NxU3tpW2WKiGU01MnSITvUxdbzRkjZSVaQYJAwG_7TfiNuFYCr10eUg_BHhG3S5p67uq8SmpGfbJRsVrG5E002EFNM4iSAuk12GCg4VexmpESC5wvWOOvXyFc7bGIpN6xU_yidKKQhh2WWdTxsRsXxQKKBaO8BNnIiw9I199AOopHbm4"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-rose-600 text-white text-[10px] font-black px-2 py-1 rounded-full shadow-md">
+                                94% Match
+                            </div>
+</div>
+<div class="flex-grow text-center md:text-left">
+<div class="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+<h4 class="text-xl font-bold font-headline text-on-background">Minh Anh Le</h4>
+<span class="inline-block bg-surface-container-high px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter text-tertiary">Table Chemistry Score</span>
+</div>
+<p class="text-stone-600 text-sm leading-relaxed max-w-xl">
+                                "Love the jazz vibe! I'm a somatic therapist and food critic. Looking forward to meeting people who appreciate a good dry martini and deep conversations."
+                            </p>
+</div>
+<div class="flex gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-3 bg-surface-container-highest text-stone-600 font-bold rounded-full hover:bg-stone-200 transition-colors text-sm">Decline</button>
+<button class="flex-1 md:flex-none px-8 py-3 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-full shadow-lg shadow-rose-200 transition-transform active:scale-95 text-sm">Approve</button>
+</div>
+</div>
+<!-- Entry 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg editorial-shadow flex flex-col md:flex-row items-center gap-8 border border-outline-variant/20 group hover:translate-y-[-2px] transition-all">
+<div class="relative">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait of a male potential attendee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDv7-Bp55fKcJC64MrCeXruvMGhUIpRqH7Y4a-0SlFSbs8xMCLg9aiRnDatZph9RSuitdhzZrf0rtO3sKGbkCxxWiooWzAhhYN0x84PWeUptYO1t8yqpTfn5ZAXygM8Z7cQF4-ECjEhVCBHLqLLFJJ0eiG8Qq7u_McELaoNqB2LuDvvmgyMlN2d2ZAeTNfDoCYN6ufUDXzDa7DFOgJQeAGES86cTPZSsNRGivToEjdedFa_uYZJCko1c19iwDSy7RTRmO96wSnAlg"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-rose-600 text-white text-[10px] font-black px-2 py-1 rounded-full shadow-md">
+                                89% Match
+                            </div>
+</div>
+<div class="flex-grow text-center md:text-left">
+<div class="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+<h4 class="text-xl font-bold font-headline text-on-background">Quoc Huy</h4>
+<span class="inline-block bg-surface-container-high px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter text-tertiary">Table Chemistry Score</span>
+</div>
+<p class="text-stone-600 text-sm leading-relaxed max-w-xl">
+                                "Digital nomad passing through. Big fan of oysters. Hope to join a lively table!"
+                            </p>
+</div>
+<div class="flex gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-3 bg-surface-container-highest text-stone-600 font-bold rounded-full hover:bg-stone-200 transition-colors text-sm">Decline</button>
+<button class="flex-1 md:flex-none px-8 py-3 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-full shadow-lg shadow-rose-200 transition-transform active:scale-95 text-sm">Approve</button>
+</div>
+</div>
+<!-- Entry 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg editorial-shadow flex flex-col md:flex-row items-center gap-8 border border-outline-variant/20 group hover:translate-y-[-2px] transition-all">
+<div class="relative">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait of a female potential attendee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvJpQLNChmi6_PaKOY6n6z3GKDnnfCK72ZSvyDh978lsPUAik1BpYZKpRwDTUNKZzkAvhTLGXv6o4JPXXac_ZhqqhL7uBLJMaOw9-pkedEE1mzWB1ZIohUai_JvEZQMPq-JF0IbvWQyovICAjcWgqORA5bDO5xKK9dczzH4irIyIQv1QBGqrivXGfXxKmu0kljVq1ZmAF_cR__YiOQPmP1V3VK4frGLSm8pWys90ryFNJuCuD8JcWzPyrU2ob_3VT4DxZ9iuGYyRI"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-rose-600 text-white text-[10px] font-black px-2 py-1 rounded-full shadow-md">
+                                82% Match
+                            </div>
+</div>
+<div class="flex-grow text-center md:text-left">
+<div class="flex flex-col md:flex-row md:items-center gap-2 mb-2">
+<h4 class="text-xl font-bold font-headline text-on-background">Lan Phuong</h4>
+<span class="inline-block bg-surface-container-high px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter text-tertiary">Table Chemistry Score</span>
+</div>
+<p class="text-stone-600 text-sm leading-relaxed max-w-xl">
+                                "I recently moved back to Saigon and I'm looking to rebuild my social circle. I love storytelling and jazz history."
+                            </p>
+</div>
+<div class="flex gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-3 bg-surface-container-highest text-stone-600 font-bold rounded-full hover:bg-stone-200 transition-colors text-sm">Decline</button>
+<button class="flex-1 md:flex-none px-8 py-3 bg-gradient-to-br from-primary to-primary-container text-white font-bold rounded-full shadow-lg shadow-rose-200 transition-transform active:scale-95 text-sm">Approve</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-white/90 dark:bg-stone-900/90 backdrop-blur-lg border-t border-stone-100 dark:border-stone-800 shadow-[0_-4px_24px_rgba(174,47,52,0.06)] rounded-t-3xl">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-3" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-rose-600 text-white rounded-2xl p-3 shadow-lg shadow-rose-200 dark:shadow-none" href="#">
+<span class="material-symbols-outlined" data-icon="hourglass_top">hourglass_top</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Waitlist</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-3" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Guests</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-3" href="#">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="text-[10px] font-bold uppercase tracking-widest mt-1">Alerts</span>
+</a>
+</nav>
+</body></html>

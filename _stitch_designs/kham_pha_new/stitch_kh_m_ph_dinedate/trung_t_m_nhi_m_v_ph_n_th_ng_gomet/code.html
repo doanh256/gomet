@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Rewards &amp; Mission Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-primary": "#ffb3b0",
+              "secondary-fixed": "#e4e2e1",
+              "on-secondary-container": "#656464",
+              "surface-variant": "#e6e2dc",
+              "inverse-on-surface": "#f4f0ea",
+              "surface": "#fdf9f3",
+              "on-primary": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "surface-container-highest": "#e6e2dc",
+              "surface-bright": "#fdf9f3",
+              "on-secondary-fixed-variant": "#474747",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary": "#5f5e5e",
+              "outline": "#8c706f",
+              "surface-dim": "#dddad4",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "primary-container": "#ff6b6b",
+              "primary": "#ae2f34",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-error-container": "#93000a",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "secondary-container": "#e4e2e1",
+              "error-container": "#ffdad6",
+              "on-surface-variant": "#584140",
+              "tertiary-fixed": "#ffdad4",
+              "tertiary-container": "#cf8a7f",
+              "surface-container-low": "#f7f3ed",
+              "on-background": "#1c1c18",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-primary-container": "#6d0010",
+              "background": "#fdf9f3",
+              "surface-container-high": "#ebe8e2",
+              "tertiary": "#894e45",
+              "outline-variant": "#e0bfbd",
+              "on-primary-fixed": "#410006",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1c1c18",
+              "surface-container": "#f1ede7",
+              "on-tertiary-container": "#55251e",
+              "inverse-surface": "#31302d"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        body {
+            background-color: #fdf9f3;
+            color: #1c1c18;
+            font-family: 'Inter', sans-serif;
+        }
+        .editorial-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.04em;
+        }
+    </style>
+</head>
+<body class="bg-surface">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 glass-nav bg-white/80 dark:bg-stone-900/80 shadow-sm shadow-rose-900/5 h-16 border-none">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-rose-700 dark:text-rose-500 font-['Plus_Jakarta_Sans']">GOMET</div>
+<div class="hidden md:flex space-x-8 items-center">
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-500 font-['Plus_Jakarta_Sans'] tracking-tight transition-colors duration-200" href="#">Partners</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-500 font-['Plus_Jakarta_Sans'] tracking-tight transition-colors duration-200" href="#">Verification</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-500 font-['Plus_Jakarta_Sans'] tracking-tight transition-colors duration-200" href="#">Safety</a>
+<a class="text-rose-700 dark:text-rose-400 font-bold border-b-2 border-rose-600 font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Subscriptions</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 text-stone-600 hover:bg-stone-50 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="User profile avatar with friendly expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnutkVTQDG04h0H29soqEmRvw36cxv6sOmpvUmwSKdANMcHiOkns_PZBrxHBhO4P0hL3HzO_8QYk7O1vVDj306Ep3aJO_EjWDE4Bb8qNtfgTWtbBhkAuXL02crn8jsfufhwQysQWHpZ-bBNdZYzwvLsGx4gvIjMatrzudXZYpL9jg7vrql9HUkhi6FtUQIIKsqSzGrjlrFl8HF70iC7qlWShbUcvMyVDyzPSazKx_GsNUcN8NavRr2v8skqgq5c04QxIG9UZ97ciU"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Hero Section: Stats & Progress -->
+<header class="mb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-end">
+<div class="lg:col-span-7">
+<div class="inline-flex items-center px-3 py-1 bg-primary/10 text-primary rounded-full mb-6">
+<span class="material-symbols-outlined text-sm mr-2" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label text-xs font-bold tracking-widest uppercase">Alpha Tester Status</span>
+</div>
+<h1 class="editorial-title text-6xl md:text-7xl font-extrabold text-on-background leading-tight">
+                    Your Mission <br/> <span class="text-primary italic">to Romance</span>
+</h1>
+<p class="mt-6 text-on-surface-variant text-lg max-w-xl">
+                    Exclusive rewards for our Alpha community. Every connection made and venue reviewed helps curate the ultimate GOMET experience.
+                </p>
+</div>
+<div class="lg:col-span-5 bg-surface-container-lowest p-8 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center mb-6">
+<div>
+<span class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Total G-Points</span>
+<div class="text-4xl font-black text-on-background">12,450</div>
+</div>
+<div class="h-14 w-14 bg-gradient-to-tr from-rose-700 to-rose-400 rounded-full flex items-center justify-center text-white shadow-lg shadow-rose-500/40">
+<span class="material-symbols-outlined" data-icon="rocket_launch" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm font-semibold">
+<span>Elite Tier Progress</span>
+<span class="text-primary">85%</span>
+</div>
+<div class="h-3 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container" style="width: 85%"></div>
+</div>
+<p class="text-xs text-on-surface-variant pt-2 italic">1,550 points until "Culinary Curator" rank</p>
+</div>
+</div>
+</header>
+<!-- Bento Grid: Missions & Leaderboard -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+<!-- Active Missions: Wide Card -->
+<div class="md:col-span-2 bg-surface-container-low p-8 rounded-lg">
+<div class="flex items-center justify-between mb-8">
+<h2 class="editorial-title text-3xl font-bold">Active Missions</h2>
+<span class="material-symbols-outlined text-primary" data-icon="track_changes">track_changes</span>
+</div>
+<div class="space-y-6">
+<!-- Mission 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-md group hover:translate-x-1 transition-transform duration-200">
+<div class="flex items-start justify-between gap-4">
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+</div>
+<div>
+<h3 class="font-bold text-lg">Review 5 Venues</h3>
+<p class="text-sm text-on-surface-variant">Share your experience at GOMET partner restaurants.</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-primary font-bold">+500 pts</span>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-4">
+<div class="flex-1 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 60%"></div>
+</div>
+<span class="font-label text-xs font-bold text-on-surface">3/5</span>
+</div>
+</div>
+<!-- Mission 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-md group hover:translate-x-1 transition-transform duration-200">
+<div class="flex items-start justify-between gap-4">
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</div>
+<div>
+<h3 class="font-bold text-lg">Complete 3 Dates</h3>
+<p class="text-sm text-on-surface-variant">Go on three verified reservations this month.</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-primary font-bold">+1,200 pts</span>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-4">
+<div class="flex-1 h-2 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 33%"></div>
+</div>
+<span class="font-label text-xs font-bold text-on-surface">1/3</span>
+</div>
+</div>
+<!-- Mission 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-md opacity-60">
+<div class="flex items-start justify-between gap-4">
+<div class="flex gap-4">
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+</div>
+<div>
+<h3 class="font-bold text-lg">Identity Champion</h3>
+<p class="text-sm text-on-surface-variant">Successfully refer 2 verified Alpha members.</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-on-surface-variant font-bold">+2,000 pts</span>
+</div>
+</div>
+<div class="mt-6 flex items-center gap-4">
+<div class="flex-1 h-2 bg-surface-container-high rounded-full"></div>
+<span class="font-label text-xs font-bold text-on-surface">Locked</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Leaderboard Preview -->
+<div class="bg-inverse-surface text-inverse-on-surface p-8 rounded-lg flex flex-col h-full">
+<div class="flex items-center justify-between mb-8">
+<h2 class="editorial-title text-3xl font-bold">Alpha Top 10</h2>
+<span class="material-symbols-outlined text-primary-container" data-icon="leaderboard">leaderboard</span>
+</div>
+<div class="flex-1 space-y-6">
+<!-- Rank 1 -->
+<div class="flex items-center gap-4 p-3 bg-white/5 rounded-md">
+<span class="font-black text-primary-container w-6">01</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Female user profile in high fashion style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmZsNrvC7KCqXnPcGO2AL_gsup-n7Yo5Jr5h2RX9c1hq3GLLB3dqQFoVXmpE-zrVgMfaFE68siXZ4ZMx4nqaE5WQ-O3OQnRlS4Uk787SCnOHmckz9MirUxCIO2oF8iqxju6Mqe8c_iqXj3YJiYDjfgpDJJy_EAGqeXbLaYrlI4Aa_yj1vWr6GUu2SuMlJXf8OeaRRgvAI4XruupJuGLrDGYKa8obvz2Rllz0PrsXCaqtP3GWGN2NRPKmMViNksC1si0kxDa6zP9mM"/>
+</div>
+<div class="flex-1">
+<div class="text-sm font-bold">Sophia R.</div>
+<div class="text-[10px] uppercase tracking-tighter opacity-60">Epicurean Legend</div>
+</div>
+<div class="text-sm font-black">42,9k</div>
+</div>
+<!-- Rank 2 -->
+<div class="flex items-center gap-4 p-3">
+<span class="font-black text-surface-variant w-6">02</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Male user profile with professional appearance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCSf08hQDZ_7xkqDy1w2LOgtb9jF6FOcQ4Au_urtvAevGUhwqUzncUPVgtXt3r5ZB0N1g6ULCZezJkapt9zwIEfipOyRxdfHhtXX5m_1jBlJVOYOBo41QNbwAxHYOUjgRJGjsmJeFZpBOsNCCR00sxAeEeMylYuXSQ3p5VnZW14EKxk9aSdWsXYU-BeEPnUDKUpfx5N5scASON92gppnkiNdemhjnOzjVAjcZ_jr0IHztJ2DqwX2VuQ92G7RezGotPYPAJ0tBJhqU"/>
+</div>
+<div class="flex-1">
+<div class="text-sm font-bold">Marcus T.</div>
+<div class="text-[10px] uppercase tracking-tighter opacity-60">Elite Curator</div>
+</div>
+<div class="text-sm font-black">38,1k</div>
+</div>
+<!-- User Current Rank -->
+<div class="mt-auto pt-6 border-t border-white/10">
+<div class="flex items-center gap-4 p-3 bg-primary rounded-md text-white shadow-lg">
+<span class="font-black w-6 text-white/80">42</span>
+<div class="w-10 h-10 rounded-full bg-white/20 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User current profile placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsaXXExXALpyDcMvrdcc7QRQJrYIU3JaSWK8hNVigiu-f727zf0FyCXxUUWMfF4Qk1kAr4AJ6Dh4a0bw_tPmBDRuYwRkfdD3PrRnAi7IAzpKl4ek1ifpZmWlx5dqtOgixxkjbWLwPST3_DJl-hojAr6eQViRTwbPr3a5JdiNGU20Bm0HAc3wYFZUOvVqKOQuLeQpwPeY87sHVyJpYItzUbRWIkzfKTRRaHD_XYAzTF2pNIGugdsyp2IGgtV-D4rd2XK1bMK0nrK6A"/>
+</div>
+<div class="flex-1">
+<div class="text-sm font-bold">You</div>
+<div class="text-[10px] uppercase tracking-tighter text-white/80">Rising Star</div>
+</div>
+<div class="text-sm font-black">12,4k</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Exclusive Alpha Rewards Showcase -->
+<section class="mb-16">
+<div class="mb-10">
+<h2 class="editorial-title text-4xl font-extrabold mb-2">Alpha Vault</h2>
+<p class="text-on-surface-variant">Premium perks redeemable only during the testing phase.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Reward 1 -->
+<div class="bg-surface-container-low rounded-lg overflow-hidden group">
+<div class="h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Atmospheric rooftop dining scene with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDlb6bYKCmWyzTayoPGAuzhOZHPxMNxYlAZNWu33y8k3VMxmWT9w_I6nU7xV1FLJMGv2JZ6Z7IwDoEq5zUMnSKzaEqnufVE7hZDE_bCC2jrLbdgvOR7X32QFbS2z-56LVeVvnJNgjS9WdtDS3Ty0_1QppNgwnXTlvE3FeY3yqnRZ7dkneowa8kFiimUwIHVcSTmvRgwJ5xbVAZ4pUy2k6CgUKGLx4axWRFPHlh3xwROvrSEItjdFDDEN415x5GvWKtHZmfYw07MwNk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+<span class="text-white text-xs font-label font-bold uppercase tracking-widest">Partner Perks</span>
+</div>
+</div>
+<div class="p-6">
+<h4 class="font-bold text-lg mb-1">VIP Priority Seating</h4>
+<p class="text-xs text-on-surface-variant mb-4">Skip the 3-week wait at Michelin-star partners.</p>
+<button class="w-full py-3 bg-primary text-white font-bold rounded-md hover:opacity-90 transition-opacity">
+                            5,000 pts
+                        </button>
+</div>
+</div>
+<!-- Reward 2 -->
+<div class="bg-surface-container-low rounded-lg overflow-hidden group">
+<div class="h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Abstract golden patterns representing elite status" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOdAEey9NFlnqWuFGC_gk50uJHgNE86PMcMDXDn2dMOYZhtadGo5kVAy7fwZN0qf2TzSmcpzvPBq940qKrTaFTjKi4b0L85Du1bLJVoD6x_ovaSUXIjnaUva_UYTGjWZDwgHBpuuKBwn-PWFFoy9Ta4XA4mXy7TQGRYRhvgXDWP0USRFJmet84TmzHhRpOldpLLlx2pr1nXgm2chp9f7dgBI5D804rCJveREb-hLe79SVGifaFt8TxNzDCce0wiZQYFqUeG_AZTfQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+<span class="text-white text-xs font-label font-bold uppercase tracking-widest">Profile Badge</span>
+</div>
+</div>
+<div class="p-6">
+<h4 class="font-bold text-lg mb-1">Founders' Halo</h4>
+<p class="text-xs text-on-surface-variant mb-4">A unique iridescent border for your profile avatar.</p>
+<button class="w-full py-3 bg-primary text-white font-bold rounded-md hover:opacity-90 transition-opacity">
+                            2,500 pts
+                        </button>
+</div>
+</div>
+<!-- Reward 3 -->
+<div class="bg-surface-container-low rounded-lg overflow-hidden group">
+<div class="h-48 relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A bottle of luxury wine in a chilled bucket" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO31iRVyKpGeRer8Ev9NsqEc_KwDMDhk76QsC0S2KYUklemanzxkfJTx1X_usE6jKH2oUoPT1WyheYqM12Mz0izqGbhIWXYRFNrWJHIjan9UJd8jDbLUNl71OZlczH9HCydshGouXSh-VWsGBNvSNznG1mK0O9KKsRrAwUC8vAHPyxiaPR8cdy4eauinwFYYA4mOm6T7rub4qae-0xjkoOk-AuZc8tmzBTCQaSrv7_b9F7nPj5bI5F2qoCQKBZjbOdAYg_reTuoHo"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+<span class="text-white text-xs font-label font-bold uppercase tracking-widest">Dining Credit</span>
+</div>
+</div>
+<div class="p-6">
+<h4 class="font-bold text-lg mb-1">$50 Tasting Voucher</h4>
+<p class="text-xs text-on-surface-variant mb-4">Valid at any Top-Tier GOMET verified venue.</p>
+<button class="w-full py-3 bg-primary text-white font-bold rounded-md hover:opacity-90 transition-opacity">
+                            10,000 pts
+                        </button>
+</div>
+</div>
+<!-- Reward 4 (Locked) -->
+<div class="bg-surface-container p-6 rounded-lg flex flex-col items-center justify-center text-center border-2 border-dashed border-outline-variant/30">
+<div class="w-16 h-16 bg-surface-container-high rounded-full flex items-center justify-center mb-4 text-on-surface-variant">
+<span class="material-symbols-outlined text-3xl" data-icon="mystery_beam">mystery</span>
+</div>
+<h4 class="font-bold text-lg mb-1">Mystery Reward</h4>
+<p class="text-xs text-on-surface-variant mb-6">Unlocked at Elite Curator rank.</p>
+<div class="w-full h-12 bg-surface-container-high rounded-md flex items-center justify-center font-bold text-on-surface-variant/40">
+                        Locked
+                    </div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pb-6 pt-3 bg-white/90 dark:bg-stone-900/90 backdrop-blur-lg shadow-[0_-8px_24px_-12px_rgba(174,47,52,0.12)] border-none rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-stone-400 p-2" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 p-2" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Verify</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-rose-600 text-white rounded-full w-12 h-12 -translate-y-2 shadow-lg shadow-rose-500/40" href="#">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 p-2" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Safety</span>
+</a>
+</nav>
+</body></html>

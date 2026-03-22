@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Post-Date Reflection | GOMET</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary": "#ffffff",
+              "secondary-container": "#e4e2e1",
+              "on-secondary-fixed-variant": "#474747",
+              "surface-container-highest": "#e6e2dc",
+              "surface": "#fdf9f3",
+              "on-secondary": "#ffffff",
+              "tertiary-container": "#cf8a7f",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "outline": "#8c706f",
+              "error-container": "#ffdad6",
+              "inverse-surface": "#31302d",
+              "inverse-primary": "#ffb3b0",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-container-low": "#f7f3ed",
+              "on-surface-variant": "#584140",
+              "secondary-fixed": "#e4e2e1",
+              "on-primary-container": "#6d0010",
+              "surface-variant": "#e6e2dc",
+              "outline-variant": "#e0bfbd",
+              "on-surface": "#1c1c18",
+              "inverse-on-surface": "#f4f0ea",
+              "primary": "#ae2f34",
+              "surface-tint": "#ae2f34",
+              "on-tertiary-container": "#55251e",
+              "on-primary-fixed": "#410006",
+              "surface-container-lowest": "#ffffff",
+              "surface-bright": "#fdf9f3",
+              "secondary": "#5f5e5e",
+              "primary-fixed": "#ffdad8",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary-container": "#656464",
+              "tertiary": "#894e45",
+              "surface-dim": "#dddad4",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-secondary-fixed": "#1b1c1c",
+              "background": "#fdf9f3",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container-high": "#ebe8e2",
+              "on-background": "#1c1c18",
+              "surface-container": "#f1ede7",
+              "primary-container": "#ff6b6b",
+              "on-error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .filled-icon {
+        font-variation-settings: 'FILL' 1;
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-background min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-zinc-950/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<nav class="flex justify-between items-center px-8 h-20 w-full">
+<div class="text-2xl font-black text-[#ae2f34] dark:text-[#ff6b6b] italic font-['Plus_Jakarta_Sans'] tracking-tight">GOMET</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-[#ae2f34] transition-colors duration-300" href="#">Partners</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-[#ae2f34] transition-colors duration-300" href="#">Revenue</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-[#ae2f34] transition-colors duration-300" href="#">Incidents</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-[#ae2f34] transition-colors duration-300" href="#">Feedback</a>
+</div>
+<div class="flex items-center space-x-6">
+<div class="hidden sm:flex items-center space-x-4">
+<button class="material-symbols-outlined text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800 p-2 rounded-full transition-colors">settings</button>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-6 py-2.5 rounded-full font-bold text-sm scale-95 active:scale-90 transition-transform">Admin Console</button>
+</div>
+</nav>
+</header>
+<main class="pt-28 pb-32 px-4 md:px-8 max-w-5xl mx-auto">
+<!-- Hero Reflection Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+<div class="lg:col-span-7 flex flex-col justify-center">
+<span class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-4 block">The After-Date</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-on-background tracking-tighter mb-6 leading-[0.9]">
+                    How was the <span class="text-primary italic">vibe</span> tonight?
+                </h1>
+<p class="text-lg text-secondary leading-relaxed max-w-md">
+                    Take a quiet moment to reflect on your evening with Sarah at <span class="font-bold text-on-background">L'Artisan Bistro</span>.
+                </p>
+</div>
+<div class="lg:col-span-5 relative">
+<div class="aspect-square rounded-xl overflow-hidden shadow-[0_24px_48px_-12px_rgba(174,47,52,0.12)] bg-surface-container-low rotate-3">
+<img class="w-full h-full object-cover" data-alt="A cozy candlelit restaurant table with two wine glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5dkqhydcq6GVMX1uCBFsPD0T-HetgzT-eODodPM_JOJfZcQ85C3DMyDiGXZvmRBP9CuyPe-JTgpKlJY-2UG1neY6RyjPfJytlEh7vDOyXMqrQIy5gg1NDBa0fhhaEuJepMIbzBFJNyUJAwwAV0sK03-Q4mBMcebZh48V6ToG-dnTjSST_FM8_PFUPFc0elsJ9-Z2_VysW0Ld473Zvs61ZQTAPqcbogM9FOMKGjneb6MzBMCaz8IUpAnxocwbq84jP5dI1eMgGTK4"/>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-surface-container-lowest p-4 rounded-lg shadow-xl -rotate-2 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Profile photo of a smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqhcOycAV0I3pWeeyPJ1jHKo7yxzM9Vf0kuu7nbV2UH0_b61zpy8yYRYHBEHdHgNHJqD4Vf_xEgcMG8d2XvExppAxPvYiiZICblW57a_dq8-iG0YQmtf2N0JUagn2zVtKFHt_CEwFUwAxyrU8AJWVUXSahWkjoD5IUQH3vD1SAgp48mvwhjkHFEtIvrdvN3JmDUuBtupWDe9DOSEETADAcuaHpBGOC1HM2msY611La0o4Opkqah4bk3j5K3770LW_XUIDl4foNWB0"/>
+</div>
+<div>
+<p class="font-bold text-on-background leading-tight">Sarah, 28</p>
+<p class="text-xs text-secondary">Met 2 hours ago</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Multi-Step Reflection Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Overall Impression -->
+<div class="md:col-span-2 lg:col-span-2 bg-surface-container-low p-8 rounded-lg flex flex-col justify-between">
+<div>
+<h3 class="text-2xl font-headline font-bold mb-2">Initial Impression</h3>
+<p class="text-secondary text-sm mb-8">Select the sentiments that best match your experience.</p>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="bg-primary text-white px-6 py-3 rounded-full font-medium text-sm transition-all flex items-center gap-2">
+<span class="material-symbols-outlined filled-icon text-[18px]">favorite</span> Great Chemistry
+                    </button>
+<button class="bg-surface-container-highest text-on-surface px-6 py-3 rounded-full font-medium text-sm hover:bg-primary-container hover:text-on-primary-container transition-all">
+                        Good Food, OK Vibe
+                    </button>
+<button class="bg-surface-container-highest text-on-surface px-6 py-3 rounded-full font-medium text-sm hover:bg-primary-container hover:text-on-primary-container transition-all">
+                        Deep Conversations
+                    </button>
+<button class="bg-surface-container-highest text-on-surface px-6 py-3 rounded-full font-medium text-sm hover:bg-primary-container hover:text-on-primary-container transition-all">
+                        Natural Connection
+                    </button>
+<button class="bg-surface-container-highest text-on-surface px-6 py-3 rounded-full font-medium text-sm hover:bg-primary-container hover:text-on-primary-container transition-all">
+                        Polite but no Spark
+                    </button>
+<button class="bg-surface-container-highest text-on-surface px-6 py-3 rounded-full font-medium text-sm hover:bg-primary-container hover:text-on-primary-container transition-all">
+                        Hilarious Date
+                    </button>
+</div>
+</div>
+<!-- Rating Card -->
+<div class="bg-gradient-to-br from-tertiary to-[#55251e] p-8 rounded-lg text-white flex flex-col justify-between aspect-square md:aspect-auto">
+<div>
+<h3 class="text-2xl font-headline font-bold mb-2">The Score</h3>
+<p class="text-tertiary-fixed text-sm opacity-80">How likely are you to recommend this venue?</p>
+</div>
+<div class="flex justify-between items-end">
+<div class="flex flex-col gap-1">
+<span class="text-5xl font-black italic leading-none">8.5</span>
+<span class="text-xs uppercase tracking-widest font-bold">Excellent</span>
+</div>
+<div class="flex gap-1">
+<span class="material-symbols-outlined filled-icon text-primary-container">star</span>
+<span class="material-symbols-outlined filled-icon text-primary-container">star</span>
+<span class="material-symbols-outlined filled-icon text-primary-container">star</span>
+<span class="material-symbols-outlined filled-icon text-primary-container">star</span>
+<span class="material-symbols-outlined text-primary-container opacity-50">star</span>
+</div>
+</div>
+</div>
+<!-- Private Notes -->
+<div class="lg:col-span-3 bg-surface-container-lowest p-8 rounded-lg shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)]">
+<div class="flex flex-col md:flex-row gap-8">
+<div class="flex-1">
+<h3 class="text-2xl font-headline font-bold mb-2">Private Notes</h3>
+<p class="text-secondary text-sm mb-6">These are for your eyes only. Record the little details you don't want to forget.</p>
+<textarea class="w-full bg-surface-container-high border-none rounded-md p-6 text-on-surface placeholder:text-outline-variant focus:ring-2 focus:ring-primary min-h-[150px] transition-all" placeholder="She mentioned loving obscure 70s jazz and that specific brand of green tea..."></textarea>
+</div>
+<div class="w-full md:w-80 bg-surface-container-low p-6 rounded-lg self-start">
+<h4 class="font-bold text-on-background mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">verified_user</span> 
+                            Privacy Check
+                        </h4>
+<ul class="space-y-3 text-sm text-secondary">
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-[16px] text-primary">check_circle</span>
+                                Sarah will NOT see these notes.
+                            </li>
+<li class="flex gap-3">
+<span class="material-symbols-outlined text-[16px] text-primary">check_circle</span>
+                                Your feedback helps our AI curator.
+                            </li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Final Decision -->
+<div class="lg:col-span-3 mt-8 flex flex-col items-center text-center">
+<h3 class="text-3xl font-headline font-extrabold mb-8 tracking-tight">Would you like to meet again?</h3>
+<div class="flex flex-col sm:flex-row gap-4 w-full max-w-2xl">
+<button class="flex-1 group bg-surface-container-highest hover:bg-primary transition-all p-8 rounded-xl flex flex-col items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-surface flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl group-hover:text-primary transition-colors">favorite</span>
+</div>
+<div>
+<p class="font-bold text-lg group-hover:text-white transition-colors">Definitely</p>
+<p class="text-sm text-secondary group-hover:text-white/80 transition-colors">I'd love a second date.</p>
+</div>
+</button>
+<button class="flex-1 group bg-surface-container-highest hover:bg-secondary transition-all p-8 rounded-xl flex flex-col items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-surface flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl group-hover:text-secondary transition-colors">question_mark</span>
+</div>
+<div>
+<p class="font-bold text-lg group-hover:text-white transition-colors">Not Sure</p>
+<p class="text-sm text-secondary group-hover:text-white/80 transition-colors">Maybe as friends first.</p>
+</div>
+</button>
+<button class="flex-1 group bg-surface-container-highest hover:bg-error transition-all p-8 rounded-xl flex flex-col items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-surface flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl group-hover:text-error transition-colors">close</span>
+</div>
+<div>
+<p class="font-bold text-lg group-hover:text-white transition-colors">No Spark</p>
+<p class="text-sm text-secondary group-hover:text-white/80 transition-colors">Keep looking for a match.</p>
+</div>
+</button>
+</div>
+</div>
+</div>
+<!-- Submit Action -->
+<div class="mt-16 flex justify-center">
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-12 py-5 rounded-full font-bold text-xl shadow-[0_20px_40px_-10px_rgba(174,47,52,0.3)] hover:scale-105 active:scale-95 transition-all">
+                Save Reflection
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-24 flex justify-around items-center px-6 pb-safe bg-surface/80 dark:bg-zinc-950/80 backdrop-blur-md rounded-t-[2rem] z-50 shadow-[0_-10px_40px_rgba(174,47,52,0.12)]">
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-[#ff6b6b] transition-all" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Revenue</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-[#ff6b6b] transition-all" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Starters</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-[#ff6b6b] transition-all" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Command</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-2 transform -translate-y-2 animate-pulse-subtle" href="#">
+<span class="material-symbols-outlined filled-icon">rate_review</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Post-Date</span>
+</a>
+</nav>
+</body></html>

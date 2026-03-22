@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#1c1c18",
+              "tertiary-container": "#cf8a7f",
+              "on-error": "#ffffff",
+              "on-secondary-fixed-variant": "#474747",
+              "on-secondary-container": "#656464",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#e4e2e1",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "on-secondary": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "inverse-surface": "#31302d",
+              "on-background": "#1c1c18",
+              "tertiary-fixed": "#ffdad4",
+              "primary": "#ae2f34",
+              "surface-dim": "#dddad4",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-primary-container": "#6d0010",
+              "surface-container-highest": "#e6e2dc",
+              "surface-bright": "#fdf9f3",
+              "background": "#fdf9f3",
+              "on-primary-fixed": "#410006",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-container": "#f1ede7",
+              "on-error-container": "#93000a",
+              "inverse-on-surface": "#f4f0ea",
+              "error-container": "#ffdad6",
+              "surface-container-low": "#f7f3ed",
+              "tertiary": "#894e45",
+              "primary-fixed": "#ffdad8",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-primary": "#ffb3b0",
+              "secondary": "#5f5e5e",
+              "on-primary": "#ffffff",
+              "secondary-fixed": "#e4e2e1",
+              "error": "#ba1a1a",
+              "outline": "#8c706f",
+              "outline-variant": "#e0bfbd",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary-fixed": "#1b1c1c",
+              "primary-container": "#ff6b6b",
+              "surface": "#fdf9f3",
+              "surface-container-high": "#ebe8e2",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-variant": "#e6e2dc",
+              "on-surface-variant": "#584140"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .heatmap-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.8; transform: scale(1); }
+        50% { opacity: 0.4; transform: scale(1.1); }
+      }
+      .custom-map-bg {
+        background-color: #f1ede7;
+        background-image: radial-gradient(#e0bfbd 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      .glass-effect {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased overflow-hidden">
+<!-- Top Navigation Bar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 shadow-sm dark:shadow-none bg-white/80 dark:bg-stone-950/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-8 h-20 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-stone-900 dark:text-stone-50 font-headline">GOMET</span>
+<nav class="hidden md:flex items-center gap-6 font-plus-jakarta text-sm tracking-tight font-semibold">
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 transition-opacity hover:opacity-80" href="#">Network</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 transition-opacity hover:opacity-80" href="#">Dining</a>
+<a class="text-rose-600 dark:text-rose-400 border-b-2 border-rose-600 pb-1 transition-opacity hover:opacity-80" href="#">Events</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 transition-opacity hover:opacity-80" href="#">Membership</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<input class="bg-stone-100/50 dark:bg-stone-900/50 border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 w-64" placeholder="Search venues..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-lg">search</span>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-white px-6 py-2.5 rounded-full font-headline text-sm font-bold shadow-lg hover:opacity-90 active:scale-95 transition-all">Join Club</button>
+</div>
+</div>
+</header>
+<main class="relative h-screen w-full pt-20 flex overflow-hidden">
+<!-- Sidebar Navigation (Shared Component Integration) -->
+<aside class="fixed left-0 top-0 hidden lg:flex flex-col h-full w-64 p-4 z-40 pt-24 bg-stone-50 dark:bg-stone-950">
+<div class="flex flex-col gap-2">
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-plus-jakarta text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-white dark:bg-stone-900 text-rose-600 dark:text-rose-400 rounded-xl px-4 py-3 shadow-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-plus-jakarta text-sm font-medium">Reservations</span>
+</a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-plus-jakarta text-sm font-medium">Venue Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">group_add</span>
+<span class="font-plus-jakarta text-sm font-medium">Member Requests</span>
+</a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 transition-all duration-200 rounded-xl" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-plus-jakarta text-sm font-medium">Settings</span>
+</a>
+</div>
+<div class="mt-auto p-4 bg-surface-container-low rounded-2xl mb-24">
+<div class="flex items-center gap-3 mb-3">
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div>
+<p class="text-xs font-bold font-headline uppercase tracking-tighter">Pro Tip</p>
+<p class="text-[10px] text-stone-500 leading-tight">High activity at SoHo. View 12 live events.</p>
+</div>
+</div>
+<button class="w-full py-2 bg-on-surface text-white text-[11px] font-bold rounded-lg hover:opacity-90">GO LIVE</button>
+</div>
+</aside>
+<!-- Main Map Area -->
+<div class="flex-1 relative ml-0 lg:ml-64 h-full bg-surface-container-low overflow-hidden">
+<!-- Map Simulation -->
+<div class="absolute inset-0 custom-map-bg" data-location="Manhattan, New York" style="">
+<!-- Heatmap Orbs -->
+<div class="absolute top-1/4 left-1/3 w-64 h-64 bg-primary/20 rounded-full blur-[80px] heatmap-pulse"></div>
+<div class="absolute bottom-1/3 right-1/4 w-96 h-96 bg-primary-container/15 rounded-full blur-[100px] heatmap-pulse" style="animation-delay: 1s;"></div>
+<div class="absolute top-1/2 left-1/2 w-48 h-48 bg-tertiary/20 rounded-full blur-[60px] heatmap-pulse" style="animation-delay: 0.5s;"></div>
+<!-- Trending Markers -->
+<div class="absolute top-[25%] left-[35%] group cursor-pointer">
+<div class="bg-primary text-white p-2 rounded-full shadow-xl flex items-center gap-2 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<div class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500">
+<span class="whitespace-nowrap pr-2 font-headline text-xs font-bold">The Gilded Room</span>
+</div>
+</div>
+<div class="w-4 h-4 bg-primary/30 rounded-full absolute -z-10 animate-ping top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+</div>
+<div class="absolute bottom-[40%] right-[30%] group cursor-pointer">
+<div class="bg-on-surface text-white p-2 rounded-full shadow-xl flex items-center gap-2 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">celebration</span>
+<div class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500">
+<span class="whitespace-nowrap pr-2 font-headline text-xs font-bold">Rooftop Gala</span>
+</div>
+</div>
+</div>
+<div class="absolute top-[60%] left-[45%] group cursor-pointer">
+<div class="bg-white text-on-surface p-2 rounded-full shadow-xl flex items-center gap-2 group-hover:scale-110 transition-transform border border-outline-variant/20">
+<span class="material-symbols-outlined text-sm text-primary" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<div class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500">
+<span class="whitespace-nowrap pr-2 font-headline text-xs font-bold">L'Artiste Dinner</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Overlay UI -->
+<div class="absolute top-6 left-6 right-6 flex justify-between items-start pointer-events-none">
+<div class="pointer-events-auto bg-white/90 glass-effect p-2 rounded-2xl shadow-lg border border-white/50 flex gap-1">
+<button class="px-4 py-2 bg-primary text-white rounded-xl text-xs font-bold font-headline transition-all">HEATMAP</button>
+<button class="px-4 py-2 text-stone-500 hover:bg-stone-100 rounded-xl text-xs font-bold font-headline transition-all">EVENT VIEW</button>
+<button class="px-4 py-2 text-stone-500 hover:bg-stone-100 rounded-xl text-xs font-bold font-headline transition-all">SAVED</button>
+</div>
+<div class="pointer-events-auto flex flex-col gap-2">
+<div class="bg-white/90 glass-effect p-3 rounded-2xl shadow-lg border border-white/50 flex items-center gap-3">
+<div class="flex -space-x-2">
+<img alt="" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="Female club member profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA87HFgHBzWrlLtYEDmcCBxdlSXvgB9mDpAbp2pwJEh_VGKHJe7sTHT08eIqbDi8S6pjKxhpTODB5UVJg2IS5-1ML7dVReKHsO00YB4sG0k5vKMZmSQ9yw7Rq9qZA6zIbrfaC6JBu70INtauCkXUPUCMSKfPfoRZr3xScd4kV6Zp5AyqIq0Xa_Kbcr5DiPapWoqBHSd5qhV5l7ftafg_BFaJfrz72b7k9YlNSS7VbGiD92Cxp6AFE_qsMZtib7_WPyyZluwJRqabgI"/>
+<img alt="" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="Male club member profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7m2FhNgN0VQucF6I-atPu2rIdPfUH9oKiSaA0i2hkI9o4Zky2JCbIK6EAfsc1KrrcIG0PwsSjj1B4Z8SRxyHUjOrnCIj9D0bc3XIdjAlEipMjzM0BJ9VLKl6kmOCyGY3jREYK_5va0bmLk8hWqwSBnmMkKJB9k53Os1uUJbq7R43E9N2Qme66snTN6DFrSG8RXJgBG8O-1ZC176F776l5WOuL7bCl1gufOQ0i9iecAwfUkkqHEa-Gg_bfqeZOmrx4h_AgwATG4H8"/>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-stone-200 flex items-center justify-center text-[10px] font-bold">+1.2k</div>
+</div>
+<div class="text-[11px] font-medium leading-tight">
+<span class="block font-bold text-primary">LIVE NOW</span>
+                            1,248 members active
+                        </div>
+</div>
+</div>
+</div>
+<!-- Map Controls -->
+<div class="absolute right-6 top-1/2 -translate-y-1/2 flex flex-col gap-2">
+<button class="w-10 h-10 bg-white shadow-md rounded-xl flex items-center justify-center text-stone-600 hover:text-primary active:scale-90 transition-all">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="w-10 h-10 bg-white shadow-md rounded-xl flex items-center justify-center text-stone-600 hover:text-primary active:scale-90 transition-all">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<button class="w-10 h-10 bg-white shadow-md rounded-xl flex items-center justify-center text-stone-600 hover:text-primary active:scale-90 transition-all mt-4">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+</div>
+<!-- Side Detail Panel (Right Side Over Map) -->
+<div class="absolute top-0 right-0 h-full w-full sm:w-[380px] pointer-events-none p-6">
+<div class="pointer-events-auto h-full flex flex-col gap-4">
+<div class="mt-20"></div> <!-- Spacer for TopNav -->
+<div class="flex-1 flex flex-col gap-4 overflow-y-auto pr-2 pb-12 no-scrollbar">
+<h2 class="text-on-surface font-headline text-2xl font-extrabold tracking-tighter drop-shadow-sm">Trending Now</h2>
+<!-- Trending Card 1 -->
+<div class="group relative bg-white/95 glass-effect rounded-2xl p-4 shadow-xl border border-white/50 hover:translate-x-[-8px] transition-all duration-300">
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 relative">
+<img alt="" class="w-full h-full object-cover" data-alt="Elegant cocktail bar interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCR0ClyD0susYy02iCx_hdW4BVDiukkRDwKqdkSBKPI2lXlIDdEdY0HcI258QElfwSXlHJm0H6l2FKTh_GmXnFidlAmPrKr3r9cT4hsYjPvCQpYQl8rJm-60Ef3ChMUWKl39Nyieka99DawSXan-xZSsezyuBfnGaejKL423UXDYOZCSjsRqTrIEIwmgQXCY62vH02pR3DlryZMg1_mkfCIj6aRALlCwvjAXRKx1OranIbyQPq6UaaYHPuW2ePkQ2xzBAnjEq4Wdbg"/>
+<div class="absolute top-1 left-1 bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-md">HOT</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline font-bold text-base leading-tight">The Gilded Room</h3>
+<span class="material-symbols-outlined text-primary text-lg" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<p class="text-xs text-stone-500 mt-1 line-clamp-1">Jazz Lounge &amp; Mixology</p>
+<div class="flex items-center gap-2 mt-2">
+<div class="h-1 flex-1 bg-stone-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%]"></div>
+</div>
+<span class="text-[10px] font-bold text-primary">85% Capacity</span>
+</div>
+<button class="mt-3 w-full py-2 bg-surface-container-high rounded-xl text-[11px] font-bold uppercase tracking-wider hover:bg-primary hover:text-white transition-colors">Book a Table</button>
+</div>
+</div>
+</div>
+<!-- Trending Card 2 -->
+<div class="group relative bg-white/95 glass-effect rounded-2xl p-4 shadow-xl border border-white/50 hover:translate-x-[-8px] transition-all duration-300">
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 relative">
+<img alt="" class="w-full h-full object-cover" data-alt="Nightlife party scene with neon lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbzuReI_PuI2tC6ofYHimdqnKg4cgMLkmkmv1tXuSIvUFZHmIFax7jaFuOqyIRQvEvr0n-1E9ZzlitaZYC2qgt4RWIkLNedxpdowVZnzX_N420QaQ1enEW-sYDihZgQx2LMf44ZJs05f2aIZW7FVGMp5zKUMmli7Vr5aE6vkM9GyP93e2zmRC6oDAkEGff4HuUJVxynK-VO7pnX_YGATPA0yU1VvDRHd25q4RtS7QOWAyNbKLNWrrP-gSwpy2Wh01ECibJIlnvYQs"/>
+<div class="absolute top-1 left-1 bg-on-surface text-white text-[10px] font-bold px-1.5 py-0.5 rounded-md">LIVE</div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline font-bold text-base leading-tight">Skyline Rooftop Gala</h3>
+<span class="material-symbols-outlined text-stone-300 text-lg">favorite</span>
+</div>
+<p class="text-xs text-stone-500 mt-1 line-clamp-1">Electronic Music Festival</p>
+<div class="flex items-center gap-3 mt-3">
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-xs">group</span>
+<span class="text-[10px] font-bold">420+ Joined</span>
+</div>
+<div class="flex items-center gap-1 text-tertiary">
+<span class="material-symbols-outlined text-xs">timer</span>
+<span class="text-[10px] font-bold">4h Left</span>
+</div>
+</div>
+<button class="mt-3 w-full py-2 bg-on-surface text-white rounded-xl text-[11px] font-bold uppercase tracking-wider transition-colors">Get Tickets</button>
+</div>
+</div>
+</div>
+<!-- Trending Card 3 -->
+<div class="group relative bg-white/95 glass-effect rounded-2xl p-4 shadow-xl border border-white/50 hover:translate-x-[-8px] transition-all duration-300">
+<div class="flex gap-4">
+<div class="w-24 h-24 rounded-xl overflow-hidden flex-shrink-0 relative">
+<img alt="" class="w-full h-full object-cover" data-alt="High-end restaurant dining table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA38ipau4gpXi2DzXRytwWWpjjTVEDrsKMSq-yAR-kOhm1PodblW2LhVkGx4u29y8M3DvegVkCvd87cnHKwdfHe__pa_z7JQ9iuTnzuAHt-oB_a33sxsQYYHWEFSp9Waq6HNlaztWvsC0Nx8hWE4scvbSM-3dG5AVjjOKTJ6SS_J3TxBpdKpgoYG30A0mLcweB4e9AC_scUpTuiUqM42Hhf2hcbXT1VuetwY8S3oQJw8sgXqbCWjUh3EXNl4Se4xIju1X59eLkwISE"/>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline font-bold text-base leading-tight">L'Artiste Bistro</h3>
+<span class="material-symbols-outlined text-stone-300 text-lg">favorite</span>
+</div>
+<p class="text-xs text-stone-500 mt-1 line-clamp-1">French Contemporary</p>
+<div class="flex flex-wrap gap-1 mt-3">
+<span class="bg-stone-100 px-2 py-0.5 rounded-full text-[9px] font-bold text-stone-600">Michelin Guide</span>
+<span class="bg-stone-100 px-2 py-0.5 rounded-full text-[9px] font-bold text-stone-600">Romantic</span>
+</div>
+<button class="mt-3 w-full py-2 bg-surface-container-high rounded-xl text-[11px] font-bold uppercase tracking-wider hover:bg-primary hover:text-white transition-colors">Request Table</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="fixed bottom-0 w-full z-50 bg-stone-100 dark:bg-stone-900 shadow-xl border-t border-stone-200/50 lg:hidden">
+<div class="flex justify-around items-center h-20 px-4">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Explore</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined">celebration</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Events</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Dining</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Profile</span>
+</button>
+</div>
+</footer>
+<!-- Legend Overlay -->
+<div class="fixed bottom-24 lg:bottom-8 left-6 lg:left-72 bg-white/90 glass-effect p-3 rounded-2xl shadow-lg border border-white/50 z-40">
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary heatmap-pulse"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-stone-600">High Peak</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary/40"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-stone-600">Moderate</span>
+</div>
+<div class="flex items-center gap-2 border-l border-stone-200 pl-4 ml-2">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-stone-600">Trending Venue</span>
+</div>
+</div>
+</div>
+</body></html>

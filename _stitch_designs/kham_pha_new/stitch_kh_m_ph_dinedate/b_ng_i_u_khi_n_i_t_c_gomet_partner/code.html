@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET Partner Dashboard | Velvet Bistro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "inverse-primary": "#ffb3b0",
+                        "secondary-fixed": "#e4e2e1",
+                        "on-secondary-container": "#656464",
+                        "surface-variant": "#e6e2dc",
+                        "inverse-on-surface": "#f4f0ea",
+                        "surface": "#fdf9f3",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#ae2f34",
+                        "surface-container-highest": "#e6e2dc",
+                        "surface-bright": "#fdf9f3",
+                        "on-secondary-fixed-variant": "#474747",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#c8c6c6",
+                        "secondary": "#5f5e5e",
+                        "outline": "#8c706f",
+                        "surface-dim": "#dddad4",
+                        "on-tertiary-fixed": "#370e08",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#ff6b6b",
+                        "primary": "#ae2f34",
+                        "primary-fixed-dim": "#ffb3b0",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "primary-fixed": "#ffdad8",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "on-tertiary-fixed-variant": "#6d3830",
+                        "secondary-container": "#e4e2e1",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#584140",
+                        "tertiary-fixed": "#ffdad4",
+                        "tertiary-container": "#cf8a7f",
+                        "surface-container-low": "#f7f3ed",
+                        "on-background": "#1c1c18",
+                        "on-primary-fixed-variant": "#8c1520",
+                        "on-primary-container": "#6d0010",
+                        "background": "#fdf9f3",
+                        "surface-container-high": "#ebe8e2",
+                        "tertiary": "#894e45",
+                        "outline-variant": "#e0bfbd",
+                        "on-primary-fixed": "#410006",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#1c1c18",
+                        "surface-container": "#f1ede7",
+                        "on-tertiary-container": "#55251e",
+                        "inverse-surface": "#31302d"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl shadow-sm shadow-rose-900/5">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto font-['Plus_Jakarta_Sans'] tracking-tight">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-rose-700 dark:text-rose-500">GOMET</span>
+<div class="hidden md:flex gap-6">
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-500 transition-colors duration-200" href="#">Partners</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-500 transition-colors duration-200" href="#">Verification</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-500 transition-colors duration-200" href="#">Safety</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-500 transition-colors duration-200" href="#">Subscriptions</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors duration-200 rounded-full">
+<span class="material-symbols-outlined text-stone-600">notifications</span>
+</button>
+<button class="p-2 hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors duration-200 rounded-full">
+<span class="material-symbols-outlined text-stone-600">settings</span>
+</button>
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary-container" data-alt="Chef portrait in professional kitchen environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIGHD7_eldGUvzkoI8rNGA1qDhxylntlTNWY0_nPhGSBvr0qjRgcoV9R9No6qe6QMExx5zvW-nYoji4AkqvoAJBSVq8s-qgzN7sDcL7yIf0jRR694Dg4h8JfO_96SYsi-Eid7DOQIrI0-e43-1wF_N2wJTfqyitIVej9a7o5UXM1aQZYfhFrBdvrbQqcZNRr5Cf8kcqqfUxXHHawDYnUyUxwJrdjtRJYdfM30eDekg_S0Hg03fCQbJXowWKSb-qPVVE0C0VhVuIW4"/>
+</div>
+</div>
+</nav>
+<div class="flex min-h-screen pt-16">
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex flex-col p-4 space-y-2 h-screen w-64 bg-stone-50 dark:bg-stone-950 border-r-0 sticky top-16">
+<div class="px-4 py-6 mb-4">
+<h2 class="text-xl font-black text-stone-900 dark:text-stone-100">GOMET Admin</h2>
+<p class="text-xs text-stone-500 dark:text-stone-400">Premium Management</p>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 rounded-xl hover:translate-x-1 transition-transform duration-200 font-['Plus_Jakarta_Sans'] text-sm" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-300 rounded-xl font-semibold hover:translate-x-1 transition-transform duration-200 font-['Plus_Jakarta_Sans'] text-sm" href="#">
+<span class="material-symbols-outlined">handshake</span>
+                Partner Portal
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 rounded-xl hover:translate-x-1 transition-transform duration-200 font-['Plus_Jakarta_Sans'] text-sm" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+                Identity Check
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 rounded-xl hover:translate-x-1 transition-transform duration-200 font-['Plus_Jakarta_Sans'] text-sm" href="#">
+<span class="material-symbols-outlined">shield</span>
+                Safety Logs
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 rounded-xl hover:translate-x-1 transition-transform duration-200 font-['Plus_Jakarta_Sans'] text-sm" href="#">
+<span class="material-symbols-outlined">payments</span>
+                Billing
+            </a>
+<div class="mt-auto p-4 bg-primary/5 rounded-2xl border border-primary/10">
+<p class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Upgrade Plan</p>
+<p class="text-[11px] text-on-surface-variant mb-4">Unlock advanced analytics and priority placement.</p>
+<button class="w-full py-2 bg-gradient-to-tr from-primary to-primary-container text-white text-xs font-bold rounded-lg shadow-lg shadow-primary/20">Go Premium</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-6 md:p-12 bg-surface max-w-7xl mx-auto w-full">
+<!-- Header Section -->
+<header class="mb-12 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+<div>
+<span class="inline-block px-3 py-1 bg-tertiary/10 text-tertiary text-[10px] font-bold uppercase tracking-widest rounded-full mb-4">Partner Overview</span>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tighter text-on-background -ml-1">Velvet Bistro</h1>
+<p class="text-secondary mt-2 font-medium">Monitoring your GOMET culinary performance.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-6 py-3 bg-surface-container-highest text-on-surface font-semibold rounded-full flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Export Report
+                    </button>
+<button class="px-6 py-3 bg-gradient-to-tr from-primary to-primary-container text-white font-bold rounded-full shadow-xl shadow-primary/20 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">add</span>
+                        New Campaign
+                    </button>
+</div>
+</header>
+<!-- Metrics Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Total Bookings Card -->
+<div class="md:col-span-1 bg-surface-container-lowest p-8 rounded-lg flex flex-col justify-between group overflow-hidden relative">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors"></div>
+<div>
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+<p class="text-secondary text-sm font-semibold uppercase tracking-wider">Total Bookings</p>
+<h3 class="text-4xl font-extrabold mt-1 text-on-background">1,482</h3>
+</div>
+<div class="mt-8 flex items-center gap-2 text-green-600 font-bold text-sm">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+                        +12% from last month
+                    </div>
+</div>
+<!-- Revenue Generated Card -->
+<div class="md:col-span-2 bg-surface-container-low p-8 rounded-lg flex flex-col md:flex-row justify-between relative overflow-hidden">
+<div class="z-10">
+<div class="w-12 h-12 rounded-2xl bg-tertiary/10 flex items-center justify-center text-tertiary mb-6">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<p class="text-secondary text-sm font-semibold uppercase tracking-wider">Revenue via GOMET</p>
+<h3 class="text-5xl font-extrabold mt-1 text-on-background">$42,910<span class="text-lg text-secondary font-normal ml-2">.00</span></h3>
+<p class="text-secondary mt-4 max-w-xs text-sm">Your collaboration with GOMET users accounts for 34% of total monthly revenue.</p>
+</div>
+<!-- Mini Graph Mockup -->
+<div class="mt-8 md:mt-0 flex items-end gap-2 h-32 z-10">
+<div class="w-6 bg-primary/20 rounded-t-sm h-12"></div>
+<div class="w-6 bg-primary/20 rounded-t-sm h-16"></div>
+<div class="w-6 bg-primary/40 rounded-t-sm h-24"></div>
+<div class="w-6 bg-primary/60 rounded-t-sm h-20"></div>
+<div class="w-6 bg-primary rounded-t-sm h-28"></div>
+</div>
+</div>
+</section>
+<!-- Secondary Content Section -->
+<section class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+<!-- Top Trending Dishes -->
+<div class="lg:col-span-2 space-y-6">
+<h2 class="text-2xl font-bold tracking-tight text-on-background">Top Trending Dishes</h2>
+<div class="space-y-4">
+<!-- Dish 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-lg flex items-center gap-4 group cursor-pointer hover:translate-x-1 transition-transform">
+<img alt="Signature Dish" class="w-16 h-16 rounded-md object-cover shadow-sm" data-alt="Gourmet salad with avocado and poached egg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMdK46-mQCn6W3SlJ8rNzzP6kmEYQg0G1Qsfq-Jl4W24XUvhZdC97wv9E449uzXWPgIv2HLFpB-IkNZckmPFoscLSJahBjwt3souqfPHHd1_wv4gFiMfA5RHgTLd9BWbBk4CGiqt0B9JqN--O_EQ_r_RGazhTtDAYKZaSHt4fxQJngObTgQN8vssbt5iU8MB-4G6KoVOKszPzFePvxVjtxuQgJwh_sKn0umVPXDVWxxepI5mLEGYiLNaAMTV5xt8vizwAQ08Ur97I"/>
+<div class="flex-1">
+<h4 class="font-bold text-on-background">Truffle Glazed Salmon</h4>
+<p class="text-xs text-secondary">Ordered 245 times</p>
+</div>
+<div class="text-right">
+<span class="block font-bold text-primary">+18%</span>
+<span class="text-[10px] text-secondary uppercase font-bold tracking-wider">Trend</span>
+</div>
+</div>
+<!-- Dish 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-lg flex items-center gap-4 group cursor-pointer hover:translate-x-1 transition-transform">
+<img alt="Signature Pizza" class="w-16 h-16 rounded-md object-cover shadow-sm" data-alt="Artisanal wood-fired pizza with fresh toppings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-VPpouBUWy4RQ1L-DU13_0VxX-2J73HEajUw8T4-7eFkwyQSBkwvLesKEx3q6hNX1ZoVEx_K-iaTabdCzNLnP2XGdnOnIGcU4a7waNm7qiOjUquGQV6znXRWnVe9ZGxC0jSSjoAC_oW1EHJFQ3z6BlNFySiZKtfg1gE3dF-UArOu6Lkg_Xrpw_YgsslpPGnmJWqneda1THM8P4gPRJNHjDQdWWcMiUdve_GrTcft4QPBzh3UA8GiLu5I3tNNCpfGvHtIdCNtCvZA"/>
+<div class="flex-1">
+<h4 class="font-bold text-on-background">Artisan Burrata Board</h4>
+<p class="text-xs text-secondary">Ordered 192 times</p>
+</div>
+<div class="text-right">
+<span class="block font-bold text-primary">+12%</span>
+<span class="text-[10px] text-secondary uppercase font-bold tracking-wider">Trend</span>
+</div>
+</div>
+<!-- Dish 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-lg flex items-center gap-4 group cursor-pointer hover:translate-x-1 transition-transform">
+<img alt="Dessert" class="w-16 h-16 rounded-md object-cover shadow-sm" data-alt="Chocolate lava cake with gold leaf garnish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeX8-knCBi4boVtl6rtnzNLLNjhvM2SY2Iz72O60aLxmtNwHzSlpqy9qfWTsKb8kuP5XotHORFCnT_j09IHievGCp1LFc6c_hW3wYQWBOOUjmYLN5pUJvB5r9giNJzYbq2RptuLj9HHeo3V-07k_dK9hT_cLb58_adoDY2FzcVts8xoT1Y5GLZdUSnrfqVd3H5Ypj0zQZbUnkp4YCmmYsLwtGFFaxNvYXwaudkWVhxszInwEADRHiy51Yn64JWg19Fs3QpaRkmjlA"/>
+<div class="flex-1">
+<h4 class="font-bold text-on-background">Velvet Lava Cake</h4>
+<p class="text-xs text-secondary">Ordered 158 times</p>
+</div>
+<div class="text-right">
+<span class="block font-bold text-green-600">+5%</span>
+<span class="text-[10px] text-secondary uppercase font-bold tracking-wider">Trend</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Campaign Management Section -->
+<div class="lg:col-span-3">
+<div class="bg-surface-container-high rounded-lg p-8 h-full">
+<div class="flex justify-between items-start mb-8">
+<div>
+<h2 class="text-2xl font-bold tracking-tight text-on-background">Campaign Management</h2>
+<p class="text-secondary text-sm mt-1">Boost visibility with curated offers for GOMET members.</p>
+</div>
+<span class="material-symbols-outlined text-primary text-3xl">campaign</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+<!-- Active Campaign Card -->
+<div class="bg-surface-container-lowest p-6 rounded-lg border-l-4 border-primary">
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest bg-primary/10 px-2 py-0.5 rounded">Active</span>
+<h4 class="font-bold mt-3 text-on-background">Romantic Dinner Special</h4>
+<p class="text-xs text-secondary mt-1">Free glass of Prosecco for matches.</p>
+<div class="mt-4 flex justify-between items-end">
+<div class="text-[10px] text-secondary">Ends in 4 days</div>
+<button class="text-xs font-bold text-primary">Edit</button>
+</div>
+</div>
+<!-- Create New Campaign Logic -->
+<div class="bg-white/40 border-2 border-dashed border-outline-variant/30 rounded-lg p-6 flex flex-col items-center justify-center text-center hover:bg-white/60 transition-colors cursor-pointer group">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-secondary mb-3 group-hover:bg-primary/10 group-hover:text-primary transition-all">
+<span class="material-symbols-outlined">add</span>
+</div>
+<p class="font-bold text-on-background text-sm">Create Special Offer</p>
+<p class="text-[10px] text-secondary mt-1">Target new couples or foodies</p>
+</div>
+</div>
+<!-- Campaign Builder Mini Form -->
+<div class="bg-surface-container-lowest rounded-lg p-6 shadow-sm">
+<h5 class="font-bold text-on-background mb-4 text-sm">Draft New Campaign</h5>
+<div class="space-y-4">
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-sm px-4 py-3 text-sm focus:ring-1 focus:ring-primary outline-none" placeholder="Offer Title (e.g., 'Sunset Date Appetizer')" type="text"/>
+</div>
+<div class="flex gap-4">
+<div class="flex-1 bg-surface-container-highest rounded-sm px-4 py-3 flex items-center justify-between cursor-pointer">
+<span class="text-sm text-secondary">Promotion Type</span>
+<span class="material-symbols-outlined text-sm">expand_more</span>
+</div>
+<div class="flex-1 bg-surface-container-highest rounded-sm px-4 py-3 flex items-center justify-between cursor-pointer">
+<span class="text-sm text-secondary">Target Audience</span>
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+</div>
+<button class="w-full py-4 bg-on-background text-white font-bold rounded-lg hover:opacity-90 transition-opacity">Launch Campaign</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Mobile Bottom Navigation -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pb-6 pt-3 bg-white/90 dark:bg-stone-900/90 backdrop-blur-lg rounded-t-[2rem] shadow-[0_-8px_24px_-12px_rgba(174,47,52,0.12)]">
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 font-['Inter'] text-[10px] uppercase tracking-widest">
+<span class="material-symbols-outlined mb-1">home</span>
+            Home
+        </div>
+<div class="flex flex-col items-center justify-center bg-rose-600 text-white rounded-full w-12 h-12 -translate-y-2 shadow-lg shadow-rose-500/40 font-['Inter'] text-[10px] uppercase tracking-widest">
+<span class="material-symbols-outlined">fact_check</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 font-['Inter'] text-[10px] uppercase tracking-widest">
+<span class="material-symbols-outlined mb-1">security</span>
+            Safety
+        </div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 font-['Inter'] text-[10px] uppercase tracking-widest">
+<span class="material-symbols-outlined mb-1">star</span>
+            Plans
+        </div>
+</nav>
+</body></html>

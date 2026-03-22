@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Booking Confirmation - GOMET</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface-variant": "#584140",
+              "surface": "#fdf9f3",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#e4e2e1",
+              "on-error": "#ffffff",
+              "error": "#ba1a1a",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-container-highest": "#e6e2dc",
+              "on-secondary-fixed-variant": "#474747",
+              "on-error-container": "#93000a",
+              "secondary": "#5f5e5e",
+              "primary-container": "#ff6b6b",
+              "outline-variant": "#e0bfbd",
+              "primary": "#ae2f34",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed-variant": "#8c1520",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "tertiary-container": "#cf8a7f",
+              "on-surface": "#1c1c18",
+              "tertiary": "#894e45",
+              "surface-container": "#f1ede7",
+              "on-tertiary": "#ffffff",
+              "on-background": "#1c1c18",
+              "outline": "#8c706f",
+              "surface-bright": "#fdf9f3",
+              "surface-container-high": "#ebe8e2",
+              "surface-dim": "#dddad4",
+              "inverse-on-surface": "#f4f0ea",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "error-container": "#ffdad6",
+              "inverse-primary": "#ffb3b0",
+              "on-secondary-container": "#656464",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "background": "#fdf9f3",
+              "on-tertiary-fixed": "#370e08",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "surface-container-low": "#f7f3ed",
+              "inverse-surface": "#31302d",
+              "on-primary-fixed": "#410006",
+              "surface-tint": "#ae2f34",
+              "surface-variant": "#e6e2dc",
+              "secondary-container": "#e4e2e1",
+              "on-primary-container": "#6d0010"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body min-h-screen">
+<!-- TopAppBar -->
+<nav class="bg-surface/80 dark:bg-zinc-950/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-sm dark:shadow-none tonal-shift bg-surface-container-low/50">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-black text-primary dark:text-primary-container italic font-headline">GOMET</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label" href="#">Feed</a>
+<a class="text-on-surface-variant font-medium hover:bg-primary/10 transition-colors px-2 py-1 rounded font-label" href="#">Bookings</a>
+<a class="text-on-surface-variant font-medium hover:bg-primary/10 transition-colors px-2 py-1 rounded font-label" href="#">Wallet</a>
+<a class="text-on-surface-variant font-medium hover:bg-primary/10 transition-colors px-2 py-1 rounded font-label" href="#">Events</a>
+<a class="text-on-surface-variant font-medium hover:bg-primary/10 transition-colors px-2 py-1 rounded font-label" href="#">Profile</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-primary/10 rounded-full transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-primary/10 rounded-full transition-colors" data-icon="account_balance_wallet">account_balance_wallet</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-32 px-4 max-w-4xl mx-auto">
+<!-- Success Header -->
+<div class="text-center mb-12">
+<div class="inline-flex items-center justify-center w-20 h-20 bg-primary-container rounded-full mb-6 shadow-lg">
+<span class="material-symbols-outlined text-white text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="font-headline text-display-sm font-extrabold tracking-tight text-on-background mb-2">Reservation Confirmed</h1>
+<p class="text-on-surface-variant font-medium">Your seat is curated and waiting.</p>
+</div>
+<!-- Confirmation Ticket Asymmetric Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Details Card -->
+<div class="lg:col-span-7 space-y-8">
+<div class="bg-surface-container-lowest rounded-lg p-8 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] relative overflow-hidden">
+<!-- Top Ribbon Decorative -->
+<div class="absolute top-0 right-0 p-4">
+<div class="bg-primary/10 text-primary px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest">Confirmed</span>
+</div>
+</div>
+<div class="mb-10">
+<span class="font-label text-label-md text-primary font-bold uppercase tracking-wider mb-2 block">The Experience</span>
+<h2 class="font-headline text-4xl font-extrabold text-on-background tracking-tight">The Glass House</h2>
+</div>
+<div class="grid grid-cols-2 gap-y-10 gap-x-6">
+<div>
+<span class="font-label text-label-md text-on-surface-variant uppercase tracking-widest block mb-1">Date</span>
+<p class="font-headline text-xl font-bold text-on-background">Saturday, Oct 21</p>
+</div>
+<div>
+<span class="font-label text-label-md text-on-surface-variant uppercase tracking-widest block mb-1">Time</span>
+<p class="font-headline text-xl font-bold text-on-background">08:00 PM</p>
+</div>
+<div>
+<span class="font-label text-label-md text-on-surface-variant uppercase tracking-widest block mb-1">Table Type</span>
+<p class="font-headline text-xl font-bold text-on-background">Communal</p>
+</div>
+<div>
+<span class="font-label text-label-md text-on-surface-variant uppercase tracking-widest block mb-1">Guests</span>
+<p class="font-headline text-xl font-bold text-on-background">2 People</p>
+</div>
+</div>
+<!-- Special Deal Badge -->
+<div class="mt-12 bg-surface-container-high rounded-DEFAULT p-6 flex items-center gap-4 relative">
+<div class="bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shrink-0 shadow-lg">
+<span class="material-symbols-outlined" data-icon="local_offer" style="font-variation-settings: 'FILL' 1;">local_offer</span>
+</div>
+<div>
+<h4 class="font-headline font-bold text-primary">Special Curator Deal</h4>
+<p class="text-on-surface-variant text-sm font-medium">10% off appetizers during your visit.</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="flex-1 bg-gradient-to-br from-primary to-primary-container text-white py-4 px-6 rounded-DEFAULT font-headline font-bold flex items-center justify-center gap-2 shadow-lg active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="calendar_add_on">calendar_add_on</span>
+                        Add to Calendar
+                    </button>
+<button class="flex-1 bg-surface-container-highest text-on-surface py-4 px-6 rounded-DEFAULT font-headline font-bold flex items-center justify-center gap-2 active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="near_me">near_me</span>
+                        Get Directions
+                    </button>
+</div>
+</div>
+<!-- Right Column: QR Code & Map Preview -->
+<div class="lg:col-span-5 space-y-8">
+<!-- QR Code Card -->
+<div class="bg-surface-container-low rounded-lg p-10 flex flex-col items-center text-center">
+<p class="font-label text-label-md text-on-surface-variant uppercase tracking-widest mb-6">Scan at Venue</p>
+<div class="bg-white p-4 rounded-lg shadow-sm mb-6">
+<img alt="Booking QR Code" class="w-48 h-48" data-alt="A clean modern QR code with brand red color" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX8AlQYprIWpg-Way98sDuFuWhoXdUuvETHs-F7wj3LIAXYH72-izG9Ufcfm9tsu2OOkDWsEcBVByXEiTflYKH4VQcmogtqUBFX3YeWaQ20vpmmkMDIPB-SGpdl9e8LqYPX-yWKq_tgVF4GmI74ycdoovDMk1kuZRTXjdoMGhGI_1XYRRA5IMmWND1YOETavcPCpHSKBaMzc2QrVFxnJVSMCDUtlDcxm8GlQ_Mp7RYsgeUBZLOlm4isAulVE9WaSi0bFmQQjh9Cpw"/>
+</div>
+<p class="text-on-surface-variant text-sm font-medium px-4">Show this code to the host upon arrival at The Glass House.</p>
+<div class="mt-6 font-mono text-xs text-outline font-bold tracking-widest">GOM-812-XJK-09</div>
+</div>
+<!-- Venue Map Preview -->
+<div class="rounded-lg overflow-hidden h-48 relative shadow-sm">
+<img alt="Venue Location Map" class="w-full h-full object-cover grayscale opacity-50" data-alt="Abstract minimalist map of a city neighborhood" data-location="New York" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd46GSRhdM191N0QUT7g3HQOr2MTUIpO84SrsowuonnFt_IR-QxDUPSDFt5Vv9Bhibru6bb87XGpRoF-OdmdpNJ1tnZHUwOOXyeD1IAZdP5Ruf-UEJsubRK6tUDGOeEIiYTDaTd2vaE0ea0Je0KBFMUR_NfaIXpJwLjkw8O0omN-IwoRUK75yoC4fT5peyFh9JFQq5ZBO0wlKcPkCEDBkI3ebQCxc7cfGhpVP6of_r8l6vs15MBUsI11m4J2gc344tT__--rgIarc"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center shadow-xl animate-pulse">
+<span class="material-symbols-outlined" data-icon="location_on" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-xl rounded-t-[2rem] z-50 shadow-[0_-8px_32px_rgba(174,47,52,0.08)] tonal-shift bg-surface-container-low">
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-3 hover:text-primary transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" data-icon="amp_stories">amp_stories</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Feed</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-gradient-to-br from-primary to-primary-container text-white rounded-full p-3 shadow-lg active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" data-icon="confirmation_number">confirmation_number</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Bookings</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-3 hover:text-primary transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Wallet</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-3 hover:text-primary transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" data-icon="event_available">event_available</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Events</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant p-3 hover:text-primary transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</button>
+</nav>
+</body></html>

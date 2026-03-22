@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET Host - Venue Management Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface": "#fdf9f3",
+              "on-background": "#1c1c18",
+              "background": "#fdf9f3",
+              "tertiary-fixed": "#ffdad4",
+              "outline-variant": "#e0bfbd",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-container": "#f1ede7",
+              "surface-container-high": "#ebe8e2",
+              "surface-dim": "#dddad4",
+              "tertiary": "#894e45",
+              "secondary-container": "#e4e2e1",
+              "error-container": "#ffdad6",
+              "primary-fixed": "#ffdad8",
+              "secondary-fixed": "#e4e2e1",
+              "inverse-on-surface": "#f4f0ea",
+              "on-secondary-container": "#656464",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container-low": "#f7f3ed",
+              "on-secondary-fixed": "#1b1c1c",
+              "error": "#ba1a1a",
+              "on-primary-container": "#6d0010",
+              "inverse-primary": "#ffb3b0",
+              "secondary": "#5f5e5e",
+              "surface-tint": "#ae2f34",
+              "on-error-container": "#93000a",
+              "primary": "#ae2f34",
+              "on-secondary-fixed-variant": "#474747",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-tertiary-fixed": "#370e08",
+              "on-surface-variant": "#584140",
+              "primary-container": "#ff6b6b",
+              "surface-bright": "#fdf9f3",
+              "tertiary-container": "#cf8a7f",
+              "on-error": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "outline": "#8c706f",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "surface-container-highest": "#e6e2dc",
+              "surface-variant": "#e6e2dc",
+              "on-primary-fixed": "#410006",
+              "on-surface": "#1c1c18"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-background min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-full mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold tracking-tighter text-[#ae2f34]">GOMET Host</span>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#ae2f34] font-semibold border-b-2 border-[#ae2f34] pb-1 font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Dashboard</a>
+<a class="text-zinc-600 hover:text-[#ae2f34] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Events</a>
+<a class="text-zinc-600 hover:text-[#ae2f34] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Venues</a>
+<a class="text-zinc-600 hover:text-[#ae2f34] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-zinc-100 rounded-lg transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-zinc-600">notifications</span>
+</button>
+<button class="p-2 hover:bg-zinc-100 rounded-lg transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined text-zinc-600">settings</span>
+</button>
+</div>
+<div class="h-10 w-10 rounded-full overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="Venue Manager Profile Portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUEGtXWV6ltJhfI-u5aCHCfirO__20xsE9cFS4vt2stpPqyoY6TG91RgT2TbAPlhUZzSoIuLS2bzQyC-ub_yhACkIQ3jDfMnjsnLPfdobcbbytHy0oZ_e1k73BENziWcZbY7MjjIhFFyrg271u8lbuE65Rhp_HTL2IufCDPd4OyrmBfdEXVPLqP_rnG39pcwhL1b3YXgYraeppuwMC062ifuOtoivFSTqQxVhKwUPaWEkpkwjufA2I3RcAMddDTRqLcz1g7-KzixM"/>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-white px-6 py-2.5 rounded-full font-semibold text-sm shadow-lg shadow-primary/20 active:scale-95 transition-all">
+                    Create Event
+                </button>
+</div>
+</div>
+</header>
+<div class="flex pt-20">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col h-[calc(100vh-80px)] w-64 p-4 space-y-2 fixed left-0 bg-surface-container-low">
+<div class="px-4 py-6 mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div>
+<h3 class="font-bold text-sm leading-tight">The Grand Lounge</h3>
+<p class="text-xs text-zinc-500">Premium Partner</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-[#ae2f34] text-white rounded-full shadow-lg shadow-[#ae2f34]/20 font-medium text-sm transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-200/50 rounded-full font-medium text-sm transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span>Calendar</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-200/50 rounded-full font-medium text-sm transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span>Bookings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-200/50 rounded-full font-medium text-sm transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Audience</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-200/50 rounded-full font-medium text-sm transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span>Payouts</span>
+</a>
+</nav>
+<button class="w-full py-4 bg-surface-container-high rounded-2xl flex items-center justify-center gap-2 text-primary font-bold active:scale-98 transition-all">
+<span class="material-symbols-outlined">add_circle</span>
+                New Request
+            </button>
+<div class="pt-4 mt-4 border-t border-zinc-200">
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-200/50 rounded-full font-medium text-sm transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">help</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-zinc-500 hover:bg-zinc-200/50 rounded-full font-medium text-sm transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span>Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 lg:ml-64 p-8">
+<header class="mb-10">
+<h1 class="text-4xl font-extrabold font-headline tracking-tight text-on-background mb-2">Venue Insights</h1>
+<p class="text-zinc-500">Welcome back, manager. Here's what's happening at The Grand Lounge tonight.</p>
+</header>
+<!-- Bento Analytics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<!-- Large Stats Card -->
+<div class="md:col-span-2 bg-gradient-to-br from-primary to-primary-container p-8 rounded-xl text-white relative overflow-hidden shadow-xl shadow-primary/10">
+<div class="relative z-10">
+<span class="text-white/80 text-sm font-medium uppercase tracking-widest">Active Events</span>
+<div class="text-6xl font-extrabold font-headline mt-4 mb-2">12</div>
+<p class="text-white/90 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                            +3 from last week
+                        </p>
+</div>
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl text-white/10 rotate-12" style="font-variation-settings: 'FILL' 1;">event_available</span>
+</div>
+<!-- Interested Users -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-tertiary mb-4">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<div class="text-3xl font-bold font-headline mb-1">2,482</div>
+<div class="text-zinc-500 text-sm font-medium">Interested Users</div>
+</div>
+<!-- Confirmed Bookings -->
+<div class="bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-secondary mb-4">
+<span class="material-symbols-outlined">verified</span>
+</div>
+<div class="text-3xl font-bold font-headline mb-1">843</div>
+<div class="text-zinc-500 text-sm font-medium">Confirmed Bookings</div>
+</div>
+<!-- Date Requests -->
+<div class="md:col-span-1 bg-surface-container-lowest p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow border-l-4 border-primary">
+<div class="flex justify-between items-start mb-4">
+<div class="text-3xl font-bold font-headline">48</div>
+<span class="bg-error-container text-on-error-container text-[10px] font-bold px-2 py-0.5 rounded-full">URGENT</span>
+</div>
+<div class="text-zinc-500 text-sm font-medium mb-4">New Date Requests</div>
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="User Avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIfSTYSlxMBSeQmS1_gpZDwPD7ilXOVcCBF0LcoBDr4cM4dtckik8oM4vrXVh8N4ai1uxakJX-LZXfLaKRZbb7ageJ497pO1iDnvnTxi9iukeMtz24BDWgmCBxPUyvqeAHtwxN2i7fx_xXLXXSDlHkIL152obstbHmTcf7QWRQoIbkfTQp-mN5V8dalNwudLM1CN0tKsEzdG_SnPO5cZ4PouuKrwIgRfOwSZ_rg5smsqbmNrnTRL0Sn5GFluk6kdhpciNvF8FyiTk"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="User Avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-mNQczFsWpPQZ-R0XJO__azKwr52Yr0xjKiV2lsYUD3DwTWGTk5JDtm4bFkpI1eDt_8VNCgyfJxabN0uQ5eCwp7d5lOatWhmvkwOq-br-TV6uTMMl9jTBawfTCHKjMhTAeVppwggHi_DPmwiiCMhJcGxKc1Zf1i-1O0JI7ffu24fp5fiQnz-GnC5Gi2bQu9hObGOeZDD2CKVvPx3GZUugcVsD5mgSH-C5eHPFk9ovWk61107XSCjmEcQgtXpgmVBzUkUTdeKuJsY"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="User Avatar 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtNe4VoY9AaZrtuxsoPz8j0DnoonBvi5QLCRUWxTTVN00fXHAq2PYGbJUZsZJOhZNn1_PAtdkyJV8HliMIV27umUL-xXBl8JyUo5blTLt7nLfKt_mJghWOCkkNOEe_NjuOZXNryFU-PUqCtBCxHJsiPmS04UtjeFmAJxNlwpIl5MtnfZ8Ho8DrHLYmBUMwE9NWdFs73pfxchYQxA4aYm1bWZcCSLMPG3Q8meL-VBzSxoulN49EmMkmQLb3fcDaaFIKvlGRO_S9EYA"/>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-zinc-100 flex items-center justify-center text-[10px] font-bold">+45</div>
+</div>
+</div>
+<!-- Conversion Rate Card -->
+<div class="md:col-span-3 bg-surface-container-high p-6 rounded-xl flex items-center justify-between">
+<div>
+<div class="text-zinc-600 font-medium mb-1">Profile Conversion Rate</div>
+<div class="text-4xl font-extrabold font-headline text-on-background">34.2%</div>
+<div class="mt-4 flex gap-4">
+<div class="flex items-center gap-1 text-xs font-bold text-green-600">
+<span class="material-symbols-outlined text-xs">arrow_upward</span>
+                                12% vs last month
+                            </div>
+</div>
+</div>
+<div class="h-24 w-48 flex items-end gap-1">
+<div class="w-full bg-primary/20 h-1/2 rounded-t-md"></div>
+<div class="w-full bg-primary/30 h-3/4 rounded-t-md"></div>
+<div class="w-full bg-primary/40 h-2/3 rounded-t-md"></div>
+<div class="w-full bg-primary/60 h-full rounded-t-md"></div>
+<div class="w-full bg-primary h-4/5 rounded-t-md shadow-lg"></div>
+</div>
+</div>
+</div>
+<!-- Detailed Events Table -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<div class="px-8 py-6 flex justify-between items-center bg-surface-container-low">
+<h2 class="text-xl font-bold font-headline">Upcoming Events</h2>
+<div class="flex gap-2">
+<button class="px-4 py-2 text-sm font-semibold hover:bg-zinc-200 transition-colors rounded-lg">View History</button>
+<button class="px-4 py-2 text-sm font-semibold bg-white shadow-sm rounded-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                            Filter
+                        </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-zinc-400 text-xs font-bold uppercase tracking-widest border-b border-surface-container">
+<th class="px-8 py-4">Event Details</th>
+<th class="px-8 py-4">Date &amp; Time</th>
+<th class="px-8 py-4">Status</th>
+<th class="px-8 py-4">Interested</th>
+<th class="px-8 py-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container"><tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-zinc-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Private Event Image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWEY-M7r_k1bpFZtghgnbT_DhXphUJfQLbua6Y3bab8GlgD1OxK6nGK-TPq66bGLWFhBedWjaAYbBC-Yi6SicgDvO7t5-Y9G5ZvOWxzNrw4kSqwxdN2Weh0G3uKKVHpl--ZDU6rwsSdxTI1IXvv7fDzkEK_-k0L3Tg5yFVH4czj3MIVgPdSjwx6i9TbfAaC3aItRG7FDj1vT2y8iUcqyPGZR0N1q-BDNldFOO6Ixgq5UwcKqn7zCVIK7ztx39HRFygHgX9Ld0szB0"/>
+</div>
+<div>
+<div class="font-bold text-on-background">VIP Tasting Session</div>
+<div class="text-xs text-zinc-500">Private Reservation</div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="text-sm font-medium">Today</div>
+<div class="text-xs text-zinc-400">06:00 PM - 08:00 PM</div>
+</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 rounded-full bg-[#10b981] text-white text-[10px] font-black shadow-sm flex items-center gap-1 w-fit uppercase">
+<span class="material-symbols-outlined text-[12px]">check_circle</span>
+ARRIVED
+</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold">12</span>
+<div class="w-16 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full"></div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2">
+<button class="bg-zinc-100 text-zinc-400 px-4 py-1.5 rounded-lg text-xs font-bold cursor-not-allowed flex items-center gap-1"><span class="material-symbols-outlined text-xs">how_to_reg</span> Arrived</button>
+<button class="p-2 hover:bg-zinc-100 rounded-lg text-zinc-600 transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="bg-primary/10 text-primary px-4 py-1.5 rounded-lg text-xs font-bold hover:bg-primary/20 transition-colors">
+Promote
+</button>
+</div>
+</td>
+</tr>
+<!-- Event 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-zinc-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Signature Cocktail Event Image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA72WgCc1YGCwIxlEL6DfEGNVhGBTHbRwmQyBenLOGUew9GJSK-dZ0FBd5YTathYvtbBoqeD3pQR77CQZsDl_ag_hILWL_k6J6M0sdkoof3blwCpTYszQ3YGlMPQBkrvdtlwVmfg6FHbkSLaZtD7bLbDyxOj2XGSttzqmrSrZ8nHNqSPXnPdkA6NEMAEvjCYfDowY1F3qHvVR-hcexr7H_a51uxyHinDV6nNjn5TbCJ3aMl-uAmPbzLubEyxRcuxh-5mNtNtH44bR4"/>
+</div>
+<div>
+<div class="font-bold text-on-background">Midnight Mixology</div>
+<div class="text-xs text-zinc-500">Workshop &amp; Social</div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="text-sm font-medium">May 15, 2024</div>
+<div class="text-xs text-zinc-400">09:00 PM - 12:00 AM</div>
+</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-[10px] font-bold">LIVE</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold">342</span>
+<div class="w-16 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%]"></div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2"><button class="bg-green-100 text-green-700 px-4 py-1.5 rounded-lg text-xs font-bold hover:bg-green-200 transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-xs">how_to_reg</span> Arrived</button>
+<button class="p-2 hover:bg-zinc-100 rounded-lg text-zinc-600 transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="bg-primary/10 text-primary px-4 py-1.5 rounded-lg text-xs font-bold hover:bg-primary/20 transition-colors">
+                                            Promote
+                                        </button>
+</div>
+</td>
+</tr>
+<!-- Event 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-zinc-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Gourmet Dining Event Image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWEY-M7r_k1bpFZtghgnbT_DhXphUJfQLbua6Y3bab8GlgD1OxK6nGK-TPq66bGLWFhBedWjaAYbBC-Yi6SicgDvO7t5-Y9G5ZvOWxzNrw4kSqwxdN2Weh0G3uKKVHpl--ZDU6rwsSdxTI1IXvv7fDzkEK_-k0L3Tg5yFVH4czj3MIVgPdSjwx6i9TbfAaC3aItRG7FDj1vT2y8iUcqyPGZR0N1q-BDNldFOO6Ixgq5UwcKqn7zCVIK7ztx39HRFygHgX9Ld0szB0"/>
+</div>
+<div>
+<div class="font-bold text-on-background">Secret Supper Club</div>
+<div class="text-xs text-zinc-500">Exclusive 5-Course Dinner</div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="text-sm font-medium">May 18, 2024</div>
+<div class="text-xs text-zinc-400">07:30 PM - 10:30 PM</div>
+</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 rounded-full bg-zinc-100 text-zinc-600 text-[10px] font-bold">DRAFT</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold">128</span>
+<div class="w-16 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[30%]"></div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2"><button class="bg-green-100 text-green-700 px-4 py-1.5 rounded-lg text-xs font-bold hover:bg-green-200 transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-xs">how_to_reg</span> Arrived</button>
+<button class="p-2 hover:bg-zinc-100 rounded-lg text-zinc-600 transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="bg-primary/10 text-primary px-4 py-1.5 rounded-lg text-xs font-bold hover:bg-primary/20 transition-colors">
+                                            Promote
+                                        </button>
+</div>
+</td>
+</tr>
+<!-- Event 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg bg-zinc-100 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Jazz Night Live Music Image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjVLVG92UvN0H1v1pCFUmHuI5LohIXSzUPMOVj-hyc29FxpnLcpgxn98wkLQ6T-BDe0BxC8DoPdKdLz7jCt-Mc6bNIqyxjG_xwDbbtPYJeiIqpU3utiQtpgjcWTrUOcdhWbNvlD3w8gctZH0ZxEr3vdaX-YNUzVdW0viL0z80FPox1FQditMnHK-AVzgbU6Uqfkynvh9ow76v0PNFlFyKdRB40kA_HiBKC1t-PoB2WyxMZE-Urgzl1RA4EK3GO3b3xVwhoqE9B2MM"/>
+</div>
+<div>
+<div class="font-bold text-on-background">Vintage Jazz Night</div>
+<div class="text-xs text-zinc-500">Live Music &amp; Dancing</div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="text-sm font-medium">May 22, 2024</div>
+<div class="text-xs text-zinc-400">08:00 PM - 11:30 PM</div>
+</td>
+<td class="px-8 py-6">
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase">Trending</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold">892</span>
+<div class="w-16 h-1.5 bg-zinc-100 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[95%]"></div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-2"><button class="bg-green-100 text-green-700 px-4 py-1.5 rounded-lg text-xs font-bold hover:bg-green-200 transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-xs">how_to_reg</span> Arrived</button>
+<button class="p-2 hover:bg-zinc-100 rounded-lg text-zinc-600 transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="bg-primary/10 text-primary px-4 py-1.5 rounded-lg text-xs font-bold hover:bg-primary/20 transition-colors">
+                                            Promote
+                                        </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+</div>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface/80 backdrop-blur-md border-t border-zinc-200 flex justify-around py-3 z-50">
+<button class="flex flex-col items-center gap-1 text-[#ae2f34]">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-zinc-400">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="text-[10px] font-medium">Events</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-zinc-400">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-medium">Stats</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-zinc-400">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Account</span>
+</button>
+</nav>
+</body></html>

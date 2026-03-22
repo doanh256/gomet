@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Personal Insights Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-container": "#ffdad6",
+              "surface-tint": "#ae2f34",
+              "primary": "#ae2f34",
+              "outline": "#8c706f",
+              "inverse-on-surface": "#f4f0ea",
+              "surface": "#fdf9f3",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-secondary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#f1ede7",
+              "primary-fixed": "#ffdad8",
+              "on-primary": "#ffffff",
+              "on-surface": "#1c1c18",
+              "on-primary-fixed": "#410006",
+              "surface-container-high": "#ebe8e2",
+              "on-secondary-fixed": "#1b1c1c",
+              "tertiary-container": "#cf8a7f",
+              "surface-variant": "#e6e2dc",
+              "surface-container-highest": "#e6e2dc",
+              "secondary": "#5f5e5e",
+              "secondary-fixed": "#e4e2e1",
+              "on-primary-fixed-variant": "#8c1520",
+              "tertiary": "#894e45",
+              "on-tertiary-fixed": "#370e08",
+              "surface-container-low": "#f7f3ed",
+              "outline-variant": "#e0bfbd",
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#656464",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "on-secondary-fixed-variant": "#474747",
+              "on-background": "#1c1c18",
+              "inverse-surface": "#31302d",
+              "surface-dim": "#dddad4",
+              "on-primary-container": "#6d0010",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-container": "#e4e2e1",
+              "on-error": "#ffffff",
+              "inverse-primary": "#ffb3b0",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "background": "#fdf9f3",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "tertiary-fixed": "#ffdad4",
+              "surface-bright": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "error": "#ba1a1a",
+              "primary-container": "#ff6b6b"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf9f3;
+            color: #1c1c18;
+        }
+        .font-plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-8 h-20 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-[#ae2f34] dark:text-[#ff6b6b]">GOMET</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#4a4a44] dark:text-[#e0bfbd] font-medium hover:text-[#ff6b6b] transition-colors duration-300" href="#">Concierge</a>
+<a class="text-[#4a4a44] dark:text-[#e0bfbd] font-medium hover:text-[#ff6b6b] transition-colors duration-300" href="#">Profile</a>
+<a class="text-[#4a4a44] dark:text-[#e0bfbd] font-medium hover:text-[#ff6b6b] transition-colors duration-300" href="#">Planner</a>
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] font-bold border-b-2 border-[#ae2f34]" href="#">Insights</a>
+</nav>
+<button class="bg-gradient-to-tr from-[#ae2f34] to-[#ff6b6b] text-white px-6 py-2.5 rounded-full font-bold scale-95 active:opacity-80 transition-transform">
+                Book Now
+            </button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 pt-28">
+<!-- Hero Header -->
+<div class="mb-12">
+<h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-background mb-2">Personal Insights</h1>
+<p class="text-on-surface-variant text-lg max-w-2xl">A curated overview of your culinary romantic journey and community reputation.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Reputation Score (Large Highlight) -->
+<div class="md:col-span-4 bg-surface-container-low rounded-lg p-8 flex flex-col justify-between relative overflow-hidden group">
+<div class="z-10">
+<span class="inline-block px-4 py-1 bg-primary/10 text-primary rounded-full text-xs font-bold tracking-widest uppercase mb-6">Social Credibility</span>
+<h2 class="font-headline text-2xl font-bold mb-1">Reputation Score</h2>
+<p class="text-on-surface-variant text-sm mb-8">You are in the top 5% of diners this month.</p>
+<div class="flex items-baseline gap-2">
+<span class="text-7xl font-extrabold font-headline tracking-tighter text-primary">892</span>
+<span class="text-on-surface-variant font-medium">/ 1000</span>
+</div>
+</div>
+<!-- Visual Element -->
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+<div class="z-10 mt-8">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-gradient-to-r from-primary to-primary-container h-full w-[89%]"></div>
+</div>
+</div>
+</div>
+<!-- Spending Habits (G-Points) -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-lg p-8 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.06)]">
+<div class="flex justify-between items-start mb-10">
+<div>
+<h2 class="font-headline text-2xl font-bold">G-Points Velocity</h2>
+<p class="text-on-surface-variant text-sm italic">Spending &amp; rewards accumulation over 6 months</p>
+</div>
+<div class="flex gap-2">
+<span class="w-3 h-3 rounded-full bg-primary mt-1.5"></span>
+<span class="text-xs font-bold text-on-surface-variant uppercase tracking-widest leading-none mt-1">Accumulated</span>
+</div>
+</div>
+<!-- Mock Chart Visualization -->
+<div class="flex items-end justify-between h-48 gap-4 px-2">
+<div class="flex-1 bg-surface-container-high rounded-t-lg h-[40%] transition-all hover:bg-primary/20 relative group">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">1.2k</span>
+</div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg h-[65%] transition-all hover:bg-primary/20 relative group">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">2.4k</span>
+</div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg h-[55%] transition-all hover:bg-primary/20 relative group">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">1.8k</span>
+</div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg h-[90%] transition-all hover:bg-primary/20 relative group">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">3.5k</span>
+</div>
+<div class="flex-1 bg-primary/40 rounded-t-lg h-[75%] transition-all hover:bg-primary relative group">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">2.9k</span>
+</div>
+<div class="flex-1 bg-primary rounded-t-lg h-[95%] transition-all relative group">
+<span class="absolute -top-8 left-1/2 -translate-x-1/2 text-xs font-bold">4.2k</span>
+</div>
+</div>
+<div class="flex justify-between mt-4 px-2 text-[10px] font-bold text-on-surface-variant/60 uppercase tracking-widest">
+<span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span>
+</div>
+</div>
+<!-- AI Curated Recommendations -->
+<div class="md:col-span-5 bg-tertiary-container/10 rounded-lg p-8 border border-outline-variant/20 flex flex-col">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
+<h2 class="font-headline text-xl font-bold">Data-Driven Insights</h2>
+</div>
+<div class="space-y-6 flex-grow">
+<div class="bg-white/60 p-5 rounded-md backdrop-blur-sm">
+<p class="text-on-surface leading-relaxed">
+                            "You seem to enjoy <span class="font-bold text-primary">Speakeasy</span> atmospheres with curated cocktails. Based on your Friday patterns, you'd love <span class="underline decoration-primary/30 underline-offset-4">The Rabbit Hole</span> in District 1."
+                        </p>
+</div>
+<div class="bg-white/60 p-5 rounded-md backdrop-blur-sm">
+<p class="text-on-surface leading-relaxed">
+                            "Your peak dining time is <span class="font-bold text-primary">8:30 PM</span>. We noticed shorter wait times for your favorites if you book for 7:45 PM instead."
+                        </p>
+</div>
+</div>
+<button class="mt-8 text-sm font-bold text-primary flex items-center gap-2 group">
+                    View More Insights
+                    <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<!-- Successful Dates & Favorite Venues Cluster -->
+<div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+<!-- Success Sessions -->
+<div class="bg-surface-container-high rounded-lg p-6 flex flex-col items-center justify-center text-center">
+<div class="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-4 shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="text-4xl font-headline font-extrabold text-on-background mb-1">24</div>
+<div class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Successful Dates</div>
+<p class="text-[10px] text-tertiary mt-2">85% Match Consistency</p>
+</div>
+<!-- Favorite Venue Card -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden group shadow-sm flex flex-col">
+<div class="h-32 relative overflow-hidden">
+<img alt="Luxury Cocktail Bar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Interior of a luxury moody cocktail bar with velvet chairs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7f3QWQ8inN24kWg3JDmQ5eCzH5PHHSyYH0cYUi8BoPCgL_lzKZWb9Jylu0lBMWcUXAGtwygxjfAZnkgIYtdbnodXLVRIPvc2o2imTx545s9qpvLWyt-8CFrhq98cjZx7gTOsg4Kk7TTPlvt51A9abRxeCA-XcMk4PUMhjmdZ4c3lQI2z_kT8Z0S92-Z5pDb7dhc-BNW6LX_UneAGnL0IZQaPyR81cloVz6WUNbKeC6AJD6O7RjT-je7Br4apX2Q0jQbCm8Fh_rhQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-3 left-4 text-white">
+<span class="text-[10px] font-bold uppercase tracking-widest opacity-80">Most Visited</span>
+<h3 class="font-headline font-bold">L'Artiste Lounge</h3>
+</div>
+</div>
+<div class="p-4 flex flex-col gap-2">
+<div class="flex justify-between items-center">
+<span class="text-xs font-medium">8 Visits this month</span>
+<span class="text-xs text-primary font-bold">Top 1% Fan</span>
+</div>
+<div class="flex gap-1">
+<div class="h-1 bg-primary flex-1 rounded-full"></div>
+<div class="h-1 bg-primary flex-1 rounded-full"></div>
+<div class="h-1 bg-primary flex-1 rounded-full"></div>
+<div class="h-1 bg-surface-container rounded-full flex-1"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Favorite Venues Grid Section -->
+<div class="md:col-span-12 mt-4">
+<div class="flex justify-between items-end mb-8">
+<h2 class="font-headline text-3xl font-bold tracking-tight">Your Culinary Circuit</h2>
+<span class="text-sm font-bold uppercase tracking-widest text-on-surface-variant cursor-pointer hover:text-primary transition-colors">See All Destinations</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<!-- Venue 1 -->
+<div class="relative group cursor-pointer">
+<div class="aspect-[3/4] rounded-lg overflow-hidden mb-4">
+<img alt="Sushi Restaurant" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up of artfully plated premium sushi" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChbRJ2BUuWQX93N46nVnNTXMVS7sugdmG28k20YXCHMyBny7DKhUTGez9MGoO6C2KWHciU0ioO9T0N_QP3IUPGhp66Sar9lxM_JYjtAP6psJdWlt0Wt-4FwNEkunLipOYCq-37mxRVJeL7uyJsr9zFpE7WTRfXEBITjOa47tKA1rlrH4GslKc_ArhmIqMf5jbDul6E7rOavnSPf1AItJy85TtHBHuR6TdBIG7y1SaOqNvoeaDMO_-lNbV-d_EMD3348aXKuLwoLRw"/>
+<div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md w-8 h-8 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<h4 class="font-headline font-bold">Sora &amp; Kai</h4>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-bold uppercase text-on-surface-variant">Omakase</span>
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-bold uppercase text-on-surface-variant">D3</span>
+</div>
+</div>
+<!-- Venue 2 -->
+<div class="relative group cursor-pointer">
+<div class="aspect-[3/4] rounded-lg overflow-hidden mb-4">
+<img alt="French Bistro" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Elegant French bistro outdoor seating area" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtjSS9lg2pc59Q_LltLOjO5bwMJD62bP_cu9Y1a_sWU-aUK4JwIa2Er1sf-VC2kd6COLlkUQQwtr3KlBXT4EJmFB8QIXGJnMKVNLYAvu1GaHcXLLBhASMm2tKdwPixQotLKcMyfZpRoaWlomcfbSWW_pspiYrYicxw4lLQ-SZnrB1c-DZJbLbBOiD1wzEHk_ibzJ7r6qVOVgFSpmrK7xLL-CO5lVr7-oIcOvW1LMXgYvVNsWUKTeM_3cvWUKgvpoE-F3_70sb9Xp4"/>
+</div>
+<h4 class="font-headline font-bold">Le Petit Coeur</h4>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-bold uppercase text-on-surface-variant">French</span>
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-bold uppercase text-on-surface-variant">D1</span>
+</div>
+</div>
+<!-- Venue 3 -->
+<div class="relative group cursor-pointer">
+<div class="aspect-[3/4] rounded-lg overflow-hidden mb-4">
+<img alt="Rooftop Bar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="City skyline view from a modern rooftop bar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTvtgHYRv6tku3AWlmlzUZt3Y2JlZXrCDIICJZ1_LWcDfYtUPu2gfzqgTH4v7fk1oFUexK0MmLywkw4uzVroXlFx41_Ro_m3xARZnxd7PySlzJ3ID6q15uFQ6-s2qGNRgGAPviH9O8TKZmFnMnuqEspr5y94vtNyVFiIcNYyXWCx7yP012IwwbI_i7BgiBefQUCtiPMB1IT6Jmp1cpEuq5e3UdafFkF0mtoVp8R8C9lWtwWXA9AOFAlftY7Lp5yoNWjBiDr_X8ITU"/>
+</div>
+<h4 class="font-headline font-bold">Aura Sky Bar</h4>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-bold uppercase text-on-surface-variant">Views</span>
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-bold uppercase text-on-surface-variant">D2</span>
+</div>
+</div>
+<!-- Venue 4 -->
+<div class="relative group cursor-pointer">
+<div class="aspect-[3/4] rounded-lg overflow-hidden mb-4">
+<img alt="Wine Cellar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Dimly lit romantic wine cellar with wooden barrels" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFd2PEOxaY6cp-TlTpfN15XWxjB7hNJG473p6PYJLA0ozLbZ6afOVZkKZWaJqRUvb-Z6qVtFbbi6kBQnIcOmYBTFfUv2y9-5m7GsfCxGCYLoLKGLk4mT9DMpXz1B53bgsgqfEandTQHVuD4PKTZ_09hYwhUhcvg4KBZ8Ft9ymsZFv9Ffc8mqth52lzGitOH2OEMSKPaUSTRgfbWDjsifRgwpBqCPCPkCXBRoLU_ZHO9qEphfthFEaKgQ7uqdtlOQgbbI-0UHx5G5c"/>
+</div>
+<h4 class="font-headline font-bold">The Cellar V</h4>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-bold uppercase text-on-surface-variant">Wine</span>
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-bold uppercase text-on-surface-variant">D7</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-end px-6 pb-6 pt-2 bg-[#fdf9f3]/90 dark:bg-[#1c1c18]/90 backdrop-blur-xl rounded-t-[2rem] z-50 shadow-[0_-12px_40px_-12px_rgba(174,47,52,0.12)]">
+<div class="flex flex-col items-center justify-center text-[#894e45] dark:text-[#e0bfbd] p-2 hover:bg-[#f7f3ed] dark:hover:bg-[#2a2a24] rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Dating</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#894e45] dark:text-[#e0bfbd] p-2 hover:bg-[#f7f3ed] dark:hover:bg-[#2a2a24] rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Events</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#894e45] dark:text-[#e0bfbd] p-2 hover:bg-[#f7f3ed] dark:hover:bg-[#2a2a24] rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Dining</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-tr from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-2 transform -translate-y-2 shadow-lg">
+<span class="material-symbols-outlined" data-icon="room_service">room_service</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Concierge</span>
+</div>
+</nav>
+</body></html>

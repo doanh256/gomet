@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary-fixed-variant": "#474747",
+                        "on-primary-fixed-variant": "#8c1520",
+                        "primary": "#ae2f34",
+                        "outline": "#8c706f",
+                        "surface-container-low": "#f7f3ed",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "secondary-container": "#e4e2e1",
+                        "outline-variant": "#e0bfbd",
+                        "primary-container": "#ff6b6b",
+                        "on-surface": "#1c1c18",
+                        "background": "#fdf9f3",
+                        "on-tertiary-container": "#55251e",
+                        "tertiary-fixed": "#ffdad4",
+                        "on-tertiary-fixed-variant": "#6d3830",
+                        "on-tertiary-fixed": "#370e08",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "inverse-on-surface": "#f4f0ea",
+                        "inverse-surface": "#31302d",
+                        "on-primary-container": "#6d0010",
+                        "primary-fixed": "#ffdad8",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary": "#894e45",
+                        "on-background": "#1c1c18",
+                        "tertiary-container": "#cf8a7f",
+                        "on-primary-fixed": "#410006",
+                        "secondary-fixed-dim": "#c8c6c6",
+                        "secondary-fixed": "#e4e2e1",
+                        "primary-fixed-dim": "#ffb3b0",
+                        "on-error-container": "#93000a",
+                        "surface-bright": "#fdf9f3",
+                        "surface-container-high": "#ebe8e2",
+                        "on-secondary-container": "#656464",
+                        "surface-dim": "#dddad4",
+                        "surface": "#fdf9f3",
+                        "surface-container": "#f1ede7",
+                        "surface-variant": "#e6e2dc",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#ae2f34",
+                        "surface-container-highest": "#e6e2dc",
+                        "on-surface-variant": "#584140",
+                        "secondary": "#5f5e5e",
+                        "inverse-primary": "#ffb3b0",
+                        "error-container": "#ffdad6"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl fixed top-0 w-full z-50 shadow-[0_24px_48px_-12px_rgba(174,47,42,0.08)] tonal-shift bg-stone-100/50 dark:bg-stone-800/50">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-rose-700 dark:text-rose-500 font-['Plus_Jakarta_Sans']">GOMET</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-stone-500 dark:text-stone-400 hover:opacity-80 transition-opacity text-sm font-medium" href="#">Dating</a>
+<a class="text-rose-700 dark:text-rose-400 font-bold hover:opacity-80 transition-opacity text-sm" href="#">Stories</a>
+<a class="text-stone-500 dark:text-stone-400 hover:opacity-80 transition-opacity text-sm font-medium" href="#">Gifts</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-surface-container-high rounded-full px-4 py-1.5">
+<span class="material-symbols-outlined text-sm text-on-surface-variant mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32" placeholder="Search stories..." type="text"/>
+</div>
+<span class="material-symbols-outlined text-stone-500 hover:opacity-80 transition-opacity cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-stone-500 hover:opacity-80 transition-opacity cursor-pointer">history_edu</span>
+<div class="w-8 h-8 rounded-full bg-primary-fixed overflow-hidden">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Close up portrait of a smiling elegant woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbP-vEqWjIL2Rj9I9WR4ld8sRePYLoJL-MtLPon8zn5KdBrWCGZtQbfanH1gfhEwkw8-Nq5R7pySzIS1yYkJEJT4JPXONtrlC17Ph8j-TGSEyaDFmYsWD5AXfKlM4f_VhTm9HwuXZZuQytERT703cyXGdVs3lWMUzXRwyZ4bcH0smNKjimrsfGOBUg8_G0nvsNRcMNmg8Tc_Jikudk9yf6m9oNhmvV_pekZkKk0MyLg1XSzAcFFnZ9g6M8yyEH1QGV9ODoe3uynJQ"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Hero Section: Editor's Choice -->
+<section class="mb-20">
+<div class="flex flex-col md:flex-row gap-8 items-end mb-8">
+<h2 class="text-4xl md:text-6xl font-extrabold tracking-tighter text-on-surface max-w-xl">
+                    Editor's <span class="text-primary italic">Choice</span>
+</h2>
+<p class="text-on-surface-variant max-w-xs pb-2 border-l-2 border-primary-container pl-4">
+                    Những câu chuyện được tuyển chọn kỹ lưỡng về nghệ thuật sống và tình yêu thượng lưu.
+                </p>
+</div>
+<div class="relative group rounded-xl overflow-hidden aspect-[16/9] md:aspect-[21/9]">
+<img alt="Featured Story" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Elegant wine pouring into a crystal glass at sunset" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDNg44nS4tCWQpQx9chjnBYI1PZCy9OWML-fdIxvOoI3eVwQ7PMiLw45J5IwIHP3UUa6EW_OzLXDTaYwZt-JOMhvPgv5M8ikaEWvQyS22yATq1bW2e_DXN-y_Tzk7jWnGsePWCfxXx8GKr3ljbSJaPH2bUTKvI45AOdnCuewixW5KFB8_AWAIGMG3SCgr_7YHr9rt6M9j6oCg9KwfcNsDiRY0tasLyx50PiKav-yj5nry4JEhb6GJ05gtSdMaAzAmmIzatTeGo1TYs"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/20 to-transparent flex flex-col justify-end p-8 md:p-16">
+<span class="inline-block bg-primary text-on-primary text-[10px] font-bold tracking-[0.2em] uppercase px-3 py-1 rounded-full mb-4 w-fit">Fine Dining</span>
+<h1 class="text-white text-3xl md:text-5xl font-bold leading-tight mb-4 max-w-3xl">
+                        Nghệ Thuật Thưởng Rượu: Khi Vang Đỏ Kết Nối Những Tâm Hồn Đồng Điệu
+                    </h1>
+<div class="flex items-center gap-4 text-white/80">
+<span class="text-sm font-medium">By Alex Thorne</span>
+<span class="w-1.5 h-1.5 bg-primary rounded-full"></span>
+<span class="text-sm font-medium italic">8 min read</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Food & Culture -->
+<section class="mb-20">
+<div class="flex justify-between items-end mb-12">
+<div>
+<span class="text-primary font-bold text-sm tracking-widest uppercase">Gastronomy</span>
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight">Food &amp; Culture</h2>
+</div>
+<a class="text-primary font-semibold flex items-center gap-2 hover:underline" href="#">
+                    Xem tất cả <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Large Feature Card -->
+<div class="md:col-span-7 bg-surface-container-low rounded-lg p-6 flex flex-col gap-6">
+<div class="rounded-lg overflow-hidden h-64 md:h-80">
+<img alt="Culture" class="w-full h-full object-cover" data-alt="Top view of artisanal sushi plate with minimalist styling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIISrgQnKTkYaZWwq4azKgYHERDDKjX8yDewY_F0GmYFgilxIM1CzhnPkIm7JTFbeS-uhSTni7_nIqowjh_OUN-_Lg4jp0KAqE6M11hlqaPIRidJmRQn-VKyusR9DUn1DeP-kdKC3z4Ho5XZS20VOvSsP7g7KVo-NWYCKZymaPunQjaUsbpUMzl1W4_wMRzmZ5ZW9zYZKH7F6FBFTXKAk3zaShIH28rJl_nUyGsVEJx2jsyU78SzgniavsiWkuQmRnce636UqgGV0"/>
+</div>
+<div>
+<div class="flex gap-2 mb-3">
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-[10px] font-bold uppercase tracking-wider">Omakase</span>
+<span class="px-3 py-1 rounded-full bg-surface-container-high text-[10px] font-bold uppercase tracking-wider">Japan</span>
+</div>
+<h3 class="text-2xl font-bold mb-3">Hành Trình Omakase: Sự Tĩnh Lặng Giữa Lòng Sài Gòn</h3>
+<p class="text-on-surface-variant line-clamp-2">
+                            Khám phá cách những nghệ nhân sushi truyền tải triết lý Zen qua từng miếng cá tươi ngon, biến bữa tối thành một buổi trình diễn nghệ thuật.
+                        </p>
+</div>
+</div>
+<!-- Vertical Cards Column -->
+<div class="md:col-span-5 grid grid-cols-1 gap-6">
+<div class="flex gap-4 p-4 bg-surface-container-lowest rounded-lg hover:shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] transition-all">
+<div class="w-24 h-24 shrink-0 rounded-md overflow-hidden">
+<img alt="Dessert" class="w-full h-full object-cover" data-alt="Close up of a luxury chocolate dessert with gold leaf" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqbCv2lPKUZAMdYDUsRRqnYA7CK4qPAEd86bBuRX2wZbSCVWmszpTCbE-f_dGnalB4ZQ2hXLrmvUB4rW95p025EwP4UfdO-nwvfPc-gXNCrYc0BlsFxCXentvsVJG6Of8rdniR0hzgPXFBxipdV8z9HpwOrQV8hlFtHMRxiPMe7C6emwmz7ACOQh1RZxivjPQAFywVZVh-z55JUsMduVqDDNDMHYSxq48OBdZr4UhbqTGTXxHFnTbyc4ntkKFBmVi3Mk04psfGOzM"/>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-primary text-[10px] font-bold uppercase mb-1">Sweet Life</span>
+<h4 class="font-bold leading-snug">Vị Ngọt Của Tình Đầu Trong Những Chiếc Macaron Paris</h4>
+</div>
+</div>
+<div class="flex gap-4 p-4 bg-surface-container-lowest rounded-lg hover:shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] transition-all">
+<div class="w-24 h-24 shrink-0 rounded-md overflow-hidden">
+<img alt="Wine" class="w-full h-full object-cover" data-alt="A candlelit wine cellar with dusty vintage bottles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv69K47_qKZb8_4tjc4a3FDIUZlx7iPy-LT7njSAJ0aowV5OguDHT9VseN42Ejoxv03UrrX3ij3LviZ2lu7VVD7QO69sguaGc-HPqzA_RleERKFCpSN0fTZurrZn1VYg1JTU2DZw-csb3SaktCPT4Ex1wCqtBx5Xiaa85GKjkmTwuWLkbrnWHPUm58hLH9OIUGyWrRQRNJtjh4O2ha6JQ8WYj_L33n_widoWvVyGk-fdjlyRKNLrPE1vYUWx_peAzQsf0k8fQ7cio"/>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-primary text-[10px] font-bold uppercase mb-1">Cellar Talk</span>
+<h4 class="font-bold leading-snug">Bí Mật Đằng Sau Những Chai Vang Có Tuổi Đời Trăm Năm</h4>
+</div>
+</div>
+<div class="flex gap-4 p-4 bg-surface-container-lowest rounded-lg hover:shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] transition-all">
+<div class="w-24 h-24 shrink-0 rounded-md overflow-hidden">
+<img alt="Coffee" class="w-full h-full object-cover" data-alt="Morning coffee on a marble table with a view of Paris" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkW7-KTOUyD21t6oFUtJTvmNObo6wHrAHoCfMMTBp6xzOuPJE6IoBepKcMPOVxjE6F2TFt-nUsuo5H7MLOVSImq0DU8ge_eo8pMj8vxpPRSZx4HfwG54MUu_7xKuRufWAaWlAn-onSKSwf7SY8wF2oXyY4SiQZLga9vvD5oUS7YIkmb537G1EEnLx5l55f-OyTeETRvSd3qfT8NV1gxqYRF8_r0CbDugNZnLSgJfk-Ln5-W02erg2USqj_5Jem9w5Nkcp-0gUZKiM"/>
+</div>
+<div class="flex flex-col justify-center">
+<span class="text-primary text-[10px] font-bold uppercase mb-1">Rituals</span>
+<h4 class="font-bold leading-snug">Cà Phê Sáng Tại Terrace: Nơi Khởi Đầu Những Cuộc Trò Chuyện</h4>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Asymmetric Section: Love Stories -->
+<section class="mb-20">
+<div class="flex items-center gap-4 mb-12">
+<h2 class="text-3xl md:text-4xl font-bold tracking-tight">Love Stories</h2>
+<div class="h-px grow bg-outline-variant/30"></div>
+</div>
+<div class="flex flex-col md:flex-row gap-12 items-center">
+<div class="w-full md:w-1/2 relative">
+<div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl z-10 relative">
+<img alt="Couple" class="w-full h-full object-cover" data-alt="Couple walking hand in hand through an old European street" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxzDWjnmeIQLSLgqWzkWGwBPnAx4xzn6K0FjoU9dpnoCR8Pjs_L_YyTyRnzc3w6s_YK63rC0CQdGY98H_t0iBKz_7FRhtSwMNu3osX-xbWJ7B_Gm940PPM-oa5irzFW8RxP0tBQFovdCHAUzJSDE7e3lv09vhUYtznkXc7E0ch9GCx49ZGF4ijlSb9eJmagyfo8qIl-8WHmnPfaHKi38d0NtkElRrkd1Y5wy5iny00IlCqfQNukB-s4XlSxvKGZhXnhb2h-yhgVec"/>
+</div>
+<!-- Decorative element -->
+<div class="absolute -bottom-6 -right-6 w-48 h-48 bg-tertiary-container/20 rounded-full blur-3xl -z-10"></div>
+<div class="absolute -top-10 -left-10 text-[12rem] font-black text-surface-container-high/40 select-none -z-10 font-headline italic">Love</div>
+</div>
+<div class="w-full md:w-1/2 space-y-6">
+<span class="text-tertiary font-bold tracking-[0.3em] uppercase text-xs">A True Tale</span>
+<h3 class="text-4xl font-bold leading-tight tracking-tighter">
+                        Chuyến Tàu Đêm Đến Florence: Nơi Chúng Tôi Tìm Thấy Nhau
+                    </h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                        "Giữa những ồn ào của thế giới, chúng tôi gặp nhau trên một toa tàu vắng. Không app hẹn hò, không profile hoàn hảo, chỉ có ánh mắt chạm nhau và một cuộc trò chuyện kéo dài suốt 8 tiếng đồng hồ xuyên qua những cánh đồng Tuscany..."
+                    </p>
+<div class="pt-4">
+<button class="bg-gradient-to-tr from-primary to-primary-container text-on-primary px-8 py-4 rounded-full font-bold shadow-lg flex items-center gap-2 active:scale-95 transition-transform">
+                            Đọc toàn bộ câu chuyện
+                            <span class="material-symbols-outlined">auto_stories</span>
+</button>
+</div>
+<div class="flex items-center gap-6 pt-8 border-t border-outline-variant/20">
+<div>
+<span class="block text-2xl font-bold text-primary">4.2k</span>
+<span class="text-xs text-on-surface-variant uppercase font-medium">Lượt đọc</span>
+</div>
+<div class="w-px h-8 bg-outline-variant/30"></div>
+<div>
+<span class="block text-2xl font-bold text-primary">158</span>
+<span class="text-xs text-on-surface-variant uppercase font-medium">Bình luận</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / Community -->
+<section class="bg-surface-container-low rounded-lg p-8 md:p-16 text-center relative overflow-hidden">
+<div class="relative z-10 max-w-2xl mx-auto">
+<h2 class="text-3xl md:text-5xl font-bold mb-6 tracking-tight">Trở thành một <span class="text-primary italic">Curator</span></h2>
+<p class="text-on-surface-variant mb-10 text-lg">Đăng ký để nhận những bản tin độc quyền về các địa điểm hẹn hò bí mật và những câu chuyện cảm hứng hàng tuần.</p>
+<form class="flex flex-col md:flex-row gap-4">
+<input class="flex-1 bg-surface-container-lowest border-none px-6 py-4 rounded-full focus:ring-2 focus:ring-primary shadow-sm outline-none" placeholder="Địa chỉ email của bạn" type="email"/>
+<button class="bg-on-background text-background px-10 py-4 rounded-full font-bold hover:bg-on-background/90 transition-colors">Tham gia ngay</button>
+</form>
+</div>
+<!-- Background Decoration -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary-fixed/30 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-tertiary-fixed/30 rounded-full -ml-32 -mb-32 blur-3xl"></div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end pb-6 px-4 bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl z-50 rounded-t-[2rem] shadow-[0_-10px_30px_rgba(174,47,52,0.05)] bg-stone-50 dark:bg-stone-950 no-border">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">favorite</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Dating</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-tr from-rose-700 to-rose-400 text-white rounded-full p-3 mb-2 shadow-lg scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Stories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">card_giftcard</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Gifts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">verified_user</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Reputation</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button: Suppressed as per Task-focused screen rules -->
+</body></html>

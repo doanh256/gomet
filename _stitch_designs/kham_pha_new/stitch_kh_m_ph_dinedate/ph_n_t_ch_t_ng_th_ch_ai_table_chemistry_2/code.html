@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Table Chemistry | GOMET Alpha</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-low": "#f7f3ed",
+              "primary-container": "#ff6b6b",
+              "on-surface-variant": "#584140",
+              "on-tertiary-container": "#55251e",
+              "surface-dim": "#dddad4",
+              "on-secondary-container": "#656464",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "tertiary-fixed": "#ffdad4",
+              "background": "#fdf9f3",
+              "surface-tint": "#ae2f34",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-bright": "#fdf9f3",
+              "error": "#ba1a1a",
+              "on-secondary-fixed-variant": "#474747",
+              "secondary-fixed": "#e4e2e1",
+              "primary-fixed": "#ffdad8",
+              "surface-variant": "#e6e2dc",
+              "inverse-primary": "#ffb3b0",
+              "secondary-container": "#e4e2e1",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-container": "#cf8a7f",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-primary-fixed": "#410006",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "secondary-fixed-dim": "#c8c6c6",
+              "on-surface": "#1c1c18",
+              "surface-container": "#f1ede7",
+              "outline": "#8c706f",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-error-container": "#93000a",
+              "on-background": "#1c1c18",
+              "primary": "#ae2f34",
+              "on-tertiary-fixed": "#370e08",
+              "secondary": "#5f5e5e",
+              "outline-variant": "#e0bfbd",
+              "on-secondary": "#ffffff",
+              "on-primary": "#ffffff",
+              "surface-container-highest": "#e6e2dc",
+              "surface": "#fdf9f3",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "on-primary-container": "#6d0010",
+              "tertiary": "#894e45",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed-dim": "#ffb3b0"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .chemistry-glow {
+        box-shadow: 0 0 40px 10px rgba(174, 47, 52, 0.15);
+      }
+      .editorial-overlap {
+        margin-top: -2rem;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 dark:bg-stone-900/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-stone-100 dark:hover:bg-stone-800 transition-colors">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<span class="text-2xl font-extrabold tracking-tighter text-[#ae2f34] dark:text-[#ff6b6b] font-['Plus_Jakarta_Sans']">GOMET Alpha</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="p-2 rounded-full hover:bg-stone-100 transition-colors">
+<span class="material-symbols-outlined text-on-surface" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-stone-100 transition-colors">
+<span class="material-symbols-outlined text-on-surface" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-32 px-4 max-w-5xl mx-auto">
+<!-- Hero: The Pairing -->
+<section class="relative mb-12">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-[400px]">
+<div class="relative overflow-hidden rounded-lg group">
+<img class="w-full h-full object-cover grayscale-[0.2] transition-transform duration-700 group-hover:scale-105" data-alt="Portrait of a smiling young man named Alex" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNObdpahTkm4CWZePmzTdiQOSm6CNZhp5rlxsAZim4P866kWtDJtLaVRiPBOTVZtHZ032Kg1kOpJ3yBJjswJYZC1RlT62aX7F18KKuzAcvmCbUj-8TcIhZ3NYi2ClNhuHw5rZsOBDQwFuWMje2Z9VQHc7O95PYulVipzG8sf1aDxhqgZW2o-y5O3prBo-DiE0sF4e16ptxtERXFJrO6oju-AxOxZCrpDpNJsQbViF5ldapFTaXMh5motRl-7qGTLjX7RhHcm5yh30"/>
+<div class="absolute bottom-6 left-6 text-white z-10">
+<h2 class="font-headline text-3xl font-extrabold tracking-tight">Alex</h2>
+<p class="font-label text-sm uppercase tracking-widest opacity-90">Architect &amp; Foodie</p>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+<div class="relative overflow-hidden rounded-lg group">
+<img class="w-full h-full object-cover grayscale-[0.2] transition-transform duration-700 group-hover:scale-105" data-alt="Portrait of a smiling young woman named Jordan" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM5-9L5hjqDQDb0i3p2ufRwAiieTOr7dJPcadj7AV90KsdOHmH9Jy8L3elOxLJQgFt8B0MKPDkoVmYA6qwfeJ7LuQYieLQuWLiY6pPe87gJN0armkMgir4WihT7Uy1ilpjtEJoBJJle905G_Jvjiva3M0jn6FbIWQ-lE3EWW4cnT9Igv3KoPIEdec8DCPqZUvG2FGlJdJEhTvEQpiqOhAEXeNGr62vO92tq1BCgWuXLOowqvPaGAdm7D68fHw3Rf4bGcbEq57zj7g"/>
+<div class="absolute bottom-6 right-6 text-white text-right z-10">
+<h2 class="font-headline text-3xl font-extrabold tracking-tight">Jordan</h2>
+<p class="font-label text-sm uppercase tracking-widest opacity-90">Sommelier &amp; Artist</p>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+</div>
+</div>
+<!-- Floating Chemistry Score -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20">
+<div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-surface-container-lowest chemistry-glow flex flex-col items-center justify-center p-4 text-center border-4 border-primary">
+<span class="font-label text-[10px] md:text-xs uppercase font-bold tracking-[0.2em] text-tertiary">Table Chemistry</span>
+<span class="font-headline text-4xl md:text-5xl font-black text-primary -mt-1">94%</span>
+</div>
+</div>
+</section>
+<!-- Bento Analysis Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Analysis Summary -->
+<div class="md:col-span-12 lg:col-span-4 bg-surface-container-low p-8 rounded-lg flex flex-col justify-center">
+<span class="font-label text-primary font-bold uppercase tracking-widest text-xs mb-4">The Verdict</span>
+<h3 class="font-headline text-4xl font-extrabold tracking-tighter leading-none mb-6">A Rare Vintage Pairing.</h3>
+<p class="text-on-surface-variant font-body leading-relaxed">
+                    Alex and Jordan display exceptional alignment in environmental preferences and conversation styles. Both prioritize aesthetic ambiance and meaningful exchange over casual dining.
+                </p>
+</div>
+<!-- Shared Preferences -->
+<div class="md:col-span-12 lg:col-span-8 bg-surface-container-lowest p-8 rounded-lg shadow-sm">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="restaurant_menu">restaurant_menu</span>
+<h4 class="font-headline text-2xl font-bold tracking-tight">Shared Culinary DNA</h4>
+</div>
+<div class="flex flex-wrap gap-3">
+<div class="flex items-center gap-2 bg-surface-container-high px-5 py-3 rounded-full">
+<span class="material-symbols-outlined text-sm" data-icon="local_bar">local_bar</span>
+<span class="font-label font-semibold text-sm">Speakeasy Vibes</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-5 py-3 rounded-full">
+<span class="material-symbols-outlined text-sm" data-icon="dinner_dining">dinner_dining</span>
+<span class="font-label font-semibold text-sm">Modern Italian</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-5 py-3 rounded-full">
+<span class="material-symbols-outlined text-sm" data-icon="wine_bar">wine_bar</span>
+<span class="font-label font-semibold text-sm">Natural Wines</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container-high px-5 py-3 rounded-full">
+<span class="material-symbols-outlined text-sm" data-icon="coffee">coffee</span>
+<span class="font-label font-semibold text-sm">Late Night Espresso</span>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-surface-container-high grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary" data-icon="forum">forum</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">Deep Conversations</p>
+<p class="text-sm text-on-surface-variant">Both prefer slow dining with long, meaningful discussions.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-tertiary/10 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary" data-icon="verified">verified</span>
+</div>
+<div>
+<p class="font-headline font-bold text-on-surface">Verified Safety</p>
+<p class="text-sm text-on-surface-variant">Both have a 100% safety rating and mutual friends.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Shared Venue Card -->
+<div class="md:col-span-12 lg:col-span-7 relative h-72 rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Modern interior of a luxury bar with velvet seating" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaee1Qxv1FyQWt1iFLnmCt_lp_0V8PeWFMLl_x1aJZaWvvH5w2rQvtGuq-2aSKSvgmKQCzxSrQM2O02QLrB4X_cAYMVF9hv92DGicCGiqPUOopQItj-19AOnZK9XxnkNNMpuY187AGqI8TaNLLs0syF_TEOPUHCXTdLf2X45IZx0gvZwCWYyYFNm7yrVPSIrTujskBh5k67N8oALW17t_CQgIwRSVlWAh22ofHEc78kW248mNwmOjC9yREBLAyYZB0JcGIouHQEmc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/20 to-transparent"></div>
+<div class="absolute bottom-8 left-8 right-8">
+<div class="flex items-center gap-2 text-primary-container mb-1">
+<span class="material-symbols-outlined text-sm" data-icon="favorite">favorite</span>
+<span class="font-label text-xs uppercase font-bold tracking-widest">Shared Favorite</span>
+</div>
+<h5 class="font-headline text-3xl font-bold text-white mb-2">The Velvet Lounge</h5>
+<p class="text-white/80 font-body text-sm max-w-sm">"The lighting is perfect and the Gin Fizzes are unmatched." — Alex &amp; Jordan</p>
+</div>
+</div>
+<!-- Call to Action -->
+<div class="md:col-span-12 lg:col-span-5 bg-gradient-to-br from-primary to-primary-container p-8 rounded-lg flex flex-col justify-between text-white shadow-xl">
+<div>
+<h4 class="font-headline text-2xl font-bold mb-2">Ready to dine?</h4>
+<p class="font-body opacity-90 text-sm leading-relaxed mb-6">Our AI suggests a Thursday evening reservation at The Velvet Lounge for a 'Deep Conversations' experience.</p>
+</div>
+<button class="w-full bg-white text-primary font-headline font-bold py-4 rounded-DEFAULT flex items-center justify-center gap-2 hover:scale-[1.02] active:scale-95 transition-all shadow-lg">
+                    Suggest a Date
+                    <span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</button>
+</div>
+</div>
+<!-- Detail Insights -->
+<section class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+<div class="p-6">
+<span class="font-headline text-4xl font-black text-outline-variant/40 block mb-2">01</span>
+<h6 class="font-headline font-bold text-lg mb-2">Spice Level</h6>
+<p class="text-sm text-on-surface-variant leading-relaxed">Both prefer "Medium Heat" and are adventurous with street food fusion.</p>
+</div>
+<div class="p-6">
+<span class="font-headline text-4xl font-black text-outline-variant/40 block mb-2">02</span>
+<h6 class="font-headline font-bold text-lg mb-2">Acoustic Preference</h6>
+<p class="text-sm text-on-surface-variant leading-relaxed">Shared distaste for loud music. Both prefer low-fi beats or jazz at 60dB.</p>
+</div>
+<div class="p-6">
+<span class="font-headline text-4xl font-black text-outline-variant/40 block mb-2">03</span>
+<h6 class="font-headline font-bold text-lg mb-2">Timing</h6>
+<p class="text-sm text-on-surface-variant leading-relaxed">Both are 'Night Owls' who enjoy late-night desserts over early dinners.</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Suppression Rule: Task-Focused Page implies no global shell unless explicit -->
+<!-- However, since it's a "Top Level" Match Detail within discovery, we render it for context -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#fdf9f3]/80 dark:bg-stone-900/80 backdrop-blur-md rounded-t-[2rem] z-50 shadow-[0_-4px_24px_rgba(174,47,52,0.05)]">
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 w-12 h-12 hover:text-[#ae2f34] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 w-12 h-12 hover:text-[#ae2f34] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] text-white rounded-full w-12 h-12 shadow-lg scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<!-- Label hidden for active state visual emphasis in this specific UI -->
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 w-12 h-12 hover:text-[#ae2f34] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider mt-1">Partners</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 w-12 h-12 hover:text-[#ae2f34] transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard_customize">dashboard_customize</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider mt-1">Admin</span>
+</a>
+</nav>
+</body></html>

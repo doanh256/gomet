@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdad4",
+              "outline-variant": "#e0bfbd",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface": "#fdf9f3",
+              "on-background": "#1c1c18",
+              "background": "#fdf9f3",
+              "surface-dim": "#dddad4",
+              "tertiary": "#894e45",
+              "secondary-container": "#e4e2e1",
+              "error-container": "#ffdad6",
+              "surface-container": "#f1ede7",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed": "#ffdad8",
+              "secondary-fixed": "#e4e2e1",
+              "on-secondary-container": "#656464",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container-low": "#f7f3ed",
+              "on-secondary-fixed": "#1b1c1c",
+              "error": "#ba1a1a",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary": "#ffffff",
+              "secondary": "#5f5e5e",
+              "on-primary-container": "#6d0010",
+              "inverse-primary": "#ffb3b0",
+              "on-error-container": "#93000a",
+              "surface-tint": "#ae2f34",
+              "primary": "#ae2f34",
+              "on-secondary-fixed-variant": "#474747",
+              "on-tertiary-fixed": "#370e08",
+              "on-primary-fixed-variant": "#8c1520",
+              "primary-container": "#ff6b6b",
+              "surface-bright": "#fdf9f3",
+              "on-surface-variant": "#584140",
+              "tertiary-container": "#cf8a7f",
+              "on-error": "#ffffff",
+              "outline": "#8c706f",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "surface-variant": "#e6e2dc",
+              "on-primary-fixed": "#410006",
+              "on-surface": "#1c1c18",
+              "surface-container-highest": "#e6e2dc"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .fill-icon {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-stone-950/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-2">
+<span class="text-2xl font-black text-rose-800 dark:text-rose-500 italic font-headline">GOMET</span>
+<span class="bg-primary/10 text-primary px-2 py-0.5 rounded-full text-[10px] font-bold tracking-widest uppercase">Table 24</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-stone-500 hover:bg-rose-50/50 transition-colors p-2 rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden">
+<img alt="User avatar" data-alt="Close up portrait of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIaTImEKvpNAdpuv0I1neRwDpwuj0P6JLGfpJt1pt5-879L3zgpKb9dcY3LgVAEjMqINyV93_kI0_xgsq1E4_wMdrsL4rRfJv9a7GP-wM35cZbrM2pQL9ZcnRGAvH0JKZiU_V41EYmO23EVLzGxSLZVSLkqjFE36LCfIT_cQ9AsXJx7zM8T_qYOgMOZgcs2HUNNi0HSwXkAfJb3uaqxSFtq76VDZWLGRn9lj3xOFol_SOl-WFSlY5_PQ4g3XlmEgL66zaJVPh1Fys"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-2xl mx-auto space-y-8">
+<!-- Status Indicator (High-End Tonal Layering) -->
+<section class="bg-primary-fixed/30 rounded-lg p-6 flex items-center justify-between overflow-hidden relative">
+<div class="relative z-10">
+<p class="text-on-primary-fixed-variant font-label text-xs uppercase tracking-tighter mb-1">Current Status</p>
+<h2 class="text-on-primary-fixed font-headline text-xl font-bold">Phục vụ đang đến</h2>
+<div class="flex items-center gap-2 mt-2">
+<span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
+<span class="text-sm font-medium text-primary">Minh đang di chuyển • 2 phút nữa</span>
+</div>
+</div>
+<div class="opacity-10 absolute -right-4 -bottom-4">
+<span class="material-symbols-outlined text-8xl" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+</section>
+<!-- Instant Assistance Section -->
+<section>
+<h3 class="font-headline text-2xl font-bold tracking-tight mb-6">Yêu cầu tức thì</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Action Cards with Asymmetric depth -->
+<button class="flex flex-col items-start p-5 bg-surface-container-lowest rounded-lg shadow-[0_8px_24px_-10px_rgba(174,47,52,0.08)] hover:bg-rose-50 transition-all group active:scale-95">
+<div class="w-12 h-12 rounded-full bg-rose-50 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">water_full</span>
+</div>
+<span class="font-headline font-bold text-on-surface">Thêm nước</span>
+<p class="text-xs text-stone-500 text-left mt-1">Đá lạnh &amp; Chanh tươi</p>
+</button>
+<button class="flex flex-col items-start p-5 bg-surface-container-lowest rounded-lg shadow-[0_8px_24px_-10px_rgba(174,47,52,0.08)] hover:bg-rose-50 transition-all group active:scale-95">
+<div class="w-12 h-12 rounded-full bg-rose-50 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">concierge</span>
+</div>
+<span class="font-headline font-bold text-on-surface">Gọi phục vụ</span>
+<p class="text-xs text-stone-500 text-left mt-1">Hỗ trợ trực tiếp</p>
+</button>
+<button class="flex flex-col items-start p-5 bg-surface-container-lowest rounded-lg shadow-[0_8px_24px_-10px_rgba(174,47,52,0.08)] hover:bg-rose-50 transition-all group active:scale-95">
+<div class="w-12 h-12 rounded-full bg-rose-50 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">celebration</span>
+</div>
+<span class="font-headline font-bold text-on-surface">Phá băng</span>
+<p class="text-xs text-stone-500 text-left mt-1">Yêu cầu Game &amp; Board</p>
+</button>
+<button class="flex flex-col items-start p-5 bg-surface-container-lowest rounded-lg shadow-[0_8px_24px_-10px_rgba(174,47,52,0.08)] hover:bg-rose-50 transition-all group active:scale-95">
+<div class="w-12 h-12 rounded-full bg-rose-50 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<span class="font-headline font-bold text-on-surface">Thanh toán</span>
+<p class="text-xs text-stone-500 text-left mt-1">Yêu cầu xuất hóa đơn</p>
+</button>
+</div>
+</section>
+<!-- Feedback Section (Editorial Style) -->
+<section class="space-y-6">
+<div class="flex items-baseline justify-between">
+<h3 class="font-headline text-2xl font-bold tracking-tight">Cảm hứng hôm nay?</h3>
+</div>
+<!-- Bento Card Feedback -->
+<div class="bg-surface-container-low rounded-lg p-6 space-y-4">
+<p class="font-label text-sm font-semibold uppercase tracking-wider text-stone-500">Lời khen &amp; Góp ý</p>
+<div class="flex gap-2 flex-wrap">
+<button class="px-4 py-2 bg-surface-container-lowest rounded-full text-sm font-medium hover:bg-primary hover:text-on-primary transition-colors active:scale-95">Đồ ăn rất ngon ✨</button>
+<button class="px-4 py-2 bg-surface-container-lowest rounded-full text-sm font-medium hover:bg-primary hover:text-on-primary transition-colors active:scale-95">Không gian đẹp</button>
+<button class="px-4 py-2 bg-surface-container-lowest rounded-full text-sm font-medium hover:bg-primary hover:text-on-primary transition-colors active:scale-95">Phục vụ nhanh</button>
+<button class="px-4 py-2 bg-surface-container-lowest rounded-full text-sm font-medium hover:bg-primary hover:text-on-primary transition-colors active:scale-95">Cần thêm gia vị</button>
+</div>
+<div class="pt-4">
+<textarea class="w-full bg-surface-container-highest/50 border-none rounded-lg p-4 focus:ring-2 focus:ring-primary/20 text-sm placeholder:text-stone-400" placeholder="Chia sẻ cảm nhận của bạn để chúng tôi phục vụ tốt hơn..." rows="3"></textarea>
+</div>
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold py-4 rounded-lg shadow-lg active:scale-95 transition-transform">
+                    Gửi phản hồi tức thì
+                </button>
+</div>
+</section>
+<!-- Featured Dish Layered Card -->
+<section class="relative mt-8">
+<div class="absolute -top-4 -left-2 z-10 bg-tertiary text-on-tertiary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Gợi ý thêm</div>
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden flex shadow-sm border border-outline-variant/10">
+<div class="w-1/3">
+<img alt="Fresh dish" class="h-full object-cover" data-alt="Plate of fresh gourmet salad with colorful ingredients" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1ngZC7m-JhYH-i1IM9lpl701-3F5_6j14CO-dkeb1IIHRh5Dv1pkS3Hg_DXgFuPP8ZKCoYMynWei_7G4dVMBU_X82vnAmg2DDABSKSGMFsq11Aeq0k_0IjXEcRkVyq2kMpdlcIbtQ_s0W-kY6zas5ulNEXwUT_KaoPPOhLWPXqGhE-RQLultwiqCeXwd_o1Jgg9nLBDm7MwrrkTayJ3Wq91sOugrLA4DmKIuwx4irkQLtHYLl6jnnFFKcQKS7rYk3qDCZLIZMXi0"/>
+</div>
+<div class="w-2/3 p-4 flex flex-col justify-center">
+<h4 class="font-headline font-bold text-lg">Salad Cam Quế</h4>
+<p class="text-xs text-stone-500 mt-1 italic">Vị thanh nhẹ cho bữa trưa lãng mạn</p>
+<button class="mt-3 text-primary font-bold text-sm flex items-center gap-1 group">
+                        Xem chi tiết <span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/90 dark:bg-stone-900/90 backdrop-blur-lg rounded-t-[2.5rem] shadow-[0_-8px_24px_-10px_rgba(174,47,52,0.12)] border-t border-stone-100/50">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-rose-500 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[11px] font-semibold font-plus-jakarta-sans uppercase tracking-wider mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-rose-50 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 rounded-full px-5 py-2 active:scale-90 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined fill-icon">restaurant</span>
+<span class="text-[11px] font-semibold font-plus-jakarta-sans uppercase tracking-wider mt-1">At-Table</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-rose-500 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="text-[11px] font-semibold font-plus-jakarta-sans uppercase tracking-wider mt-1">Memories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:text-rose-500 transition-all active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[11px] font-semibold font-plus-jakarta-sans uppercase tracking-wider mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

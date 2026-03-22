@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DineDate | Discover</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-bright": "#fdf9f3",
+              "surface-container-high": "#ebe8e2",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-dim": "#dddad4",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "inverse-primary": "#ffb3b0",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "background": "#fdf9f3",
+              "on-secondary-container": "#656464",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary-fixed": "#370e08",
+              "on-primary-fixed": "#410006",
+              "inverse-surface": "#31302d",
+              "surface-container-low": "#f7f3ed",
+              "surface-variant": "#e6e2dc",
+              "surface-tint": "#ae2f34",
+              "on-primary-container": "#6d0010",
+              "secondary-container": "#e4e2e1",
+              "surface": "#fdf9f3",
+              "on-surface-variant": "#584140",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "secondary-fixed": "#e4e2e1",
+              "secondary-fixed-dim": "#c8c6c6",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-fixed": "#1b1c1c",
+              "secondary": "#5f5e5e",
+              "primary-container": "#ff6b6b",
+              "surface-container-highest": "#e6e2dc",
+              "on-error-container": "#93000a",
+              "on-secondary-fixed-variant": "#474747",
+              "outline-variant": "#e0bfbd",
+              "primary": "#ae2f34",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-container": "#f1ede7",
+              "tertiary": "#894e45",
+              "on-tertiary": "#ffffff",
+              "on-surface": "#1c1c18",
+              "tertiary-container": "#cf8a7f",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-background": "#1c1c18",
+              "outline": "#8c706f"
+            },
+            fontFamily: {
+              "plus-jakarta": ["Plus Jakarta Sans"],
+              "inter": ["Inter"],
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fdf9f3; }
+        .font-plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .primary-gradient { background: linear-gradient(45deg, #ae2f34, #ff6b6b); }
+        .glass-header { background: rgba(253, 249, 243, 0.8); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- Top Navigation (Mobile Only) -->
+<nav class="md:hidden glass-header fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-surface-container-low shadow-sm">
+<span class="text-2xl font-black text-primary italic font-plus-jakarta">DineDate</span>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqQiC0b3cXoaHohOfiqjeJ_YvpROgqPykp_aX-N0DOi-PGPo65hdoU17nWG4ki6-KZP8LyGf6yqH5ZCuuqS27ZtEwF3X46cgF45li2zQItUUU5sI7VAR5dJ9F-IyBuhO0qRXp2eOfFunnubkPNjz2hGOd7DHbpRgUzBghX6vcCtfo2z7L9wgnlACBGl7yjf7lIbHzuToQwRgNsi1QKVcyRioPJ1y6Bnbadr-9s44CeH0U41g5S0a3mCZiQqybxH1W4P_35czQUxOM"/>
+</div>
+</div>
+</nav>
+<!-- Sidebar (Desktop) -->
+<aside class="hidden md:flex h-screen w-64 fixed left-0 top-0 z-40 bg-surface-container-low flex-col p-6 space-y-2">
+<div class="text-primary font-bold text-xl mb-8 font-plus-jakarta">DineDate</div>
+<nav class="space-y-1 flex-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-plus-jakarta font-medium text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-full font-bold active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="explore" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-plus-jakarta font-medium text-label-md">Discover</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-plus-jakarta font-medium text-label-md">Dates</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-plus-jakarta font-medium text-label-md">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-plus-jakarta font-medium text-label-md">Profile</span>
+</a>
+</nav>
+<button class="primary-gradient text-white w-full py-3 rounded-full font-bold font-plus-jakarta shadow-lg hover:scale-[1.02] active:scale-95 transition-transform mt-auto">
+            New Date Request
+        </button>
+</aside>
+<!-- Main Canvas -->
+<main class="md:ml-64 min-h-screen p-4 md:p-8 pt-20 md:pt-8 flex flex-col items-center justify-center">
+<!-- Discover Header (Desktop Asymmetric) -->
+<div class="w-full max-w-4xl mb-12 hidden md:block">
+<h1 class="text-6xl font-extrabold font-plus-jakarta tracking-tighter text-on-background leading-none">
+                Find your <br/>
+<span class="text-primary italic">Perfect pairing.</span>
+</h1>
+<p class="mt-4 text-on-surface-variant max-w-sm font-inter">Curated culinary matches based on your taste in food and life.</p>
+</div>
+<!-- Tinder-style Profile Card Container -->
+<div class="relative w-full max-w-[400px] md:max-w-[800px] aspect-[3/4] md:aspect-[16/9] group">
+<!-- Stack Decoration (Visual Depth) -->
+<div class="absolute inset-0 bg-surface-container transform translate-y-4 translate-x-2 rounded-xl -z-10 opacity-50"></div>
+<div class="absolute inset-0 bg-surface-container-high transform translate-y-2 translate-x-1 rounded-xl -z-10"></div>
+<!-- Active Profile Card -->
+<div class="absolute inset-0 bg-white rounded-xl overflow-hidden shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] flex flex-col md:flex-row">
+<!-- Large Image Section -->
+<div class="h-1/2 md:h-full md:w-1/2 relative">
+<img class="w-full h-full object-cover" data-alt="Portrait of a young woman smiling at a restaurant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGfEDemMsd6rtSFyIC0fxvGVgbtIKeFI4sMNNDGn7cxFSIfIBkRUQX_dzW4Lno1FrZ_mft9q02hcUjm8ZRp4UGs67nEqcbrz5cVDKHpzJ_Eo36-8SqTjcXFG31Z_D8apNO24zWtokDpzYo3ajQvKoVCq1kM9UhD9vYN8HoiAzBDr_mbNourN03C9_RArU8rejHgG_upm3jMz420uG3Cn7KkI3pjw_Zzr-C-ukP4PT5o4WpgiMXd1IZdok2QkPLwxqEzI68o858U2Q"/>
+<!-- Image Overlay Gradients -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:hidden"></div>
+<div class="absolute bottom-6 left-6 md:hidden">
+<h2 class="text-white text-3xl font-bold font-plus-jakarta">Elena, 26</h2>
+<div class="flex items-center gap-1 text-white/90 text-sm">
+<span class="material-symbols-outlined text-[16px]" data-icon="location_on">location_on</span>
+<span>2.4 miles away</span>
+</div>
+</div>
+</div>
+<!-- Info Section -->
+<div class="flex-1 p-6 md:p-10 flex flex-col bg-surface-container-lowest">
+<div class="hidden md:block mb-6">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="text-4xl font-extrabold font-plus-jakarta tracking-tight text-on-background">Elena, 26</h2>
+<div class="flex items-center gap-1 text-tertiary mt-1 font-semibold">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-sm">Verified Foodie</span>
+</div>
+</div>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Italian Cuisine</span>
+</div>
+</div>
+<div class="space-y-4 flex-1">
+<div>
+<span class="text-primary font-bold text-xs uppercase tracking-widest block mb-2 font-inter">The Vibe</span>
+<p class="text-on-surface font-inter leading-relaxed">
+                                Architecture enthusiast who never says no to a carbonara. Looking for someone to explore hidden brunch spots and discuss modern art over a bottle of dry red.
+                            </p>
+</div>
+<div>
+<span class="text-primary font-bold text-xs uppercase tracking-widest block mb-2 font-inter">Cravings</span>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-sm font-medium">Sushi Night</span>
+<span class="px-4 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-sm font-medium">Espresso Martinis</span>
+<span class="px-4 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-sm font-medium">Fine Dining</span>
+<span class="px-4 py-2 bg-surface-container-high text-on-surface-variant rounded-full text-sm font-medium">Street Food</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="mt-8 flex items-center justify-center md:justify-start gap-6">
+<button class="w-16 h-16 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center hover:bg-surface-variant active:scale-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-3xl" data-icon="close">close</span>
+</button>
+<button class="w-20 h-20 rounded-full primary-gradient text-white flex items-center justify-center hover:shadow-[0_12px_24px_rgba(174,47,52,0.3)] active:scale-90 transition-all shadow-lg group">
+<span class="material-symbols-outlined text-4xl" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<button class="w-16 h-16 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center hover:bg-tertiary-fixed-dim active:scale-90 transition-all shadow-sm">
+<span class="material-symbols-outlined text-3xl" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Navigation Dots (Asymmetric Layout) -->
+<div class="mt-8 flex gap-2">
+<div class="w-8 h-1 bg-primary rounded-full"></div>
+<div class="w-2 h-1 bg-surface-container-highest rounded-full"></div>
+<div class="w-2 h-1 bg-surface-container-highest rounded-full"></div>
+<div class="w-2 h-1 bg-surface-container-highest rounded-full"></div>
+</div>
+</main>
+<!-- Bottom NavBar (Mobile) -->
+<nav class="md:hidden glass-header fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 z-50 rounded-t-3xl shadow-[0_-8px_24px_rgba(174,47,52,0.05)] bg-surface-container-low">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-white rounded-2xl p-3 transform -translate-y-2 shadow-lg active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Dates</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person_2">person_2</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button (FAB) - Highly Contextual (Discover Screen Only) -->
+<button class="fixed bottom-24 right-6 md:bottom-12 md:right-12 primary-gradient w-16 h-16 rounded-full flex items-center justify-center text-white shadow-2xl hover:rotate-12 transition-transform active:scale-95 z-40">
+<span class="material-symbols-outlined text-3xl" data-icon="tune">tune</span>
+</button>
+</body></html>

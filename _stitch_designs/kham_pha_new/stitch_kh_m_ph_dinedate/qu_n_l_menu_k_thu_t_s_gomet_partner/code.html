@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#ffb3b0",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#e4e2e1",
+              "tertiary-container": "#cf8a7f",
+              "on-primary-fixed": "#410006",
+              "on-background": "#1c1c18",
+              "tertiary": "#894e45",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdad8",
+              "secondary": "#5f5e5e",
+              "inverse-primary": "#ffb3b0",
+              "error-container": "#ffdad6",
+              "surface-tint": "#ae2f34",
+              "surface-container-highest": "#e6e2dc",
+              "on-surface-variant": "#584140",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e6e2dc",
+              "error": "#ba1a1a",
+              "surface-container": "#f1ede7",
+              "surface-dim": "#dddad4",
+              "surface": "#fdf9f3",
+              "on-secondary-container": "#656464",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "on-error-container": "#93000a",
+              "background": "#fdf9f3",
+              "primary-container": "#ff6b6b",
+              "on-surface": "#1c1c18",
+              "outline-variant": "#e0bfbd",
+              "secondary-container": "#e4e2e1",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-primary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-container-low": "#f7f3ed",
+              "primary": "#ae2f34",
+              "outline": "#8c706f",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-secondary-fixed-variant": "#474747",
+              "on-primary-container": "#6d0010",
+              "inverse-surface": "#31302d",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-tertiary-fixed": "#370e08",
+              "tertiary-fixed": "#ffdad4",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-tertiary-container": "#55251e"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        display: inline-block;
+        line-height: 1;
+        letter-spacing: normal;
+        text-transform: none;
+        white-space: nowrap;
+        word-wrap: normal;
+        direction: ltr;
+        -webkit-font-smoothing: antialiased;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #fdf9f3;
+        color: #1c1c18;
+      }
+      .glass-nav {
+        background: rgba(253, 249, 243, 0.8);
+        backdrop-filter: blur(12px);
+      }
+      .asymmetric-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr;
+        gap: 2rem;
+      }
+      @media (max-width: 1024px) {
+        .asymmetric-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+</head>
+<body class="bg-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-nav shadow-sm dark:shadow-none h-20 flex justify-between items-center px-8 max-w-full mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold tracking-tighter text-[#ae2f34] dark:text-[#ff6b6b] font-headline">GOMET</span>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-headline tracking-tight font-semibold text-[#ae2f34] dark:text-[#ff6b6b] border-b-2 border-[#ae2f34] pb-1" href="#">Discover</a>
+<a class="font-headline tracking-tight font-semibold text-[#1c1c18] dark:text-slate-300 hover:text-[#ae2f34] transition-colors" href="#">Events</a>
+<a class="font-headline tracking-tight font-semibold text-[#1c1c18] dark:text-slate-300 hover:text-[#ae2f34] transition-colors" href="#">Venues</a>
+<a class="font-headline tracking-tight font-semibold text-[#1c1c18] dark:text-slate-300 hover:text-[#ae2f34] transition-colors" href="#">Admin</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center bg-surface-container-high px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-secondary text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-body" placeholder="Search menu..." type="text"/>
+</div>
+<button class="p-2 hover:bg-[#f7f3ed] dark:hover:bg-slate-800 rounded-lg transition-all">
+<span class="material-symbols-outlined text-on-surface">notifications</span>
+</button>
+<button class="p-2 hover:bg-[#f7f3ed] dark:hover:bg-slate-800 rounded-lg transition-all">
+<span class="material-symbols-outlined text-on-surface">account_circle</span>
+</button>
+</div>
+</nav>
+<main class="pt-28 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="text-xs font-bold tracking-widest text-primary uppercase font-label mb-2 block">Partner Dashboard</span>
+<h1 class="text-4xl md:text-5xl font-extrabold font-headline text-on-background tracking-tighter leading-tight">
+                        Quản lý Menu <br/><span class="text-primary italic">Kỹ thuật số</span>
+</h1>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-container-highest px-6 py-3 rounded-DEFAULT font-bold text-on-surface hover:bg-surface-container-high transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">add</span>
+                        Thêm món mới
+                    </button>
+<button class="bg-gradient-to-r from-primary to-primary-container px-6 py-3 rounded-DEFAULT font-bold text-on-primary shadow-lg shadow-primary/20 hover:scale-105 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                        AI Pairing
+                    </button>
+</div>
+</div>
+</header>
+<!-- Main Dashboard Layout -->
+<div class="asymmetric-grid">
+<!-- Menu Items Feed (Left/Main column) -->
+<section class="space-y-8">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-xl font-bold font-headline">Danh sách món ăn</h2>
+<div class="flex gap-2">
+<span class="px-4 py-1.5 bg-primary text-on-primary rounded-full text-xs font-bold font-label">Khai vị</span>
+<span class="px-4 py-1.5 bg-surface-container-high text-on-surface-variant rounded-full text-xs font-bold font-label">Món chính</span>
+<span class="px-4 py-1.5 bg-surface-container-high text-on-surface-variant rounded-full text-xs font-bold font-label">Tráng miệng</span>
+</div>
+</div>
+<!-- Food Card 1 -->
+<article class="bg-surface-container-lowest rounded-lg p-6 flex gap-6 items-start group relative transition-all hover:translate-y-[-4px]">
+<div class="w-32 h-32 rounded-md overflow-hidden flex-shrink-0">
+<img alt="Fresh Salad" class="w-full h-full object-cover" data-alt="Fresh seasonal garden salad with balsamic dressing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDi2CausbKP2quQPXvLppes4_d1mRdlsLf3X2v_AeRNagd2x4-65r6o2i8gGGSCSYtsZGpc66AvN2Mu-SFuZyudX01UKdWa1XV9E5SwUfylZ75zIWzXpq5YkUXNvLBjiH19h2lm1hX_ewnXssHgW_LcAIn1nZ8a1vwcAhodpOF3CoUaSaSbL99_99DbbuqREhJEhxVccgplhkc__72W-X25wxM_UxnLKtVknIGLlD-8Ur5SsbRL9LSq-VQBKZxhk538pKXiw_lOzBg"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold font-headline mb-1">Gỏi Bưởi Tôm Sông</h3>
+<span class="text-primary font-bold font-headline">185.000đ</span>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4 leading-relaxed">Tôm sông tươi, bưởi hồng Da Xanh, rau thơm rừng và nước chấm chua ngọt đặc trưng của bếp trưởng.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-high text-[10px] font-bold uppercase tracking-wider rounded-full">Gluten-free</span>
+<span class="px-3 py-1 bg-surface-container-high text-[10px] font-bold uppercase tracking-wider rounded-full">Best Seller</span>
+</div>
+</div>
+<div class="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-surface-container-highest rounded-full flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="w-8 h-8 bg-surface-container-highest rounded-full flex items-center justify-center text-error hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</article>
+<!-- Food Card 2 -->
+<article class="bg-surface-container-lowest rounded-lg p-6 flex gap-6 items-start group relative transition-all hover:translate-y-[-4px]">
+<div class="w-32 h-32 rounded-md overflow-hidden flex-shrink-0">
+<img alt="Steak dish" class="w-full h-full object-cover" data-alt="Premium grilled wagyu beef steak with herbs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_Eq1kTh9vsZt4ittJeNPKrLchIeovzBp4ntgLJ-GEsdAsX14LB69o9n6vRdwrE5VwBWjKXUQXkOJLU46NxwEY2LhgmDe3Qp6hWySlwpL6Ki3LPszLspRLz2DY0jNF6sioQ3sOx_rE_1d2ZAWqsWmJlKNYVPpoVLk8OeIO26ebLJlPOSmSJgm4LtTKJPlpv5lIb7G8uFZOqRWN8vkaGgeNSoapv_yonR_QPCh4m7gdoiTpmEhp_Vv0m27fEiP5E7t4nvacP0smLjE"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold font-headline mb-1">Bò Wagyu Nướng Đá Muối</h3>
+<span class="text-primary font-bold font-headline">1.250.000đ</span>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4 leading-relaxed">Thịt bò Wagyu A5 thượng hạng nướng trực tiếp trên đá muối Himalaya, ăn kèm măng tây và sốt vang đỏ.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-high text-[10px] font-bold uppercase tracking-wider rounded-full">Signature</span>
+<span class="px-3 py-1 bg-surface-container-high text-[10px] font-bold uppercase tracking-wider rounded-full">Pre-order</span>
+</div>
+</div>
+<div class="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-surface-container-highest rounded-full flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="w-8 h-8 bg-surface-container-highest rounded-full flex items-center justify-center text-error hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</article>
+<!-- Food Card 3 -->
+<article class="bg-surface-container-lowest rounded-lg p-6 flex gap-6 items-start group relative transition-all hover:translate-y-[-4px]">
+<div class="w-32 h-32 rounded-md overflow-hidden flex-shrink-0">
+<img alt="Dessert" class="w-full h-full object-cover" data-alt="Exquisite chocolate souffle dessert with berries" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBG3rTuoYFFOIjT0Mk0NU9gU-j4gT-CJFWIv04cEVdpKTftxNOyCH3TDNrUXPzyKxOsuXW6bAtK23nXZhHo3C65xmnWleVx1jeTwn96OaqIvbNlHifEtNSwkdvVd1qn56-d209RKpgGNIFOkRmU94FHRalmyJVI1JJ0jV8VjjSIWDd5yXNV63GLFmjj7R3AS_RsLiw90mm5qyraKGuBtqgyXZa0TxMohSqy5izB8gmqe6OBZu1gLuMMFkIG7b1lghPjgEWDgyYS7xQ"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start">
+<h3 class="text-lg font-bold font-headline mb-1">Soufflé Socola Đắng</h3>
+<span class="text-primary font-bold font-headline">145.000đ</span>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-2 mb-4 leading-relaxed">Bánh nướng nóng chảy socola 70% cacao từ Bến Tre, ăn kèm kem vani hạt dẻ.</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 bg-surface-container-high text-[10px] font-bold uppercase tracking-wider rounded-full">Chef Choice</span>
+</div>
+</div>
+<div class="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-surface-container-highest rounded-full flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+<button class="w-8 h-8 bg-surface-container-highest rounded-full flex items-center justify-center text-error hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm">delete</span>
+</button>
+</div>
+</article>
+</section>
+<!-- AI Pairing & Stats (Right/Sidebar column) -->
+<aside class="space-y-8">
+<!-- AI Pairing Suggestion Tool -->
+<div class="bg-surface-container-low rounded-lg p-8 border border-outline-variant/30">
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 bg-primary-container/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h3 class="font-bold font-headline text-lg leading-tight">GOMET AI Pairing</h3>
+<p class="text-xs text-on-surface-variant font-medium">Gợi ý thức uống phù hợp</p>
+</div>
+</div>
+<div class="space-y-6">
+<div class="p-4 bg-surface-container-lowest rounded-md">
+<label class="block text-[10px] font-bold uppercase text-on-surface-variant tracking-wider mb-2">Đang phân tích món:</label>
+<div class="flex items-center gap-3">
+<img alt="Selection" class="w-10 h-10 rounded-full object-cover" data-alt="Close up of wagyu beef slice" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC0eWUOlZ_lbq0MWLW6bbATRWysrecCiTml1caRyFkxWE5cOa2fAlrY_BtS98MVX281XXkzbaTKBBhyt46eHoxYA6LorkZMWVoXALYetKKc6eDfrRIltPk-CAjZfDqhw75JOhI3kGlaV-UkHhqqbwN8Inn4ELhpj_0LxReV-3vdSVGUCbnZUqySlU2fCBioGpLIN67UJYJlVnAZPoQpXuRiIYGGvr1TjUBP1sbKSVhiglhbP81iHHV8dPVC6mMsyMWEvU6_wF5QuWw"/>
+<span class="text-sm font-bold">Bò Wagyu Nướng Đá Muối</span>
+</div>
+</div>
+<div class="space-y-3">
+<p class="text-xs font-semibold text-on-surface italic">"Dựa trên hồ sơ hương vị đậm đà và độ béo cao, tôi đề xuất các loại đồ uống sau:"</p>
+<!-- Suggestion 1 -->
+<div class="flex items-center justify-between p-3 bg-white rounded-md border-l-4 border-primary">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">wine_bar</span>
+<div>
+<p class="text-xs font-bold">Cabernet Sauvignon 2018</p>
+<p class="text-[10px] text-on-surface-variant">Độ chát giúp cân bằng vị béo</p>
+</div>
+</div>
+<button class="text-[10px] font-bold text-primary uppercase tracking-tighter hover:underline">Liên kết</button>
+</div>
+<!-- Suggestion 2 -->
+<div class="flex items-center justify-between p-3 bg-white rounded-md border-l-4 border-tertiary">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary">local_bar</span>
+<div>
+<p class="text-xs font-bold">Whisky Sour</p>
+<p class="text-[10px] text-on-surface-variant">Vị chua thanh mát</p>
+</div>
+</div>
+<button class="text-[10px] font-bold text-primary uppercase tracking-tighter hover:underline">Liên kết</button>
+</div>
+</div>
+<button class="w-full py-3 bg-surface-container-highest text-on-surface text-xs font-bold rounded-full border border-outline-variant hover:bg-surface-container-high transition-all">
+                            Tạo gợi ý mới
+                        </button>
+</div>
+</div>
+<!-- Quick Stats -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-6 rounded-lg text-center">
+<span class="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Món Đang Bán</span>
+<span class="text-3xl font-extrabold font-headline text-primary">42</span>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg text-center">
+<span class="block text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Xem Menu</span>
+<span class="text-3xl font-extrabold font-headline text-tertiary">1.2k</span>
+</div>
+</div>
+<!-- Recent Activity/Notes -->
+<div class="bg-surface-container-lowest p-6 rounded-lg">
+<h4 class="font-bold text-sm mb-4">Ghi chú vận hành</h4>
+<ul class="space-y-4">
+<li class="flex gap-3">
+<span class="w-1.5 h-1.5 bg-error rounded-full mt-1.5 flex-shrink-0"></span>
+<p class="text-xs leading-relaxed"><strong class="font-semibold">Hết nguyên liệu:</strong> Tôm sông hiện đang tạm hết. Menu đã tự động ẩn món "Gỏi Bưởi Tôm Sông".</p>
+</li>
+<li class="flex gap-3">
+<span class="w-1.5 h-1.5 bg-primary rounded-full mt-1.5 flex-shrink-0"></span>
+<p class="text-xs leading-relaxed"><strong class="font-semibold">Khuyến mãi:</strong> Bạn có thể tạo combo "Dinner for Two" với món Bò Wagyu để tăng 15% doanh số.</p>
+</li>
+</ul>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 bg-[#f7f3ed] dark:bg-slate-900 flex flex-col md:flex-row justify-between items-center gap-6 border-t border-transparent">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-['Plus_Jakarta_Sans'] font-bold text-[#1c1c18] dark:text-white text-xl">GOMET</span>
+<p class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400">© 2024 GOMET. The Culinary Curator.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:underline decoration-[#ae2f34] underline-offset-4 transition-opacity duration-300" href="#">Privacy</a>
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:underline decoration-[#ae2f34] underline-offset-4 transition-opacity duration-300" href="#">Terms</a>
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:underline decoration-[#ae2f34] underline-offset-4 transition-opacity duration-300" href="#">Safety</a>
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400 hover:underline decoration-[#ae2f34] underline-offset-4 transition-opacity duration-300" href="#">Press</a>
+</div>
+</footer>
+</body></html>

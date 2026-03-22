@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-tertiary": "#ffffff",
+              "error-container": "#ffdad6",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-primary-container": "#6d0010",
+              "inverse-primary": "#ffb3b0",
+              "surface-variant": "#e6e2dc",
+              "surface-container-high": "#ebe8e2",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-container-low": "#f7f3ed",
+              "on-primary-fixed": "#410006",
+              "surface-dim": "#dddad4",
+              "on-tertiary-container": "#55251e",
+              "surface-container-lowest": "#ffffff",
+              "outline-variant": "#e0bfbd",
+              "primary-container": "#ff6b6b",
+              "on-background": "#1c1c18",
+              "secondary-container": "#e4e2e1",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-surface": "#1c1c18",
+              "secondary": "#5f5e5e",
+              "on-surface-variant": "#584140",
+              "surface-container": "#f1ede7",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-container-highest": "#e6e2dc",
+              "surface-bright": "#fdf9f3",
+              "on-primary": "#ffffff",
+              "on-secondary-container": "#656464",
+              "outline": "#8c706f",
+              "on-error-container": "#93000a",
+              "on-error": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface": "#fdf9f3",
+              "primary": "#ae2f34",
+              "error": "#ba1a1a",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "tertiary-container": "#cf8a7f",
+              "on-secondary-fixed-variant": "#474747",
+              "inverse-surface": "#31302d",
+              "secondary-fixed": "#e4e2e1",
+              "primary-fixed": "#ffdad8",
+              "background": "#fdf9f3",
+              "on-tertiary-fixed": "#370e08",
+              "tertiary": "#894e45",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-tint": "#ae2f34"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-gradient-primary {
+            background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-950/80 backdrop-blur-md shadow-sm shadow-rose-500/5 h-16 flex justify-between items-center px-6">
+<div class="text-2xl font-bold tracking-tighter text-rose-600 dark:text-rose-400 font-['Plus_Jakarta_Sans'] tracking-tight">GOMET</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-rose-500 dark:hover:text-rose-300 transition-colors" href="#">Events</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-rose-500 dark:hover:text-rose-300 transition-colors" href="#">Dating</a>
+<a class="text-rose-600 dark:text-rose-400 font-bold border-b-2 border-rose-600 hover:text-rose-500 dark:hover:text-rose-300 transition-colors" href="#">Safety</a>
+<a class="text-stone-600 dark:text-stone-400 font-medium hover:text-rose-500 dark:hover:text-rose-300 transition-colors" href="#">Rewards</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low rounded-full transition-all">search</button>
+<div class="h-8 w-8 rounded-full overflow-hidden ring-2 ring-primary-container/20">
+<img alt="" data-alt="User profile picture in a circle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfWDZ_2cvYrZo54-rtvxboJl6JzIOpCv86J6RbgL6gh2XkC7kCn4HqA8AqD7L6rqWMP2I8m3Ve7edFmVIjzYSD0DZh1EjZ51cMxwMAmRkMyTg3okBq1bbTAYZWBDKjRlQaFBkrJHx4iiNMzT6sWKtSzaxwK5ZPdwmd3-qHT_hOux94ha2-rswsv_8wjLqwLZymAgZkOIX9g198O7A1lfcZiVSzuNi7VcqKZWFnqMyV6lbzciBhaQMd_yBPzYBs9MIe2v6iw_Pu54U"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="relative mb-20">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+<div class="lg:col-span-8">
+<span class="inline-block px-4 py-1.5 rounded-full bg-surface-container-high text-primary font-label text-xs font-bold uppercase tracking-widest mb-6">Our Commitment</span>
+<h1 class="text-6xl md:text-8xl font-headline font-extrabold tracking-tighter text-on-background leading-[0.9] mb-8">
+                        The <span class="text-gradient-primary">Art</span> of Connection.
+                    </h1>
+<p class="text-xl text-on-surface-variant max-w-2xl font-medium leading-relaxed">
+                        At GOMET, we believe meaningful relationships are built on a foundation of trust, safety, and mutual respect. Our guidelines are the ingredients for a premium social experience.
+                    </p>
+</div>
+<div class="lg:col-span-4 hidden lg:block">
+<div class="aspect-[3/4] rounded-lg overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 bg-surface-container-highest">
+<img alt="" class="w-full h-full object-cover grayscale opacity-80" data-alt="Elegant restaurant interior with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0Ij-A2etMbAvfi9LXFQjQAoUU_OnGNmrAd-VvgMyuylZaV4Gj-alYncO2q52U7S6mXH9J1BdMSgpZ5OekEjyytswGAlOTyxYHyrCIuL7f5ig4tKOb7GKbOijAaCEhMihat9BPwLFBHvJ-v8iDcVtViXkwCVtj-2z-c5TODmsGWjnRKHNjnimDmFCspeN9XcGtTFcd1eVhcixNY7j1Wl3lighlOO2OReX549SEXC7-xgzKAFG133HzFJWjlaOB9t-nLUXWNYZHMCo"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Guidelines -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+<!-- Respect Card -->
+<div class="md:col-span-2 bg-surface-container-low p-10 rounded-lg flex flex-col justify-between group hover:bg-surface-container transition-colors">
+<div>
+<div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl">favorite</span>
+</div>
+<h3 class="text-3xl font-headline font-bold mb-4 tracking-tight">Respect</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed max-w-xl">
+                        Treat every connection with the same courtesy you'd expect at a Michelin-starred table. Harassment, hate speech, and discrimination have no seat at our table.
+                    </p>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant/20 flex items-center gap-4">
+<span class="text-xs font-label uppercase font-extrabold tracking-widest text-secondary">Policy Reference: R-01</span>
+</div>
+</div>
+<!-- Privacy Card -->
+<div class="bg-primary text-on-primary p-10 rounded-lg flex flex-col justify-between shadow-xl shadow-primary/10">
+<div>
+<div class="w-14 h-14 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center mb-8">
+<span class="material-symbols-outlined text-white text-3xl">shield_person</span>
+</div>
+<h3 class="text-3xl font-headline font-bold mb-4 tracking-tight">Privacy</h3>
+<p class="text-on-primary/80 text-lg leading-relaxed">
+                        Your data is your own. We prioritize discretion and security in every interaction.
+                    </p>
+</div>
+<div class="mt-8">
+<button class="bg-white text-primary px-6 py-3 rounded-DEFAULT font-bold text-sm hover:bg-surface-container-lowest transition-all">Manage Privacy</button>
+</div>
+</div>
+<!-- Authenticity Card -->
+<div class="bg-surface-container-highest p-10 rounded-lg md:col-span-1 group">
+<div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:bg-primary transition-all">
+<span class="material-symbols-outlined text-primary text-3xl group-hover:text-white">verified_user</span>
+</div>
+<h3 class="text-3xl font-headline font-bold mb-4 tracking-tight">Authenticity</h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">
+                    Be yourself. Catfishing and deceptive profiles are strictly prohibited to ensure real human connection.
+                </p>
+</div>
+<!-- Prohibited Content -->
+<div class="bg-surface-container-low p-10 rounded-lg md:col-span-2 relative overflow-hidden group">
+<div class="relative z-10">
+<h3 class="text-3xl font-headline font-bold mb-4 tracking-tight">Zero Tolerance</h3>
+<div class="grid grid-cols-2 gap-4 mt-8">
+<div class="flex items-center gap-3 bg-white/50 p-4 rounded-md">
+<span class="material-symbols-outlined text-error">block</span>
+<span class="font-medium">Explicit Content</span>
+</div>
+<div class="flex items-center gap-3 bg-white/50 p-4 rounded-md">
+<span class="material-symbols-outlined text-error">campaign</span>
+<span class="font-medium">Solicitation</span>
+</div>
+<div class="flex items-center gap-3 bg-white/50 p-4 rounded-md">
+<span class="material-symbols-outlined text-error">gavel</span>
+<span class="font-medium">Illegal Acts</span>
+</div>
+<div class="flex items-center gap-3 bg-white/50 p-4 rounded-md">
+<span class="material-symbols-outlined text-error">person_off</span>
+<span class="font-medium">Impersonation</span>
+</div>
+</div>
+</div>
+<div class="absolute -right-12 -bottom-12 opacity-5 scale-150 rotate-12 group-hover:rotate-0 transition-all duration-700">
+<span class="material-symbols-outlined text-[200px]">security</span>
+</div>
+</div>
+</section>
+<!-- Safety Center -->
+<section class="mb-24">
+<div class="text-center mb-16">
+<h2 class="text-5xl font-headline font-extrabold mb-4">Safety Center</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto font-medium">Tools and advice to keep you secure from the first swipe to the first date.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+<!-- Reporting Tools -->
+<div class="space-y-8">
+<h4 class="text-xl font-headline font-bold flex items-center gap-3">
+<span class="w-2 h-8 bg-primary rounded-full"></span>
+                        Reporting Tools
+                    </h4>
+<div class="space-y-4">
+<div class="flex gap-6 p-6 rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="shrink-0 w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">flag</span>
+</div>
+<div>
+<h5 class="font-bold text-lg mb-1">In-App Reporting</h5>
+<p class="text-on-surface-variant">Tap the profile menu to report any behavior that violates our community standards. Our team reviews 24/7.</p>
+</div>
+</div>
+<div class="flex gap-6 p-6 rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="shrink-0 w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">person_remove</span>
+</div>
+<div>
+<h5 class="font-bold text-lg mb-1">Unmatch &amp; Block</h5>
+<p class="text-on-surface-variant">Instantly remove a connection. This action is permanent and prevents them from seeing your profile again.</p>
+</div>
+</div>
+<div class="flex gap-6 p-6 rounded-lg hover:bg-surface-container-low transition-colors">
+<div class="shrink-0 w-12 h-12 bg-surface-container-highest rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">support_agent</span>
+</div>
+<div>
+<h5 class="font-bold text-lg mb-1">Concierge Support</h5>
+<p class="text-on-surface-variant">Dedicated safety specialists available to assist with complex situations or safety concerns.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Meeting Offline Advice -->
+<div class="bg-surface-container-low rounded-lg p-10">
+<h4 class="text-xl font-headline font-bold flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-tertiary">restaurant</span>
+                        Meeting Offline Safely
+                    </h4>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<span class="w-6 h-6 rounded-full bg-primary text-white text-[10px] flex items-center justify-center shrink-0 mt-1 font-bold">01</span>
+<div>
+<p class="font-bold mb-1">Public Places Only</p>
+<p class="text-sm text-on-surface-variant">Always meet in a well-lit, populated venue. Never at a private residence for the first time.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="w-6 h-6 rounded-full bg-primary text-white text-[10px] flex items-center justify-center shrink-0 mt-1 font-bold">02</span>
+<div>
+<p class="font-bold mb-1">Tell a Friend</p>
+<p class="text-sm text-on-surface-variant">Share your date location and time with a trusted contact before you head out.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="w-6 h-6 rounded-full bg-primary text-white text-[10px] flex items-center justify-center shrink-0 mt-1 font-bold">03</span>
+<div>
+<p class="font-bold mb-1">Stay in Control</p>
+<p class="text-sm text-on-surface-variant">Arrange your own transportation to and from the venue. Keep your phone charged.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="w-6 h-6 rounded-full bg-primary text-white text-[10px] flex items-center justify-center shrink-0 mt-1 font-bold">04</span>
+<div>
+<p class="font-bold mb-1">Trust Your Gut</p>
+<p class="text-sm text-on-surface-variant">If something feels off, leave. You never need an excuse to prioritize your safety.</p>
+</div>
+</li>
+</ul>
+<div class="mt-10 p-6 bg-white rounded-md border-l-4 border-primary">
+<p class="text-sm font-medium italic text-on-surface-variant">
+                            "In an emergency, always contact local law enforcement first before notifying GOMET safety teams."
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="bg-surface-container-highest rounded-lg p-12 text-center relative overflow-hidden">
+<div class="relative z-10 max-w-2xl mx-auto">
+<h3 class="text-3xl font-headline font-bold mb-6">Need Immediate Assistance?</h3>
+<p class="text-on-surface-variant mb-10 text-lg">Our safety and moderation teams are standing by to help maintain the integrity of the GOMET experience.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-gradient-primary text-white px-8 py-4 rounded-DEFAULT font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] transition-all">Submit a Report</button>
+<button class="bg-white text-on-surface px-8 py-4 rounded-DEFAULT font-bold border border-outline-variant hover:bg-surface-container transition-all">Visit FAQ</button>
+</div>
+</div>
+<div class="absolute top-0 left-0 w-32 h-32 bg-primary/5 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+<div class="absolute bottom-0 right-0 w-64 h-64 bg-primary/5 rounded-full translate-x-1/3 translate-y-1/3"></div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-stone-950/80 backdrop-blur-md rounded-t-[2rem] z-50 shadow-2xl no-border shadow-[0_-4px_24px_rgba(174,47,52,0.04)]">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:bg-stone-50 dark:hover:bg-stone-900 transition-all" href="#">
+<span class="material-symbols-outlined mb-1">explore</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 rounded-full px-5 py-1 transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold">Safety</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:bg-stone-50 dark:hover:bg-stone-900 transition-all" href="#">
+<span class="material-symbols-outlined mb-1">military_tech</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold">Leaderboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 hover:bg-stone-50 dark:hover:bg-stone-900 transition-all" href="#">
+<span class="material-symbols-outlined mb-1">person</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest font-bold">Profile</span>
+</a>
+</nav>
+</body></html>

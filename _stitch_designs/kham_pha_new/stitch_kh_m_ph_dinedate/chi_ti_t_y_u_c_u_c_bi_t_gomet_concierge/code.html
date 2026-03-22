@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,400;1,700;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdad4",
+              "on-tertiary-fixed": "#370e08",
+              "tertiary": "#894e45",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed-dim": "#ffb3b0",
+              "tertiary-container": "#cf8a7f",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-primary-container": "#6d0010",
+              "secondary-fixed": "#e4e2e1",
+              "on-secondary": "#ffffff",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "error": "#ba1a1a",
+              "inverse-primary": "#ffb3b0",
+              "primary": "#ae2f34",
+              "surface-container": "#f1ede7",
+              "outline": "#8c706f",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary-container": "#e4e2e1",
+              "secondary": "#5f5e5e",
+              "on-primary-fixed-variant": "#8c1520",
+              "error-container": "#ffdad6",
+              "surface-dim": "#dddad4",
+              "surface-bright": "#fdf9f3",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#410006",
+              "on-error-container": "#93000a",
+              "surface-tint": "#ae2f34",
+              "inverse-surface": "#31302d",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-background": "#1c1c18",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-container": "#656464",
+              "surface-variant": "#e6e2dc",
+              "on-secondary-fixed-variant": "#474747",
+              "on-surface": "#1c1c18",
+              "primary-container": "#ff6b6b",
+              "on-surface-variant": "#584140",
+              "outline-variant": "#e0bfbd",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#e6e2dc",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-container-low": "#f7f3ed",
+              "background": "#fdf9f3"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body { font-family: 'Inter', sans-serif; }
+      h1, h2, h3, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-background min-h-screen">
+<!-- TopNavBar Shell -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold italic tracking-tighter text-rose-700 dark:text-rose-500 font-headline">GOMET</span>
+<div class="hidden md:flex gap-6">
+<a class="text-rose-700 dark:text-rose-400 font-bold border-b-2 border-rose-700 transition-colors py-1" href="#">Venues</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-600 dark:hover:text-rose-300 transition-colors py-1" href="#">Concierge</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-600 dark:hover:text-rose-300 transition-colors py-1" href="#">Club</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-stone-600 hover:bg-stone-100 rounded-full">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-stone-600 hover:bg-stone-100 rounded-full">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary">
+<img class="w-full h-full object-cover" data-alt="Elite Member Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaIolVrqHo4AO438J5PJ6ndD9N-7Xl3Sjoz_4mWPatSiG3iov_8IzHqRf8K-I49P6GIT-75PYV_51-DWOEjo-jKNb_o35kQusOpUng-woFzZiVxC_6tkj1PYrm6U8KGnhGfLtfUQGeg15TKp7GA5ptJcalezIrqN52zz6VLRNMkNHtqEx7CbqfCbXN-vYNALL_VnRmK_60pWZr5-0kHG9T5iUrF8YX8NgrgF5yzKncA_V-VZtM10Lj_UhEvG2QmfqvThGc_8GWU7A"/>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-28 pb-12 px-6 lg:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Details & Timeline -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Hero Header -->
+<div class="relative overflow-hidden rounded-lg bg-surface-container-low p-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+<div class="z-10">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-tertiary-container/20 text-on-tertiary-container rounded-full mb-4">
+<span class="material-symbols-outlined text-sm" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-xs font-bold tracking-widest uppercase">Special Occasion</span>
+</div>
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">Anniversary Proposal</h1>
+<p class="text-secondary max-w-md">Reservation at <span class="text-primary font-semibold">L'Ambroisie</span> for Julian &amp; Sarah.</p>
+</div>
+<div class="z-10 bg-white/80 backdrop-blur-md px-6 py-4 rounded-xl shadow-sm flex flex-col items-center">
+<span class="text-primary font-bold text-3xl">OCT 24</span>
+<span class="text-secondary text-sm font-medium uppercase tracking-widest">7:30 PM</span>
+</div>
+<!-- Abstract Decorative Pattern -->
+<div class="absolute -right-16 -top-16 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+</div>
+<!-- Bento Grid Section: Requirements -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Status Badge Card -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex flex-col justify-between shadow-[0_2px_12px_rgba(0,0,0,0.03)] border-l-4 border-error">
+<span class="text-secondary text-xs font-bold uppercase tracking-wider mb-2">Request Status</span>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 bg-error rounded-full animate-pulse"></div>
+<span class="text-lg font-bold text-on-surface">Action Required</span>
+</div>
+<p class="text-xs text-secondary mt-2">Approve floral arrangement selection to finalize order.</p>
+</div>
+<!-- Requirement: Flowers -->
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_2px_12px_rgba(0,0,0,0.03)] group">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="local_florist">local_florist</span>
+<h3 class="font-bold">Floral Setup</h3>
+</div>
+<p class="text-sm text-secondary mb-4 italic">"50 White O'Hara Garden Roses. Table center focus."</p>
+<div class="h-20 w-full rounded-md overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="White Roses floral arrangement" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmw1mLzfBojATAwLfi8dIb3mVO8mRT6rxLrzhwlsEfmWKwybDK9IOcAa6WXM41KrA5NN1j1EM-9viIrUpClyobP6GQb3lP8MvyekzSz1eoBt2kgEp_4pLS3T4pkKVeaKa_1o_saqPXedqniZGgSAv1VSz1QDw28xj7LpMFPodooxNUWMS2tp_FsrY6dVvMPTrzTbeROoEhuHEhD0ft1OR37fqci29izks8u3Lab827gr2Ss2IAN4j-ZChEl6lyK9LiekjN7de-uFU"/>
+</div>
+</div>
+<!-- Requirement: Table -->
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_2px_12px_rgba(0,0,0,0.03)]">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="chair">chair</span>
+<h3 class="font-bold">Seating</h3>
+</div>
+<ul class="text-sm text-secondary space-y-2">
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> Window Side preferred</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-primary rounded-full"></span> High privacy alcove</li>
+</ul>
+</div>
+</div>
+<!-- Timeline Section -->
+<div class="bg-surface-container-low p-8 rounded-lg">
+<h2 class="text-xl font-bold mb-8">Event Coordination Timeline</h2>
+<div class="space-y-0">
+<!-- Step 1 -->
+<div class="relative pl-8 pb-10 border-l-2 border-primary/20">
+<div class="absolute -left-2.5 top-0 w-5 h-5 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-white" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface">Initial Consultation</h4>
+<span class="text-xs text-secondary bg-surface-container px-2 py-1 rounded">Oct 12, 10:00 AM</span>
+</div>
+<p class="text-sm text-secondary">Member Julian discussed proposal vision with Concierge Sofia.</p>
+</div>
+<!-- Step 2 -->
+<div class="relative pl-8 pb-10 border-l-2 border-primary/20">
+<div class="absolute -left-2.5 top-0 w-5 h-5 bg-primary rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-white" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-on-surface">Venue Confirmation</h4>
+<span class="text-xs text-secondary bg-surface-container px-2 py-1 rounded">Oct 14, 02:45 PM</span>
+</div>
+<p class="text-sm text-secondary">Manager Marc confirmed Table #12 availability and secret cues.</p>
+</div>
+<!-- Step 3 (Active) -->
+<div class="relative pl-8 pb-10 border-l-2 border-primary">
+<div class="absolute -left-2.5 top-0 w-5 h-5 bg-white border-2 border-primary rounded-full flex items-center justify-center">
+<div class="w-2 h-2 bg-primary rounded-full"></div>
+</div>
+<div class="flex justify-between items-start mb-1">
+<h4 class="font-bold text-primary">Floral Finalization</h4>
+<span class="text-xs font-bold text-error bg-error/10 px-2 py-1 rounded">PENDING</span>
+</div>
+<p class="text-sm text-secondary">Awaiting member's selection of the final bouquet size.</p>
+</div>
+<!-- Step 4 -->
+<div class="relative pl-8 border-l-2 border-dashed border-stone-300">
+<div class="absolute -left-2 top-0 w-4 h-4 bg-stone-300 rounded-full"></div>
+<div class="flex justify-between items-start mb-1 opacity-50">
+<h4 class="font-bold text-on-surface">Day-of Briefing</h4>
+</div>
+<p class="text-sm text-secondary opacity-50">Final check-in 4 hours prior to reservation.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Coordination Chat & Alerts -->
+<div class="lg:col-span-4 flex flex-col gap-6">
+<!-- Dietary Alerts -->
+<div class="bg-tertiary-fixed text-on-tertiary-fixed p-6 rounded-lg shadow-sm">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<h3 class="font-bold text-sm tracking-tight">DIETARY ALERTS</h3>
+</div>
+<div class="bg-white/30 rounded-md p-3">
+<span class="text-xs font-bold uppercase tracking-widest block mb-1">Sarah B.</span>
+<p class="text-sm">Severe Shellfish Allergy. Cross-contamination protocol required.</p>
+</div>
+</div>
+<!-- Shared Chat Container -->
+<div class="bg-surface-container-highest rounded-lg flex flex-col h-[600px] shadow-lg overflow-hidden border border-white/40">
+<!-- Chat Header -->
+<div class="p-4 border-b border-white/20 bg-white/40 backdrop-blur-md">
+<h3 class="font-bold text-sm">COORDINATION CHANNEL</h3>
+<div class="flex -space-x-2 mt-2">
+<img class="w-6 h-6 rounded-full border border-white object-cover" data-alt="Member Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-Ctbn8v-mk98U6YYKnuRDzxdJCUGncXkTyllnkFj0azZoQ2Y5q8etF7C66Y65Ly7Yg2gBLfxHoiGuQW8jaL1tie0TGEClsG4zTNjbPH1M1hvE0FrRVwadWHRA4XuJhVI6063Di8hxdwe_KBRzt7R9B9-wgr_6eWt57RSMSBORJ21WI6ixF4H34HdvIrXHT0oQx-9T2EP-mGrnu8HRz7NNoxdvWHhKxhv4LoIsuEdJSAHSJWdkLx_eFFEJWmA6gtvUC1tHrximxyE"/>
+<img class="w-6 h-6 rounded-full border border-white object-cover" data-alt="Concierge Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPWK7JTjNIMAt-RyqJbv0GtlkGo3ARRewm3-UsPGycuoVAXKMu_KBZv2i_1JiRe6ZLcUrF2rY3L-COPmuW9KQeODIegU8dhhjZAvM9qincvugdzEvkz1OCJ2H0wQ9DApLWTEI0IdYguvm6y9bXOoiigTBkz6qX3Gy-URJEtP6agDp2GTJ7cqlb-P0NUI-5IRATauPAj00y3ZctRLRJmaLEG7M1MjtXxloZPHYcMugtTOMMpXoCUkgd2OSjXWi5oDW4eeWT70sEr6M"/>
+<img class="w-6 h-6 rounded-full border border-white object-cover" data-alt="Venue Manager Avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUM-2kTrQJ18X6OMzbyyb6hglvjf29Xg9BaZojtcVRcwunESqRaTRp3ZIjcFfZ56WPCgS3szn1xWmwd5eOiTbEvGYpIQgXDfIJgtUBWkYyFLI7ICfZgPcvsFAneDfOVZ7a15dD7kMLC5bRfIc2l2U-8KsKA9RbFsB0Mw7xRcXOpIe3_g2MWVSwkTyXaeYIW_3vp7nc1RPMA4Nk-tCrU7s2LvzjxlK9qMtS2T0Bs7Uu9j-OAnVgFpADd-Ium86E0d_dSQCF4t7XodY"/>
+</div>
+</div>
+<!-- Chat Body -->
+<div class="flex-1 overflow-y-auto p-4 space-y-6">
+<!-- Concierge Message -->
+<div class="flex flex-col items-start gap-1">
+<span class="text-[10px] font-bold text-secondary ml-1">Sofia (Concierge)</span>
+<div class="max-w-[85%] bg-white p-3 rounded-r-xl rounded-bl-xl shadow-sm text-sm">
+                            Julian, the florist sent over the rose options. I've uploaded them to your dashboard. Let us know which one Sarah would prefer!
+                        </div>
+</div>
+<!-- Member Message -->
+<div class="flex flex-col items-end gap-1">
+<span class="text-[10px] font-bold text-primary mr-1">You</span>
+<div class="max-w-[85%] bg-primary text-white p-3 rounded-l-xl rounded-br-xl shadow-md text-sm">
+                            The White O'Hara looks perfect. Let's go with the 50-stem bouquet. Marc, did we decide on the cue for the dessert?
+                        </div>
+</div>
+<!-- Venue Message -->
+<div class="flex flex-col items-start gap-1">
+<span class="text-[10px] font-bold text-secondary ml-1">Marc (L'Ambroisie)</span>
+<div class="max-w-[85%] bg-stone-800 text-white p-3 rounded-r-xl rounded-bl-xl shadow-sm text-sm">
+                            Yes, Julian. Once the Champagne is poured for the third course, that is our cue to bring the ring box on the silver tray.
+                        </div>
+</div>
+<!-- Concierge Message -->
+<div class="flex flex-col items-start gap-1">
+<span class="text-[10px] font-bold text-secondary ml-1">Sofia (Concierge)</span>
+<div class="max-w-[85%] bg-white p-3 rounded-r-xl rounded-bl-xl shadow-sm text-sm">
+                            I will ensure the transport and hand-off to Marc happens 2 hours prior. We are all set for a perfect night.
+                        </div>
+</div>
+</div>
+<!-- Chat Input -->
+<div class="p-4 bg-surface-container-lowest">
+<div class="relative">
+<input class="w-full bg-surface-container-high border-none rounded-full py-3 px-5 text-sm focus:ring-2 focus:ring-primary" placeholder="Message coordination team..." type="text"/>
+<button class="absolute right-2 top-1.5 p-1.5 bg-primary text-white rounded-full">
+<span class="material-symbols-outlined text-sm" data-icon="send">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Summary CTA -->
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-4 rounded-lg font-bold shadow-lg shadow-rose-200 flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform">
+<span class="material-symbols-outlined" data-icon="verified">verified</span>
+                Approve &amp; Finalize Request
+            </button>
+</div>
+</main>
+<!-- Contextual FAB Suppression: Hide FAB as this is a focused Detail Screen -->
+</body></html>

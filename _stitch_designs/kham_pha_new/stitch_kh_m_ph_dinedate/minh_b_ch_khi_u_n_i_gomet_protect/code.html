@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#ff6b6b",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "outline": "#8c706f",
+              "inverse-on-surface": "#f4f0ea",
+              "on-surface": "#1c1c18",
+              "secondary-fixed": "#e4e2e1",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "outline-variant": "#e0bfbd",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-dim": "#dddad4",
+              "secondary-fixed-dim": "#c8c6c6",
+              "tertiary": "#894e45",
+              "on-background": "#1c1c18",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#410006",
+              "secondary": "#5f5e5e",
+              "on-tertiary-fixed": "#370e08",
+              "surface-bright": "#fdf9f3",
+              "on-secondary-container": "#656464",
+              "secondary-container": "#e4e2e1",
+              "on-error": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "background": "#fdf9f3",
+              "on-secondary-fixed-variant": "#474747",
+              "on-tertiary-container": "#55251e",
+              "on-primary-container": "#6d0010",
+              "error": "#ba1a1a",
+              "tertiary-container": "#cf8a7f",
+              "surface-variant": "#e6e2dc",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-highest": "#e6e2dc",
+              "surface": "#fdf9f3",
+              "on-secondary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed": "#ffdad8",
+              "error-container": "#ffdad6",
+              "surface-container": "#f1ede7",
+              "primary": "#ae2f34",
+              "inverse-surface": "#31302d",
+              "inverse-primary": "#ffb3b0",
+              "surface-container-low": "#f7f3ed",
+              "on-tertiary-fixed-variant": "#6d3830"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #fdf9f3;
+      }
+      .font-headline {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+      .glass-effect {
+        backdrop-filter: blur(12px);
+      }
+    </style>
+</head>
+<body class="text-on-background">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-950/80 backdrop-blur-xl shadow-sm shadow-rose-900/5 h-20">
+<div class="flex justify-between items-center px-6 h-full w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-rose-800 dark:text-rose-500 uppercase font-headline">GOMET Alpha</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-8 font-headline tracking-tight text-stone-500">
+<a class="text-rose-700 dark:text-rose-400 font-semibold border-b-2 border-rose-700 pb-1" href="#">Bảo vệ &amp; Khiếu nại</a>
+<a class="hover:text-rose-600 transition-colors" href="#">Trung tâm Minh bạch</a>
+<a class="hover:text-rose-600 transition-colors" href="#">Giao dịch</a>
+</div>
+<div class="flex items-center gap-4 text-stone-500">
+<span class="material-symbols-outlined cursor-pointer hover:bg-rose-50/50 p-2 rounded-full transition-colors">calendar_month</span>
+<span class="material-symbols-outlined cursor-pointer hover:bg-rose-50/50 p-2 rounded-full transition-colors">notifications</span>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-28 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Breadcrumbs & Title -->
+<div class="mb-10">
+<div class="flex items-center gap-2 text-label text-stone-500 mb-2">
+<span>Trang chủ</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span>Hỗ trợ khách hàng</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-primary font-medium">Trung tâm Minh bạch &amp; Khiếu nại</span>
+</div>
+<h1 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tight text-on-surface">GOMET Protect</h1>
+<p class="text-stone-600 mt-2 max-w-2xl">Hệ thống xử lý tranh chấp giao dịch trả phí công khai, minh bạch và đảm bảo quyền lợi tuyệt đối cho hội viên.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Case Details & History -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Status Banner -->
+<section class="bg-surface-container-lowest rounded-lg p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">gavel</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold uppercase tracking-widest text-primary">Case #GMT-88291</span>
+<span class="px-3 py-0.5 bg-tertiary/10 text-tertiary text-xs font-bold rounded-full">Đang xử lý</span>
+</div>
+<h2 class="text-xl font-bold font-headline mt-1">Tranh chấp: Thanh toán bữa tối tại Velvet Lounge</h2>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-sm text-stone-500">Thời gian phản hồi dự kiến</span>
+<span class="text-lg font-bold text-on-surface">2 giờ 15 phút</span>
+</div>
+</section>
+<!-- Evidence Section (Bento Style) -->
+<section class="space-y-4">
+<h3 class="text-lg font-bold font-headline flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">analytics</span>
+                        Kho bằng chứng minh bạch
+                    </h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="col-span-2 row-span-2 relative group overflow-hidden rounded-lg bg-surface-container-high aspect-square md:aspect-auto">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Hóa đơn thanh toán nhà hàng chi tiết" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv9cZUvmBllmyHE95eRvbfGAA6k6A32KqI7WBTexzfeFnHEPBnLNWyEkax3BNSbcvGCJISkq09oQpo-cAHUdAAdXMSeWYRtiqmuDCOp6z6Wz_uACt44FVQzwvSPjr3KualWhUwUYQRtypshXGoRgl3GjFmr5GRXbXk-QR4uNxgJmcQucMd9yuJpwM9wt9jZLoCwvARGJeD2OpQpsrXoE843UkU1PcqAB2uep9n3d-FHsUgTTewyVrbMefPt13XRYYiDOoWMVZ0n0g"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-4">
+<span class="text-white text-xs font-medium">Hóa đơn gốc</span>
+<span class="text-white/80 text-[10px]">Đã xác thực bởi GOMET AI</span>
+</div>
+</div>
+<div class="relative group overflow-hidden rounded-lg bg-surface-container-high aspect-square">
+<img class="w-full h-full object-cover" data-alt="Ảnh không gian quán ăn thực tế" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJwFfJdrECl8jEbcPonLPLrziDaFmY7zPlMV6MGjjMFSAHTQTy6nZ3uTJfRoVlny-YVwoiwqZi2Zipuz5idwL1Xq6tNak80eGv4t39AvfLB_mUW7jPPvhyNu9Tut0xfoxDhb2foj1An2xMpwYk7z5WSRxj-hUUuifQGqLeJusHkepw4S8G7Mx3TqyilswNrM_5BFZyNJ4MfvhljVe39ZUl11zirxIn-ukTT1PqgzbvoC_77hB3btga58qb_kj3o-Ahu1v4pQkZD_Y"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">zoom_in</span>
+</div>
+</div>
+<div class="relative group overflow-hidden rounded-lg bg-surface-container-high aspect-square">
+<img class="w-full h-full object-cover" data-alt="Ảnh chân dung đối tác giao dịch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmYbF06VHQkfPCpy8U0xdMcf3JLkKklUzNWxPx4f7LSJ89n5Nk1OwhVzMH6wLYSxPEbLtHg4-B_lD-iNx-k-3Tl5M85ruO6qLC45hvqnYxwMd2TAyzAZImXTGKlYGHMe2A24hvPeZ4gCQR_Wga98L4QhLLJaavUY9lSShhq75KUHNzhF-jrpNVtskzSYcXYF3dBFA_4rSx3KOyoULpX_nSo4x802zOY0_s1Na-JJgs_y2D-D9-ecSAtRCNYpLMlv0YlS2QPboJwbQ"/>
+</div>
+<div class="col-span-2 h-32 relative overflow-hidden rounded-lg bg-surface-container-high border-2 border-dashed border-outline-variant flex flex-col items-center justify-center text-stone-500 cursor-pointer hover:bg-stone-100 transition-colors">
+<span class="material-symbols-outlined text-3xl">add_a_photo</span>
+<span class="text-xs mt-2 font-medium">Tải lên thêm bằng chứng</span>
+</div>
+</div>
+</section>
+<!-- Process Timeline -->
+<section class="bg-surface-container-low rounded-lg p-8 relative">
+<h3 class="text-lg font-bold font-headline mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+                        Lịch trình xử lý Admin
+                    </h3>
+<div class="space-y-8 relative">
+<div class="absolute left-[11px] top-2 bottom-2 w-0.5 bg-outline-variant"></div>
+<div class="relative flex gap-6">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center z-10 ring-4 ring-white">
+<span class="material-symbols-outlined text-white text-[14px]">check</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Khiếu nại được tiếp nhận</h4>
+<p class="text-sm text-stone-500">Hệ thống đã nhận được yêu cầu hoàn phí từ người dùng.</p>
+<span class="text-[10px] uppercase font-bold text-stone-400 mt-1 block">14:20 - 24/05/2024</span>
+</div>
+</div>
+<div class="relative flex gap-6">
+<div class="w-6 h-6 rounded-full bg-primary flex items-center justify-center z-10 ring-4 ring-white">
+<span class="material-symbols-outlined text-white text-[14px]">check</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">GOMET AI Phân tích</h4>
+<p class="text-sm text-stone-500">Hệ thống AI đối chiếu hóa đơn và vị trí GPS của cả hai bên.</p>
+<span class="text-[10px] uppercase font-bold text-stone-400 mt-1 block">14:25 - 24/05/2024</span>
+</div>
+</div>
+<div class="relative flex gap-6">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest border-2 border-primary flex items-center justify-center z-10 ring-4 ring-white">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+</div>
+<div>
+<h4 class="font-bold text-primary">Admin GOMET Protect Đang can thiệp</h4>
+<p class="text-sm text-stone-500">Chuyên viên bảo mật đang xem xét các bằng chứng hình ảnh.</p>
+<div class="mt-3 flex items-center gap-3 p-3 bg-white rounded-md shadow-sm">
+<div class="w-8 h-8 rounded-full bg-stone-200">
+<img class="w-full h-full rounded-full" data-alt="Ảnh đại diện quản trị viên hệ thống" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtzALXdK2fwoBi_icau2ES1d0G81oI2MVDSNfGc5P88Z9oTuaWD4Jt3uwKTUf0soIc01hxl1rFKCZrEDDE3V3iCG7bVCs7YLQLC1bug4tudSqFAn83uRtdmad9vsEAW3Y60q79fU1S8feCDwqBC5cqFrPqfpkLjD8dVKwlgAqshORzZv9xcJqeXthiuLtZvzfQ5vAnwCga7lBNOkzWNLIUvIaQAA9uQkwNOicW1LGM2lz-IrEmYt1FiEEe4UPgsBjBrE9lE1eO9TI"/>
+</div>
+<span class="text-xs font-bold text-on-surface">Admin Lucas</span>
+<span class="text-[10px] px-2 py-0.5 bg-green-100 text-green-700 rounded-full font-bold">Online</span>
+</div>
+<span class="text-[10px] uppercase font-bold text-stone-400 mt-1 block">Hiện tại</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Chat & Interaction -->
+<div class="lg:col-span-4 space-y-8">
+<!-- Dispute Chat Flow -->
+<section class="bg-surface-container-lowest rounded-lg shadow-xl shadow-rose-900/5 flex flex-col h-[600px] border border-surface-container-high overflow-hidden">
+<div class="p-4 border-b border-surface-container-high bg-surface-bright flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined">forum</span>
+</div>
+<div>
+<h3 class="font-bold font-headline text-sm">Hội thoại Tranh chấp</h3>
+<div class="flex items-center gap-1">
+<span class="w-2 h-2 bg-green-500 rounded-full"></span>
+<span class="text-[10px] text-stone-500 font-medium">Bảo mật đa tầng</span>
+</div>
+</div>
+</div>
+<button class="text-stone-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+<div class="flex-1 p-4 overflow-y-auto space-y-6">
+<!-- Bot Message -->
+<div class="flex flex-col items-center">
+<span class="text-[10px] font-bold text-stone-400 bg-stone-100 px-3 py-1 rounded-full uppercase tracking-tighter">Bắt đầu tranh chấp</span>
+</div>
+<!-- User A -->
+<div class="flex gap-3 max-w-[85%]">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-stone-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Ảnh người khiếu nại" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOy6LLvvHhwVqd0CAePVAsJJbjtsves0s1Q_QVrEYvWvMGITTPtPq0P6NNML2ENSWIJaY3ZyIG1pbj_O-H1bf8sfxza5OOy7M638MOdJnmHdhwr6TPaWXDGwD8IJnj3-R0INZhtVfcUMiUNJyKmPuoOesLmzSmsLQR1kp86hzcbe2D011aoqoJjHB9bWPz9jRnS-tj8q1FMHThrZUFmvRpQQRQ__dyx152t_91YfO45X2oV_VjtXByrgeHF7yar-jEldgTcCzMxQo"/>
+</div>
+<div class="bg-surface-container p-3 rounded-lg rounded-tl-none">
+<p class="text-sm text-on-surface">Tôi đã thanh toán đủ 1.200.000đ nhưng đối tác nói chưa nhận được và rời đi.</p>
+<span class="text-[9px] text-stone-400 mt-1 block">14:21</span>
+</div>
+</div>
+<!-- User B (Respondent) -->
+<div class="flex gap-3 max-w-[85%] ml-auto flex-row-reverse">
+<div class="flex-shrink-0 w-8 h-8 rounded-full bg-stone-200 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Ảnh người bị khiếu nại" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrrl_wyHsdXBC2rRIXRKBx7Gl3y7IzpqOez5-caieL4iJ3-zm3KTSFpVzkm7xlhmMvG2tr8wgsl8MQdM0ND54J0Rgob4XkVs3Kl2g8SSQPcr1mY0K9z_x6_sn-9WXA7KiStw842s2OQ99Vtsv_9JEkVuz98EBL6TdCyZsoWS9ElTzFqhawUZqXxE8orIUMAAiVGPR2x3_Sb1nzspMSRd3yyvWadLkxrvmSlFxgcpIf9GwmUAA6JR2JP1UQzo4Gk0zWg-P9NHWj29o"/>
+</div>
+<div class="bg-primary text-white p-3 rounded-lg rounded-tr-none">
+<p class="text-sm">Tôi không thấy thông báo tiền về tài khoản lúc đó. Tôi cần Admin kiểm tra lại.</p>
+<span class="text-[9px] text-white/70 mt-1 block">14:28</span>
+</div>
+</div>
+<!-- Admin Intervention -->
+<div class="flex gap-3 max-w-[90%] mx-auto">
+<div class="bg-tertiary/10 border border-tertiary/20 p-4 rounded-xl text-center w-full">
+<span class="material-symbols-outlined text-tertiary mb-1">verified_user</span>
+<p class="text-xs text-tertiary-container font-bold">Admin Lucas đã vào cuộc</p>
+<p class="text-[11px] text-stone-600 mt-1 italic">"Vui lòng giữ thái độ tôn trọng. Tôi đang kiểm tra log thanh toán phía ngân hàng."</p>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-bright">
+<div class="flex items-center gap-2 bg-surface-container-highest p-2 rounded-lg">
+<button class="text-stone-400 hover:text-primary px-2">
+<span class="material-symbols-outlined">attach_file</span>
+</button>
+<input class="bg-transparent border-none focus:ring-0 text-sm flex-1 placeholder:text-stone-400" placeholder="Gửi tin nhắn cho Admin..." type="text"/>
+<button class="w-10 h-10 bg-primary text-white rounded-lg flex items-center justify-center shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<p class="text-[10px] text-stone-400 text-center mt-3">Cuộc hội thoại này được lưu trữ để làm bằng chứng pháp lý.</p>
+</div>
+</section>
+<!-- Action Cards -->
+<div class="space-y-4">
+<button class="w-full bg-gradient-to-r from-primary to-primary-container text-white py-4 rounded-lg font-bold font-headline shadow-xl shadow-primary/20 flex items-center justify-center gap-2 hover:scale-[0.98] transition-transform">
+<span class="material-symbols-outlined">request_quote</span>
+                        Rút lại Khiếu nại
+                    </button>
+<button class="w-full bg-surface-container-highest text-on-surface py-4 rounded-lg font-bold font-headline flex items-center justify-center gap-2 hover:bg-stone-300 transition-colors">
+<span class="material-symbols-outlined">report</span>
+                        Báo cáo Hành vi Xấu
+                    </button>
+</div>
+<!-- Trust Badges -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-lg flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-tertiary mb-2">security</span>
+<span class="text-[10px] font-bold text-on-surface uppercase tracking-tighter">Bảo mật SSL</span>
+</div>
+<div class="bg-surface-container-low p-4 rounded-lg flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-tertiary mb-2">verified</span>
+<span class="text-[10px] font-bold text-on-surface uppercase tracking-tighter">Hợp đồng điện tử</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- SideNavBar (Hidden on desktop, integrated logic) -->
+<div class="h-screen w-72 fixed left-0 top-0 z-[60] bg-stone-50 dark:bg-stone-900 shadow-2xl shadow-stone-900/20 hidden lg:flex flex-col p-6 space-y-8 translate-x-[-100%] transition-transform duration-300">
+<div class="text-xl font-extrabold text-rose-800 font-headline uppercase">Velvet Lounge</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:bg-stone-200/50 rounded-full font-headline text-sm font-medium" href="#">
+<span class="material-symbols-outlined">favorite</span> Dating
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:bg-stone-200/50 rounded-full font-headline text-sm font-medium" href="#">
+<span class="material-symbols-outlined">event_upcoming</span> Events
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:bg-stone-200/50 rounded-full font-headline text-sm font-medium" href="#">
+<span class="material-symbols-outlined">restaurant</span> Bistro
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-rose-100 text-rose-800 rounded-full font-headline text-sm font-medium" href="#">
+<span class="material-symbols-outlined">confirmation_number</span> Reservations
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:bg-stone-200/50 rounded-full font-headline text-sm font-medium" href="#">
+<span class="material-symbols-outlined">person</span> Profile
+            </a>
+</nav>
+<div class="pt-6 border-t border-stone-200 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:bg-stone-200/50 rounded-full font-headline text-sm font-medium" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:bg-stone-200/50 rounded-full font-headline text-sm font-medium" href="#">
+<span class="material-symbols-outlined">contact_support</span> Support
+            </a>
+</div>
+</div>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 w-full bg-white/90 backdrop-blur-md flex justify-around items-center h-16 z-50 shadow-lg border-t border-stone-100">
+<a class="flex flex-col items-center text-stone-400" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] mt-1">Dating</span>
+</a>
+<a class="flex flex-col items-center text-stone-400" href="#">
+<span class="material-symbols-outlined">event_upcoming</span>
+<span class="text-[10px] mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">gavel</span>
+<span class="text-[10px] mt-1 font-bold">Protect</span>
+</a>
+<a class="flex flex-col items-center text-stone-400" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

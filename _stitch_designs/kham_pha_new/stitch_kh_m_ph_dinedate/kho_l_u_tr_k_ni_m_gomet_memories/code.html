@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary": "#5f5e5e",
+              "primary": "#ae2f34",
+              "surface-tint": "#ae2f34",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-primary": "#ffb3b0",
+              "outline": "#8c706f",
+              "on-primary-fixed-variant": "#8c1520",
+              "secondary-fixed": "#e4e2e1",
+              "surface-bright": "#fdf9f3",
+              "on-tertiary-fixed": "#370e08",
+              "outline-variant": "#e0bfbd",
+              "on-secondary-fixed-variant": "#474747",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-variant": "#e6e2dc",
+              "surface-dim": "#dddad4",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "on-surface": "#1c1c18",
+              "primary-container": "#ff6b6b",
+              "tertiary-fixed": "#ffdad4",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdad8",
+              "on-error": "#ffffff",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "surface-container-low": "#f7f3ed",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "on-secondary-container": "#656464",
+              "surface-container-highest": "#e6e2dc",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "error": "#ba1a1a",
+              "on-tertiary": "#ffffff",
+              "on-background": "#1c1c18",
+              "surface-container-high": "#ebe8e2",
+              "on-primary-container": "#6d0010",
+              "on-error-container": "#93000a",
+              "tertiary": "#894e45",
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "background": "#fdf9f3",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed": "#410006"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 24px 48px -12px rgba(174, 47, 52, 0.08);
+        }
+        .glass-header {
+            background: rgba(253, 249, 243, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .coral-gradient {
+            background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar Navigation Shell -->
+<header class="fixed top-0 w-full z-50 glass-header flex justify-between items-center px-6 h-20 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="text-2xl font-black text-primary italic font-headline tracking-tight">GOMET</div>
+<nav class="hidden md:flex items-center gap-8 font-headline font-bold">
+<a class="text-stone-600 hover:text-primary transition-all duration-300" href="#">Discover</a>
+<a class="text-stone-600 hover:text-primary transition-all duration-300" href="#">Events</a>
+<a class="text-primary border-b-2 border-primary pb-1" href="#">Memories</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-stone-600 hover:bg-stone-100/50 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+</button>
+<button class="p-2 text-stone-600 hover:bg-stone-100/50 rounded-full transition-all relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User Profile" data-alt="User profile avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYL8VtLhQSQe_ApFQQTeEQCMt_HVeL2xH_6xk965hvJrNtRG5YMbF_2XSAvgSO_S7ZJq55OaS4ENZwCbD5ZUH8FF8aEk8iKqxfFr44-NasXqCjKiHZvBylpHFTbrpZDKgKqMzhqCMXrRnII6s9aMNuVswOVLxMG0JtghzdCGoxbQbONYDzRDEMkWz5vTZuB2VSPVZkCnrDtOG53fZZTPEr2RDEce9bL67osM9FvpUKJ4_Zh4HNNDJ7BLi571rrQy5SP0fjKREYbWI"/>
+</div>
+</div>
+</header>
+<main class="pt-28 pb-12 px-6 max-w-7xl mx-auto">
+<!-- Hero Section: Editorial Header -->
+<section class="mb-16 relative">
+<div class="absolute -left-10 -top-10 text-[12rem] font-black text-primary/5 select-none pointer-events-none font-headline">Archive</div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="inline-block px-4 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label text-xs font-bold uppercase tracking-widest mb-4">Your Culinary Journey</span>
+<h1 class="text-6xl md:text-8xl font-headline font-extrabold text-on-surface tracking-tighter leading-none mb-4">Kỷ niệm <br/><span class="text-primary">Vị Ái Tình.</span></h1>
+<p class="text-secondary max-w-md text-lg leading-relaxed font-medium">Lưu giữ từng khoảnh khắc, từ hương vị đầu tiên đến những buổi tối lung linh tại Velvet Bistro.</p>
+</div>
+<div class="flex gap-3">
+<button class="coral-gradient text-white px-8 py-4 rounded-DEFAULT font-headline font-bold flex items-center gap-2 active:scale-95 transition-all editorial-shadow">
+<span class="material-symbols-outlined" data-icon="add_a_photo">add_a_photo</span>
+                        Tạo Kỷ Niệm Mới
+                    </button>
+</div>
+</div>
+</section>
+<!-- Bento Gallery Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-16">
+<!-- Featured Memory: Velvet Bistro -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden editorial-shadow transition-transform duration-500 hover:-translate-y-2 h-full flex flex-col">
+<div class="relative h-[400px]">
+<img class="w-full h-full object-cover" data-alt="Intimate candlelit dinner at Velvet Bistro" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3vUZfG_ggR21KNOc1bZIdI2Dgqdsj8U7BRqIYkC7pcmPrjxFRdpwyYBOP3ZJHqQfY7uP2pqF5sYfs3u7JPpF_5voIlpgnXgfzhU0Zfhk6HxRe7P--BIkJx1LVUJCuZuIAcKwlpXJAaiNj61qPWoa0k2JpHpVoSr6UIj5krUXRmUhTnvtIcforN029ByMtff1jZZxgTGQ7DYQhOvaSsBNFuhgBxBcXiaGyXxYEKtdlePbzJe_aY0xwW3OpRU7mCNJFSh1MO421ofk"/>
+<div class="absolute top-6 left-6 flex gap-2">
+<span class="bg-primary/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+                                First Date at Velvet Bistro
+                            </span>
+</div>
+</div>
+<div class="p-8 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-3xl font-headline font-extrabold mb-1">Buổi tối lãng mạn tại Velvet</h3>
+<p class="text-primary font-bold text-sm uppercase tracking-wider">Cùng với Linh Anh • 14 Tháng 2, 2024</p>
+</div>
+<button class="p-3 bg-surface-container-high rounded-full hover:bg-primary-fixed transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="share">share</span>
+</button>
+</div>
+<p class="text-stone-600 leading-relaxed italic border-l-4 border-primary/20 pl-6 mb-8 text-lg">
+                            "Ánh đèn vàng ấm áp, tiếng jazz nhẹ nhàng và món Steak thượng hạng. Mọi thứ đều hoàn hảo cho buổi hẹn hò đầu tiên của chúng mình. Không thể quên được nụ cười của em dưới ánh nến."
+                        </p>
+<div class="mt-auto flex gap-2">
+<span class="px-4 py-2 bg-surface-container-high rounded-full text-xs font-bold text-secondary">#FineDining</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full text-xs font-bold text-secondary">#ValentineDay</span>
+<span class="px-4 py-2 bg-surface-container-high rounded-full text-xs font-bold text-secondary">#RedWine</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Card 1: Rooftop Sunset -->
+<div class="md:col-span-4 space-y-6">
+<div class="bg-surface-container-low rounded-lg p-6 editorial-shadow group cursor-pointer overflow-hidden relative">
+<img class="w-full h-48 object-cover rounded-md mb-6 grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Rooftop bar sunset view with cocktails" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrni-IC35czyGfXPlfo7lTCpk7pepSJfNq8XzUpoblHpfgDV87JFtf42iUXg0GxDp1hJEPIQgsM1U54mL-lcAJGMnFNeS9DSJjOGtizIP5cN_AL5bKZ_e33tNqmlUzGQJgcu_hPot9fQ0ugTkOVtNStXvlM9gBVUuiFTLc2HDuLHy1W1OZoqm0IxH3JVKJAdXsIYfP4EGbxhCAqSOB7x_n3VcsqfxF8T3n-sUO44dkrfLuMBZ8tc_ibRwkAPse1ayxgchpVFvxRxs"/>
+<h4 class="text-xl font-headline font-bold mb-2">Hoàng hôn trên Rooftop</h4>
+<p class="text-secondary text-sm mb-4">Cocktails &amp; Deep Conversation. Một buổi chiều thật ý nghĩa...</p>
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold text-primary">28 Tháng 1, 2024</span>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-stone-200"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-stone-300"></div>
+</div>
+</div>
+</div>
+<!-- Badge Collection Section -->
+<div class="bg-white p-8 rounded-lg editorial-shadow border border-outline-variant/10">
+<h4 class="font-headline font-bold text-lg mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="military_tech">military_tech</span>
+                        Huy hiệu kỷ niệm
+                    </h4>
+<div class="grid grid-cols-3 gap-4">
+<div class="aspect-square bg-surface-container flex flex-col items-center justify-center rounded-2xl p-2 text-center group">
+<span class="material-symbols-outlined text-primary mb-1 group-hover:scale-110 transition-transform" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="text-[10px] font-bold leading-tight">Foodie Duo</span>
+</div>
+<div class="aspect-square bg-surface-container flex flex-col items-center justify-center rounded-2xl p-2 text-center group">
+<span class="material-symbols-outlined text-primary mb-1 group-hover:scale-110 transition-transform" data-icon="wine_bar" style="font-variation-settings: 'FILL' 1;">wine_bar</span>
+<span class="text-[10px] font-bold leading-tight">Wine Lover</span>
+</div>
+<div class="aspect-square bg-surface-container flex flex-col items-center justify-center rounded-2xl p-2 text-center group">
+<span class="material-symbols-outlined text-primary mb-1 group-hover:scale-110 transition-transform" data-icon="celebration" style="font-variation-settings: 'FILL' 1;">celebration</span>
+<span class="text-[10px] font-bold leading-tight">1 Month</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Memories Gallery -->
+<section class="mb-20">
+<h2 class="text-3xl font-headline font-extrabold mb-8 flex items-center gap-3">
+                Album Ảnh Cá Nhân
+                <span class="h-px flex-1 bg-surface-container-highest"></span>
+</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="aspect-[3/4] rounded-lg overflow-hidden relative group cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Close up of a gourmet dessert" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOcB7kDBianGbEI0Hs-vQBOzxx81pFP4a88LTcpOSFptCEyEF8eCUMu-DCwVKqdqwSIDazmjssUZD9kqlMnF-C16D4insdBHjhIq0lU11zYp_soILbSj0Bhp-8hQgL1FdALXj8g3ic1kT6ZXb3pKpFYqSkF0bju0oDkyxYbYWQni4E0Iw646pr_UMOtzcK4GxsIaC6DQkNuirciahJih_F1yf2R6OwZMj0bxxFBxH7_ZAtHa8CT4eIlvb-7JoO7LY6fu48S71hot0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+<p class="text-white font-bold text-sm">Hương vị ngọt ngào</p>
+<p class="text-white/70 text-[10px]">The Matcha Lab • Jan 15</p>
+</div>
+</div>
+<div class="aspect-[3/4] rounded-lg overflow-hidden relative group cursor-pointer md:mt-8">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Interior of a luxury restaurant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCMCPzbcyqt9R_u2K_Fb5N-LG7468y5ksXpr_jOGOs8paFJX_wO0U7rle--I_PIrsSk6Ma8yKJ07_9LdLHqzeFV5ZnLnMIcd6Dr4kX78OtINSQpKGuXBKopRQQgKTRzthgIftrLWSXv96cRTJYBpfBAr8udmjMgbzozFsYpAujPG6T_anpj0FunBQGNPSF8PZNxrUxiSCK6YbMzmHNxCnrZtHlgzFH3IG1bv1cwACIpu9BGiOixJ5SuGUyvrwN5kAT33bblDYtUPjU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+<p class="text-white font-bold text-sm">Tối Thứ Bảy</p>
+<p class="text-white/70 text-[10px]">L'Usine • Dec 20</p>
+</div>
+</div>
+<div class="aspect-[3/4] rounded-lg overflow-hidden relative group cursor-pointer">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Craft cocktails on a marble table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAYzwsy6KgT3Btq137jLN10IB6tD9a8VIv51DVVToBWpG5-SL6enetghQlTk1N3qC3CN-bLMI7kWYwwpz0lbpPUbYNtwCYXuap1pd48IsTpphaeQUk4LpTTKkNvyQJM2Igi0GDqu_Pptyc1nuRjrR1FyfsRSsqy0awW_la_NeiiwqyKacn-2F4BsFB0XeYYcwJ0IH-WVnlEzrl1V1v0WkzYpoDCXTqnIPUUJRbasFFCvGyfhcNgI5JscTiLGD3qgxQumfJ1KGm21w"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+<p class="text-white font-bold text-sm">Chút men say</p>
+<p class="text-white/70 text-[10px]">Rabbit Hole • Dec 05</p>
+</div>
+</div>
+<div class="aspect-[3/4] rounded-lg overflow-hidden relative group cursor-pointer md:mt-8">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Couple holding hands across a table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm-qxdceqVMvo_MLlx0qtTI7tw1kojYLhgTK3FGIklbAR5W-F7jr0VGJDTCJxONc2Ir6OFVdV-09T-iz_06eGU0ZBD02d8Moa6oil7aHe5MwJWbR_5ZXl6N4QtTK6fnmQVe8cOr5HlZ1hfsRhNrM0SYCO9NcPxrjGgb_WlZPeN6GYlfuaRtNOljQx1Nhenjr9yAXz0dz655_job6y-KS2oJ7xcxzwNmJyp_azQRYsbj70kuBJhnxN46Kx_vxomhuFrCePTpO5sju4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-4 flex flex-col justify-end">
+<p class="text-white font-bold text-sm">Bàn tay ấm</p>
+<p class="text-white/70 text-[10px]">Private Villa • Nov 12</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Share Section -->
+<section class="bg-surface-container-highest rounded-lg p-12 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+<div class="relative z-10 max-w-2xl mx-auto">
+<h3 class="text-4xl font-headline font-black mb-4 italic">Lan tỏa cảm hứng hẹn hò.</h3>
+<p class="text-secondary mb-8">Chia sẻ những kỷ niệm tuyệt vời nhất của bạn lên GOMET Feed để giúp cộng đồng tìm thấy những địa điểm lãng mạn tiếp theo.</p>
+<div class="flex flex-col md:flex-row justify-center gap-4">
+<button class="bg-on-surface text-surface px-10 py-4 rounded-full font-bold transition-all hover:bg-stone-800 active:scale-95">
+                        Share to Feed
+                    </button>
+<button class="bg-white text-on-surface px-10 py-4 rounded-full font-bold transition-all hover:bg-stone-100 active:scale-95">
+                        Download Album
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur-lg flex justify-around py-4 z-50 shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="text-[10px] font-bold">Discover</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="text-[10px] font-bold">Events</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="auto_stories" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="text-[10px] font-bold">Memories</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+</nav>
+<!-- Floating Action Button -->
+<button class="fixed right-6 bottom-24 md:bottom-8 coral-gradient w-16 h-16 rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 active:scale-90 transition-all z-40">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</body></html>

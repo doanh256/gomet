@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET - AR Menu Preview</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#8c706f",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "surface": "#fdf9f3",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-dim": "#dddad4",
+              "surface-variant": "#e6e2dc",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "inverse-primary": "#ffb3b0",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "outline-variant": "#e0bfbd",
+              "tertiary-container": "#cf8a7f",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-low": "#f7f3ed",
+              "on-tertiary-fixed": "#370e08",
+              "on-error-container": "#93000a",
+              "secondary-fixed": "#e4e2e1",
+              "on-primary": "#ffffff",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-tint": "#ae2f34",
+              "on-primary-fixed": "#410006",
+              "on-secondary-fixed-variant": "#474747",
+              "secondary-fixed-dim": "#c8c6c6",
+              "on-tertiary-container": "#55251e",
+              "surface-container-lowest": "#ffffff",
+              "on-error": "#ffffff",
+              "on-surface": "#1c1c18",
+              "surface-container": "#f1ede7",
+              "primary-fixed-dim": "#ffb3b0",
+              "inverse-surface": "#31302d",
+              "tertiary": "#894e45",
+              "secondary": "#5f5e5e",
+              "primary": "#ae2f34",
+              "secondary-container": "#e4e2e1",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-container-highest": "#e6e2dc",
+              "primary-fixed": "#ffdad8",
+              "primary-container": "#ff6b6b",
+              "on-secondary-container": "#656464",
+              "error": "#ba1a1a",
+              "background": "#fdf9f3",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "on-primary-container": "#6d0010",
+              "on-background": "#1c1c18"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .ar-overlay {
+            background: radial-gradient(circle at center, transparent 0%, rgba(28, 28, 24, 0.4) 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 backdrop-blur-md dark:bg-[#1c1c18]/80 shadow-[0_8px_32px_rgba(174,47,52,0.05)]">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-black text-[#1c1c18] dark:text-[#fdf9f3] tracking-[-0.04em] uppercase font-['Plus_Jakarta_Sans']">
+                GOMET
+            </div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 font-medium hover:text-[#ae2f34] transition-colors duration-300" href="#">Alpha</a>
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] font-bold border-b-2 border-[#ae2f34]" href="#">AR Menu</a>
+<a class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 font-medium hover:text-[#ae2f34] transition-colors duration-300" href="#">Wallet</a>
+<a class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 font-medium hover:text-[#ae2f34] transition-colors duration-300" href="#">Concierge</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#1c1c18] hover:bg-surface-container-low rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-[#1c1c18] hover:bg-surface-container-low rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-24 min-h-screen">
+<!-- AR Viewport Canvas -->
+<section class="relative h-[716px] w-full overflow-hidden">
+<!-- Background Simulated AR Camera Feed -->
+<div class="absolute inset-0 z-0">
+<img alt="Bàn ăn sang trọng trong nhà hàng" class="w-full h-full object-cover" data-alt="Luxurious restaurant table setting for AR preview" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPuhnARIPZCQpAK2CY1OjLDSQbeF0kkniTRG85V5H9J-NNthWJ8b3tVL5RqsncOZX-t6u7ymD7ueaOUXlq0fxCrFuzQBjQHrUP06-HataLNtzCFZKXTiZjm2aRJHEGObq8fEwkJAABBLxLFY3z2WB3wgfAeyNIAaduyWr0XgaG-QleUedHMewzzEqZJ0Cc6raMlOu-yNu6eBzaoPMo-2_dkxf8MAyos8b-tPVXHnfGECoKWj3UIgCpQOHScnJrdFniAR97j2xHdxU"/>
+<div class="ar-overlay absolute inset-0"></div>
+</div>
+<!-- Floating 3D Object Asset (Simulated) -->
+<div class="absolute inset-0 flex items-center justify-center z-10">
+<div class="relative group">
+<!-- Scan Ring Effect -->
+<div class="absolute -inset-12 border-2 border-primary/30 rounded-full animate-pulse"></div>
+<img alt="Món bít tết cao cấp 3D" class="w-80 h-80 object-cover rounded-full shadow-2xl border-8 border-surface/20 backdrop-blur-sm transition-transform duration-700 hover:scale-110" data-alt="3D high quality render of a gourmet steak dish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdxkYXnwAY-Sa0FApV3-kEFiC2HqgdeCFquIHFFy2V6Kw5Uxaq0qc9r-aHzxMhdUfd-Fua05R_JpJajidZPyLQHTzShl_KeFdVh7JRT0wjrN4DoKDD_Oy_EsHh5xYu8SNKH3cNQa5faaEofGxLQ3gziwl1zSpbG0_u8qo-Hd91Pqp7h-cob3MwZBMCt7Ndq9B-JJnS6aiasencJwK6-FbR1BP_N7tBTG-BhsYZJ0Y_x8rSUmnq8n8Ado9z6LucxlYjibDK8Jq5k2s"/>
+<!-- AR Markers -->
+<div class="absolute -top-4 -right-4 bg-primary text-white p-2 rounded-full shadow-lg">
+<span class="material-symbols-outlined text-sm" data-icon="view_in_ar">view_in_ar</span>
+</div>
+</div>
+</div>
+<!-- AR Controls Overlay -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-6 w-full max-w-md px-6">
+<div class="bg-surface/80 backdrop-blur-xl p-6 rounded-lg shadow-2xl w-full">
+<div class="flex justify-between items-start mb-4">
+<div>
+<span class="bg-tertiary-container text-on-tertiary-container text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full mb-2 inline-block">Món Chính</span>
+<h1 class="font-headline text-2xl font-extrabold tracking-tight text-on-surface">Thăn Bò Angus Nướng Củi</h1>
+</div>
+<div class="text-right">
+<p class="font-headline text-xl font-bold text-primary">850.000đ</p>
+<p class="text-xs text-on-surface-variant flex items-center justify-end gap-1">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.9 (120+)
+                            </p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex-1 bg-gradient-to-tr from-primary to-primary-container text-white py-4 rounded-full font-headline font-bold text-sm tracking-wide shadow-lg active:scale-95 transition-all">
+                            ĐẶT MÓN NGAY
+                        </button>
+<button class="px-6 bg-surface-container-highest text-on-surface py-4 rounded-full font-headline font-bold text-sm active:scale-95 transition-all">
+                            CHI TIẾT
+                        </button>
+</div>
+</div>
+<!-- AR Navigation Carousel -->
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar w-full px-4 justify-center">
+<div class="flex-shrink-0 w-16 h-16 rounded-full border-2 border-primary bg-surface-container-lowest p-1 shadow-md">
+<img alt="Steak" class="w-full h-full object-cover rounded-full" data-alt="Small thumbnail of gourmet steak" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWlNaUt0WculphbTnlwolzqpYGEIWXFTGb8pUX_dF8fmgUgi2lXYd3jUPoZNVTJ-hS8YQ_XKkK6wu5P-Iq9zEILzcama-z2EmYi91XpCuV-n0GWAVKaJUjuLF1rPmVy99NWAsHy8lbDewpjqbwSOILEAPoPAD9-8-HSu5dlUN1j7WvvcqIcUVjV_f5yKXr5nbn7_xzaeVrF8m7I0zlTqpVAG7ImqbQMAvm-Mld0G1rNqc5SPUm4wOsE3rpyxRZopKJ17Ylis9n2aI"/>
+</div>
+<div class="flex-shrink-0 w-16 h-16 rounded-full border-2 border-transparent bg-surface-container-lowest/40 p-1">
+<img alt="Salad" class="w-full h-full object-cover rounded-full opacity-60" data-alt="Small thumbnail of fresh salad" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxVGTohuU8Foh-CMPM3koRp2Qi-kjSWNGpUBmNinK-oFnQ1m1zA3SP8_-Nxoc2DNoSKTBcUWCkTMbtWNjL4zE2mQ_AePKQmgdpm3LRpjHlf3uPLb5EOazE0cLV8TY6kB4J5bFnfNM8QWEN99n4gFOxoneVZtEFrtt_M02Wh61iZmbfluUW1BR1lavDUVlQPB98Fw2RUZ7yXXGolNky_SvZe85u9eIdjFCXSJEWwitVX0uT5xgj_TZJOrILzETJY7Dlfwdkeu_bHxE"/>
+</div>
+<div class="flex-shrink-0 w-16 h-16 rounded-full border-2 border-transparent bg-surface-container-lowest/40 p-1">
+<img alt="Dessert" class="w-full h-full object-cover rounded-full opacity-60" data-alt="Small thumbnail of dessert cake" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhq1LnK8vqaZRr_oIqB7ZKmBo0zanMPBqFr2Gr-wIBZVdGGkkOZaVcm2i91XBJPwp855IX798PDVVWr_xFLf70YGlsXlcqM0e6ArViH35k32pRx-Q-iynOmOcq1xjhb6FTKWltz-w5dIdo_Ow7W-SktFz2vIOhOH0t4L3wdppyFA91QA7a62fOeGmIx0P5vQdMWhUOFLgXzSMBGHSAICohw7rM59yuhMPF11e9hnWHdfZPQkjUBnAvsBmt_bz96F-RA1zs38BK6po"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Product Specs Section (Editorial Style) -->
+<section class="max-w-4xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-12">
+<div>
+<h2 class="font-headline text-3xl font-black text-on-surface mb-6 leading-tight">Nghệ Thuật <br/><span class="text-primary italic">Ẩm Thực Đương Đại</span></h2>
+<p class="text-on-surface-variant leading-relaxed mb-8">
+                    Sử dụng thăn bò Angus thượng hạng ủ khô 28 ngày, nướng trên lửa củi gỗ sồi tạo nên hương vị khói nồng nàn đặc trưng. Ăn kèm sốt vang đỏ Bordeaux và khoai tây nghiền nấm truffle.
+                </p>
+<div class="flex flex-wrap gap-3">
+<span class="bg-surface-container-high px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-on-surface-variant">450 Calo</span>
+<span class="bg-surface-container-high px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-on-surface-variant">Không Gluten</span>
+<span class="bg-surface-container-high px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-on-surface-variant">Truffle Đen</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="restaurant">restaurant</span>
+<h4 class="font-headline font-bold text-sm">Chế biến</h4>
+<p class="text-xs text-on-surface-variant">25 - 30 phút</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="local_fire_department">local_fire_department</span>
+<h4 class="font-headline font-bold text-sm">Độ nóng</h4>
+<p class="text-xs text-on-surface-variant">Phục vụ tại bàn</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="wine_bar">wine_bar</span>
+<h4 class="font-headline font-bold text-sm">Gợi ý rượu</h4>
+<p class="text-xs text-on-surface-variant">Merlot 2018</p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary mb-3" data-icon="group">group</span>
+<h4 class="font-headline font-bold text-sm">Phần ăn</h4>
+<p class="text-xs text-on-surface-variant">1 - 2 người</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-[2rem] bg-[#fdf9f3]/90 backdrop-blur-xl dark:bg-[#1c1c18]/90 shadow-2xl">
+<div class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2">
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 dark:text-[#fdf9f3]/40 p-2 hover:bg-[#f7f3ed] dark:hover:bg-[#2a2a24] rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Alpha</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-tr from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-2 scale-110 transition-all duration-500 shadow-lg" href="#">
+<span class="material-symbols-outlined" data-icon="view_in_ar">view_in_ar</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">AR Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 dark:text-[#fdf9f3]/40 p-2 hover:bg-[#f7f3ed] dark:hover:bg-[#2a2a24] rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Wallet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 dark:text-[#fdf9f3]/40 p-2 hover:bg-[#f7f3ed] dark:hover:bg-[#2a2a24] rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Concierge</span>
+</a>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container-highest": "#e6e2dc",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f7f3ed",
+              "tertiary-fixed": "#ffdad4",
+              "inverse-on-surface": "#f4f0ea",
+              "on-secondary-container": "#656464",
+              "on-primary-container": "#6d0010",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#8c1520",
+              "error": "#ba1a1a",
+              "primary": "#ae2f34",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "on-secondary-fixed-variant": "#474747",
+              "on-error": "#ffffff",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "on-background": "#1c1c18",
+              "on-surface-variant": "#584140",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1c1c18",
+              "surface-variant": "#e6e2dc",
+              "secondary-fixed-dim": "#c8c6c6",
+              "primary-fixed": "#ffdad8",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "secondary-container": "#e4e2e1",
+              "surface-dim": "#dddad4",
+              "inverse-primary": "#ffb3b0",
+              "primary-fixed-dim": "#ffb3b0",
+              "primary-container": "#ff6b6b",
+              "surface-tint": "#ae2f34",
+              "on-tertiary-fixed": "#370e08",
+              "secondary-fixed": "#e4e2e1",
+              "inverse-surface": "#31302d",
+              "tertiary-container": "#cf8a7f",
+              "on-tertiary": "#ffffff",
+              "outline": "#8c706f",
+              "on-secondary-fixed": "#1b1c1c",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "background": "#fdf9f3",
+              "secondary": "#5f5e5e",
+              "tertiary": "#894e45",
+              "outline-variant": "#e0bfbd",
+              "on-primary-fixed": "#410006"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .asymmetric-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 2rem;
+      }
+      @media (max-width: 1024px) {
+        .asymmetric-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 max-w-7xl mx-auto bg-[#fdf9f3]/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-[0_8px_32px_rgba(174,47,52,0.04)]">
+<div class="flex items-center gap-8">
+<h1 class="text-2xl font-black tracking-tighter text-[#ae2f34] dark:text-[#ff6b6b] uppercase font-headline">GOMET</h1>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:opacity-80 transition-all duration-300" href="#">Discover</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:opacity-80 transition-all duration-300" href="#">Events</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:opacity-80 transition-all duration-300" href="#">Dining</a>
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] font-bold border-b-2 border-[#ae2f34]" href="#">Leaderboard</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-surface-container-low px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-secondary mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 lg:w-48" placeholder="Search Alpha..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-secondary hover:opacity-80 active:scale-95 transition-all" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-secondary hover:opacity-80 active:scale-95 transition-all" data-icon="tune">tune</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Sophisticated woman smiling profile portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTmK3dwbKegDUmy-4WfyfzU5JhubQD49KEl9wRO6WD2DuIVpQ5OLeBMbUC6PuZE_m5sQbOIz2onq9rn6eHOAxNUYKRrb_phcQ7lB-6SmU4JnNjJAmBxzzEwGwSCi0sANYuw5sq5MSLrp0WkNdq0e6_zMUWnC8aD5b-Bfy_vUdr5h6oEah8SKdIA6jSVSjRJnjY1kDWq0KkOV5YgMXHKNqED2LAVxZ2omCtKvh1-tBQnNYvuNLRGcBgaaHE-vZT444tflhmbAMjezs"/>
+</div>
+</div>
+</header>
+<main class="pt-28 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-16">
+<div class="flex flex-col md:flex-row justify-between items-end gap-6">
+<div class="max-w-2xl">
+<span class="font-headline font-bold text-primary uppercase tracking-widest text-sm mb-4 block">Elite Community</span>
+<h2 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-background leading-none">Alpha Leaderboard</h2>
+<p class="mt-6 text-lg text-secondary max-w-lg">Vinh danh những thành viên có đóng góp xuất sắc nhất cho cộng đồng ẩm thực và kết nối tinh hoa.</p>
+</div>
+<div class="flex flex-col items-end">
+<div class="flex items-center gap-3 bg-primary-container/10 px-6 py-3 rounded-xl border border-primary-container/20 mb-2">
+<span class="material-symbols-outlined text-primary" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<span class="font-headline font-bold text-on-primary-container">Your Rank: #142</span>
+</div>
+<span class="text-xs text-secondary/60 uppercase tracking-widest font-bold">Updated: Today, 08:00 AM</span>
+</div>
+</div>
+</section>
+<div class="asymmetric-grid">
+<!-- Left Column: The Podium & Main List -->
+<div class="space-y-12">
+<!-- Podium Top 3 -->
+<div class="grid grid-cols-3 gap-4 items-end pt-12">
+<!-- Rank 2 -->
+<div class="flex flex-col items-center">
+<div class="relative mb-4">
+<div class="w-20 h-20 md:w-28 md:h-28 rounded-full border-4 border-surface-container-highest overflow-hidden p-1 bg-surface-container-low">
+<img alt="Rank 2 user" class="w-full h-full object-cover rounded-full" data-alt="Confident man with stylish glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_DpyahK0P43HlSGE4mIT5BBJMxq3IK0FMtwioWeOYY3ZixC9OUnkfvQymZix9DtfzmeL7kMXmlRJxAbavv29FQ-45xJf05tO9YjCl3LGm2O4YDHvOoXjpy6FNIETbBgOR9oAi2-6QtQrLGJ6_zbHdDpxebdEh-nUbGopL44RSwpIGGQeaZf3RnsP7wPyc_uadux8hxYi2XfMiljBJoSz3VVuwOJRuytbjLf2eRflOk9-cPnv6TdGWuZpFjQ6HPEzu6f2NIsZX6ZU"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-surface-container-highest text-on-surface w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-md">2</div>
+</div>
+<h4 class="font-headline font-bold text-center text-sm md:text-base">Marcus V.</h4>
+<span class="text-[10px] uppercase font-bold text-secondary tracking-tighter">Elite Matchmaker</span>
+</div>
+<!-- Rank 1 -->
+<div class="flex flex-col items-center">
+<div class="relative mb-6">
+<div class="absolute -top-12 left-1/2 -translate-x-1/2 text-4xl text-primary drop-shadow-lg">
+<span class="material-symbols-outlined text-5xl" data-icon="reward_titled" style="font-variation-settings: 'FILL' 1;">title</span>
+</div>
+<div class="w-24 h-24 md:w-36 md:h-36 rounded-full border-4 border-primary-container overflow-hidden p-1.5 bg-gradient-to-tr from-primary to-primary-container">
+<img alt="Rank 1 user" class="w-full h-full object-cover rounded-full" data-alt="Elegant woman smiling with pearls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTAYn2VgFqMbqWEZOoM0664xCJjhLCDdVjJBW8ZA-iBNmmrkidBDO6dbc7oaBZyounHatSTfET9BOKQO09wn5C4YcGHj77rxblhlOm42P8G7d8xnzL96j4Y4WUctthrHle9oxlps0ClTNNOt_XF1y8XJf2yotTb6ZeKekEOfVN1fGA6J4iuSdruJFqNPsuvNCdpuN-J3_hL_YSUpxmWv8qbo_yJzcvrElvG3AsD1pv4xFmmtTGOPVsrVL3jVEqE48Bqpkw8-Y8eEA"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-primary text-white w-10 h-10 rounded-full flex items-center justify-center font-bold shadow-xl border-2 border-white">1</div>
+</div>
+<h4 class="font-headline font-bold text-center text-base md:text-xl">Elena Rose</h4>
+<span class="text-[10px] md:text-xs uppercase font-bold text-primary tracking-widest bg-primary/5 px-3 py-1 rounded-full">Culinary Curator</span>
+</div>
+<!-- Rank 3 -->
+<div class="flex flex-col items-center">
+<div class="relative mb-4">
+<div class="w-20 h-20 md:w-28 md:h-28 rounded-full border-4 border-surface-container-high overflow-hidden p-1 bg-surface-container-low">
+<img alt="Rank 3 user" class="w-full h-full object-cover rounded-full" data-alt="Professional man in a suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpFV-ywe3vAB-yg-BLayXfPhYPV5cRozGKZR36Bp9-Q3gftDY9xFN1Bl-Sgs8Ns7oCfHqH6w4l5GYe8oxE9pHZ-3reHUENCErX3xlQDKkywodm01-R9AlG3KII3wnOjJOgvQr32kP-s3wcd9v08w5gjkqseW2xr_jpuAZroY9QUER5ljkmj1yRX4ezwzCP5vihEvF4ds_HVR6k1j4WOvVlq2aaTAfK9JiKrOPv4OS_IDkF7Fyn85UXVQ3ZTDOF9rQBlMbYMAf6x1M"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-surface-container-high text-on-surface w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm shadow-md">3</div>
+</div>
+<h4 class="font-headline font-bold text-center text-sm md:text-base">Julian K.</h4>
+<span class="text-[10px] uppercase font-bold text-secondary tracking-tighter">Event Architect</span>
+</div>
+</div>
+<!-- Leaderboard List -->
+<div class="bg-surface-container-low rounded-lg p-2 space-y-2">
+<!-- List Header -->
+<div class="grid grid-cols-12 px-6 py-4 text-[10px] font-bold uppercase tracking-widest text-secondary/60">
+<div class="col-span-1">Rank</div>
+<div class="col-span-6">Member</div>
+<div class="col-span-2 text-center">Score</div>
+<div class="col-span-3 text-right">Perks</div>
+</div>
+<!-- Member Row 4 -->
+<div class="grid grid-cols-12 items-center bg-surface-container-lowest hover:bg-white px-6 py-4 rounded-md transition-all group">
+<div class="col-span-1 font-headline font-bold text-secondary">04</div>
+<div class="col-span-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Member 4" class="w-full h-full object-cover" data-alt="Young man with trendy hairstyle" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2o94P8peFeWVW33MZ-2L7DB0E72tCWXkS6ptFTQOW7lvVELEvZ0vibXiiBNjZ0JSW-r9oza_QxmDbaZCI2o_vXx4dTXSVGnOtAHxVxTuoK66zyFqZsdPdHeuQVxAIb2B8bd-GJzNwTpPouoHA-nRi8elnZlDPRAClnwx_7nPOsMbeVUhhqVNQz7t4B4S8n4qIZuIM28Z15WGdHA_9WkDSSJJTs0RqOe4ML-rt1WLZFZN9sFeoG6rJx17ohxu46Hq1HMjnt_BAOms"/>
+</div>
+<div>
+<h5 class="font-bold text-on-surface">Alex Nguyen</h5>
+<span class="text-[10px] font-bold text-tertiary uppercase">Fine Dining Critic</span>
+</div>
+</div>
+<div class="col-span-2 text-center font-headline font-extrabold text-primary">12,450</div>
+<div class="col-span-3 flex justify-end gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="restaurant">restaurant</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-sm" data-icon="local_bar">local_bar</span>
+</div>
+</div>
+</div>
+<!-- Member Row 5 -->
+<div class="grid grid-cols-12 items-center bg-surface-container-lowest hover:bg-white px-6 py-4 rounded-md transition-all group">
+<div class="col-span-1 font-headline font-bold text-secondary">05</div>
+<div class="col-span-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Member 5" class="w-full h-full object-cover" data-alt="Confident woman with red lipstick" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs0ljJTOIPwwRFd2ENihwk8SR-CJ8yaw-t0GJ-7955so-R__s4HJ4eXFiUYZehq9nDNFXJQiUihQsGbqHivhGBU14_2QmfUwjIcUJTEv-0v-hNV71ccEQo3OW2z2vxPdP65w14hHhrBcuZ7gB05OMOruI-hwj4dNbZ9aGQtnfEmlelDhXooqjPeZZWwV7h8HQ0JRT6tv7nuVHH86osSSKfbtjCwWCwds00_zN9IN9Ec4GYIhlL5WU8VGgh0d_59zVcRC68B-O2zdQ"/>
+</div>
+<div>
+<h5 class="font-bold text-on-surface">Sophia Tran</h5>
+<span class="text-[10px] font-bold text-tertiary uppercase">Taste Explorer</span>
+</div>
+</div>
+<div class="col-span-2 text-center font-headline font-extrabold text-primary">11,920</div>
+<div class="col-span-3 flex justify-end gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="confirmation_number">confirmation_number</span>
+</div>
+</div>
+</div>
+<!-- Member Row 6 -->
+<div class="grid grid-cols-12 items-center bg-surface-container-lowest hover:bg-white px-6 py-4 rounded-md transition-all group">
+<div class="col-span-1 font-headline font-bold text-secondary">06</div>
+<div class="col-span-6 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Member 6" class="w-full h-full object-cover" data-alt="Middle-aged man smiling warmly" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbLFed70A43fYAgvY-YMlFiZymO0Xt3_RmSqDPVBXT6or7kaAs64s-JIdJXu7NnY0WJH8yBHmG29fFkiCSl8XrzQ_PlCVaH81Gjs_3HXFRMP1vBs-TiaVKCKdZ82HFqd3HgRrW0SE3adcHWXNdU8OwrZyfpx0Bvtg3txEQGktSn-xk_TTdUAKYMw8ysvL4BfxbebOUR5mMyAw653XVIn28IcKPgYY-Ju5Ag5gb96dp7zu0L_mw8CG4VvjexsViB70H7H-DvJUJwn8"/>
+</div>
+<div>
+<h5 class="font-bold text-on-surface">Liam David</h5>
+<span class="text-[10px] font-bold text-tertiary uppercase">Alpha Veteran</span>
+</div>
+</div>
+<div class="col-span-2 text-center font-headline font-extrabold text-primary">10,800</div>
+<div class="col-span-3 flex justify-end gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-low flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="stars">stars</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Reputation & Perks -->
+<div class="space-y-8">
+<!-- Reputation Card (Floating Glass) -->
+<div class="bg-surface-container-lowest rounded-lg p-8 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-9xl text-primary" data-icon="shield">shield</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-6">Uy tín Alpha</h3>
+<div class="flex items-center gap-6 mb-8">
+<div class="w-20 h-20 rounded-full border-4 border-primary/20 flex items-center justify-center">
+<span class="font-headline text-3xl font-black text-primary">8.4</span>
+</div>
+<div>
+<p class="text-sm font-bold uppercase tracking-widest text-secondary">Hạng hiện tại</p>
+<h4 class="text-xl font-bold text-on-background">Elite Member</h4>
+</div>
+</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-xs font-bold mb-1">
+<span>Tiến trình lên Curator</span>
+<span>75%</span>
+</div>
+<div class="h-2 bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-primary-container w-[75%]"></div>
+</div>
+</div>
+<p class="text-xs text-secondary italic">Bạn cần thêm 2,450 điểm uy tín để mở khóa danh hiệu 'Culinary Curator'.</p>
+</div>
+</div>
+<!-- Unlocked Perks (Editorial Style) -->
+<div>
+<h3 class="font-headline text-2xl font-bold mb-6">Đặc quyền Đã mở</h3>
+<div class="grid grid-cols-1 gap-4">
+<!-- Perk 1 -->
+<div class="bg-surface-container-high/50 p-6 rounded-lg flex items-start gap-5 hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 shrink-0 rounded-xl bg-primary text-white flex items-center justify-center shadow-lg group-hover:-rotate-6 transition-transform">
+<span class="material-symbols-outlined" data-icon="wine_bar" style="font-variation-settings: 'FILL' 1;">wine_bar</span>
+</div>
+<div>
+<h5 class="font-bold text-on-surface mb-1">Priority Tasting</h5>
+<p class="text-sm text-on-surface-variant">Ưu tiên đặt bàn tại các sự kiện thử rượu độc quyền của GOMET.</p>
+</div>
+</div>
+<!-- Perk 2 -->
+<div class="bg-surface-container-high/50 p-6 rounded-lg flex items-start gap-5 hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 shrink-0 rounded-xl bg-primary text-white flex items-center justify-center shadow-lg group-hover:-rotate-6 transition-transform">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<h5 class="font-bold text-on-surface mb-1">Elite Matchmaking</h5>
+<p class="text-sm text-on-surface-variant">Thuật toán ưu tiên kết nối bạn với các thành viên có cùng khẩu vị cao cấp.</p>
+</div>
+</div>
+<!-- Perk 3 -->
+<div class="bg-surface-container-high/50 p-6 rounded-lg flex items-start gap-5 hover:bg-surface-container-high transition-colors group">
+<div class="w-12 h-12 shrink-0 rounded-xl bg-primary text-white flex items-center justify-center shadow-lg group-hover:-rotate-6 transition-transform">
+<span class="material-symbols-outlined" data-icon="badge" style="font-variation-settings: 'FILL' 1;">badge</span>
+</div>
+<div>
+<h5 class="font-bold text-on-surface mb-1">Profile Badge</h5>
+<p class="text-sm text-on-surface-variant">Huy hiệu Alpha Elite hiển thị trên hồ sơ để khẳng định vị thế của bạn.</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-4 rounded-lg bg-surface-container-highest text-on-surface font-bold text-sm tracking-widest uppercase hover:opacity-80 transition-all">Xem tất cả đặc quyền</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-3 bg-[#fdf9f3]/90 dark:bg-zinc-950/90 backdrop-blur-lg rounded-t-[2rem] md:hidden shadow-[0_-12px_40px_rgba(174,47,52,0.06)]">
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 px-4 py-2 hover:text-[#ae2f34] transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Discover</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 px-4 py-2 hover:text-[#ae2f34] transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Events</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 px-4 py-2 hover:text-[#ae2f34] transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Dining</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-tr from-[#ae2f34] to-[#ff6b6b] text-white rounded-full px-6 py-2 shadow-lg active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Profile</span>
+</div>
+</nav>
+</body></html>

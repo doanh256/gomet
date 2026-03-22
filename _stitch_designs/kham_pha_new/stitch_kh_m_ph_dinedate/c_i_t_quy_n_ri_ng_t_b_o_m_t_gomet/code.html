@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET - Privacy &amp; Security Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "secondary-fixed": "#e4e2e1",
+              "primary-fixed": "#ffdad8",
+              "surface-bright": "#fdf9f3",
+              "on-background": "#1c1c18",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#656464",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed-variant": "#474747",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e6e2dc",
+              "on-error": "#ffffff",
+              "tertiary": "#894e45",
+              "on-surface-variant": "#584140",
+              "on-secondary-fixed": "#1b1c1c",
+              "background": "#fdf9f3",
+              "error": "#ba1a1a",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-highest": "#e6e2dc",
+              "primary-container": "#ff6b6b",
+              "inverse-surface": "#31302d",
+              "on-tertiary-container": "#55251e",
+              "surface-container": "#f1ede7",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#ebe8e2",
+              "error-container": "#ffdad6",
+              "secondary": "#5f5e5e",
+              "on-primary-fixed": "#410006",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface": "#fdf9f3",
+              "on-primary-container": "#6d0010",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-tint": "#ae2f34",
+              "outline": "#8c706f",
+              "surface-container-low": "#f7f3ed",
+              "primary": "#ae2f34",
+              "outline-variant": "#e0bfbd",
+              "inverse-primary": "#ffb3b0",
+              "on-surface": "#1c1c18",
+              "surface-dim": "#dddad4",
+              "on-primary-fixed-variant": "#8c1520"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-zinc-900 dark:text-zinc-50">GOMET</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-plus-jakarta text-sm font-medium tracking-tight text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 transition-colors" href="#">Discover</a>
+<a class="font-plus-jakarta text-sm font-medium tracking-tight text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 transition-colors" href="#">Events</a>
+<a class="font-plus-jakarta text-sm font-medium tracking-tight text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 transition-colors" href="#">Dining</a>
+<a class="font-plus-jakarta text-sm font-medium tracking-tight text-orange-600 dark:text-orange-400 font-bold border-b-2 border-orange-600" href="#">Settings</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-zinc-500 hover:bg-zinc-100/50 rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-zinc-500 hover:bg-zinc-100/50 rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-32 px-6 max-w-4xl mx-auto">
+<header class="mb-12">
+<h1 class="font-headline text-5xl font-extrabold tracking-tight text-on-surface mb-2">Privacy &amp; Security</h1>
+<p class="text-secondary text-lg">Manage how you appear to others and keep your account secure.</p>
+</header>
+<div class="space-y-12">
+<!-- Profile Visibility Section -->
+<section>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="visibility">visibility</span>
+<h2 class="font-headline text-xl font-bold tracking-tight">Profile Visibility</h2>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg space-y-6">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-semibold text-on-surface">Discoverability</h3>
+<p class="text-sm text-secondary">Choose who can find your profile in the Discover feed.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<label class="relative flex cursor-pointer items-center gap-4 rounded-lg bg-surface-container-lowest p-4 transition hover:bg-white shadow-sm ring-2 ring-primary">
+<input checked="" class="h-4 w-4 border-outline text-primary focus:ring-primary" name="visibility" type="radio" value="public"/>
+<div class="flex flex-col">
+<span class="font-bold text-sm">Public</span>
+<span class="text-xs text-secondary">Visible to all GOMET members</span>
+</div>
+</label>
+<label class="relative flex cursor-pointer items-center gap-4 rounded-lg bg-surface-container-lowest p-4 transition hover:bg-white shadow-sm ring-1 ring-outline-variant">
+<input class="h-4 w-4 border-outline text-primary focus:ring-primary" name="visibility" type="radio" value="matches"/>
+<div class="flex flex-col">
+<span class="font-bold text-sm">Matches Only</span>
+<span class="text-xs text-secondary">Only people you've matched with</span>
+</div>
+</label>
+</div>
+</div>
+</section>
+<!-- Interaction Controls Section -->
+<section>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="chat_bubble">chat_bubble</span>
+<h2 class="font-headline text-xl font-bold tracking-tight">Interaction Controls</h2>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg space-y-8">
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-semibold text-on-surface">Who can invite me</h3>
+<p class="text-sm text-secondary">Control who can send you dining invitations.</p>
+</div>
+<select class="bg-surface-container-lowest border-none rounded-full px-6 py-2 text-sm font-bold shadow-sm focus:ring-2 focus:ring-primary">
+<option>All Members</option>
+<option>Mutuals Only</option>
+<option>Verified Only</option>
+</select>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<h3 class="font-semibold text-on-surface">Activity Status</h3>
+<p class="text-sm text-secondary">Show when you were last active on the app.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:left-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Security & Safety Section -->
+<section>
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="shield">shield</span>
+<h2 class="font-headline text-xl font-bold tracking-tight">Security &amp; Safety</h2>
+</div>
+<div class="space-y-4">
+<button class="w-full flex items-center justify-between bg-surface-container-low p-6 rounded-lg hover:bg-surface-container-high transition-colors text-left group">
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-lowest p-3 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="block">block</span>
+</div>
+<div>
+<h3 class="font-semibold text-on-surface">Blocked Users</h3>
+<p class="text-sm text-secondary">Manage 12 accounts you've previously blocked.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-secondary group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+<button class="w-full flex items-center justify-between bg-surface-container-low p-6 rounded-lg hover:bg-surface-container-high transition-colors text-left group border-2 border-transparent hover:border-error-container">
+<div class="flex items-center gap-4">
+<div class="bg-error-container/20 p-3 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-error" data-icon="report">report</span>
+</div>
+<div>
+<h3 class="font-semibold text-error">Report a Concern</h3>
+<p class="text-sm text-secondary">Let us know about suspicious activity or harassment.</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-error group-hover:translate-x-1 transition-transform" data-icon="flag">flag</span>
+</button>
+</div>
+</section>
+<!-- Action Area -->
+<div class="pt-8 flex flex-col md:flex-row gap-4 justify-center">
+<button class="px-12 py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-white font-bold tracking-wide shadow-lg hover:scale-[1.02] active:scale-95 transition-all">
+                    Save Changes
+                </button>
+<button class="px-12 py-4 rounded-full bg-surface-container-highest text-on-surface font-bold tracking-wide hover:bg-surface-variant transition-all">
+                    Reset Defaults
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl shadow-[0_-8px_30px_rgb(0,0,0,0.04)] rounded-t-3xl z-50">
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Dining</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/30 rounded-2xl px-3 py-1 active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined active-tab" data-icon="account_circle">account_circle</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

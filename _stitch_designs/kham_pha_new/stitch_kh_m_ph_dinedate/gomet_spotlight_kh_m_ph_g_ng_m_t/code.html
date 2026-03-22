@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET - Spotlight</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdad4",
+              "primary": "#ae2f34",
+              "on-background": "#1c1c18",
+              "inverse-surface": "#31302d",
+              "surface-tint": "#ae2f34",
+              "on-primary-fixed": "#410006",
+              "surface-container-highest": "#e6e2dc",
+              "surface-bright": "#fdf9f3",
+              "background": "#fdf9f3",
+              "on-primary-container": "#6d0010",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-dim": "#dddad4",
+              "tertiary-container": "#cf8a7f",
+              "on-error": "#ffffff",
+              "on-surface": "#1c1c18",
+              "on-secondary": "#ffffff",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#e4e2e1",
+              "on-secondary-fixed-variant": "#474747",
+              "on-secondary-container": "#656464",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary-fixed": "#1b1c1c",
+              "outline-variant": "#e0bfbd",
+              "outline": "#8c706f",
+              "secondary-fixed": "#e4e2e1",
+              "error": "#ba1a1a",
+              "surface-variant": "#e6e2dc",
+              "on-surface-variant": "#584140",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-container-high": "#ebe8e2",
+              "surface": "#fdf9f3",
+              "primary-container": "#ff6b6b",
+              "surface-container": "#f1ede7",
+              "on-error-container": "#93000a",
+              "on-primary-fixed-variant": "#8c1520",
+              "secondary": "#5f5e5e",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-primary": "#ffb3b0",
+              "primary-fixed": "#ffdad8",
+              "on-tertiary": "#ffffff",
+              "tertiary": "#894e45",
+              "surface-container-low": "#f7f3ed",
+              "inverse-on-surface": "#f4f0ea",
+              "error-container": "#ffdad6"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-line-rule { border: none !important; }
+      .tonal-layering { border: none !important; }
+      body { font-family: 'Inter', sans-serif; background-color: #fdf9f3; color: #1c1c18; }
+      h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-orange-50/80 dark:bg-zinc-950/80 backdrop-blur-md fixed top-0 w-full z-50 no-line-rule bg-orange-100/20 dark:bg-zinc-900/20 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="text-2xl font-black tracking-tighter text-rose-800 dark:text-rose-500 italic">GOMET</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="restaurant_menu">restaurant_menu</span>
+</button>
+<button class="p-2 text-rose-700 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="User profile avatar headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1YzD4FqhHKLUl69l0FDkI7pZC4xmd63mo_vwo07g3bYSefTPbJk6lNce79efrm7JbbwsTCU4t4LK_f_TtIdOo83r-AjoVwl8wtHQTQCI6M65NNXG8k2XB0XiVfVKWGnaMxqnZE_gYjXI3kA1qoWmo04-Fh4TizKuRkkvhXK-SZYFIIw26U1TVoi2sp22DaK98EwgC6ahbtcb6ZgMGSYOZGS8oNEgwtLutgILW-6c2lu2o-u94jvfuWFWGEBGr8BR2y54qR8zdN9I"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-6xl mx-auto">
+<!-- Editorial Header -->
+<section class="mb-12 relative">
+<span class="font-label text-primary font-bold tracking-[0.2em] text-[12px] uppercase mb-2 block">Alpha Circle</span>
+<h1 class="text-display-lg font-headline font-extrabold text-on-background tracking-tighter leading-none mb-4">
+                The <span class="text-primary italic">Spotlight</span>
+</h1>
+<p class="text-on-surface-variant max-w-md font-body text-lg">
+                Curated profiles of culinary masters and social explorers, handpicked for this week’s reservation.
+            </p>
+<!-- Decorative Element -->
+<div class="absolute -top-10 -right-10 w-48 h-48 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+</section>
+<!-- Bento Gallery (Asymmetric Layout) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<!-- Hero Card (Large) -->
+<div class="md:col-span-7 bg-surface-container-lowest rounded-lg overflow-hidden group shadow-[0_24px_48px_-12px_rgba(174,47,52,0.06)] relative">
+<div class="aspect-[4/5] relative overflow-hidden">
+<img alt="Julian" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Portrait of a sophisticated man with a cocktail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfv9wq3kc-0OdcaBVCNswhmQCDNBp0Joe0OnNIPis4j0EJbx8uKWMCEdfkigsZFxhJPEVfYbDkjalzea2_TritSyZHkB1QBUu-Di64gqMq_vI-VE2OiFEzdnOnkdtWbzI1DXZo91CjcyUzVneoZEpIhh24netTsBzL-NSR7ZQufZkIHy406YiOu74GC6UXH6jwyxRhyhPoak3WztdvWIwThyKKIjgS0FcFUlrXdjoDBpjFQ9u62vk2r0bGEt0Kr2yxmHOjEE1XhSI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80"></div>
+</div>
+<div class="absolute bottom-0 left-0 p-8 w-full text-white">
+<div class="flex items-center gap-2 mb-3">
+<span class="bg-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">The Sake Expert</span>
+<span class="flex items-center gap-1 text-[10px] bg-white/20 backdrop-blur-md px-2 py-1 rounded-full">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">stars</span> Verified
+                        </span>
+</div>
+<h3 class="text-4xl font-headline font-bold mb-2">Julian, 29</h3>
+<p class="text-white/80 font-body mb-6 max-w-xs">Currently exploring hidden Izakayas in the Lower East Side.</p>
+<div class="flex gap-4">
+<button class="bg-gradient-to-tr from-primary to-primary-container text-white font-headline font-bold px-6 py-3 rounded-DEFAULT shadow-lg shadow-primary/20 hover:scale-105 transition-transform">Say Hi</button>
+<button class="bg-white/10 backdrop-blur-md text-white font-headline font-bold px-6 py-3 rounded-DEFAULT hover:bg-white/20 transition-colors">View Profile</button>
+</div>
+</div>
+</div>
+<!-- Side Stack -->
+<div class="md:col-span-5 flex flex-col gap-8">
+<!-- Secondary Card 1 -->
+<div class="bg-surface-container-low rounded-lg p-6 flex items-center gap-6 group hover:bg-surface-container-high transition-colors">
+<div class="w-32 h-32 rounded-lg overflow-hidden shrink-0 shadow-lg shadow-black/5">
+<img alt="Elena" class="w-full h-full object-cover" data-alt="Close up portrait of a smiling woman with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT35ocpnknxSJbTZ7eRg3808Xc1CXnJcl4WpZfw7obH75wVbvuJiFZ5iVdKQAKQOMpAlR7m-8HXNfPaMupNPkNbOkv6F-ibYoCqHMi3BpFOWnRZue3BatIEW09yuZSoqk9DO2EE-blgSew79zCdNdpjxfwuPTig9mkjI1syyK4h8gP-oxjT4L4WyG2ToEZShE6x5JvUmE71GUHb1jzWoqAEAucQ0LKs-EPtbBOx0yYVrwI2gvvrLUYZ_M81xYo_wkPBu2v4y6deu0"/>
+</div>
+<div>
+<span class="text-primary text-[10px] font-bold uppercase tracking-tighter mb-1 block">Rooftop Connoisseur</span>
+<h4 class="text-2xl font-headline font-bold text-on-background mb-1">Elena, 27</h4>
+<div class="flex items-center gap-1 text-on-surface-variant text-sm mb-4">
+<span class="material-symbols-outlined text-[16px]">location_on</span> NYC
+                        </div>
+<button class="text-primary font-headline font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
+                            View Profile <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Featured Experience (Interstitial) -->
+<div class="bg-primary text-white rounded-lg p-8 relative overflow-hidden shadow-xl shadow-primary/10">
+<div class="relative z-10">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<h4 class="text-2xl font-headline font-bold mb-2 leading-tight">Host a Tasting Table</h4>
+<p class="text-white/80 text-sm mb-6">Connect with 3+ members over a curated wine tasting session.</p>
+<button class="bg-white text-primary font-headline font-bold px-5 py-2 rounded-full text-sm">Start Proposal</button>
+</div>
+<!-- Decorative pattern -->
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="bubble_chart">bubble_chart</span>
+</div>
+</div>
+<!-- Secondary Card 2 -->
+<div class="bg-surface-container-low rounded-lg p-6 flex items-center gap-6 group hover:bg-surface-container-high transition-colors">
+<div class="w-32 h-32 rounded-lg overflow-hidden shrink-0 shadow-lg shadow-black/5">
+<img alt="Marcus" class="w-full h-full object-cover" data-alt="Portrait of a man in a chef jacket" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbT03GFD-CBsUH_rE-Uj0T6T8BmVfYWqrLZwloV0u8jww_ejm2lDKaYWuwtmljDdGCTURl7dF0HxYcmD7BIkHlF3ZXlz8j3M2VmssdT1mo0BZ_o7LqBFxOehr7RW229kKG63nwjYnj9UFuNVazFKYYSM-jcxHpwVVft12RRAz8lnZB2OqvtCnRdJSSLD7fJUgVOEm_R4b2G7TMcusQSeaVY0KmymD1vHpY-gN0SAQ42-JfEbrFROw-b2dSxodz2t-43WfTgGg-nEk"/>
+</div>
+<div>
+<span class="text-primary text-[10px] font-bold uppercase tracking-tighter mb-1 block">Michelin Enthusiast</span>
+<h4 class="text-2xl font-headline font-bold text-on-background mb-1">Marcus, 31</h4>
+<div class="flex items-center gap-1 text-on-surface-variant text-sm mb-4">
+<span class="material-symbols-outlined text-[16px]">schedule</span> Active 10m ago
+                        </div>
+<button class="text-primary font-headline font-bold text-sm flex items-center gap-1 hover:gap-2 transition-all">
+                            View Profile <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Horizontal Scroll Section -->
+<section class="mt-16">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="text-3xl font-headline font-bold text-on-background">New Alpha Members</h2>
+<p class="text-on-surface-variant">Recently vetted for the GOMET inner circle.</p>
+</div>
+<button class="text-primary font-headline font-bold hover:underline">See All</button>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-8 no-scrollbar scroll-smooth">
+<!-- Member Chip 1 -->
+<div class="min-w-[200px] bg-surface-container-lowest p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-full aspect-square rounded-DEFAULT overflow-hidden mb-4">
+<img alt="Sophia" class="w-full h-full object-cover" data-alt="Portrait of a woman with red lipstick" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5cXzErEHu8w6rP5sOWMLr7rw9CbUlE79vqK1m-AfTb57afq1Jm85dRkbybBiVOywvuHACpiwHl7JxXpgRZOO6dgeDuOzSq9FZgLPr6f8xep-Wd5iDGpbJhxQA6ZKgIrjW8a64dvorTfG8861StCS5R4nZnBtn_sF-8UPhQnrS85r-GKnjxbCkunskAzkstnyVqQQBCV7Mvncf8tlrcF6awGP8lDuR2mfSzeeV1A0y_uOy47QH_eqwrN7bQUAJhtrkb__Xm7QIap8"/>
+</div>
+<h5 class="font-headline font-bold text-lg">Sophia, 25</h5>
+<p class="text-xs text-on-surface-variant">The Brunch Critic</p>
+</div>
+<!-- Member Chip 2 -->
+<div class="min-w-[200px] bg-surface-container-lowest p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-full aspect-square rounded-DEFAULT overflow-hidden mb-4">
+<img alt="David" class="w-full h-full object-cover" data-alt="Portrait of a bearded man smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLfjqvJm-7yTjgrCbXLM5ye_RWMe9oEn8SJZMTqa53gxWrm2woxGR4H4n26vLVgJw4eWmsAMzf3VQNquGfW0micJEEg9Io-QrU9d-XIFlGkg0cLQladN_NeMpLrms6y3z5weknAKKFLKJTpzDazIcCJUnM9y3TEEbJZjEMbVoDEYef_C5dwVpAjQfxX4J_uNogrWQ_VgEHa1lsBrwsUufk-X6KtSuTVW-0YZwrFxyydG7Hrs1g8uoVigsGis0GRQZYxEJ_4TUsX9I"/>
+</div>
+<h5 class="font-headline font-bold text-lg">David, 33</h5>
+<p class="text-xs text-on-surface-variant">Espresso Purist</p>
+</div>
+<!-- Member Chip 3 -->
+<div class="min-w-[200px] bg-surface-container-lowest p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-full aspect-square rounded-DEFAULT overflow-hidden mb-4">
+<img alt="Lila" class="w-full h-full object-cover" data-alt="Portrait of a young woman with curly hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXjKVKcUJ1RKAyw8Bqpatf5bvFBuAn_molSgWJq7thZSODHgYAWhfaYaEnhS7yA6zq-mbk1Nws2ibH-Lbe7UXzUMQXDlUtqEatVTkBBkKdRcw4UUOGq9s3AnCWWqGyVl-jqNb1SJ16_O9sTLkOByvvBlpiOzceXyck45AyrEujwJfAdO1D1gybSbombq_ooAwtGJkI7IfGq-GOoJ-V7g8D-jEksnQPXXxC6Z6xLQIIsPN05b9OawVgZxABwl5vcC0eqEGnBQV2onM"/>
+</div>
+<h5 class="font-headline font-bold text-lg">Lila, 28</h5>
+<p class="text-xs text-on-surface-variant">Pasta Artisan</p>
+</div>
+<!-- Member Chip 4 -->
+<div class="min-w-[200px] bg-surface-container-lowest p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+<div class="w-full aspect-square rounded-DEFAULT overflow-hidden mb-4">
+<img alt="Kevin" class="w-full h-full object-cover" data-alt="Portrait of a man in a business casual suit" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDse7R257u4VPkpFBgw5e6f95xXuisFLyLAYgwkEKBmo4PivOdDBk003KxwOuaoZsQPXECcuUbcwvMA29sjcP77nfRC-ydHJTddpR-oFrIkS9mHb_i0dVR-dEirL_OQA0RojvCFGjJS6NgDsEgJlAsG41HqQ60FQqVFa0hLAol8jBEI9p0zaGx2rToFx3Kw3D8qxW0CFfPonMQgZXqOu-oyqsEcMaCBLiBgnU5K6ThF00JybK-l3nfVmXiBnA5vRisBE9zrWpTXCxE"/>
+</div>
+<h5 class="font-headline font-bold text-lg">Kevin, 30</h5>
+<p class="text-xs text-on-surface-variant">Vino Voyager</p>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-4 pb-6 pt-2 bg-orange-50/90 dark:bg-zinc-950/90 backdrop-blur-xl tonal-layering bg-orange-100 dark:bg-zinc-900 shadow-[0_-8px_32px_rgba(174,47,52,0.05)] rounded-t-[2rem]">
+<div class="flex flex-col items-center justify-center bg-gradient-to-tr from-rose-700 to-rose-400 text-white rounded-full p-3 mb-2 scale-110 shadow-lg shadow-rose-500/20 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-0.5">Spotlight</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-rose-600 dark:hover:text-rose-300 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="gi_compass">compass_calibration</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest">Quests</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-rose-600 dark:hover:text-rose-300 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="local_activity">local_activity</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest">Invites</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-rose-600 dark:hover:text-rose-300 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-icon="mood">mood</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest">Status</span>
+</div>
+</nav>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

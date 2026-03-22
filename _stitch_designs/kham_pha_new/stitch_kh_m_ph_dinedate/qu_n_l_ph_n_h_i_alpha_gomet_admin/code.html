@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET Alpha | Feedback Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#1b1c1c",
+              "on-primary-container": "#6d0010",
+              "primary": "#ae2f34",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-bright": "#fdf9f3",
+              "background": "#fdf9f3",
+              "on-primary": "#ffffff",
+              "surface-container-low": "#f7f3ed",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-lowest": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "primary-container": "#ff6b6b",
+              "on-primary-fixed": "#410006",
+              "on-secondary-container": "#656464",
+              "on-tertiary-fixed": "#370e08",
+              "surface-variant": "#e6e2dc",
+              "secondary-fixed": "#e4e2e1",
+              "surface": "#fdf9f3",
+              "inverse-surface": "#31302d",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-primary-fixed-variant": "#8c1520",
+              "inverse-primary": "#ffb3b0",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-container": "#cf8a7f",
+              "on-error-container": "#93000a",
+              "outline-variant": "#e0bfbd",
+              "secondary-container": "#e4e2e1",
+              "secondary": "#5f5e5e",
+              "primary-fixed": "#ffdad8",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "surface-container-highest": "#e6e2dc",
+              "surface-dim": "#dddad4",
+              "on-secondary-fixed-variant": "#474747",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "outline": "#8c706f",
+              "tertiary": "#894e45",
+              "on-surface": "#1c1c18",
+              "surface-container-high": "#ebe8e2",
+              "on-background": "#1c1c18",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "secondary-fixed-dim": "#c8c6c6",
+              "on-secondary": "#ffffff",
+              "surface-container": "#f1ede7"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #fdf9f3;
+        color: #1c1c18;
+      }
+      h1, h2, h3 {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+    </style>
+</head>
+<body class="min-h-screen bg-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar from Shared Components -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-xl shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black italic text-[#ae2f34] dark:text-[#ff6b6b] font-['Plus_Jakarta_Sans'] tracking-tight">GOMET Alpha</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-[#1c1c18] dark:text-[#fdf9f3] opacity-70 font-['Plus_Jakarta_Sans'] tracking-tight font-bold hover:opacity-100 transition-opacity duration-300" href="#">Venues</a>
+<a class="text-[#1c1c18] dark:text-[#fdf9f3] opacity-70 font-['Plus_Jakarta_Sans'] tracking-tight font-bold hover:opacity-100 transition-opacity duration-300" href="#">Referrals</a>
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] border-b-2 border-[#ae2f34] font-['Plus_Jakarta_Sans'] tracking-tight font-bold transition-opacity duration-300" href="#">Feedback</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-surface-container-high rounded-full px-4 py-2">
+<span class="material-symbols-outlined text-secondary text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-body" placeholder="Search feedback..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-[#1c1c18] dark:text-[#fdf9f3] opacity-70 hover:opacity-100 transition-opacity active:scale-95">notifications</button>
+<button class="material-symbols-outlined text-[#1c1c18] dark:text-[#fdf9f3] opacity-70 hover:opacity-100 transition-opacity active:scale-95">account_circle</button>
+</div>
+</div>
+</header>
+<main class="pt-28 pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Dashboard Hero / Stats Bento -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<div class="md:col-span-2 bg-surface-container-low rounded-lg p-8 flex flex-col justify-between relative overflow-hidden">
+<div class="z-10">
+<span class="text-primary font-bold uppercase tracking-widest text-xs mb-2 block">Alpha Status</span>
+<h1 class="text-4xl font-extrabold tracking-tighter mb-4 text-on-surface">Alpha Test Health Dashboard</h1>
+<p class="text-secondary body-md max-w-md">Monitoring user sentiment and system stability for GOMET Alpha phase 1.2.</p>
+</div>
+<div class="mt-8 flex gap-4 z-10">
+<div class="bg-surface-container-lowest p-4 rounded-md flex-1">
+<span class="text-secondary text-xs font-bold uppercase block mb-1">Total Reports</span>
+<span class="text-2xl font-black text-on-surface">1,284</span>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-md flex-1">
+<span class="text-secondary text-xs font-bold uppercase block mb-1">Active Testers</span>
+<span class="text-2xl font-black text-on-surface">452</span>
+</div>
+</div>
+<!-- Abstract Decorative Shape -->
+<div class="absolute -right-8 -bottom-8 w-48 h-48 bg-primary opacity-5 rounded-full blur-3xl"></div>
+</div>
+<div class="bg-surface-container-lowest shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] rounded-lg p-6 flex flex-col justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary mb-4 text-3xl">bug_report</span>
+<span class="text-4xl font-black text-on-surface">24</span>
+<span class="text-secondary label-md font-bold uppercase mt-1">Open Bugs</span>
+<div class="mt-4 h-1 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[35%]"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] rounded-lg p-6 flex flex-col justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-tertiary mb-4 text-3xl">volunteer_activism</span>
+<span class="text-4xl font-black text-on-surface">89%</span>
+<span class="text-secondary label-md font-bold uppercase mt-1">Kudos Score</span>
+<div class="mt-4 flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="User avatar for feedback dashboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-tvddrd-AJ-6HSoAyjN2Q70fftjlEbrasepVJg4yrH9fFArB6J2k0eYQ9kEFXHHwrBl_wAWTcuzhXb86Jlf1sQUohVv8GmeFweIZxCQOGcq84cEiWKv7sf2sI-IDk2nWtfWC0IkTwYF_SXQbMUDBgdHWqPs1cztapqa8Q7TBmAz3LFlSLUs9Td890UvtD01p0XSh0LJRy-PYUCGS2oMTfejRczZGz7r7mCyU3T8bMI_shxlO7QEKDMttek6b5SO6AV08IbysuEGo"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="User avatar for feedback dashboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcbWRNmGzEv6df94omjqyOb6w8py_rrLRjADNpBeexfBqB3J8fBzPtwVHdpcidUHSbYiSbQG0kvffoosevjaoqG92nyrpGzEaKhClRoFh41LNuGVERG9vPyUfYrxNDmbrVzoJR9zex8GLjMwU_tfuKn6jJu_zd9LZztuTapXXW6u1tPbm-ZwM1Tywuz0IAXVvWqokJHHP2dA0JLluY6MlEN_AU8O_yQiGfpYlP2F0TJxz0m2V3uaISPOzBlqRfABVISg_bxUjYLjg"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface" data-alt="User avatar for feedback dashboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI6-lPAq4QGglCuIcw_jwLehcYqpPIUT8fwbp9mM71HW6r95S_-82230jf1JJlIpMUb7rlrkid4556PQDIEgqRTrntQE2LiM-zUIrOfCSs_UxR4KhvvZUO-xm90Ov_eGUuiodNPwU8rmiZfyekri1By-AaNcJRkd_asos7KS1j26M8FvkdHaf85f4BZv94CM9KNghtLqKYokWTQLJrdASQ2BPavckDpD-1hboueTu1nBwsXvM_4SaMy_L8Me-YP7YtO2fYNuCjwyU"/>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-high flex items-center justify-center text-[10px] font-bold">+12</div>
+</div>
+</div>
+</div>
+<!-- Trends Section -->
+<div class="bg-surface-container-low rounded-lg p-8 mb-12">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h2 class="text-2xl font-extrabold tracking-tight text-on-surface">Feedback Trends</h2>
+<p class="text-secondary label-md uppercase font-bold tracking-widest mt-1">Last 30 Days Activity</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container-highest rounded-full text-xs font-bold text-on-surface uppercase">Daily</button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded-full text-xs font-bold uppercase">Weekly</button>
+</div>
+</div>
+<!-- Mock Chart Visualization -->
+<div class="h-64 flex items-end justify-between gap-4 px-4">
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary-container/20 rounded-t-sm h-[40%] group-hover:bg-primary-container/40 transition-colors"></div>
+<span class="text-[10px] font-bold text-secondary uppercase">W1</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary-container/20 rounded-t-sm h-[65%] group-hover:bg-primary-container/40 transition-colors"></div>
+<span class="text-[10px] font-bold text-secondary uppercase">W2</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary-container h-[90%] rounded-t-sm shadow-[0_0_20px_rgba(174,47,52,0.2)]"></div>
+<span class="text-[10px] font-bold text-primary uppercase">W3</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-2 group">
+<div class="w-full bg-primary-container/20 rounded-t-sm h-[50%] group-hover:bg-primary-container/40 transition-colors"></div>
+<span class="text-[10px] font-bold text-secondary uppercase">W4</span>
+</div>
+</div>
+</div>
+<!-- Feedback Log Section -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden border border-outline-variant/10">
+<div class="px-8 py-6 flex justify-between items-center border-b border-surface-container-low">
+<h3 class="text-xl font-bold tracking-tight">Recent Feedback Log</h3>
+<div class="flex items-center gap-4">
+<span class="text-xs font-bold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">filter_list</span> Filter
+                    </span>
+<span class="text-xs font-bold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">download</span> Export CSV
+                    </span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-8 py-4 text-xs font-bold text-secondary uppercase tracking-widest">Feedback Type</th>
+<th class="px-8 py-4 text-xs font-bold text-secondary uppercase tracking-widest">Status</th>
+<th class="px-8 py-4 text-xs font-bold text-secondary uppercase tracking-widest">User ID</th>
+<th class="px-8 py-4 text-xs font-bold text-secondary uppercase tracking-widest">Description</th>
+<th class="px-8 py-4 text-xs font-bold text-secondary uppercase tracking-widest text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Entry 1 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-error-container text-on-error-container rounded-full text-[10px] font-bold uppercase tracking-wider">Bug</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-sm font-semibold text-on-surface">Open</span>
+</div>
+</td>
+<td class="px-8 py-6 text-sm font-mono text-secondary">#ALPHA_9842</td>
+<td class="px-8 py-6 text-sm text-on-surface line-clamp-1 max-w-xs">App crashes when selecting "Italian" filter on some venues.</td>
+<td class="px-8 py-6 text-right">
+<button class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Entry 2 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-surface-container-highest text-on-surface rounded-full text-[10px] font-bold uppercase tracking-wider">Suggestion</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<span class="text-sm font-semibold text-on-surface">In Progress</span>
+</div>
+</td>
+<td class="px-8 py-6 text-sm font-mono text-secondary">#ALPHA_7721</td>
+<td class="px-8 py-6 text-sm text-on-surface line-clamp-1 max-w-xs">Would love a dark mode toggle for late night date planning.</td>
+<td class="px-8 py-6 text-right">
+<button class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+<!-- Entry 3 -->
+<tr class="hover:bg-surface-container-low/30 transition-colors group">
+<td class="px-8 py-6">
+<span class="px-3 py-1 bg-tertiary-container/30 text-on-tertiary-container rounded-full text-[10px] font-bold uppercase tracking-wider">Kudos</span>
+</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<span class="text-sm font-semibold text-on-surface">Resolved</span>
+</div>
+</td>
+<td class="px-8 py-6 text-sm font-mono text-secondary">#ALPHA_1045</td>
+<td class="px-8 py-6 text-sm text-on-surface line-clamp-1 max-w-xs">The UI is incredibly smooth. Best curated dating app so far!</td>
+<td class="px-8 py-6 text-right">
+<button class="material-symbols-outlined text-secondary group-hover:text-primary transition-colors">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-8 py-6 bg-surface-container-low/20 flex justify-center">
+<button class="text-primary text-xs font-bold uppercase tracking-widest hover:underline">View All 1,284 Reports</button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar from Shared Components -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-end pb-6 px-4 bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-xl rounded-t-[2rem] z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.03)]">
+<div class="flex flex-col items-center justify-center text-[#1c1c18] dark:text-[#fdf9f3] opacity-60 hover:scale-110 transition-transform active:scale-90">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[11px] font-['Inter'] font-bold uppercase tracking-widest mt-1">Discover</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#1c1c18] dark:text-[#fdf9f3] opacity-60 hover:scale-110 transition-transform active:scale-90">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[11px] font-['Inter'] font-bold uppercase tracking-widest mt-1">Dates</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#1c1c18] dark:text-[#fdf9f3] opacity-60 hover:scale-110 transition-transform active:scale-90">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[11px] font-['Inter'] font-bold uppercase tracking-widest mt-1">Network</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-2 hover:scale-110 transition-transform active:scale-90">
+<span class="material-symbols-outlined">bug_report</span>
+<span class="text-[11px] font-['Inter'] font-bold uppercase tracking-widest mt-1">Beta</span>
+</div>
+</nav>
+</body></html>

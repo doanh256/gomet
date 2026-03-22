@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET - Secret Dining Events</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container-highest": "#e6e2dc",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f7f3ed",
+              "tertiary-fixed": "#ffdad4",
+              "inverse-on-surface": "#f4f0ea",
+              "on-secondary-container": "#656464",
+              "on-primary-container": "#6d0010",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#8c1520",
+              "error": "#ba1a1a",
+              "primary": "#ae2f34",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "on-secondary-fixed-variant": "#474747",
+              "on-error": "#ffffff",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "on-background": "#1c1c18",
+              "on-surface-variant": "#584140",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1c1c18",
+              "surface-variant": "#e6e2dc",
+              "secondary-fixed-dim": "#c8c6c6",
+              "primary-fixed": "#ffdad8",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "secondary-container": "#e4e2e1",
+              "surface-dim": "#dddad4",
+              "inverse-primary": "#ffb3b0",
+              "primary-fixed-dim": "#ffb3b0",
+              "primary-container": "#ff6b6b",
+              "surface-tint": "#ae2f34",
+              "on-tertiary-fixed": "#370e08",
+              "secondary-fixed": "#e4e2e1",
+              "inverse-surface": "#31302d",
+              "tertiary-container": "#cf8a7f",
+              "on-tertiary": "#ffffff",
+              "outline": "#8c706f",
+              "on-secondary-fixed": "#1b1c1c",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "background": "#fdf9f3",
+              "secondary": "#5f5e5e",
+              "tertiary": "#894e45",
+              "outline-variant": "#e0bfbd",
+              "on-primary-fixed": "#410006"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-secret-gradient {
+            background: linear-gradient(135deg, #1c1c18 0%, #31302d 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-[#fdf9f3]/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-[0_8px_32px_rgba(174,47,52,0.04)]">
+<div class="flex items-center gap-8 max-w-7xl mx-auto w-full">
+<h1 class="text-2xl font-black tracking-tighter text-[#ae2f34] dark:text-[#ff6b6b] uppercase font-headline">GOMET</h1>
+<nav class="hidden md:flex gap-6 items-center flex-1">
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:opacity-80 transition-all duration-300" href="#">Discover</a>
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] font-bold border-b-2 border-[#ae2f34] hover:opacity-80 transition-all duration-300" href="#">Events</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:opacity-80 transition-all duration-300" href="#">Dining</a>
+<a class="text-zinc-500 dark:text-zinc-400 font-medium hover:opacity-80 transition-all duration-300" href="#">Profile</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface hover:opacity-80 transition-all active:scale-95" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface hover:opacity-80 transition-all active:scale-95" data-icon="tune">tune</button>
+<div class="w-10 h-10 rounded-full bg-surface-container overflow-hidden border-2 border-primary/20">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="User profile avatar in circular frame" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAM2yKlVfYZUh3BUJvjjAYcOK9hw7JtSVsjhsJQStd0VOXxb9pa-P3WTC0MbGBNgBV38LvrKogW4zHyF1fI23nz8eZaV5BHobVC7FcRM--Pv_GbAV02KGnJjE11iyGN1J1QoNAiA418KRXY2zk_Zc0t63-h5VfUPOemvG3N2Y6hitVa7ZIeyIRWNfW50kRHbFDV_gp4bA7i1RlG5Bk9aeMI2V3tXERCDTKAfd8up1MQIp68YBIcRiSRnUIruIUXS8qXHV5ZhCEkGg"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="relative rounded-lg overflow-hidden mb-12 h-[450px] flex items-end">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover grayscale contrast-125" data-alt="Dark sophisticated speakeasy bar interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaSce_rk1qC9__j1NZtfcKdnggQvaqbM58TOgClFq3cPX4uaRUTKRyrXH1IwRje4I9ct8y3ZEgtJkmsM-00ex1elYNxp1xLUqqYdo4Teqncba-JorvO5-FBupLTjGLebg5AzRvMs2m9uzmg2eiszZ_g_dpaLZKrfHz2cnTBj4FA3ngcMydYBxiCAx-30Hw4jF32V6IwEvO8DQ2UdBr07WBWDGliLaTQFe7_yag3CkkSTcGSPVF5AE30GBu2KyzUj8OOI0gkj2j2Jc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#1c1c18] via-[#1c1c18]/40 to-transparent"></div>
+</div>
+<div class="relative z-10 p-8 md:p-12 w-full">
+<span class="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary-container text-xs font-bold tracking-widest uppercase mb-4">
+<span class="material-symbols-outlined text-sm mr-2" data-icon="lock" style="font-variation-settings: 'FILL' 1;">lock</span>
+                    Members Only
+                </span>
+<h2 class="text-5xl md:text-7xl font-headline font-black text-white tracking-tighter mb-4 max-w-3xl leading-[0.9]">
+                    SỰ KIỆN <span class="text-primary-container">BÍ MẬT</span>
+</h2>
+<p class="text-surface-container-highest max-w-xl text-lg leading-relaxed mb-8">
+                    Khám phá những trải nghiệm ẩm thực độc bản tại những địa điểm không tên. Chỉ dành cho những tâm hồn sành sỏi và uy tín.
+                </p>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-3 bg-white/10 backdrop-blur-lg px-6 py-3 rounded-DEFAULT border border-white/10">
+<span class="material-symbols-outlined text-primary-container" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+<div>
+<p class="text-[10px] text-white/60 uppercase font-bold tracking-widest">Điểm Uy Tín</p>
+<p class="text-white font-bold">1,250 PTS</p>
+</div>
+</div>
+<div class="flex items-center gap-3 bg-white/10 backdrop-blur-lg px-6 py-3 rounded-DEFAULT border border-white/10">
+<span class="material-symbols-outlined text-primary-container" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div>
+<p class="text-[10px] text-white/60 uppercase font-bold tracking-widest">Hạng Thành Viên</p>
+<p class="text-white font-bold">Platinum Curator</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Secret Grid Section -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Featured Locked Event -->
+<div class="md:col-span-8 group relative rounded-lg overflow-hidden bg-secret-gradient min-h-[500px] shadow-[0_24px_48px_-12px_rgba(174,47,52,0.12)]">
+<img class="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-overlay group-hover:scale-105 transition-transform duration-700" data-alt="High-end private dining table setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJwyYhvB_ysicNXSy4ucMj54PLO0Na1WyD7HnspAOS9cvH4QOuDn11Ak9tsDPWyJJNZ-RrhBmBLbAEmGI7MnBx1upRibpgTMmMhSFsE9Keoi-f46ymArD56vXW6Uj-ni-wW8XeYX4-enHiMv6g6fc5dRdZkMUZB57DTZ7AqgQwuCLw8WQG8RsvpLq9nH83fC67AhPcuHcSH5Eu1MuPx8q-dNhcNRdv66wl3U5gAxuxYFrguZvhOj8qYNJsaEVHZNyKPVAjNe623-4"/>
+<div class="absolute inset-0 p-8 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="bg-primary px-4 py-2 rounded-full text-white text-[10px] font-bold tracking-widest uppercase">
+                            Yêu Cầu: 800+ Điểm
+                        </div>
+<button class="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white border border-white/20">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+<div class="bg-black/60 backdrop-blur-2xl p-8 rounded-lg border border-white/10 translate-y-4 group-hover:translate-y-0 transition-transform">
+<div class="flex items-center gap-2 text-primary-container mb-2">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span class="text-xs font-bold uppercase tracking-widest">Địa điểm: [BỊ KHÓA]</span>
+</div>
+<h3 class="text-3xl font-headline font-bold text-white mb-4">The Crimson Cellar: Đêm Tiệc Blind Tasting</h3>
+<p class="text-white/70 mb-6 max-w-md">Một trải nghiệm đánh thức mọi giác quan trong bóng tối hoàn toàn. Thực đơn 12 món được thiết kế bởi đầu bếp 2 sao Michelin.</p>
+<div class="flex items-center gap-4">
+<button class="flex-1 bg-gradient-to-tr from-primary to-primary-container text-white px-8 py-4 rounded-full font-bold text-sm tracking-wide shadow-lg flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="key">key</span>
+                                NHẬP MẬT MÃ TRUY CẬP
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Cards -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<!-- Mini Locked Card 1 -->
+<div class="bg-surface-container-low p-6 rounded-lg relative overflow-hidden group">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest">Sắp diễn ra</span>
+</div>
+<h4 class="font-headline font-bold text-xl mb-2">Dạ Tiệc Mặt Nạ Venice</h4>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm mb-4">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_month">calendar_month</span>
+<span>24.12.2023 • 20:00</span>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/30">
+<span class="text-xs font-bold text-on-surface-variant uppercase">Độ Hiếm: Legend</span>
+<span class="material-symbols-outlined text-primary" data-icon="lock">lock</span>
+</div>
+</div>
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+</div>
+<!-- Mini Locked Card 2 -->
+<div class="bg-surface-container-low p-6 rounded-lg relative overflow-hidden group">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="text-[10px] font-bold text-secondary uppercase tracking-widest">Đã hết chỗ</span>
+</div>
+<h4 class="font-headline font-bold text-xl mb-2 text-secondary">Midnight Rooftop Jazz</h4>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm mb-4">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_month">calendar_month</span>
+<span>30.12.2023 • 22:30</span>
+</div>
+<div class="flex items-center justify-between pt-4 border-t border-outline-variant/30 opacity-50">
+<span class="text-xs font-bold text-on-surface-variant uppercase">Đã tham gia: 12/12</span>
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+</div>
+<!-- Invite Widget -->
+<div class="bg-primary text-white p-8 rounded-lg flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="mail" style="font-variation-settings: 'FILL' 1;">mail</span>
+<h4 class="font-headline font-bold text-xl mb-2">Bạn có lời mời?</h4>
+<p class="text-sm text-white/80 mb-6">Nếu bạn nhận được thiệp mời vật lý, hãy quét mã QR hoặc nhập mã để mở khóa sự kiện đặc biệt của riêng bạn.</p>
+<button class="w-full bg-white text-primary px-6 py-3 rounded-full font-bold text-sm tracking-wide">
+                        QUÉT MÃ MỜI
+                    </button>
+</div>
+</div>
+</div>
+<!-- Bento Grid: Past Secret Events -->
+<section class="mt-20">
+<div class="flex items-end justify-between mb-8">
+<div>
+<h3 class="text-3xl font-headline font-black tracking-tight text-on-background uppercase">HỒ SƠ LƯU TRỮ</h3>
+<p class="text-on-surface-variant">Những ký ức ẩm thực đã qua chỉ dành cho VIP xem lại.</p>
+</div>
+<button class="text-primary font-bold text-sm flex items-center gap-2">
+                    XEM TẤT CẢ <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 h-[400px]">
+<div class="row-span-2 relative rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Exotic gourmet dish presentation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ9URqkNS3S6B44A6ZfiF-E6-Bq0u-O8cfP7_oR7C7scROhERVLC8xWITbMycyQtadARUKv-adWgT01KsGvgab_rhSBayaLbUR594-wojas44nQU5erbJYzdGnPRuMhO6dBAj0UDh9o7MZYWTS_CpPFHxTGvrZdBHwEqObyOG-G6RiC-qcCFCJdP56VeOB2aAsTtOrWy9dKIpO-Cbs3GXFQaR6lywImvkBSM9nmX5FaPo9RlWs1cT33jH6Ae013PzyAzpjRF8yJNI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
+<p class="text-[10px] text-primary-container font-bold uppercase tracking-widest">Tokyo Underworld</p>
+<p class="text-white font-bold text-sm">Omakase &amp; Sake Ritual</p>
+</div>
+</div>
+<div class="relative rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Modern molecular gastronomy dish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAz5dMkNZKrG5nv7j916P7LSyyqehfnvtxXOwDz7mY8HNti_l1DEwiv0rKGWZs_1BhsHhywFz3suQ_NvQjn8T5J0dpVKsbBlL8jRVTfOvxVi4FZKFNUd2P-bQeYEc1HnX9jUR4pF9h7YrWxQiYDe2Af-wYpeBGWVcwmB1MmRwPjY2ruNI_TXj3M8NszdqQxGPunN22E62QdRQI-rB_r0yLUj0YCIm8hNGLIMWyaDe7QqXzBbV1OK-p8S9__zMge78eE_GqXzqWOIQ"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+</div>
+<div class="relative rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Fine dining restaurant atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFNLmOTGTqqjSgeoZWHfY4yyaix6NTM9airL5htjdWypGzd8GF3mgrh_ROKyK6nOwB1k5Ml0PKJIv1ZOyyUcI67yEpkaPnJNs6iYBs9yAzWTeg0TVS12Md6PsK5Vxks_NQG-tvyeYTfvWSapu3wbrIT_cEAL5vwyDOMXPlxylfT4f6XTBnHTcYqeuEuLQhziCJ14Q3Sqbl40UwRVM4oOmkxeIQ3xCe3BP3aF4Qar4Y0M-h-786WTbk9ViM4VZHvwPGtNqRcqsXdYg"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+</div>
+<div class="row-span-2 relative rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Wine cellar and glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC8cTYYYEPXtnO27QPRthTFebwvEDRC0RzqdGYuajN_og83MQQ-LjJaaf3ecmHyzx7diat8MS5vSRjo4d9rOCYRODJXEr22kODPLhIhlmuohlfI7lS8nnFOxKcknH6Q5uOwbUy78llb_OMXl4rmd8jJekomUastSHYBnYVAF03AEJslP2mI8oBkaafnxxkn3GYE5daHLX25_qQ7VnX6k74EnGagxWbXGgcbjDfDIA8VqJXZZCYWVFxkbzjcKPCYtIqIUIjZHBjvWk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
+<p class="text-[10px] text-primary-container font-bold uppercase tracking-widest">Bordeaux Mystery</p>
+<p class="text-white font-bold text-sm">Château Vertical Tasting</p>
+</div>
+</div>
+<div class="col-span-2 relative rounded-lg overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Busy evening bar scene" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB83Az7cWEl4AEKqm52i5HlEv45cC4ud4IkAjeMvNsUaZoTQhdUYbhIFmnNpgPjD_JSUEuBrXCGNIo99viklyEKspP81txTXSXvXf62axGuKUTlVGaEcLKYKLVnRFkxxTiPK4tRrHPFV_JSeKuQLo74lgTvEofQbuMKWclqClGhtJjENENU-cBaar0HCK_gZeKboqBqObibfmrdokfIMSWF5zMpH9CuKf_TMr-wNYkAFwP7u7EZUz-JDUfaMSpvZCDqvw0c-NQk-tM"/>
+<div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-8 pt-3 bg-[#fdf9f3]/90 dark:bg-zinc-950/90 backdrop-blur-lg rounded-t-[2rem] shadow-[0_-12px_40px_rgba(174,47,52,0.06)] md:hidden">
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 px-4 py-2 hover:text-[#ae2f34] dark:hover:text-[#ff6b6b] transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-tr from-[#ae2f34] to-[#ff6b6b] text-white rounded-full px-6 py-2 shadow-lg active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 px-4 py-2 hover:text-[#ae2f34] dark:hover:text-[#ff6b6b] transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Dining</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-600 px-4 py-2 hover:text-[#ae2f34] dark:hover:text-[#ff6b6b] transition-colors active:scale-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

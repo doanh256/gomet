@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trung tâm Pháp lý &amp; Giải quyết Tranh chấp | GOMET</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "error-container": "#ffdad6",
+              "surface-tint": "#ae2f34",
+              "primary": "#ae2f34",
+              "outline": "#8c706f",
+              "inverse-on-surface": "#f4f0ea",
+              "surface": "#fdf9f3",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-secondary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#f1ede7",
+              "primary-fixed": "#ffdad8",
+              "on-primary": "#ffffff",
+              "on-surface": "#1c1c18",
+              "on-primary-fixed": "#410006",
+              "surface-container-high": "#ebe8e2",
+              "on-secondary-fixed": "#1b1c1c",
+              "tertiary-container": "#cf8a7f",
+              "surface-variant": "#e6e2dc",
+              "surface-container-highest": "#e6e2dc",
+              "secondary": "#5f5e5e",
+              "secondary-fixed": "#e4e2e1",
+              "on-primary-fixed-variant": "#8c1520",
+              "tertiary": "#894e45",
+              "on-tertiary-fixed": "#370e08",
+              "surface-container-low": "#f7f3ed",
+              "outline-variant": "#e0bfbd",
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#656464",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "on-secondary-fixed-variant": "#474747",
+              "on-background": "#1c1c18",
+              "inverse-surface": "#31302d",
+              "surface-dim": "#dddad4",
+              "on-primary-container": "#6d0010",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-container": "#e4e2e1",
+              "on-error": "#ffffff",
+              "inverse-primary": "#ffb3b0",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "background": "#fdf9f3",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "tertiary-fixed": "#ffdad4",
+              "surface-bright": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "error": "#ba1a1a",
+              "primary-container": "#ff6b6b"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary/20">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-md">
+<nav class="flex justify-between items-center px-8 h-20 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-[#ae2f34] dark:text-[#ff6b6b] font-headline">GOMET</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-[#4a4a44] dark:text-[#e0bfbd] font-medium hover:text-[#ff6b6b] transition-colors duration-300" href="#">Concierge</a>
+<a class="text-[#4a4a44] dark:text-[#e0bfbd] font-medium hover:text-[#ff6b6b] transition-colors duration-300" href="#">Profile</a>
+<a class="text-[#4a4a44] dark:text-[#e0bfbd] font-medium hover:text-[#ff6b6b] transition-colors duration-300" href="#">Planner</a>
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] font-bold border-b-2 border-[#ae2f34]" href="#">Insights</a>
+</div>
+<button class="bg-gradient-to-tr from-[#ae2f34] to-[#ff6b6b] text-white px-6 py-2 rounded-full font-bold text-sm hover:opacity-90 transition-all active:scale-95">
+                Book Now
+            </button>
+</nav>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Editorial Header -->
+<section class="mb-12">
+<h1 class="font-headline text-display-lg text-6xl md:text-7xl font-extrabold tracking-tighter text-on-surface mb-4">
+                Pháp lý <span class="text-primary italic">&amp;</span> Tranh chấp
+            </h1>
+<p class="text-on-surface-variant text-lg max-w-2xl leading-relaxed">
+                Minh bạch trong mọi giao dịch cao cấp. Theo dõi, giải quyết và bảo vệ quyền lợi của bạn một cách chuyên nghiệp.
+            </p>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Disputed Deals List -->
+<div class="lg:col-span-4 space-y-6">
+<h3 class="font-headline text-xl font-bold px-2">Giao dịch cần chú ý</h3>
+<div class="space-y-4 overflow-y-auto max-h-[716px] no-scrollbar pr-2">
+<!-- Card Active -->
+<div class="p-5 bg-surface-container-lowest rounded-lg border-l-4 border-primary shadow-sm cursor-pointer transform transition-transform hover:scale-[1.02]">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-error-container text-on-error-container text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full">Tranh chấp</span>
+<span class="text-label-md text-on-surface-variant font-medium">#GM-9902</span>
+</div>
+<h4 class="font-bold text-on-surface text-lg mb-1">Fine Dining tại Le Corto</h4>
+<p class="text-on-surface-variant text-sm mb-4">Giá trị: 4,500,000 VND</p>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a professional concierge service agent" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASuvR6vTh2vKAZ8y12sFwQGGRyUIhnkiwKy90ypsKQCM6_dspITwd1jAiqalwXmz3MpHmSA_lXkogR9ZXixV0nj_NFdRJI8xEuqW2C3DT-KVYGDazYM6mcHCfc5y4lPY3G9-pliHjGI-lKJe0PRKExTw9YzzyvYgwLGvitkWJQVUU-gvE58EVsQSs6CVyJdKERWxAyoP6WKDkZiUXQTNfkbW5Mt-3D9tbZvWDQcOfMGxinyfZjpEkE3ntJfUXQsdS0dfMu--mbgRk"/>
+</div>
+<span class="text-xs font-medium text-on-surface">Concierge: Minh Anh</span>
+</div>
+</div>
+<!-- Card Pending -->
+<div class="p-5 bg-surface-container-low rounded-lg hover:bg-surface-container-high transition-colors cursor-pointer border-l-4 border-outline-variant">
+<div class="flex justify-between items-start mb-3">
+<span class="bg-surface-container-highest text-on-surface-variant text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded-full">Chờ xác nhận</span>
+<span class="text-label-md text-on-surface-variant font-medium">#GM-8721</span>
+</div>
+<h4 class="font-bold text-on-surface text-lg mb-1">Sự kiện Private Yacht Party</h4>
+<p class="text-on-surface-variant text-sm mb-4">Giá trị: 12,000,000 VND</p>
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-high overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of an elegant gentleman client" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiNKe4RL4mtgzHAksAS65tNXzj3dqiqDopYwIoJEmy-xTWpmvUnFOeJXRpTV0lQ_cifU2INrpiBnGvhlmZVU6XLR735qohIuYsHmWAi5T0257Rw_uCUhkbf4Z8eVAwUJtVMiGnxyOPiatXx4IgAC4o-MpolEnUWCqT-T7-D3PYo_azEKGMUl4zFp1afFwKdnXqLJBIvFH6eN5evxQwhPxj7WfMCmV4JYQR7ijmadp9sZJ6OphQq1I1Sd06n2HAV3y9TmWNYycPIrM"/>
+</div>
+<span class="text-xs font-medium text-on-surface">Đối tác: Global Luxe</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Case Details & Timeline -->
+<div class="lg:col-span-8 bg-surface-container-low rounded-lg p-6 md:p-10">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary">gavel</span>
+<h2 class="text-2xl font-bold font-headline">Chi tiết Tranh chấp: #GM-9902</h2>
+</div>
+<p class="text-on-surface-variant">Lý do: Dịch vụ không đúng như cam kết ban đầu</p>
+</div>
+<div class="flex gap-3 w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-3 rounded-full bg-surface-container-highest text-on-surface font-bold text-sm hover:bg-surface-container-high transition-all active:scale-95">Hoàn tiền ngay</button>
+<button class="flex-1 md:flex-none px-6 py-3 rounded-full bg-gradient-to-tr from-primary to-primary-container text-white font-bold text-sm shadow-lg hover:opacity-90 transition-all active:scale-95">Xác nhận hoàn tất</button>
+</div>
+</div>
+<!-- Timeline & Evidence Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<!-- Timeline -->
+<div class="space-y-8 relative">
+<div class="absolute left-4 top-2 bottom-0 w-[2px] bg-outline-variant/30"></div>
+<div class="relative pl-12">
+<div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white ring-4 ring-surface-container-low">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">20 Oct, 14:20</p>
+<h5 class="font-bold text-on-surface">Giao dịch khởi tạo</h5>
+<p class="text-sm text-on-surface-variant">Thanh toán 4,500,000 VND đã được giữ bởi hệ thống GOMET.</p>
+</div>
+<div class="relative pl-12">
+<div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white ring-4 ring-surface-container-low">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-primary mb-1">20 Oct, 19:00</p>
+<h5 class="font-bold text-on-surface">Dịch vụ bắt đầu</h5>
+<p class="text-sm text-on-surface-variant">Khách hàng check-in tại địa điểm Le Corto.</p>
+</div>
+<div class="relative pl-12">
+<div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-error flex items-center justify-center text-white ring-4 ring-surface-container-low">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">report</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-error mb-1">20 Oct, 21:15</p>
+<h5 class="font-bold text-error">Khiếu nại được gửi</h5>
+<p class="text-sm text-on-surface-variant">Khách hàng báo cáo món ăn không đúng mô tả và thái độ phục vụ kém.</p>
+</div>
+<div class="relative pl-12 opacity-50">
+<div class="absolute left-0 top-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant ring-4 ring-surface-container-low">
+<span class="material-symbols-outlined text-sm">schedule</span>
+</div>
+<p class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Đang chờ</p>
+<h5 class="font-bold text-on-surface">Hòa giải / Trọng tài</h5>
+<p class="text-sm text-on-surface-variant">Chờ phản hồi từ đối tác cung cấp dịch vụ.</p>
+</div>
+</div>
+<!-- Evidence & Chat -->
+<div class="space-y-6">
+<div class="bg-surface-container-lowest rounded-lg p-5 shadow-sm">
+<h5 class="font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">image</span>
+                                Bằng chứng hình ảnh
+                            </h5>
+<div class="grid grid-cols-2 gap-3">
+<div class="aspect-square rounded-md overflow-hidden bg-surface-container-high group relative">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="Close up of a poorly presented gourmet dish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyB35PTW7vVNfa1eH3ZN9CTYrJNsMcExW58_KTpl66c5-U0q1ZuGp2bp3S1x9Twthy7BDGynmnZ0iLCcrcblYdSdDRQ9AmDRKOJX0EGDXWRvLHRFgktX3MZAa4BEV3lrM43UEfLOmBtVERI8ZSQ9_g5S0jqQDAL1pmA9YhND5NOMpGNBwx77HKM5cYQZ5NR_0sPefL2UdYkg03kGZ_ZCxzQjnqfek4DlQ3YMN3vouDAGugpR3z53_W8M2WByUyoVWFUPwuOmKKc3A"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">zoom_in</span>
+</div>
+</div>
+<div class="aspect-square rounded-md overflow-hidden bg-surface-container-high group relative">
+<img class="w-full h-full object-cover transition-transform group-hover:scale-110" data-alt="Receipt of a luxury restaurant with handwritten notes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCU8OCaM_XG8IOYQQsuKKoaWPlpxuoVSUvuFYmKMpWAnzxGiE1U4CMYh7EO-JntXV2VRblN7OdJmK68A5-r8NEdcCtOqKEI6mTK2UqEvaMAl70UFjsoATvK7ySN_qqFVkpSUpMn_xPT2g7ADRbSzB_9VVK95UN_Xtgi8gPsWyG74cg7EUWg9BKtOVCiQpu9mL4K3f2r9K4ru02ErZKrglHK4yXsUKgrFQwscPKTfS_iJjKof-dJOYOwxVx7dkE16JdvEDUlKZa75Ow"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-white">zoom_in</span>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-5 shadow-sm">
+<h5 class="font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">forum</span>
+                                Nhật ký Chat
+                            </h5>
+<div class="space-y-3 max-h-[200px] overflow-y-auto no-scrollbar pr-1">
+<div class="bg-surface-container-low p-3 rounded-lg rounded-tl-none">
+<p class="text-xs font-bold text-primary mb-1">Khách hàng</p>
+<p class="text-xs text-on-surface">"Món tôm hùm bị nguội và trang trí rất sơ sài so với ảnh mẫu."</p>
+</div>
+<div class="bg-surface-container-high p-3 rounded-lg rounded-tr-none ml-4">
+<p class="text-xs font-bold text-on-surface-variant mb-1">Nhà hàng</p>
+<p class="text-xs text-on-surface">"Chúng tôi xin lỗi, bếp đang quá tải. Chúng tôi có thể tặng món tráng miệng?"</p>
+</div>
+<div class="bg-surface-container-low p-3 rounded-lg rounded-tl-none">
+<p class="text-xs font-bold text-primary mb-1">Khách hàng</p>
+<p class="text-xs text-on-surface">"Không, tôi yêu cầu hoàn lại 30% phí vì trải nghiệm không xứng đáng."</p>
+</div>
+</div>
+</div>
+<button class="w-full py-4 rounded-lg bg-tertiary text-white font-bold flex items-center justify-center gap-2 hover:bg-tertiary/90 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined">balance</span>
+                            Yêu cầu Trọng tài (GOMET Arbitrate)
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 md:hidden bg-[#fdf9f3]/90 dark:bg-[#1c1c18]/90 backdrop-blur-xl shadow-[0_-12px_40px_-12px_rgba(174,47,52,0.12)] rounded-t-[2rem]">
+<div class="flex justify-around items-end px-6 pb-6 pt-2">
+<a class="flex flex-col items-center justify-center text-[#894e45] dark:text-[#e0bfbd] p-2 hover:bg-[#f7f3ed] dark:hover:bg-[#2a2a24] rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Dating</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#894e45] dark:text-[#e0bfbd] p-2 hover:bg-[#f7f3ed] dark:hover:bg-[#2a2a24] rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#894e45] dark:text-[#e0bfbd] p-2 hover:bg-[#f7f3ed] dark:hover:bg-[#2a2a24] rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Dining</span>
+</a>
+<div class="flex flex-col items-center justify-center bg-gradient-to-tr from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-2 transform -translate-y-2 shadow-lg animate-pulse-slow active:scale-90">
+<span class="material-symbols-outlined">room_service</span>
+<span class="font-inter text-[10px] uppercase tracking-widest font-bold mt-1">Concierge</span>
+</div>
+</div>
+</nav>
+<!-- Floating Security Tag (Trust Element) -->
+<div class="fixed bottom-24 right-8 hidden lg:flex items-center gap-3 bg-white/60 backdrop-blur-md px-6 py-3 rounded-full shadow-lg border border-outline-variant/20">
+<div class="w-3 h-3 rounded-full bg-primary animate-pulse"></div>
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface">Protected by GOMET SecurePay</span>
+</div>
+</body></html>

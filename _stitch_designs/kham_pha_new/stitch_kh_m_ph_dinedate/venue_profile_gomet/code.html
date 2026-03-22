@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface": "#fdf9f3",
+              "on-primary-container": "#6d0010",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary": "#5f5e5e",
+              "on-primary-fixed": "#410006",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-container": "#f1ede7",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#ebe8e2",
+              "error-container": "#ffdad6",
+              "on-tertiary-container": "#55251e",
+              "primary-container": "#ff6b6b",
+              "inverse-surface": "#31302d",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-dim": "#dddad4",
+              "on-surface": "#1c1c18",
+              "primary": "#ae2f34",
+              "outline-variant": "#e0bfbd",
+              "inverse-primary": "#ffb3b0",
+              "surface-container-low": "#f7f3ed",
+              "outline": "#8c706f",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-tint": "#ae2f34",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary-fixed-variant": "#474747",
+              "on-secondary-container": "#656464",
+              "on-primary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed": "#e4e2e1",
+              "primary-fixed": "#ffdad8",
+              "surface-bright": "#fdf9f3",
+              "on-background": "#1c1c18",
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-highest": "#e6e2dc",
+              "error": "#ba1a1a",
+              "tertiary": "#894e45",
+              "on-surface-variant": "#584140",
+              "on-secondary-fixed": "#1b1c1c",
+              "background": "#fdf9f3",
+              "surface-variant": "#e6e2dc",
+              "on-error": "#ffffff",
+              "on-secondary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .editorial-gradient {
+            background: linear-gradient(45deg, #ae2f34 0%, #ff6b6b 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity scale-95 active:scale-90 duration-200">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline text-display-lg tracking-tighter text-2xl font-bold text-primary dark:text-primary-container">GOMET</h1>
+</div>
+<div class="flex gap-4">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity scale-95 active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity scale-95 active:scale-90 duration-200">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-20 pb-32 max-w-5xl mx-auto px-4 md:px-8">
+<!-- Hero Gallery Section (Asymmetric Layout) -->
+<section class="grid grid-cols-12 gap-4 mb-12">
+<div class="col-span-12 md:col-span-8 aspect-[16/9] overflow-hidden rounded-lg relative group">
+<img alt="Main architectural view of The Glass House Bistro" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Modern glass architecture restaurant interior with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAicszfJXQ-5ywdtOgnyBC_-Dnebd67BXKoAoOy8sIxrNwLAYTxrA3hSVJmy3CbwypIYZo76ykiDn_taBcZonQOtP4zxBwLk7rt2iDTWczhItd7MfqECzVRGQ-UpT6UOTXfUqi5nVspe4hn88r3TqSo4jS918Z7mMUGjCRvyk3o_iC6PjXOEHk9syvKZ2ihxEf_v07Jy5euGfDgB8T6uKC0_XvKP3WLm0SiDXjaHw2g6KEH9IkeObrx1fgRqcLdXssjr5Y4QIqL0KU"/>
+<div class="absolute bottom-6 left-6 text-white z-10">
+<span class="bg-primary/90 px-4 py-1 rounded-full text-label-md font-medium uppercase mb-2 inline-block">Featured Venue</span>
+<h2 class="font-headline text-4xl font-extrabold tracking-tighter drop-shadow-lg">The Glass House Bistro</h2>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/60 to-transparent"></div>
+</div>
+<div class="hidden md:flex md:col-span-4 flex-col gap-4">
+<div class="h-1/2 rounded-lg overflow-hidden">
+<img alt="Rooftop dining view" class="w-full h-full object-cover" data-alt="Outdoor rooftop dining area with sunset view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1sAMc6v34quQvWA7nZ2lrfzPmknmrLaPQP-wJK56Ke6KJtjW0MPXFhb2CYF7WxLrTaZl41UAIM_AFov6qg7aZqQiN9T-xJKZyJomh2hUC1NGD_-x24D94BBRY5bSPBUzKc673vcE5rtzSK3iPuXd84UtCdfOL2GPKFt8hHa3x-l9o9ia_exDZVcWjs9IAnk78vohLoIXkbXGyI1GerA2vAzcGhRIQ7RT76krVKl3tsoQkC7V6YTiPeDnxq2tSMs6KZTwd2qlj-0o"/>
+</div>
+<div class="h-1/2 rounded-lg overflow-hidden relative">
+<img alt="Fine dining dish" class="w-full h-full object-cover" data-alt="Elegant gourmet dish plated with artistic precision" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4MXAymaqxP0Cjl_Ips0kui2jcvMW6H89DYG2q18XmkOnA8U8RSHDfoBePpY4KuThekM_b8XelW9UNeC4RS6Wkq4i7Y4jBHho-ccUCsxOZSm3do9fSnV0PtLJmWrzLGfTw-5YtOf8rvRpooNzVzwLrK3pwXNoSxAmTR44XtinfK2rNlY0_LkOfiHtiqpZaKt-ygMnu1g0Zre09XstbbkRe5lHSIi91MjC1M6CCYhZmaaWary32F9PT4u_riFWnFh4gbuz2EKh0R6U"/>
+<div class="absolute inset-0 bg-on-background/40 flex items-center justify-center">
+<button class="text-white font-headline text-lg font-bold underline decoration-primary underline-offset-4">+12 Photos</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Profile Metadata & About -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+<div class="md:col-span-2">
+<div class="flex items-center gap-6 mb-8">
+<div class="flex items-center gap-1 bg-surface-container-high px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-headline font-bold text-on-surface">4.9</span>
+<span class="text-on-surface-variant text-sm ml-1">(1.2k Reviews)</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="text-sm font-medium">Upper East Side, NY</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">payments</span>
+<span class="text-sm font-medium">$$$</span>
+</div>
+</div>
+<h3 class="font-headline text-display-lg text-3xl font-bold tracking-tighter mb-4">About the Experience</h3>
+<p class="text-body-md text-on-surface-variant leading-relaxed mb-8 max-w-2xl">
+                    Nestled within a suspended glass atrium, The Glass House Bistro redefines urban dining through transparent architecture and seasonal alchemy. Our culinary philosophy centers on botanical-infused flavors and panoramic cityscapes, creating an atmosphere that is both ethereal and grounding. Perfect for first impressions and milestone celebrations.
+                </p>
+<!-- Dine-Tags (Custom Chips) -->
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-surface-container-high text-on-surface px-4 py-2 rounded-full text-label-md font-medium">Contemporary French</span>
+<span class="bg-surface-container-high text-on-surface px-4 py-2 rounded-full text-label-md font-medium">Wine Pairing</span>
+<span class="bg-surface-container-high text-on-surface px-4 py-2 rounded-full text-label-md font-medium">Architectural Views</span>
+<span class="bg-surface-container-high text-on-surface px-4 py-2 rounded-full text-label-md font-medium">Quiet Conversation</span>
+</div>
+</div>
+<!-- Booking Sticky Sidebar (Simulated) -->
+<div class="bg-surface-container-low rounded-lg p-8 h-fit shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] border border-outline-variant/10">
+<h4 class="font-headline text-xl font-bold mb-6">Plan a Date Here</h4>
+<div class="space-y-4 mb-8">
+<div class="bg-surface-container-highest p-4 rounded-md">
+<p class="text-xs text-on-surface-variant uppercase font-bold tracking-widest mb-1">Upcoming Availability</p>
+<p class="text-on-surface font-medium">Friday, Oct 24 • 7:30 PM</p>
+</div>
+</div>
+<button class="editorial-gradient text-on-primary w-full py-4 rounded-full font-headline font-bold text-lg shadow-lg active:scale-95 transition-transform">
+                    Start a Date Request
+                </button>
+<p class="text-center text-xs text-on-surface-variant mt-4">Free cancellation up to 24h before</p>
+</div>
+</div>
+<!-- Menu Highlights Bento Grid -->
+<section class="mb-20">
+<div class="flex justify-between items-end mb-8">
+<div>
+<span class="text-primary font-bold uppercase tracking-widest text-xs">Curated Selection</span>
+<h3 class="font-headline text-3xl font-extrabold tracking-tighter">Menu Highlights</h3>
+</div>
+<button class="text-primary font-bold flex items-center gap-1 hover:opacity-70 transition-opacity">
+                    Full Menu <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="md:col-span-2 bg-surface-container-lowest p-6 rounded-lg flex gap-6 items-center">
+<div class="w-24 h-24 rounded-md overflow-hidden flex-shrink-0">
+<img alt="Dish" class="w-full h-full object-cover" data-alt="Vibrant healthy salad bowl with fresh greens" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3T0vxUpxjkRXju7bsKEndc-KDT5sHZKx8oyRbMtzg_-G8waz74X6xlDptw6MGRcjI8Hs2Fyv-k8LAuQpGITDgM7DTsOup2KmvicCRExDdTZ3wvmkXIkKdoFAcKZeTEeY9B4ehFPivI6QEG6zmjQcsFEV926d4FElSSes8vZKMbE6DWvh9-ACpFPauuG-F660sxcmZ5kMIUap5EDKLxnqciwjSj2QKSnVFGXNWRcWyNaDhOLXDZ5ibg_eNC1Xc4rXyrlHuJzELWTY"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg mb-1">Truffle Emulsion Scallops</h4>
+<p class="text-sm text-on-surface-variant line-clamp-2">Pan-seared Atlantic scallops, black truffle foam, and parsnip purée.</p>
+<span class="text-primary font-bold mt-2 inline-block">$34</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg">
+<h4 class="font-headline font-bold text-lg mb-1">Lavender Duck</h4>
+<p class="text-xs text-on-surface-variant mb-4">Honey-glazed with wildflower essences.</p>
+<span class="text-primary font-bold">$42</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg">
+<h4 class="font-headline font-bold text-lg mb-1">Glass Sphere Tart</h4>
+<p class="text-xs text-on-surface-variant mb-4">Signature sugar-blown dessert.</p>
+<span class="text-primary font-bold">$18</span>
+</div>
+</div>
+</section>
+<!-- Active Date Requests -->
+<section class="mb-20">
+<div class="flex items-center gap-3 mb-8">
+<span class="bg-tertiary-container/20 text-tertiary p-2 rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</span>
+<h3 class="font-headline text-3xl font-extrabold tracking-tighter">Active Date Requests</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Request Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-center justify-between group cursor-pointer hover:bg-surface-container-low transition-colors duration-300">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="User" class="w-16 h-16 rounded-full object-cover border-2 border-primary" data-alt="Portrait of a smiling young woman with dark hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1vCQztWrpY9DrFpEs-F0ASerqW5oh_AdWcTixpyRWFs9TlvbRFbsqQu0IuVBL8sygp9IluTYWTIB1nXXt47II0f2JW6FMcCBh8d5puGTiZnWaBzZSpriQ9HH7h7yxmNjIxx5pIar7z1WbO7xuXgRM_X3LdWE5-qxlxmYsuB2Eh8DHo1K4fx21ni1JlirYB9cbK4MOp_3r2uX1WVLO3i8UgJGQgAqci86rASakRLOpvCG2cK8UZPTvF-sUMwQyLbA5_yqpeY775PM"/>
+<div class="absolute -bottom-1 -right-1 bg-green-500 w-4 h-4 rounded-full border-2 border-surface"></div>
+</div>
+<div>
+<h5 class="font-headline font-bold">Sophia, 26</h5>
+<p class="text-xs text-on-surface-variant">Looking for: Meaningful conversation</p>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full font-bold uppercase">Oct 25</span>
+<span class="text-[10px] bg-surface-container-highest px-2 py-0.5 rounded-full">Dinner</span>
+</div>
+</div>
+</div>
+<button class="bg-primary text-on-primary p-3 rounded-full scale-0 group-hover:scale-100 transition-transform shadow-md">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+</div>
+<!-- Request Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-center justify-between group cursor-pointer hover:bg-surface-container-low transition-colors duration-300">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img alt="User" class="w-16 h-16 rounded-full object-cover border-2 border-primary" data-alt="Portrait of a young man with a stylish beard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkPeOF5qGBVpdL-jVLewHvbfQtdR4L1KZUxTSA7-tC5DmEMmXuga4GoTFrhsnmPe-fSnTJeXWT64x7t_yaZWEcG-LeKyA9neecCTzmOIMGEASBiX55iyUH2GkQv1AAXKqaNiEFPzOmsH2NIRp8vtDqz_sG1VnPwFoauzDhml7gd-R4lB0nqh9U8ybfpDJfhT5JxKMD-eq8TjLa8LTB-gp-z2sMhjIazIvH54ohBvrsrkfQMn1yZ1Whs6HXwelHe7KHDfURrUcoTJY"/>
+</div>
+<div>
+<h5 class="font-headline font-bold">Marcus, 29</h5>
+<p class="text-xs text-on-surface-variant">Looking for: Wine Enthusiast</p>
+<div class="flex gap-2 mt-1">
+<span class="text-[10px] bg-primary/10 text-primary px-2 py-0.5 rounded-full font-bold uppercase">Oct 26</span>
+<span class="text-[10px] bg-surface-container-highest px-2 py-0.5 rounded-full">Late Night</span>
+</div>
+</div>
+</div>
+<button class="bg-primary text-on-primary p-3 rounded-full scale-0 group-hover:scale-100 transition-transform shadow-md">
+<span class="material-symbols-outlined">chat_bubble</span>
+</button>
+</div>
+</div>
+<button class="w-full mt-8 py-4 border-2 border-dashed border-outline-variant text-on-surface-variant font-bold rounded-lg hover:bg-surface-container-low transition-colors">
+                + Post Your Own Request Here
+            </button>
+</section>
+<!-- Reviews Summary Section -->
+<section class="bg-surface-container-low rounded-lg p-10">
+<div class="flex flex-col md:flex-row gap-12 items-center">
+<div class="text-center md:text-left">
+<h3 class="font-headline text-5xl font-extrabold text-primary mb-2">4.9</h3>
+<div class="flex justify-center md:justify-start gap-1 mb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-on-surface-variant font-medium">Based on 1,248 GOMET members</p>
+</div>
+<div class="flex-grow w-full space-y-3">
+<div class="flex items-center gap-4">
+<span class="text-xs font-bold w-12">Atmosphere</span>
+<div class="h-2 bg-surface-container-highest flex-grow rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[98%]"></div>
+</div>
+<span class="text-xs font-bold">5.0</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-xs font-bold w-12">Service</span>
+<div class="h-2 bg-surface-container-highest flex-grow rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[92%]"></div>
+</div>
+<span class="text-xs font-bold">4.8</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="text-xs font-bold w-12">Romance</span>
+<div class="h-2 bg-surface-container-highest flex-grow rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[95%]"></div>
+</div>
+<span class="text-xs font-bold">4.9</span>
+</div>
+</div>
+</div>
+<div class="mt-12 space-y-8">
+<div class="border-l-2 border-primary/20 pl-6 py-2">
+<p class="italic text-on-surface leading-relaxed mb-3">"The way the light hits the dining room at 7pm is truly magical. It's the perfect icebreaker for a first date."</p>
+<div class="flex items-center gap-2">
+<img alt="Reviewer" class="w-6 h-6 rounded-full" data-alt="Close up of a woman smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxqxVV-1sODScBB6qwlalfOwY7zo1N8eZ6CG8D33GkODBiJsg2N_SDOR6j0rusoY-4HcZd2nfvSO7ruV6lDMvjkjPSTP6SRgGydg5UWxvvX8NEhuaEsw86RI_iBAgnHJmDrKmM82gQIFhvqMSFx2kYs4z4iswmJomIxxpXI0diRGqIOuA6BxVpYiLjR_YsN4hIedh6_2dDFdUJGFzduZ4baFD_yjNU8jydU6X8clWBBIHJfN33MgfbfT1JDqGe1U5yjAVFvQHZwqs"/>
+<span class="text-xs font-bold">Elena R. • 3 months ago</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-6 pb-6 pt-3 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md rounded-t-[2rem] shadow-2xl z-50">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors scale-110 active:scale-95 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-inter text-label-md font-medium uppercase mt-1">Explore</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors scale-110 active:scale-95 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-inter text-label-md font-medium uppercase mt-1">Reservations</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors scale-110 active:scale-95 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-inter text-label-md font-medium uppercase mt-1">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary/10 text-primary rounded-full px-4 py-1 hover:bg-surface-container-high transition-colors scale-110 active:scale-95 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-inter text-label-md font-medium uppercase mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

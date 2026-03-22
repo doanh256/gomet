@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdad4",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-container-highest": "#e6e2dc",
+              "secondary": "#5f5e5e",
+              "inverse-surface": "#31302d",
+              "surface-bright": "#fdf9f3",
+              "surface": "#fdf9f3",
+              "on-primary-fixed-variant": "#8c1520",
+              "outline-variant": "#e0bfbd",
+              "tertiary-container": "#cf8a7f",
+              "surface-tint": "#ae2f34",
+              "error-container": "#ffdad6",
+              "on-error": "#ffffff",
+              "surface-dim": "#dddad4",
+              "primary-container": "#ff6b6b",
+              "on-surface": "#1c1c18",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-container": "#656464",
+              "inverse-primary": "#ffb3b0",
+              "secondary-fixed": "#e4e2e1",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary-fixed-variant": "#474747",
+              "background": "#fdf9f3",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-container-low": "#f7f3ed",
+              "tertiary": "#894e45",
+              "on-primary-fixed": "#410006",
+              "on-tertiary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-background": "#1c1c18",
+              "error": "#ba1a1a",
+              "outline": "#8c706f",
+              "secondary-container": "#e4e2e1",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "surface-container": "#f1ede7",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-variant": "#e6e2dc",
+              "on-primary-container": "#6d0010",
+              "surface-container-high": "#ebe8e2",
+              "on-surface-variant": "#584140",
+              "primary": "#ae2f34"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24
+    }
+.map-bg {
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuBq7mMBrXURl9eF5VHhjzOZ46u8Fxz074CjnLTBYxj0IC3vI8TsDMJoaP0IKChfOES_cgQ7v7I8fQEetcXsPVClYbBDWQRO5XS7T55x8OG5DcF_1IhVDlS9ic7TOR2ecTxwE2CK1lLOECDJ81PYN3pgTvkfF8e0i3FWJPGjoZ4ZoY3zusUfXY2XLYmxHL4BIOU6c0W7cqgP_NTNma5zOQoLFr-ATFrNXz6jaQnt34ihVl6Hh13zrYI7m8jdvd24cXPKbniyp2z7czY);
+    background-size: cover;
+    background-position: center
+    }
+.glass-panel {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px)
+    }</style>
+</head>
+<body class="bg-surface font-body text-on-surface overflow-hidden">
+<!-- Top Navigation Bar (Shared Component Strategy) -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md flex justify-between items-center px-8 h-20 w-full mx-auto">
+<div class="flex items-center gap-8">
+<h1 class="text-2xl font-black text-[#ae2f34] dark:text-[#FF6B6B] tracking-tighter font-headline">GOMET</h1>
+<nav class="hidden md:flex items-center gap-6">
+<a class="font-headline font-semibold tracking-tight text-stone-500 dark:text-stone-400 hover:text-[#ae2f34] transition-colors" href="#">Events</a>
+<a class="font-headline font-semibold tracking-tight text-[#ae2f34] dark:text-[#FF6B6B] border-b-2 border-[#ae2f34] pb-1" href="#">Discover</a>
+<a class="font-headline font-semibold tracking-tight text-stone-500 dark:text-stone-400 hover:text-[#ae2f34] transition-colors" href="#">Dating</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-surface-container-low px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-body" placeholder="Search venues..." type="text"/>
+</div>
+<button class="p-2 rounded-full hover:bg-stone-100/50 transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-stone-100/50 transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<img alt="User profile avatar" class="w-10 h-10 rounded-full object-cover" data-alt="User profile avatar portrait headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBicEtcdLwkSQL9aESkx-kIgyy3Ktnaly0EY9uOTDvvl6Vs_iArD0vJhD-MKsFtYI9m6lON68YUWOH8kjl-OveYY8SEvOUGxFJxXa7ffinFYqi2jdqBfEn35LTkRcBeMVu-3iv4WpSuuxsqmf9uLScPE_Xv_0anibMHT0ShTo0GXMjOnPFTHBZnWaaRRRgbcHyol44baR5veoqi3mTjKfRUZeSKSSoTekAPMHomYL-epm3UCVgrUBqaeI5Swyv5G3563GNUZdEjx0E"/>
+</div>
+</header>
+<!-- Main Map Canvas -->
+<main class="relative h-screen w-full pt-20">
+<!-- Interactive Map Background -->
+<div class="absolute inset-0 map-bg grayscale-[0.2] brightness-[0.95]" data-location="Saigon" style="">
+<!-- Simulated Markers -->
+<!-- Romantic Marker (Active) -->
+<div class="absolute top-[35%] left-[45%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer z-20">
+<div class="relative">
+<div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 ring-4 ring-white">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-primary rotate-45 -z-10 ring-2 ring-white"></div>
+</div>
+</div>
+<!-- Social Marker -->
+<div class="absolute top-[55%] left-[60%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer z-10">
+<div class="w-10 h-10 bg-tertiary-container rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 ring-2 ring-white">
+<span class="material-symbols-outlined text-on-tertiary-container text-xl">groups</span>
+</div>
+</div>
+<!-- Paid/Premium Marker -->
+<div class="absolute top-[42%] left-[28%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer z-10">
+<div class="w-10 h-10 bg-inverse-surface rounded-full flex items-center justify-center shadow-lg transform group-hover:scale-110 transition-transform duration-300 ring-2 ring-white">
+<span class="material-symbols-outlined text-primary-fixed-dim text-xl" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+</div>
+<!-- More Social Markers -->
+<div class="absolute top-[68%] left-[35%] -translate-x-1/2 -translate-y-1/2 group cursor-pointer z-10">
+<div class="w-8 h-8 bg-surface-container-highest rounded-full flex items-center justify-center shadow-md transform group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">restaurant</span>
+</div>
+</div>
+</div>
+<!-- UI Overlays -->
+<!-- Left Sidebar: Map Filters (Editorial Style) -->
+<div class="absolute left-8 top-28 w-80 space-y-6 pointer-events-none">
+<div class="bg-white/90 backdrop-blur-xl p-6 rounded-lg shadow-2xl shadow-primary/5 pointer-events-auto">
+<h2 class="font-headline text-2xl font-black text-on-surface tracking-tighter mb-4">Saigon Live</h2>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-3 bg-primary-fixed rounded-md">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">local_fire_department</span>
+<span class="text-sm font-semibold text-on-primary-fixed-variant">Highly Active</span>
+</div>
+<span class="text-xs font-bold text-primary px-2 py-1 bg-white rounded-full">128 Online</span>
+</div>
+<div class="space-y-2">
+<label class="text-[10px] uppercase tracking-widest font-bold text-on-surface-variant opacity-60">Categories</label>
+<div class="flex flex-wrap gap-2">
+<button class="bg-primary text-on-primary text-xs font-bold px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">favorite</span> Romantic
+                            </button>
+<button class="bg-surface-container-high text-on-surface text-xs font-bold px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">groups</span> Social
+                            </button>
+<button class="bg-surface-container-high text-on-surface text-xs font-bold px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">star</span> Premium
+                            </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Request Card (Floating Preview) -->
+<div class="bg-white/95 backdrop-blur-md p-4 rounded-lg shadow-xl pointer-events-auto transform translate-y-4 animate-pulse-subtle">
+<div class="flex gap-4">
+<div class="relative shrink-0">
+<img alt="Profile image" class="w-16 h-16 rounded object-cover" data-alt="Young woman smiling for profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDt08ziYC9EobOwqQF2MNJEn6Y5YENjmAX_zxS7qYP78hADJ4PO12Ci29wDu-khnHZ-RjSFuvEx9P2q1L75u6pfLuRTfEP2niH_J3ub07IRQwm45Em9xv6tk0O600HltYgJtQ-kiPJMhUK_5Z2gb9aYyeeKLiDnKXF9x_VZlxF5aIoRCiFa6O0r1FLy6Ra6Sge6yFjENpSv-3qPIXNNW-wobyVR-HXFJVpMuSGbCoWa4oMEpYa9ZOUNa9UyHZdKNoL6mwQA4r1Xwt4"/>
+<div class="absolute -top-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<h3 class="font-headline font-bold text-on-surface">Minh Anh, 24</h3>
+<span class="text-[10px] bg-primary-fixed text-primary px-2 py-0.5 rounded-full font-bold">ROMANTIC</span>
+</div>
+<p class="text-xs text-on-surface-variant line-clamp-1 mt-1">Coffee at The Workshop?</p>
+<div class="flex items-center gap-1 mt-2">
+<span class="material-symbols-outlined text-[14px] text-primary">location_on</span>
+<span class="text-[10px] font-medium text-on-surface-variant">District 1 • 200m away</span>
+</div>
+</div>
+</div>
+<div class="mt-4 flex gap-2">
+<button class="flex-1 bg-primary hover:bg-on-primary-fixed-variant text-on-primary text-xs font-bold py-2 rounded transition-colors">Send Request</button>
+<button class="p-2 bg-surface-container-high rounded text-on-surface-variant"><span class="material-symbols-outlined text-sm">chat</span></button>
+</div>
+</div>
+</div>
+<!-- Right Side: Bento Grid Overview -->
+<div class="absolute right-8 top-28 w-80 h-[calc(100vh-160px)] pointer-events-none">
+<div class="pointer-events-auto h-full overflow-y-auto space-y-4 no-scrollbar">
+<!-- Category Summary Bento -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-lg flex flex-col justify-between h-32">
+<span class="material-symbols-outlined text-primary text-3xl">wine_bar</span>
+<div>
+<div class="text-2xl font-black text-on-surface">12</div>
+<div class="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant">Date Spots</div>
+</div>
+</div>
+<div class="bg-surface-container-highest p-4 rounded-lg flex flex-col justify-between h-32">
+<span class="material-symbols-outlined text-tertiary text-3xl">event</span>
+<div>
+<div class="text-2xl font-black text-on-surface">08</div>
+<div class="text-[10px] uppercase tracking-wider font-bold text-on-surface-variant">Live Events</div>
+</div>
+</div>
+</div>
+<!-- Trending Events List -->
+<div class="bg-white/90 backdrop-blur-xl p-6 rounded-lg shadow-xl">
+<h4 class="font-headline font-bold text-on-surface mb-4">Trending Near You</h4>
+<div class="space-y-6">
+<!-- Event 1 -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-12 h-12 bg-primary-fixed rounded flex items-center justify-center shrink-0 group-hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-primary group-hover:text-white transition-colors">music_note</span>
+</div>
+<div class="flex-1">
+<h5 class="text-sm font-bold text-on-surface group-hover:text-primary transition-colors">Jazz Night at Chill Bar</h5>
+<p class="text-[11px] text-on-surface-variant">20:00 • District 3</p>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-12 h-12 bg-surface-container-high rounded flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary">palette</span>
+</div>
+<div class="flex-1">
+<h5 class="text-sm font-bold text-on-surface">Sip &amp; Paint Workshop</h5>
+<p class="text-[11px] text-on-surface-variant">Tomorrow • Thao Dien</p>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-12 h-12 bg-surface-container-high rounded flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-secondary">restaurant_menu</span>
+</div>
+<div class="flex-1">
+<h5 class="text-sm font-bold text-on-surface">The Culinary Curator Gala</h5>
+<p class="text-[11px] text-on-surface-variant">Sat, 19:00 • District 1</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Social Stats -->
+<div class="bg-inverse-surface p-6 rounded-lg text-white">
+<div class="flex items-center justify-between mb-4">
+<span class="text-[10px] uppercase tracking-widest font-bold opacity-60">Global Pulse</span>
+<div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-full border-2 border-inverse-surface" data-alt="User avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg-fKMYLV0ZCFmczFjl19MkJs_0N7sasdaoVxPD_6bRBHZjFk6v-7dlOinn5nENiHbGxaknDecgqjCDpmxKPUnzZalyoseQQGi4UkMZ6u5XKmGVjKOwqOnqopAdD9P2jgC1z_CeMvWg_4iZ3FC9BBP9DF75jRr2V01KEZUHyzPhaptSrIICB4yOxYJnejWVoIXIdEYIwfrNhUsExXFnXDP9Xzq_VSlIa90b-zZCNolnNfFX4lN7X-m6hTdVTkDl2-qFzD5UtR_aNo"/>
+<img class="w-6 h-6 rounded-full border-2 border-inverse-surface" data-alt="User avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuATvqhWQk4A3k-4QNkiFsmvfSokhLOY48PIrlGFtdws37LuW1fpboK2Y1q_oHQRx4sI3Wq1b-9uQYCWngGk-xIs3MCax-bYUv4Cki7Mp2Z4vk7GeJDfdoF7X9qGlDMAsXm6nU2oSfl5yYSHe-F2ZzLxh0PZKKpXCfY1DykPV4YgfJFa2Qq0JOZUkEfBNsTJy5TDSsAF-arc8VUsUFV1HCdpf3oqzv9sMfcg99VOie2CP1-NexawnYbb8FYfxkSGBIsAR10nLDsXFr4"/>
+<div class="w-6 h-6 rounded-full border-2 border-inverse-surface bg-primary flex items-center justify-center text-[8px] font-bold">+42</div>
+</div>
+</div>
+<p class="text-sm font-medium leading-relaxed italic opacity-90">"The city is coming alive tonight. 4 new requests just popped up in your vicinity."</p>
+</div>
+</div>
+</div>
+<!-- Floating Action Button (FAB) - Shared Component Logic -->
+<button class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-gradient-to-tr from-primary to-primary-container text-on-primary px-8 py-4 rounded-full shadow-2xl flex items-center gap-3 hover:scale-105 transition-transform duration-200 z-50">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<span class="font-headline font-bold tracking-tight">Post Date Request</span>
+</button>
+<!-- Map Controls -->
+<div class="absolute bottom-10 right-8 flex flex-col gap-2">
+<button class="w-12 h-12 bg-white rounded-lg shadow-lg flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+<button class="w-12 h-12 bg-white rounded-lg shadow-lg flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="w-12 h-12 bg-white rounded-lg shadow-lg flex items-center justify-center text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+</div>
+</main>
+<!-- Mobile Bottom Navigation (Hidden on Web) -->
+<footer class="md:hidden fixed bottom-0 w-full h-20 bg-white/90 backdrop-blur-md flex justify-around items-center px-4 z-50">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">event</span>
+<span class="text-[10px] font-bold">Events</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="text-[10px] font-bold">Map</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-bold">Matches</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+</footer>
+</body></html>

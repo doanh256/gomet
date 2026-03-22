@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET - Event Full Status</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#31302d",
+              "tertiary-fixed": "#ffdad4",
+              "surface-dim": "#dddad4",
+              "on-tertiary-fixed": "#370e08",
+              "surface-tint": "#ae2f34",
+              "surface-container-low": "#f7f3ed",
+              "outline-variant": "#e0bfbd",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-container": "#f1ede7",
+              "primary-fixed": "#ffdad8",
+              "on-primary-fixed": "#410006",
+              "surface-container-lowest": "#ffffff",
+              "on-surface-variant": "#584140",
+              "tertiary-container": "#cf8a7f",
+              "on-surface": "#1c1c18",
+              "surface-variant": "#e6e2dc",
+              "surface-bright": "#fdf9f3",
+              "on-background": "#1c1c18",
+              "on-secondary-fixed-variant": "#474747",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "primary": "#ae2f34",
+              "surface-container-highest": "#e6e2dc",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#656464",
+              "on-primary": "#ffffff",
+              "error-container": "#ffdad6",
+              "tertiary": "#894e45",
+              "secondary-container": "#e4e2e1",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#8c1520",
+              "secondary": "#5f5e5e",
+              "on-error": "#ffffff",
+              "on-tertiary-container": "#55251e",
+              "secondary-fixed-dim": "#c8c6c6",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "secondary-fixed": "#e4e2e1",
+              "surface-container-high": "#ebe8e2",
+              "on-error-container": "#93000a",
+              "inverse-on-surface": "#f4f0ea",
+              "background": "#fdf9f3",
+              "outline": "#8c706f",
+              "primary-fixed-dim": "#ffb3b0",
+              "inverse-primary": "#ffb3b0",
+              "surface": "#fdf9f3",
+              "primary-container": "#ff6b6b",
+              "on-primary-container": "#6d0010",
+              "error": "#ba1a1a"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bg-gradient-primary {
+            background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl fixed top-0 w-full z-50 shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer active:scale-95 duration-200">arrow_back</span>
+<h1 class="font-['Plus_Jakarta_Sans'] tracking-tight text-2xl font-bold tracking-tighter text-rose-600 dark:text-rose-400">GOMET</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-zinc-500 hover:bg-rose-50 p-2 rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined text-zinc-500 hover:bg-rose-50 p-2 rounded-full transition-colors">settings</button>
+</div>
+</div>
+<div class="bg-zinc-100 dark:bg-zinc-900 h-[1px] w-full"></div>
+</header>
+<main class="pt-24 px-6 max-w-4xl mx-auto">
+<!-- Event Header Card (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="md:col-span-2 relative h-80 rounded-lg overflow-hidden group">
+<img alt="Jazz Bar Atmosphere" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Interior of a luxury jazz bar with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAUkNoajNB3gbPiN0-YYE7GLatbmG4qoZVmRYYqXqFZGSdlPcjfaWQgl-Cx5bhkDQW-zshEMaUWG5BMmtbevcQvvgRGl73gEpYbODcT2O76kogC2anUMtVA5D1g7ybKAhElIe5HnpfVx5eSKvPI3tVLUFfoLpyHa_3fSlmb1VdapXbjdaUdpXe4uG4vgUfAOkvVS-ipfv93BAK5YSA49Yy0cb00hKkS7QB2M3e5L9_gSSU-ydHIRPWkyfHhggi49n-XmU3LuhxUDWE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8">
+<span class="inline-block px-3 py-1 bg-primary text-white text-[10px] font-bold uppercase tracking-[0.2em] rounded-full mb-3">Velvet Bistro Series</span>
+<h2 class="font-headline text-4xl font-extrabold text-white tracking-tight leading-none mb-2">Midnight Jazz &amp; Merlot</h2>
+<div class="flex items-center gap-4 text-white/80 text-sm">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">schedule</span> 21:00 - Late</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-base">location_on</span> District 1, HCMC</span>
+</div>
+</div>
+</div>
+<!-- Capacity Alert Card -->
+<div class="bg-surface-container-high rounded-lg p-8 flex flex-col justify-between items-center text-center">
+<div class="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-4xl" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person_off</span>
+</div>
+<div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-2">ĐÃ HẾT CHỖ</h3>
+<p class="text-on-surface-variant text-sm font-medium leading-relaxed uppercase tracking-wider">Event Full Capacity</p>
+</div>
+<div class="mt-6 w-full">
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary w-full"></div>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-2 font-bold tracking-widest">150/150 GUESTS CHECKED-IN</p>
+</div>
+</div>
+</div>
+<!-- Action Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+<button class="bg-gradient-primary p-6 rounded-lg flex items-center justify-between group active:scale-95 duration-200">
+<div class="text-left">
+<span class="text-on-primary/80 text-xs font-bold uppercase tracking-widest block mb-1">Queue Management</span>
+<span class="text-on-primary font-headline text-xl font-bold">Xem Danh Sách Chờ</span>
+</div>
+<div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform">
+<span class="material-symbols-outlined text-on-primary">groups</span>
+</div>
+</button>
+<button class="bg-surface-container-lowest p-6 rounded-lg flex items-center justify-between group border border-outline-variant/20 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] active:scale-95 duration-200">
+<div class="text-left">
+<span class="text-on-surface-variant text-xs font-bold uppercase tracking-widest block mb-1">Alternative Options</span>
+<span class="text-on-surface font-headline text-xl font-bold">Sự kiện GOMET khác</span>
+</div>
+<div class="w-12 h-12 bg-surface-container-high rounded-full flex items-center justify-center group-hover:rotate-12 transition-transform">
+<span class="material-symbols-outlined text-primary">explore</span>
+</div>
+</button>
+</div>
+<!-- Checked-in Guest List Section -->
+<section class="mb-12">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h4 class="font-headline text-2xl font-bold tracking-tight">Khách đã Check-in</h4>
+<p class="text-on-surface-variant text-sm">Danh sách nhân viên đang quản lý tại cửa</p>
+</div>
+<button class="text-primary font-bold text-sm flex items-center gap-1 hover:underline">
+                    View Full List <span class="material-symbols-outlined text-base">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Guest Card 1 -->
+<div class="bg-surface-container-lowest p-4 rounded-lg flex items-center gap-4 transition-all hover:bg-surface-container-low">
+<div class="relative">
+<img alt="Guest Profile" class="w-12 h-12 rounded-full object-cover" data-alt="Close up portrait of a young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfeSOj64u9a5NeYU7IK0b7xPMIBzp3I6oBekIW3fU257xTfBqmOn32Bp7fGen6IIwRaAN88EfHLdoO63fZ6aV0fhwV2IeGKOGhOgAYcpX3Mnba2oidsv-eS_pz9SKjEDbSJEJQ3xIr-SaQkr_KteNCFgHQj95z2VDtAWF8X513Qmvfma-nsz9N1-TTh542g92j6WE4vg8s7vPnmLYz7axleUOokCCcbgVrL3wCpO75Z67UX0jAFNTVSMlx14kzAw_ZkBMLlVkH5tY"/>
+<div class="absolute -bottom-1 -right-1 bg-green-500 w-4 h-4 rounded-full border-2 border-white"></div>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Minh Hoàng</p>
+<p class="text-on-surface-variant text-[10px] uppercase tracking-tighter">Premium Member • 20:45</p>
+</div>
+<span class="material-symbols-outlined text-zinc-400">more_vert</span>
+</div>
+<!-- Guest Card 2 -->
+<div class="bg-surface-container-lowest p-4 rounded-lg flex items-center gap-4 transition-all hover:bg-surface-container-low">
+<div class="relative">
+<img alt="Guest Profile" class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUltz6hfTCK_EP74o6KTWq0XWsTp3Uwi_YGVVQNRElTs6S0rsTn2Gtjgyc3gJz5lK1gHma5hBAimHiS7WQmk-2BF5DI9GRhXz0mmByMN__buvyCcWBz25NikQEahMtiTzktOEyl52SScEIjlzYxKaccKy4hKxII3wfwmiteHlEVoNvFmTDobtV3aI2uLnfqUs8j9nucZlYPgj-VrnXa7eFA13gEZsPOVcieM8utqEH-1bCBY2ONEfQgtc_hVWjYg5TXu9Zjt0K_sc"/>
+<div class="absolute -bottom-1 -right-1 bg-green-500 w-4 h-4 rounded-full border-2 border-white"></div>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Linh Chi</p>
+<p class="text-on-surface-variant text-[10px] uppercase tracking-tighter">Gold Tier • 20:52</p>
+</div>
+<span class="material-symbols-outlined text-zinc-400">more_vert</span>
+</div>
+<!-- Guest Card 3 -->
+<div class="bg-surface-container-lowest p-4 rounded-lg flex items-center gap-4 transition-all hover:bg-surface-container-low">
+<div class="relative">
+<img alt="Guest Profile" class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a man in a casual shirt" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgPeAIyeIkd0Hr0Qe98gHsTz7KEDbhoMBuo7eH3EOiAvMQqwnapLju_PkUVe-AMoK91cWsBIGZwY88vl4vhoB-Lnf713fiC17nHduxTfQXnS8yah25_UW3BVBdCKb2MX4M9-JrGSh0K3qyWqWL64ppjK4rgyIx3RX0zXqE2EZTfRGIpYhAVqJi5NEw6SRihXObitfiqDsZT0dRl_3m-sl0aE2zCSAHPJfy3Oi2zkxVMZa3XcPfLZnShv0ZfN5WkPe4Oq62M_LkOsY"/>
+<div class="absolute -bottom-1 -right-1 bg-green-500 w-4 h-4 rounded-full border-2 border-white"></div>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Alex Nguyễn</p>
+<p class="text-on-surface-variant text-[10px] uppercase tracking-tighter">Guest • 21:05</p>
+</div>
+<span class="material-symbols-outlined text-zinc-400">more_vert</span>
+</div>
+</div>
+</section>
+<!-- Nearby Recommendations -->
+<section>
+<h4 class="font-headline text-lg font-bold mb-6">Gợi ý gần đây (Still Available)</h4>
+<div class="flex gap-6 overflow-x-auto pb-4 no-scrollbar">
+<div class="min-w-[280px] bg-surface-container rounded-lg overflow-hidden flex-shrink-0 group">
+<div class="h-32 relative">
+<img alt="Cocktail lounge" class="w-full h-full object-cover" data-alt="Elegant cocktail lounge interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDES7UZz6ZDbOsQcbb9rcwakGRAP61ckDcJKPrCYEgTQCKrbPfuhVIxFxDFl0q0tumYPsOSTutjfTt2f2UKDcxU-fEDp-WS5_HjbDqeF1ZazNfYmD8QMaHKNbjjNbE2Ao5ZvUtR2EKPU_RW61lUaer43RBZp2l16JmZLuc6kDF9niTVkmvVXYwprKVKfFDOy2TI35w8fHwejT8KCSAYK5fAydWlL_vyRXeRSzTAYhDOfgJ6QPu3ad4-qGzO45OzYjnjgCQT7dbo5QM"/>
+<div class="absolute top-3 right-3 px-2 py-1 bg-white/20 backdrop-blur-md rounded text-white text-[10px] font-bold">400m</div>
+</div>
+<div class="p-4">
+<p class="font-bold text-sm mb-1">Amber Lounge Night</p>
+<p class="text-on-surface-variant text-xs mb-3">12 spots remaining</p>
+<button class="w-full py-2 bg-surface-container-highest rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Gửi khách qua đây</button>
+</div>
+</div>
+<div class="min-w-[280px] bg-surface-container rounded-lg overflow-hidden flex-shrink-0 group">
+<div class="h-32 relative">
+<img alt="Rooftop bar" class="w-full h-full object-cover" data-alt="Rooftop bar with city lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4Vo8mQvepBSsbyWMzXnjU1pvjx-fqJPYKrDr_b-N_7FqRGZy-hj-srGxeOoK0_ojtRZ2OiufH9lxvTBcK7_-jg-WDBWyp_4zLRr9if1u2ECySBelIocNqbXymWujysljv_oxRnrcar-3-p1lVAt1NGNLks3xmoqxejZ5JRXVzBVjCwR4coQ66IL8QDjJbBoidD_4pOgjMzDH21dqEHMUcLcG3qqu_Y1tMJM1SskLi-PbAREvDQ1Tp5NZ5XIjJX14luNrxP0thvak"/>
+<div class="absolute top-3 right-3 px-2 py-1 bg-white/20 backdrop-blur-md rounded text-white text-[10px] font-bold">1.2km</div>
+</div>
+<div class="p-4">
+<p class="font-bold text-sm mb-1">Skyline Soirée</p>
+<p class="text-on-surface-variant text-xs mb-3">Open invite</p>
+<button class="w-full py-2 bg-surface-container-highest rounded text-xs font-bold hover:bg-primary hover:text-white transition-colors">Gửi khách qua đây</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl fixed bottom-0 w-full z-50 rounded-t-[2rem] shadow-[0_-8px_30px_rgb(174,47,52,0.06)] border-t border-rose-100/20 dark:border-rose-900/20">
+<div class="fixed bottom-0 left-0 w-full flex justify-around items-end px-4 pb-6 pt-2">
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-rose-500 transition-all active:scale-90 transition-transform">
+<span class="material-symbols-outlined">qr_code_scanner</span>
+<span class="text-[10px] font-medium uppercase tracking-wider font-['Inter']">Check-in</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-rose-600 text-white rounded-full p-3 mb-2 scale-110 shadow-lg shadow-rose-500/30 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+<span class="hidden">Events</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-rose-500 transition-all active:scale-90 transition-transform">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-medium uppercase tracking-wider font-['Inter']">Guests</span>
+</div>
+<div class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-rose-500 transition-all active:scale-90 transition-transform">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-medium uppercase tracking-wider font-['Inter']">Reports</span>
+</div>
+</div>
+</nav>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</body></html>

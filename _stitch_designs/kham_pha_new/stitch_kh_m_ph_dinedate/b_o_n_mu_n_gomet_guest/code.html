@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-dim": "#dddad4",
+              "secondary-fixed": "#e4e2e1",
+              "primary-fixed-dim": "#ffb3b0",
+              "primary": "#ae2f34",
+              "on-surface": "#1c1c18",
+              "surface-bright": "#fdf9f3",
+              "on-primary-container": "#6d0010",
+              "on-secondary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#ebe8e2",
+              "tertiary-container": "#cf8a7f",
+              "inverse-surface": "#31302d",
+              "tertiary-fixed": "#ffdad4",
+              "surface-tint": "#ae2f34",
+              "on-tertiary-container": "#55251e",
+              "tertiary": "#894e45",
+              "surface-variant": "#e6e2dc",
+              "surface-container": "#f1ede7",
+              "primary-fixed": "#ffdad8",
+              "on-error-container": "#93000a",
+              "on-surface-variant": "#584140",
+              "on-primary-fixed": "#410006",
+              "inverse-on-surface": "#f4f0ea",
+              "on-background": "#1c1c18",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "error-container": "#ffdad6",
+              "outline": "#8c706f",
+              "background": "#fdf9f3",
+              "on-secondary-fixed-variant": "#474747",
+              "on-secondary-fixed": "#1b1c1c",
+              "primary-container": "#ff6b6b",
+              "outline-variant": "#e0bfbd",
+              "on-tertiary": "#ffffff",
+              "on-primary": "#ffffff",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#656464",
+              "surface-container-low": "#f7f3ed",
+              "secondary": "#5f5e5e",
+              "secondary-fixed-dim": "#c8c6c6",
+              "on-tertiary-fixed": "#370e08",
+              "on-primary-fixed-variant": "#8c1520",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface": "#fdf9f3",
+              "inverse-primary": "#ffb3b0",
+              "surface-container-highest": "#e6e2dc",
+              "secondary-container": "#e4e2e1",
+              "on-error": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top Navigation (Shell suppressed for focused task, using custom back header) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md px-6 py-4 flex items-center justify-between">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-highest transition-colors active:scale-90">
+<span class="material-symbols-outlined text-on-surface">arrow_back_ios_new</span>
+</button>
+<h1 class="text-on-surface font-headline font-bold text-lg tracking-tight">Running Late?</h1>
+<div class="w-10"></div> <!-- Spacer for symmetry -->
+</header>
+<main class="pt-24 px-6 max-w-md mx-auto">
+<!-- Reservation Context Card -->
+<section class="mb-10 relative overflow-hidden rounded-lg bg-surface-container-low p-6">
+<div class="flex items-start gap-4">
+<div class="w-16 h-16 rounded-md overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Interior of a luxury modern restaurant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFKVXkzs_vamkHEU9nu7gDI_7-3wu9UjMHhmfsmsGdXlkFuw0m26u07ID1k2_e9IAIwRRe1DrbCSfMBJX6hxGPLwvZ2AzxZtK93LEMgMf7KzwzoMesW57rVxWiJvwTeFROaLErOW1ECgO7ngt4pQ_c9qYYAyJeveImHONGar7npNGOz6wIjgqzF3XlxTSTCiupAHuk0kShnrcln0PKegCDZ8jcYQ2SZhdg_fiRlfT--75wrLcL-zhuteTz3gmWwwKX6O6yP9gXUJw"/>
+</div>
+<div>
+<span class="inline-block text-[10px] font-extrabold uppercase tracking-widest text-primary mb-1">Current Booking</span>
+<h2 class="text-on-surface font-headline font-bold text-xl leading-tight">The Gilded Fork</h2>
+<p class="text-on-surface-variant text-sm font-medium">Tonight, 8:30 PM • 2 Guests</p>
+</div>
+</div>
+<!-- Decorative circle -->
+<div class="absolute -right-8 -bottom-8 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+</section>
+<!-- Form Section -->
+<div class="space-y-8">
+<!-- Delay Selector -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<label class="text-on-surface font-headline font-bold text-sm uppercase tracking-wider">How much longer?</label>
+</div>
+<div class="grid grid-cols-3 gap-3">
+<!-- 5 Min -->
+<label class="relative group cursor-pointer">
+<input checked="" class="peer sr-only" name="delay" type="radio" value="5"/>
+<div class="flex flex-col items-center justify-center py-4 rounded-lg bg-surface-container-lowest border-2 border-transparent peer-checked:border-primary peer-checked:bg-primary-fixed/30 transition-all active:scale-95">
+<span class="text-on-surface font-headline font-extrabold text-xl">5</span>
+<span class="text-on-surface-variant text-[10px] font-bold uppercase tracking-tighter">Minutes</span>
+</div>
+</label>
+<!-- 15 Min -->
+<label class="relative group cursor-pointer">
+<input class="peer sr-only" name="delay" type="radio" value="15"/>
+<div class="flex flex-col items-center justify-center py-4 rounded-lg bg-surface-container-lowest border-2 border-transparent peer-checked:border-primary peer-checked:bg-primary-fixed/30 transition-all active:scale-95">
+<span class="text-on-surface font-headline font-extrabold text-xl">15</span>
+<span class="text-on-surface-variant text-[10px] font-bold uppercase tracking-tighter">Minutes</span>
+</div>
+</label>
+<!-- 30 Min -->
+<label class="relative group cursor-pointer">
+<input class="peer sr-only" name="delay" type="radio" value="30"/>
+<div class="flex flex-col items-center justify-center py-4 rounded-lg bg-surface-container-lowest border-2 border-transparent peer-checked:border-primary peer-checked:bg-primary-fixed/30 transition-all active:scale-95">
+<span class="text-on-surface font-headline font-extrabold text-xl">30</span>
+<span class="text-on-surface-variant text-[10px] font-bold uppercase tracking-tighter">Minutes</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Message Area -->
+<section>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">chat_bubble_outline</span>
+<label class="text-on-surface font-headline font-bold text-sm uppercase tracking-wider">Quick Note</label>
+</div>
+<div class="relative">
+<textarea class="w-full bg-surface-container-highest/50 border-none rounded-lg p-4 text-on-surface placeholder:text-on-surface-variant/50 focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="e.g., Trapped in traffic, will be there ASAP!" rows="4"></textarea>
+</div>
+</section>
+<!-- Quick Toggles (Chips) -->
+<section>
+<p class="text-[10px] font-bold uppercase text-on-surface-variant/60 mb-3 ml-1">Suggested Reasons</p>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface text-xs font-semibold hover:bg-primary/10 transition-colors">Traffic</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface text-xs font-semibold hover:bg-primary/10 transition-colors">Parking</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface text-xs font-semibold hover:bg-primary/10 transition-colors">Public Transit</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface text-xs font-semibold hover:bg-primary/10 transition-colors">Work Delay</button>
+</div>
+</section>
+</div>
+</main>
+<!-- Fixed Action Button (Shell logic: Send Action) -->
+<div class="fixed bottom-0 left-0 w-full p-6 bg-gradient-to-t from-background via-background to-transparent pt-12">
+<button class="w-full py-4 rounded-full bg-gradient-to-br from-primary to-primary-container text-white font-headline font-extrabold text-lg shadow-xl shadow-primary/20 active:scale-95 transition-transform flex items-center justify-center gap-3">
+<span>Send Late Notice</span>
+<span class="material-symbols-outlined text-2xl">send</span>
+</button>
+<p class="text-center text-[10px] text-on-surface-variant/60 mt-4 uppercase tracking-widest font-bold">The venue will be notified immediately</p>
+</div>
+<!-- Background Decoration -->
+<div class="fixed top-0 right-0 -z-10 opacity-30 pointer-events-none">
+<div class="w-64 h-64 bg-primary/10 rounded-full blur-3xl -mr-32 -mt-32"></div>
+</div>
+<!-- Navigation Shell (Using BottomNavBar as anchor, but highlighted item logic applied) -->
+<!-- Note: Following the rule to highlight "Late Arrivals" as the active tab -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface/90 dark:bg-zinc-950/90 backdrop-blur-xl no-border-lines bg-surface-container-low shadow-[0_-8px_30px_rgb(174,47,52,0.06)] md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 hover:scale-105 transition-transform active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-inter text-[10px] font-bold">Reservations</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-primary to-primary-container text-white rounded-full px-6 py-2 scale-110 shadow-lg active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="notification_important">notification_important</span>
+<span class="font-inter text-[10px] font-bold">Late Arrivals</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 hover:scale-105 transition-transform active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-inter text-[10px] font-bold">Guest Status</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant opacity-70 hover:opacity-100 hover:scale-105 transition-transform active:scale-90 duration-150">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-inter text-[10px] font-bold">Profile</span>
+</div>
+</nav>
+</body></html>

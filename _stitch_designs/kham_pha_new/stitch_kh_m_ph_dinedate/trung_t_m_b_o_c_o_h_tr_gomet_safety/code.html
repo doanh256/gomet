@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET Alpha - Safety &amp; Support</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-low": "#f7f3ed",
+              "primary-container": "#ff6b6b",
+              "on-surface-variant": "#584140",
+              "on-tertiary-container": "#55251e",
+              "surface-dim": "#dddad4",
+              "on-secondary-container": "#656464",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "tertiary-fixed": "#ffdad4",
+              "background": "#fdf9f3",
+              "surface-tint": "#ae2f34",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-bright": "#fdf9f3",
+              "error": "#ba1a1a",
+              "on-secondary-fixed-variant": "#474747",
+              "secondary-fixed": "#e4e2e1",
+              "primary-fixed": "#ffdad8",
+              "surface-variant": "#e6e2dc",
+              "inverse-primary": "#ffb3b0",
+              "secondary-container": "#e4e2e1",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-container": "#cf8a7f",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-primary-fixed": "#410006",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "secondary-fixed-dim": "#c8c6c6",
+              "on-surface": "#1c1c18",
+              "surface-container": "#f1ede7",
+              "outline": "#8c706f",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-error-container": "#93000a",
+              "on-background": "#1c1c18",
+              "primary": "#ae2f34",
+              "on-tertiary-fixed": "#370e08",
+              "secondary": "#5f5e5e",
+              "outline-variant": "#e0bfbd",
+              "on-secondary": "#ffffff",
+              "on-primary": "#ffffff",
+              "surface-container-highest": "#e6e2dc",
+              "surface": "#fdf9f3",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "on-primary-container": "#6d0010",
+              "tertiary": "#894e45",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed-dim": "#ffb3b0"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 backdrop-blur-md shadow-sm">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-extrabold tracking-tighter text-[#ae2f34]">GOMET Alpha</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6">
+<a class="text-stone-600 font-medium hover:text-[#ae2f34] transition-colors" href="#">Discover</a>
+<a class="text-stone-600 font-medium hover:text-[#ae2f34] transition-colors" href="#">Events</a>
+<a class="text-[#ae2f34] font-bold" href="#">Safety</a>
+<a class="text-stone-600 font-medium hover:text-[#ae2f34] transition-colors" href="#">Partners</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-stone-100 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-stone-100 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-7xl mx-auto">
+<!-- Hero Section: Trust & Safety -->
+<section class="mb-12">
+<div class="relative overflow-hidden rounded-lg bg-surface-container-low p-8 md:p-12 flex flex-col md:flex-row items-center gap-8">
+<div class="flex-1 z-10">
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-background mb-4 -ml-1">Safety &amp; Support Hub</h1>
+<p class="text-on-surface-variant text-lg max-w-xl mb-8">Your well-being is our top priority. Access immediate help, report concerns, or find answers to your security questions.</p>
+<!-- Search FAQ -->
+<div class="relative max-w-md">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full pl-12 pr-4 py-4 bg-surface-container-lowest border-none rounded-DEFAULT shadow-sm focus:ring-2 focus:ring-primary/20 text-on-surface" placeholder="Search Safety &amp; Privacy FAQ..." type="text"/>
+</div>
+</div>
+<!-- Hotline Callout Card -->
+<div class="w-full md:w-80 shrink-0">
+<div class="bg-gradient-to-br from-primary to-primary-container p-6 rounded-lg text-white shadow-xl transform rotate-2">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">emergency_share</span>
+<span class="font-bold tracking-wider text-xs uppercase">Immediate Help</span>
+</div>
+<h3 class="text-xl font-bold mb-6">Safety Hotline</h3>
+<p class="text-white/80 text-sm mb-6 leading-relaxed">Need urgent assistance during a date or event? Connect with our response team 24/7.</p>
+<button class="w-full py-4 bg-white text-primary font-bold rounded-DEFAULT flex items-center justify-center gap-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">call</span>
+                            Call Now
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Actions Bento Grid -->
+<section class="mb-16">
+<h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">gavel</span>
+                Report an Issue
+            </h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Action 1 -->
+<button class="group bg-surface-container-lowest p-8 rounded-lg flex flex-col items-start text-left transition-all hover:shadow-lg hover:bg-primary/5 active:scale-95">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person_alert</span>
+</div>
+<span class="font-headline font-bold text-lg mb-2">Report a User</span>
+<p class="text-on-surface-variant text-sm leading-relaxed">Inappropriate behavior, fake profiles, or harassment.</p>
+</button>
+<!-- Action 2 -->
+<button class="group bg-surface-container-lowest p-8 rounded-lg flex flex-col items-start text-left transition-all hover:shadow-lg hover:bg-primary/5 active:scale-95">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">storefront</span>
+</div>
+<span class="font-headline font-bold text-lg mb-2">Report a Venue</span>
+<p class="text-on-surface-variant text-sm leading-relaxed">Unsafe conditions or inaccurate partner details.</p>
+</button>
+<!-- Action 3 -->
+<button class="group bg-surface-container-lowest p-8 rounded-lg flex flex-col items-start text-left transition-all hover:shadow-lg hover:bg-primary/5 active:scale-95">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bug_report</span>
+</div>
+<span class="font-headline font-bold text-lg mb-2">Technical Issue</span>
+<p class="text-on-surface-variant text-sm leading-relaxed">App glitches, payment errors, or login troubles.</p>
+</button>
+<!-- Action 4 -->
+<button class="group bg-surface-container-lowest p-8 rounded-lg flex flex-col items-start text-left transition-all hover:shadow-lg hover:bg-primary/5 active:scale-95">
+<div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat</span>
+</div>
+<span class="font-headline font-bold text-lg mb-2">Feedback</span>
+<p class="text-on-surface-variant text-sm leading-relaxed">Share suggestions to improve the GOMET experience.</p>
+</button>
+</div>
+</section>
+<!-- Active Reports & FAQ -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+<!-- Active Reports Column -->
+<section class="lg:col-span-2">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-bold flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">history</span>
+                        Your Active Reports
+                    </h2>
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-xs font-bold text-secondary uppercase tracking-widest">3 Active</span>
+</div>
+<div class="space-y-4">
+<!-- Report Item 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-center gap-6 group transition-all">
+<div class="w-14 h-14 shrink-0 rounded-lg overflow-hidden">
+<img alt="Venue report thumbnail" class="w-full h-full object-cover" data-alt="A trendy bistro with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4MIv3XqX6TVrqPr8UNC7FP2OLVkdy0iNKgeLz6hLsbPcSsa9zzBqLzSRN0Npq_Kh95t4Yc_FOXKNNUMDqe-fHp_n0rx9ZmiWaZZh28xxPWZElOBOzHmA2_bCjEyn4L92Abt_R4j2uYZNeNkpYZg4XJlThW4nYOKOAgO0BS2VSI65e9r2HrYHdYKzGzsWmsHZkeyQVYWyBhvsopbSPBuvydpogFnecvYfV4RaLs0KMLYraxfPtH90r1_Gp28VGuCltdcO4j3CyZo8"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-headline font-bold text-on-background">La Boheme Bistro</span>
+<span class="text-outline text-xs">• Report #48291</span>
+</div>
+<p class="text-on-surface-variant text-sm">Issue: Safety hazard near back exit reported on Oct 12.</p>
+</div>
+<div class="text-right">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-xs font-bold mb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                Under Review
+                            </div>
+<div class="text-[10px] text-outline uppercase tracking-tighter">Updated 2h ago</div>
+</div>
+</div>
+<!-- Report Item 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-center gap-6 group transition-all">
+<div class="w-14 h-14 shrink-0 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">account_circle</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-headline font-bold text-on-background">User: Michael S.</span>
+<span class="text-outline text-xs">• Report #48255</span>
+</div>
+<p class="text-on-surface-variant text-sm">Issue: Spam / Impersonation reported on Oct 10.</p>
+</div>
+<div class="text-right">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold mb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                Resolved
+                            </div>
+<div class="text-[10px] text-outline uppercase tracking-tighter">Resolved 1d ago</div>
+</div>
+</div>
+<!-- Report Item 3 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-center gap-6 group transition-all">
+<div class="w-14 h-14 shrink-0 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">credit_card_off</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="font-headline font-bold text-on-background">Billing Discrepancy</span>
+<span class="text-outline text-xs">• Report #48102</span>
+</div>
+<p class="text-on-surface-variant text-sm">Issue: Double charge for GOMET Gold sub.</p>
+</div>
+<div class="text-right">
+<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold mb-2">
+<span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                                In Progress
+                            </div>
+<div class="text-[10px] text-outline uppercase tracking-tighter">Updated 3d ago</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Sidebar -->
+<aside>
+<div class="bg-surface-container-high/30 p-8 rounded-lg">
+<h2 class="text-xl font-bold mb-6">Popular Articles</h2>
+<ul class="space-y-6">
+<li>
+<a class="group block" href="#">
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-1 block">Safety Tips</span>
+<p class="font-headline font-bold text-on-background group-hover:text-primary transition-colors">Meeting in person for the first time</p>
+</a>
+</li>
+<li>
+<a class="group block" href="#">
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-1 block">Account</span>
+<p class="font-headline font-bold text-on-background group-hover:text-primary transition-colors">How to block and unblock users</p>
+</a>
+</li>
+<li>
+<a class="group block" href="#">
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-1 block">Privacy</span>
+<p class="font-headline font-bold text-on-background group-hover:text-primary transition-colors">Controlling who sees your location</p>
+</a>
+</li>
+<li>
+<a class="group block" href="#">
+<span class="text-xs font-bold text-primary uppercase tracking-widest mb-1 block">Verification</span>
+<p class="font-headline font-bold text-on-background group-hover:text-primary transition-colors">Understanding the 'GOMET Verified' badge</p>
+</a>
+</li>
+</ul>
+<div class="mt-12 pt-8 border-t border-outline-variant/30">
+<p class="text-sm text-on-surface-variant mb-4 italic text-center">"Your safety is our priority. Always let someone know where you are going."</p>
+<div class="flex justify-center gap-4">
+<span class="material-symbols-outlined text-tertiary">verified_user</span>
+<span class="material-symbols-outlined text-tertiary">lock</span>
+<span class="material-symbols-outlined text-tertiary">privacy_tip</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-[#fdf9f3]/80 backdrop-blur-md rounded-t-[2rem] z-50 shadow-[0_-4px_24px_rgba(174,47,52,0.05)]">
+<a class="flex flex-col items-center justify-center text-stone-500 w-12 h-12" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 w-12 h-12" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] text-white rounded-full w-12 h-12 shadow-lg scale-110" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="sr-only">Safety</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 w-12 h-12" href="#">
+<span class="material-symbols-outlined">storefront</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Partners</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 w-12 h-12" href="#">
+<span class="material-symbols-outlined">dashboard_customize</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-wider">Admin</span>
+</a>
+</nav>
+</body></html>

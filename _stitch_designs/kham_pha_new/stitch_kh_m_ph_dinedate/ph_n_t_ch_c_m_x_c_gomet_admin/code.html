@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Phân tích Cảm xúc Người dùng - GOMET Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#ffb3b0",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#e4e2e1",
+              "tertiary-container": "#cf8a7f",
+              "on-primary-fixed": "#410006",
+              "on-background": "#1c1c18",
+              "tertiary": "#894e45",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdad8",
+              "secondary": "#5f5e5e",
+              "inverse-primary": "#ffb3b0",
+              "error-container": "#ffdad6",
+              "surface-tint": "#ae2f34",
+              "surface-container-highest": "#e6e2dc",
+              "on-surface-variant": "#584140",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e6e2dc",
+              "error": "#ba1a1a",
+              "surface-container": "#f1ede7",
+              "surface-dim": "#dddad4",
+              "surface": "#fdf9f3",
+              "on-secondary-container": "#656464",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "on-error-container": "#93000a",
+              "background": "#fdf9f3",
+              "primary-container": "#ff6b6b",
+              "on-surface": "#1c1c18",
+              "outline-variant": "#e0bfbd",
+              "secondary-container": "#e4e2e1",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-primary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-container-low": "#f7f3ed",
+              "primary": "#ae2f34",
+              "outline": "#8c706f",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-secondary-fixed-variant": "#474747",
+              "on-primary-container": "#6d0010",
+              "inverse-surface": "#31302d",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-tertiary-fixed": "#370e08",
+              "tertiary-fixed": "#ffdad4",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-tertiary-container": "#55251e"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-primary-gradient {
+            background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+        }
+        .glass-nav {
+            background-color: rgba(253, 249, 243, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 2rem;
+        }
+        @media (max-width: 1024px) {
+            .asymmetric-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-background font-body antialiased">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 glass-nav shadow-sm">
+<div class="flex justify-between items-center px-8 h-20 max-w-full mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold tracking-tighter text-[#ae2f34]">GOMET</span>
+<nav class="hidden md:flex gap-8">
+<a class="text-slate-500 hover:text-[#ae2f34] transition-colors font-headline font-semibold" href="#">Discover</a>
+<a class="text-slate-500 hover:text-[#ae2f34] transition-colors font-headline font-semibold" href="#">Events</a>
+<a class="text-slate-500 hover:text-[#ae2f34] transition-colors font-headline font-semibold" href="#">Venues</a>
+<a class="text-[#ae2f34] border-b-2 border-[#ae2f34] pb-1 font-headline font-semibold" href="#">Admin</a>
+</nav>
+</div>
+<div class="flex items-center gap-6">
+<div class="relative hidden lg:block">
+<input class="bg-surface-container-highest border-none rounded-full px-6 py-2 text-sm w-64 focus:ring-2 focus:ring-primary/20" placeholder="Tìm kiếm dữ liệu..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-[#f7f3ed] rounded-lg transition-all text-on-surface">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-[#f7f3ed] rounded-lg transition-all text-on-surface">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-20 px-8 max-w-[1600px] mx-auto">
+<!-- Hero Header -->
+<div class="mb-12 relative">
+<h1 class="font-headline text-5xl font-extrabold tracking-tighter text-on-background mb-4">
+                Phân tích <span class="text-primary">Cảm xúc</span> Người dùng
+            </h1>
+<p class="text-secondary max-w-2xl text-lg">
+                Theo dõi và phân tích chiều sâu cảm xúc từ các đánh giá ẩm thực. Sử dụng AI để nhận diện các xu hướng hài lòng và điểm cần cải thiện tại các địa điểm.
+            </p>
+<div class="absolute -top-10 -right-10 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+</div>
+<!-- Sentiment Overview Bento -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<div class="md:col-span-2 bg-surface-container-low rounded-lg p-8 relative overflow-hidden">
+<div class="flex justify-between items-start mb-8">
+<div>
+<p class="font-headline font-bold text-sm uppercase tracking-widest text-secondary mb-1">Chỉ số Hài lòng (CSAT)</p>
+<h2 class="text-4xl font-extrabold text-on-background">4.8 <span class="text-sm font-normal text-primary">/ 5.0</span></h2>
+</div>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">+12% vs tháng trước</span>
+</div>
+<!-- Mock Chart Line -->
+<div class="h-32 w-full flex items-end gap-1">
+<div class="bg-primary-container/40 h-1/2 w-full rounded-t-sm"></div>
+<div class="bg-primary-container/40 h-2/3 w-full rounded-t-sm"></div>
+<div class="bg-primary-container/40 h-3/5 w-full rounded-t-sm"></div>
+<div class="bg-primary-container/40 h-4/5 w-full rounded-t-sm"></div>
+<div class="bg-primary-gradient h-full w-full rounded-t-sm"></div>
+<div class="bg-primary-gradient h-5/6 w-full rounded-t-sm"></div>
+<div class="bg-primary-gradient h-full w-full rounded-t-sm"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-8 flex flex-col justify-between shadow-sm">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">sentiment_very_satisfied</span>
+<div>
+<h3 class="font-headline font-bold text-2xl">89.2%</h3>
+<p class="text-secondary text-sm">Cảm xúc Tích cực</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-8 flex flex-col justify-between shadow-sm">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4">warning</span>
+<div>
+<h3 class="font-headline font-bold text-2xl">1.4%</h3>
+<p class="text-secondary text-sm">Cần chú ý khẩn cấp</p>
+</div>
+</div>
+</div>
+<div class="asymmetric-grid">
+<!-- Left Column: Word Cloud & Trends -->
+<div class="space-y-8">
+<!-- AI Word Cloud Section -->
+<section class="bg-surface-container-low rounded-lg p-10">
+<h3 class="font-headline text-2xl font-bold mb-8">Đám mây Từ vựng Phổ biến</h3>
+<div class="flex flex-wrap justify-center items-center gap-6 p-8 min-h-[300px]">
+<span class="text-5xl font-extrabold text-primary opacity-100 hover:scale-110 transition-transform cursor-default">Hương vị</span>
+<span class="text-3xl font-bold text-on-background opacity-80">Phục vụ</span>
+<span class="text-4xl font-extrabold text-primary-container">Không gian</span>
+<span class="text-2xl font-semibold text-secondary">Giá cả</span>
+<span class="text-4xl font-bold text-on-background">Lãng mạn</span>
+<span class="text-2xl font-medium text-tertiary">Trình bày</span>
+<span class="text-5xl font-extrabold text-primary/80">Chất lượng</span>
+<span class="text-xl font-bold text-secondary opacity-60">Waitlist</span>
+<span class="text-3xl font-bold text-primary-container">Menu</span>
+<span class="text-2xl font-medium text-on-background opacity-70">Rượu vang</span>
+</div>
+</section>
+<!-- Detailed Reviews Table (Styled as Cards) -->
+<section>
+<h3 class="font-headline text-2xl font-bold mb-6">Đánh giá mới nhất</h3>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-start gap-6 shadow-sm border-l-4 border-primary">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="User profile portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSu0nvr3SpyuPZl_UwlNxTtvhDHYeKvW-hR3-Gx5DjeivUHLG4yRqhqLgzSLlFI2Shp5ghyhiKGFQ_Av_1Z4oH6VbHujmkw7vAl6elUwSTy8rbL3L314eTywrlYSeOia8DpkLKbHqQfv3qqWQ5vLE424I0dbIvrISl2TtbgHlPpFk5CgX9lKjPTCEib3av79CkNrmJvh2Yx3_O7DRHTsbMnX8DXnLq8ZA-c7FJovi-6yRjW0gUWtjoE1CivEkuXGpTLLg3PwV8TpY"/>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-headline font-bold">Lê Minh Anh</h4>
+<span class="text-xs text-secondary">2 giờ trước</span>
+</div>
+<p class="text-on-surface text-sm leading-relaxed mb-4 italic">"Không gian tại The Muse thực sự tuyệt vời cho buổi hẹn hò. Tuy nhiên, món chính lên hơi chậm một chút. Chất lượng bò Wagyu là đỉnh cao!"</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[10px] font-bold uppercase tracking-tighter text-secondary">#HẹnHò</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[10px] font-bold uppercase tracking-tighter text-secondary">#BòWagyu</span>
+<span class="px-3 py-1 bg-primary/10 rounded-full text-[10px] font-bold uppercase tracking-tighter text-primary">TÍCH CỰC</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-start gap-6 shadow-sm border-l-4 border-error">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="User profile portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0UgNQ8lo-BuVQJr9gznVVhlQenFd-sZOF2fE8H5spxdzqG4kVucOiVO3GdFjGflGiV9orS0kRtv-x4G-wpsEaYQ4bwzYyHOfVymDurMnlLpLnMIZTLAz2PKJ7UcryWoKKRKlyRXJ4YqOiiT8pfJFZNVXOomBbHMJD4LWD7hFQREmu62zvTRxVpt5MtRO6wNWNTuTxHBkKVVa-_q4Jp8up8S-QaTjXRKj0_rTQACNgaVkp2C0tdeDEDtG55sq5fq6j3zCihJ-lFeM"/>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-2">
+<h4 class="font-headline font-bold">Trần Quốc Bảo</h4>
+<span class="text-xs text-secondary">5 giờ trước</span>
+</div>
+<p class="text-on-surface text-sm leading-relaxed mb-4 italic">"Món súp hơi nguội khi được mang ra. Tôi đã phản hồi nhưng nhân viên có vẻ không nhiệt tình lắm. Hy vọng nhà hàng sớm cải thiện."</p>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[10px] font-bold uppercase tracking-tighter text-secondary">#DịchVụ</span>
+<span class="px-3 py-1 bg-error/10 rounded-full text-[10px] font-bold uppercase tracking-tighter text-error">CẦN CẢI THIỆN</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: AI Insights & Venue Actions -->
+<div class="space-y-8">
+<section class="bg-[#1c1c18] text-white rounded-lg p-10 relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary-container" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<h3 class="font-headline text-xl font-bold">AI Flagged Insights</h3>
+</div>
+<div class="space-y-6">
+<div class="p-4 bg-white/5 rounded-lg border border-white/10">
+<p class="text-sm font-semibold text-primary-container mb-2">Điểm nóng cải thiện:</p>
+<p class="text-white/80 text-sm">30% đánh giá gần đây tại khu vực <span class="text-white font-bold">Quận 1</span> đề cập đến việc "thời gian chờ đợi món chính lâu".</p>
+</div>
+<div class="p-4 bg-white/5 rounded-lg border border-white/10">
+<p class="text-sm font-semibold text-primary-container mb-2">Cơ hội tăng trưởng:</p>
+<p class="text-white/80 text-sm">Từ khóa "Cocktail sáng tạo" đang tăng 45% trong các tìm kiếm gắn liền với các địa điểm có nhạc Jazz.</p>
+</div>
+<button class="w-full bg-primary-gradient py-3 rounded-lg font-headline font-bold text-sm hover:scale-[1.02] transition-transform">XUẤT BÁO CÁO CHI TIẾT</button>
+</div>
+</div>
+<!-- Abstract Glow -->
+<div class="absolute -bottom-20 -right-20 w-64 h-64 bg-primary/20 blur-[100px] rounded-full"></div>
+</section>
+<section class="bg-surface-container-low rounded-lg p-10">
+<h3 class="font-headline text-xl font-bold mb-6">Xếp hạng Địa điểm</h3>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center font-bold">1</div>
+<div class="flex-1">
+<p class="font-bold text-sm">La Luna Rooftop</p>
+<div class="w-full bg-surface-container-highest h-2 rounded-full mt-1">
+<div class="bg-primary h-full rounded-full" style="width: 96%;"></div>
+</div>
+</div>
+<span class="text-sm font-bold">4.9</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold">2</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Sakura Sushi</p>
+<div class="w-full bg-surface-container-highest h-2 rounded-full mt-1">
+<div class="bg-primary h-full rounded-full" style="width: 88%;"></div>
+</div>
+</div>
+<span class="text-sm font-bold">4.7</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold">3</div>
+<div class="flex-1">
+<p class="font-bold text-sm">The Meat House</p>
+<div class="w-full bg-surface-container-highest h-2 rounded-full mt-1">
+<div class="bg-primary h-full rounded-full" style="width: 82%;"></div>
+</div>
+</div>
+<span class="text-sm font-bold">4.5</span>
+</div>
+</div>
+</section>
+<!-- Feedback Action -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm">
+<h4 class="font-headline font-bold mb-4">Gửi thông báo tới quản lý địa điểm</h4>
+<textarea class="w-full bg-surface-container-low border-none rounded-lg p-4 text-sm mb-4 focus:ring-primary focus:ring-1" placeholder="Viết phản hồi hoặc chỉ dẫn cụ thể..." rows="3"></textarea>
+<button class="flex items-center justify-center gap-2 text-primary font-bold text-sm hover:underline">
+<span class="material-symbols-outlined text-sm">send</span> Gửi Ngay
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f7f3ed] w-full py-12 px-8">
+<div class="max-w-[1600px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-['Plus_Jakarta_Sans'] font-bold text-[#1c1c18] text-xl mb-2">GOMET</span>
+<p class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500">© 2024 GOMET. The Culinary Curator.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 hover:underline decoration-[#ae2f34] underline-offset-4" href="#">Privacy</a>
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 hover:underline decoration-[#ae2f34] underline-offset-4" href="#">Terms</a>
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 hover:underline decoration-[#ae2f34] underline-offset-4" href="#">Safety</a>
+<a class="font-['Inter'] text-sm uppercase tracking-widest text-slate-500 hover:underline decoration-[#ae2f34] underline-offset-4" href="#">Press</a>
+</div>
+</div>
+</footer>
+</body></html>

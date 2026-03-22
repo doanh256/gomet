@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,700&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#656464",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "surface-container": "#f1ede7",
+              "tertiary-fixed": "#ffdad4",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "on-secondary-fixed": "#1b1c1c",
+              "outline": "#8c706f",
+              "on-surface": "#1c1c18",
+              "surface-tint": "#ae2f34",
+              "surface-container-highest": "#e6e2dc",
+              "surface-container-low": "#f7f3ed",
+              "secondary-container": "#e4e2e1",
+              "on-primary-container": "#6d0010",
+              "inverse-surface": "#31302d",
+              "surface-container-high": "#ebe8e2",
+              "on-surface-variant": "#584140",
+              "tertiary": "#894e45",
+              "secondary": "#5f5e5e",
+              "primary-container": "#ff6b6b",
+              "on-tertiary-container": "#55251e",
+              "on-primary-fixed": "#410006",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface": "#fdf9f3",
+              "tertiary-container": "#cf8a7f",
+              "surface-container-lowest": "#ffffff",
+              "surface-dim": "#dddad4",
+              "secondary-fixed": "#e4e2e1",
+              "on-tertiary-fixed": "#370e08",
+              "surface-variant": "#e6e2dc",
+              "outline-variant": "#e0bfbd",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-bright": "#fdf9f3",
+              "primary": "#ae2f34",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed-variant": "#474747",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-background": "#1c1c18",
+              "background": "#fdf9f3",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "primary-fixed": "#ffdad8",
+              "inverse-primary": "#ffb3b0"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fdf9f3; }
+        .font-plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+        .primary-gradient { background: linear-gradient(45deg, #ae2f34, #ff6b6b); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-neutral-900/80 backdrop-blur-xl shadow-sm shadow-coral-500/5">
+<div class="flex justify-between items-center px-6 py-3 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-bold text-coral-600 dark:text-coral-500 italic font-plus-jakarta tracking-tighter">GOMET</div>
+<div class="hidden md:flex space-x-8">
+<a class="text-neutral-600 dark:text-neutral-400 font-medium hover:text-coral-500 transition-colors duration-200" href="#">Network</a>
+<a class="text-neutral-600 dark:text-neutral-400 font-medium hover:text-coral-500 transition-colors duration-200" href="#">Dining</a>
+<a class="text-neutral-600 dark:text-neutral-400 font-medium hover:text-coral-500 transition-colors duration-200" href="#">Events</a>
+<a class="text-coral-600 dark:text-coral-400 font-bold border-b-2 border-coral-600 hover:text-coral-500 transition-colors duration-200" href="#">Membership</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="User profile avatar close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjZsjlkaJXtQOYd907vIF3CjtSQL-KvIu2ECmPS3V4Hak9orHFJ1xB3yy__RbjvEmmrr-CqPlNV3hIsBx8EcWfhPSDvxuyAzaWv9VuN61taycBFMs0pDLZCSvPQMxPlPqovZBJ_JLRqlIkS8RhlVEYGtcKvmhBLc8A5idLPpF2FRb5TxwW5Mh7SK-BQwVIExE5NFcqbZNUUQ1O2J-qE6K2wjjP1L9A6ARPQEbKNcyeWcRGelAZ3lAZOe4_Na6Ym8vAIePXiqX9T5I"/>
+</div>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-16 md:mb-24 relative">
+<div class="absolute -top-12 -left-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+<div class="max-w-3xl">
+<span class="font-label text-label-md uppercase tracking-widest text-primary font-bold mb-4 block">Elevate Your Experience</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface leading-[0.9] mb-8">
+                    Choose Your <span class="italic text-primary">Palate.</span>
+</h1>
+<p class="font-body text-body-lg text-on-surface-variant leading-relaxed max-w-xl">
+                    Join an exclusive community where dining meets connection. Select a tier tailored to your appetite for discovery and social excellence.
+                </p>
+</div>
+</header>
+<!-- Tiered Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+<!-- Tier 1: The Explorer -->
+<div class="group bg-surface-container-low rounded-lg p-8 h-fit flex flex-col gap-8 transition-all duration-300 hover:bg-surface-container border-b-4 border-transparent hover:border-outline-variant/30">
+<div class="space-y-4">
+<h3 class="font-headline text-display-sm font-bold text-on-surface tracking-tight">The Explorer</h3>
+<div class="flex items-baseline gap-1">
+<span class="text-3xl font-bold">$29</span>
+<span class="text-on-surface-variant font-label text-label-md">/MONTH</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Perfect for those starting their journey into the local culinary scene.</p>
+</div>
+<div class="h-px bg-outline-variant/20"></div>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="text-label-md">Standard Matchmaking</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="text-label-md">Community Events Access</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant opacity-40">
+<span class="material-symbols-outlined text-[20px]">lock</span>
+<span class="text-label-md">Exclusive Venue Previews</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded font-headline font-bold text-on-surface bg-surface-container-highest active:scale-[0.98] transition-all">
+                    Start Exploring
+                </button>
+</div>
+<!-- Tier 2: The Curator (Most Popular) -->
+<div class="relative group h-full">
+<!-- Popular Badge -->
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 primary-gradient px-4 py-1.5 rounded-full z-10 shadow-lg shadow-primary/20">
+<span class="text-[10px] font-bold text-white uppercase tracking-[0.2em]">Recommended</span>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-8 h-full flex flex-col gap-8 shadow-2xl shadow-primary/5 border border-primary/10 scale-105 z-10">
+<div class="space-y-4">
+<h3 class="font-headline text-display-sm font-bold text-on-surface tracking-tight">The Curator</h3>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl font-extrabold text-primary">$59</span>
+<span class="text-on-surface-variant font-label text-label-md">/MONTH</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">Our most popular choice for intentional diners and social connectors.</p>
+</div>
+<div class="h-px bg-outline-variant/40"></div>
+<ul class="space-y-5">
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[22px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="text-label-md font-bold">AI Match Priority</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[22px]" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span>
+<span class="text-label-md font-bold">Exclusive Venue Previews</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[22px]">check_circle</span>
+<span class="text-label-md">Priority Table Booking</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[22px]">check_circle</span>
+<span class="text-label-md">Premium Networking Circle</span>
+</li>
+</ul>
+<div class="mt-auto">
+<button class="w-full py-4 rounded-lg font-headline font-bold text-white primary-gradient shadow-lg shadow-primary/30 active:scale-[0.98] transition-all">
+                            Select Curator
+                        </button>
+</div>
+</div>
+</div>
+<!-- Tier 3: The Michelin Connoisseur -->
+<div class="group bg-surface-container-low rounded-lg p-8 h-fit flex flex-col gap-8 transition-all duration-300 hover:bg-surface-container border-b-4 border-transparent hover:border-outline-variant/30">
+<div class="space-y-4">
+<h3 class="font-headline text-display-sm font-bold text-on-surface tracking-tight leading-none">The Michelin Connoisseur</h3>
+<div class="flex items-baseline gap-1">
+<span class="text-3xl font-bold">$149</span>
+<span class="text-on-surface-variant font-label text-label-md">/MONTH</span>
+</div>
+<p class="text-on-surface-variant text-sm leading-relaxed">The pinnacle of membership for those who demand the absolute finest.</p>
+</div>
+<div class="h-px bg-outline-variant/20"></div>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">concierge</span>
+<span class="text-label-md font-bold">Dedicated Concierge</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">wine_bar</span>
+<span class="text-label-md font-bold">Private Tasting Invites</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[20px]">check_circle</span>
+<span class="text-label-md">Global Access Pass</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded font-headline font-bold text-on-surface bg-surface-container-highest active:scale-[0.98] transition-all">
+                    Upgrade to Elite
+                </button>
+</div>
+</div>
+<!-- Bento Grid Perks Section -->
+<section class="mt-32">
+<h2 class="font-headline text-3xl font-bold mb-12 text-center">Exclusive Member Benefits</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[200px]">
+<div class="md:col-span-2 md:row-span-2 bg-surface-container-high rounded-lg overflow-hidden relative p-8 flex flex-col justify-end group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-multiply group-hover:scale-105 transition-transform duration-700" data-alt="High end luxury restaurant interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1LOubRKKuwQQioJg8SW7Mt2i2qcMisZOc973MtQlOSZ9fqRXepC3mH1nviauD7exoCsWdTzezwWhODJVdXA73r1NQdnYhfirxH76rsliSwV1KEVXMZiU58LJKEwly31vr1eqNt8Uc9qUhZNa3yKQulw9lXa0g8AIAWL9wSh2pRBa8ZQJiRk2qomFdm33hWKhjGOHTIkcecTQ9sBwt6DE1bP-9sIplzOF1ktaeTOyCsjUL5iw3Oj9IqhSmQEV7uXY_mQNvxa3sxj0"/>
+<div class="relative z-10">
+<h4 class="font-headline text-2xl font-bold text-on-surface mb-2">Dedicated Concierge</h4>
+<p class="text-on-surface-variant text-sm max-w-xs">Your personal liaison for impossible reservations and bespoke dating itineraries.</p>
+</div>
+</div>
+<div class="md:col-span-2 bg-primary/5 rounded-lg p-8 flex items-center justify-between border border-primary/10">
+<div class="max-w-[200px]">
+<h4 class="font-headline text-xl font-bold text-on-surface mb-1">AI Match Priority</h4>
+<p class="text-on-surface-variant text-xs">Our algorithm prioritizes members based on shared culinary profiles and status.</p>
+</div>
+<span class="material-symbols-outlined text-primary text-5xl opacity-40">psychology</span>
+</div>
+<div class="bg-tertiary/10 rounded-lg p-6 flex flex-col justify-center text-center">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4">verified</span>
+<h4 class="font-headline font-bold text-on-surface">Verified Identity</h4>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-2">Security First</p>
+</div>
+<div class="bg-surface-container-highest rounded-lg p-6 flex flex-col justify-center text-center">
+<span class="material-symbols-outlined text-on-surface-variant text-4xl mb-4">celebration</span>
+<h4 class="font-headline font-bold text-on-surface">Private Events</h4>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest mt-2">Member Only</p>
+</div>
+</div>
+</section>
+<!-- Footer Note -->
+<footer class="mt-24 text-center">
+<p class="text-on-surface-variant font-body text-sm">
+                Questions about memberships? <a class="text-primary font-bold underline underline-offset-4 decoration-primary/30" href="#">Contact our Membership Team</a>
+</p>
+</footer>
+</main>
+<!-- BottomNavBar (Shared Component - Mobile Only) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface/90 backdrop-blur-md rounded-t-3xl shadow-[0_-8px_24px_-12px_rgba(174,47,52,0.15)]">
+<div class="flex flex-col items-center justify-center text-neutral-400 dark:text-neutral-600 px-4 py-2 hover:text-coral-400 transition-all">
+<span class="material-symbols-outlined">home</span>
+<span class="font-inter text-[10px] font-bold">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-neutral-400 dark:text-neutral-600 px-4 py-2 hover:text-coral-400 transition-all">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-inter text-[10px] font-bold">Connect</span>
+</div>
+<div class="flex flex-col items-center justify-center text-neutral-400 dark:text-neutral-600 px-4 py-2 hover:text-coral-400 transition-all">
+<span class="material-symbols-outlined">local_dining</span>
+<span class="font-inter text-[10px] font-bold">Dining</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-coral-500 to-coral-700 text-white rounded-2xl px-5 py-2 scale-110 -translate-y-2 transition-all">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-inter text-[10px] font-bold">Account</span>
+</div>
+</div>
+</body></html>

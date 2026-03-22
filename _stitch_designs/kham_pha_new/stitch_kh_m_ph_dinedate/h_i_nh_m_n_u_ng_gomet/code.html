@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET - Group Dining &amp; Social</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdad4",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-container-highest": "#e6e2dc",
+              "secondary": "#5f5e5e",
+              "inverse-surface": "#31302d",
+              "surface-bright": "#fdf9f3",
+              "surface": "#fdf9f3",
+              "on-primary-fixed-variant": "#8c1520",
+              "outline-variant": "#e0bfbd",
+              "tertiary-container": "#cf8a7f",
+              "surface-tint": "#ae2f34",
+              "error-container": "#ffdad6",
+              "on-error": "#ffffff",
+              "surface-dim": "#dddad4",
+              "primary-container": "#ff6b6b",
+              "on-surface": "#1c1c18",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-container": "#656464",
+              "inverse-primary": "#ffb3b0",
+              "secondary-fixed": "#e4e2e1",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary-fixed-variant": "#474747",
+              "background": "#fdf9f3",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-container-low": "#f7f3ed",
+              "tertiary": "#894e45",
+              "on-primary-fixed": "#410006",
+              "on-tertiary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-background": "#1c1c18",
+              "error": "#ba1a1a",
+              "outline": "#8c706f",
+              "secondary-container": "#e4e2e1",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "surface-container": "#f1ede7",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-variant": "#e6e2dc",
+              "on-primary-container": "#6d0010",
+              "surface-container-high": "#ebe8e2",
+              "on-surface-variant": "#584140",
+              "primary": "#ae2f34"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        background: rgba(253, 249, 243, 0.8);
+        backdrop-filter: blur(12px);
+      }
+      .primary-gradient {
+        background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+      }
+      .asymmetric-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 2rem;
+      }
+      @media (max-width: 1024px) {
+        .asymmetric-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 glass-nav">
+<div class="flex justify-between items-center px-8 h-20 w-full mx-auto">
+<div class="text-2xl font-black text-[#ae2f34] tracking-tighter font-headline">GOMET</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-stone-500 hover:text-[#ae2f34] font-['Plus_Jakarta_Sans'] font-semibold tracking-tight transition-colors" href="#">Events</a>
+<a class="text-[#ae2f34] border-b-2 border-[#ae2f34] pb-1 font-['Plus_Jakarta_Sans'] font-semibold tracking-tight" href="#">Discover</a>
+<a class="text-stone-500 hover:text-[#ae2f34] font-['Plus_Jakarta_Sans'] font-semibold tracking-tight transition-colors" href="#">Dating</a>
+</nav>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-stone-100/50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-stone-100/50 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+<img alt="User profile avatar" class="w-10 h-10 rounded-full object-cover" data-alt="Portrait of a smiling young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDl1WBdILuqMs7NeejSg6dBG4gLcOgM2SmNgwR_jeuO9YPwBnU_wT_EIg_bex6L32uo4hsfjdQ7yFLX8y0cEVUicm6W_F3bcViK9AnT3wbv2HgO1c8btpTsXWAy66xS9kBkDgYGyagc0c0AmTKy1nizB6qTlnUPFtEa_XX0eGzZ9unxM6R47eKBkFIW88uER-DvNzPPFjJGqGfLVQ74BDlK_v4hwDxqDteephDWwEQLDc6s4muHQo5hArJ4Wrs_SUHAeAyJfYLmZ-E"/>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-8 max-w-7xl mx-auto">
+<!-- Hero Section: Editorial Style -->
+<section class="mb-16 relative">
+<div class="max-w-3xl">
+<span class="bg-surface-container-high px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest text-primary font-label mb-6 inline-block">Table for Everyone</span>
+<h1 class="text-6xl md:text-8xl font-headline font-extrabold tracking-tighter text-on-background leading-tight mb-8">
+                    Gather. <span class="text-primary italic">Dine.</span> Connect.
+                </h1>
+<p class="text-xl text-on-surface-variant max-w-xl leading-relaxed">
+                    Ditch the small talk of 1-on-1 dates. Join a curated table of six at the city's most exclusive bistros.
+                </p>
+</div>
+<!-- Floating CTA for "Create Group" -->
+<div class="mt-10">
+<button class="primary-gradient text-on-primary px-8 py-4 rounded-DEFAULT font-headline font-bold text-lg shadow-xl shadow-primary/20 flex items-center gap-3 hover:scale-105 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                    Host a Table
+                </button>
+</div>
+</section>
+<!-- Filters & Chips -->
+<div class="flex flex-wrap gap-3 mb-12">
+<button class="primary-gradient text-on-primary px-6 py-2 rounded-full text-sm font-bold shadow-md">All Tables</button>
+<button class="bg-surface-container-high text-on-surface px-6 py-2 rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Fine Dining</button>
+<button class="bg-surface-container-high text-on-surface px-6 py-2 rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Street Food</button>
+<button class="bg-surface-container-high text-on-surface px-6 py-2 rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Wine Tasting</button>
+<button class="bg-surface-container-high text-on-surface px-6 py-2 rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Brunch Clubs</button>
+</div>
+<!-- Asymmetric Grid for Dining Groups -->
+<div class="asymmetric-grid">
+<!-- Primary Featured Card -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col group">
+<div class="relative h-96">
+<img alt="Dining group at a bistro" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Modern upscale restaurant interior with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5PcQDx0Mes-Amb9xJsFTJzO0ivPQcsAqqJV_i9R70ZL28NLyWavCezks_geLAbhJ_aancYzN1XkHp-VHmsvR_BNn_HeuUPjrmRCOtxUNH06llyRiR0E_QF4rfUlgbM5_tlNj1d0quLGBurJ_EelpB8-HszBk6EwM7wiptvepsoeuQZocX3XLGagKV0zaMbO3otRgjerwxG83QJSy20rdcSNMzVBwX7ch3ywiCDJGXgdON4cBE8cxfPzVKy8J7Opiu8NWimn2VLiU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="bg-primary text-on-primary text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-widest">Trending</span>
+<span class="bg-white/20 backdrop-blur-md text-white text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-widest">Tonight • 8:00 PM</span>
+</div>
+<h3 class="text-3xl font-headline font-bold text-white">The Velvet Bistro</h3>
+</div>
+<div class="bg-white/10 backdrop-blur-md rounded-lg p-3 text-center border border-white/20">
+<div class="text-white font-headline font-black text-xl">4/6</div>
+<div class="text-white/80 text-[10px] uppercase font-bold tracking-tighter">Seats Taken</div>
+</div>
+</div>
+</div>
+<div class="p-8 border-b-0">
+<div class="flex items-center gap-4 mb-6">
+<div class="flex -space-x-3">
+<img alt="User" class="w-10 h-10 rounded-full border-4 border-surface-container-lowest object-cover" data-alt="Portrait of a woman with red hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7rh93Q0-xRV45dhsBuV34ECxpZfS6-O11pux4NLErmRqEO9PzCALnuXXXqBgOyGZVkI2OlzS3Lu5BMQdUL7gn0de7r7cX3so50wX6v8ae0uJHUCe76EWBMqkU1T43NRzdkDF07BNiPXOfNnF4YJpX-N2DE9uz2sjr3gm68xp6rfZ8m9XGUzczJdzGNf4AcTwY4VkgXN_lIGjjs7CM90gSyCxoO7K7evjNjPTolqjClMfQDiWAnPY5iEaTs6fxcxqNFyE3vPzdjtM"/>
+<img alt="User" class="w-10 h-10 rounded-full border-4 border-surface-container-lowest object-cover" data-alt="Portrait of a man with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwsSZjAa8ZSmwh8Y2ZVRqd1lYqyE14gLnS-aml9RShT7VRka2-gu9lrhTPQIVqq0EiI1Q9t0UUR3TFEM-4CGUdcYBnwKLpGOrtK9eAJ-0VKgVibNcnQzmxJt96xQJ5ijT7V89OqW1azM5VUT7OnDBSRkw7cYMHJs4QXx9CeIcOuOlPdbUyrvGvihh3dkvF8oOs-SdWIAsZLoDVhMY6OCWxyaIDOrTtgsJctnedDIWce-G6AswCYlUiDfLa5hYLduwFvFoWvMMNZk0"/>
+<img alt="User" class="w-10 h-10 rounded-full border-4 border-surface-container-lowest object-cover" data-alt="Portrait of a young woman smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCmHuvKL0ULQS_wR89X7TLme93wUVu7So3SUfSELuJB50gB0laCsQYZt5zD8kZSiXm6kajoH37kY8_tD9aH4f-w1JozVWS9ZF9cWbPxi6b5C07w7L74LUA76vOY3fID0_5b236VN3UnL53X2HSON0fzPHLdMA1jxKiE43-1qiLNkKDFscMAzJ1JQz5cnKn-H3qRMdNNqm8SQlEG8mstxwSVYSeyZJ8wpdj7pPKHJKZ9U7G_yInZDwth2nEnFMdX9jPrbDqt_0-vRWg"/>
+<div class="w-10 h-10 rounded-full border-4 border-surface-container-lowest bg-surface-container-high flex items-center justify-center text-[10px] font-bold text-on-surface-variant">+1</div>
+</div>
+<span class="text-sm text-on-surface-variant font-medium">Join Sarah, Mike, and 2 others</span>
+</div>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                        A curated experience for wine lovers and Italian cuisine enthusiasts. We'll be exploring the chef's special tasting menu. Perfect for those who enjoy lively conversations and vintage Barolo.
+                    </p>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest font-bold text-stone-400">Location</span>
+<span class="font-bold text-on-background">District 1, HCMC</span>
+</div>
+<button class="primary-gradient text-on-primary px-10 py-3 rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform">Join Group</button>
+</div>
+</div>
+</div>
+<!-- Side Cards Stack -->
+<div class="space-y-8">
+<!-- Card 2 -->
+<div class="bg-surface-container-low rounded-lg p-6 group cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex gap-6">
+<div class="w-32 h-32 rounded-md overflow-hidden flex-shrink-0">
+<img alt="Restaurant table" class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="Rustic wooden table with pizza and beer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQyycUPmlapMLDUhfQ3gUQnBhBs53uwFGVHizjG2EM7cpcQVTQS8kRKmJzNTpRj7lXp1UN6KKTWRpkRGGD0Ar1HxX-8G5Q2Hi6TtEB20Wic3nfbf2m7uKYYf_WFSATtzvdX0yM0TaUKT8FZt44iTuMg_KEYnocFoGDCAEHpM2WIGJomzKEiBe2fxpPgjLfzFx_fzDcIWgpEFCjvVZI-udYkn3wur5Acy4HHFGF1SN3NhXTsCrUiIfOXrgqLfZ8eb_7Q44fLw1rN_M"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline font-bold text-xl">Artisanal Pizza Night</h4>
+<span class="text-primary font-bold font-headline">2/4</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm mb-4">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span>Sat, 19:30</span>
+<span class="mx-1">•</span>
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span>Thao Dien</span>
+</div>
+<button class="w-full py-2 bg-white rounded-full text-xs font-bold text-on-background border-none shadow-sm hover:bg-primary hover:text-white transition-colors">Join Group</button>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-low rounded-lg p-6 group cursor-pointer hover:bg-surface-container transition-colors">
+<div class="flex gap-6">
+<div class="w-32 h-32 rounded-md overflow-hidden flex-shrink-0">
+<img alt="Sushi boat" class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="Platter of colorful sushi and sashimi" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8AWwfWiT40CA9enqG6cPAeRPiuxfq4WYFCe35yE0RHablf_GPpqqbBhkZ4t2mgHVPSTJ0sXWYDYGQ065Zn2lRA3JraiAl6vhv9CO2S2SFcdRZrsL5vXKRD1zTKO4XHr3dIkEms0QKfE0arXWs56C6BxfA2aF3MrDK1tb7ztpVOxBQKTqrFU5EnBobhji9li-u9VwtBs7prWmZyRd-a96-dORNgTpno4CXc0HUmqoM9PiXymLEphNeF-M1cV1YhZF_Di_7NKloGfs"/>
+</div>
+<div class="flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-headline font-bold text-xl">Sushi &amp; Sake Social</h4>
+<span class="text-primary font-bold font-headline">5/8</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant text-sm mb-4">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span>Sun, 18:00</span>
+<span class="mx-1">•</span>
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span>
+<span>District 3</span>
+</div>
+<button class="w-full py-2 bg-white rounded-full text-xs font-bold text-on-background border-none shadow-sm hover:bg-primary hover:text-white transition-colors">Join Group</button>
+</div>
+</div>
+</div>
+<!-- Bento Style Stat Card -->
+<div class="bg-primary-container p-8 rounded-lg text-on-primary-container relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-headline font-extrabold text-3xl mb-2">124 Tables</h4>
+<p class="text-sm font-medium opacity-90 leading-relaxed">Waiting for more companions in Ho Chi Minh City right now.</p>
+<button class="mt-6 flex items-center gap-2 text-sm font-bold underline decoration-2 underline-offset-4">
+                            See all locations
+                            <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<span class="material-symbols-outlined absolute -right-8 -bottom-8 text-white/20 scale-[5]" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+</div>
+</div>
+<!-- Secondary Feed: Bento Layout -->
+<div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between md:col-span-2 min-h-[400px]">
+<div>
+<h3 class="text-4xl font-headline font-extrabold tracking-tighter mb-4">Curated by Experts</h3>
+<p class="text-on-surface-variant text-lg max-w-md">Our dining concierges select the best venues based on your collective preferences.</p>
+</div>
+<div class="flex items-end justify-between">
+<div class="flex -space-x-4">
+<img alt="Curator" class="w-12 h-12 rounded-full border-4 border-surface-container-low" data-alt="Portrait of a smiling professional man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEY9QAcJzHhMuGtGRo-MeMx4TZaGV042SuFNXuns8GKPkD5h5H7q_N00gDzY60CtOeUagEYoIHKeMLb3SBl-xqBBRCvCp1Pgw6hxeyjnNeKSIVWkHtGosEOBgZCwo1ql0lVYW29fk6cnA06RiTtuGXoppMGgKy-cT7tMSIuxVs_QRzbWoy3kJiudAL14HPoaQA-lDOyFCtO_qkDaJ3rVS8j1CHME9wDl3ZSN8vXUiqXE5mvXn0ogchmoxvifvoxsqaAL48_Ik_XbY"/>
+<div class="bg-surface-container-highest w-12 h-12 rounded-full border-4 border-surface-container-low flex items-center justify-center font-bold text-xs text-on-surface-variant">Expert</div>
+</div>
+<a class="text-primary font-bold flex items-center gap-2" href="#">Learn about our process <span class="material-symbols-outlined" data-icon="north_east">north_east</span></a>
+</div>
+</div>
+<div class="bg-surface-container-highest p-8 rounded-lg flex flex-col items-center justify-center text-center group cursor-pointer border-none">
+<div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-6 shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="history">history</span>
+</div>
+<h4 class="text-xl font-headline font-bold mb-2">Past Dining</h4>
+<p class="text-sm text-on-surface-variant mb-6">Reconnect with people you've dined with before.</p>
+<span class="text-primary font-black text-2xl">42 Connections</span>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full glass-nav z-50">
+<div class="flex justify-around items-center h-16">
+<button class="flex flex-col items-center gap-1 text-[#ae2f34]">
+<span class="material-symbols-outlined" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Dining</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Bookings</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Profile</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Settings</span>
+</button>
+</div>
+</nav>
+<!-- SideNavBar (Desktop Fixed Left) - Hidden for this view to prioritize editorial layout, but present for logic -->
+<aside class="hidden fixed left-0 top-0 h-full flex-col z-40 bg-[#fdf9f3] w-72 shadow-2xl shadow-[#ae2f34]/5 border-r-0 lg:flex translate-x-[-100%] transition-transform hover:translate-x-0">
+<div class="p-8">
+<div class="text-xl font-bold text-[#ae2f34] font-headline mb-12">The Culinary Curator</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-4 text-stone-600 py-4 px-6 hover:pl-8 transition-all duration-300 rounded-r-full cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-sm uppercase tracking-widest">My Profile</span>
+</div>
+<div class="flex items-center gap-4 bg-[#f7f3ed] text-[#ae2f34] font-bold rounded-r-full py-4 px-6 hover:pl-8 transition-all duration-300 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-['Plus_Jakarta_Sans'] text-sm uppercase tracking-widest">Social Dining</span>
+</div>
+<div class="flex items-center gap-4 text-stone-600 py-4 px-6 hover:pl-8 transition-all duration-300 rounded-r-full cursor-pointer">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-['Plus_Jakarta_Sans'] text-sm uppercase tracking-widest">Bookings</span>
+</div>
+<div class="flex items-center gap-4 text-stone-600 py-4 px-6 hover:pl-8 transition-all duration-300 rounded-r-full cursor-pointer">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-['Plus_Jakarta_Sans'] text-sm uppercase tracking-widest">Settings</span>
+</div>
+</div>
+<div class="mt-auto pt-12">
+<button class="w-full primary-gradient text-on-primary py-4 rounded-DEFAULT font-bold uppercase text-xs tracking-widest">Book a Table</button>
+</div>
+</div>
+</aside>
+</body></html>

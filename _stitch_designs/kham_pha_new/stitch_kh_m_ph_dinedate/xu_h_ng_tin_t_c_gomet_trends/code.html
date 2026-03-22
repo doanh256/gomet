@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#cf8a7f",
+              "on-secondary-container": "#656464",
+              "surface-container": "#f1ede7",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-primary-fixed": "#410006",
+              "outline-variant": "#e0bfbd",
+              "tertiary": "#894e45",
+              "on-error": "#ffffff",
+              "on-surface": "#1c1c18",
+              "secondary": "#5f5e5e",
+              "inverse-primary": "#ffb3b0",
+              "surface-dim": "#dddad4",
+              "primary-container": "#ff6b6b",
+              "on-secondary": "#ffffff",
+              "on-tertiary-container": "#55251e",
+              "on-primary": "#ffffff",
+              "primary-fixed": "#ffdad8",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-container-highest": "#e6e2dc",
+              "secondary-container": "#e4e2e1",
+              "on-tertiary-fixed": "#370e08",
+              "on-surface-variant": "#584140",
+              "on-primary-fixed-variant": "#8c1520",
+              "secondary-fixed": "#e4e2e1",
+              "error-container": "#ffdad6",
+              "tertiary-fixed": "#ffdad4",
+              "outline": "#8c706f",
+              "surface-variant": "#e6e2dc",
+              "secondary-fixed-dim": "#c8c6c6",
+              "primary": "#ae2f34",
+              "surface-container-high": "#ebe8e2",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-tint": "#ae2f34",
+              "surface": "#fdf9f3",
+              "surface-bright": "#fdf9f3",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#474747",
+              "on-error-container": "#93000a",
+              "background": "#fdf9f3",
+              "error": "#ba1a1a",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-low": "#f7f3ed",
+              "inverse-surface": "#31302d",
+              "on-primary-container": "#6d0010",
+              "on-background": "#1c1c18"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        background: rgba(253, 249, 243, 0.8);
+        backdrop-filter: blur(12px);
+      }
+      .asymmetric-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 2rem;
+      }
+      @media (max-width: 768px) {
+        .asymmetric-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .primary-gradient {
+        background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased">
+<!-- TopNavBar Shell -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center h-16 px-6 w-full max-w-7xl mx-auto font-['Plus_Jakarta_Sans'] tracking-tight">
+<div class="text-2xl font-bold italic text-[#ae2f34] dark:text-[#ff6b6b]">GOMET Hub</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-[#ae2f34] dark:hover:text-[#ff6b6b] transition-colors" href="#">Dating</a>
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] font-bold border-b-2 border-[#ae2f34] pb-1" href="#">Events</a>
+<a class="text-zinc-600 dark:text-zinc-400 font-medium hover:text-[#ae2f34] dark:hover:text-[#ff6b6b] transition-colors" href="#">Venues</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-surface-container px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-32 lg:w-48 placeholder:text-on-surface-variant/60" placeholder="Search trends..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-highest font-semibold text-on-surface hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined">account_circle</span>
+<span>Profile</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-16 px-6 max-w-7xl mx-auto">
+<!-- Hero Section: Editorial Headline -->
+<header class="mb-16">
+<div class="inline-block bg-primary-container/20 text-primary px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+                Special Edition
+            </div>
+<h1 class="font-headline text-6xl md:text-8xl font-extrabold tracking-tighter text-on-background leading-[0.9] mb-8">
+                The <span class="text-primary italic">Pulse</span> <br/> of Romance.
+            </h1>
+<p class="max-w-2xl text-on-surface-variant text-lg leading-relaxed font-medium">
+                Welcome to the GOMET Hub. From the hidden alleyway bistros of Paris to the digital evolution of modern matchmaking, we curate the stories that define how we connect, eat, and love in 2024.
+            </p>
+</header>
+<!-- Main Content Layout -->
+<div class="asymmetric-grid">
+<!-- Left Column: Featured Stories -->
+<section class="space-y-16">
+<!-- Featured Article: Dating Trends 2024 -->
+<article class="group cursor-pointer">
+<div class="relative overflow-hidden rounded-lg mb-6 aspect-[16/9]">
+<img alt="Luxury event table setting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Elegant evening dinner party with warm candlelight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjH-McUuA9Uaw1KaXLo1dl2Blk8qP5YJcdvq6g3zp9hkX08ZYYa8H7qe7rD5d7QobIq1qQXc2JzLwxBrcdS_5FQ5Tk5s2yawaX4h4oyNbQfVOvr6hHtfUiq1zOTcztWslg9FZpKA6eKEcSqToWARr_3NsmyGMx61V1_VRGX3Kw_OAJV4zlZs0wutIgyr33OfG63wzMBc3HWiTcxeYAlFqAwNMdGwvAc7w9kr_LbjeN6ePJIa2W6ZZC5pMQ8USnBAsL1OsTUlsqc6U"/>
+<div class="absolute bottom-6 left-6 flex gap-2">
+<span class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-primary">Dating Trends</span>
+</div>
+</div>
+<h2 class="font-headline text-4xl font-bold mb-4 group-hover:text-primary transition-colors leading-tight">
+                        The Rise of 'Slow-Date' Dining: Why 3-Hour Dinners Are Back.
+                    </h2>
+<p class="text-on-surface-variant mb-6 leading-relaxed">
+                        In an era of rapid-fire swipes, a new movement is emerging. "Slow-Date" dining prioritizes deep conversation over quick cocktails, favoring venues that encourage lingering over shared dessert courses...
+                    </p>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Author" class="w-full h-full object-cover" data-alt="Close up portrait of a smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7ue57ZlN-brCBiE3fIWxTPfgUVG3RLDFszTIY1XDwaMx6MhU8GE1X0ZKF3xDvW6ikAaa57Y7dOGePI8cM7yMyWhMCiMTZWSN6Q_VTd9IlRZgsCJ_JgpHYzuRy0G9RusBjbXP-0k7_ChYpWI-8fd6Sf7uSq1q-oEEoNRFJSHXpBK7rPUcrEtBGHx0iELIa7DLgVhDqaQs9YiPhmjPa5qUJ57lLdEwIZqV7O99zsSIGjN3CGDZ8cJRZAlqAbCbdLG7YbzjiXFolsww"/>
+</div>
+<div>
+<p class="text-sm font-bold">Elena Vance</p>
+<p class="text-xs text-on-surface-variant">Editorial Director • 6 min read</p>
+</div>
+</div>
+</article>
+<!-- Bento Grid for Venue Spotlights -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-4">restaurant</span>
+<h3 class="font-headline text-2xl font-bold mb-2">Venue Spotlight: The Gilded Clove</h3>
+<p class="text-sm text-on-surface-variant mb-6">A sensory journey through spices and subterranean intimacy in the heart of downtown.</p>
+</div>
+<button class="self-start text-primary font-bold text-sm flex items-center gap-1 group">
+                            Explore Venue <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+<div class="relative rounded-lg overflow-hidden h-64">
+<img alt="Intimate restaurant interior" class="w-full h-full object-cover" data-alt="Dimly lit romantic restaurant with velvet seating" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXTcKTyochDRyDQxgi2bYdvQNzvnWt7ytHiIwlgVnzoM1L7X2svbSXi-ougJd0C8p8_9W0W9MsRSjeaCkHoRtE4_YBcfe7J-Yd3Lga2QCsFwXFzTLQ9XegCBWGi2JQcgaB7-6IYXXZQxi-LBgs18MQgFPRTJwr2NzSF3srpi2xeKj3NFptlpgwtcQ2VWturZbC3_---BAm1y7FGAqKdIg2wZ0C0QeRG2UU1KOSmSVcYABPUJ1sRK3JBIBrxf30BLCM1y8G0A46O4w"/>
+</div>
+</div>
+<!-- Culinary Stories List -->
+<div class="space-y-12 pt-8">
+<div class="flex justify-between items-end border-b border-outline-variant/30 pb-4">
+<h3 class="font-headline text-3xl font-bold">Culinary Stories</h3>
+<a class="text-sm font-semibold text-primary" href="#">View All</a>
+</div>
+<div class="grid gap-12">
+<div class="flex flex-col md:flex-row gap-8 group">
+<div class="md:w-1/3 aspect-square rounded-md overflow-hidden shrink-0">
+<img alt="Artisanal food dish" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Exquisitely plated gourmet seafood dish with garnish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzeLVIIJh12mHjCY4ZiI0lahBJm9XzJmfLZghu86tSWcSRZBZ9ga9kmuPVD-nKbE6sPWsjronTLdQzxRpNGhtBjfUktbHiibkv60_bG5dC1zqHdqio2tAkAWF51kaKGLBy8ZT_psxHl14R_rYN6I5IN-5PAlY00o_FFR-ldCiARwLT0frWpXTjr1oiziP8nJAlmNyF-Lja1VoGzUTTqzufCEBwBdMZ4_uAigtOazFk9rOxIQFkd4RxTJmBmf9JH_VvsQ7Ux2JZCms"/>
+</div>
+<div class="flex flex-col justify-center">
+<div class="text-[10px] font-bold text-tertiary uppercase mb-2 tracking-widest">Technique</div>
+<h4 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">The Alchemy of Umami: Designing a First-Date Menu.</h4>
+<p class="text-sm text-on-surface-variant line-clamp-2">How top chefs at GOMET venues use molecular gastronomy to spark dopamine and conversation.</p>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-8 group">
+<div class="md:w-1/3 aspect-square rounded-md overflow-hidden shrink-0">
+<img alt="Classic cocktail" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Sophisticated cocktail in a crystal glass" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMAz7QqsW_mGCq30gs2tj7W_p8oyI3llJ4YvbMvwBD5JKIiITFNrBTbvZalW2qWLbhoNxE1RGj_QEPoWC4wPw3Fus5OQhV0ObjwMhD41l3hdmr1NGNQBpLaNG0uuTPTJSfGk52e4WcAtJBQS6FjRy27WHZp1ghM-0gx_ljnH2ws0A8bK7zGSnss593nkvJjUyTX9dadssccxxaTKyeRjpi3jaTrYoS1dU3k_GeHFcoJJg8L4ZJJTLi3BMID2QjFWClIM2c3regUWo"/>
+</div>
+<div class="flex flex-col justify-center">
+<div class="text-[10px] font-bold text-tertiary uppercase mb-2 tracking-widest">Libations</div>
+<h4 class="text-2xl font-bold mb-3 group-hover:text-primary transition-colors">Beyond the Espresso Martini: What Your Drink Order Says About You.</h4>
+<p class="text-sm text-on-surface-variant line-clamp-2">A deep dive into the psychology of the bar menu and modern courtship rituals.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Sidebar -->
+<aside class="space-y-10">
+<!-- Trending Now Widget -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-sm border border-outline-variant/10">
+<h4 class="font-headline text-xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+                        Trending Now
+                    </h4>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="text-2xl font-black text-surface-container-highest">01</span>
+<div>
+<p class="text-xs font-bold text-primary uppercase mb-1">Social Buzz</p>
+<p class="font-bold leading-tight hover:underline cursor-pointer">#OmakaseDating: The ritual taking over London nights.</p>
+<p class="text-xs text-on-surface-variant mt-1">12.4k engagements</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="text-2xl font-black text-surface-container-highest">02</span>
+<div>
+<p class="text-xs font-bold text-primary uppercase mb-1">Venue Alert</p>
+<p class="font-bold leading-tight hover:underline cursor-pointer">Rooftop Garden Openings: Summer Bookings Peak.</p>
+<p class="text-xs text-on-surface-variant mt-1">8.9k engagements</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="text-2xl font-black text-surface-container-highest">03</span>
+<div>
+<p class="text-xs font-bold text-primary uppercase mb-1">GOMET Pick</p>
+<p class="font-bold leading-tight hover:underline cursor-pointer">The "No-Phone" Brunch Movement gains momentum.</p>
+<p class="text-xs text-on-surface-variant mt-1">15.1k engagements</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Newsletter / CTA -->
+<div class="primary-gradient p-8 rounded-lg text-on-primary">
+<h4 class="font-headline text-2xl font-bold mb-3">Stay Curated.</h4>
+<p class="text-sm mb-6 opacity-90">Get the weekly GOMET Hub digest delivered to your inbox every Thursday evening.</p>
+<div class="relative">
+<input class="w-full bg-white/20 border-none rounded-full py-3 px-6 text-sm placeholder:text-white/60 focus:ring-2 focus:ring-white" placeholder="email@example.com" type="email"/>
+<button class="absolute right-1 top-1 bg-white text-primary rounded-full p-2 hover:bg-white/90 transition-colors">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+<!-- Popular Hashtags -->
+<div class="bg-surface-container-low p-8 rounded-lg">
+<h4 class="font-headline text-lg font-bold mb-4">Discover More</h4>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant cursor-pointer hover:bg-primary/10 hover:text-primary transition-colors">#CulinaryArt</span>
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant cursor-pointer hover:bg-primary/10 hover:text-primary transition-colors">#DateNightLondon</span>
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant cursor-pointer hover:bg-primary/10 hover:text-primary transition-colors">#WinePairing</span>
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant cursor-pointer hover:bg-primary/10 hover:text-primary transition-colors">#ModernLove</span>
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant cursor-pointer hover:bg-primary/10 hover:text-primary transition-colors">#MichelinDates</span>
+<span class="bg-surface-container-highest px-3 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant cursor-pointer hover:bg-primary/10 hover:text-primary transition-colors">#HiddenGems</span>
+</div>
+</div>
+<!-- Interactive Poll -->
+<div class="border-2 border-primary-container/20 p-8 rounded-lg">
+<p class="text-xs font-bold text-primary uppercase mb-2">Weekly Poll</p>
+<h5 class="font-bold text-lg mb-4">First date: Coffee or Multi-course Dinner?</h5>
+<div class="space-y-3">
+<button class="w-full text-left p-3 rounded-md bg-surface-container-highest/50 border border-outline-variant/20 hover:border-primary transition-colors flex justify-between">
+<span class="text-sm font-medium">Spontaneous Coffee</span>
+<span class="text-xs font-bold text-on-surface-variant">62%</span>
+</button>
+<button class="w-full text-left p-3 rounded-md bg-surface-container-highest/50 border border-outline-variant/20 hover:border-primary transition-colors flex justify-between">
+<span class="text-sm font-medium">Formal Dinner</span>
+<span class="text-xs font-bold text-on-surface-variant">38%</span>
+</button>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest pt-20 pb-10 border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-2">
+<div class="text-3xl font-bold italic text-[#ae2f34] mb-6">GOMET Hub</div>
+<p class="max-w-sm text-on-surface-variant leading-relaxed">
+                        Dedicated to the art of connection and the pursuit of culinary excellence. Join the most discerning network of daters and diners.
+                    </p>
+</div>
+<div>
+<h6 class="font-bold mb-6">Explore</h6>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Latest News</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Venue Directory</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Member Events</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">The Boutique</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-bold mb-6">Company</h6>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Curator Tools</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</div>
+<div class="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-outline-variant/10 text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">
+<p>© 2024 GOMET NETWORKS. ALL RIGHTS RESERVED.</p>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="hover:text-primary transition-colors" href="#">Instagram</a>
+<a class="hover:text-primary transition-colors" href="#">Threads</a>
+<a class="hover:text-primary transition-colors" href="#">Pinterest</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

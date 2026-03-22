@@ -17,6 +17,7 @@ import ExploreCategoryPage from './pages/User/ExploreCategoryPage';
 import DatePostsPage from './pages/User/DatePostsPage';
 import MyDatesPage from './pages/User/MyDatesPage';
 import WalletPage from './pages/User/WalletPage';
+import PremiumPage from './pages/User/PremiumPage';
 
 import Dashboard from './pages/Admin/Dashboard';
 import UserManagement from './pages/Admin/UserManagement';
@@ -91,6 +92,7 @@ function App() {
               <Route path="matches" element={<MatchesPage />} />
               <Route path="notifications" element={<NotificationsPage />} />
               <Route path="settings" element={<SettingsPage />} />
+              <Route path="premium" element={<PremiumPage />} />
             </Route>
 
             {/* Admin */}

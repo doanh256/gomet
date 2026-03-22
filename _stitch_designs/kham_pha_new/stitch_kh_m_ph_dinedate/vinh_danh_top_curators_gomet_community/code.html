@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#ffb3b0",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#e4e2e1",
+              "tertiary-container": "#cf8a7f",
+              "on-primary-fixed": "#410006",
+              "on-background": "#1c1c18",
+              "tertiary": "#894e45",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdad8",
+              "secondary": "#5f5e5e",
+              "inverse-primary": "#ffb3b0",
+              "error-container": "#ffdad6",
+              "surface-tint": "#ae2f34",
+              "surface-container-highest": "#e6e2dc",
+              "on-surface-variant": "#584140",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e6e2dc",
+              "error": "#ba1a1a",
+              "surface-container": "#f1ede7",
+              "surface-dim": "#dddad4",
+              "surface": "#fdf9f3",
+              "on-secondary-container": "#656464",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "on-error-container": "#93000a",
+              "background": "#fdf9f3",
+              "primary-container": "#ff6b6b",
+              "on-surface": "#1c1c18",
+              "outline-variant": "#e0bfbd",
+              "secondary-container": "#e4e2e1",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-primary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-container-low": "#f7f3ed",
+              "primary": "#ae2f34",
+              "outline": "#8c706f",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-secondary-fixed-variant": "#474747",
+              "on-primary-container": "#6d0010",
+              "inverse-surface": "#31302d",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-tertiary-fixed": "#370e08",
+              "tertiary-fixed": "#ffdad4",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-tertiary-container": "#55251e"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-nav {
+            background: rgba(253, 249, 243, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-nav shadow-sm h-20 flex justify-between items-center px-8 max-w-full mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-[#ae2f34] font-headline">GOMET</div>
+<div class="hidden md:flex items-center space-x-8 font-headline tracking-tight font-semibold">
+<a class="text-[#1c1c18] hover:text-[#ae2f34] transition-colors" href="#">Discover</a>
+<a class="text-[#1c1c18] hover:text-[#ae2f34] transition-colors" href="#">Events</a>
+<a class="text-[#1c1c18] hover:text-[#ae2f34] transition-colors" href="#">Venues</a>
+<a class="text-[#ae2f34] border-b-2 border-[#ae2f34] pb-1" href="#">Admin</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 hover:bg-[#f7f3ed] rounded-lg transition-all active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-[#f7f3ed] rounded-lg transition-all active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</nav>
+<main class="pt-32 pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+<!-- Hero Header -->
+<header class="mb-16">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="max-w-2xl">
+<span class="font-label uppercase tracking-widest text-primary font-bold mb-4 block">Cộng Đồng Alpha</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-background leading-tight">
+                        Bảng Vinh Danh <br/>
+<span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-container">Top Curators</span>
+</h1>
+</div>
+<p class="text-on-surface-variant font-body text-lg max-w-xs leading-relaxed">
+                    Tôn vinh những cá nhân xuất sắc kiến tạo những kết nối ẩm thực và cảm xúc tinh tế nhất.
+                </p>
+</div>
+</header>
+<!-- Podium / Top 3 Bento Layout -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-16">
+<!-- Rank 2 -->
+<div class="md:col-span-4 order-2 md:order-1 bg-surface-container-low rounded-lg p-8 flex flex-col justify-end min-h-[400px] relative overflow-hidden group">
+<div class="absolute top-6 right-6 text-4xl font-headline font-black text-outline-variant/30">#2</div>
+<div class="relative z-10">
+<div class="w-24 h-24 rounded-full border-4 border-surface overflow-hidden mb-6">
+<img class="w-full h-full object-cover" data-alt="Chân dung nam curator chuyên nghiệp" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFkBoihRa1xk9veU0-UxeE-CnxQavs-PfjBJ7NWqs06CQ3yQtwQfY7AUSo0YBolZ_4ZvZkgrf9xryOwlY97dTcXUcJNaELMjdlzY8jyPjdFdFNZgKnt5Ck1JIVGg_uIepBUxK0ow0dtXxVw7ELZSEph8xPjKN2b0gwihjV0JS0sPgw1jH3zOOVCovIFzJNhOT4-XK4ArAJFcdz1hinXWiPpSfkTfsm77FKfBqdw4vxlD1md0-rYKfSCK0dXkroee73mT9qDUrEINU"/>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<h3 class="font-headline text-2xl font-bold">Minh Phan</h3>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-surface-container-high rounded-full font-label text-xs uppercase tracking-wider">Fine Dining</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full font-label text-xs uppercase tracking-wider">Wine Expert</span>
+</div>
+<div class="grid grid-cols-2 gap-4 border-t border-outline-variant/20 pt-6">
+<div>
+<p class="font-label text-xs text-on-surface-variant uppercase">Matches</p>
+<p class="font-headline text-xl font-bold">142</p>
+</div>
+<div>
+<p class="font-label text-xs text-on-surface-variant uppercase">Curator Score</p>
+<p class="font-headline text-xl font-bold">9.4</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Rank 1 (Featured) -->
+<div class="md:col-span-4 order-1 md:order-2 bg-gradient-to-br from-primary to-primary-container text-on-primary rounded-lg p-8 flex flex-col justify-end min-h-[500px] relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-8">
+<span class="material-symbols-outlined text-6xl text-on-primary/20" data-icon="workspace_premium" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+</div>
+<div class="absolute top-8 left-8 text-6xl font-headline font-black text-on-primary/10">#1</div>
+<div class="relative z-10">
+<div class="w-32 h-32 rounded-full border-4 border-primary-fixed overflow-hidden mb-8 shadow-2xl scale-110 -translate-y-2">
+<img class="w-full h-full object-cover" data-alt="Chân dung nữ curator hàng đầu" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCssCDHzBUTixj8LeQjPhoHhQRZtPjOovPSr--fcPJwW_wp0UGlrOSeffD0Yk6spwC4y6_ieoy3XNV8cqVM0qIs7KzAXGMRv8KsrBC-orLUYbxutZokQwBo-huMY8xxcFJ87lmkIIKzsODkQCqvIVJLeG_HQYKszHbKuXM338kiLHCbbL5enYYLTnfNiYyZ1JRQz18g_2PlXrTnxx1NgYaEuVBtBLjEtAGSg75AZa94TYOod1f1mYbvoGTR245obdkHHGs3uUBTPxo"/>
+</div>
+<div class="flex items-center gap-2 mb-3">
+<h3 class="font-headline text-3xl font-bold tracking-tight">Linh Chi Nguyen</h3>
+<span class="material-symbols-outlined text-white" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<p class="font-body text-on-primary/80 mb-6 italic">"Ẩm thực là ngôn ngữ của tình yêu."</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="px-4 py-1.5 bg-white/20 backdrop-blur-md rounded-full font-label text-xs font-bold uppercase tracking-widest">Master Curator</span>
+</div>
+<div class="grid grid-cols-2 gap-4 border-t border-white/20 pt-6">
+<div>
+<p class="font-label text-xs text-white/70 uppercase tracking-widest">Matches</p>
+<p class="font-headline text-2xl font-black">285</p>
+</div>
+<div>
+<p class="font-label text-xs text-white/70 uppercase tracking-widest">Curator Score</p>
+<p class="font-headline text-2xl font-black">9.9</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Rank 3 -->
+<div class="md:col-span-4 order-3 bg-surface-container-low rounded-lg p-8 flex flex-col justify-end min-h-[400px] relative overflow-hidden group">
+<div class="absolute top-6 right-6 text-4xl font-headline font-black text-outline-variant/30">#3</div>
+<div class="relative z-10">
+<div class="w-24 h-24 rounded-full border-4 border-surface overflow-hidden mb-6">
+<img class="w-full h-full object-cover" data-alt="Chân dung nam curator trẻ trung" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmyfb7W0Tc8Zn_x2XxH-P6jNw4oSjqy6ot_o65vJQ4SKnvzTX5upqmGsNAj3zJP3HJMVvPea-ktrCv-6wyTN4sM9trE9HmbxMuesvnl4vX_qEH_SLNMMH5SPOEMVZHNHdCrqfG-0t9BrFC_lSiChG_XkPrsJeJTQtlbTXAEr8kwXwcG-rGeAuK2Ly9dUVkGS-EtWvHMLwSoq8BWzqH3WovuT6apPUf0x47l1ILWsgTxCyTmF-2JAgP0ix2C_t5kvBcQDYuFP4c-Oc"/>
+</div>
+<div class="flex items-center gap-2 mb-2">
+<h3 class="font-headline text-2xl font-bold">Quoc Anh</h3>
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-surface-container-high rounded-full font-label text-xs uppercase tracking-wider">Street Food</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full font-label text-xs uppercase tracking-wider">Hidden Gems</span>
+</div>
+<div class="grid grid-cols-2 gap-4 border-t border-outline-variant/20 pt-6">
+<div>
+<p class="font-label text-xs text-on-surface-variant uppercase">Matches</p>
+<p class="font-headline text-xl font-bold">128</p>
+</div>
+<div>
+<p class="font-label text-xs text-on-surface-variant uppercase">Curator Score</p>
+<p class="font-headline text-xl font-bold">9.2</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Leaderboard Table -->
+<section class="bg-surface-container-lowest rounded-lg overflow-hidden border border-outline-variant/10 shadow-sm">
+<div class="px-8 py-6 border-b border-surface-container flex justify-between items-center">
+<h2 class="font-headline text-xl font-bold">Bảng Xếp Hạng Cộng Đồng</h2>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-full font-label text-xs uppercase font-bold hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+                        Lọc
+                    </button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low/50">
+<th class="px-8 py-4 font-label text-xs uppercase tracking-widest text-on-surface-variant">Thứ hạng</th>
+<th class="px-8 py-4 font-label text-xs uppercase tracking-widest text-on-surface-variant">Curator</th>
+<th class="px-8 py-4 font-label text-xs uppercase tracking-widest text-on-surface-variant">Kỹ năng tiêu biểu</th>
+<th class="px-8 py-4 font-label text-xs uppercase tracking-widest text-on-surface-variant text-center">Successful Matches</th>
+<th class="px-8 py-4 font-label text-xs uppercase tracking-widest text-on-surface-variant text-right">Curator Score</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Rank 4 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6 font-headline font-bold text-lg text-on-surface-variant">04</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Ảnh đại diện người dùng hạng 4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIOYsGGTE4iu4SbRuAqZe0B7gNee22p6uW5vXbhZTg1xxpLqOoXpnnoX-wKUDmmAQfu-PHA2TcW04dC5grY_HKqqa5rLzlOKlotG8wkPh68s3OEYVb4VTlryus5-_Y0TiNRTRkyab0E4zmh2QlNGmKDTSivq1tpUjz6veSaEIry15CPAGY546q7jfis_umDSS536DiqfqKBUKo5TI0jepceVFE2gfeLAnr5NcpbjV9PQawpvLLO9KUaSwhDQM3ZDpIKWOaPlMdAOY"/>
+</div>
+<div>
+<div class="font-headline font-bold">Thao My</div>
+<div class="text-xs text-on-surface-variant">Joined May 2024</div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] uppercase font-bold text-on-surface-variant">Brunch</span>
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] uppercase font-bold text-on-surface-variant">Cocktails</span>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-headline font-bold">94</td>
+<td class="px-8 py-6 text-right">
+<div class="inline-flex items-center gap-1 font-headline font-black text-primary">
+                                    8.9
+                                    <span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+</div>
+</td>
+</tr>
+<!-- Rank 5 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6 font-headline font-bold text-lg text-on-surface-variant">05</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Ảnh đại diện người dùng hạng 5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDErGOPD-RFN_bkVCrO53znwc08q9O1takA19JTpLXjDVoO_1St62Nb9U7ltkAPwdqqGQd-TirJjwCHdk77YvjBIi_4xHq-5BTNQmjDYFu7SYPq8cW10YMmT4AP7fGFZK73jZGlKGsDqilCBvgNjeZhVFiubQP8-Kxxl9LeIoxUmoS37o7SCwdI3faWUthXInt5lYaMAFuIEXZLnDJTd_eR3w7ATQJD3pX_jh4aXepnNaB5oVKOg-WC3WyCoq-bHA65wUFmz5rSXsA"/>
+</div>
+<div>
+<div class="font-headline font-bold">Duy Khoa</div>
+<div class="text-xs text-on-surface-variant">Joined Feb 2024</div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] uppercase font-bold text-on-surface-variant">Coffee Roaster</span>
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] uppercase font-bold text-on-surface-variant">Bakery</span>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-headline font-bold">87</td>
+<td class="px-8 py-6 text-right">
+<div class="inline-flex items-center gap-1 font-headline font-black text-primary">
+                                    8.7
+                                    <span class="material-symbols-outlined text-[16px]" data-icon="trending_up">trending_up</span>
+</div>
+</td>
+</tr>
+<!-- Rank 6 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6 font-headline font-bold text-lg text-on-surface-variant">06</td>
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Ảnh đại diện người dùng hạng 6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7alMepLO2idytovnu3b6pMQc1IyJNs4mezGSwktvKMZszidnEZpcVi-4DxARkWQoyaa0llONEoq4-QCIIjY9ZDit-IelwOqhovsmXsSgwvscwno0Xw7ZL8iPaeTy1brL6map1WxX-v9zQJWduZiqFDCPtY1ZWlsgifoF8XU2q0SiKtQEmONicNNZvvtjTPVypLU7pTHMlfekD4eyl362l6n0rEH59QE54g-PpmIcg1pG9T1IAc4J0Ku6y2gZ6pkldA3YRM60OLHM"/>
+</div>
+<div>
+<div class="font-headline font-bold">Bich Phuong</div>
+<div class="text-xs text-on-surface-variant">Joined Jan 2024</div>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] uppercase font-bold text-on-surface-variant">Authentic VN</span>
+<span class="px-2 py-0.5 bg-surface-container-high rounded text-[10px] uppercase font-bold text-on-surface-variant">Fusion</span>
+</div>
+</td>
+<td class="px-8 py-6 text-center font-headline font-bold">76</td>
+<td class="px-8 py-6 text-right">
+<div class="inline-flex items-center gap-1 font-headline font-black text-primary">
+                                    8.5
+                                    <span class="material-symbols-outlined text-[16px]" data-icon="trending_flat">trending_flat</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-8 py-6 bg-surface-container-low/30 text-center">
+<button class="text-primary font-headline font-bold hover:underline underline-offset-4 decoration-2">Xem tất cả bảng xếp hạng</button>
+</div>
+</section>
+<!-- Recognition Badges Section -->
+<section class="mt-24">
+<h2 class="font-headline text-3xl font-extrabold mb-12 text-center">Hệ Thống Huy Chương Danh Giá</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="flex flex-col items-center text-center p-6 bg-surface-container-low rounded-lg transition-transform hover:-translate-y-2">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<h4 class="font-headline font-bold mb-1">Gourmet Guide</h4>
+<p class="text-xs text-on-surface-variant font-body">Cho Curator có hơn 50 gợi ý địa điểm chính xác.</p>
+</div>
+<div class="flex flex-col items-center text-center p-6 bg-surface-container-low rounded-lg transition-transform hover:-translate-y-2">
+<div class="w-16 h-16 bg-tertiary/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-tertiary text-3xl" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<h4 class="font-headline font-bold mb-1">Match Maker</h4>
+<p class="text-xs text-on-surface-variant font-body">Đạt tỷ lệ thành công sau buổi hẹn trên 90%.</p>
+</div>
+<div class="flex flex-col items-center text-center p-6 bg-surface-container-low rounded-lg transition-transform hover:-translate-y-2">
+<div class="w-16 h-16 bg-primary-container/10 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary-container text-3xl" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<h4 class="font-headline font-bold mb-1">Fast Responder</h4>
+<p class="text-xs text-on-surface-variant font-body">Thời gian phản hồi và hỗ trợ cộng đồng cực nhanh.</p>
+</div>
+<div class="flex flex-col items-center text-center p-6 bg-surface-container-low rounded-lg transition-transform hover:-translate-y-2">
+<div class="w-16 h-16 bg-on-background/5 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-on-background text-3xl" data-icon="military_tech" style="font-variation-settings: 'FILL' 1;">military_tech</span>
+</div>
+<h4 class="font-headline font-bold mb-1">Alpha Pioneer</h4>
+<p class="text-xs text-on-surface-variant font-body">Những người đặt nền móng đầu tiên cho GOMET.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-8 bg-[#f7f3ed] flex flex-col md:flex-row justify-between items-center gap-6 border-t border-transparent">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="font-headline font-bold text-[#1c1c18] text-xl">GOMET</div>
+<p class="font-body text-sm uppercase tracking-widest text-slate-500">© 2024 GOMET. The Culinary Curator.</p>
+</div>
+<div class="flex gap-8 font-body text-sm uppercase tracking-widest">
+<a class="text-slate-500 hover:underline decoration-[#ae2f34] underline-offset-4 transition-opacity duration-300" href="#">Privacy</a>
+<a class="text-slate-500 hover:underline decoration-[#ae2f34] underline-offset-4 transition-opacity duration-300" href="#">Terms</a>
+<a class="text-slate-500 hover:underline decoration-[#ae2f34] underline-offset-4 transition-opacity duration-300" href="#">Safety</a>
+<a class="text-slate-500 hover:underline decoration-[#ae2f34] underline-offset-4 transition-opacity duration-300" href="#">Press</a>
+</div>
+</footer>
+</body></html>

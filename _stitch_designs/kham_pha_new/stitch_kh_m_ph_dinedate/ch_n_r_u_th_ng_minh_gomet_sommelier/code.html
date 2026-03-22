@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Digital Sommelier</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface": "#1c1c18",
+              "tertiary-container": "#cf8a7f",
+              "on-error": "#ffffff",
+              "on-secondary-fixed-variant": "#474747",
+              "on-secondary-container": "#656464",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#e4e2e1",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "on-secondary": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "inverse-surface": "#31302d",
+              "on-background": "#1c1c18",
+              "tertiary-fixed": "#ffdad4",
+              "primary": "#ae2f34",
+              "surface-dim": "#dddad4",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-primary-container": "#6d0010",
+              "surface-container-highest": "#e6e2dc",
+              "surface-bright": "#fdf9f3",
+              "background": "#fdf9f3",
+              "on-primary-fixed": "#410006",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-container": "#f1ede7",
+              "on-error-container": "#93000a",
+              "inverse-on-surface": "#f4f0ea",
+              "error-container": "#ffdad6",
+              "surface-container-low": "#f7f3ed",
+              "tertiary": "#894e45",
+              "primary-fixed": "#ffdad8",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-primary": "#ffb3b0",
+              "secondary": "#5f5e5e",
+              "on-primary": "#ffffff",
+              "secondary-fixed": "#e4e2e1",
+              "error": "#ba1a1a",
+              "outline": "#8c706f",
+              "outline-variant": "#e0bfbd",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary-fixed": "#1b1c1c",
+              "primary-container": "#ff6b6b",
+              "surface": "#fdf9f3",
+              "surface-container-high": "#ebe8e2",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-variant": "#e6e2dc",
+              "on-surface-variant": "#584140"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .font-plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+      .font-inter { font-family: 'Inter', sans-serif; }
+      
+      /* Intentional Asymmetry & Layering */
+      .glass-nav {
+        background: rgba(253, 249, 243, 0.8);
+        backdrop-filter: blur(12px);
+      }
+      .premium-gradient {
+        background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+      }
+      .asymmetric-float {
+        transform: translate(20px, -20px);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 glass-nav shadow-sm">
+<div class="flex justify-between items-center px-8 h-20 w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-stone-900 font-plus-jakarta">GOMET</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-stone-600 font-plus-jakarta text-sm tracking-tight font-semibold hover:opacity-80 transition-opacity" href="#">Network</a>
+<a class="text-rose-600 border-b-2 border-rose-600 pb-1 font-plus-jakarta text-sm tracking-tight font-semibold" href="#">Dining</a>
+<a class="text-stone-600 font-plus-jakarta text-sm tracking-tight font-semibold hover:opacity-80 transition-opacity" href="#">Events</a>
+<a class="text-stone-600 font-plus-jakarta text-sm tracking-tight font-semibold hover:opacity-80 transition-opacity" href="#">Membership</a>
+</div>
+<button class="premium-gradient text-white px-6 py-2 rounded-full font-plus-jakarta text-sm font-semibold active:scale-95 duration-150 shadow-md">
+                Join Club
+            </button>
+</div>
+</nav>
+<main class="pt-24 pb-12 px-6 max-w-7xl mx-auto">
+<!-- Header Section: Editorial Authority -->
+<header class="mb-16 mt-8 relative">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="text-primary font-bold tracking-widest text-xs uppercase mb-4 block">Sommelier Selection</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter leading-tight max-w-2xl">
+                        The Fine Art of <span class="text-primary">Pairing</span>.
+                    </h1>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-low p-4 rounded-lg shadow-sm">
+<div class="flex -space-x-3">
+<img class="w-12 h-12 rounded-full border-4 border-surface object-cover" data-alt="User profile portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvH-aAtHWGMmCVBmN6787bWYC7yhDv_Tdks56AYBbaGdUTiU-GtpS1zAMDCZ48pQAYhjlrs5n8PQ-YY9wkzXnITnBESnR9YlNZPsuk9B46zGmfzvPhj1mreML_xedfKPLWWbL6za9pt5dyub4ILbqlNVt9BHjb4WmPU8AP_s01KrMbRU1GZOun5g0fNo0plsyOZq5A8znWCBv2GqX62xOxT0ohM078fh7vxFl8DU8jPsLWOKx_UrF2Q-6bYwifaPEla9hqSSnaxwk"/>
+<img class="w-12 h-12 rounded-full border-4 border-surface object-cover" data-alt="Date profile portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWjiJ2Ar7sJVOb53qukW1RNJzAogInqmpHbZrMfc2zra_uM4inbN6CNlsAyFpvjtXbfKop9Ik15yCv4cKdzN_dAixfetzslAYhoroCpWje-I32vGooK2wmT1vChVkiFKEzk6dmsH4TOtALi924WqP6ao7zZSXzt25KVymQ4bGQKOJ980UYn86MYMz_KwuCYDxhwirnkAy7T_yh0RS1Jww2wvvpNGzYlK2ffZm8JCtjdEYHZ5Cs_FSr0LKPLC5_0OM6kHcLHsbpDTU"/>
+</div>
+<div>
+<p class="font-headline font-bold text-sm">Curating with Julianne</p>
+<p class="text-xs text-secondary">Table 14 • L'Avenue Paris</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Bento Grid: The Interactive Sommelier -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Main List: 8 Columns -->
+<div class="md:col-span-8 space-y-12">
+<!-- Category Tabs -->
+<div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold text-sm whitespace-nowrap">Signature Reds</button>
+<button class="bg-surface-container-high text-on-surface px-8 py-3 rounded-full font-bold text-sm whitespace-nowrap">Crisp Whites</button>
+<button class="bg-surface-container-high text-on-surface px-8 py-3 rounded-full font-bold text-sm whitespace-nowrap">Cocktail Edit</button>
+<button class="bg-surface-container-high text-on-surface px-8 py-3 rounded-full font-bold text-sm whitespace-nowrap">Rare Vintages</button>
+</div>
+<!-- Wine Card 1 -->
+<div class="group relative bg-surface-container-low rounded-lg p-8 flex flex-col md:flex-row gap-8 items-center transition-all hover:bg-surface-container">
+<div class="w-full md:w-48 aspect-[3/4] rounded-md overflow-hidden bg-stone-200 relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Elegant red wine bottle in soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzPaRqvwlEXM1qWz39KTkkUHX00KLxJf6siEIjSCj15AqBthL1LWImz-OTKE5yWUxHKB618ksjIBxTQeXlDMjlYkB98qwmux5DdQLBuE2NtHrjFLHhjC3MpnYsvGtsMZIYnNeUQFLKIwGQ94HUKAt3iocNyPNQ8aAV9N6oK9aiobEKdCBxVD4AdNB28dGc22jKp_rugJaFyJPCoUiI_g309ouz3qGHaa5JChc1Pr2IRFCjod3KUjKxuQZGTFchiA1sDfK5a9jH0sU"/>
+</div>
+<div class="flex-1 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-3xl font-bold tracking-tight">Château Margaux 2015</h3>
+<p class="text-primary font-bold text-sm">Bordeaux, France</p>
+</div>
+<div class="flex gap-2">
+<button class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary shadow-sm hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-stone-400 shadow-sm hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="thumb_up">thumb_up</span>
+</button>
+</div>
+</div>
+<p class="text-secondary leading-relaxed">A majestic vintage offering intense aromas of dark berries, violets, and graphite. Silky tannins lead to an infinite finish.</p>
+<div class="pt-4 flex flex-wrap gap-2">
+<span class="bg-surface-container-highest px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="restaurant">restaurant</span> Perfect with Wagyu
+                            </span>
+<span class="bg-surface-container-highest px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="palette">palette</span> Notes: Cedar, Plum
+                            </span>
+</div>
+</div>
+</div>
+<!-- Wine Card 2 -->
+<div class="group relative bg-surface-container-low rounded-lg p-8 flex flex-col md:flex-row gap-8 items-center transition-all hover:bg-surface-container">
+<div class="w-full md:w-48 aspect-[3/4] rounded-md overflow-hidden bg-stone-200 relative">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Chilled white wine bottle with condensation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDAVhpePAVkzaRQIaokp3oCwBfCsOyGw20GdxAKJrFmaOZckHLNwHOOORDHGthkF8X4D8U4MZvWjmAmqpg16C2vRRc1sBf-PiHY1B-vMJdTgRm4HU_j2V7jqhMziJTTaTWPq9iQ4nuox99R4PgTumnbJvMVd0OeuZ3ebf_WcCU_dwOGoG1bd-RI7rJo3gtS1EqZigzvaabeASsp-8uZnGg8KYRjSsC0LfjivuzvMBUkpm-RjphPw04OZ-xbX1bClu74LE5oW1E5ro"/>
+</div>
+<div class="flex-1 space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-3xl font-bold tracking-tight">Cloudy Bay Sauvignon</h3>
+<p class="text-primary font-bold text-sm">Marlborough, NZ</p>
+</div>
+<div class="flex gap-2">
+<button class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-sm scale-110">
+<span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-stone-400 shadow-sm hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="thumb_up">thumb_up</span>
+</button>
+</div>
+</div>
+<p class="text-secondary leading-relaxed">Zesty lime, passionfruit, and a hint of lemongrass. A vibrant choice for coastal afternoon dining.</p>
+<div class="pt-4 flex flex-wrap gap-2">
+<span class="bg-surface-container-highest px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="restaurant">restaurant</span> Seafood Platter
+                            </span>
+<span class="bg-primary-fixed text-on-primary-fixed-variant px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span> Both Liked
+                            </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Sidebar: Shared Preferences & Action -->
+<aside class="md:col-span-4">
+<div class="sticky top-28 space-y-8">
+<!-- Collaboration Card -->
+<div class="bg-white rounded-lg p-8 shadow-sm border border-outline-variant/10">
+<h4 class="font-headline font-bold text-xl mb-6">Shared Palette</h4>
+<div class="space-y-6">
+<div class="flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-md bg-stone-100 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="wine_bar">wine_bar</span>
+</div>
+<span class="font-medium">Cloudy Bay</span>
+</div>
+<div class="flex -space-x-2">
+<img class="w-6 h-6 rounded-full border border-white" data-alt="User headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNWvfNFN3HAyAsfTfUeMH7RgJbQRpBElWItIr58fqVMof3-ihsNf2oUOEG3vOUhjdCjwREd-VfbZ172EGBNx6IP0qaA68tD_Y_3R-HXNuiTBY2IdIw_gZKujws5xNOVP9GqIRRFiPV4qdVTkrnfliptV9_j_iUH2WfLSUopnORDRaOnyBWHSnPCdr-BPYiheOzGFE0nd8fJ6IbV-prrTOxaGDjTgv9ykxIG5nSweFRUi4whiCC4p4GSpWbw3n7wIIwvBt1LVx8XQQ"/>
+<img class="w-6 h-6 rounded-full border border-white" data-alt="Date headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYa2sPOB4iDlSH8K6lxyFRcFu-xcXPMO_YMH43dUzFzeJUakw44K-94NbktzCWIo9f201Gpos_5YQMF92m-y8v_L095aCY0Tm0MEhZajMOeJYLStAEGmgX7pTmbxQjMBRsJIF4XGeUe_vZxZGJMI_UlML2HaimbsGgmkydvCub4iFuYEa5vmFq0bGuvCvTogZwbdpCB-ieE2vFfuwhkl6QpIFf01om-KYnidNCAgJm6qXk6k5tVtEnirYAjaTgcGoNZaWLviDvKds"/>
+</div>
+</div>
+<div class="flex items-center justify-between opacity-50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-md bg-stone-100 flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="local_bar">local_bar</span>
+</div>
+<span class="font-medium">Negroni Sbagliato</span>
+</div>
+<div class="flex">
+<img class="w-6 h-6 rounded-full border border-white" data-alt="User headshot" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAW0IDemltEvrwWrXcft28SPNbqY4pcDB-81ZzWdYDBSQ9b0sQ6_iXXl6Vq4Fve1C79MSM-iNmzCrr2kwRm9fUrgNBcYC40s_eyJ3STyR_FnhcCv1ffw20Ac-EYJ1LNifKU1ahv_Syl4hGkpJLFbkRKNk2fo9_ZcXMwcmFtn7WSSgqygfszSDYrY-nZi5l0RXsFeV3yTqCnWmxV8jh6uNPfOdUjejrR6gj7cQ3lHyByGx4IuY1h_R_WWUBGigY6ky-IkEUFBTuz0NQ"/>
+</div>
+</div>
+</div>
+<div class="mt-12 space-y-4">
+<p class="text-xs text-secondary italic text-center">Your selection will be sent directly to the Sommelier upon finalization.</p>
+<button class="w-full premium-gradient text-white py-5 rounded-lg font-headline font-extrabold tracking-tight text-lg shadow-lg shadow-primary/20 active:scale-95 transition-transform">
+                                Finalize Selection
+                            </button>
+<button class="w-full text-secondary font-bold text-sm py-2 hover:text-primary transition-colors">
+                                Browse Cocktails Instead
+                            </button>
+</div>
+</div>
+<!-- Venue Pairing Recommendation -->
+<div class="bg-inverse-surface text-inverse-on-surface rounded-lg p-8 overflow-hidden relative">
+<div class="relative z-10">
+<span class="text-tertiary-fixed text-[10px] uppercase font-bold tracking-widest mb-2 block">Venue Spotlight</span>
+<h5 class="font-headline font-bold text-lg leading-snug mb-4">Chef's pairing for the Roast Duck tonight:</h5>
+<p class="text-sm text-surface-variant leading-relaxed">The <span class="text-white font-bold italic">Pinot Noir Réserve</span> complements the cherry reduction perfectly.</p>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-white/10 text-9xl select-none" data-icon="restaurant_menu">restaurant_menu</span>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-100 mt-24">
+<div class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 max-w-7xl mx-auto">
+<div class="font-plus-jakarta font-bold text-lg text-on-surface">GOMET</div>
+<div class="flex gap-8">
+<a class="font-inter text-xs uppercase tracking-widest text-stone-500 hover:text-rose-600 underline-offset-4 hover:underline transition-all" href="#">Privacy</a>
+<a class="font-inter text-xs uppercase tracking-widest text-stone-500 hover:text-rose-600 underline-offset-4 hover:underline transition-all" href="#">Terms</a>
+<a class="font-inter text-xs uppercase tracking-widest text-stone-500 hover:text-rose-600 underline-offset-4 hover:underline transition-all" href="#">Concierge</a>
+<a class="font-inter text-xs uppercase tracking-widest text-stone-500 hover:text-rose-600 underline-offset-4 hover:underline transition-all" href="#">Press</a>
+</div>
+<p class="font-inter text-xs uppercase tracking-widest text-stone-500">© 2024 GOMET Culinary Network. All rights reserved.</p>
+</div>
+</footer>
+<!-- FAB: Only for specific actions -->
+<button class="fixed bottom-8 right-8 w-16 h-16 rounded-full premium-gradient text-white flex items-center justify-center shadow-2xl z-50 md:hidden">
+<span class="material-symbols-outlined" data-icon="wine_bar">wine_bar</span>
+</button>
+</body></html>

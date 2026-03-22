@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET - Saved Venues</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#894e45",
+              "on-background": "#1c1c18",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#410006",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-dim": "#dddad4",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-on-surface": "#f4f0ea",
+              "on-surface": "#1c1c18",
+              "secondary-fixed": "#e4e2e1",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "outline-variant": "#e0bfbd",
+              "on-primary": "#ffffff",
+              "primary-container": "#ff6b6b",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "outline": "#8c706f",
+              "primary-fixed": "#ffdad8",
+              "error-container": "#ffdad6",
+              "surface-container": "#f1ede7",
+              "primary": "#ae2f34",
+              "inverse-surface": "#31302d",
+              "inverse-primary": "#ffb3b0",
+              "surface-container-low": "#f7f3ed",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-tertiary-container": "#55251e",
+              "on-primary-container": "#6d0010",
+              "error": "#ba1a1a",
+              "tertiary-container": "#cf8a7f",
+              "surface-variant": "#e6e2dc",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-highest": "#e6e2dc",
+              "surface": "#fdf9f3",
+              "on-secondary": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "background": "#fdf9f3",
+              "on-secondary-fixed-variant": "#474747",
+              "secondary": "#5f5e5e",
+              "on-tertiary-fixed": "#370e08",
+              "surface-bright": "#fdf9f3",
+              "on-secondary-container": "#656464"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 24px 48px -12px rgba(174, 47, 52, 0.08);
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md shadow-sm shadow-rose-900/5 flex justify-between items-center px-6 py-4 w-full">
+<div class="text-2xl font-bold tracking-tighter text-rose-800 dark:text-rose-500 brand-font">GOMET</div>
+<div class="flex gap-4 items-center">
+<button class="text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</nav>
+<main class="pt-24 px-6 max-w-5xl mx-auto">
+<!-- Hero Header -->
+<header class="mb-12">
+<h1 class="text-5xl font-extrabold tracking-tight text-on-background mb-4">Địa điểm Yêu thích</h1>
+<p class="text-on-surface-variant font-body text-lg max-w-2xl">Những không gian ẩm thực tinh tế được lưu trữ cho những buổi hẹn hò sắp tới của bạn.</p>
+</header>
+<!-- Filters Section -->
+<section class="mb-10 flex flex-wrap gap-3 items-center">
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-full">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="filter_list">filter_list</span>
+<span class="text-sm font-semibold uppercase tracking-widest text-on-surface-variant">Lọc theo:</span>
+</div>
+<!-- Category Chips -->
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-semibold text-sm transition-all shadow-lg shadow-primary/20">Tất cả</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-semibold text-sm hover:bg-surface-container-high transition-all">Nhà hàng</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-semibold text-sm hover:bg-surface-container-high transition-all">Bar &amp; Lounge</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-semibold text-sm hover:bg-surface-container-high transition-all">Quận 1</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-semibold text-sm hover:bg-surface-container-high transition-all">Quận 3</button>
+<button class="px-6 py-2 rounded-full bg-surface-container-highest text-on-surface-variant font-semibold text-sm hover:bg-surface-container-high transition-all">Quận 7</button>
+</section>
+<!-- Bento-inspired Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Featured Card - Large -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-lg bg-surface-container-lowest editorial-shadow">
+<div class="aspect-[16/9] overflow-hidden">
+<img alt="Cocktail Bar" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Sophisticated dimly lit cocktail bar interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAiRlAmy6htz2R9D6s_cKLQX4ZJK5_SvtPQuf0MTSy4oDt87gu-e3O3f_pBmMPQLJURbzJ-UQhDY2dhCYM8YrgO4s_-IGrer1IcoU3u0KLg_YKiasa6JTYF5BvGtJLeruEXC2avQYAs2S4rdZ1Iouxa-_Tk0I9qF0nbuHVjH9KXT7_8P9KMXWXJ8w0hFECYN6Afv7oEjY1MG3A-oe2mD6Sqryk_Z6WR83J3JWkhK6OnMbKx7kzF6PmStbZrBoKeJuXMfQT_EiHXrEk"/>
+</div>
+<div class="absolute top-4 right-4">
+<div class="bg-white/90 backdrop-blur-md p-2 rounded-full text-primary shadow-sm">
+<span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-wider">Fine Dining</span>
+<span class="flex items-center gap-1 text-sm font-bold text-primary">
+<span class="material-symbols-outlined text-sm" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span> 4.9
+                                </span>
+</div>
+<h3 class="text-3xl font-bold tracking-tight text-on-background">Le Ciel Rooftop Bar</h3>
+<p class="text-on-surface-variant mt-1">Quận 1, TP. Hồ Chí Minh</p>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-8 py-4 rounded-DEFAULT font-bold text-sm shadow-xl shadow-primary/20 active:scale-95 transition-all">
+                            Tạo cuộc hẹn tại đây
+                        </button>
+</div>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="md:col-span-4 group bg-surface-container-lowest rounded-lg overflow-hidden editorial-shadow flex flex-col">
+<div class="aspect-square overflow-hidden relative">
+<img alt="Sushi Restaurant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Artistic sushi platter with fresh salmon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz6ME0JsDcoNGLtJ7_Q6G-cDC6ZnfG7sMuOa45eNso3uXWvvk3N5sR6RMpE6VqTV6-qeSDvt5ZvfzGFWpaCusJeMzuFuMwRV_0WoHwPWTe-1cpnXqWq6foiRZhaXgaTcRn72s4HuuUaOxTh15TTxga2mOjLIqLHfL41fU1dES2JqhA5szjriht6fDC4ORNAlTs_1KsLnWqM2wfAGSlsa9qOlW3_YLwrDGE0AcWSe7zzzc5yDcG7IwkPrPC1I5qsXHSkpTzkasYpJg"/>
+<div class="absolute bottom-4 left-4">
+<span class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest text-on-surface">Modern Japanese</span>
+</div>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<div class="flex justify-between items-center mb-2">
+<h4 class="text-xl font-bold tracking-tight">Omaske Studio</h4>
+<span class="text-primary font-bold">4.8</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6">Trải nghiệm sushi tinh tế trong không gian tối giản tại Quận 3.</p>
+<button class="mt-auto w-full py-3 bg-surface-container-highest text-on-surface font-bold text-xs rounded-DEFAULT hover:bg-surface-container-high transition-colors">
+                        Tạo cuộc hẹn
+                    </button>
+</div>
+</div>
+<!-- Small Card 2 -->
+<div class="md:col-span-4 group bg-surface-container-lowest rounded-lg overflow-hidden editorial-shadow flex flex-col">
+<div class="aspect-square overflow-hidden relative">
+<img alt="Italian Restaurant" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Rustic italian pasta dish with tomatoes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqmrQzR4xd1_ESzMyjTPEKbP7hdOPKw1BVc5vtrVUoqOaZrxkCusdX93b5SSR7KraymtME8NzbjzGhR7jFPVLZ_0WZLn1-UG74m1DKGoi8K4kzTTrW1pdQJdSxKCFDPu8Nibdu9WE3i3w_b9oiJ0XFqZh7_6uowDUygvHrUYbpxfdmworxHlhCPNn8_IJxeiAzv624sPLZGZE7EN-68hZVfMNe_hydMmjwBgSmqMMRS37ERnxuS5nblsPlB-oYO4Mwt8g2pNluHo4"/>
+<div class="absolute bottom-4 left-4">
+<span class="px-3 py-1 bg-white/90 backdrop-blur-md rounded-full text-[10px] font-bold uppercase tracking-widest text-on-surface">Authentic Italian</span>
+</div>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<div class="flex justify-between items-center mb-2">
+<h4 class="text-xl font-bold tracking-tight">Pasta &amp; Co.</h4>
+<span class="text-primary font-bold">4.7</span>
+</div>
+<p class="text-sm text-on-surface-variant mb-6">Mì tươi làm thủ công hàng ngày. Không gian ấm cúng cho buổi tối lãng mạn.</p>
+<button class="mt-auto w-full py-3 bg-surface-container-highest text-on-surface font-bold text-xs rounded-DEFAULT hover:bg-surface-container-high transition-colors">
+                        Tạo cuộc hẹn
+                    </button>
+</div>
+</div>
+<!-- Medium Card 2 - Spanning 8 -->
+<div class="md:col-span-8 group bg-surface-container-lowest rounded-lg overflow-hidden editorial-shadow flex flex-col md:flex-row">
+<div class="md:w-1/2 overflow-hidden relative">
+<img alt="Steakhouse" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Warm luxury steakhouse interior lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvLfC6s00aGH4FhrZaX1T_sUtsdCLP98RvXRE6_vXfFznrsAlBGZdBTOCYT9qFfS43GrOxaVa6a0tDaSttunP8q3rX8HUJl-fvGTa2xWCf5TIyV-LpUkqRfhPFOUg6QPYz5dQLtp1iBUE8zbpUm5YWbWYEVBUCOaU5CXDjh9DkhubrtFmdNi2i-d9xqPZFka3p2SRNjRihkYeOL-KC1gGoI6Tq0QL0YqX3ceOaGcy5rWZB0x9aBCj2IsfB_SuFfesj0dzfxBjBIXs"/>
+</div>
+<div class="md:w-1/2 p-8 flex flex-col justify-center">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded-full text-[10px] font-bold uppercase tracking-wider">Premium Steak</span>
+<span class="text-primary font-bold">5.0</span>
+</div>
+<h3 class="text-2xl font-bold tracking-tight text-on-background mb-3">The Prime Cut</h3>
+<p class="text-on-surface-variant text-sm mb-6">Thưởng thức những miếng bít tết hảo hạng cùng bộ sưu tập rượu vang danh tiếng tại trung tâm Quận 7.</p>
+<div class="flex gap-4">
+<button class="flex-1 bg-gradient-to-r from-primary to-primary-container text-on-primary py-3 rounded-DEFAULT font-bold text-xs shadow-lg shadow-primary/20 active:scale-95 transition-all">
+                            Tạo cuộc hẹn
+                        </button>
+<button class="p-3 bg-surface-container-high rounded-DEFAULT text-primary">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Empty State Logic (Hidden) -->
+<div class="hidden flex-col items-center justify-center py-20 text-center">
+<div class="w-20 h-20 bg-surface-container rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl text-stone-300" data-icon="bookmark_border">bookmark_border</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Chưa có địa điểm nào được lưu</h3>
+<p class="text-on-surface-variant mb-8">Hãy khám phá và lưu những nhà hàng yêu thích của bạn.</p>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-full font-bold">Khám phá ngay</button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-white/90 dark:bg-stone-950/90 backdrop-blur-xl rounded-t-[2rem] shadow-[0_-8px_30px_rgb(174,47,52,0.08)]">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-6 py-2 hover:bg-stone-50 dark:hover:bg-stone-800/50 active:scale-90 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="explore">explore</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest">Go &amp; Meet</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-300 rounded-full px-6 py-2 active:scale-90 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest">Favorites</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-6 py-2 hover:bg-stone-50 dark:hover:bg-stone-800/50 active:scale-90 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="help_center">help_center</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest">Support</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-6 py-2 hover:bg-stone-50 dark:hover:bg-stone-800/50 active:scale-90 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest">Profile</span>
+</a>
+</nav>
+</body></html>

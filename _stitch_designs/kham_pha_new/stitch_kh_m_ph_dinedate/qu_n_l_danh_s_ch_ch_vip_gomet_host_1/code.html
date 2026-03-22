@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET Venue Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#e4e2e1",
+              "surface-tint": "#ae2f34",
+              "primary-fixed-dim": "#ffb3b0",
+              "primary-container": "#ff6b6b",
+              "inverse-primary": "#ffb3b0",
+              "surface-dim": "#dddad4",
+              "surface-variant": "#e6e2dc",
+              "secondary-fixed-dim": "#c8c6c6",
+              "primary-fixed": "#ffdad8",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1c1c18",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-container": "#f1ede7",
+              "background": "#fdf9f3",
+              "outline-variant": "#e0bfbd",
+              "on-primary-fixed": "#410006",
+              "tertiary": "#894e45",
+              "secondary": "#5f5e5e",
+              "secondary-fixed": "#e4e2e1",
+              "inverse-surface": "#31302d",
+              "on-tertiary-fixed": "#370e08",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "outline": "#8c706f",
+              "on-secondary-fixed": "#1b1c1c",
+              "tertiary-container": "#cf8a7f",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container-low": "#f7f3ed",
+              "on-error-container": "#93000a",
+              "surface-container-highest": "#e6e2dc",
+              "on-error": "#ffffff",
+              "on-secondary-fixed-variant": "#474747",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "primary": "#ae2f34",
+              "on-surface-variant": "#584140",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "on-background": "#1c1c18",
+              "inverse-on-surface": "#f4f0ea",
+              "on-primary-fixed-variant": "#8c1520",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#656464",
+              "on-primary-container": "#6d0010",
+              "on-primary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-4 bg-[#fdf9f3]/80 backdrop-blur-md shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-[#ae2f34] tracking-tighter uppercase">GOMET</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-[#ae2f34] font-bold border-b-2 border-[#ae2f34] py-1" href="#">Venues</a>
+<a class="text-[#1c1c18] font-medium hover:bg-[#f7f3ed] transition-colors duration-300 px-3 py-1 rounded" href="#">Connect</a>
+<a class="text-[#1c1c18] font-medium hover:bg-[#f7f3ed] transition-colors duration-300 px-3 py-1 rounded" href="#">Events</a>
+<a class="text-[#1c1c18] font-medium hover:bg-[#f7f3ed] transition-colors duration-300 px-3 py-1 rounded" href="#">Alpha</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#f7f3ed] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-on-surface">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-[#f7f3ed] active:scale-95 transition-all">
+<span class="material-symbols-outlined text-on-surface">account_circle</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 lg:px-12 max-w-7xl mx-auto">
+<!-- Dashboard Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+<div>
+<span class="text-primary font-bold tracking-widest uppercase text-xs mb-2 block">Partner Dashboard</span>
+<h1 class="text-4xl lg:text-5xl font-extrabold tracking-[-0.04em] text-on-surface">The Crimson Lounge</h1>
+</div>
+<div class="flex gap-3">
+<button class="bg-surface-container-highest px-6 py-3 rounded-full font-bold text-on-surface hover:bg-surface-container-high transition-colors active:scale-95">
+                    Download Report
+                </button>
+<button class="bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] px-6 py-3 rounded-full font-bold text-white shadow-lg active:scale-95 transition-all">
+                    Manual Check-In
+                </button>
+</div>
+</div>
+<!-- Real-time Metrics Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+<!-- Capacity Tracker -->
+<div class="md:col-span-2 bg-surface-container-lowest p-8 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.04)] relative overflow-hidden">
+<div class="flex justify-between items-start mb-8">
+<div>
+<p class="text-secondary font-semibold text-sm uppercase tracking-wider mb-1">Venue Capacity</p>
+<h2 class="text-4xl font-black text-on-surface">142<span class="text-outline">/180</span></h2>
+</div>
+<div class="bg-primary-container/20 p-3 rounded-full">
+<span class="material-symbols-outlined text-primary">groups</span>
+</div>
+</div>
+<!-- Capacity Progress Bar -->
+<div class="w-full bg-surface-container h-4 rounded-full overflow-hidden mb-2">
+<div class="bg-gradient-to-r from-primary to-primary-container h-full w-[78%]"></div>
+</div>
+<p class="text-sm text-secondary">78% Occupancy — Optimal atmosphere achieved.</p>
+<div class="absolute -bottom-4 -right-4 opacity-5">
+<span class="material-symbols-outlined text-9xl">analytics</span>
+</div>
+</div>
+<!-- Premium Queue -->
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.04)] border-l-4 border-primary">
+<p class="text-secondary font-semibold text-sm uppercase tracking-wider mb-1">Premium Tier</p>
+<h2 class="text-4xl font-black text-on-surface">12</h2>
+<p class="text-sm text-primary font-bold mt-2">Active Requests</p>
+<div class="mt-4 flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Premium user profile avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBBe3AMDxbCThDnIRv0bWesghQWvP1G_TSC5oq67916-HWOBvZ3x2-FKDJJdEQKvZy3Fc0b9BMhKiqKfobF1YTfReXHlh6KBxcvifG_xjED1klvfkDA5ftBlYpG4CtMpjcRkka2s-VdDUmDiroDVqZNxfvc7uGyfwqk-dZIOCcQRScpnqvCKE13NOgJajN1CO7v-PaZ1wDzceI-IehcjCAQJS1NoasW90pAl8t1se7PRgXWeeQXftZBn1CYzkkLyUOLToIBtvY6m_g"/>
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Premium user profile avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIlyIVakNuwFCYMfuHFfZMXpY5VUTdp-_I_C53pjA04VkFktxu152e1M2_7fjCNEFtLZ3cIP4H4IC2lQd-5IpQmV-bIOjVramWhkixEOx2911kiAFuP-ROWIoVrhy21JJ-pd6rLgJ73Sx6bpJIB0GvejuVvLQvFqBWibq6OjWcUiXK7KrfmdYdlNfhdCl5L0tnB-K5eWCRu6rmsPCsrkuEsrQNWcZxcj7OLk9fxVEWKf1YM8Skrmt80QxmrShBbX_XJoJXYDYLnQI"/>
+<img class="w-10 h-10 rounded-full border-2 border-white object-cover" data-alt="Premium user profile avatar 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8jOTJisz9gtcVBF0FYazA07IQh1mzib5JXPEw4RH46htx3kccCPuQe7NonFwwcVUOpm6W1i4wl-JAPKmlufvWQSTkHgMCSmPgCUlVezogetiC6e8HrIe4fDuk-s-__vWE42J5RxLPPPSDBzHtNEUJS8yHb_I-YVmCa5-QebMN5CWV5IBssT0Tte2KDH1fYrzfIcN2HD8kaThBPYvpCu_DPLZIsSROu2nHyk9VkmrRPo7T0hEIrmAWLFp5TAz8rQPnUtKTPAebW-s"/>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-surface-container-high flex items-center justify-center text-xs font-bold text-on-surface">+9</div>
+</div>
+</div>
+<!-- Waitlist Status -->
+<div class="bg-on-background p-8 rounded-lg shadow-2xl flex flex-col justify-between">
+<div>
+<p class="text-surface-container font-semibold text-sm uppercase tracking-wider mb-1">Standard Wait</p>
+<h2 class="text-4xl font-black text-surface">24<span class="text-surface-variant/30 text-2xl">min</span></h2>
+</div>
+<div class="flex items-center gap-2 text-primary-container">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="text-xs font-bold">Increasing (Busy Hour)</span>
+</div>
+</div>
+</div>
+<!-- Waitlist Manager Section -->
+<section class="bg-surface-container-low rounded-lg p-1">
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden">
+<div class="px-8 py-6 border-b border-surface-container flex flex-col md:flex-row md:items-center justify-between gap-4">
+<h3 class="text-2xl font-bold tracking-tight">Active Waitlist Manager</h3>
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-sm">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-sm focus:ring-2 focus:ring-primary/20 w-64" placeholder="Search guests..." type="text"/>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-secondary hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                            Filter
+                        </button>
+</div>
+</div>
+<!-- Waitlist Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low text-secondary text-xs uppercase tracking-widest">
+<tr>
+<th class="px-8 py-4 font-bold">Guest</th>
+<th class="px-6 py-4 font-bold">Party</th>
+<th class="px-6 py-4 font-bold">GOMET Score</th>
+<th class="px-6 py-4 font-bold">Wait Time</th>
+<th class="px-6 py-4 font-bold">Tier</th>
+<th class="px-8 py-4 font-bold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<!-- Row 1: Premium -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="Guest profile photo Julian" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKdxhkfT2q8T4zIR4xj5ZxyzAXbT2wTNCEGsQLs4XEeetY54iJ6m8DHgk2HzTyG9H8n4TXX-52w2NEvEoUznDUKeyESFZAauBZrwyiqGRJaIPAC2mROhSKbPhflgCIDFNUHguloByL8EzgSjAccOWZgL27iiTeO64ii72PrliFuYFMFzpbi79KI9RpHF4N_ggO1weP7A3JrwOYtTs1EFNHNe0_VqnME8o8SMl3KSXBDgUwKNkTctYyk2iGEJdzN6grtnvbe5XaFzo"/>
+<div>
+<p class="font-bold text-on-surface">Julian Voss</p>
+<p class="text-xs text-secondary">ID: #GMT-8821</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 font-semibold">2 Guests</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-1 text-primary">
+<span class="font-black text-lg">9.8</span>
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</td>
+<td class="px-6 py-6 text-on-surface font-medium">-- min <span class="text-[10px] text-primary block">Next Priority</span></td>
+<td class="px-6 py-6">
+<span class="bg-primary/10 text-primary text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter">Premium</span>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="bg-primary text-white text-xs font-bold px-5 py-2 rounded-full active:scale-95 transition-all shadow-md">Admit</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="Guest profile photo Elena" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfBr-GuVLKUxLqMHt9ytCxji3hZ0yX662-zeHjLoJM48iiLSg7YSsXBnINmrJJ0GsxD3Aig2UCLiHWaPudqtTdr9BM2yY6UEwMBUUt4p6_uTaqRIh7SVJjZWpA3Wl24iX1w-O68aP6eVJsNxZf5rgYq0Fhn8QhzYKGGq5Gg5g4gxFlGIJclQryXX-A_03C1LsULSC0ZkjU2ozyv1QnzmE1v1QQ4HHWnFZ-fMarSS12_drxA9TayPPKlcgVah-ShjlAkxbQUiLyCVI"/>
+<div>
+<p class="font-bold text-on-surface">Elena Rodriguez</p>
+<p class="text-xs text-secondary">ID: #GMT-1042</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 font-semibold">4 Guests</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="font-black text-lg">8.4</span>
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</td>
+<td class="px-6 py-6 text-on-surface font-medium">14 min</td>
+<td class="px-6 py-6">
+<span class="bg-surface-container-high text-on-surface-variant text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter">Alpha</span>
+</td>
+<td class="px-8 py-6 text-right">
+<button class="border border-outline-variant text-on-surface text-xs font-bold px-5 py-2 rounded-full hover:bg-surface-container-low transition-all">Notify</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-8 py-6">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="Guest profile photo Marcus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4SOKvcSVf53Vmwcbhw8tv-9mitrVKJtBrdJ2xQTZMfhXITB00I_XGXzTInorhfwcbBDWQZrVhzlnenvgmHZs-RUzOvYp2hyeiGyWppGy2Yg3TSMOh6NI8eKCc23deJxuqMXpzD53gXsk9WAuo4X4jKCDpPITVCXtQWs39IZV_SwJrPAl5FJF6LNwzYzz5DfcFl_CUQHWHAxlky0HO-97tJXqYSeoEon5hr_GpAheA9ikL-_jwBeDMQ5cq0RVzCTjGsVFBeN0MRkE"/>
+<div>
+<p class="font-bold text-on-surface">Marcus Thorne</p>
+<p class="text-xs text-secondary">ID: #GMT-4419</p>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 font-semibold">1 Guest</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-1 text-on-surface">
+<span class="font-black text-lg">7.9</span>
+<span class="material-symbols-outlined text-[10px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</td>
+<td class="px-6 py-6 text-on-surface font-medium">28 min</td>
+<td class="px-6 py-6">
+<span class="bg-surface-container-high text-on-surface-variant text-[10px] font-black px-2 py-1 rounded-full uppercase tracking-tighter">Standard</span>
+</td>
+<td class="px-8 py-6 text-right flex gap-2 justify-end">
+<button class="border border-outline-variant text-on-surface text-xs font-bold px-5 py-2 rounded-full hover:bg-surface-container-low transition-all">Notify</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-8 py-4 bg-surface-container-low/50 flex items-center justify-between">
+<p class="text-xs font-medium text-secondary italic">Showing 3 of 36 guests on waitlist</p>
+<div class="flex gap-2">
+<button class="p-2 rounded-full bg-white shadow-sm disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="p-2 rounded-full bg-white shadow-sm hover:bg-primary/5">
+<span class="material-symbols-outlined text-sm text-primary">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-end pb-6 px-4 bg-[#fdf9f3]/80 backdrop-blur-md shadow-2xl">
+<button class="flex flex-col items-center justify-center bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] text-white rounded-full w-14 h-14 -translate-y-4 shadow-lg active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-['Inter'] font-semibold text-[8px] uppercase tracking-wider">Venues</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#1c1c18] opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-['Inter'] font-semibold text-[8px] uppercase tracking-wider">Connect</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#1c1c18] opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">local_dining</span>
+<span class="font-['Inter'] font-semibold text-[8px] uppercase tracking-wider">Events</span>
+</button>
+<button class="flex flex-col items-center justify-center text-[#1c1c18] opacity-70 hover:opacity-100 transition-opacity active:scale-90 duration-200">
+<span class="material-symbols-outlined">biotech</span>
+<span class="font-['Inter'] font-semibold text-[8px] uppercase tracking-wider">Alpha</span>
+</button>
+</nav>
+</body></html>

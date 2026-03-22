@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdad4",
+              "primary": "#ae2f34",
+              "on-background": "#1c1c18",
+              "inverse-surface": "#31302d",
+              "surface-tint": "#ae2f34",
+              "on-primary-fixed": "#410006",
+              "surface-container-highest": "#e6e2dc",
+              "surface-bright": "#fdf9f3",
+              "background": "#fdf9f3",
+              "on-primary-container": "#6d0010",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-dim": "#dddad4",
+              "tertiary-container": "#cf8a7f",
+              "on-error": "#ffffff",
+              "on-surface": "#1c1c18",
+              "on-secondary": "#ffffff",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "surface-container-lowest": "#ffffff",
+              "secondary-container": "#e4e2e1",
+              "on-secondary-fixed-variant": "#474747",
+              "on-secondary-container": "#656464",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary-fixed": "#1b1c1c",
+              "outline-variant": "#e0bfbd",
+              "outline": "#8c706f",
+              "secondary-fixed": "#e4e2e1",
+              "error": "#ba1a1a",
+              "surface-variant": "#e6e2dc",
+              "on-surface-variant": "#584140",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-container-high": "#ebe8e2",
+              "surface": "#fdf9f3",
+              "primary-container": "#ff6b6b",
+              "surface-container": "#f1ede7",
+              "on-error-container": "#93000a",
+              "on-primary-fixed-variant": "#8c1520",
+              "secondary": "#5f5e5e",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-primary": "#ffb3b0",
+              "primary-fixed": "#ffdad8",
+              "on-tertiary": "#ffffff",
+              "tertiary": "#894e45",
+              "surface-container-low": "#f7f3ed",
+              "inverse-on-surface": "#f4f0ea",
+              "error-container": "#ffdad6"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-line-rule { border: none !important; }
+        .tonal-layering { border: none !important; }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-orange-50/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] flex justify-between items-center px-6 py-4 w-full no-line-rule bg-orange-100/20 dark:bg-zinc-900/20">
+<div class="text-2xl font-black tracking-tighter text-rose-800 dark:text-rose-500 italic">GOMET</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-rose-700 dark:text-rose-400">restaurant_menu</span>
+</button>
+<button class="p-2 rounded-full hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-colors active:scale-95 duration-200 relative">
+<span class="material-symbols-outlined text-rose-700 dark:text-rose-400">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Close up portrait of a smiling woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwyHaHNpdfVsHXCOUHow_PdLedypT2lBpW-aYe7HJ9CgF4nVqNTBYvEvb0dWWnpyFUfXw7CvB2T2XCSydZ77jQrmSzjt8oLalllT7Zokhi0NoJawWKz47udOCjqvTi66oLf-kYEF5Upg4cq_u7VaHRYBL6cSKLnmCSCeE73EGVFKX296JqET9O00EJQEFRnO5Poe2VdxAjuzol20o5NWziX8oXCypTPjd-zepz27KlL69JQTe1IEjnGPs_6zmfHxDT5hF9qPm5Hp0"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-5xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-12">
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-background mb-4">
+                What's your <span class="text-primary italic">vibe</span> today?
+            </h1>
+<p class="text-on-surface-variant text-lg max-w-xl">Set your status to let the community know what you're craving or doing. Facilitate organic connections over fine dining.</p>
+</section>
+<!-- Mood & Status Manager (Bento Grid Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Quick Access Sidebar Overlay Pattern -->
+<aside class="md:col-span-1 space-y-6">
+<div class="bg-surface-container-lowest p-8 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<h3 class="font-headline text-xl font-bold mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="mood">mood</span>
+                        Current Status
+                    </h3>
+<div class="space-y-3">
+<!-- Active Status -->
+<button class="w-full flex items-center justify-between p-4 rounded-full bg-gradient-to-tr from-rose-700 to-rose-400 text-white shadow-lg shadow-rose-500/20 active:scale-95 transition-all">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="font-bold text-sm tracking-wide">Craving Sushi</span>
+</div>
+<span class="material-symbols-outlined text-sm">check_circle</span>
+</button>
+<button class="w-full flex items-center gap-3 p-4 rounded-full bg-surface-container-high text-on-surface hover:bg-rose-50 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary">wine_bar</span>
+<span class="font-medium text-sm tracking-wide">Looking for a Wine Buddy</span>
+</button>
+<button class="w-full flex items-center gap-3 p-4 rounded-full bg-surface-container-high text-on-surface hover:bg-rose-50 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary">bolt</span>
+<span class="font-medium text-sm tracking-wide">Free tonight!</span>
+</button>
+<button class="w-full flex items-center gap-3 p-4 rounded-full bg-surface-container-high text-on-surface hover:bg-rose-50 transition-colors active:scale-95">
+<span class="material-symbols-outlined text-primary">explore</span>
+<span class="font-medium text-sm tracking-wide">Open to new venues</span>
+</button>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant/20">
+<p class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 mb-4">Your Custom Vibe</p>
+<div class="relative">
+<input class="w-full bg-surface-container-highest border-none rounded-sm px-4 py-3 text-sm focus:ring-2 focus:ring-primary-container" placeholder="Type a status..." type="text"/>
+<button class="absolute right-2 top-1/2 -translate-y-1/2 bg-primary text-white p-1.5 rounded-full">
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Spotlight Preview Card -->
+<div class="bg-surface-container-low p-6 rounded-lg relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container opacity-10 rounded-full -mr-16 -mt-16 transition-transform group-hover:scale-110"></div>
+<div class="relative z-10">
+<span class="inline-block px-3 py-1 rounded-full bg-primary text-white text-[10px] font-bold uppercase tracking-widest mb-4">Spotlight Preview</span>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-sm">
+<img alt="User avatar" class="w-full h-full object-cover" data-alt="Smiling person profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBjKb3zvvLEXQNo4zpPI1xM1Vygz9jlWBgi5j94LWLiT7K5_3jEAFqqczxalBynWl0CVIyTGYWlpmuc0xErh-7C_q4ZlAcujQJkAg4c90D3pU81k3yefiCyvrc_xmtTJVDfifv8PrNEkItW21_oqh3PcXEb65lzUjFHGkMqlZDou5L4xCGZV7ZWHR7CmxIu9am4K5x0QrbQ5qQbROK7GoN-4ysLnqQ5O_ePKxY2bHHd2vVLnejCXUn1O3NPaxy7h_NS_kWphe05w-Y"/>
+</div>
+<div>
+<h4 class="font-bold text-on-background">Alex, 28</h4>
+<div class="flex items-center gap-1 text-primary">
+<span class="material-symbols-outlined text-xs" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<span class="text-xs font-bold">Craving Sushi</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+<!-- Spotlight Grid -->
+<div class="md:col-span-2 space-y-6">
+<div class="flex justify-between items-end mb-4">
+<h2 class="font-headline text-3xl font-bold tracking-tight">Active Vibes Nearby</h2>
+<span class="text-primary font-bold text-sm">View all</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<!-- Person Card 1 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-[0_8px_32px_rgba(174,47,52,0.05)] group">
+<div class="h-64 relative">
+<img alt="Male portrait" class="w-full h-full object-cover" data-alt="Stylish man looking thoughtfully at the camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD98Ed6DZL6WX-0x5cLkSuwA7Mw1WUmG3nm1qj4FNOvU06jCw-52Ji-C2bI48JvYq3eB0q_DXVTtoQoAOH3sA-j_kpcZLHcd4Jda2FA7GHLGx-x-aIL3RjjfrzWmP1faGDhhSBnz5JjkthwjUbuDsZvh90eIB9RnWg5zC60Vb-IbwmBb-rMHNneoEhKIRlMZvS7IwPav395RCd33mPDRpbovMdB4WZAG1qwgtog5-W-dQdgc9xQO17sD3yLQVbmm_kCsBixGF8FuVY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<div>
+<p class="text-white font-headline text-xl font-bold">Julian, 31</p>
+<p class="text-white/80 text-xs">2.4 miles away</p>
+</div>
+<div class="bg-primary/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-white text-sm">wine_bar</span>
+<span class="text-white text-[10px] font-bold uppercase tracking-widest">Wine Buddy</span>
+</div>
+</div>
+</div>
+<div class="p-4 flex justify-between items-center">
+<span class="text-xs text-on-surface-variant italic">"Just landed, need a glass of red."</span>
+<button class="p-2 bg-surface-container-high rounded-full hover:bg-primary-container hover:text-white transition-all">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+<!-- Person Card 2 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-[0_8px_32px_rgba(174,47,52,0.05)] group">
+<div class="h-64 relative">
+<img alt="Female portrait" class="w-full h-full object-cover" data-alt="Young woman smiling in a bright cafe setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByjt-x4pL-ozwsl40ZoMJZoCR9rIrJ5pPk6c_eB0wPGyEvP964gT0f_2za6-E5qVoKpItDLiXVJpF-IWQH36P_PtqGEJUiJY66bs7BrDRWx1ffHNf9_a3u2ct8I5GK8x8k1ICFmwiE92TlKyn1Ax0MxQpGhrZY_blPPlakZJU9BEUkkcZw34HuVXWb3iW7jHLSVbD2OOLnCWq18IwFcjqQWIu22K_EkaHmg6wQHb3gFzQHDXJ5zrA3SszzR4I7SIqi5oCsGl24XqA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<div>
+<p class="text-white font-headline text-xl font-bold">Elena, 26</p>
+<p class="text-white/80 text-xs">0.8 miles away</p>
+</div>
+<div class="bg-primary-container/90 backdrop-blur-md px-3 py-1.5 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-white text-sm">bolt</span>
+<span class="text-white text-[10px] font-bold uppercase tracking-widest">Free tonight</span>
+</div>
+</div>
+</div>
+<div class="p-4 flex justify-between items-center">
+<span class="text-xs text-on-surface-variant italic">"Spontaneous dessert hunt?"</span>
+<button class="p-2 bg-surface-container-high rounded-full hover:bg-primary-container hover:text-white transition-all">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+<!-- Person Card 3 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-[0_8px_32px_rgba(174,47,52,0.05)] sm:col-span-2 flex flex-col md:flex-row h-auto md:h-48 group">
+<div class="w-full md:w-1/3 h-48 md:h-full relative">
+<img alt="Male portrait" class="w-full h-full object-cover" data-alt="Man in high-end casual attire posing outdoors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-vXyby3jSQ-b4_-VBqLe6LLVceBev8SM3yrCYNEy8Wq-KPeZcfFgRB7veQQgS9ypgUdr0L1O4cGUUxkI3XWa6_UTizZ5gr9xJQJCCObbELAbeFZYd2TFPlarJFPgDmtj_4rTX2GGlZMLE7e9-GQ52DAU6xuPhBfHI76RvWPO52BmCgTIqsFv43wjsSPLHoZtBJsJq9fKWuMEkCxSdI5JC4Z_MfL-Mmsa-w1WSA4TqcWpPWmiMfrWXWpEDp6xnXTmNSc9pItiEV2Q"/>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div>
+<p class="font-headline text-2xl font-bold text-on-background">Marcus, 34</p>
+<div class="flex items-center gap-2 text-primary mt-1">
+<span class="material-symbols-outlined text-sm">explore</span>
+<span class="text-xs font-bold uppercase tracking-widest">Open to new venues</span>
+</div>
+</div>
+<button class="p-3 bg-primary-container/10 text-primary rounded-full hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined">local_activity</span>
+</button>
+</div>
+<p class="text-sm text-on-surface-variant mt-4 line-clamp-2">"Found a hidden bistro in the arts district. Looking for someone adventurous to test the menu with me."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-4 pb-6 pt-2 bg-orange-50/90 dark:bg-zinc-950/90 backdrop-blur-xl shadow-[0_-8px_32px_rgba(174,47,52,0.05)] rounded-t-[2rem] border-t-0 tonal-layering bg-orange-100 dark:bg-zinc-900">
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-rose-600 dark:hover:text-rose-300 active:scale-90 transition-transform cubic-bezier(0.34,1.56,0.64,1)">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Spotlight</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-rose-600 dark:hover:text-rose-300 active:scale-90 transition-transform cubic-bezier(0.34,1.56,0.64,1)">
+<span class="material-symbols-outlined" data-icon="gi_compass">explore</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Quests</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-rose-600 dark:hover:text-rose-300 active:scale-90 transition-transform cubic-bezier(0.34,1.56,0.64,1)">
+<span class="material-symbols-outlined" data-icon="local_activity">local_activity</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Invites</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-gradient-to-tr from-rose-700 to-rose-400 text-white rounded-full p-3 mb-2 scale-110 shadow-lg shadow-rose-500/20 active:scale-90 transition-transform cubic-bezier(0.34,1.56,0.64,1)">
+<span class="material-symbols-outlined" data-icon="mood" style="font-variation-settings: 'FILL' 1;">mood</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Status</span>
+</button>
+</nav>
+</body></html>

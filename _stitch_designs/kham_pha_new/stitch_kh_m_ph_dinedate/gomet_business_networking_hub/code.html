@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Business Networking Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#656464",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-container": "#f1ede7",
+                        "tertiary-fixed": "#ffdad4",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#c8c6c6",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "outline": "#8c706f",
+                        "on-surface": "#1c1c18",
+                        "surface-tint": "#ae2f34",
+                        "surface-container-highest": "#e6e2dc",
+                        "surface-container-low": "#f7f3ed",
+                        "secondary-container": "#e4e2e1",
+                        "on-primary-container": "#6d0010",
+                        "inverse-surface": "#31302d",
+                        "surface-container-high": "#ebe8e2",
+                        "on-surface-variant": "#584140",
+                        "tertiary": "#894e45",
+                        "secondary": "#5f5e5e",
+                        "primary-container": "#ff6b6b",
+                        "on-tertiary-container": "#55251e",
+                        "on-primary-fixed": "#410006",
+                        "on-primary-fixed-variant": "#8c1520",
+                        "on-primary": "#ffffff",
+                        "surface": "#fdf9f3",
+                        "tertiary-container": "#cf8a7f",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-dim": "#dddad4",
+                        "secondary-fixed": "#e4e2e1",
+                        "on-tertiary-fixed": "#370e08",
+                        "surface-variant": "#e6e2dc",
+                        "outline-variant": "#e0bfbd",
+                        "inverse-on-surface": "#f4f0ea",
+                        "surface-bright": "#fdf9f3",
+                        "primary": "#ae2f34",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#474747",
+                        "primary-fixed-dim": "#ffb3b0",
+                        "on-background": "#1c1c18",
+                        "background": "#fdf9f3",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "primary-fixed": "#ffdad8",
+                        "inverse-primary": "#ffb3b0",
+                        "coral-50": "#fef2f2",
+                        "coral-100": "#fee2e2",
+                        "coral-400": "#f87171",
+                        "coral-500": "#ef4444",
+                        "coral-600": "#ae2f34",
+                        "coral-700": "#991b1b",
+                        "coral-900": "#7f1d1d"
+                    },
+                    fontFamily: {
+                        "plus-jakarta": ["Plus Jakarta Sans"],
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "inter": ["Inter"]
+                    },
+                    borderRadius: { "DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf9f3;
+            color: #1c1c18;
+        }
+        .headline-font {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- TopNavBar (Shared Component) -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-neutral-900/80 backdrop-blur-xl shadow-sm shadow-coral-500/5 tonal-shift bg-surface-container-low">
+<div class="flex justify-between items-center px-6 py-3 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-bold text-coral-600 dark:text-coral-500 italic font-plus-jakarta tracking-tighter">GOMET</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-coral-600 dark:text-coral-400 font-bold border-b-2 border-coral-600 font-plus-jakarta text-sm tracking-wide" href="#">Network</a>
+<a class="text-neutral-600 dark:text-neutral-400 font-medium hover:text-coral-500 transition-colors duration-200 font-plus-jakarta text-sm tracking-wide" href="#">Dining</a>
+<a class="text-neutral-600 dark:text-neutral-400 font-medium hover:text-coral-500 transition-colors duration-200 font-plus-jakarta text-sm tracking-wide" href="#">Events</a>
+<a class="text-neutral-600 dark:text-neutral-400 font-medium hover:text-coral-500 transition-colors duration-200 font-plus-jakarta text-sm tracking-wide" href="#">Membership</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="bg-surface-container-highest rounded-full px-4 py-1.5 flex items-center gap-2 group cursor-pointer border border-transparent hover:border-coral-100 transition-all">
+<span class="material-symbols-outlined text-neutral-500 text-lg">search</span>
+<span class="text-sm text-neutral-500">Search peers...</span>
+</div>
+<button class="active:scale-95 transition-transform">
+<div class="w-9 h-9 rounded-full bg-gradient-to-br from-coral-500 to-coral-700 flex items-center justify-center text-white shadow-md">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+</button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Shared Component - Hidden on Mobile) -->
+<aside class="hidden lg:flex flex-col h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-surface-container-low dark:bg-neutral-900 py-8 pr-4 z-40">
+<div class="px-6 mb-10">
+<div class="text-xl font-black text-coral-600 mb-8 italic">GOMET</div>
+<div class="flex items-center gap-3 mb-6">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border-2 border-primary/20">
+<img alt="Executive Profile" class="w-full h-full object-cover" data-alt="Professional executive portrait in business attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOUcpc_Rk_QMMdYxu_BdkDHN3x95-taS6WbMo54zon2xWi59Y-U8sfwS1beB1WKkY8iuG2DQflsrZ2uRp9kkCdjQsRhUtBNJD9vD_15WXkfR3xJOGyrngtElN5OCzlLaixkfeUvKNzZQzDlgOy8WEM5LMwif0ADu5BRUrOzsEPuEuP2FatRtANZys1NjufzwY3laOwFsA51hDe19NpgfPJSf7dPsTnp-f-ASgHYu4hvLTy0wBf1pInntqhqJAKL4r0YUvYaHo3r2E"/>
+</div>
+<div>
+<div class="font-plus-jakarta text-sm font-bold text-on-surface">Executive Suite</div>
+<div class="font-inter text-[10px] uppercase tracking-widest text-neutral-500">Premium Member</div>
+</div>
+</div>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="bg-coral-50 dark:bg-coral-900/20 text-coral-700 dark:text-coral-300 rounded-r-full font-bold px-6 py-3 flex items-center gap-3 hover:pl-8 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-plus-jakarta text-[11px] uppercase tracking-[0.15em]">Dashboard</span>
+</a>
+<a class="text-neutral-500 dark:text-neutral-400 px-6 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800 flex items-center gap-3 hover:pl-8 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="font-plus-jakarta text-[11px] uppercase tracking-[0.15em]">Member Directory</span>
+</a>
+<a class="text-neutral-500 dark:text-neutral-400 px-6 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800 flex items-center gap-3 hover:pl-8 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-xl">restaurant</span>
+<span class="font-plus-jakarta text-[11px] uppercase tracking-[0.15em]">Dining Reservations</span>
+</a>
+<a class="text-neutral-500 dark:text-neutral-400 px-6 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800 flex items-center gap-3 hover:pl-8 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-xl">monitoring</span>
+<span class="font-plus-jakarta text-[11px] uppercase tracking-[0.15em]">Analytics</span>
+</a>
+<a class="text-neutral-500 dark:text-neutral-400 px-6 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800 flex items-center gap-3 hover:pl-8 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-xl">payments</span>
+<span class="font-plus-jakarta text-[11px] uppercase tracking-[0.15em]">Billing</span>
+</a>
+<a class="text-neutral-500 dark:text-neutral-400 px-6 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800 flex items-center gap-3 hover:pl-8 transition-all duration-300" href="#">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="font-plus-jakarta text-[11px] uppercase tracking-[0.15em]">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4">
+<button class="w-full bg-gradient-to-br from-coral-600 to-coral-700 text-white rounded-xl py-3 px-4 font-bold text-sm shadow-lg shadow-coral-500/20 flex items-center justify-center gap-2 active:opacity-80 transition-all">
+<span class="material-symbols-outlined text-lg">person_add</span>
+                Invite Colleague
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-20 pb-24 md:pb-12 px-4 md:px-8 max-w-7xl">
+<!-- Hero Section -->
+<header class="mb-12 relative">
+<div class="relative z-10">
+<h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface mb-2">
+                    Connect <span class="text-coral-600">Intentional.</span>
+</h1>
+<p class="text-neutral-500 max-w-xl font-body text-lg">Elevate your networking through curated culinary experiences with industry peers.</p>
+</div>
+<div class="absolute -top-10 -right-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Featured: Suggested Networking Tables -->
+<section class="md:col-span-8 bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm border border-coral-100/10">
+<div class="p-8">
+<div class="flex justify-between items-end mb-8">
+<div>
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-coral-600 font-bold mb-2 block">Curation</span>
+<h2 class="font-headline text-3xl font-bold">Suggested Networking Tables</h2>
+</div>
+<button class="text-coral-600 text-sm font-bold flex items-center gap-1 hover:underline">
+                            View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<!-- Table Card 1 -->
+<div class="group relative bg-surface-container-low rounded-lg p-1 transition-all hover:scale-[1.02]">
+<div class="aspect-video w-full rounded-md overflow-hidden relative mb-4">
+<img alt="Private Dining" class="w-full h-full object-cover" data-alt="High-end minimalist private dining room setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuvg3U5RfHNDyol9wG6JrbL1lehAq6ppw0wpVCsK1aUa_8b5Kc18PthD92SnOqeoyRaD2rPjh4JaX1qlTzOzWyovrwlILazGaC4GsrE976ePo2pMmr3U7r9XYEgz_kv9i-ZInZ3pWSFeADjTj3xECijlyJremENFBrERzUljWFZ3i9medkKXX50P1cciaZFQYbFq-uooiuFZ0gDcrC818EMpT8JGjngdOa8OG15xprj8ZE6N1aPhT2o8AwY8045dwfA5D6IsFT0N8"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-coral-700">PRIVATE SUITE</div>
+</div>
+<div class="px-3 pb-4">
+<div class="flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-coral-500 text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-neutral-500 uppercase tracking-widest">Fintech Founders</span>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1">Capital &amp; Cocktails</h3>
+<p class="text-sm text-neutral-500 mb-4 font-body">Strategy discussion on Series B scaling with 4 verified industry peers.</p>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-7 h-7 rounded-full border-2 border-surface bg-neutral-200 overflow-hidden">
+<img alt="User 1" class="w-full h-full object-cover" data-alt="User avatar small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDY7Hq0CPCYoLbGpCgJ5j4YEt6o2Zk9PJVYic9d-LyxjbakZKDezWX-uWevTOdkh1FyyQUSksUD1jgmGI9au7nVTWcvI0PWsDr0vxToXAaP-KJ6yPiocWLOGQtDvFCwDH7lnM_zQNIcxYnRW2LMC30ELr71pKi9xzFFwm6nQlOnB0i9f4H8vd_hSUi4U_eImitOzfM1yUGzTmlqldQknXZAgOhqof3w4NBRrtKR5uDMYGzzYaiifPa9-cd6-YJfkkuVk8-gJiRrcPE"/>
+</div>
+<div class="w-7 h-7 rounded-full border-2 border-surface bg-neutral-200 overflow-hidden">
+<img alt="User 2" class="w-full h-full object-cover" data-alt="User avatar small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmwVXk4kIidwPDZEYAF_jqz5FApVFg23EPNwyfoCGuNvQLzXmLc3rWOWsJUbScY_tZoHgTa9fniszlkDoajwxR2sHxC-ZRWVGAZPZz3CDcxjx4VDkY33TOJ7T8RD5V5g4FA5WaRWkQ234rcqFAGiiYKUVevgtrNVzt2g8uvEsFSIpkq57mvtreCAEMzn43Q-StLh4Lb0ElWm7X5L5FApYJNWA7cx4EXA9WQlqUA7-Yi3Q7eaC0mh4IC2L2s1qQt4CzuCNih18xzwE"/>
+</div>
+<div class="w-7 h-7 rounded-full border-2 border-surface bg-surface-container-high flex items-center justify-center text-[10px] font-bold text-neutral-500">+2</div>
+</div>
+<button class="bg-primary text-white text-xs font-bold py-2 px-4 rounded-full shadow-md shadow-primary/20 active:scale-95 transition-all">Join Table</button>
+</div>
+</div>
+</div>
+<!-- Table Card 2 -->
+<div class="group relative bg-surface-container-low rounded-lg p-1 transition-all hover:scale-[1.02]">
+<div class="aspect-video w-full rounded-md overflow-hidden relative mb-4">
+<img alt="Executive Lounge" class="w-full h-full object-cover" data-alt="Elegant rooftop executive lounge overlooking the city" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhg7hKg2BFw6DrBYUE0dFRRwuSuKCK6meD5RzRYa_JveLaIXoyBFlHp9PjqaL7nZ2d5UNJBfaIXbreCTMNrRzu4baDIWmlBOg1RPHp_WO2bHRK1JeKixFG7PBvdsFXMVgWPok3r97RZU8dSShNXvwoSKJV-daCAsC4Boh5an4T2Ay1HXLKmAliiAs-G0jx6GrbbmKGTscbcLTwkJCVgmjp5SPROhaR46YmqNdcDHNTeP-iHWasyifnJbumxZbrFzV8GeMl7t4k0C8"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-coral-700">ROOFTOP</div>
+</div>
+<div class="px-3 pb-4">
+<div class="flex items-center gap-1 mb-1">
+<span class="material-symbols-outlined text-coral-500 text-xs" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-[10px] font-bold text-neutral-500 uppercase tracking-widest">Sustainability Leaders</span>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1">ESG Roundtable</h3>
+<p class="text-sm text-neutral-500 mb-4 font-body">Monthly briefing on circular economy integration in logistics.</p>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-7 h-7 rounded-full border-2 border-surface bg-neutral-200 overflow-hidden">
+<img alt="User 3" class="w-full h-full object-cover" data-alt="User avatar small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2P8ID-7w6SpeF6kBgnws0QbabyPmtB17lA5UdMNcyDiG3Gzw4H3lk-Bkf5OlqlUz5XUDlvr6A9yp4a4FaX92qlPUBm37bkYLMcj-nAPWAVb7KdH_XexXMPQH2CdRofwsrx-KHo9nNn5viZOrbomlE3yqRPVSgFZT_-DaWjQBrjS3uoa95LyFfROFPCovhBzo6Fx8I1Cwf8hTx8HJa7Xein9y6VOmUZcHHOxFxsv_FgeNP8mpnt9OqH1q3mn1ri54oPGZOeLpukYs"/>
+</div>
+<div class="w-7 h-7 rounded-full border-2 border-surface bg-neutral-200 overflow-hidden">
+<img alt="User 4" class="w-full h-full object-cover" data-alt="User avatar small" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0WscVMO-EqxVGst9V9Ig_8aErf2yfKU-DPvZ2jT8_kSkJtm0iuGLUjS1dutxg2FGEqHEguBASYSBczZz7ynlOhGxaeVDnxcBrRQmb4UFgac0KRLrMMYQtrnuRaPOO9KvP0PWSZIs6iinJ6CmzWDtRY8C0BPWJ_7mgFsqK8R8ZIfkuBtkRe_ByTXH_FzFML7uXzH9tRhY8nnGOHNx8NMWGtB_-pfpZt__ar8RjL7UEASF7sIzNthJo5g1AK-TJHBZeH_8ym3bfHJ0"/>
+</div>
+<div class="w-7 h-7 rounded-full border-2 border-surface bg-surface-container-high flex items-center justify-center text-[10px] font-bold text-neutral-500">+1</div>
+</div>
+<button class="bg-primary text-white text-xs font-bold py-2 px-4 rounded-full shadow-md shadow-primary/20 active:scale-95 transition-all">Join Table</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Industry Peers Nearby -->
+<section class="md:col-span-4 bg-surface-container-low rounded-lg p-6 border border-coral-100/5">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline font-bold text-xl">Peers Nearby</h2>
+<span class="material-symbols-outlined text-coral-600 animate-pulse">location_on</span>
+</div>
+<div class="space-y-6">
+<!-- Peer 1 -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 grayscale group-hover:grayscale-0 transition-all border border-coral-100">
+<img alt="Peer 1" class="w-full h-full object-cover" data-alt="Professional portrait of a male peer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7zEj7O-ozmiVhHK5-sf7_Oy0CReS5NzJPSh9Roz5l9f0sLYH8tO2O1s-d5d3dnj8O0dPCnbOGE9LuWnsID6gIkbfQdnmASTRAfV-suJXkD_rTtO6QUbEu-ML3qilc2N4QNiEFm5EiikQN1O3E6uQBxUbCDDQ4T-0zCK8cXdWnZcSLTJvtj_BxDchq5-CfTDKM7yiRqRKKiKY6ZQq7QxJToYG6baOhKd_ahpYQkQ4ebHLZ8PJ-dl7qpxfICNGOA5BOezizrB8y4Ag"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-headline font-bold text-sm">Marcus Chen</h4>
+<p class="text-[11px] text-neutral-500 font-body">CTO @ Nexus Dynamics</p>
+</div>
+<div class="text-[10px] font-bold bg-white px-2 py-1 rounded text-coral-600">0.4mi</div>
+</div>
+<!-- Peer 2 -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 grayscale group-hover:grayscale-0 transition-all border border-coral-100">
+<img alt="Peer 2" class="w-full h-full object-cover" data-alt="Professional portrait of a female peer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA50zelGSC-JaLLjMgAQbbrSiyWXN9QhWMrEEQI9lhZw4hLvh86blZmyTfj6datBynfmW0k7nERwROQPX2JCM8oVx4Wm-1JdDuNPizIhwAvHIYw9j8M3f6QuBc94I3uA-RRMxfo6Fx9bZBWdLtVZuxJXUPivb9Y4Tt5tAA2vIVUBLIwnAOalkwRea3jBY8HTA7yrPfQqAcT4Q6R8UWQD3MgheZG1ntoUAXS4Z4jxDub5mcXBGR5l410_fyPED3HbfR_5hbOVkkxqEE"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-headline font-bold text-sm">Elena Rodriguez</h4>
+<p class="text-[11px] text-neutral-500 font-body">VP Design @ Loom</p>
+</div>
+<div class="text-[10px] font-bold bg-white px-2 py-1 rounded text-coral-600">1.2mi</div>
+</div>
+<!-- Peer 3 -->
+<div class="flex items-center gap-4 group cursor-pointer">
+<div class="w-12 h-12 rounded-full overflow-hidden flex-shrink-0 grayscale group-hover:grayscale-0 transition-all border border-coral-100">
+<img alt="Peer 3" class="w-full h-full object-cover" data-alt="Professional portrait of a male peer" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHRd-MTLQop0yNaBMeg0J4J6oSIf7StOTxb0kbrzXfLHsUebWOl1U4a-VTYsniKxMX14ZCQ-NowLtkuvU2um0uzFm6Dp3PbLQO2Q45V8-K71gIBlIrVJwNKwX24DOjhRXdX7JjoSF8ZyYVYLMxFH_jold8A2ACZ1kc5o_OIRwhU3XME0pQdg54kcP0KwTR1wYBSASJFTV6S0nDJjOEQMSZt0Jvu78tWCxbNTorPtzKjgRkWbOqTbGg97KoAInw6NuaElI9H8Vl94c"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-headline font-bold text-sm">David Park</h4>
+<p class="text-[11px] text-neutral-500 font-body">Angel Investor</p>
+</div>
+<div class="text-[10px] font-bold bg-white px-2 py-1 rounded text-coral-600">2.5mi</div>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-coral-100/10">
+<button class="w-full py-3 bg-surface-container-highest rounded-xl text-xs font-bold tracking-widest uppercase text-neutral-600 hover:bg-coral-50 transition-colors">Find More Nearby</button>
+</div>
+</section>
+<!-- Escrow-backed Business Meals -->
+<section class="md:col-span-12 lg:col-span-5 bg-gradient-to-br from-inverse-surface to-neutral-900 rounded-lg p-8 text-white relative overflow-hidden">
+<div class="relative z-10">
+<div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1 rounded-full mb-6">
+<span class="material-symbols-outlined text-coral-400 text-sm" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="text-[10px] font-bold tracking-widest uppercase">Escrow-Backed</span>
+</div>
+<h2 class="font-headline text-3xl font-bold mb-4">Secured Business Meals</h2>
+<p class="text-neutral-400 font-body mb-8 max-w-sm">Reserve tables with financial commitment. No-shows and last-minute cancellations are managed through our secure escrow system for mutual professional respect.</p>
+<div class="flex items-center gap-6">
+<div class="flex flex-col">
+<span class="text-2xl font-bold font-headline">$14.2k</span>
+<span class="text-[10px] text-neutral-500 uppercase font-bold tracking-widest">In Active Escrow</span>
+</div>
+<div class="w-px h-8 bg-white/10"></div>
+<div class="flex flex-col">
+<span class="text-2xl font-bold font-headline">0%</span>
+<span class="text-[10px] text-neutral-500 uppercase font-bold tracking-widest">Dispute Rate</span>
+</div>
+</div>
+<button class="mt-8 bg-white text-neutral-900 font-bold px-6 py-3 rounded-xl text-sm hover:bg-coral-100 transition-colors">Set Up Escrow Meal</button>
+</div>
+<!-- Abstract Texture -->
+<div class="absolute -bottom-10 -right-10 opacity-20 transform rotate-12">
+<span class="material-symbols-outlined text-[12rem]">security</span>
+</div>
+</section>
+<!-- Upcoming Executive Events -->
+<section class="md:col-span-12 lg:col-span-7 bg-surface-container-highest rounded-lg p-8">
+<div class="flex justify-between items-center mb-8">
+<h2 class="font-headline text-2xl font-bold">Upcoming Executive Events</h2>
+<span class="material-symbols-outlined text-neutral-400">calendar_month</span>
+</div>
+<div class="space-y-4">
+<!-- Event 1 -->
+<div class="flex flex-wrap md:flex-nowrap items-center gap-6 p-4 bg-surface rounded-xl hover:shadow-lg transition-all border border-transparent hover:border-coral-100/20 group">
+<div class="w-full md:w-32 aspect-square rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Event 1" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Exclusive business networking event setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAv0noGsWRiZZvkyEfntWjDaXiHzIGy-Mah_8QupClJt3aEd6fKOrI-Ev_WsMaEkH738zQ0RqJ9JcaG7t9N2OSAI17lpwgcr4ziJ-dfYp-BeeBVZtk94er3GyXhfGyRR42pGQnscUx2khnQLDQ_YgjIeOcjjHjG45OoBJHQYKrTrllw8MhaBdiPoM9Hlx6pgTRYmwm0fnB3-w6VofgAKLBn6aH-XU62Q1jKOmot0OIN4FWem4ov-Kg3oo_tnz6fbgPOGTL57AROwCI"/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-0.5 bg-coral-100 text-coral-700 text-[10px] font-bold rounded uppercase tracking-tighter">Conference</span>
+<span class="text-[11px] text-neutral-400 font-bold">Oct 24 • New York, NY</span>
+</div>
+<h4 class="font-headline font-bold text-lg mb-1">Global AI Ethics Summit Lunch</h4>
+<p class="text-sm text-neutral-500 font-body mb-4">Limited to 12 Chief Innovation Officers. Curated multi-course menu.</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-coral-500 text-sm">confirmation_number</span>
+<span class="text-xs font-bold text-coral-600">3 Spots Left</span>
+</div>
+</div>
+<div class="w-full md:w-auto mt-4 md:mt-0">
+<button class="w-full md:w-auto bg-surface-container-low text-on-surface font-bold py-2 px-6 rounded-lg text-sm border border-outline-variant hover:bg-primary hover:text-white hover:border-transparent transition-all">RSVP</button>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="flex flex-wrap md:flex-nowrap items-center gap-6 p-4 bg-surface rounded-xl hover:shadow-lg transition-all border border-transparent hover:border-coral-100/20 group">
+<div class="w-full md:w-32 aspect-square rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Event 2" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="High-end cocktail networking event" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTruNOLeOCcMwQ4t1luUmmKu3jzn9IULmovoI69UVcIuFqow56pR8v6M44TsnQV_PMfykNgyqfUyD6d1lDUJFsH_IAy8kR43w7U0Gb8juVQ01_j0V_vk9CEh0GOY9UIjSUfr02TsfAPvr57ecvjOy49IZZcQHgWafqz2L6pGUz-B5mBo95Ou66sCMugVEC77NleuSVh3wpZd6u3hfjoD0HrNCnk2iRTTriHuSRLxUpnDh-aBnQSBsGVbPhHC7xYOdYjHLrFyLfXDo"/>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-2 py-0.5 bg-coral-100 text-coral-700 text-[10px] font-bold rounded uppercase tracking-tighter">Cocktails</span>
+<span class="text-[11px] text-neutral-400 font-bold">Oct 28 • Austin, TX</span>
+</div>
+<h4 class="font-headline font-bold text-lg mb-1">Founders &amp; Funders Mixer</h4>
+<p class="text-sm text-neutral-500 font-body mb-4">An evening of high-stakes networking in a relaxed rooftop setting.</p>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-coral-500 text-sm">check_circle</span>
+<span class="text-xs font-bold text-coral-600">Member Exclusive</span>
+</div>
+</div>
+<div class="w-full md:w-auto mt-4 md:mt-0">
+<button class="w-full md:w-auto bg-surface-container-low text-on-surface font-bold py-2 px-6 rounded-lg text-sm border border-outline-variant hover:bg-primary hover:text-white hover:border-transparent transition-all">RSVP</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Shared Component - Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface/90 dark:bg-neutral-950/90 backdrop-blur-md rounded-t-3xl border-t border-coral-100/20 shadow-[0_-8px_24px_-12px_rgba(174,47,52,0.15)]">
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-coral-500 to-coral-700 text-white rounded-2xl px-5 py-2 scale-110 -translate-y-2 transition-all cubic-bezier(0.34,1.56,0.64,1) active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-inter text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-400 dark:text-neutral-600 px-4 py-2 hover:text-coral-400 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-inter text-[10px] font-bold">Connect</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-400 dark:text-neutral-600 px-4 py-2 hover:text-coral-400 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">local_dining</span>
+<span class="font-inter text-[10px] font-bold">Dining</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-400 dark:text-neutral-600 px-4 py-2 hover:text-coral-400 active:scale-90 transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-inter text-[10px] font-bold">Account</span>
+</a>
+</nav>
+<!-- Floating Action Button (FAB) - Contextual -->
+<button class="fixed right-6 bottom-24 md:bottom-8 bg-gradient-to-br from-coral-600 to-coral-700 text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center active:scale-90 transition-all group z-40">
+<span class="material-symbols-outlined text-2xl group-hover:rotate-90 transition-transform duration-300">add</span>
+</button>
+</body></html>

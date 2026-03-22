@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-fixed": "#e4e2e1",
+              "on-tertiary-fixed": "#370e08",
+              "surface-variant": "#e6e2dc",
+              "outline-variant": "#e0bfbd",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-dim": "#dddad4",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-container": "#cf8a7f",
+              "surface": "#fdf9f3",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#8c1520",
+              "primary-fixed": "#ffdad8",
+              "inverse-primary": "#ffb3b0",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "background": "#fdf9f3",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-background": "#1c1c18",
+              "on-secondary-fixed-variant": "#474747",
+              "surface-bright": "#fdf9f3",
+              "primary": "#ae2f34",
+              "on-secondary": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "outline": "#8c706f",
+              "on-surface": "#1c1c18",
+              "secondary-fixed-dim": "#c8c6c6",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-tertiary": "#ffffff",
+              "surface-container": "#f1ede7",
+              "tertiary-fixed": "#ffdad4",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#656464",
+              "on-error": "#ffffff",
+              "on-primary-fixed": "#410006",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-container-high": "#ebe8e2",
+              "on-surface-variant": "#584140",
+              "tertiary": "#894e45",
+              "secondary": "#5f5e5e",
+              "primary-container": "#ff6b6b",
+              "on-tertiary-container": "#55251e",
+              "on-primary-container": "#6d0010",
+              "inverse-surface": "#31302d",
+              "surface-container-low": "#f7f3ed",
+              "secondary-container": "#e4e2e1",
+              "surface-container-highest": "#e6e2dc"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<div class="flex min-h-screen">
+<!-- SideNavBar Component -->
+<aside class="hidden md:flex flex-col py-8 px-4 space-y-2 h-screen w-64 fixed left-0 top-0 bg-stone-50 dark:bg-stone-950 z-40">
+<div class="px-4 mb-8">
+<h1 class="text-xl font-black text-[#ae2f34]">GOMET Admin</h1>
+<p class="text-[10px] font-['Inter'] font-bold uppercase tracking-wider text-stone-500">System Controller</p>
+</div>
+<nav class="flex-1 space-y-1">
+<!-- Dashboard Active -->
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-stone-800 text-[#ae2f34] dark:text-[#ff6b6b] rounded-xl shadow-sm font-['Plus_Jakarta_Sans'] font-semibold active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:pl-2 rounded-xl font-['Plus_Jakarta_Sans'] font-semibold active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span>Venue Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:pl-2 rounded-xl font-['Plus_Jakarta_Sans'] font-semibold active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>User Management</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:pl-2 rounded-xl font-['Plus_Jakarta_Sans'] font-semibold active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span>Subscriptions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:pl-2 rounded-xl font-['Plus_Jakarta_Sans'] font-semibold active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span>Security</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:pl-2 rounded-xl font-['Plus_Jakarta_Sans'] font-semibold active:opacity-80 transition-all duration-200" href="#">
+<span class="material-symbols-outlined">history</span>
+<span>Logs</span>
+</a>
+</nav>
+<div class="pt-6 border-t border-stone-200 dark:border-stone-800">
+<button class="w-full py-3 bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] text-white rounded-xl font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:scale-[1.02] transition-transform">
+<span class="material-symbols-outlined text-sm">description</span>
+                    Generate Report
+                </button>
+<div class="mt-6 flex items-center gap-3 px-2">
+<img alt="Admin User Profile" class="w-10 h-10 rounded-full border-2 border-primary-container" data-alt="Professional headshot of a system administrator" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCg5nyAH0qw0BPwvneBnsvqC2D74zrx_TgbWpV2CSznl80VI3LHzmz2E3opJ3awGyNs5sGYjXJEnEtRg22gW1C7_LUiG1Ia-t1ql2A12bW1qSHClzHjd9KnE3CrKhTBO__Jc8QJvTWUBkEne_oPR3EHd5v8fKN2GN_kk2-1YR_KxCqB5HQDQkHh7GYzv4C8ZrsI39UqcGrSzqRjyWfJhquqoP_WQ7XrFfKT2MubbWywL5QjY-evCUQ1yRsD8yfdSRvS4jnea77uNFk"/>
+<div>
+<p class="text-xs font-bold text-on-surface">Admin User</p>
+<p class="text-[10px] text-stone-500">Super Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 min-h-screen">
+<!-- Top Bar (Minimalist for Dashboard) -->
+<header class="h-16 flex items-center justify-between px-8 bg-surface-container-low backdrop-blur-xl sticky top-0 z-30">
+<h2 class="text-xl font-headline font-extrabold tracking-tight text-on-surface">Dashboard Overview</h2>
+<div class="flex items-center gap-4">
+<div class="relative group hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-sm">search</span>
+<input class="bg-surface-container-high border-none rounded-full pl-10 pr-4 py-1.5 text-sm w-64 focus:ring-2 focus:ring-primary/20" placeholder="Search data..." type="text"/>
+</div>
+<button class="p-2 text-stone-500 hover:text-primary transition-colors"><span class="material-symbols-outlined">notifications</span></button>
+<button class="p-2 text-stone-500 hover:text-primary transition-colors"><span class="material-symbols-outlined">settings</span></button>
+</div>
+</header>
+<div class="p-8 space-y-8">
+<!-- Metric Grid (High-level metrics) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Total Active Users -->
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] flex flex-col justify-between h-40 group hover:translate-y-[-4px] transition-all">
+<div class="flex justify-between items-start">
+<span class="p-3 bg-primary-fixed rounded-full text-primary">
+<span class="material-symbols-outlined">group</span>
+</span>
+<span class="text-green-600 text-xs font-bold flex items-center gap-1">
+                                +12% <span class="material-symbols-outlined text-[10px]">trending_up</span>
+</span>
+</div>
+<div>
+<p class="text-stone-500 text-xs font-label uppercase tracking-widest">Active Users</p>
+<h3 class="text-3xl font-headline font-black text-on-surface">24,892</h3>
+</div>
+</div>
+<!-- Ongoing Events -->
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] flex flex-col justify-between h-40 group hover:translate-y-[-4px] transition-all">
+<div class="flex justify-between items-start">
+<span class="p-3 bg-tertiary-fixed rounded-full text-tertiary">
+<span class="material-symbols-outlined">event</span>
+</span>
+<span class="text-stone-500 text-xs font-bold">Live Now</span>
+</div>
+<div>
+<p class="text-stone-500 text-xs font-label uppercase tracking-widest">Ongoing Events</p>
+<h3 class="text-3xl font-headline font-black text-on-surface">142</h3>
+</div>
+</div>
+<!-- Revenue Escrow -->
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] flex flex-col justify-between h-40 group hover:translate-y-[-4px] transition-all">
+<div class="flex justify-between items-start">
+<span class="p-3 bg-outline-variant/30 rounded-full text-primary">
+<span class="material-symbols-outlined">payments</span>
+</span>
+<span class="text-green-600 text-xs font-bold">+5.4%</span>
+</div>
+<div>
+<p class="text-stone-500 text-xs font-label uppercase tracking-widest">Revenue (Escrow)</p>
+<h3 class="text-3xl font-headline font-black text-on-surface">$82,450</h3>
+</div>
+</div>
+<!-- Open Support Tickets -->
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] flex flex-col justify-between h-40 group hover:translate-y-[-4px] transition-all">
+<div class="flex justify-between items-start">
+<span class="p-3 bg-error-container rounded-full text-error">
+<span class="material-symbols-outlined">confirmation_number</span>
+</span>
+<span class="text-error text-xs font-bold">Priority</span>
+</div>
+<div>
+<p class="text-stone-500 text-xs font-label uppercase tracking-widest">Open Tickets</p>
+<h3 class="text-3xl font-headline font-black text-on-surface">27</h3>
+</div>
+</div>
+</div>
+<!-- Main Visualization Section (Bento Style) -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Growth Chart (Large Card) -->
+<div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h3 class="text-lg font-headline font-bold text-on-surface">User Growth Trends</h3>
+<p class="text-sm text-stone-500">New signups vs recurring users (last 30 days)</p>
+</div>
+<select class="bg-surface-container-low border-none rounded-full text-xs font-bold px-4 py-2">
+<option>Last 30 Days</option>
+<option>Last 6 Months</option>
+</select>
+</div>
+<!-- Pseudo Line Chart Visualization -->
+<div class="h-64 flex items-end justify-between gap-2 relative">
+<!-- Chart Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20">
+<div class="border-b border-stone-300 w-full h-0"></div>
+<div class="border-b border-stone-300 w-full h-0"></div>
+<div class="border-b border-stone-300 w-full h-0"></div>
+<div class="border-b border-stone-300 w-full h-0"></div>
+</div>
+<!-- Mock Data Points -->
+<div class="flex-1 bg-primary/10 rounded-t-sm h-[30%] relative group">
+<div class="absolute -top-1 left-1/2 w-2 h-2 bg-primary rounded-full -translate-x-1/2"></div>
+</div>
+<div class="flex-1 bg-primary/10 rounded-t-sm h-[45%] relative">
+<div class="absolute -top-1 left-1/2 w-2 h-2 bg-primary rounded-full -translate-x-1/2"></div>
+</div>
+<div class="flex-1 bg-primary/10 rounded-t-sm h-[40%] relative">
+<div class="absolute -top-1 left-1/2 w-2 h-2 bg-primary rounded-full -translate-x-1/2"></div>
+</div>
+<div class="flex-1 bg-primary/10 rounded-t-sm h-[60%] relative">
+<div class="absolute -top-1 left-1/2 w-2 h-2 bg-primary rounded-full -translate-x-1/2"></div>
+</div>
+<div class="flex-1 bg-primary/10 rounded-t-sm h-[55%] relative">
+<div class="absolute -top-1 left-1/2 w-2 h-2 bg-primary rounded-full -translate-x-1/2"></div>
+</div>
+<div class="flex-1 bg-primary/10 rounded-t-sm h-[80%] relative">
+<div class="absolute -top-1 left-1/2 w-2 h-2 bg-primary rounded-full -translate-x-1/2"></div>
+</div>
+<div class="flex-1 bg-primary/10 rounded-t-sm h-[75%] relative">
+<div class="absolute -top-1 left-1/2 w-2 h-2 bg-primary rounded-full -translate-x-1/2"></div>
+</div>
+<div class="flex-1 bg-gradient-to-t from-primary/20 to-primary rounded-t-sm h-[95%] relative">
+<div class="absolute -top-1 left-1/2 w-2 h-2 bg-primary rounded-full -translate-x-1/2 ring-4 ring-white"></div>
+</div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] font-bold text-stone-400 uppercase tracking-widest px-2">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+</div>
+</div>
+<!-- Popular Categories (Side Card) -->
+<div class="bg-surface-container-low p-8 rounded-lg">
+<h3 class="text-lg font-headline font-bold text-on-surface mb-6">Event Categories</h3>
+<div class="space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>Fine Dining</span>
+<span class="text-primary">42%</span>
+</div>
+<div class="h-2 w-full bg-surface rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 42%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>Wine Tasting</span>
+<span class="text-primary">28%</span>
+</div>
+<div class="h-2 w-full bg-surface rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 28%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>Hidden Gems</span>
+<span class="text-primary">15%</span>
+</div>
+<div class="h-2 w-full bg-surface rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 15%;"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-xs font-bold">
+<span>Street Food</span>
+<span class="text-primary">10%</span>
+</div>
+<div class="h-2 w-full bg-surface rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 10%;"></div>
+</div>
+</div>
+<div class="pt-4 mt-4 border-t border-stone-200">
+<p class="text-xs text-stone-500 italic">"Fine Dining" remains the top-performing category for three consecutive months.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Row: Activity Feed & System Alerts -->
+<div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
+<!-- Activity Feed (Table-like but modern) -->
+<div class="xl:col-span-3 bg-surface-container-lowest p-8 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-lg font-headline font-bold text-on-surface">Real-time Activity</h3>
+<button class="text-xs font-bold text-primary hover:underline">View All Activity</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-[10px] font-bold text-stone-400 uppercase tracking-widest border-b border-surface-container-low">
+<th class="pb-4 font-normal">Action</th>
+<th class="pb-4 font-normal">User/Entity</th>
+<th class="pb-4 font-normal">Location</th>
+<th class="pb-4 font-normal text-right">Time</th>
+</tr>
+</thead>
+<tbody class="text-sm">
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500 bg-green-50 p-1.5 rounded-full text-lg">person_add</span>
+<span class="font-semibold text-on-surface">New Signup</span>
+</div>
+</td>
+<td class="py-4 text-stone-600">alex_curates@gmail.com</td>
+<td class="py-4">
+<span class="bg-surface-container-high px-2 py-1 rounded text-[10px] font-bold">PARIS, FR</span>
+</td>
+<td class="py-4 text-right text-stone-400 font-medium">Just now</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-500 bg-blue-50 p-1.5 rounded-full text-lg">calendar_today</span>
+<span class="font-semibold text-on-surface">Event Booking</span>
+</div>
+</td>
+<td class="py-4 text-stone-600">La Merenda - Exclusive Dinner</td>
+<td class="py-4">
+<span class="bg-surface-container-high px-2 py-1 rounded text-[10px] font-bold">NICE, FR</span>
+</td>
+<td class="py-4 text-right text-stone-400 font-medium">2m ago</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-amber-500 bg-amber-50 p-1.5 rounded-full text-lg">reviews</span>
+<span class="font-semibold text-on-surface">Review Posted</span>
+</div>
+</td>
+<td class="py-4 text-stone-600">User #8292-X (Elite)</td>
+<td class="py-4">
+<span class="bg-surface-container-high px-2 py-1 rounded text-[10px] font-bold">ROME, IT</span>
+</td>
+<td class="py-4 text-right text-stone-400 font-medium">12m ago</td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary bg-primary/5 p-1.5 rounded-full text-lg">verified</span>
+<span class="font-semibold text-on-surface">Host Verified</span>
+</div>
+</td>
+<td class="py-4 text-stone-600">The Ritz-Carlton Kitchen</td>
+<td class="py-4">
+<span class="bg-surface-container-high px-2 py-1 rounded text-[10px] font-bold">NEW YORK, US</span>
+</td>
+<td class="py-4 text-right text-stone-400 font-medium">45m ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- System Status -->
+<div class="bg-surface-container-high p-8 rounded-lg space-y-6">
+<h3 class="text-lg font-headline font-bold text-on-surface">System Status</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">API Gateway</span>
+<span class="flex items-center gap-2 text-green-600 text-xs font-bold">
+<span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                    Operational
+                                </span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">Escrow Service</span>
+<span class="flex items-center gap-2 text-green-600 text-xs font-bold">
+<span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                    Operational
+                                </span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium">Image CDN</span>
+<span class="flex items-center gap-2 text-amber-600 text-xs font-bold">
+<span class="w-2 h-2 bg-amber-500 rounded-full"></span>
+                                    Degraded
+                                </span>
+</div>
+</div>
+<div class="p-4 bg-white/50 rounded-lg">
+<p class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Last Deployment</p>
+<p class="text-xs font-bold text-on-surface">v2.4.1-stable</p>
+<p class="text-[10px] text-stone-500">24 Oct, 2023 · 14:22 UTC</p>
+</div>
+<button class="w-full py-2 bg-white text-on-surface border border-outline-variant/30 rounded-lg text-xs font-bold hover:bg-stone-50 transition-colors">
+                            Run Diagnostics
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Navigation (BottomNavBar) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-end pb-safe px-4 h-20 bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl z-50 rounded-t-[2rem] shadow-[0_-10px_30px_rgba(174,47,52,0.05)]">
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-2 transform -translate-y-2 active:scale-90 duration-300" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="text-[10px] font-['Inter'] font-bold uppercase tracking-wider">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-[#ae2f34] transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-['Inter'] font-bold uppercase tracking-wider">Match</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-[#ae2f34] transition-all" href="#">
+<span class="material-symbols-outlined">event</span>
+<span class="text-[10px] font-['Inter'] font-bold uppercase tracking-wider">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-[#ae2f34] transition-all" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="text-[10px] font-['Inter'] font-bold uppercase tracking-wider">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-[#ae2f34] transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-['Inter'] font-bold uppercase tracking-wider">Account</span>
+</a>
+</nav>
+</body></html>

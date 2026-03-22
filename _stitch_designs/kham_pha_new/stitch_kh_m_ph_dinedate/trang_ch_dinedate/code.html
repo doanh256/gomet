@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DineDate | Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#fdf9f3",
+                        "surface-container-high": "#ebe8e2",
+                        "inverse-on-surface": "#f4f0ea",
+                        "surface-dim": "#dddad4",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#ffdad4",
+                        "inverse-primary": "#ffb3b0",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fdf9f3",
+                        "on-secondary-container": "#656464",
+                        "primary-fixed-dim": "#ffb3b0",
+                        "on-tertiary-container": "#55251e",
+                        "on-tertiary-fixed": "#370e08",
+                        "on-primary-fixed": "#410006",
+                        "inverse-surface": "#31302d",
+                        "surface-container-low": "#f7f3ed",
+                        "surface-variant": "#e6e2dc",
+                        "surface-tint": "#ae2f34",
+                        "on-primary-container": "#6d0010",
+                        "secondary-container": "#e4e2e1",
+                        "surface": "#fdf9f3",
+                        "on-surface-variant": "#584140",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#e4e2e1",
+                        "secondary-fixed-dim": "#c8c6c6",
+                        "primary-fixed": "#ffdad8",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "secondary": "#5f5e5e",
+                        "primary-container": "#ff6b6b",
+                        "surface-container-highest": "#e6e2dc",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#474747",
+                        "outline-variant": "#e0bfbd",
+                        "primary": "#ae2f34",
+                        "on-tertiary-fixed-variant": "#6d3830",
+                        "on-primary-fixed-variant": "#8c1520",
+                        "surface-container": "#f1ede7",
+                        "tertiary": "#894e45",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1c1c18",
+                        "tertiary-container": "#cf8a7f",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "on-background": "#1c1c18",
+                        "outline": "#8c706f"
+                    },
+                    fontFamily: {
+                        "plus-jakarta": ["Plus Jakarta Sans"],
+                        "inter": ["Inter"],
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .font-plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Desktop Side Navigation -->
+<aside class="hidden md:flex flex-col p-6 space-y-2 bg-surface dark:bg-zinc-950 h-screen w-64 fixed left-0 top-0 z-40 bg-surface-container-low">
+<div class="text-primary font-bold text-xl mb-8 font-plus-jakarta">DineDate</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary/10 text-primary rounded-full font-bold transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-plus-jakarta font-medium text-label-md">Home</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-plus-jakarta font-medium text-label-md">Discover</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-plus-jakarta font-medium text-label-md">Dates</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-plus-jakarta font-medium text-label-md">Appointments</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:text-primary hover:bg-surface-container-highest rounded-full transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-plus-jakarta font-medium text-label-md">Profile</span>
+</a>
+</nav>
+<button class="mt-auto bg-gradient-to-br from-primary to-primary-container text-white py-4 rounded-full font-bold shadow-lg hover:shadow-xl transition-all active:scale-95">
+            New Date Request
+        </button>
+</aside>
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md shadow-sm dark:shadow-none bg-surface-container-low px-6 py-4 flex justify-between items-center md:pl-72">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-black text-primary italic font-plus-jakarta md:hidden">DineDate</span>
+<div class="hidden md:flex items-center bg-surface-container-highest rounded-full px-4 py-2 w-80">
+<span class="material-symbols-outlined text-on-surface-variant mr-2" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-full" placeholder="Search venues or dates..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary dark:text-primary-container" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-surface-container-highest rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-primary dark:text-primary-container" data-icon="payments">payments</span>
+</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="User profile avatar" class="h-full w-full object-cover" data-alt="Portrait of a smiling professional man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5MCo1T6mZ_bzWB9-b_S7QD1Xy5kYKJKLfrkAkzdsvyI4ZMFnGJGt68y7D_WwGSUjGgsuocX3G3javQfCPjHGWcqB7fR-Op8ffAJ5nP1A4nSwNinazNy_5-Zshp1PsEiB0lLYjYSYuuPBIUYBL9e_M-aPJuHQ4kN-BAOtPXalLXzVWH6WCd__qiVIFnCz3W1xzmVZoBgCgCyrloOx3FJ9qvWHmm2cwfzPAz6AROSxnAArnJxeC93-RkEn0GHAe04HYL4mPZzbU-kI"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-24 md:pb-8 md:pl-72 px-6 min-h-screen">
+<!-- Hero Section: Editorial Welcome -->
+<section class="mb-12 relative overflow-hidden">
+<h1 class="font-plus-jakarta text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface-variant/20 absolute -top-4 -left-2 select-none">DASHBOARD</h1>
+<div class="relative z-10 pt-8">
+<h2 class="font-plus-jakarta text-4xl md:text-5xl font-black text-on-surface tracking-tight mb-2">Hello, Julian.</h2>
+<p class="text-on-surface-variant text-lg">You have 2 curated dates coming up this week.</p>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Upcoming Dates (Large Column) -->
+<div class="lg:col-span-8 space-y-6">
+<div class="flex items-center justify-between mb-2">
+<h3 class="font-plus-jakarta text-xl font-bold">Upcoming Dates</h3>
+<button class="text-primary font-bold text-sm hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Date Card 1 -->
+<div class="bg-surface-container-lowest rounded-lg p-6 flex flex-col justify-between h-80 relative overflow-hidden group">
+<div class="absolute inset-0 opacity-10 bg-gradient-to-br from-primary to-transparent"></div>
+<div class="relative z-10">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold font-plus-jakarta uppercase tracking-wider mb-4 inline-block">Tonight • 7:30 PM</span>
+<h4 class="text-2xl font-bold font-plus-jakarta mt-2">Le Petit Bistro</h4>
+<p class="text-on-surface-variant flex items-center gap-1 text-sm mt-1">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span> West Village, NY
+                            </p>
+</div>
+<div class="relative z-10 flex items-center justify-between mt-auto">
+<div class="flex -space-x-3">
+<img alt="Date partner" class="w-12 h-12 rounded-full border-4 border-white object-cover" data-alt="Close up portrait of a woman with red hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe6Jybz8fhAod3uptKhpyF3s17lC2c3j1MeEV42XHdYgXNYDrbN3YDn350UNw4Iij9RR9TVK_7plxG9jajbwF4BQbej6JNLslU4x7EsafN8ED9Yis1YKYW9Shr2vWVDy2cEG23hCB7BqWkonmVbicpEA9fnVKSVviSbuVq6L3WlSJN2O1dCSum_jk--MfbCKU5eppd-C-SwPD8TJioS6TTFl3v7dHmfyrjUAgUSgYaXe-wwXDqjyamP_6ALzyZG0gl9ERLr-0LV18"/>
+<img alt="Self" class="w-12 h-12 rounded-full border-4 border-white object-cover" data-alt="Portrait of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTPIMvXRSEzKM0fqoY8IDXQYCCE7zSmb6lOf4sGhp_aaXgLk9wohbZn0cGqhu9Tt-Ob30iYz2sGrvzK6lzBgni9LHiYe51Fu2fT-OJ_Ah5QpUS0naY7Ult2mLfs4xRAGxyvlqlZMopibADCGkOPi-7wKNMGDXCzE1thakIKXtfO83Uc7-sni3IJnuOLhctHk2d2kEh4bBtW53wsEwV0reSMOImXxOlYGDtvsevG2bXbqegB0vRYaxR7R2VLrRvG-JYdHdo15UbtPM"/>
+</div>
+<button class="bg-on-surface text-white px-4 py-2 rounded-full text-sm font-bold active:scale-95 transition-all">Details</button>
+</div>
+</div>
+<!-- Date Card 2 -->
+<div class="bg-surface-container-lowest rounded-lg p-6 flex flex-col justify-between h-80 relative overflow-hidden border border-outline-variant/10">
+<div class="relative z-10">
+<span class="bg-tertiary/10 text-tertiary px-3 py-1 rounded-full text-xs font-bold font-plus-jakarta uppercase tracking-wider mb-4 inline-block">Fri, Oct 24 • 8:00 PM</span>
+<h4 class="text-2xl font-bold font-plus-jakarta mt-2">Skyline Rooftop</h4>
+<p class="text-on-surface-variant flex items-center gap-1 text-sm mt-1">
+<span class="material-symbols-outlined text-sm" data-icon="location_on">location_on</span> Midtown, NY
+                            </p>
+</div>
+<div class="mt-4 h-24 rounded-md overflow-hidden">
+<img alt="Venue" class="w-full h-full object-cover" data-alt="Elegant restaurant interior with dim warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3rI1EMsRwU5caxIn1IBjt2GDs-Fjw9M0PXX6ah8aFsN_iSnPyuSvBi7m6U1jKdNs2QOvCdkP7MFjl4MoDFS578pZhTfN7_-LdKcZfbtqN0WY2b5DC0BwY_cHHafan7n-XWC6Uyo3TafSr0KMAS-SZPpZcyx5WonSwrbZEClXV-MH3AIz8Ey2wKiPAgttXZUpSnSEq7CyAifkYI84KJhnByiwTRzrBobzT7gPXlYN8P7hU_Jr5NcTxdxYs736H4tDry9MyJFYQG7k"/>
+</div>
+<div class="relative z-10 flex items-center justify-between mt-auto">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="restaurant">restaurant</span>
+</div>
+<span class="text-xs font-medium">Reservation Confirmed</span>
+</div>
+<button class="text-primary font-bold text-sm">Modify</button>
+</div>
+</div>
+</div>
+<!-- Activity Feed -->
+<div class="mt-12">
+<h3 class="font-plus-jakarta text-xl font-bold mb-6">Activity Feed</h3>
+<div class="space-y-6">
+<!-- Feed Item 1 -->
+<div class="flex gap-4">
+<img alt="Friend avatar" class="w-12 h-12 rounded-full object-cover shrink-0" data-alt="Man with beard and glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmdSc_MNXWekgePaTjq7oeY7PvRN5qQXWEPpcc4iI2HL9yG469oTGkaG1PPCBF97M_aEkE4vMB67D7cPevX3MsawjWDjyAF9n-mVfqUE76DBeljLChVLVnsdUPYTEaHRxFY7eyYXtfcYMBx83zQRjVIqBDWaU4EUrB7GY7h8LgzUjKaa6w8KqxPUopUiua1hpm5adyeCwrl7fPdlYvHD2_l8wSSwtEA0q93vKygCqdYtPFCWEfv3UVhT2jqhWTB7f3YWZC58v6IIM"/>
+<div class="space-y-3 flex-1">
+<p class="text-sm"><span class="font-bold">Marcus Chen</span> shared a new favorite spot <span class="text-primary font-bold">@ Izakaya Nomad</span></p>
+<div class="rounded-lg overflow-hidden h-48 w-full">
+<img alt="Sushi platter" class="w-full h-full object-cover" data-alt="Assorted high quality sushi on a slate board" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCNi0rkz3spXBATaTh6BfKJVMSIyw_hVJiUVOh_56vIlOCk9fDnqyUHMvgwnEf8k1YtXwNq59-jwoqIxePMZ6YaMYqkw3vHTaYgy7phCXQUcCy60i6xUlmgNvgVQiL3e5MYA6r_-NW3z40O8Gk56uNFCGLy9tXlGyP-pNmei5FH2betHRZakg74wK-qbDuZvyr5EN0_G8K1jF5DxFRzH9TS43R-j37XGhE9GUKr0rZYdt4SEhQhiXNKRMF1kWv6IqC4bkvprXg0No"/>
+</div>
+<div class="flex items-center gap-6 text-on-surface-variant">
+<button class="flex items-center gap-1 text-xs hover:text-primary"><span class="material-symbols-outlined text-lg" data-icon="favorite">favorite</span> 24</button>
+<button class="flex items-center gap-1 text-xs hover:text-primary"><span class="material-symbols-outlined text-lg" data-icon="chat_bubble">chat_bubble</span> 8</button>
+<button class="flex items-center gap-1 text-xs hover:text-primary ml-auto"><span class="material-symbols-outlined text-lg" data-icon="bookmark">bookmark</span></button>
+</div>
+</div>
+</div>
+<div class="h-px bg-surface-container-high w-full"></div>
+<!-- Feed Item 2 -->
+<div class="flex gap-4">
+<img alt="Friend avatar" class="w-12 h-12 rounded-full object-cover shrink-0" data-alt="Woman looking thoughtfully away" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLXq7Y7iQ_h6bLSid2PG3SS7W6QypKwfhMN1845uMPnftrM0PEqicgsd9bi_tCqMe0TOK-YYLczMD5fMQhA4SzT2ZwIkMwM-yvvwbMNnGSKhtbDZOz8XenP2WkqOVOpxKCbTkLd-NKj4U-1sZ9DoRNam2VDDedng8CRy-LzTQit7ARsgDB_oKNCYByUir5GHhDN1s37u8u05aoBW9qJrVtQpW8vbYz3Die4B_udxclRb7HwBDl2qwlAsWM7JWOPzFfwgdPpChsiy8"/>
+<div class="space-y-1 flex-1">
+<p class="text-sm"><span class="font-bold">Elena Rossi</span> is looking for a date for <span class="font-bold">Opera Night</span> this Friday.</p>
+<p class="text-xs text-on-surface-variant">2 hours ago</p>
+<div class="bg-surface-container-low p-4 rounded-lg flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" data-icon="confirmation_number">confirmation_number</span>
+<span class="text-xs font-medium">Metropolitan Opera House</span>
+</div>
+<button class="text-primary text-xs font-bold uppercase tracking-wider">Interested</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Personalized Recommendations (Small Column) -->
+<div class="lg:col-span-4 space-y-8">
+<div>
+<h3 class="font-plus-jakarta text-xl font-bold mb-4">Recommended Matches</h3>
+<div class="space-y-4">
+<!-- Match 1 -->
+<div class="bg-surface-container-low p-3 rounded-full flex items-center gap-4 hover:bg-surface-container-high transition-all cursor-pointer">
+<img alt="Match profile" class="w-14 h-14 rounded-full object-cover" data-alt="Portrait of a woman with vibrant lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGXihnd2ZX9KxZVNoNsZbtFC8BS9I0FyAVhl61puXWV-XPm_UEkea0qnMwbrHnQXSaqDMB2feY6ykhQFcFXnWy1zT94mLT393T29FqIDaoJ7qSYTlIFQGgQ9favA-rjFXHxwUnqI3UOWrLXM-olbXwDK5fxlXoidp523IalUJA5hq9pHnG_3CS5uBryercO4Eff-PFin5rYk17xyXgd_moO2TtV1TtfHnXMeeS1InyuYKRGx8N8iQh33fj-AtN-dIFfw3LfllpKP8"/>
+<div class="flex-1">
+<h5 class="font-bold text-sm">Sophia, 26</h5>
+<div class="flex gap-1 mt-1">
+<span class="text-[10px] bg-white px-2 py-0.5 rounded-full border border-outline-variant/20">Oysters</span>
+<span class="text-[10px] bg-white px-2 py-0.5 rounded-full border border-outline-variant/20">Jazz</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center active:scale-90 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<!-- Match 2 -->
+<div class="bg-surface-container-low p-3 rounded-full flex items-center gap-4 hover:bg-surface-container-high transition-all cursor-pointer">
+<img alt="Match profile" class="w-14 h-14 rounded-full object-cover" data-alt="Portrait of a stylish young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3GhjibEST6adqMcnRBAzy8A3NfqT_8O1wOle2HR47uyqqz7jeCWzy-mW4efw4BVYsfy_xkOaG-kurnxOqCzrI9GpBtcOqK5fqma9pvtlQePfzfrbHIWEfxTa3Am-u7MezuZzWJFoDAH9TpyOR7HPSmFgM3oPMHiMaU-I_orra-ugftdB2qUbcijmcefWGZMy_J8CIvf8EmBDeVe0Wqk1Rw-7-tyGZGwfuzW5ETvln6ZMe5W04GVUgPOLaK0GaLFnxwn9XIglWyh4"/>
+<div class="flex-1">
+<h5 class="font-bold text-sm">Liam, 29</h5>
+<div class="flex gap-1 mt-1">
+<span class="text-[10px] bg-white px-2 py-0.5 rounded-full border border-outline-variant/20">Italian</span>
+<span class="text-[10px] bg-white px-2 py-0.5 rounded-full border border-outline-variant/20">Art</span>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center active:scale-90 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="favorite">favorite</span>
+</button>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-plus-jakarta text-xl font-bold mb-4">Trending Venues</h3>
+<div class="space-y-4">
+<!-- Venue 1 -->
+<div class="group relative rounded-lg overflow-hidden h-40">
+<img alt="Venue background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Upscale dining room with elegant place settings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCG2MZWFYMq8UxElPU5TxGIaIg_zeCR2OTrE6F7qfO5iQGvHWj4vQbBzfaBqaX8RV_EgD6eGKffEvcQenjPNCMg7VcVOX3VEoZurGb1JEmn_jqNTR-gxop4AqJHSoooNAjbA7NXq79DOdijyFOfnBad79EZfkVO1rL9LOl88tNCwnbrRfrp9glECTBU0J1-tTDGeLYdrCDNZ3bjI3_fEhkL0LN-Y5R4kDeMQbIbU-ycc4_QNaXKQVuHHgASxvwJaa3Wcj6F0jJtO6M"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
+<div class="flex justify-between items-end">
+<div>
+<h6 class="text-white font-bold">The Gilded Lily</h6>
+<p class="text-white/70 text-xs">French Contemporary</p>
+</div>
+<div class="bg-white/20 backdrop-blur-md px-2 py-1 rounded text-white text-[10px] font-bold">
+                                        4.9 ★
+                                    </div>
+</div>
+</div>
+</div>
+<!-- Venue 2 -->
+<div class="group relative rounded-lg overflow-hidden h-40">
+<img alt="Venue background" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Cozy neighborhood restaurant with brick walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAA0lAl9EHgcQVFJrE7tJ-KTO-nSHgj__HCWxoeA3-fED4Mt8tksDUALq337pbGY3bkDiYFzznG0dLikhTrK5WIe8tyv4sxmM3lSH9VOONxAmrErNVaS_VJSlLfJR-I_gNhnSZKWvDJdDnOYj35x3MA1kwUEzfgmSh1g1y21-v5RgkNHMz3wJT8rqXP35Ljw3B6AGJ7Dgx4cdVV7xxG_jiXIkCOV8adojpWPMAZDfPnBi4ZfO_MOB1wzIR3N9rSHDqW2jnqBGw2oiE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-4">
+<div class="flex justify-between items-end">
+<div>
+<h6 class="text-white font-bold">Pasta &amp; Soul</h6>
+<p class="text-white/70 text-xs">Artisan Italian</p>
+</div>
+<div class="bg-white/20 backdrop-blur-md px-2 py-1 rounded text-white text-[10px] font-bold">
+                                        4.7 ★
+                                    </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom NavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md z-50 rounded-t-3xl shadow-[0_-8px_24px_rgba(174,47,52,0.05)] bg-surface-container-low">
+<a class="flex flex-col items-center justify-center bg-primary text-white rounded-2xl p-3 transform -translate-y-2 shadow-lg active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Dates</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Bookings</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:text-primary active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person_2">person_2</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button (Only on Home/Dashboard) -->
+<button class="fixed bottom-24 right-6 md:bottom-12 md:right-12 w-16 h-16 bg-gradient-to-br from-primary to-primary-container text-white rounded-full shadow-2xl flex items-center justify-center z-40 active:scale-90 transition-transform md:hidden">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+</body></html>

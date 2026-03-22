@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Guardian Core | Safety Protocols &amp; Escalation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed-variant": "#8c1520",
+              "secondary-fixed": "#e4e2e1",
+              "on-tertiary-fixed": "#370e08",
+              "surface-bright": "#fdf9f3",
+              "outline-variant": "#e0bfbd",
+              "on-secondary-fixed-variant": "#474747",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary": "#5f5e5e",
+              "primary": "#ae2f34",
+              "outline": "#8c706f",
+              "surface-tint": "#ae2f34",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-primary": "#ffb3b0",
+              "primary-container": "#ff6b6b",
+              "on-secondary-fixed": "#1b1c1c",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdad8",
+              "surface-variant": "#e6e2dc",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#dddad4",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-surface-variant": "#584140",
+              "on-surface": "#1c1c18",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "on-error": "#ffffff",
+              "surface-container-low": "#f7f3ed",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "surface-container": "#f1ede7",
+              "on-secondary-container": "#656464",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container-highest": "#e6e2dc",
+              "tertiary": "#894e45",
+              "background": "#fdf9f3",
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed": "#410006",
+              "on-tertiary": "#ffffff",
+              "error": "#ba1a1a",
+              "on-background": "#1c1c18",
+              "surface-container-high": "#ebe8e2",
+              "on-primary-container": "#6d0010",
+              "on-error-container": "#93000a"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 backdrop-blur-xl shadow-[0_8px_32px_0_rgba(174,47,52,0.04)]">
+<div class="flex items-center justify-between px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="text-xl font-black text-[#ae2f34] tracking-tighter font-['Plus_Jakarta_Sans']">Guardian Core</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<nav class="flex gap-6 items-center">
+<a class="text-[#1c1c18]/60 font-medium hover:text-[#ae2f34] transition-colors" href="#">Command Center</a>
+<a class="text-[#1c1c18]/60 font-medium hover:text-[#ae2f34] transition-colors" href="#">Live Maps</a>
+<a class="text-[#ae2f34] font-bold" href="#">Protocols</a>
+</nav>
+<div class="h-6 w-px bg-outline-variant/30"></div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#1c1c18]/60 hover:bg-[#f7f3ed] rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-[#1c1c18]/60 hover:bg-[#f7f3ed] rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">emergency_home</span>
+</button>
+<button class="p-2 text-[#1c1c18]/60 hover:bg-[#f7f3ed] rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Hidden on Mobile) -->
+<aside class="hidden md:flex h-screen w-64 fixed left-0 top-0 pt-20 bg-[#f7f3ed] flex-col gap-2">
+<div class="px-6 mb-6">
+<h3 class="font-['Plus_Jakarta_Sans'] font-bold text-[#ae2f34] text-lg">System Admin</h3>
+<p class="text-xs text-[#1c1c18]/50 uppercase tracking-widest font-semibold">Safety Oversight</p>
+</div>
+<nav class="flex flex-col gap-1">
+<div class="text-[#1c1c18]/70 hover:bg-[#fdf9f3] hover:translate-x-1 rounded-full mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-300 cursor-pointer">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-sm">Command Center</span>
+</div>
+<div class="text-[#1c1c18]/70 hover:bg-[#fdf9f3] hover:translate-x-1 rounded-full mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-300 cursor-pointer">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-sm">Live Maps</span>
+</div>
+<div class="text-[#1c1c18]/70 hover:bg-[#fdf9f3] hover:translate-x-1 rounded-full mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-300 cursor-pointer">
+<span class="material-symbols-outlined">warning</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-sm">Active Alerts</span>
+</div>
+<div class="text-[#1c1c18]/70 hover:bg-[#fdf9f3] hover:translate-x-1 rounded-full mx-2 px-4 py-3 flex items-center gap-3 transition-all duration-300 cursor-pointer">
+<span class="material-symbols-outlined">group_work</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-sm">Responder Grid</span>
+</div>
+<div class="bg-gradient-to-r from-[#ae2f34] to-[#ff6b6b] text-white rounded-full mx-2 px-4 py-3 flex items-center gap-3 shadow-lg shadow-[#ae2f34]/20 cursor-pointer">
+<span class="material-symbols-outlined">terminal</span>
+<span class="font-['Plus_Jakarta_Sans'] font-medium text-sm">Protocols</span>
+</div>
+</nav>
+<div class="mt-auto p-4">
+<button class="w-full bg-primary-container text-white py-4 rounded-xl font-bold flex items-center justify-center gap-2 shadow-xl shadow-primary-container/20 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+<span>New Incident</span>
+</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-20 pb-24 md:pb-8 px-4 md:px-8">
+<!-- Hero Header -->
+<section class="mb-12 relative overflow-hidden bg-surface-container-low rounded-xl p-8 md:p-12">
+<div class="relative z-10 max-w-2xl">
+<span class="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-xs font-bold tracking-widest uppercase mb-4">Core Engine</span>
+<h1 class="text-4xl md:text-6xl font-['Plus_Jakarta_Sans'] font-extrabold tracking-tight text-on-surface mb-4 leading-tight">
+                    Safety Protocols <br/> &amp; Escalation Logic
+                </h1>
+<p class="text-on-surface-variant text-lg leading-relaxed mb-8">
+                    Define the automated 'brains' of your security ecosystem. Set triggers, establish responder hierarchies, and manage critical response procedures.
+                </p>
+<div class="flex gap-4">
+<button class="bg-gradient-to-r from-primary to-primary-container text-white px-8 py-4 rounded-full font-bold shadow-lg shadow-primary/20 active:scale-95 transition-all">
+                        Create New Trigger
+                    </button>
+<button class="bg-surface-container-highest text-on-surface px-8 py-4 rounded-full font-bold active:scale-95 transition-all">
+                        View Audit Log
+                    </button>
+</div>
+</div>
+<!-- Decorative Background Element -->
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[300px] -rotate-12 translate-x-1/4">security</span>
+</div>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Automated Response Triggers (Left Column) -->
+<div class="lg:col-span-8 space-y-8">
+<div class="flex items-center justify-between">
+<h2 class="text-2xl font-bold font-['Plus_Jakarta_Sans']">Active Triggers</h2>
+<span class="text-sm font-semibold text-primary">6 Active Rules</span>
+</div>
+<!-- Trigger Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Trigger Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg group hover:shadow-2xl transition-all duration-500 relative">
+<div class="flex items-center justify-between mb-6">
+<div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">emergency</span>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-surface-container text-xs font-bold rounded-full">High Priority</span>
+<div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse mt-1.5"></div>
+</div>
+</div>
+<h3 class="text-xl font-bold mb-2">Emergency Button Press</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">System-wide broadcast when a hardware or app emergency signal is received.</p>
+<div class="space-y-3 bg-surface-container-low p-4 rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-3 text-xs font-semibold text-on-surface">
+<span class="material-symbols-outlined text-sm text-primary">person_search</span>
+                                Notify 3 Nearest Responders
+                            </div>
+<div class="flex items-center gap-3 text-xs font-semibold text-on-surface">
+<span class="material-symbols-outlined text-sm text-primary">video_camera_front</span>
+                                Activate Live Feed Recording
+                            </div>
+</div>
+</div>
+<!-- Trigger Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-lg group hover:shadow-2xl transition-all duration-500 border border-outline-variant/10">
+<div class="flex items-center justify-between mb-6">
+<div class="w-12 h-12 rounded-2xl bg-tertiary/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined">spatial_tracking</span>
+</div>
+<span class="px-3 py-1 bg-surface-container text-xs font-bold rounded-full">Medium Priority</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Geo-Fence Breach</h3>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Triggered when a protected asset moves outside of defined operating zones.</p>
+<div class="space-y-3 bg-surface-container-low p-4 rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-3 text-xs font-semibold text-on-surface">
+<span class="material-symbols-outlined text-sm text-tertiary">lock</span>
+                                Remote Lockdown Asset
+                            </div>
+<div class="flex items-center gap-3 text-xs font-semibold text-on-surface">
+<span class="material-symbols-outlined text-sm text-tertiary">mail</span>
+                                Alert Operations Manager
+                            </div>
+</div>
+</div>
+<!-- Trigger Card 3 -->
+<div class="md:col-span-2 bg-inverse-surface text-inverse-on-surface p-8 rounded-lg overflow-hidden relative">
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div class="space-y-2">
+<div class="flex items-center gap-2 text-primary-container">
+<span class="material-symbols-outlined">auto_mode</span>
+<span class="text-xs font-bold uppercase tracking-widest">Escalation Logic</span>
+</div>
+<h3 class="text-2xl font-bold">Unresolved Response Path</h3>
+<p class="text-inverse-on-surface/60 max-w-md">Automatically escalate to Level 3 Management if a responder does not acknowledge within 180 seconds.</p>
+</div>
+<button class="bg-primary text-white px-6 py-3 rounded-full font-bold hover:bg-primary-container transition-colors shrink-0">
+                                Configure Path
+                            </button>
+</div>
+<!-- Abstract Graphic -->
+<div class="absolute bottom-0 right-0 w-1/4 h-full bg-gradient-to-tl from-primary/20 to-transparent blur-3xl"></div>
+</div>
+</div>
+<!-- Procedures Library -->
+<div class="mt-12">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="text-2xl font-bold font-['Plus_Jakarta_Sans']">Procedures Library</h2>
+<p class="text-on-surface-variant text-sm">Step-by-step guides for manual interventions.</p>
+</div>
+<button class="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                            Browse All <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-low p-5 rounded-xl flex items-center justify-between hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined">medical_services</span>
+</div>
+<div>
+<h4 class="font-bold">Medical Emergency Protocol</h4>
+<p class="text-xs text-on-surface-variant">Last updated: 2 days ago • V4.2</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl flex items-center justify-between hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined">local_police</span>
+</div>
+<div>
+<h4 class="font-bold">Security Breach &amp; Lockdown</h4>
+<p class="text-xs text-on-surface-variant">Last updated: 1 week ago • V2.1</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+<div class="bg-surface-container-low p-5 rounded-xl flex items-center justify-between hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined">forum</span>
+</div>
+<div>
+<h4 class="font-bold">Conflict De-escalation Scripts</h4>
+<p class="text-xs text-on-surface-variant">Last updated: 3 weeks ago • V1.8</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Settings & Configuration (Right Column) -->
+<div class="lg:col-span-4 space-y-8">
+<div class="bg-surface-container-low rounded-lg p-6 space-y-8 sticky top-24">
+<div>
+<h3 class="text-xl font-bold mb-6">Global Thresholds</h3>
+<div class="space-y-6">
+<div>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">Escalation Timer (Seconds)</label>
+<input class="w-full accent-primary h-1.5 bg-surface-container-highest rounded-full appearance-none" type="range"/>
+<div class="flex justify-between text-[10px] font-bold mt-2 text-on-surface/40">
+<span>30S</span>
+<span class="text-primary">180S (DEFAULT)</span>
+<span>600S</span>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">Notification Priority Levels</label>
+<div class="space-y-2">
+<div class="flex items-center gap-3 p-3 bg-surface-container-lowest rounded-xl">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-sm font-semibold">Critical: Push, SMS, VoIP</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface-container-lowest rounded-xl">
+<div class="w-3 h-3 rounded-full bg-orange-400"></div>
+<span class="text-sm font-semibold">High: Push &amp; SMS Only</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-surface-container-lowest rounded-xl opacity-60">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="text-sm font-semibold">Standard: In-App Only</span>
+</div>
+</div>
+</div>
+<div>
+<label class="block text-xs font-bold text-on-surface-variant uppercase tracking-widest mb-3">Responder Radius</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border-none rounded-xl py-3 px-4 text-sm font-semibold appearance-none focus:ring-2 focus:ring-primary/20">
+<option>2.5 km (Optimal)</option>
+<option>5.0 km (Extended)</option>
+<option>10.0 km (Regional)</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-2.5 pointer-events-none text-on-surface/40">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+<span class="text-sm font-bold">Protocol Validation</span>
+</div>
+<p class="text-xs text-on-surface-variant leading-relaxed mb-6">
+                            All protocol changes require secondary approval from a Master Administrator.
+                        </p>
+<button class="w-full bg-on-surface text-surface py-3 rounded-xl font-bold text-sm active:scale-95 transition-transform">
+                            Save Configuration
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-3 bg-[#fdf9f3]/90 backdrop-blur-md shadow-[0_-10px_40px_rgba(174,47,52,0.08)] rounded-t-[2rem] md:hidden">
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 p-2" href="#">
+<span class="material-symbols-outlined">location_on</span>
+<span class="font-['Inter'] font-semibold text-[10px] uppercase tracking-widest mt-1">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 p-2" href="#">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="font-['Inter'] font-semibold text-[10px] uppercase tracking-widest mt-1">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#ae2f34] bg-[#ff6b6b]/10 rounded-2xl p-2" href="#">
+<span class="material-symbols-outlined">assignment_turned_in</span>
+<span class="font-['Inter'] font-semibold text-[10px] uppercase tracking-widest mt-1">Status</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 p-2" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Inter'] font-semibold text-[10px] uppercase tracking-widest mt-1">Settings</span>
+</a>
+</nav>
+</body></html>

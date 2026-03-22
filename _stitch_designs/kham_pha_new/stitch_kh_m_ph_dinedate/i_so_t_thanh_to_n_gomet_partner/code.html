@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET Venue Partner - Payout Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdad4",
+              "on-tertiary-fixed": "#370e08",
+              "tertiary": "#894e45",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed-dim": "#ffb3b0",
+              "tertiary-container": "#cf8a7f",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-primary-container": "#6d0010",
+              "secondary-fixed": "#e4e2e1",
+              "on-secondary": "#ffffff",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "error": "#ba1a1a",
+              "inverse-primary": "#ffb3b0",
+              "primary": "#ae2f34",
+              "surface-container": "#f1ede7",
+              "outline": "#8c706f",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary-container": "#e4e2e1",
+              "secondary": "#5f5e5e",
+              "on-primary-fixed-variant": "#8c1520",
+              "error-container": "#ffdad6",
+              "surface-dim": "#dddad4",
+              "surface-bright": "#fdf9f3",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#410006",
+              "on-error-container": "#93000a",
+              "surface-tint": "#ae2f34",
+              "inverse-surface": "#31302d",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-background": "#1c1c18",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-container": "#656464",
+              "surface-variant": "#e6e2dc",
+              "on-secondary-fixed-variant": "#474747",
+              "on-surface": "#1c1c18",
+              "primary-container": "#ff6b6b",
+              "on-surface-variant": "#584140",
+              "outline-variant": "#e0bfbd",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#e6e2dc",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-container-low": "#f7f3ed",
+              "background": "#fdf9f3"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      body { font-family: 'Inter', sans-serif; }
+      .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold italic tracking-tighter text-rose-700 dark:text-rose-500 font-headline">GOMET</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-600 transition-colors font-medium" href="#">Dashboard</a>
+<a class="text-rose-700 dark:text-rose-400 font-bold border-b-2 border-rose-700 transition-colors" href="#">Payouts</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-600 transition-colors font-medium" href="#">Venues</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-stone-600 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-stone-600 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Elite Member Avatar" class="w-full h-full object-cover" data-alt="Portrait of a professional business manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVTIGhpqrBsrAW2edOEPA3L0rtFIdvBRsSBmodnx5IbUyzIgJCv1-zMyWQHQh2PtHPMSCH9_sQyB-F1p9AJ4TrFnUcgB5OScUTFY7RrFUWogEsz4HhHuSmnvwN6rEwRd2XvI3HvxFqBipUpvLeNk1Bk_kbS1WlTqvxO58vdWYDhugUbClo9rI7nN9XDbT0kNyAd5Ue6txsAbhCVb1yAce9yg6H648Yqu9Vm5Sj4hORS3oNkXmEoXY7LK1YX3s4ldoPOYfIaG2OQtM"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col p-6 z-40 bg-stone-50 dark:bg-stone-950 rounded-r-3xl pt-24">
+<div class="mb-10">
+<h2 class="text-xl font-black text-rose-800 dark:text-rose-500 font-headline">GOMET Ecosystem</h2>
+<p class="text-stone-500 text-xs uppercase tracking-widest font-bold">Premium Management</p>
+</div>
+<nav class="flex-grow space-y-4">
+<a class="flex items-center gap-4 p-4 text-stone-500 hover:bg-stone-100 rounded-full transition-transform hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-semibold">Venues</span>
+</a>
+<a class="flex items-center gap-4 p-4 text-stone-500 hover:bg-stone-100 rounded-full transition-transform hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined" data-icon="skillet">skillet</span>
+<span class="font-semibold">VIP Concierge</span>
+</a>
+<a class="flex items-center gap-4 p-4 text-stone-500 hover:bg-stone-100 rounded-full transition-transform hover:scale-[1.02]" href="#">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-semibold">Elite Club</span>
+</a>
+<a class="flex items-center gap-4 p-4 bg-gradient-to-br from-rose-700 to-rose-400 text-white rounded-full shadow-lg shadow-rose-200/50 transition-transform active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-semibold">Payouts</span>
+</a>
+</nav>
+<button class="mt-auto mb-6 w-full py-4 bg-primary text-on-primary rounded-full font-bold shadow-lg flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+            New Request
+        </button>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-72 pt-28 px-12 pb-12 min-h-screen">
+<header class="mb-10 flex justify-between items-end">
+<div>
+<span class="text-primary font-bold tracking-widest text-xs uppercase">Financial Overview</span>
+<h1 class="text-5xl font-extrabold font-headline tracking-tighter mt-1 text-on-background">Payouts &amp; Settlement</h1>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-low px-6 py-3 rounded-lg">
+<span class="text-xs font-bold text-secondary uppercase tracking-tighter">Next Payout</span>
+<p class="text-xl font-bold font-headline">Oct 24, 2023</p>
+</div>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Revenue Chart Card (Large) -->
+<div class="col-span-8 bg-surface-container-lowest rounded-lg p-8 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] relative overflow-hidden">
+<div class="flex justify-between items-start mb-12">
+<div>
+<h3 class="text-2xl font-bold font-headline tracking-tight">Revenue from GOMET</h3>
+<p class="text-secondary text-sm">Monthly performance and total reach</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-1.5 rounded-full bg-surface-container-high text-xs font-bold">12 Months</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-bold text-secondary">6 Months</button>
+</div>
+</div>
+<!-- Mock Chart Area -->
+<div class="h-64 flex items-end justify-between gap-4 relative">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between border-b border-outline-variant/20">
+<div class="border-b border-outline-variant/10 w-full h-px"></div>
+<div class="border-b border-outline-variant/10 w-full h-px"></div>
+<div class="border-b border-outline-variant/10 w-full h-px"></div>
+</div>
+<!-- Bars -->
+<div class="relative w-full flex items-end justify-around h-full pt-8">
+<div class="w-10 bg-surface-container-highest rounded-t-sm h-[40%]"></div>
+<div class="w-10 bg-surface-container-highest rounded-t-sm h-[55%]"></div>
+<div class="w-10 bg-surface-container-highest rounded-t-sm h-[45%]"></div>
+<div class="w-10 bg-primary/20 rounded-t-sm h-[70%]"></div>
+<div class="w-10 bg-primary/40 rounded-t-sm h-[65%]"></div>
+<div class="w-10 bg-primary/60 rounded-t-sm h-[85%]"></div>
+<div class="w-10 bg-primary rounded-t-sm h-[95%] relative">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface text-[10px] px-2 py-1 rounded-md font-bold whitespace-nowrap">
+                                Peak: $12.4k
+                            </div>
+</div>
+</div>
+</div>
+<div class="flex justify-around mt-4 text-[10px] font-bold text-secondary uppercase tracking-widest">
+<span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span>
+</div>
+</div>
+<!-- Stats Column -->
+<div class="col-span-4 space-y-8">
+<!-- Pending Card -->
+<div class="bg-primary text-on-primary p-8 rounded-lg shadow-xl shadow-primary/20 flex flex-col justify-between h-48 relative overflow-hidden">
+<div class="z-10">
+<span class="text-xs font-bold uppercase tracking-widest opacity-80">Pending Payout</span>
+<h4 class="text-4xl font-extrabold font-headline mt-2">$4,820.00</h4>
+</div>
+<div class="z-10 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="schedule">schedule</span>
+<span class="text-xs font-medium">Expected in 3 days</span>
+</div>
+<!-- Abstract Shape -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+</div>
+<!-- Commission Breakdown -->
+<div class="bg-surface-container-low p-8 rounded-lg">
+<h3 class="text-lg font-bold font-headline mb-6">Commission Breakdown</h3>
+<div class="space-y-4">
+<div class="flex justify-between items-center">
+<span class="text-sm font-medium text-secondary">GOMET Platform Fee</span>
+<span class="text-sm font-bold">12.5%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full">
+<div class="bg-primary h-full rounded-full" style="width: 12.5%"></div>
+</div>
+<div class="flex justify-between items-center pt-2">
+<span class="text-sm font-medium text-secondary">Marketing Contribution</span>
+<span class="text-sm font-bold">2.5%</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full">
+<div class="bg-tertiary h-full rounded-full" style="width: 25%"></div>
+</div>
+</div>
+<button class="mt-8 text-primary text-xs font-bold flex items-center gap-1 hover:gap-2 transition-all">
+                        VIEW DETAILED TERMS <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Weekly Settlement Table -->
+<div class="col-span-12 bg-white rounded-lg p-10 mt-4">
+<div class="flex justify-between items-center mb-10">
+<h3 class="text-2xl font-bold font-headline">Recent Settlements</h3>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 bg-surface-container-low px-4 py-2 rounded-lg border-none">
+<span class="material-symbols-outlined text-stone-500" data-icon="search">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48" placeholder="Search invoices..." type="text"/>
+</div>
+</div>
+</div>
+<div class="overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-xs font-bold uppercase tracking-widest text-secondary border-b border-surface-container-high">
+<th class="pb-6 px-4">Period</th>
+<th class="pb-6 px-4">Gross Revenue</th>
+<th class="pb-6 px-4">Net Payout</th>
+<th class="pb-6 px-4">Status</th>
+<th class="pb-6 px-4">Invoice</th>
+<th class="pb-6 px-4 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-6 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-background">Week 41, 2023</span>
+<span class="text-xs text-secondary">Oct 09 - Oct 15</span>
+</div>
+</td>
+<td class="py-6 px-4 font-medium">$8,420.00</td>
+<td class="py-6 px-4 font-bold text-on-background">$7,157.00</td>
+<td class="py-6 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                        SETTLED
+                                    </span>
+</td>
+<td class="py-6 px-4">
+<span class="text-xs font-medium text-secondary">INV-2023-041</span>
+</td>
+<td class="py-6 px-4 text-right">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors text-primary">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-6 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-background">Week 40, 2023</span>
+<span class="text-xs text-secondary">Oct 02 - Oct 08</span>
+</div>
+</td>
+<td class="py-6 px-4 font-medium">$12,100.00</td>
+<td class="py-6 px-4 font-bold text-on-background">$10,285.00</td>
+<td class="py-6 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                        SETTLED
+                                    </span>
+</td>
+<td class="py-6 px-4">
+<span class="text-xs font-medium text-secondary">INV-2023-040</span>
+</td>
+<td class="py-6 px-4 text-right">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors text-primary">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-6 px-4">
+<div class="flex flex-col">
+<span class="font-bold text-on-background">Week 39, 2023</span>
+<span class="text-xs text-secondary">Sep 25 - Oct 01</span>
+</div>
+</td>
+<td class="py-6 px-4 font-medium">$9,850.00</td>
+<td class="py-6 px-4 font-bold text-on-background">$8,372.50</td>
+<td class="py-6 px-4">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-[10px] font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        PROCESSING
+                                    </span>
+</td>
+<td class="py-6 px-4">
+<span class="text-xs font-medium text-secondary">INV-2023-039</span>
+</td>
+<td class="py-6 px-4 text-right">
+<button class="p-2 opacity-30 cursor-not-allowed">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="mt-8 pt-8 flex justify-center">
+<button class="bg-surface-container-high px-8 py-3 rounded-full text-sm font-bold hover:bg-surface-variant transition-colors">
+                        Load More Records
+                    </button>
+</div>
+</div>
+<!-- Promotion / Tip Card -->
+<div class="col-span-12 mt-12">
+<div class="bg-gradient-to-r from-stone-900 to-stone-800 rounded-xl p-10 flex items-center justify-between">
+<div class="max-w-xl">
+<h4 class="text-3xl font-bold font-headline text-white mb-4">Unlock Premium Venue Analytics</h4>
+<p class="text-stone-400 text-lg">Compare your performance against local competitors and receive weekly curated advice to increase your booking conversion rate.</p>
+</div>
+<button class="bg-white text-stone-900 px-8 py-4 rounded-full font-bold shadow-lg hover:scale-105 transition-transform">
+                        Upgrade to Partner Pro
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Navigation for Mobile -->
+<div class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-lg border-t border-surface-container flex justify-around p-4 z-50">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="text-[10px] font-bold">Payouts</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-secondary">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="text-[10px] font-bold">Venues</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-secondary">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-bold">Profile</span>
+</button>
+</div>
+</body></html>

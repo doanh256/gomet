@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The First Date Guide - GOMET</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed-variant": "#474747",
+              "on-primary-fixed-variant": "#8c1520",
+              "primary": "#ae2f34",
+              "outline": "#8c706f",
+              "surface-container-low": "#f7f3ed",
+              "on-error": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#1b1c1c",
+              "secondary-container": "#e4e2e1",
+              "outline-variant": "#e0bfbd",
+              "primary-container": "#ff6b6b",
+              "on-surface": "#1c1c18",
+              "background": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "tertiary-fixed": "#ffdad4",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-tertiary-fixed": "#370e08",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "inverse-on-surface": "#f4f0ea",
+              "inverse-surface": "#31302d",
+              "on-primary-container": "#6d0010",
+              "primary-fixed": "#ffdad8",
+              "surface-container-lowest": "#ffffff",
+              "tertiary": "#894e45",
+              "on-background": "#1c1c18",
+              "tertiary-container": "#cf8a7f",
+              "on-primary-fixed": "#410006",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#e4e2e1",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-error-container": "#93000a",
+              "surface-bright": "#fdf9f3",
+              "surface-container-high": "#ebe8e2",
+              "on-secondary-container": "#656464",
+              "surface-dim": "#dddad4",
+              "surface": "#fdf9f3",
+              "surface-container": "#f1ede7",
+              "surface-variant": "#e6e2dc",
+              "error": "#ba1a1a",
+              "on-secondary": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "surface-container-highest": "#e6e2dc",
+              "on-surface-variant": "#584140",
+              "secondary": "#5f5e5e",
+              "inverse-primary": "#ffb3b0",
+              "error-container": "#ffdad6"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #fdf9f3;
+        font-family: 'Inter', sans-serif;
+      }
+    </style>
+</head>
+<body class="text-on-surface mb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] flex justify-between items-center px-6 h-16 w-full">
+<div class="text-2xl font-bold tracking-tighter text-rose-700 dark:text-rose-500 font-['Plus_Jakarta_Sans']">GOMET</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-stone-500 hover:opacity-80 transition-opacity cursor-pointer">notifications</span>
+<span class="material-symbols-outlined text-stone-500 hover:opacity-80 transition-opacity cursor-pointer">history_edu</span>
+<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="Portrait of a smiling young woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB26_8usLWBNHq4bGTCTlCbCqhB_TRKXsDu76mqYSI_XFSs6RMobC7wGKXTU2_Y43Qto0ghoJPtSUcAR5iYM-ddLxUsasnC5yUtQGtCZNOxvldT2fiAee0C2Q1zVz0s_oE3NZGbBt_G8YhnGdsNig_N-HiSTfWfNLqhpsQd5evmHI-j2ax8JFcTEF52o_9g65tsraZKNcRxcF47pjZUS0DFsjX3Y6QxPSAJ3wljNRh5IF6m8naC2etdFVgzyk33v2lEM1T1pp3L7B4"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-5xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-12">
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface mb-4 leading-none">
+                The First Date <span class="text-primary italic">Guide</span>
+</h1>
+<p class="font-body text-stone-500 max-w-md text-lg">
+                Cẩm nang trò chuyện được AI thiết kế riêng cho buổi hẹn hò của bạn và Linh.
+            </p>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Shared Palette Card -->
+<div class="md:col-span-7 bg-surface-container-lowest rounded-lg p-8 relative overflow-hidden flex flex-col justify-between group">
+<div class="relative z-10">
+<span class="font-label text-xs font-bold uppercase tracking-widest text-primary mb-2 block">Shared Palette</span>
+<h2 class="font-headline text-3xl font-bold mb-6 tracking-tight">Hương vị gắn kết</h2>
+<div class="flex flex-wrap gap-3">
+<div class="bg-surface-container-high px-4 py-2 rounded-full font-label text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">restaurant</span> Pasta Carbonara
+                        </div>
+<div class="bg-surface-container-high px-4 py-2 rounded-full font-label text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">local_cafe</span> Espresso Martini
+                        </div>
+<div class="bg-surface-container-high px-4 py-2 rounded-full font-label text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">icecream</span> Gelato Pistachio
+                        </div>
+</div>
+</div>
+<div class="mt-12 flex items-center gap-4">
+<div class="flex -space-x-3">
+<img alt="You" class="w-12 h-12 rounded-full border-4 border-white object-cover" data-alt="Close up of a man's face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPkkrmOGevqPmolNJnOlhifOUHNWvmmI7dRpdyeg-okTiDJobaKxe19vV4ZQjuzAzKUt_Bwey8-VefGwfpqX_IeKWZGJayluwbsZT3aXFMfDTRfSPN2GqmXKFRVFEXxdVoSVBN_6FMYnH3_vAszch4Nfqd0VYdH5fWRvfhDE0lC3Sok7w-e6pXN5anOUFzsuT0AQuspNNlWwud9yBIOBouFqhOrHWu1U2_K5c90LF9qRk7IYyXId_0JFKlDgNNjTKgew_l8E4LKe0"/>
+<img alt="Linh" class="w-12 h-12 rounded-full border-4 border-white object-cover" data-alt="Portrait of a woman with red hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyBtBjPeHWXTjWRk7MUzim24RXyEbFYDpeqQJvvAwZFRSZBty5wyw7e69fJjil5LgwQaP-w8nSBFbD5lUZ-26yiuiIDFe045S9CkmxtTXltQIBToya0IJ2CnpxD45O5sliQbZBACX4URlO3rUQ8L4SP5qNpWzZk23YWzVxOzM2u-zyvMeryGMDjWpvAtqmtAmEuwKKN9m6_OxASUBX-FpN2fHT2JaHuLiFIiy062JuOzB4oueO3DdX9i9uGJesg655HcsqeXnqwnc"/>
+</div>
+<p class="text-sm font-medium text-stone-600 italic">"Cùng yêu thích phong cách ẩm thực Ý hiện đại."</p>
+</div>
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/5 rounded-full blur-3xl group-hover:bg-primary/10 transition-colors"></div>
+</div>
+<!-- AI Insight Card -->
+<div class="md:col-span-5 bg-tertiary text-white rounded-lg p-8 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<h3 class="font-headline text-2xl font-bold mb-3 leading-tight">Gợi ý từ AI: "Nhạc Jazz &amp; Du hành"</h3>
+<p class="font-body text-white/80 text-sm leading-relaxed">
+                        Cả hai đều đã từng nhắc đến việc muốn ghé thăm những quán Jazz bar tại Tokyo. Đây là cầu nối hoàn hảo cho câu chuyện tối nay.
+                    </p>
+</div>
+<button class="mt-8 bg-white text-tertiary px-6 py-3 rounded-full font-label font-bold text-xs uppercase tracking-widest hover:opacity-90 transition-all active:scale-95 self-start">
+                    Xem chi tiết
+                </button>
+</div>
+<!-- Conversation Starters -->
+<div class="md:col-span-12">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline text-3xl font-bold tracking-tight">Conversation Starters</h2>
+<div class="h-px bg-outline-variant/30 flex-grow mx-6"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Starter 1 -->
+<div class="bg-surface-container-low rounded-lg p-6 hover:shadow-lg transition-shadow border-none">
+<div class="w-10 h-10 bg-primary-container/20 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">travel_explore</span>
+</div>
+<h4 class="font-headline font-bold mb-2">Chuyến đi Nhật Bản</h4>
+<p class="font-body text-sm text-stone-600">"Nếu có thể bay đến Tokyo ngay lúc này, địa điểm đầu tiên Linh muốn ghé qua là gì?"</p>
+</div>
+<!-- Starter 2 -->
+<div class="bg-surface-container-low rounded-lg p-6 hover:shadow-lg transition-shadow border-none">
+<div class="w-10 h-10 bg-primary-container/20 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">piano</span>
+</div>
+<h4 class="font-headline font-bold mb-2">Tình yêu nhạc Jazz</h4>
+<p class="font-body text-sm text-stone-600">"Nghệ sĩ Jazz nào khiến Linh cảm thấy bình yên nhất sau một ngày dài làm việc?"</p>
+</div>
+<!-- Starter 3 -->
+<div class="bg-surface-container-low rounded-lg p-6 hover:shadow-lg transition-shadow border-none">
+<div class="w-10 h-10 bg-primary-container/20 rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary">local_dining</span>
+</div>
+<h4 class="font-headline font-bold mb-2">Bí mật ẩm thực</h4>
+<p class="font-body text-sm text-stone-600">"Linh có tin vào định mệnh thông qua một món ăn chung mà cả hai cùng thích không?"</p>
+</div>
+</div>
+</div>
+<!-- Highlight Photo Card (Asymmetric) -->
+<div class="md:col-span-4 bg-surface-container-high rounded-lg overflow-hidden h-64 relative group">
+<img alt="Jazz Bar atmosphere" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Dimly lit interior of a cozy jazz bar with a piano" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWTozkG4ybZFOamVfWnx_gyWBXPp2dBmiRGWZh3d43M2oaC9oFk8XFTxNv1jRRp9H5H1-Kxer4171WmVMZx0OacAbt5jjkSQM3gSV9qB4t_eVn0EqUIQborZsW8pq3vsX3Cr645kpw3RdPGDjrVi35l8D5c08wlO8RgjBc7eJHrkUibyd8JK1_I9rCHGEAn5os9jYGUwFGm_pA277B6N3FhLtoZZ3rNcbBiNxTa76WmNuAgAxVgaHrZRHSwSdtELYitrm05mABjc0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6">
+<span class="text-white font-label text-xs font-bold">Vibe gợi ý: Jazz &amp; Chill</span>
+</div>
+</div>
+<div class="md:col-span-8 bg-primary-container rounded-lg p-8 flex flex-col md:flex-row items-center gap-8">
+<div class="flex-grow">
+<h3 class="font-headline text-on-primary-container text-2xl font-bold mb-2 tracking-tight">Chuẩn bị cho buổi hẹn?</h3>
+<p class="text-on-primary-container/80 text-sm">GOMET đã đặt chỗ sẵn cho bạn tại 'The Velvet Room' vào lúc 19:30 tối nay.</p>
+</div>
+<button class="whitespace-nowrap bg-on-primary-container text-white px-8 py-4 rounded-full font-headline font-bold hover:opacity-90 transition-transform active:scale-95">
+                    Xác nhận ngay
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end pb-6 px-4 bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl z-50 rounded-t-[2rem]">
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined group-hover:scale-110 duration-300 ease-out">favorite</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Dating</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-tr from-rose-700 to-rose-400 text-white rounded-full p-3 mb-2 shadow-lg scale-110 duration-300 ease-out cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">menu_book</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Stories</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined group-hover:scale-110 duration-300 ease-out">card_giftcard</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Gifts</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined group-hover:scale-110 duration-300 ease-out">verified_user</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Reputation</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-colors cursor-pointer group">
+<span class="material-symbols-outlined group-hover:scale-110 duration-300 ease-out">person</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Celebration Planner</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface-variant": "#584140",
+              "primary": "#ae2f34",
+              "on-secondary-container": "#656464",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "outline-variant": "#e0bfbd",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-secondary-fixed": "#1b1c1c",
+              "secondary-fixed": "#e4e2e1",
+              "secondary-container": "#e4e2e1",
+              "secondary": "#5f5e5e",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "outline": "#8c706f",
+              "on-tertiary-container": "#55251e",
+              "surface-dim": "#dddad4",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "primary-container": "#ff6b6b",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#ffb3b0",
+              "inverse-on-surface": "#f4f0ea",
+              "surface": "#fdf9f3",
+              "primary-fixed": "#ffdad8",
+              "on-tertiary-fixed": "#370e08",
+              "background": "#fdf9f3",
+              "surface-container": "#f1ede7",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#ebe8e2",
+              "error": "#ba1a1a",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-low": "#f7f3ed",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-primary-fixed-variant": "#8c1520",
+              "tertiary-container": "#cf8a7f",
+              "on-secondary": "#ffffff",
+              "on-surface": "#1c1c18",
+              "surface-container-highest": "#e6e2dc",
+              "surface-tint": "#ae2f34",
+              "on-primary-container": "#6d0010",
+              "surface-bright": "#fdf9f3",
+              "inverse-surface": "#31302d",
+              "on-primary-fixed": "#410006",
+              "on-background": "#1c1c18",
+              "surface-variant": "#e6e2dc",
+              "secondary-fixed-dim": "#c8c6c6",
+              "tertiary": "#894e45",
+              "on-secondary-fixed-variant": "#474747"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .no-line-rule { border: none !important; }
+        .tonal-layering { border: none !important; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-950/80 backdrop-blur-md shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] no-line-rule">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold italic text-rose-800 dark:text-rose-300 font-['Plus_Jakarta_Sans'] tracking-tight">GOMET</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 dark:hover:text-rose-300 transition-colors duration-200" href="#">Concierge</a>
+<a class="text-rose-800 dark:text-rose-200 font-semibold transition-colors duration-200" href="#">Planner</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 dark:hover:text-rose-300 transition-colors duration-200" href="#">Insights</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-stone-500 hover:text-rose-600 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-stone-500 hover:text-rose-600 transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Hero Section: Intentional Asymmetry -->
+<section class="relative mb-16">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+<div class="md:col-span-7">
+<span class="inline-block px-4 py-1.5 bg-tertiary-container/20 text-tertiary font-label text-sm font-semibold tracking-wider uppercase rounded-full mb-6">Signature Occasions</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface mb-6 leading-tight">
+                        Crafting Your <br/>
+<span class="text-primary italic">Perfect Surprise</span>
+</h1>
+<p class="text-on-surface-variant text-lg max-w-lg mb-8 leading-relaxed">
+                        From intimate candlelit dinners to grand romantic gestures. Select your occasion and let GOMET curate every detail.
+                    </p>
+</div>
+<div class="md:col-span-5 relative group">
+<div class="aspect-[4/5] rounded-lg overflow-hidden shadow-2xl rotate-2 group-hover:rotate-0 transition-transform duration-500">
+<img class="w-full h-full object-cover" data-alt="Elegant dinner table with candles and flowers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7-wPcEO0j7-jSxLcQiXMqL3W5fM1Yrwo9AePHH1QkaKzFsXGqhe3KghdK2TCqnSwkVNzU_E1PcpcmATLq2qZYIGo4HOHkLdp4HshshCDJBI3hIFscDKtMq1rmvIr_SqmzzSp2lQHb04j4oicWs2dxCVIwxGVlWu4nIGodx8cjEcS6mqTgUh3V0lIXWVh1UngAL62MRskLXhp615yOAX_hFmbph_RbHKewLyikdGBdxBFlxxueaxYxayCfJ4tlbOmINMmPlzMLhhM"/>
+</div>
+<div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-md shadow-xl max-w-[200px] hidden md:block z-10">
+<span class="material-symbols-outlined text-primary mb-2" data-icon="auto_awesome">auto_awesome</span>
+<p class="text-sm font-medium text-on-surface">"The most thoughtful anniversary I've ever had."</p>
+<p class="text-[10px] text-stone-400 mt-2 uppercase tracking-widest">— Sarah &amp; James</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Planning Steps: Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+<!-- Step 1: The Date -->
+<div class="md:col-span-1 bg-surface-container-low rounded-lg p-8 flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white mb-6">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-2">Mark the Day</h3>
+<p class="text-on-surface-variant text-sm mb-6">Select the golden date for your celebration.</p>
+</div>
+<div class="bg-white rounded-md p-4 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="font-semibold text-sm">October 2024</span>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-sm cursor-pointer" data-icon="chevron_left">chevron_left</span>
+<span class="material-symbols-outlined text-sm cursor-pointer" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-2 text-center text-[10px] font-bold text-stone-400 mb-2">
+<span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+</div>
+<div class="grid grid-cols-7 gap-2 text-center text-xs">
+<div class="p-2">12</div>
+<div class="p-2">13</div>
+<div class="p-2 bg-primary text-white rounded-full font-bold">14</div>
+<div class="p-2">15</div>
+<div class="p-2">16</div>
+<div class="p-2">17</div>
+<div class="p-2">18</div>
+</div>
+</div>
+</div>
+<!-- Step 2: The Venue & Package -->
+<div class="md:col-span-2 bg-surface-container-high rounded-lg p-8 relative overflow-hidden">
+<div class="relative z-10 flex flex-col h-full justify-between">
+<div class="max-w-md">
+<div class="w-12 h-12 rounded-full bg-tertiary flex items-center justify-center text-white mb-6">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-2">Curated Venues</h3>
+<p class="text-on-surface-variant text-sm mb-6">Exclusive partnerships with the city's most romantic spots offering bespoke packages.</p>
+</div>
+<div class="flex gap-4 overflow-x-auto hide-scrollbar pb-2">
+<!-- Venue Card 1 -->
+<div class="min-w-[280px] bg-white rounded-md p-3 shadow-md">
+<img class="w-full h-32 object-cover rounded-sm mb-3" data-alt="Rooftop restaurant with city view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBX0ASt7GCH_lnZc5v7Oh94CP_qL7TKXp6FDo_2TTFJ_QJjNFqLwLmtTcwMsL_bDSb7ZPhwMpRdzlbAcoBvmEBE0RxEOpKFJD8diNZj912tcEmWC2zyZbqNbGHwzazl8ZOKz6uZxMtW7eK1KmU7vJbGx1IQAghwMD6xvxa1Au3HxLmU_YzvDrjxYwEX4Mvg7Qayuh381skpJGfVoTXG7m7NgExkwVcAYMVIq7KgWCLI7UIiPsmR1xqV61yMpaPUdTtskx_u1oiwNrM"/>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-sm">L'Elysée Rooftop</h4>
+<span class="bg-primary-container/10 text-primary text-[10px] px-2 py-0.5 rounded-full font-bold">Anniversary Pro</span>
+</div>
+<p class="text-[11px] text-stone-500 mb-3 italic">"Private glass booth &amp; 7-course degustation"</p>
+<button class="w-full py-2 bg-surface-container text-on-surface text-xs font-bold rounded-sm hover:bg-primary hover:text-white transition-colors">Select Venue</button>
+</div>
+<!-- Venue Card 2 -->
+<div class="min-w-[280px] bg-white rounded-md p-3 shadow-md opacity-70">
+<img class="w-full h-32 object-cover rounded-sm mb-3" data-alt="Cozy wine cellar with candles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYkghk8YqW5wd81A186g0HPeyCY2ozRoH7OwFg0tS4AewGDpIWOHg5MxTiXYMnkpICkxikAZgOHCazqIGgFLvSotP9jTfM679u30lPEJl5YyfoujE4COSo3Br-fYfiCtQm1H1uXC-1XCXQmAlaej5fp33XF0Ebf5wBYtxsL5UN-_7RGO3zXuDeeqwrIR-06AEdwM8JRN35iCvDzN1LAYUTcA4ZYTrjOpqR-T2M-_ijtnnLbUXEUplq3ntyq_u6RUpFTAJu07olC-A"/>
+<div class="flex justify-between items-start mb-2">
+<h4 class="font-bold text-sm">The Vault Cellar</h4>
+<span class="bg-stone-100 text-stone-400 text-[10px] px-2 py-0.5 rounded-full font-bold">Intimate</span>
+</div>
+<p class="text-[11px] text-stone-500 mb-3 italic">"Rare vintage tasting &amp; live cellist"</p>
+<button class="w-full py-2 bg-surface-container text-on-surface text-xs font-bold rounded-sm">Select Venue</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Customization Layer: Asymmetric Details -->
+<section class="mb-20">
+<h2 class="font-headline text-3xl font-extrabold mb-12 text-center md:text-left">The <span class="text-primary italic">Finishing</span> Touches</h2>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- Floral -->
+<div class="space-y-4">
+<div class="aspect-square rounded-full overflow-hidden border-4 border-surface-container-high shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Bouquet of red roses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNlEhKtRxdabaP71UKlNzzlKWEPWZKg5W6yLWl751YVnq0tqA2tPrs9TrcPmT5MRwMz1UBPx4V89CwnJiScCGLNJJZEXAkBWEeXL4trO0dYHT3YFpiTTWZxJ9rqeP9FZq1RR6PMy6K1zhSk8-YR2hByGX2wA_vc2RMVeDoGOO3ZK9WxKP3ErTVOpXWEYY5wC3xbNjeDvA3bsca-uGsRxuZdxh4PYZT5R5inzC-bKGuztkqZ_4tum4CciZ7lNTF-iuy-zdbsfZcal8"/>
+</div>
+<div class="text-center">
+<h4 class="font-bold">Floral Design</h4>
+<p class="text-xs text-stone-500 px-4">Custom arrangements from our master florists.</p>
+<button class="mt-4 text-primary text-xs font-bold uppercase tracking-widest border-b border-primary/30 pb-1">Customize</button>
+</div>
+</div>
+<!-- Decor -->
+<div class="space-y-4 mt-8 md:mt-16">
+<div class="aspect-square rounded-full overflow-hidden border-4 border-surface-container-high shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Elegant table setting with gold accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNrBSWFk-mWNDzhgx3znp7mbjqJEhyPa5L8X12anb3f_is6gWqXrt_0v18aSezboHQ1OzSNQJ5aMHKaL9oARSEiDolaTqrle4Z9kEQxBd9BeAGj3TxcPKAmfVfIswbgkz-sGTMzUx7XyApSHysdywEOFcb1Q56wG-MxovCbLotzhawplYPMaGfo20l0uIwrcnR1X1RSFffkZoe_iqnZhogvSDSOJkaBDViRK-EQO5ymaIYi4pBC67SbLiZwE9KQMPCVMKv9rUbP3A"/>
+</div>
+<div class="text-center">
+<h4 class="font-bold">Table Decor</h4>
+<p class="text-xs text-stone-500 px-4">Themed aesthetics from Minimalist to Grandeur.</p>
+<button class="mt-4 text-primary text-xs font-bold uppercase tracking-widest border-b border-primary/30 pb-1">Customize</button>
+</div>
+</div>
+<!-- Menu -->
+<div class="space-y-4">
+<div class="aspect-square rounded-full overflow-hidden border-4 border-surface-container-high shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Gourmet steak dish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsEe-YTdYQhcTTuWXDGV6-3g0mOI8w8HZOvzaGE_k8aN4yGbcLi66du6esFJDAwxSGOu7NHzq-MVMToIy6Jlc67pmkBwrseKANvw2Zh8gcJGR3s74lYslTJq6d8cQkXujNXFKzeGAuR7VsnmNEkqzhyvBjDL-xykb7LLOtd0RA-dlY2Bes202LsLtu08lLcCq28Qe18hQaozxIRYSXr7R6Q3A60wgxyTmWEFWtNoMHxbsXrnoh6kWf1Z2rrBBG7yRmfMiirGgck6E"/>
+</div>
+<div class="text-center">
+<h4 class="font-bold">Custom Menu</h4>
+<p class="text-xs text-stone-500 px-4">Dietary-aligned bespoke dining experiences.</p>
+<button class="mt-4 text-primary text-xs font-bold uppercase tracking-widest border-b border-primary/30 pb-1">Customize</button>
+</div>
+</div>
+<!-- Music -->
+<div class="space-y-4 mt-8 md:mt-16">
+<div class="aspect-square rounded-full overflow-hidden border-4 border-surface-container-high shadow-inner">
+<img class="w-full h-full object-cover" data-alt="Vintage microphone on stage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3ZaD36TSn0ENGLPJARiRffYxJLSwGbM6xXVpluS83O0SIT3LapvthuFAAU6kH_ezGSJAnyGG6ihqXUlA1AVrkC17VQA3yAQo_8xG48uAaQROgIkg1ZGJKR2B6Ts0w5B0swfn0VgyMxwH1EH-l4FNM2K7i9Dnszegkkj41qjEg6eBND25aITFEWVqEzO9yKP_P25wnsNTHz_SpCH989-6GQ-9e5Deqm-BdXv40EQ1UJsxhK1ox-9puHdDGqqyYf7pfRDEiOn1pG6c"/>
+</div>
+<div class="text-center">
+<h4 class="font-bold">Live Ambiance</h4>
+<p class="text-xs text-stone-500 px-4">Solo violinists, jazz trios, or curated playlists.</p>
+<button class="mt-4 text-primary text-xs font-bold uppercase tracking-widest border-b border-primary/30 pb-1">Customize</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Final Confirmation -->
+<section class="bg-primary/5 rounded-xl p-8 md:p-12 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+<div class="relative z-10">
+<h3 class="font-headline text-3xl font-bold mb-4">Ready to spark the magic?</h3>
+<p class="text-on-surface-variant max-w-xl mx-auto mb-10">Review your celebration blueprint and finalize the concierge booking. Your personal planner will contact you within 2 hours.</p>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<button class="px-10 py-4 bg-gradient-to-r from-primary to-primary-container text-white font-headline font-bold rounded-md shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all active:scale-95">Complete Reservation</button>
+<button class="px-10 py-4 bg-white text-primary font-headline font-bold rounded-md shadow-sm border border-primary/10 hover:bg-surface-container-low transition-colors">Save Draft</button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-4 pb-6 pt-2 bg-white/90 dark:bg-stone-950/90 backdrop-blur-xl shadow-[0_-10px_40px_rgba(0,0,0,0.04)] tonal-layering">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Concierge</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="restaurant_menu">restaurant_menu</span>
+<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Profile</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-rose-700 to-rose-500 text-white rounded-full p-3 mb-1 scale-110 shadow-lg shadow-rose-200/50 active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="event_note">event_note</span>
+<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Planner</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="trending_up">trending_up</span>
+<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Insights</span>
+</a>
+</nav>
+<!-- FAB Suppression: Contextual logic applies, hide on planning/details screen -->
+<!-- Suppressing FAB as per instructions for Details/Focused task screens -->
+</body></html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Advanced Event Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error-container": "#93000a",
+              "on-secondary-container": "#656464",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "error": "#ba1a1a",
+              "surface-container": "#f1ede7",
+              "tertiary-fixed": "#ffdad4",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "on-secondary-fixed": "#1b1c1c",
+              "outline": "#8c706f",
+              "on-surface": "#1c1c18",
+              "surface-tint": "#ae2f34",
+              "surface-container-highest": "#e6e2dc",
+              "surface-container-low": "#f7f3ed",
+              "secondary-container": "#e4e2e1",
+              "on-primary-container": "#6d0010",
+              "inverse-surface": "#31302d",
+              "surface-container-high": "#ebe8e2",
+              "on-surface-variant": "#584140",
+              "tertiary": "#894e45",
+              "secondary": "#5f5e5e",
+              "primary-container": "#ff6b6b",
+              "on-tertiary-container": "#55251e",
+              "on-primary-fixed": "#410006",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary": "#ffffff",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface": "#fdf9f3",
+              "tertiary-container": "#cf8a7f",
+              "surface-container-lowest": "#ffffff",
+              "surface-dim": "#dddad4",
+              "secondary-fixed": "#e4e2e1",
+              "on-tertiary-fixed": "#370e08",
+              "surface-variant": "#e6e2dc",
+              "outline-variant": "#e0bfbd",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-bright": "#fdf9f3",
+              "primary": "#ae2f34",
+              "on-secondary": "#ffffff",
+              "on-secondary-fixed-variant": "#474747",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-background": "#1c1c18",
+              "background": "#fdf9f3",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "primary-fixed": "#ffdad8",
+              "inverse-primary": "#ffb3b0"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-neutral-900/80 backdrop-blur-xl shadow-sm shadow-coral-500/5">
+<div class="flex justify-between items-center px-6 py-3 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-bold text-coral-600 dark:text-coral-500 italic font-headline tracking-tighter">GOMET</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-neutral-600 dark:text-neutral-400 font-medium hover:text-coral-50 hover:text-coral-500 transition-colors duration-200" href="#">Network</a>
+<a class="text-neutral-600 dark:text-neutral-400 font-medium hover:text-coral-500 transition-colors duration-200" href="#">Dining</a>
+<a class="text-neutral-600 dark:text-neutral-400 font-medium hover:text-coral-500 transition-colors duration-200" href="#">Events</a>
+<a class="text-neutral-600 dark:text-neutral-400 font-medium hover:text-coral-500 transition-colors duration-200" href="#">Membership</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:block relative">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-neutral-400">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container border-none rounded-full text-sm focus:ring-2 focus:ring-primary w-48 lg:w-64" placeholder="Search data..." type="text"/>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center cursor-pointer active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-primary">person</span>
+</div>
+</div>
+</div>
+</nav>
+<div class="flex pt-16 min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 overflow-y-auto bg-surface-container-low dark:bg-neutral-900 flex flex-col py-8 pr-4 z-40 hidden lg:flex">
+<div class="text-xl font-black text-coral-600 mb-8 px-6 italic font-headline">GOMET</div>
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center text-white font-bold">ES</div>
+<div>
+<div class="text-sm font-bold text-on-surface">Executive Suite</div>
+<div class="text-[10px] text-neutral-500 uppercase tracking-widest">Premium Member</div>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="text-neutral-500 dark:text-neutral-400 px-4 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:pl-6 transition-all duration-300 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label text-label-md uppercase tracking-widest">Dashboard</span>
+</a>
+<a class="text-neutral-500 dark:text-neutral-400 px-4 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:pl-6 transition-all duration-300 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label text-label-md uppercase tracking-widest">Member Directory</span>
+</a>
+<a class="text-neutral-500 dark:text-neutral-400 px-4 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:pl-6 transition-all duration-300 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-label text-label-md uppercase tracking-widest">Dining Reservations</span>
+</a>
+<a class="bg-coral-50 dark:bg-coral-900/20 text-coral-700 dark:text-coral-300 rounded-r-full font-bold px-4 py-3 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-label text-label-md uppercase tracking-widest">Analytics</span>
+</a>
+<a class="text-neutral-500 dark:text-neutral-400 px-4 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:pl-6 transition-all duration-300 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label text-label-md uppercase tracking-widest">Billing</span>
+</a>
+<a class="text-neutral-500 dark:text-neutral-400 px-4 py-3 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:pl-6 transition-all duration-300 flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label text-label-md uppercase tracking-widest">Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-6">
+<button class="w-full py-3 bg-primary text-white font-bold rounded-xl active:opacity-80 transition-all">Invite Colleague</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 lg:ml-64 p-6 md:p-10 mb-20 lg:mb-0">
+<header class="mb-12">
+<div class="flex items-center gap-2 text-primary font-bold text-sm mb-2">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+                    AI-INSIGHTS ENABLED
+                </div>
+<h1 class="text-display-lg font-headline font-extrabold tracking-tighter text-on-surface max-w-2xl leading-tight">
+                    Advanced Event <span class="text-primary italic">Analytics</span>
+</h1>
+<p class="text-body-md text-secondary mt-4 max-w-xl">Deep-dive performance metrics for 'Summer Rooftop Soiree'. View sentiment trends and behavioral patterns.</p>
+</header>
+<!-- KPI Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.05)] border-l-4 border-primary">
+<div class="text-label-md text-secondary uppercase tracking-widest mb-2">Attendee Retention</div>
+<div class="text-4xl font-headline font-black text-on-surface">84.2%</div>
+<div class="mt-2 text-xs text-green-600 font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> +12% vs last event
+                    </div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.05)]">
+<div class="text-label-md text-secondary uppercase tracking-widest mb-2">Table Chemistry</div>
+<div class="text-4xl font-headline font-black text-on-surface">9.1<span class="text-lg text-neutral-400">/10</span></div>
+<div class="mt-2 text-xs text-secondary font-medium">Avg. connection score</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.05)]">
+<div class="text-label-md text-secondary uppercase tracking-widest mb-2">Venue Sentiment</div>
+<div class="text-4xl font-headline font-black text-on-surface">96%</div>
+<div class="mt-2 text-xs text-primary font-bold">Highly Favorable</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.05)]">
+<div class="text-label-md text-secondary uppercase tracking-widest mb-2">Network Growth</div>
+<div class="text-4xl font-headline font-black text-on-surface">312</div>
+<div class="mt-2 text-xs text-secondary font-medium">New member connections</div>
+</div>
+</div>
+<!-- Main Analytics Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Table Chemistry Success Rates (Asymmetric Left) -->
+<div class="lg:col-span-7 bg-surface-container-low rounded-lg p-8 relative overflow-hidden">
+<div class="flex justify-between items-start mb-10">
+<div>
+<h2 class="text-2xl font-headline font-bold text-on-surface">Table Chemistry Success</h2>
+<p class="text-sm text-secondary">Mapping interaction quality across 12 reserved zones.</p>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-white rounded-full text-[10px] font-bold tracking-widest uppercase text-primary shadow-sm">High Vitality</span>
+</div>
+</div>
+<div class="space-y-6">
+<!-- Simulated Chart/Visualizer -->
+<div class="flex items-end gap-3 h-48">
+<div class="flex-1 bg-primary/20 rounded-t-lg h-[40%] group relative hover:bg-primary transition-colors cursor-help">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold whitespace-nowrap bg-on-surface text-white px-2 py-1 rounded">Zone A: 42%</div>
+</div>
+<div class="flex-1 bg-primary/40 rounded-t-lg h-[65%] group relative hover:bg-primary transition-colors cursor-help">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold whitespace-nowrap bg-on-surface text-white px-2 py-1 rounded">Zone B: 65%</div>
+</div>
+<div class="flex-1 bg-primary rounded-t-lg h-[90%] group relative hover:bg-primary-container transition-colors cursor-help">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold whitespace-nowrap bg-on-surface text-white px-2 py-1 rounded">Zone C: 91%</div>
+</div>
+<div class="flex-1 bg-primary/30 rounded-t-lg h-[55%] group relative hover:bg-primary transition-colors cursor-help">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold whitespace-nowrap bg-on-surface text-white px-2 py-1 rounded">Zone D: 55%</div>
+</div>
+<div class="flex-1 bg-primary/60 rounded-t-lg h-[75%] group relative hover:bg-primary transition-colors cursor-help">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold whitespace-nowrap bg-on-surface text-white px-2 py-1 rounded">Zone E: 75%</div>
+</div>
+<div class="flex-1 bg-primary/20 rounded-t-lg h-[35%] group relative hover:bg-primary transition-colors cursor-help">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-[10px] font-bold whitespace-nowrap bg-on-surface text-white px-2 py-1 rounded">Zone F: 35%</div>
+</div>
+</div>
+<div class="flex justify-between px-2 text-[10px] text-neutral-400 uppercase tracking-tighter font-bold">
+<span>Prime Tables</span>
+<span>Lounge</span>
+<span>Bar Area</span>
+<span>Terrace</span>
+<span>Gallery</span>
+<span>VIP Alcove</span>
+</div>
+</div>
+<!-- Insight Overlay -->
+<div class="mt-8 bg-surface-container-lowest p-5 rounded-lg border-l-2 border-primary/30">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+<div>
+<p class="text-sm font-bold text-on-surface">Insight: Table Chemistry peaked at 9:30 PM</p>
+<p class="text-xs text-secondary leading-relaxed">Lower volume background music in Zone C correlated with a 40% increase in meaningful connections versus the Bar Area.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- AI Recommendations (Right Column) -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-primary p-8 rounded-lg text-white shadow-xl relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined">psychology</span>
+<span class="text-xs font-bold tracking-[0.2em] uppercase">AI Prediction</span>
+</div>
+<h3 class="text-2xl font-headline font-bold mb-4">Future Success Score: 94%</h3>
+<p class="text-sm text-white/80 mb-6 leading-relaxed">Based on current retention, your next event 'Vineyard Gala' is predicted to oversell by 15% within 48 hours.</p>
+<button class="w-full py-3 bg-white text-primary font-bold rounded-xl active:scale-95 transition-transform">Increase Capacity Now</button>
+</div>
+</div>
+<div class="bg-surface-container-highest p-8 rounded-lg">
+<h3 class="text-lg font-headline font-bold mb-6 text-on-surface">Attendee Retention Funnel</h3>
+<div class="space-y-6">
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between text-xs">
+<div class="font-bold text-secondary uppercase tracking-widest">Repeat Guests</div>
+<div class="text-primary font-black">68%</div>
+</div>
+<div class="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-surface-container">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary" style="width:68%"></div>
+</div>
+</div>
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between text-xs">
+<div class="font-bold text-secondary uppercase tracking-widest">Single Events</div>
+<div class="text-primary font-black">22%</div>
+</div>
+<div class="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-surface-container">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-tertiary" style="width:22%"></div>
+</div>
+</div>
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between text-xs">
+<div class="font-bold text-secondary uppercase tracking-widest">New Referrals</div>
+<div class="text-primary font-black">10%</div>
+</div>
+<div class="overflow-hidden h-2 mb-4 text-xs flex rounded-full bg-surface-container">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-on-secondary-container" style="width:10%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Venue Sentiment Heatmap (Full Width Bottom) -->
+<div class="lg:col-span-12 bg-surface-container-lowest rounded-lg p-10 shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-4">
+<div>
+<h2 class="text-3xl font-headline font-extrabold text-on-surface tracking-tight">Venue Sentiment <span class="text-primary">Heatmap</span></h2>
+<p class="text-secondary">Spatial analysis of guest enjoyment levels.</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary">High Excitement</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary/20"></div>
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary">Relaxed/Low</span>
+</div>
+</div>
+</div>
+<div class="relative w-full aspect-[21/9] bg-surface-container-low rounded-lg overflow-hidden group">
+<!-- Simulated Map/Floorplan with Heat Grains -->
+<div class="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_20%_30%,#ae2f34_0%,transparent_40%),radial-gradient(circle_at_70%_50%,#ae2f34_0%,transparent_35%),radial-gradient(circle_at_40%_80%,#ae2f34_0%,transparent_30%)]"></div>
+<!-- Markers -->
+<div class="absolute top-[30%] left-[20%] group-hover:scale-110 transition-transform">
+<div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center animate-pulse">
+<div class="w-4 h-4 bg-primary rounded-full"></div>
+</div>
+<div class="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-on-surface text-white text-[10px] px-2 py-1 rounded font-bold whitespace-nowrap">Entrance: 98% Happy</div>
+</div>
+<div class="absolute top-[50%] left-[70%] group-hover:scale-110 transition-transform">
+<div class="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center animate-pulse">
+<div class="w-4 h-4 bg-primary rounded-full"></div>
+</div>
+<div class="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-on-surface text-white text-[10px] px-2 py-1 rounded font-bold whitespace-nowrap">Main Bar: 94% Vitality</div>
+</div>
+<div class="absolute top-[80%] left-[40%] group-hover:scale-110 transition-transform">
+<div class="w-12 h-12 bg-neutral-400/20 rounded-full flex items-center justify-center">
+<div class="w-4 h-4 bg-neutral-400 rounded-full"></div>
+</div>
+<div class="absolute -bottom-10 left-1/2 -translate-x-1/2 bg-on-surface text-white text-[10px] px-2 py-1 rounded font-bold whitespace-nowrap">Lounge: 45% Active</div>
+</div>
+<img alt="Venue floor plan overlay" class="w-full h-full object-cover opacity-10 mix-blend-multiply" data-alt="Modern architectural restaurant floor plan top view" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwNQ3lEd3xDr9Xqd-FNQnF3KfdJ2ft6-FOlTzb6bckFI8iaCRRx6zRNSzx78EBdX_SSomUsJGWlLKGHYfD1eXPrZz9cinS8MsBB3G9Z9QDHIfy18ENKz6yGWUzpsO-Cms877nxQn68R5Y3apdtyCz8FnIuGDmsL05KeiEJcnVaJojLnst7gygAf9OJGxiohuwZO53wkhJQeSYu2GL_XGDMFOUtEV0oKNHj145zCY7NNEpQi9MFMJpPGihuXixa2D347QbtHYHs_YM"/>
+</div>
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="p-6 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-primary mb-4">restaurant</span>
+<h4 class="font-bold mb-2">Dining Experience</h4>
+<p class="text-xs text-secondary leading-relaxed">Menu sentiment was 100% positive. The "Wagyu Sliders" were the most discussed item on social media tags.</p>
+</div>
+<div class="p-6 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-primary mb-4">speed</span>
+<h4 class="font-bold mb-2">Service Pace</h4>
+<p class="text-xs text-secondary leading-relaxed">Average drink wait time: 4.2 minutes. Peak demand handled efficiently at 10 PM.</p>
+</div>
+<div class="p-6 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-primary mb-4">volume_up</span>
+<h4 class="font-bold mb-2">Acoustic Comfort</h4>
+<p class="text-xs text-secondary leading-relaxed">Lounge area was noted as "too quiet" between 8-9 PM. Suggest increasing volume for early vibes.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface/90 backdrop-blur-md rounded-t-3xl shadow-[0_-8px_24px_-12px_rgba(174,47,52,0.15)]">
+<div class="flex flex-col items-center justify-center text-neutral-400 px-4 py-2 hover:text-coral-400">
+<span class="material-symbols-outlined">home</span>
+<span class="font-headline text-[10px] font-bold">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-neutral-400 px-4 py-2 hover:text-coral-400">
+<span class="material-symbols-outlined">handshake</span>
+<span class="font-headline text-[10px] font-bold">Connect</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-coral-500 to-coral-700 text-white rounded-2xl px-5 py-2 scale-110 -translate-y-2 active:scale-90 transition-all">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-headline text-[10px] font-bold">Stats</span>
+</div>
+<div class="flex flex-col items-center justify-center text-neutral-400 px-4 py-2 hover:text-coral-400">
+<span class="material-symbols-outlined">person</span>
+<span class="font-headline text-[10px] font-bold">Account</span>
+</div>
+</div>
+</body></html>

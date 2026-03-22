@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary-fixed": "#1b1c1c",
+              "on-primary-container": "#6d0010",
+              "primary": "#ae2f34",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-bright": "#fdf9f3",
+              "background": "#fdf9f3",
+              "on-primary": "#ffffff",
+              "surface-container-low": "#f7f3ed",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-lowest": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "primary-container": "#ff6b6b",
+              "on-primary-fixed": "#410006",
+              "on-secondary-container": "#656464",
+              "on-tertiary-fixed": "#370e08",
+              "surface-variant": "#e6e2dc",
+              "secondary-fixed": "#e4e2e1",
+              "surface": "#fdf9f3",
+              "inverse-surface": "#31302d",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-primary-fixed-variant": "#8c1520",
+              "inverse-primary": "#ffb3b0",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-container": "#cf8a7f",
+              "on-error-container": "#93000a",
+              "outline-variant": "#e0bfbd",
+              "secondary-container": "#e4e2e1",
+              "secondary": "#5f5e5e",
+              "primary-fixed": "#ffdad8",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "surface-container-highest": "#e6e2dc",
+              "surface-dim": "#dddad4",
+              "on-secondary-fixed-variant": "#474747",
+              "error": "#ba1a1a",
+              "error-container": "#ffdad6",
+              "outline": "#8c706f",
+              "tertiary": "#894e45",
+              "on-surface": "#1c1c18",
+              "surface-container-high": "#ebe8e2",
+              "on-background": "#1c1c18",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "secondary-fixed-dim": "#c8c6c6",
+              "on-secondary": "#ffffff",
+              "surface-container": "#f1ede7"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(253, 249, 243, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-xl shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="text-2xl font-black italic text-[#ae2f34] dark:text-[#ff6b6b] font-['Plus_Jakarta_Sans'] tracking-tight">GOMET Alpha</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#1c1c18] dark:text-[#fdf9f3] opacity-70 hover:opacity-100 transition-opacity duration-300 font-['Plus_Jakarta_Sans'] tracking-tight font-bold" href="#">Venues</a>
+<a class="text-[#1c1c18] dark:text-[#fdf9f3] opacity-70 hover:opacity-100 transition-opacity duration-300 font-['Plus_Jakarta_Sans'] tracking-tight font-bold" href="#">Referrals</a>
+<a class="text-[#1c1c18] dark:text-[#fdf9f3] opacity-70 hover:opacity-100 transition-opacity duration-300 font-['Plus_Jakarta_Sans'] tracking-tight font-bold" href="#">Feedback</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 text-on-surface hover:bg-surface-container-high rounded-full transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined p-2 text-on-surface hover:bg-surface-container-high rounded-full transition-colors" data-icon="account_circle">account_circle</button>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-5xl mx-auto space-y-12">
+<!-- Hero Section: Flash Meet Timer -->
+<section class="relative overflow-hidden rounded-xl bg-surface-container-low min-h-[400px] flex flex-col items-center justify-center text-center p-8">
+<!-- Background Decorative Element -->
+<div class="absolute -top-24 -right-24 w-64 h-64 bg-primary-container/20 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -left-24 w-64 h-64 bg-tertiary-container/20 rounded-full blur-3xl"></div>
+<div class="relative z-10 space-y-6">
+<div class="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full">
+<span class="relative flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</span>
+<span class="font-label text-label-md font-bold uppercase tracking-widest text-primary">Live Now</span>
+</div>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-background">Flash Meet</h1>
+<div class="flex flex-col items-center space-y-2">
+<div class="flex gap-4 items-center">
+<div class="flex flex-col items-center bg-surface-container-lowest p-4 rounded-lg shadow-sm w-24">
+<span class="text-4xl font-headline font-black text-primary">04</span>
+<span class="font-label text-[10px] uppercase tracking-widest opacity-60">Mins</span>
+</div>
+<span class="text-4xl font-black text-outline">:</span>
+<div class="flex flex-col items-center bg-surface-container-lowest p-4 rounded-lg shadow-sm w-24">
+<span class="text-4xl font-headline font-black text-primary">52</span>
+<span class="font-label text-[10px] uppercase tracking-widest opacity-60">Secs</span>
+</div>
+</div>
+<p class="text-secondary font-body italic text-lg mt-4">Ends when the timer hits zero!</p>
+</div>
+<div class="flex items-center gap-8 pt-4">
+<div class="text-center">
+<p class="text-3xl font-headline font-bold text-on-background">1,248</p>
+<p class="font-label text-xs uppercase tracking-tighter opacity-60">In Queue</p>
+</div>
+<div class="w-px h-10 bg-outline-variant/30"></div>
+<div class="text-center">
+<p class="text-3xl font-headline font-bold text-on-background">5m</p>
+<p class="font-label text-xs uppercase tracking-tighter opacity-60">Duration</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Action -->
+<section class="flex flex-col items-center space-y-6">
+<button class="group relative w-full max-w-md py-6 rounded-full bg-gradient-to-br from-primary to-primary-container shadow-[0_24px_48px_-12px_rgba(174,47,52,0.3)] hover:scale-[1.02] active:scale-95 transition-all overflow-hidden">
+<div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative flex items-center justify-center gap-3">
+<span class="material-symbols-outlined text-on-primary text-3xl" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span class="font-headline text-2xl font-bold text-on-primary">Join Flash Meet</span>
+</div>
+</button>
+<p class="text-sm text-secondary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+                Encrypted video &amp; chat. Identity protected.
+            </p>
+</section>
+<!-- Featured Bento Content -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- How it works card -->
+<div class="md:col-span-8 bg-surface-container-low p-8 rounded-lg flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10 max-w-md">
+<h2 class="font-headline text-3xl font-bold mb-4">How it works</h2>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="text-primary font-bold">1</span>
+</div>
+<div>
+<h3 class="font-bold">Enter the Queue</h3>
+<p class="text-secondary text-sm">Join a pool of curated matches looking for quick connections.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="text-primary font-bold">2</span>
+</div>
+<div>
+<h3 class="font-bold">5-Min Date</h3>
+<p class="text-secondary text-sm">Get paired instantly for a time-limited icebreaker. Be bold!</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0">
+<span class="text-primary font-bold">3</span>
+</div>
+<div>
+<h3 class="font-bold">Decide to Connect</h3>
+<p class="text-secondary text-sm">If you both enjoy the vibe, it becomes a permanent match.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute right-0 bottom-0 w-1/3 h-full opacity-20 pointer-events-none">
+<div class="w-full h-full bg-primary rotate-12 rounded-full translate-x-12 translate-y-12 blur-2xl"></div>
+</div>
+</div>
+<!-- Fun Fact/Teaser card -->
+<div class="md:col-span-4 bg-tertiary-container/10 p-8 rounded-lg flex flex-col items-center justify-center text-center space-y-4">
+<div class="w-20 h-20 rounded-full bg-white shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl text-tertiary" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<h3 class="font-headline text-xl font-bold">Chef's Special</h3>
+<p class="text-sm text-secondary">Tonight's theme: <br/><span class="text-on-background font-bold">Sushi &amp; Sunset Vibes</span></p>
+<div class="pt-4">
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-surface" data-alt="User profile portrait women smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARQ-_PfJvTAtrB8FnsKHkElFOvZT0hfXdp8YDAxzOVb_WazHXbHOmdaDyOgunvxbLHvGxTkH57np_YI666H7CJQ4QLERFwabTGU_mkpcH0ob765ZP0Ox2T6u64ih8h9HVR2eyB2FKWn-JASKrLkhbNcihQA71MEg0ulHaYMIVRj7Z6SlW2e4pAI07cD5F0hvhkWT3yC8MMF7CD7Oq1LfuWgglzNIE3L1xX8hGLMPD3QmhL3esyntoFTJ-F7fEQnT_hw0lpQ_nLGL4"/>
+<img class="w-10 h-10 rounded-full border-2 border-surface" data-alt="User profile portrait man smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB18E1AhvdxDuXa_knCyXOQ3OpqSUVytTw773zdf9vqezbKxvwzbW5ekdFJITHiDv2ay5KWWbYi5VHb-FKW9iunheprOMhG6Zer-cIRT2V7M4PdoY05BhsOPKkVS0_PlrA4950zw-Ft9m63NGCAidWzIGqLUMdoXE_Lg6isvhBNilGNeVll6aQpPkeDtUf2SCn9eEjqX-yyhtUpPugmJ2-lGwVE8Gfy5DprNqK7Fq8ZUmtq77WjzITNl9nhG9RWhKs0jSSm8oTE5A0"/>
+<img class="w-10 h-10 rounded-full border-2 border-surface" data-alt="User profile portrait women looking confident" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHh6u4h4mJGGSSurQGCGYpWe4xDLo5MUgwo_T7SoBB8BvsL0SJpXEyJ59nyuD3zMm65GPOJuuZgUPjyh0AF7Fm7NwHY5bhT_23tO6iELMecRDgZOhW2Cjaw9m06CnIKir2DZwFYwC0VYovaGpYS2MBCFXnTrH3IiJNPC1vwXJCIrVLsDaccC9_CoFmdNQndI0kXtiDTyOXpt6t1NklIhJ4vwhJH_SuKwGxKM5DGFQyIEn-6IrtgQf2fAgQIQJaO00ZjGiFxW9ybGY"/>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center border-2 border-surface text-[10px] font-bold">+42</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Previous Matches -->
+<section class="space-y-6">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline text-3xl font-bold">Recent Sparks</h2>
+<p class="text-secondary text-sm">Matches from your last Flash sessions</p>
+</div>
+<button class="text-primary font-bold text-sm hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Match 1 -->
+<div class="group relative aspect-[3/4] rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Stylish woman in a city setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB0OmbBUZY6m1cZ_r_GYU12190tvGQdPlY3vYCtceGoPebA7e7FOHPD8XQMjUw_XaUFgDlfTMjyvl6ibN5QisfAnGhRmfUBgBXEioHgU2pO3ByDVkHwc5WDu2I7cCqUorDch82F2FM7Uf6TPkm3vMJHje27qX3JQuMW0zXiic5rBv_m_tetvBOtjWi59s8GbAAQB0Evi7XoMayAtGdu77SeHs_B2CuMVUNT7anEdiEv3BheWc3FK6iFagGRRHRITlfqQ4NSMkjVQY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<div class="flex items-center gap-1">
+<h4 class="font-bold text-white">Elena</h4>
+<span class="material-symbols-outlined text-primary-container text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="text-white/70 text-xs">Matched 2h ago</p>
+</div>
+</div>
+<!-- Match 2 -->
+<div class="group relative aspect-[3/4] rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Smiling man in casual clothing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPcC6w6_M3hztzdMytVk9-GvQovJtR9uqvAFwA6h9wfGPHteJX2fj7jMgrbeEcJJczaV4HShnSszghFFMtNv0YfuRNvudpPv7C4Ri9mII3Wea2rslheWjQY7gXXxIjn2fG3tLKptqoc99wrvdGNo5JncsvWOW96oraUteFaepZtP06rxgKryS2xYibDEP7MUwaBDFRHCN5RLd2ulbLDC5RH0PLD4NGs5T5hp8kG-hZVPwV0du8E-lk5uQTYPd2qbWxMneFWhLA2kA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<div class="flex items-center gap-1">
+<h4 class="font-bold text-white">Marcus</h4>
+</div>
+<p class="text-white/70 text-xs">Matched 5h ago</p>
+</div>
+</div>
+<!-- Match 3 -->
+<div class="group relative aspect-[3/4] rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Woman with curly hair laughing" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4T-5GDQYKZU6VVKTL0_a3OCFTSGVi3bBdV84EZBYQQC_mY99ZipnkQX6JH-BV0exdhac69_ny05nek_402SlftaGjXPbrCXKBBDm6aoxztvAI0-6A-OwbEhjowbZbAawnuQtgWZymBo65DWeWCF9lQsTfzU6Pt5vlFTeplXavGmbuupHlz_Jbmbl0JI6SWb-TcxUGfuc-lLsdslisBUKY4fAgFEUNUnae2cf-krD6ClAeJ8iYXc0crX8VGfBgXsTyHrxmki5Jd0M"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<div class="flex items-center gap-1">
+<h4 class="font-bold text-white">Sophia</h4>
+<span class="material-symbols-outlined text-primary-container text-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<p class="text-white/70 text-xs">Matched yesterday</p>
+</div>
+</div>
+<!-- Match 4 -->
+<div class="group relative aspect-[3/4] rounded-lg overflow-hidden bg-surface-container-low">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="Man in high-fashion editorial style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuButnSjVFNoOy2evly1j9vuV8Q304MRShpjkodpsYc-6CCZqgvIQnqeE6zmdGwoY1PEcMHfQQ5IZCz_sphMrhDtESQKJyFt64sQNHDlhN7iVfE3kQ95FhkqAzKL6UmKo-ziPPIuK9VYlhNTyZOpsxkYKYQF2CrrYz0SW0ZhO1WsG5nzNOAGWtxYs8S8k4vBV6I7Vjz1npblSNDgZqJOTeNhfXq1YnhA_jPXYH_ZRhTobQl8MhdskYLIHTNngTHH5oaYxTgp2Cwk450"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-4 w-full">
+<div class="flex items-center gap-1">
+<h4 class="font-bold text-white">Julian</h4>
+</div>
+<p class="text-white/70 text-xs">Matched yesterday</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-end pb-6 px-4 bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-xl z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.03)]">
+<!-- Discover -->
+<a class="flex flex-col items-center justify-center text-[#1c1c18] dark:text-[#fdf9f3] opacity-60 hover:scale-110 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="text-[11px] font-['Inter'] font-bold uppercase tracking-widest mt-1">Discover</span>
+</a>
+<!-- Flash Meet (Active Intent) -->
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-2 hover:scale-110 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<!-- Logic: Current page is Flash Meet, map to exciting action -->
+</a>
+<!-- Network -->
+<a class="flex flex-col items-center justify-center text-[#1c1c18] dark:text-[#fdf9f3] opacity-60 hover:scale-110 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-[11px] font-['Inter'] font-bold uppercase tracking-widest mt-1">Network</span>
+</a>
+<!-- Dates -->
+<a class="flex flex-col items-center justify-center text-[#1c1c18] dark:text-[#fdf9f3] opacity-60 hover:scale-110 transition-transform active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="text-[11px] font-['Inter'] font-bold uppercase tracking-widest mt-1">Dates</span>
+</a>
+</nav>
+</body></html>

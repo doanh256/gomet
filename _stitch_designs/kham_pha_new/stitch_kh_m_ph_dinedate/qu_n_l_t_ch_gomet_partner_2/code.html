@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET Partner | Restaurant Booking Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#e6e2dc",
+              "background": "#fdf9f3",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-secondary-fixed-variant": "#474747",
+              "surface-bright": "#fdf9f3",
+              "surface": "#fdf9f3",
+              "outline": "#8c706f",
+              "on-secondary-container": "#656464",
+              "surface-tint": "#ae2f34",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-surface": "#1c1c18",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-variant": "#e6e2dc",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed": "#ffdad8",
+              "on-primary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "on-primary-fixed": "#410006",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "primary-fixed-dim": "#ffb3b0",
+              "outline-variant": "#e0bfbd",
+              "on-error-container": "#93000a",
+              "secondary-fixed": "#e4e2e1",
+              "primary-container": "#ff6b6b",
+              "tertiary-container": "#cf8a7f",
+              "tertiary": "#894e45",
+              "on-tertiary-fixed": "#370e08",
+              "on-surface-variant": "#584140",
+              "on-primary-container": "#6d0010",
+              "surface-container-low": "#f7f3ed",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary-container": "#e4e2e1",
+              "secondary": "#5f5e5e",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-secondary": "#ffffff",
+              "error": "#ba1a1a",
+              "inverse-primary": "#ffb3b0",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-dim": "#dddad4",
+              "primary": "#ae2f34",
+              "on-background": "#1c1c18"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background selection:bg-primary-fixed">
+<!-- SideNavBar (Desktop Shell) -->
+<nav class="hidden md:flex flex-col fixed left-0 top-0 h-screen p-4 h-full w-64 border-r-0 bg-stone-100 dark:bg-stone-900 z-50">
+<div class="flex items-center gap-3 px-4 mb-10">
+<div class="w-10 h-10 bg-gradient-to-tr from-primary to-primary-container rounded-lg flex items-center justify-center text-white font-black text-xl">G</div>
+<div>
+<h2 class="font-headline font-black text-rose-700 text-xl leading-none">GOMET Partner</h2>
+<p class="font-label text-label-md uppercase tracking-wider text-stone-500">Premium Management</p>
+</div>
+</div>
+<div class="space-y-2 flex-1">
+<a class="flex items-center gap-4 px-4 py-3 text-stone-500 hover:text-rose-600 hover:translate-x-1 transition-transform duration-300 ease-in-out font-label text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-stone-500 hover:text-rose-600 hover:translate-x-1 transition-transform duration-300 ease-in-out font-label text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span>Events</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 bg-rose-600 text-white rounded-full shadow-lg shadow-rose-500/20 duration-300 ease-in-out font-label text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span>Venues</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-stone-500 hover:text-rose-600 hover:translate-x-1 transition-transform duration-300 ease-in-out font-label text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span>Safety</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-stone-500 hover:text-rose-600 hover:translate-x-1 transition-transform duration-300 ease-in-out font-label text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span>Transactions</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-stone-500 hover:text-rose-600 hover:translate-x-1 transition-transform duration-300 ease-in-out font-label text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</div>
+<div class="mt-auto p-4 bg-surface-container rounded-2xl">
+<div class="flex items-center gap-3 mb-4">
+<img class="w-10 h-10 rounded-full object-cover" data-alt="Professional chef profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrC4Luu03O7nlhqFxSYo6jdziM3Y0t_6qdSrutD7R-elKcKxP-x5duNjSUlBZqOVvq3LQu2-xsLiv2zvheruiDeXKFa49FTpqqYxk1EjJZtHfoBoaH446EfyY8JTxv9sFzy24CeOseC_pR61yO3fLEqKkSQoPutsp9rJVn485quPWNLKmWvXRlTTG0QQCSDnmQeAc6z50mNqfywVaC_5X3At_58Qdh4uBS6zs-7uhrFJMExuMRgwT5hpzL-YlmW7s5DRVWRPhbR0Y"/>
+<div>
+<p class="font-bold text-sm">Velvet Bistro</p>
+<p class="text-xs text-secondary">Verified Partner</p>
+</div>
+</div>
+<button class="w-full py-3 bg-primary text-white rounded-full font-bold text-sm hover:opacity-90 transition-opacity">
+                Create Event
+            </button>
+</div>
+</nav>
+<!-- TopAppBar (Mobile & Global) -->
+<header class="fixed top-0 w-full z-40 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md flex justify-between items-center px-6 py-4 w-full shadow-sm shadow-rose-900/5">
+<h1 class="font-headline text-display-lg -tracking-tight text-rose-700 dark:text-rose-500 font-bold">GOMET</h1>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-stone-600 dark:text-stone-400 hover:bg-rose-50 dark:hover:bg-stone-800 p-2 rounded-full transition-colors">notifications</button>
+<button class="material-symbols-outlined text-stone-600 dark:text-stone-400 hover:bg-rose-50 dark:hover:bg-stone-800 p-2 rounded-full transition-colors">shield_with_heart</button>
+<button class="material-symbols-outlined text-stone-600 dark:text-stone-400 hover:bg-rose-50 dark:hover:bg-stone-800 p-2 rounded-full transition-colors">account_circle</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 md:pb-12 md:pl-72 px-6">
+<div class="max-w-6xl mx-auto">
+<!-- Header Section -->
+<div class="mb-12">
+<span class="font-label text-label-md uppercase tracking-widest text-primary font-bold">Venue Management</span>
+<h2 class="font-headline text-5xl font-extrabold -tracking-tighter mt-2 mb-4">Table Requests</h2>
+<div class="flex flex-wrap gap-4">
+<div class="px-6 py-3 bg-surface-container-high rounded-full flex items-center gap-3">
+<span class="w-3 h-3 bg-primary rounded-full animate-pulse"></span>
+<span class="font-bold text-sm">4 Pending Requests</span>
+</div>
+<div class="px-6 py-3 bg-surface-container-low rounded-full flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">event_seat</span>
+<span class="font-bold text-sm">82% Occupancy Today</span>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout for Requests -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Active Request Focus -->
+<div class="lg:col-span-8 space-y-6">
+<div class="bg-surface-container-lowest rounded-lg p-8 shadow-sm relative overflow-hidden group">
+<!-- Decorative Gradient Accent -->
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -translate-y-12 translate-x-12 group-hover:scale-110 transition-transform duration-500"></div>
+<div class="flex flex-col md:flex-row justify-between items-start gap-6 mb-8">
+<div class="flex gap-6 items-center">
+<div class="relative">
+<img class="w-20 h-20 rounded-xl object-cover shadow-lg" data-alt="Portrait of a female guest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsly--3el0vBmfy5UPUQipiykWWvKJt9oP8IKV38yID2SNm5U9f6D0YYjg4E7_9MmyXBeUyZVUtPyUNvTjOxnZtUu2mXDPccmZy5PtPaa6dkJ3c8N1JZfxswkdZ6zSYSEMfBh7ZopnhjtJ6iky6cI9hWoeKWuFpIpv_a8Homlq90jEWGH5EbrCYt9ykBZpudR5bqlUgFyRY7jp7wlmnSV4Rwtj8zId6cM_FufwbNXWe7FCScQLrAn2UJkUhNtbwEn9VXEA1ALWR4M"/>
+<div class="absolute -bottom-2 -right-2 bg-tertiary text-white p-1.5 rounded-full shadow-md">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<h3 class="font-headline text-2xl font-bold">Elena Rodriguez</h3>
+<p class="text-secondary font-medium">Table for 2 • 8:30 PM Tonight</p>
+<div class="flex gap-2 mt-2">
+<span class="px-3 py-1 bg-surface-container rounded-full text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Top Spender</span>
+<span class="px-3 py-1 bg-surface-container rounded-full text-[10px] font-bold uppercase tracking-wider text-on-surface-variant">Date Night</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-headline text-3xl font-black text-primary">#GMT-492</span>
+<span class="text-xs text-secondary font-bold uppercase tracking-widest mt-1">GOMET Premium</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+<div class="bg-surface-container-low p-6 rounded-lg">
+<h4 class="font-label text-label-md uppercase tracking-widest text-primary font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">restaurant_menu</span>
+                                    Dietary Preferences
+                                </h4>
+<div class="flex flex-wrap gap-2">
+<span class="px-4 py-2 bg-white rounded-full text-sm font-semibold text-tertiary shadow-sm">No Gluten</span>
+<span class="px-4 py-2 bg-white rounded-full text-sm font-semibold text-tertiary shadow-sm">Pescatarian</span>
+<span class="px-4 py-2 bg-white rounded-full text-sm font-semibold text-tertiary shadow-sm">Shellfish Allergy</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg">
+<h4 class="font-label text-label-md uppercase tracking-widest text-primary font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+                                    Guest Note
+                                </h4>
+<p class="text-sm italic text-on-surface-variant">"Celebrating our 3rd anniversary. Ideally a quiet corner table or one near the window overlooking the square if available."</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-4 pt-6 border-t border-surface-container-highest">
+<button class="flex-1 py-4 bg-gradient-to-tr from-primary to-primary-container text-white rounded-full font-headline font-bold text-lg shadow-lg shadow-rose-500/20 hover:scale-[1.02] active:scale-95 transition-all">
+                                Confirm Table
+                            </button>
+<button class="flex-1 py-4 bg-surface-container-highest text-on-surface rounded-full font-headline font-bold text-lg hover:bg-stone-200 transition-colors">
+                                Adjust Time
+                            </button>
+<button class="px-6 py-4 text-error font-bold hover:bg-error-container/20 rounded-full transition-colors">
+                                Decline
+                            </button>
+</div>
+</div>
+<!-- Queue List -->
+<div class="bg-surface-container-low rounded-lg p-6">
+<h4 class="font-headline text-xl font-bold mb-6">Upcoming Queue</h4>
+<div class="space-y-4">
+<!-- Queue Item 1 -->
+<div class="bg-white p-4 rounded-lg flex items-center justify-between group cursor-pointer hover:shadow-md transition-shadow">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a male guest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbJWCS822m_Bv1zCh_GZKo_ZRDyvWv9EVQrD5lMegCa7VXP6-azVfBNpO5oJ8GmxYkQQAZiusUPoVs3SP5EZO_1KDRPGWO67LJtFtcSJrxk2uuMn1rp-UWpp4tSQsPmZqlAVdttZjQnToKCFvmfSjA_4GepS7exZj5ye61323ODQpE2NZufUyNjEh48BkFubI0z7LdONzvaUDkvLyqhfGDRAT51fSIiQP6LHH66gije0_-dtMve3DXEGXiCWXJTV4TyLKzYx0eWok"/>
+<div>
+<p class="font-bold">Marcus Chen</p>
+<p class="text-xs text-secondary">Table for 4 • 9:00 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 bg-surface-container text-[10px] font-bold rounded-full">Vegan</span>
+<span class="material-symbols-outlined text-stone-300 group-hover:text-primary transition-colors">arrow_forward_ios</span>
+</div>
+</div>
+<!-- Queue Item 2 -->
+<div class="bg-white p-4 rounded-lg flex items-center justify-between group cursor-pointer hover:shadow-md transition-shadow">
+<div class="flex items-center gap-4">
+<img class="w-12 h-12 rounded-full object-cover" data-alt="Portrait of a female guest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHLyp8oyI6wMxYRyRU_iiM-hMqiNBMiI_ZZWngr31gvU2hS8J-mde1JrTpfA1cGgqVWvZmtyKZutd87eupik-CY4LMBixZV5fPlrRyTsRE4giOSYDSMbsWOeXy5BGnB7djR2rwp1rTW2ADjnyTwWzhRvgvAx-_rLNo2yKHHN8rouWfPLhz-vX_zZWSIbWuqh4ABaRIbSuiL48wH_itQKAjoUVLc2_efUBpobzCD2z4TZVfWHT7iaals-MwLL1PGpgixxCBL29w6yY"/>
+<div>
+<p class="font-bold">Sophie Bennett</p>
+<p class="text-xs text-secondary">Table for 2 • 9:15 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<span class="px-3 py-1 bg-surface-container text-[10px] font-bold rounded-full">First Visit</span>
+<span class="material-symbols-outlined text-stone-300 group-hover:text-primary transition-colors">arrow_forward_ios</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Sidebar: Stats & Inventory -->
+<div class="lg:col-span-4 space-y-8">
+<!-- Capacity Card -->
+<div class="bg-inverse-surface text-inverse-on-surface rounded-lg p-8 shadow-xl">
+<h4 class="font-headline font-bold text-xl mb-6">Real-time Capacity</h4>
+<div class="flex justify-center mb-8">
+<div class="relative w-40 h-40 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-white/10" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-primary-container" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="80" stroke-width="8"></circle>
+</svg>
+<div class="absolute text-center">
+<span class="block text-4xl font-black">18</span>
+<span class="text-[10px] font-bold uppercase tracking-widest opacity-60">Tables Left</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white/5 p-4 rounded-lg text-center">
+<p class="text-2xl font-bold">12</p>
+<p class="text-[10px] uppercase font-bold opacity-60">Deuces</p>
+</div>
+<div class="bg-white/5 p-4 rounded-lg text-center">
+<p class="text-2xl font-bold">6</p>
+<p class="text-[10px] uppercase font-bold opacity-60">Family</p>
+</div>
+</div>
+</div>
+<!-- Map/Location Mini-Widget -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm">
+<div class="h-40 bg-stone-200 relative">
+<img class="w-full h-full object-cover grayscale opacity-50" data-alt="Stylized city map representation" data-location="London" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2Dhawhz0X5sZ20CaOIaVhjhOPMOsd2mXv-4jZtjtdiMrHCuVv7QTg7Bio1bgsYLJlmxZAkTHXWFg5KsjNG-kpf_6-L0qjOXwRGPrqgLBWSCI8aWXNLdRuzzIiyFkECGZS4KDjZBSFxkfiBQ-VDMYuw7qMJd31XHdOdEAYAnGAaYdL2blzpCuorgMOvGZr4EwbwvNuUpUUFr25y_HKBuxdNX4Z8hjBrWkKUN3W5Nu4DTOkGU8O3E_1MFrlZGGAcemx3_D6nqtfH3Y"/>
+<div class="absolute inset-0 bg-primary/10 flex items-center justify-center">
+<div class="w-4 h-4 bg-primary rounded-full animate-ping"></div>
+<div class="absolute w-4 h-4 bg-primary rounded-full border-2 border-white"></div>
+</div>
+</div>
+<div class="p-6">
+<h5 class="font-bold">Velvet Bistro Elite</h5>
+<p class="text-sm text-secondary">Mayfair, London</p>
+<button class="mt-4 w-full py-2 border border-outline-variant text-on-surface font-bold text-xs rounded-full uppercase tracking-widest hover:bg-stone-50 transition-colors">
+                                View Floor Plan
+                            </button>
+</div>
+</div>
+<!-- Performance Pulse -->
+<div class="bg-tertiary-fixed text-on-tertiary-fixed rounded-lg p-6">
+<div class="flex items-center justify-between mb-4">
+<span class="font-bold text-sm">Review Pulse</span>
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+<p class="text-2xl font-black">4.9 / 5.0</p>
+<p class="text-xs mt-1 font-medium opacity-80">Based on 128 GOMET diners this week.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Shell) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-4 pb-6 bg-white/90 dark:bg-stone-900/90 backdrop-blur-xl shadow-[0_-10px_25px_-5px_rgba(174,47,52,0.08)]">
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-inter text-[10px] font-bold">Discover</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-tr from-rose-700 to-rose-400 text-white rounded-2xl p-3 mb-2 transform -translate-y-2 animate-pulse-slow">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="font-inter text-[10px] font-bold">Events</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2">
+<span class="material-symbols-outlined">gpp_good</span>
+<span class="font-inter text-[10px] font-bold">Safety</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-inter text-[10px] font-bold">Messages</span>
+</div>
+</nav>
+</body></html>

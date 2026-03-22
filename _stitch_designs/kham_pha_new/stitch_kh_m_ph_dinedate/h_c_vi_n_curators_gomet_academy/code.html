@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Curator Academy | GOMET ALPHA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#894e45",
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "background": "#fdf9f3",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed": "#410006",
+              "error": "#ba1a1a",
+              "on-tertiary": "#ffffff",
+              "on-background": "#1c1c18",
+              "surface-container-high": "#ebe8e2",
+              "on-primary-container": "#6d0010",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "on-error": "#ffffff",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "surface-container-low": "#f7f3ed",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "on-secondary-container": "#656464",
+              "surface-container-highest": "#e6e2dc",
+              "primary-container": "#ff6b6b",
+              "tertiary-fixed": "#ffdad4",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdad8",
+              "surface-variant": "#e6e2dc",
+              "surface-dim": "#dddad4",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "on-surface": "#1c1c18",
+              "on-primary-fixed-variant": "#8c1520",
+              "secondary-fixed": "#e4e2e1",
+              "surface-bright": "#fdf9f3",
+              "on-tertiary-fixed": "#370e08",
+              "outline-variant": "#e0bfbd",
+              "on-secondary-fixed-variant": "#474747",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary": "#5f5e5e",
+              "primary": "#ae2f34",
+              "surface-tint": "#ae2f34",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-primary": "#ffb3b0",
+              "outline": "#8c706f"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-nav {
+        background: rgba(253, 249, 243, 0.8);
+        backdrop-filter: blur(12px);
+      }
+      .primary-gradient {
+        background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body antialiased">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center px-8 py-4 w-full max-w-screen-2xl mx-auto font-['Plus_Jakarta_Sans'] tracking-tight">
+<div class="text-2xl font-black italic tracking-tighter text-stone-900 dark:text-stone-50">GOMET ALPHA</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" href="#">Discover</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" href="#">Reservations</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" href="#">Events</a>
+<a class="text-[#FF6B6B] font-bold border-b-2 border-[#FF6B6B] pb-1" href="#">Curators</a>
+</nav>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:opacity-80 transition-opacity">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:opacity-80 transition-opacity">favorite</span>
+</div>
+<button class="primary-gradient text-white px-6 py-2.5 rounded-full font-bold text-sm scale-95 active:scale-90 transition-transform shadow-lg shadow-rose-500/20">Book a Table</button>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+<!-- Hero Section: Editorial Header -->
+<section class="mb-20 relative">
+<div class="flex flex-col md:flex-row gap-12 items-end">
+<div class="flex-1">
+<span class="text-primary font-bold tracking-widest uppercase text-xs mb-4 block">Academy Premiere</span>
+<h1 class="font-headline text-6xl md:text-8xl font-extrabold tracking-tighter leading-[0.9] text-on-background mb-8">
+                        Master the Art of <span class="text-primary italic">Hosting.</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-xl leading-relaxed">
+                        Elevate your presence within the GOMET ecosystem. From venue etiquette to high-stakes social curation, the Academy defines the new standard of culinary connection.
+                    </p>
+</div>
+<div class="flex-shrink-0 w-full md:w-1/3">
+<div class="bg-surface-container-high p-8 rounded-lg relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-headline font-bold text-lg mb-2 text-on-surface">Your Progress</h3>
+<div class="w-full bg-surface-container-highest h-2 rounded-full mb-4">
+<div class="bg-primary h-2 rounded-full w-2/3"></div>
+</div>
+<div class="flex justify-between items-center text-sm font-medium text-on-surface-variant">
+<span>Level 4 Curator</span>
+<span>68% to Certification</span>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-9xl">school</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Featured Modules -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-24">
+<!-- Large Module Card -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-lg overflow-hidden group shadow-[0_24px_48px_-12px_rgba(174,47,52,0.04)] hover:shadow-xl transition-all duration-500">
+<div class="aspect-[16/9] relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close up of two people sharing cocktails in a dimly lit luxury bar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtGviZRn_5NNYwx4TPyLiZCiTSaMmjW1fm3evyCiAsUAuA5NBFrnmrWgUfgHsBax9X_QskNAI-tZkVWRqRrOiq4xQEIi1omE4OO3NhGU1AcD2D0RGggGmcE18J_8jdn4W7Lo73UVCHvGK74agIiB-hHeul175RmQK-uh6t4PLoazzOkaT2C9tLJshpMAG9N5sLGzl-U1po3E-RTVwEAdjvDMXnnR8an3tL0X0xp253jIC9WjcXPTrj4jCiphAhB9IwPhKPIbBBIHc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 to-transparent flex items-end p-10">
+<div class="flex flex-col gap-4">
+<span class="bg-primary text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full w-fit">Featured Series</span>
+<h2 class="text-white font-headline text-4xl font-bold tracking-tight">The Art of the First Date</h2>
+<p class="text-white/80 max-w-md">Psychology, pacing, and the unspoken rules of early attraction in a curated setting.</p>
+<div class="flex items-center gap-4 mt-2">
+<button class="bg-white text-on-background px-6 py-2 rounded-full font-bold flex items-center gap-2 hover:bg-primary hover:text-white transition-colors">
+<span class="material-symbols-outlined text-sm" data-weight="fill">play_arrow</span>
+                                    Resume Lesson
+                                </button>
+<span class="text-white/60 text-sm font-medium">12 Video Lessons • 3.5 Hours</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Bento Items -->
+<div class="md:col-span-4 flex flex-col gap-6">
+<!-- Achievement Card -->
+<div class="bg-tertiary text-white p-8 rounded-lg flex-1 flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<h3 class="font-headline text-2xl font-bold">Earn Your Alpha Badge</h3>
+<p class="text-white/70 mt-2 text-sm leading-relaxed">Complete all 5 core modules to unlock exclusive booking priority at Partner Venues.</p>
+</div>
+<button class="text-white border border-white/30 px-6 py-2 rounded-full text-sm font-bold hover:bg-white hover:text-tertiary transition-all">View Requirements</button>
+</div>
+<!-- Small Module -->
+<div class="bg-surface-container rounded-lg p-6 group cursor-pointer hover:bg-surface-container-high transition-colors">
+<div class="flex gap-4 items-center">
+<div class="w-20 h-20 rounded-md overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Elegant restaurant interior with white tablecloths and warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUqfV5IHRHn4TviNJEs4ZDXNIyI35hsA83b26t28zGszmsI3Hug9GIgk5p9bWCk0xHP8_2w-bHHIvmtVBRAVBnlthA1vTwI2PMq75VC0IqFr2GUL7C1403-4WYSfS6P4riRfCsXXZHlbBdioPomMMOiDMsYBA5xlbiSyDs8tvev71X7tvDtfWVu7HVUaBsJsU7Zt6QpGl1xRaQZ7DryoaZ1QNFFsGOGXk8j4CMqBFG3I-1OQDt-phyeg4v5s41QxLXDi_Yw4NrQR0"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface leading-tight">Navigating Premium Venues</h4>
+<p class="text-xs text-on-surface-variant mt-1">Dress codes, tipping standards, and cellar access.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- List Section: Academy Curriculum -->
+<section class="mb-24">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline text-4xl font-extrabold tracking-tight">Curriculum 2024</h2>
+<p class="text-on-surface-variant">The path to becoming a top-tier GOMET host.</p>
+</div>
+<button class="text-primary font-bold text-sm uppercase tracking-widest flex items-center gap-2 hover:opacity-70 transition-opacity">
+                    View Catalog <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="space-y-4">
+<!-- Curriculum Item 1 -->
+<div class="flex flex-col md:flex-row items-center gap-8 p-6 rounded-lg bg-surface-container-low hover:bg-surface-container-lowest transition-all group">
+<span class="text-3xl font-headline font-black text-on-surface-variant/20 group-hover:text-primary/40 transition-colors">01</span>
+<div class="flex-1">
+<h3 class="text-xl font-bold text-on-surface">Event Hosting 101</h3>
+<p class="text-sm text-on-surface-variant mt-1">The fundamentals of managing a table of 4-8 guests with grace.</p>
+</div>
+<div class="flex items-center gap-6">
+<div class="text-right">
+<span class="text-[10px] font-bold text-primary uppercase block">Completed</span>
+<span class="text-xs text-on-surface-variant">Score: 98%</span>
+</div>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<!-- Curriculum Item 2 -->
+<div class="flex flex-col md:flex-row items-center gap-8 p-6 rounded-lg bg-surface-container-low hover:bg-surface-container-lowest transition-all group border-l-4 border-primary">
+<span class="text-3xl font-headline font-black text-on-surface-variant/20 group-hover:text-primary/40 transition-colors">02</span>
+<div class="flex-1">
+<h3 class="text-xl font-bold text-on-surface">Conversation &amp; Flow</h3>
+<p class="text-sm text-on-surface-variant mt-1">Mastering the art of dialogue, listening, and digital-free focus.</p>
+</div>
+<div class="flex items-center gap-6">
+<button class="primary-gradient text-white px-6 py-2 rounded-full text-xs font-bold shadow-md">Continue Learning</button>
+</div>
+</div>
+<!-- Curriculum Item 3 -->
+<div class="flex flex-col md:flex-row items-center gap-8 p-6 rounded-lg bg-surface-container-low hover:bg-surface-container-lowest transition-all group opacity-60">
+<span class="text-3xl font-headline font-black text-on-surface-variant/20">03</span>
+<div class="flex-1">
+<h3 class="text-xl font-bold text-on-surface">The Expert Oenophile</h3>
+<p class="text-sm text-on-surface-variant mt-1">Basic wine pairing and regional vintage knowledge for confident hosting.</p>
+</div>
+<div class="flex items-center gap-6">
+<span class="material-symbols-outlined text-on-surface-variant">lock</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Certification Showcase -->
+<section class="bg-surface-container-highest rounded-xl p-12 relative overflow-hidden">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div>
+<h2 class="font-headline text-4xl font-extrabold tracking-tight mb-6">Certified <span class="text-primary italic">Ambassadors</span></h2>
+<p class="text-on-surface-variant mb-8 leading-relaxed">
+                        Curators who complete the full academy gain the "Certified Ambassador" status. This includes a physical membership card, priority concierge access, and the ability to curate official GOMET mixers.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-2 bg-surface-container p-3 rounded-full">
+<span class="material-symbols-outlined text-primary">verified</span>
+<span class="text-xs font-bold uppercase tracking-tighter">Alpha Elite</span>
+</div>
+<div class="flex items-center gap-2 bg-surface-container p-3 rounded-full">
+<span class="material-symbols-outlined text-primary">diamond</span>
+<span class="text-xs font-bold uppercase tracking-tighter">Gold Tier Hosting</span>
+</div>
+</div>
+</div>
+<div class="relative flex justify-center">
+<div class="w-64 h-80 bg-white rounded-lg shadow-2xl p-6 border-t-[12px] border-primary flex flex-col justify-between transform rotate-3">
+<div class="flex justify-between items-start">
+<div class="font-headline text-xs font-black italic">GOMET</div>
+<span class="material-symbols-outlined text-primary text-4xl">workspace_premium</span>
+</div>
+<div class="text-center">
+<div class="w-20 h-20 rounded-full mx-auto mb-4 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Professional headshot of a smiling man for an ID card" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvqb447sqXUjPUtODFzutf5XyqcZHcIZerbDFlTR-OpPv2tsdIwryGGiTnUUvgnlLezKbamRrT2AC6it_Oe7wd9Y-EKA6TO1feqc-xd7lS4xpCSHID23bTL2PdLYaRGvjzV7f3wcz74I1HDcv531UlOtjS1F5S7ZUMp85J3KubxFViNN164OOBiuESFVBQeXOKoULj08pOCApGPwtfXqnWkfLGqzCPTVFk0QqrZr632HKyXGeHmJ3oCtR8uUgDywgLWJr0SlQQjHE"/>
+</div>
+<h4 class="font-bold text-lg">ALEXANDER V.</h4>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">Master Curator Since 2023</p>
+</div>
+<div class="border-t pt-4 flex justify-between items-center text-[8px] font-bold text-on-surface-variant">
+<span>ID: GM-8821-X</span>
+<div class="w-12 h-4 bg-stone-100 rounded"></div>
+</div>
+</div>
+<!-- Decorative back card -->
+<div class="absolute w-64 h-80 bg-stone-900 rounded-lg shadow-xl -z-10 transform -rotate-6 top-4 left-1/4"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full rounded-t-[3rem] mt-20 bg-stone-100 dark:bg-stone-900">
+<div class="w-full py-16 px-12 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="font-['Plus_Jakarta_Sans'] font-black text-xl text-stone-900 dark:text-stone-50">GOMET ALPHA</div>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition-opacity hover:underline decoration-[#FF6B6B] underline-offset-4" href="#">Privacy Policy</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition-opacity hover:underline decoration-[#FF6B6B] underline-offset-4" href="#">Terms of Service</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition-opacity hover:underline decoration-[#FF6B6B] underline-offset-4" href="#">Cookie Settings</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition-opacity hover:underline decoration-[#FF6B6B] underline-offset-4" href="#">Editorial Guidelines</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-stone-500 hover:text-stone-900 transition-opacity hover:underline decoration-[#FF6B6B] underline-offset-4" href="#">Contact Support</a>
+</div>
+<p class="font-['Inter'] text-[10px] uppercase tracking-widest text-stone-400">© 2024 GOMET Alpha. The Culinary Curator. All rights reserved.</p>
+</div>
+</footer>
+</body></html>

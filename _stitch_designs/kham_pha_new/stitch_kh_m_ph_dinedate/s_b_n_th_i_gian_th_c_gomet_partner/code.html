@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdad4",
+              "on-tertiary-fixed": "#370e08",
+              "tertiary": "#894e45",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed-dim": "#ffb3b0",
+              "tertiary-container": "#cf8a7f",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-primary-container": "#6d0010",
+              "secondary-fixed": "#e4e2e1",
+              "on-secondary": "#ffffff",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "error": "#ba1a1a",
+              "inverse-primary": "#ffb3b0",
+              "primary": "#ae2f34",
+              "surface-container": "#f1ede7",
+              "outline": "#8c706f",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary-container": "#e4e2e1",
+              "secondary": "#5f5e5e",
+              "on-primary-fixed-variant": "#8c1520",
+              "error-container": "#ffdad6",
+              "surface-dim": "#dddad4",
+              "surface-bright": "#fdf9f3",
+              "surface-container-lowest": "#ffffff",
+              "on-primary-fixed": "#410006",
+              "on-error-container": "#93000a",
+              "surface-tint": "#ae2f34",
+              "inverse-surface": "#31302d",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-background": "#1c1c18",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-container": "#656464",
+              "surface-variant": "#e6e2dc",
+              "on-secondary-fixed-variant": "#474747",
+              "on-surface": "#1c1c18",
+              "primary-container": "#ff6b6b",
+              "on-surface-variant": "#584140",
+              "outline-variant": "#e0bfbd",
+              "on-error": "#ffffff",
+              "surface-container-highest": "#e6e2dc",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-container-low": "#f7f3ed",
+              "background": "#fdf9f3"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .floor-grid {
+            background-image: radial-gradient(circle, #e0bfbd 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 h-20 bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold italic tracking-tighter text-rose-700 dark:text-rose-500 font-headline">GOMET</span>
+<div class="hidden md:flex gap-6">
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-600 dark:hover:text-rose-300 transition-colors font-label text-sm uppercase tracking-widest" href="#">Floor Plan</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-600 dark:hover:text-rose-300 transition-colors font-label text-sm uppercase tracking-widest" href="#">Analytics</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-600 dark:hover:text-rose-300 transition-colors font-label text-sm uppercase tracking-widest" href="#">Waitlist</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-stone-600 hover:bg-surface-container rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-stone-600 hover:bg-surface-container rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="h-10 w-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Elite Member Avatar" class="w-full h-full object-cover" data-alt="Professional male restaurant manager portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtM5aLaRDv39W5I_f6u7fIIUHG0gEmkz1XGu5aTnCuomAcBPPsjodzAKIRMOgsUVMh7rFf_xWN7l9lc05MdMUWLUN8dYkT2X9dBVCmx8Jjy8iRG6z0fgnurA3lwkwz6ksHiBNLd-2baaww41z2yjyfHIkUx0P49GiYIq2-rFdzn_3hV3oHU44MalqcJvOTKh9epCtRiPqzjoVJwRsLeNu6BT40bR9waIUZaufVbyJYqyZoVj3mo2FHLpIjn6dCTQ7SOCyQsWuJ2p4"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-screen w-72 flex flex-col p-6 z-40 bg-stone-50 dark:bg-stone-950 rounded-r-3xl pt-24 hidden md:flex">
+<div class="mb-10">
+<h2 class="text-xl font-black text-rose-800 dark:text-rose-500 font-headline">GOMET Ecosystem</h2>
+<p class="text-xs text-stone-500 font-label tracking-wide">Premium Management</p>
+</div>
+<nav class="space-y-4 flex-1">
+<a class="flex items-center gap-4 px-4 py-3 bg-gradient-to-br from-rose-700 to-rose-400 text-white rounded-full shadow-lg shadow-rose-200/50 transition-transform hover:scale-[1.02] active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-medium">Venues</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 rounded-full transition-transform hover:scale-[1.02] active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="skillet">skillet</span>
+<span class="font-medium">VIP Concierge</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 rounded-full transition-transform hover:scale-[1.02] active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-medium">Elite Club</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 rounded-full transition-transform hover:scale-[1.02] active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-medium">Payouts</span>
+</a>
+</nav>
+<button class="mt-auto w-full py-4 bg-primary text-white font-bold rounded-xl shadow-lg shadow-primary/20 hover:bg-primary-container transition-all">
+            New Request
+        </button>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-72 pt-24 min-h-screen p-8 flex flex-col lg:flex-row gap-8">
+<!-- Interactive Floor Plan -->
+<section class="flex-1 bg-surface-container-low rounded-xl p-8 relative overflow-hidden min-h-[600px] floor-grid border border-outline-variant/10">
+<div class="flex justify-between items-center mb-8">
+<div>
+<h1 class="text-3xl font-extrabold font-headline tracking-tighter text-on-background">Live Floor Plan</h1>
+<p class="text-secondary text-sm">Main Dining Hall • East Wing</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 text-xs font-label uppercase tracking-tighter">
+<span class="w-3 h-3 rounded-full bg-white border border-outline"></span> Available
+                    </div>
+<div class="flex items-center gap-2 text-xs font-label uppercase tracking-tighter">
+<span class="w-3 h-3 rounded-full bg-primary-container"></span> GOMET Match
+                    </div>
+<div class="flex items-center gap-2 text-xs font-label uppercase tracking-tighter">
+<span class="w-3 h-3 rounded-full bg-inverse-surface"></span> Reserved
+                    </div>
+</div>
+</div>
+<!-- Architectural Layout Representation -->
+<div class="relative w-full h-[500px] border-l-4 border-t-4 border-stone-300/30">
+<!-- Table 01: Occupied by Match -->
+<div class="absolute top-10 left-10 w-32 h-32 bg-primary-container/20 rounded-lg flex flex-col items-center justify-center border-2 border-primary-container cursor-pointer hover:bg-primary-container/30 transition-all group">
+<span class="text-[10px] font-bold text-primary uppercase mb-1">Table 01</span>
+<div class="flex -space-x-2">
+<img alt="Guest 1" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="Portrait of a smiling young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnQIkhIuk9233jtQi8DhyUMXFfQCwBoWBV8QHJnw5jgyCnoAec6I3cSQY5kYvcCkjeEyLuWkGP31TVUWLDN1Bk1SrAzKlMNuMu7dDaf_lVKu3AysPT9oQLV_ySlcbYJzm0mJaJnuDfmZ5fM0x5XKJrowfAu5LRWZ140ACwS57W-JioZe8HvSJOa12tmy6kdcOYW0RF0xgb2b9WX_zSGqZIXd0JYSVF_ovJNaimEtPSG3bQ1o0lDwjygzbGI5e_9T0i3gHbUy6_btM"/>
+<img alt="Guest 2" class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="Portrait of a smiling young woman" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0EaO-Ilotd8tPCduLFRcMRfasOdwsKp9eowy2t9AnBkU482T-_bc5uBnrwCPtaNp8dTIM-bmmwWKCAw2W9mCITRT-K8JhlXRSNpBY8sdz4XKk0a_q9XmcK3y7IaFTy8ROfhpj5Rw73fV2BwDUahu-9GN1wP26eyglVlI5kjM8alUyw51qhc1X3gmfB1UmKtwd4ZGcawP1LqHItqkWgaG9Jx77S434FVxxv__dfv3JYUMEccYR2dtNkEKWFEdFIQXRodjkeal5e3k"/>
+</div>
+<span class="mt-2 px-2 py-0.5 bg-primary text-white text-[8px] rounded-full font-bold">MATCHED</span>
+</div>
+<!-- Table 02: Available -->
+<div class="absolute top-10 left-52 w-24 h-24 bg-surface-container-lowest rounded-full flex flex-col items-center justify-center border-2 border-outline-variant hover:border-primary transition-all cursor-pointer">
+<span class="text-[10px] font-bold text-secondary uppercase">Table 02</span>
+<span class="text-xs text-secondary/60">4 Seats</span>
+</div>
+<!-- Table 03: Reserved -->
+<div class="absolute top-10 right-10 w-48 h-20 bg-inverse-surface rounded-md flex flex-col items-center justify-center border-2 border-inverse-surface opacity-80">
+<span class="text-[10px] font-bold text-white uppercase">Table 03</span>
+<span class="text-xs text-surface-container-high">VIP Event: GOMET Launch</span>
+</div>
+<!-- Booths -->
+<div class="absolute bottom-10 left-10 flex gap-6">
+<div class="w-40 h-24 bg-white rounded-t-lg border-2 border-outline-variant relative flex items-center justify-center">
+<div class="absolute -bottom-2 left-0 w-full h-2 bg-stone-300 rounded-b-lg"></div>
+<span class="text-[10px] font-bold text-secondary uppercase">Booth A</span>
+</div>
+<div class="w-40 h-24 bg-primary-container/10 rounded-t-lg border-2 border-primary-container relative flex items-center justify-center shadow-lg shadow-primary-container/5">
+<div class="absolute -bottom-2 left-0 w-full h-2 bg-primary rounded-b-lg"></div>
+<div class="text-center">
+<span class="text-[10px] font-bold text-primary uppercase block">Booth B</span>
+<span class="text-[10px] font-bold text-on-primary-container bg-primary-container/30 px-2 py-0.5 rounded-full">ACTIVE DATE</span>
+</div>
+</div>
+</div>
+<!-- Central Table Group -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 bg-white rounded-full border-2 border-outline-variant border-dashed flex items-center justify-center">
+<div class="text-center">
+<span class="material-symbols-outlined text-stone-300 text-4xl block" data-icon="restaurant">restaurant</span>
+<span class="text-[10px] font-bold text-stone-300 uppercase">Grand Center</span>
+</div>
+</div>
+</div>
+<!-- Floor Legend/Labels -->
+<div class="absolute bottom-6 right-8 p-4 bg-white/60 backdrop-blur-md rounded-lg border border-white/40 shadow-sm">
+<div class="text-[10px] font-bold text-secondary uppercase mb-2 tracking-widest">Environment Status</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center gap-8">
+<span class="text-xs">Ambient Volume</span>
+<span class="h-1.5 w-16 bg-surface-container rounded-full overflow-hidden">
+<span class="block h-full w-2/3 bg-primary"></span>
+</span>
+</div>
+<div class="flex justify-between items-center gap-8">
+<span class="text-xs">Kitchen Load</span>
+<span class="h-1.5 w-16 bg-surface-container rounded-full overflow-hidden">
+<span class="block h-full w-3/4 bg-tertiary"></span>
+</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Chemistry Sidebar -->
+<aside class="w-full lg:w-96 flex flex-col gap-6">
+<div class="bg-surface-container-highest rounded-xl p-6">
+<h3 class="font-headline font-bold text-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="temp_preferences_custom">temp_preferences_custom</span>
+                    Table Chemistry
+                </h3>
+<!-- Chemistry Match Cards -->
+<div class="space-y-4">
+<!-- Profile Card 1 -->
+<div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-primary hover:shadow-md transition-shadow cursor-grab">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden ring-2 ring-primary-fixed">
+<img alt="Marc J." class="w-full h-full object-cover" data-alt="Stylish man with beard and glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb_B1zMIg78-tlhYJ7qbh8FkcqdlbN57RdTgvaq5TsL4l6bvsNU_itk3JQAdhVUbqEcBz7IWbd3es0GTIq8Z0ILUJl1FW2D8SWM3y4P4FWYBYiBBm41OWCJhGXQxTUXU870CGkqQqGn60HELyZX9BhmMIdUil24nQLv_z-levlFKikeRs7tYCpzywqL2WpZ8tas8epQ-2yxNOSfFujNX03TO7fSlJyKkhp9QEFi-El0y5uxJFxzicPIA0nkw-C8QfSUkCgr2nauJI"/>
+</div>
+<div>
+<h4 class="font-bold text-sm">Marc Julian</h4>
+<p class="text-[10px] text-secondary">Elite Gold Member</p>
+</div>
+</div>
+<div class="bg-primary-container/20 px-2 py-1 rounded-md text-center">
+<span class="block text-xs font-black text-primary">94%</span>
+<span class="text-[8px] text-primary uppercase font-bold">Match</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-1.5 mb-3">
+<span class="px-2 py-0.5 bg-surface-container text-[9px] font-medium rounded-full">Sushi Lover</span>
+<span class="px-2 py-0.5 bg-surface-container text-[9px] font-medium rounded-full">Jazz Music</span>
+<span class="px-2 py-0.5 bg-surface-container text-[9px] font-medium rounded-full">Quiet Seating</span>
+</div>
+<div class="flex items-center justify-between border-t border-surface-container pt-3">
+<span class="text-[10px] text-secondary font-medium">Potential Pairing: <strong class="text-on-background">Elena V.</strong></span>
+<button class="text-primary font-bold text-[10px] uppercase hover:underline">Assign Table</button>
+</div>
+</div>
+<!-- Profile Card 2 -->
+<div class="bg-white p-4 rounded-lg shadow-sm border-l-4 border-tertiary-container hover:shadow-md transition-shadow cursor-grab">
+<div class="flex justify-between items-start mb-3">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full overflow-hidden ring-2 ring-tertiary-fixed">
+<img alt="Elena V." class="w-full h-full object-cover" data-alt="Professional woman with elegant style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqvEUu67HWQXcKtVA1ztKbYVCIMI8uQRC-P7gXgHQ2jkaHpWsyEHsE71ec1Kz6uSYtx13V4T88JhlyPd-JxIGv9Kq_XkwY1tK3kxHlHzrCirHxBinhhcISqUAXCTwPBE8YeQxzjaiUyGyzfvWx7l3ixxdT57T_YtD9X5BvVb3RZz5_Sh3rZ9TpOIFqCYBStcywIQOClyTVsBJyESHRPQAhyjlQX6iGNnhf-BwNswkJDc8Ux0HOmMNlP259Eq3oQ9L47yn5_vrZv6k"/>
+</div>
+<div>
+<h4 class="font-bold text-sm">Elena Voss</h4>
+<p class="text-[10px] text-secondary">Elite Silver Member</p>
+</div>
+</div>
+<div class="bg-tertiary-container/20 px-2 py-1 rounded-md text-center">
+<span class="block text-xs font-black text-tertiary">88%</span>
+<span class="text-[8px] text-tertiary uppercase font-bold">Match</span>
+</div>
+</div>
+<div class="flex flex-wrap gap-1.5 mb-3">
+<span class="px-2 py-0.5 bg-surface-container text-[9px] font-medium rounded-full">Fine Wine</span>
+<span class="px-2 py-0.5 bg-surface-container text-[9px] font-medium rounded-full">Vibrant Scene</span>
+</div>
+<div class="flex items-center justify-between border-t border-surface-container pt-3">
+<span class="text-[10px] text-secondary font-medium">Potential Pairing: <strong class="text-on-background">Marc J.</strong></span>
+<button class="text-primary font-bold text-[10px] uppercase hover:underline">Assign Table</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Host Actions Bento -->
+<div class="grid grid-cols-2 gap-4">
+<button class="bg-primary text-white p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined" data-icon="login">login</span>
+<span class="font-bold text-[10px] uppercase tracking-tighter">Check-in</span>
+</button>
+<button class="bg-surface-container-highest text-on-surface p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="sync_alt">sync_alt</span>
+<span class="font-bold text-[10px] uppercase tracking-tighter">Swap Tables</span>
+</button>
+<button class="bg-surface-container-highest text-on-surface p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:bg-surface-container-high transition-all col-span-2">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-bold text-[10px] uppercase tracking-tighter">Merge for Event</span>
+</button>
+</div>
+</aside>
+</main>
+<!-- Contextual FAB - Only for Management -->
+<div class="fixed bottom-8 right-8 z-50">
+<button class="w-16 h-16 bg-gradient-to-br from-primary to-primary-container text-white rounded-full shadow-[0_24px_48px_-12px_rgba(174,47,52,0.4)] flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="add" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</div>
+</body></html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#8c706f",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "surface": "#fdf9f3",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-dim": "#dddad4",
+              "surface-variant": "#e6e2dc",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "inverse-primary": "#ffb3b0",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "outline-variant": "#e0bfbd",
+              "tertiary-container": "#cf8a7f",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-low": "#f7f3ed",
+              "on-tertiary-fixed": "#370e08",
+              "on-error-container": "#93000a",
+              "secondary-fixed": "#e4e2e1",
+              "on-primary": "#ffffff",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-tint": "#ae2f34",
+              "on-primary-fixed": "#410006",
+              "on-secondary-fixed-variant": "#474747",
+              "secondary-fixed-dim": "#c8c6c6",
+              "on-tertiary-container": "#55251e",
+              "surface-container-lowest": "#ffffff",
+              "on-error": "#ffffff",
+              "on-surface": "#1c1c18",
+              "surface-container": "#f1ede7",
+              "primary-fixed-dim": "#ffb3b0",
+              "inverse-surface": "#31302d",
+              "tertiary": "#894e45",
+              "secondary": "#5f5e5e",
+              "primary": "#ae2f34",
+              "secondary-container": "#e4e2e1",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-container-highest": "#e6e2dc",
+              "primary-fixed": "#ffdad8",
+              "primary-container": "#ff6b6b",
+              "on-secondary-container": "#656464",
+              "error": "#ba1a1a",
+              "background": "#fdf9f3",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "on-primary-container": "#6d0010",
+              "on-background": "#1c1c18"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .voucher-cutout {
+        mask-image: radial-gradient(circle at 0 50%, transparent 12px, black 12px), radial-gradient(circle at 100% 50%, transparent 12px, black 12px);
+        -webkit-mask-image: radial-gradient(circle at 0 50%, transparent 12px, black 12px), radial-gradient(circle at 100% 50%, transparent 12px, black 12px);
+        mask-composite: intersect;
+        -webkit-mask-composite: source-in;
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 backdrop-blur-md shadow-[0_8px_32px_rgba(174,47,52,0.05)]">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-black text-[#1c1c18] tracking-[-0.04em] uppercase font-headline">GOMET</div>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-screen-xl mx-auto">
+<!-- Hero Section / Header -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="font-label text-primary font-bold uppercase tracking-widest text-sm">Privilege Club</span>
+<h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight mt-2 text-on-background">Voucher Wallet</h1>
+</div>
+<div class="bg-surface-container-highest px-6 py-4 rounded-lg flex items-center gap-4">
+<div class="flex flex-col">
+<span class="font-label text-xs uppercase opacity-60">Reward Points</span>
+<span class="text-xl font-bold text-primary">12,450 pts</span>
+</div>
+<div class="w-[1px] h-10 bg-outline-variant/30"></div>
+<span class="material-symbols-outlined text-primary" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+</div>
+</section>
+<!-- Category Tabs -->
+<div class="flex gap-2 mb-8 overflow-x-auto pb-2 no-scrollbar">
+<button class="bg-primary text-on-primary px-6 py-3 rounded-full font-bold text-sm whitespace-nowrap">Tất cả (8)</button>
+<button class="bg-surface-container-low hover:bg-surface-container-high px-6 py-3 rounded-full font-bold text-sm text-secondary whitespace-nowrap transition-colors">Ẩm thực</button>
+<button class="bg-surface-container-low hover:bg-surface-container-high px-6 py-3 rounded-full font-bold text-sm text-secondary whitespace-nowrap transition-colors">Sự kiện</button>
+<button class="bg-surface-container-low hover:bg-surface-container-high px-6 py-3 rounded-full font-bold text-sm text-secondary whitespace-nowrap transition-colors">Đặc quyền</button>
+</div>
+<!-- Voucher Grid - Bento Style -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Featured Voucher -->
+<div class="lg:col-span-2 group relative overflow-hidden bg-primary-container rounded-lg shadow-xl flex flex-col md:flex-row h-full">
+<div class="relative w-full md:w-2/5 h-64 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Fine dining restaurant atmosphere with dim lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPKlIzczOrbFtQej3O0Gm2Gg-kHe64kCThwMw9ZlsOwhJozpcxNycFUfPrZTuqyUUvsNWVH6Ax3KKqWDQRgaq6EJLYut9aUDKgvGw4wTj6_Rp0bQozZQM_VzMCuVwC-6pewpAWj9920jyu_18Np2TUKvbR7PvuqO5YsHuVIId4iwmptN58AqTqOJKFem1zZ7dCcZy0h1FsKzoLg0REAYIM-3gewBkJD2UNNR8hgqG3jbHAZ_n2plxHaeSqoMuSoAlkoXmjlk8E7ZY"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute top-4 left-4 bg-primary text-on-primary font-label text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-tighter">Exclusive</div>
+</div>
+<div class="flex-1 p-8 flex flex-col justify-between bg-surface-container-lowest">
+<div>
+<div class="flex justify-between items-start mb-4">
+<span class="font-headline text-3xl font-black text-on-background">50% OFF</span>
+<span class="material-symbols-outlined text-tertiary" data-icon="workspace_premium">workspace_premium</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-2">Velvet Bistro Dinner</h3>
+<p class="text-secondary body-md mb-6 leading-relaxed">Ưu đãi độc quyền dành cho thành viên Diamond khi đặt bàn vào tối Thứ 7.</p>
+<div class="flex items-center gap-2 mb-8 text-sm font-medium">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span>Hết hạn: 31 Th12, 2024</span>
+</div>
+</div>
+<button class="w-full bg-gradient-to-tr from-[#ae2f34] to-[#ff6b6b] text-on-primary py-4 rounded-DEFAULT font-bold uppercase tracking-widest text-sm shadow-lg hover:shadow-primary/20 transition-all active:scale-95">Sử dụng ngay</button>
+</div>
+</div>
+<!-- Standard Voucher 1 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col shadow-sm border-l-4 border-primary">
+<div class="p-6 flex flex-col h-full justify-between">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div class="bg-surface-container-high w-12 h-12 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="local_bar">local_bar</span>
+</div>
+<span class="text-xs font-bold font-label text-primary bg-primary/10 px-2 py-1 rounded">-200k</span>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1">Thưởng thức Cocktail</h3>
+<p class="text-sm text-secondary mb-4">Áp dụng cho mọi menu đồ uống tại quầy bar chính.</p>
+</div>
+<div>
+<div class="flex items-center justify-between text-[11px] font-bold uppercase tracking-tighter opacity-50 mb-4">
+<span>HSD: 15.11.2024</span>
+<span>GOMET-VB-092</span>
+</div>
+<button class="w-full bg-surface-container-highest text-on-surface py-3 rounded-DEFAULT font-bold text-sm hover:bg-primary hover:text-on-primary transition-all active:scale-95">Sử dụng ngay</button>
+</div>
+</div>
+</div>
+<!-- Standard Voucher 2 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col shadow-sm border-l-4 border-tertiary">
+<div class="p-6 flex flex-col h-full justify-between">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div class="bg-surface-container-high w-12 h-12 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="redeem">redeem</span>
+</div>
+<span class="text-xs font-bold font-label text-tertiary bg-tertiary/10 px-2 py-1 rounded">Gift</span>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1">Món Khai Vị Miễn Phí</h3>
+<p class="text-sm text-secondary mb-4">Tặng kèm 01 phần khai vị Signature cho bàn từ 4 người.</p>
+</div>
+<div>
+<div class="flex items-center justify-between text-[11px] font-bold uppercase tracking-tighter opacity-50 mb-4">
+<span>HSD: 20.10.2024</span>
+<span>GOMET-FREE-77</span>
+</div>
+<button class="w-full bg-surface-container-highest text-on-surface py-3 rounded-DEFAULT font-bold text-sm hover:bg-tertiary hover:text-on-primary transition-all active:scale-95">Sử dụng ngay</button>
+</div>
+</div>
+</div>
+<!-- Standard Voucher 3 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col shadow-sm border-l-4 border-primary">
+<div class="p-6 flex flex-col h-full justify-between">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div class="bg-surface-container-high w-12 h-12 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="restaurant">restaurant</span>
+</div>
+<span class="text-xs font-bold font-label text-primary bg-primary/10 px-2 py-1 rounded">-15%</span>
+</div>
+<h3 class="font-headline font-bold text-lg mb-1">Ưu đãi Cuối Tuần</h3>
+<p class="text-sm text-secondary mb-4">Giảm giá trên tổng hóa đơn ăn uống từ Thứ 6 - Chủ Nhật.</p>
+</div>
+<div>
+<div class="flex items-center justify-between text-[11px] font-bold uppercase tracking-tighter opacity-50 mb-4">
+<span>HSD: 05.12.2024</span>
+<span>GOMET-WE-442</span>
+</div>
+<button class="w-full bg-surface-container-highest text-on-surface py-3 rounded-DEFAULT font-bold text-sm hover:bg-primary hover:text-on-primary transition-all active:scale-95">Sử dụng ngay</button>
+</div>
+</div>
+</div>
+<!-- Partner Voucher - Asymmetric Style -->
+<div class="bg-inverse-surface text-inverse-on-surface p-8 rounded-lg flex flex-col justify-between lg:col-span-1 min-h-[300px] relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/20 rounded-full blur-3xl"></div>
+<div>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="handshake">handshake</span>
+<span class="font-label text-xs font-bold uppercase tracking-widest opacity-60">Partner Reward</span>
+</div>
+<h3 class="font-headline font-extrabold text-3xl mb-4 leading-tight">Privé Spa <br/>&amp; Wellness</h3>
+<p class="text-inverse-on-surface/70 text-sm mb-6">Tặng gói massage tinh dầu 60 phút khi sử dụng dịch vụ ăn uống trên 2.000.000đ.</p>
+</div>
+<button class="w-fit flex items-center gap-2 text-primary font-bold group">
+<span>Xem chi tiết</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Expired/History Section -->
+<section class="mt-20">
+<h2 class="font-headline text-2xl font-bold mb-8">Voucher đã sử dụng</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 opacity-60 grayscale">
+<div class="bg-surface-container-low p-6 rounded-lg flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<h4 class="font-bold text-sm">Giảm 10% Khai trương</h4>
+<p class="text-xs">Đã dùng vào 12.08.2024</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg flex items-center gap-4">
+<div class="w-10 h-10 rounded bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="check_circle">check_circle</span>
+</div>
+<div>
+<h4 class="font-bold text-sm">Chào mừng thành viên</h4>
+<p class="text-xs">Đã dùng vào 15.07.2024</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#fdf9f3]/90 backdrop-blur-xl shadow-2xl rounded-t-[2rem]">
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 p-2 hover:bg-[#f7f3ed] rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="science">science</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Alpha</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 p-2 hover:bg-[#f7f3ed] rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="view_in_ar">view_in_ar</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">AR Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-tr from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-2 scale-110 transition-all duration-500 shadow-lg" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="hidden">Wallet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 p-2 hover:bg-[#f7f3ed] rounded-full transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Concierge</span>
+</a>
+</nav>
+</body></html>

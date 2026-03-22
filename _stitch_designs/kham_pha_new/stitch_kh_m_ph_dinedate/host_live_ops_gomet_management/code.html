@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET Host Live Ops</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed": "#ffdad4",
+              "outline-variant": "#e0bfbd",
+              "on-primary": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface": "#fdf9f3",
+              "on-background": "#1c1c18",
+              "background": "#fdf9f3",
+              "surface-dim": "#dddad4",
+              "tertiary": "#894e45",
+              "secondary-container": "#e4e2e1",
+              "error-container": "#ffdad6",
+              "surface-container": "#f1ede7",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed": "#ffdad8",
+              "secondary-fixed": "#e4e2e1",
+              "on-secondary-container": "#656464",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container-low": "#f7f3ed",
+              "on-secondary-fixed": "#1b1c1c",
+              "error": "#ba1a1a",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary": "#ffffff",
+              "secondary": "#5f5e5e",
+              "on-primary-container": "#6d0010",
+              "inverse-primary": "#ffb3b0",
+              "on-error-container": "#93000a",
+              "surface-tint": "#ae2f34",
+              "primary": "#ae2f34",
+              "on-secondary-fixed-variant": "#474747",
+              "on-tertiary-fixed": "#370e08",
+              "on-primary-fixed-variant": "#8c1520",
+              "primary-container": "#ff6b6b",
+              "surface-bright": "#fdf9f3",
+              "on-surface-variant": "#584140",
+              "tertiary-container": "#cf8a7f",
+              "on-error": "#ffffff",
+              "outline": "#8c706f",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-secondary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "surface-variant": "#e6e2dc",
+              "on-primary-fixed": "#410006",
+              "on-surface": "#1c1c18",
+              "surface-container-highest": "#e6e2dc"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift-surface-container-low {
+            background-color: #f7f3ed;
+        }
+        .active-pill {
+            box-shadow: 0 4px 12px -2px rgba(174, 47, 52, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="flex flex-col h-screen sticky left-0 top-0 py-8 px-4 h-full w-72 border-r border-stone-200 dark:border-stone-800 bg-stone-50 dark:bg-stone-950 font-plus-jakarta-sans text-sm">
+<div class="mb-10 px-4">
+<h1 class="text-xl font-bold text-rose-700 italic tracking-tighter">GOMET Host</h1>
+<p class="text-stone-500 text-xs mt-1 uppercase tracking-widest font-semibold">Premium Management</p>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl bg-rose-100/50 dark:bg-rose-900/20 text-rose-800 dark:text-rose-200 font-bold border-r-4 border-rose-600 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Live Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:pl-6 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="concierge">concierge</span>
+<span>Service Queue</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:pl-6 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span>Table Map</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:pl-6 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span>Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 rounded-xl text-stone-600 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 hover:pl-6 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto px-4 py-6">
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary py-4 rounded-xl font-bold text-sm shadow-lg shadow-primary/20 active:scale-95 transition-transform duration-200">
+                Instant Service Request
+            </button>
+<div class="flex items-center gap-3 mt-8 pt-6 border-t border-stone-200 dark:border-stone-800">
+<img alt="Host Avatar" class="w-10 h-10 rounded-full bg-stone-200" data-alt="Professional restaurant host avatar portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcxhoe1W0nVuOyibpuuVsKKDIxPRg1KF8ZAQYBmMfXhomtuceOTfeohCXW0jDmMte_JP_du-OzjoNfl-4gapncmfCsXVOqsL6GukSoxOM7g3lhvXbxg4_h8G23X6ZDiARQO2rLc3_Hz0vx1mo5PoiUY7pEx4gAXyxzrGcuWcJHOIeKD8QJ3pWVRv8C4-e7hn3rPpq4CoiUvfJk9PmeCUajOT-G9b0flEyPM2_2NZtLlDQYPxAxPrTPIv9FIYCMgXTkprhSzvyZjj4"/>
+<div>
+<p class="font-bold text-stone-900">Alex Nguyen</p>
+<p class="text-[10px] text-stone-500 uppercase tracking-tighter">Floor Manager</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 p-8 lg:p-12 overflow-y-auto">
+<!-- Header -->
+<header class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-4xl font-headline font-extrabold text-on-background tracking-tighter mb-2">Live Floor Intelligence</h2>
+<p class="text-on-surface-variant font-medium">Monitoring 18 active tables. Evening pace: <span class="text-primary font-bold">Vibrant</span></p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-high px-6 py-3 rounded-lg flex items-center gap-3">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+<span class="text-sm font-bold text-on-surface-variant uppercase tracking-widest">Real-time Sync</span>
+</div>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-8">
+<!-- Real-time Tempo Chart (Large) -->
+<div class="col-span-12 lg:col-span-8 bg-surface-container-lowest rounded-lg p-8 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.06)] relative overflow-hidden">
+<div class="flex justify-between items-start mb-10">
+<div>
+<h3 class="text-xl font-headline font-bold text-on-background">Floor Sentiment Map</h3>
+<p class="text-sm text-on-surface-variant">Live interaction signals by table cluster</p>
+</div>
+<div class="flex gap-2">
+<span class="bg-rose-50 text-rose-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Zone A: Terrace</span>
+</div>
+</div>
+<!-- Visual Table Map Representation -->
+<div class="grid grid-cols-4 gap-6">
+<!-- Table Card: Warm / High Sentiment -->
+<div class="relative bg-surface-container-low p-5 rounded-lg border-2 border-transparent hover:border-primary/20 transition-all cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-2xl font-black text-on-surface/20 italic">T-04</span>
+<span class="material-symbols-outlined text-rose-500" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="space-y-1">
+<div class="h-1.5 w-full bg-stone-200 rounded-full overflow-hidden">
+<div class="h-full bg-rose-500 w-[88%]"></div>
+</div>
+<p class="text-[10px] font-bold text-rose-600 uppercase tracking-tighter">Connection: High</p>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<img class="w-6 h-6 rounded-full border border-white" data-alt="Female user avatar small thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8DczaYrwBbPu1ICUVlI487n47iIcLihhW2ZRWK0BjenmkDO9QZD1060ygJir8q_WXhQePSH_cgo2O9UeGRNgRKjVCZPngN-Syr0X6EZaBMaN1U5O7bpKFCL5XyRiCsXgix1uKQQ07BzG4ts_Dtw3xFvRedO2hHlAJ--Y0v1lHF4D4rDLsMavQJNaQcg2fdtQHUIWJ2C_PL-gJbhn27TMcfp9wpJAwvPxfU5yPIyEANaOkS57fMEhvRRE9zV0-fV3XOSNqj125pXc"/>
+<img class="w-6 h-6 rounded-full border border-white -ml-3" data-alt="Male user avatar small thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7vSBIWIwKvLApuzlYjaF7LWQ-PVsHAQqbEdh6aoehbK-9RVhY-W-aRZh-t8u8qtORcdGqqgxORkgIa9pBbgDpiy599MoKXgyQW-Y_3mH8yZHDb0-RWTwHSoxP5VEtiXbJ7svRPKlzILcnCVNPvIgN42jEEcWjLQ_O2QkVPekAaTx21GzAtCgM_Z0kMffbqbPvZq-DRnyN29anW4dYs3TxChfKI4illmuHadTG4FPe8PDcsys9DkjJoilmPtIv_KxT2ic-jWCbjgU"/>
+</div>
+</div>
+<!-- Table Card: Cold / Alert -->
+<div class="relative bg-white p-5 rounded-lg ring-2 ring-primary ring-offset-4 ring-offset-surface shadow-xl active:scale-95 transition-all cursor-pointer">
+<div class="absolute -top-3 -right-3 bg-primary text-white p-1 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="ac_unit">ac_unit</span>
+</div>
+<div class="flex justify-between items-start mb-4">
+<span class="text-2xl font-black text-on-surface/20 italic">T-09</span>
+<span class="material-symbols-outlined text-stone-400" data-icon="sentiment_neutral">sentiment_neutral</span>
+</div>
+<div class="space-y-1">
+<div class="h-1.5 w-full bg-stone-200 rounded-full overflow-hidden">
+<div class="h-full bg-stone-400 w-[22%]"></div>
+</div>
+<p class="text-[10px] font-bold text-primary uppercase tracking-tighter">Needs Icebreaker</p>
+</div>
+<button class="mt-4 w-full bg-surface-container-highest text-on-surface text-[10px] font-bold py-2 rounded-full hover:bg-primary hover:text-white transition-colors">
+                            SEND TOPIC
+                        </button>
+</div>
+<!-- Table Card: Service Request -->
+<div class="relative bg-amber-50 p-5 rounded-lg border-2 border-amber-200 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<span class="text-2xl font-black text-on-surface/20 italic">T-12</span>
+<span class="material-symbols-outlined text-amber-600 animate-bounce" data-icon="notifications" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</div>
+<div class="space-y-1">
+<div class="h-1.5 w-full bg-stone-200 rounded-full overflow-hidden">
+<div class="h-full bg-amber-500 w-[65%]"></div>
+</div>
+<p class="text-[10px] font-bold text-amber-700 uppercase tracking-tighter">Bill Requested</p>
+</div>
+<div class="mt-4 text-[11px] text-amber-900 font-medium">Waiting: 4m 12s</div>
+</div>
+<!-- Table Card: Active/Normal -->
+<div class="relative bg-surface-container-low p-5 rounded-lg border-2 border-transparent hover:border-primary/20 transition-all cursor-pointer">
+<div class="flex justify-between items-start mb-4">
+<span class="text-2xl font-black text-on-surface/20 italic">T-01</span>
+<span class="material-symbols-outlined text-stone-400" data-icon="restaurant">restaurant</span>
+</div>
+<div class="space-y-1">
+<div class="h-1.5 w-full bg-stone-200 rounded-full overflow-hidden">
+<div class="h-full bg-rose-400 w-[55%]"></div>
+</div>
+<p class="text-[10px] font-bold text-stone-500 uppercase tracking-tighter">Main Course</p>
+</div>
+<div class="mt-4 flex items-center gap-1">
+<span class="px-2 py-0.5 bg-stone-200 rounded text-[9px] font-bold uppercase">Wine Pairing</span>
+</div>
+</div>
+</div>
+<!-- Custom Graphic Overlay for "Pace" -->
+<div class="mt-12 h-32 w-full bg-stone-50 rounded-xl relative overflow-hidden flex items-end px-4 gap-1">
+<div class="w-full h-[30%] bg-stone-200 rounded-t-sm"></div>
+<div class="w-full h-[45%] bg-stone-200 rounded-t-sm"></div>
+<div class="w-full h-[60%] bg-stone-200 rounded-t-sm"></div>
+<div class="w-full h-[85%] bg-primary/40 rounded-t-sm"></div>
+<div class="w-full h-[95%] bg-primary rounded-t-sm"></div>
+<div class="w-full h-[70%] bg-primary/60 rounded-t-sm"></div>
+<div class="w-full h-[40%] bg-stone-200 rounded-t-sm"></div>
+<div class="w-full h-[20%] bg-stone-200 rounded-t-sm"></div>
+<div class="absolute inset-0 flex flex-col justify-center items-center pointer-events-none">
+<span class="text-[10px] font-black uppercase tracking-[0.4em] text-stone-400 mb-2">Service Intensity Waveform</span>
+<div class="h-[1px] w-full bg-primary/10"></div>
+</div>
+</div>
+</div>
+<!-- Priority Alerts Column -->
+<div class="col-span-12 lg:col-span-4 space-y-8">
+<!-- AI Insights Card -->
+<div class="bg-stone-900 text-white p-8 rounded-lg shadow-2xl relative overflow-hidden">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary-container" data-icon="psychology" style="font-variation-settings: 'FILL' 1;">psychology</span>
+<span class="text-xs font-bold uppercase tracking-widest text-stone-400">AI Host Intelligence</span>
+</div>
+<p class="text-lg font-headline font-bold mb-4 leading-snug">"Table 09 is currently in a 'Lull' phase. Suggest sending the 'Travel &amp; Wine' discussion starter cards."</p>
+<button class="flex items-center gap-2 text-primary-container font-bold group">
+                            Execute Protocol 
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+</div>
+<!-- Service Queue Queue -->
+<div class="bg-surface-container-high rounded-lg p-6">
+<h4 class="text-xs font-black uppercase tracking-widest text-on-surface-variant mb-6">Urgent Queue (3)</h4>
+<div class="space-y-4">
+<div class="flex gap-4 items-center bg-surface p-4 rounded-xl border-l-4 border-primary">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="wine_bar">wine_bar</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold">Refill Request</p>
+<p class="text-[10px] text-stone-500 italic">Table 04 · Terrace</p>
+</div>
+<span class="text-[10px] font-bold text-stone-400">2m</span>
+</div>
+<div class="flex gap-4 items-center bg-surface p-4 rounded-xl border-l-4 border-amber-400">
+<div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center text-amber-700">
+<span class="material-symbols-outlined" data-icon="celebration">celebration</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold">Anniversary Dessert</p>
+<p class="text-[10px] text-stone-500 italic">Table 18 · Window</p>
+</div>
+<span class="text-[10px] font-bold text-stone-400">6m</span>
+</div>
+<div class="flex gap-4 items-center bg-surface p-4 rounded-xl border-l-4 border-stone-300 opacity-60">
+<div class="w-10 h-10 rounded-full bg-stone-200 flex items-center justify-center text-stone-600">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="text-xs font-bold">Checked In</p>
+<p class="text-[10px] text-stone-500 italic">Table 11 · Lounge</p>
+</div>
+<span class="text-[10px] font-bold text-stone-400">12m</span>
+</div>
+</div>
+</div>
+<!-- Live Metrics Asymmetric Chips -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-rose-50 p-6 rounded-lg text-rose-800">
+<p class="text-[10px] font-black uppercase mb-1">Happiness</p>
+<p class="text-3xl font-headline font-black">94%</p>
+</div>
+<div class="bg-stone-800 p-6 rounded-lg text-stone-50">
+<p class="text-[10px] font-black uppercase mb-1 text-stone-400">Turn Rate</p>
+<p class="text-3xl font-headline font-black">1.8<span class="text-xs">hr</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Floor Overview Section -->
+<section class="mt-12">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-2xl font-headline font-extrabold text-on-background tracking-tight">Active Diner Synergy</h3>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-container text-on-surface-variant text-xs font-bold rounded-full">All Tables</button>
+<button class="px-4 py-2 bg-primary text-on-primary text-xs font-bold rounded-full">Needs Attention</button>
+</div>
+</div>
+<!-- Horizontal Scroll Cards / Carousel feel -->
+<div class="flex gap-6 overflow-x-auto pb-8 snap-x">
+<!-- Diner Synergy Card 1 -->
+<div class="min-w-[320px] snap-start bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm relative group overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="groups">groups</span>
+</div>
+<div class="flex items-center gap-4 mb-6">
+<div class="flex -space-x-3">
+<img class="w-12 h-12 rounded-full border-2 border-white" data-alt="Diner profile 1 portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrJWJp1RF9AtPPvUuwrEZrI8z71U4EoT64k4gM03pZUEOFglueY8prrG8-53WMwmHY3j-Adn_l9AspnQCDFJIIeArRvVC_xIW-okMVbgQk9qdBIetDQijMeLp_QErWMef_wn3sQ5onXNLYvyD4N5Xs_GJp4jI7Yg6_jHon0WUnFCDsWTnyt1lJdGoewV8I5m5cJX175pmJv1gSXU7V4hab2tTM-hIpHiT7hGBGraIBqSrEgr0Cs2U9rdofwjtjO2qgKP0SCtf8JUk"/>
+<img class="w-12 h-12 rounded-full border-2 border-white" data-alt="Diner profile 2 portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbYeswr8gbLis-Q9xzxUp4k50akdu8zaIZdrvMfZa9-zDMD_C5A8n3NQUOYGfdnNBVWr66DB_hTlILOeL3m2ysOlrirdzkxkPtdd10lZARXWrbpeBQSNmcZNamAb3ToaEGTNjUaxQLOGjZn8UpKCVrga2Mdao4sSXXPBHmVP3fnQsHk1Sy1PF-SgRXF5uDihRmLnF2YXVTFrk_BnRHjUgCDIZKphhYkENsm-_x_dwjcea14KeCVAQLWFo_ghN6tSmFcZAbuSsb9CU"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Minh &amp; Thao</p>
+<p class="text-[10px] font-medium text-stone-500 uppercase tracking-widest">Table 04 · Anniversary</p>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-4 mb-4">
+<div class="flex justify-between text-[11px] mb-2 font-bold uppercase text-stone-400">
+<span>Predicted Mood</span>
+<span class="text-rose-600">Enthusiastic</span>
+</div>
+<div class="flex gap-1 h-2">
+<div class="flex-1 bg-rose-500 rounded-full"></div>
+<div class="flex-1 bg-rose-500 rounded-full"></div>
+<div class="flex-1 bg-rose-500 rounded-full"></div>
+<div class="flex-1 bg-rose-200 rounded-full"></div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-[9px] px-2 py-1 bg-stone-100 rounded-full font-bold text-stone-600">Wine Lovers</span>
+<span class="text-[9px] px-2 py-1 bg-stone-100 rounded-full font-bold text-stone-600">First Time</span>
+</div>
+</div>
+<!-- Diner Synergy Card 2 -->
+<div class="min-w-[320px] snap-start bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm relative group overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="sparkles">colors_spark</span>
+</div>
+<div class="flex items-center gap-4 mb-6">
+<div class="flex -space-x-3">
+<img class="w-12 h-12 rounded-full border-2 border-white" data-alt="Diner profile 3 portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsY2UgCzfRwrqdsH9ZBZPqFWhiWSEMT58lXCqtf0NqGminartvhIsTYDLf6MxrhLF3hdbDehNGlgCBGKedJcc4rlEVaUJ7Gk1QxSBC5RUs8d33iIW4JyTNg9c0Y8TB-xF0fJ_qV5WJwCZpRD-pD8V1tAMJyGZLkeoxVc-vv9CLTzhJS2lS2W55ckpcNFXcf5GN4qjNECXSP8B5c5aJwoOyMV5mcQG9_UhAXr523Wv05eCQRYhSLdILumrM18oXrwnc3yH-mn_Q_iQ"/>
+<img class="w-12 h-12 rounded-full border-2 border-white" data-alt="Diner profile 4 portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX0KbPYBkJhERV96lsTlsyEedtAp99H_UFw4e5ECyQmCxSee7CQQ5-T5ed9Xhv1Pp6ymBPAvjyUKWGkpVy9jrglXXDoBptE1WKL3pwejk8haHQYU_j5tiIr8nK3Ijcfw8EKZ4-9M_kG0jOihqUFzi_dc5HW74KyHDjVbb04H5jsKs8TmTtUMnaqfxtHGSeNujmLvjwPUCpCR6665aBgK0Zf-sFS1zZ7LRPa_SHWOC9Alkz_BZ2kqK4DKqHDHcR8TTv_VeN4i4Pbco"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Kien &amp; Hana</p>
+<p class="text-[10px] font-medium text-stone-500 uppercase tracking-widest">Table 09 · First Date</p>
+</div>
+</div>
+<div class="bg-primary/5 rounded-lg p-4 mb-4 border border-primary/10">
+<div class="flex justify-between text-[11px] mb-2 font-bold uppercase text-primary">
+<span>Alert: Ice Required</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="bolt">bolt</span>
+</div>
+<div class="flex gap-1 h-2">
+<div class="flex-1 bg-primary rounded-full"></div>
+<div class="flex-1 bg-stone-200 rounded-full"></div>
+<div class="flex-1 bg-stone-200 rounded-full"></div>
+<div class="flex-1 bg-stone-200 rounded-full"></div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-[9px] px-2 py-1 bg-stone-100 rounded-full font-bold text-stone-600">Introverts</span>
+<span class="text-[9px] px-2 py-1 bg-stone-100 rounded-full font-bold text-stone-600">Travel Fans</span>
+</div>
+</div>
+<!-- Diner Synergy Card 3 -->
+<div class="min-w-[320px] snap-start bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm relative group overflow-hidden">
+<div class="flex items-center gap-4 mb-6">
+<div class="flex -space-x-3">
+<img class="w-12 h-12 rounded-full border-2 border-white" data-alt="Diner profile 5 portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBh3EGgzgJK56VFQFdcvpsc6riQqw18d6vAVJykr3DpxllVfgHD-5zwpXgNN7I7m9yA-qG16ejpbbbXHvf06p4gQxGGTAYXUgdRPJSwmAmNe5kBhpKPeGlkqFt1bMJ_ZNZvCkgC1RMVC9MNDXVppEzBkigcPme6W81cIPSw9V_ZqYNXO6Uyo69XldK7EWMO_j6Khuba3ICdxSwZMevifpOm1VQZoYFP31aTe3Co6rqfy7Xshpg_vVtGKsxc7NELac0dnn-dRJsLu80"/>
+<img class="w-12 h-12 rounded-full border-2 border-white" data-alt="Diner profile 6 portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOSx0sDYvctkkRi_d_SKqAM7EIf8XTmzflFbCZ8mYv5It4VPIvS5bB3gC3xOkq9zt81uGowwHf7xQmlIUp-BMt17j0XTgJ-1aMNe6iJJ53dxcThqvj7aLk2UiHfqJw5IHpMquWSfFc7t7f-Tbyd6zUJQRF5IxdFbnv3hm6QBaSXAGO0mNM9eSsEtlUFJDrsf0GAqPppxFMEHdpFBrGYNTuqXqtBER0jf7H73CgVZNXDnbQZsMzcNNX6vIF5O43ntq-vU9tVa3uE00"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Duc &amp; Linh</p>
+<p class="text-[10px] font-medium text-stone-500 uppercase tracking-widest">Table 12 · Catch up</p>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-lg p-4 mb-4">
+<div class="flex justify-between text-[11px] mb-2 font-bold uppercase text-stone-400">
+<span>Predicted Mood</span>
+<span class="text-green-600">Relaxed</span>
+</div>
+<div class="flex gap-1 h-2">
+<div class="flex-1 bg-green-500 rounded-full"></div>
+<div class="flex-1 bg-green-500 rounded-full"></div>
+<div class="flex-1 bg-stone-200 rounded-full"></div>
+<div class="flex-1 bg-stone-200 rounded-full"></div>
+</div>
+</div>
+<div class="flex flex-wrap gap-2">
+<span class="text-[9px] px-2 py-1 bg-stone-100 rounded-full font-bold text-stone-600">Local Foodies</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Action Button for Emergency Protocols -->
+<div class="fixed bottom-10 right-10 flex flex-col items-end gap-4 z-50">
+<button class="group flex items-center gap-3 bg-white text-on-surface px-6 py-4 rounded-full shadow-2xl hover:bg-stone-50 transition-all border border-stone-100">
+<span class="text-xs font-black uppercase tracking-widest overflow-hidden w-0 group-hover:w-32 transition-all whitespace-nowrap">Broadcast Note</span>
+<span class="material-symbols-outlined text-stone-600" data-icon="record_voice_over">record_voice_over</span>
+</button>
+<button class="bg-primary text-on-primary w-16 h-16 rounded-full shadow-[0_12px_24px_rgba(174,47,52,0.3)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+</div>
+</body></html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-container": "#ff6b6b",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "outline": "#8c706f",
+              "inverse-on-surface": "#f4f0ea",
+              "on-surface": "#1c1c18",
+              "secondary-fixed": "#e4e2e1",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "outline-variant": "#e0bfbd",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-dim": "#dddad4",
+              "secondary-fixed-dim": "#c8c6c6",
+              "tertiary": "#894e45",
+              "on-background": "#1c1c18",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#410006",
+              "secondary": "#5f5e5e",
+              "on-tertiary-fixed": "#370e08",
+              "surface-bright": "#fdf9f3",
+              "on-secondary-container": "#656464",
+              "secondary-container": "#e4e2e1",
+              "on-error": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "background": "#fdf9f3",
+              "on-secondary-fixed-variant": "#474747",
+              "on-tertiary-container": "#55251e",
+              "on-primary-container": "#6d0010",
+              "error": "#ba1a1a",
+              "tertiary-container": "#cf8a7f",
+              "surface-variant": "#e6e2dc",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-highest": "#e6e2dc",
+              "surface": "#fdf9f3",
+              "on-secondary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed": "#ffdad8",
+              "error-container": "#ffdad6",
+              "surface-container": "#f1ede7",
+              "primary": "#ae2f34",
+              "inverse-surface": "#31302d",
+              "inverse-primary": "#ffb3b0",
+              "surface-container-low": "#f7f3ed",
+              "on-tertiary-fixed-variant": "#6d3830"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .bg-coral-gradient {
+            background: linear-gradient(45deg, #ae2f34 0%, #ff6b6b 100%);
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-950/80 backdrop-blur-xl shadow-sm shadow-rose-900/5">
+<div class="flex justify-between items-center px-6 h-20 w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-rose-800 dark:text-rose-500 uppercase font-['Plus_Jakarta_Sans']">
+                GOMET Alpha
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-rose-700 dark:text-rose-400 font-semibold border-b-2 border-rose-700 py-1" href="#">Events</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-colors" href="#">Dating</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-colors" href="#">Bistro</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-rose-50/50 rounded-full transition-colors text-stone-500">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-rose-50/50 rounded-full transition-colors text-stone-500">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="User profile avatar wearing stylish clothes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbQCj689yJF4saiFhFnCWXsUMsfgBgiDIVX7i4xXIUkO6eQz0hfeOjN2ypwltBY2y2JbyXPLWLlWgDno7Yf0PPbDSd14IgGmRcbVtvhWUw4se4hSg_ybGz3suFb8fho39exdaM_2wRLB0pDMSkbYxGsWZGMf84HD_uRDksCi26kpyANMDHjjpAB2uw4j-03UQkPsJ5ETgj8Cmp53WfCgy-eenl6lVRVtMRA97XuL2nyAymHB0ThEGMBN-BjRJH9CSxDLUAucwd6hU"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="hidden lg:flex h-screen w-72 fixed left-0 top-0 z-[60] bg-stone-50 flex-col p-6 space-y-8 shadow-2xl shadow-stone-900/10">
+<div class="text-xl font-extrabold text-rose-800 uppercase tracking-tighter mb-4">
+            Velvet Lounge
+        </div>
+<div class="space-y-2">
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:translate-x-1 transition-transform rounded-full hover:bg-stone-200/50" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-['Plus_Jakarta_Sans'] text-sm font-medium">Dating</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-rose-100 text-rose-800 rounded-full" href="#">
+<span class="material-symbols-outlined" data-icon="event_upcoming" style="font-variation-settings: 'FILL' 1;">event_upcoming</span>
+<span class="font-['Plus_Jakarta_Sans'] text-sm font-medium">Events</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:translate-x-1 transition-transform rounded-full hover:bg-stone-200/50" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-['Plus_Jakarta_Sans'] text-sm font-medium">Bistro</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:translate-x-1 transition-transform rounded-full hover:bg-stone-200/50" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+<span class="font-['Plus_Jakarta_Sans'] text-sm font-medium">Reservations</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-600 hover:translate-x-1 transition-transform rounded-full hover:bg-stone-200/50" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Plus_Jakarta_Sans'] text-sm font-medium">Profile</span>
+</a>
+</div>
+<div class="mt-auto space-y-2 pt-8 border-t border-stone-200/50">
+<div class="px-4 mb-4">
+<button class="w-full bg-coral-gradient text-white py-3 rounded-full font-semibold shadow-lg shadow-rose-900/20 active:scale-95 transition-transform">
+                    Book a Table
+                </button>
+</div>
+<a class="flex items-center gap-3 px-4 py-2 text-stone-500 text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-2 text-stone-500 text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="contact_support">contact_support</span>
+<span>Support</span>
+</a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:pl-72 pt-24 pb-12 min-h-screen">
+<div class="max-w-7xl mx-auto px-6">
+<!-- Hero Header Section -->
+<header class="mb-12 relative overflow-hidden rounded-xl p-10 bg-surface-container-low">
+<div class="relative z-10 max-w-2xl">
+<span class="inline-block bg-tertiary-container/30 text-on-tertiary-container px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4">Alpha Exclusive</span>
+<h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter leading-none mb-6 text-on-background">
+                        Trung tâm <br/><span class="text-primary italic">Cộng đồng Alpha</span>
+</h1>
+<p class="text-lg text-on-surface-variant leading-relaxed mb-8">
+                        Khám phá không gian kết nối cao cấp: Từ những buổi Workshop ẩm thực tinh tế đến các nhóm "Nhậu nhẹt" không cast đầy ngẫu hứng.
+                    </p>
+<div class="flex gap-4">
+<button class="bg-coral-gradient text-on-primary px-8 py-4 rounded-lg font-bold shadow-xl shadow-primary/20 flex items-center gap-2">
+                            Tạo sự kiện mới <span class="material-symbols-outlined">add</span>
+</button>
+<button class="bg-surface-container-highest text-on-surface px-8 py-4 rounded-lg font-bold">
+                            Lịch của tôi
+                        </button>
+</div>
+</div>
+<!-- Abstract Decor -->
+<div class="absolute -right-20 -bottom-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute right-10 top-10 w-64 h-64 bg-tertiary/5 rounded-full blur-2xl"></div>
+</header>
+<!-- Filters & Categories -->
+<section class="flex flex-wrap gap-3 mb-12">
+<button class="px-6 py-2 bg-primary text-on-primary rounded-full text-sm font-semibold">Tất cả</button>
+<button class="px-6 py-2 bg-surface-container-high text-on-surface rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Workshop</button>
+<button class="px-6 py-2 bg-surface-container-high text-on-surface rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Ẩm thực</button>
+<button class="px-6 py-2 bg-surface-container-high text-on-surface rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Offline</button>
+<button class="px-6 py-2 bg-surface-container-high text-on-surface rounded-full text-sm font-medium hover:bg-surface-container-highest transition-colors">Nhậu nhẹt</button>
+</section>
+<!-- Events Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1: Main Highlight -->
+<div class="col-span-1 md:col-span-2 bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group">
+<div class="flex flex-col md:flex-row h-full">
+<div class="md:w-1/2 relative h-64 md:h-auto">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close up of fancy cocktails and bar environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcQbHZPIj30pU8Jg-MKSGo1uFZfHyBiF0397D5qMdaqsGYllNWxiV_Eofzd8sP_IOxnTofUOI0IcjlmLvVelJgR6U7uyTvGrM8gtH5rk5PPB03-XoCSSFaButa8cvBiKhV7Sns2W74cJvjf7SVG750wHskf4_PA1yu693vDsyJ-6N0LlbO938Q-Rhn0lXZ1kDho4dGy_8fUEjYmE-OxcthH-hjSQB66sYkkLvUr0NoFR5WPMM__QyU_2lMHmHdLaAup7hvQXF8h-U"/>
+<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-lg text-primary font-bold text-xs uppercase">Hot Event</div>
+</div>
+<div class="md:w-1/2 p-8 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<div class="text-tertiary font-bold text-sm uppercase tracking-widest">Workshop</div>
+<div class="flex items-center gap-1 text-on-surface-variant text-sm font-medium">
+<span class="material-symbols-outlined text-sm">group</span> 8/12 đã tham gia
+                                    </div>
+</div>
+<h3 class="text-2xl font-bold text-on-surface mb-3 leading-tight">Nghệ thuật Pha chế Cocktail &amp; Finger Food</h3>
+<p class="text-on-surface-variant text-sm mb-6 line-clamp-3">
+                                    Học cách tạo ra những ly Martini hoàn hảo và các món khai vị tinh tế dưới sự hướng dẫn của Mixologist hàng đầu từ Velvet Lounge.
+                                </p>
+</div>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex -space-x-3">
+<img class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="User avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6aaNnmCNI4R6S61g7_5IXKr2j5l10cmQOwyHJzSSU2pMdKwlTaNBt3iT5rR682rrCDRPU034Nmh3GqsQY7YsWmAZr5JOZMGMi0NYoMicczsYArP3Lom6VEWX8hYnpale9v00Kcx4J1VYj42X6L_FWLCcFRwvY4OqmYXRxtxcgJzZnV0ArynJxzWhHKRlTBG4ZfpMUBZpgRjoVnSVnPkBM-Ac8gL-cnhgV_CqSd51LQ8iZQkZB9869DczYNrPplnX9H6510jyitvo"/>
+<img class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="User avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACzcdYu7v62_vEupzlxpOjHsi2QiQAg55QOZUF4mKnI_Ryw-uVwpamdXuUm8KbY6Pozm_RBnziJ45mDUk9rI-DZRpXfQ7AhfEOYp5UZSviBsQyVGtwwoDwKQMExDI4kysYJRPMyidJScUPetLkH5qT-WfggybjYZDEGOtj-gQXLUCl9Nc6fxEVdh6s5Fpz0-yLrHInBH7Ht-B1ORcG_THQzAuwTWCRgRjsVVwkvSyXz2J0hpv-tUkBU366pl8ddUcS1fYkSGVINJs"/>
+<img class="w-8 h-8 rounded-full border-2 border-white object-cover" data-alt="User avatar 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6AblsSciBpdwn8SzTTBeG38_1V3CIvtoTpDhWsDIZ3TXPAt8XVMIbn3ijeQXjleqFnN0CPe3Jo5ovfHUu0sFeTngkRXpJaYUOh47NDRWkmilzvRa7eemNyykgrrtNRVEWYIyk8HE1WI1GLRSKd-GAQZWM23Sj31OReIoOWQytPMGiYb6V9wjfZQJytAQww1bUFlu-Yfn8a3r4m130V7X8LG2zd2wr9bPDI7oz1JTIxFXCDJtS6ozTHppoGTECVbfO64gVT-oYC0s"/>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border-2 border-white flex items-center justify-center text-[10px] font-bold text-on-surface-variant">+5</div>
+</div>
+<button class="bg-coral-gradient text-on-primary px-6 py-2 rounded-lg font-bold text-sm">Tham gia nhóm</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Warm restaurant atmosphere with people dining" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpNxXoVkXxwSR9hktvDMBXCEhi2q95NQzN4bxMFqHLmeeOgz3OTEjql55M_0Xxf5XMF9N0mxxY3S4BKA5x27iKZbHq8MhB_2Md1kX8uPWIVxSrX-mL-QSKK9LkibatkvgIwL-1OQ5ikrSPfCZ2oM_17LAlXBj1e8XHYdBX1WpqDTvsbUogMxzYvICTK-4PHE7jOjn4BQ4tOKXeKn2CkfITpRM_iW-DvGBuOpoQlGWbYAT_ZeW29wriPacOJRujzxvtECuYkhweuIY"/>
+<div class="absolute bottom-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">Tối nay</div>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<div class="flex justify-between items-center mb-3">
+<span class="text-tertiary font-bold text-xs uppercase tracking-tighter">Nhậu nhẹt không cast</span>
+<span class="text-on-surface-variant text-xs font-semibold">4/10</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-2">Đêm Sashimi &amp; Sake Cao Cấp</h3>
+<p class="text-sm text-on-surface-variant mb-6 flex-grow">Một buổi tối thân mật tại trung tâm Quận 1 cho những tâm hồn yêu thích ẩm thực Nhật Bản.</p>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary text-sm">location_on</span>
+<span class="text-xs font-medium text-on-surface-variant">District 1, HCMC</span>
+</div>
+<button class="w-full py-3 rounded-lg border-2 border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-colors">Tham gia nhóm</button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Elegant table setup with high-end food plating" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSmQ6cUPKvMEe-Bfumls8ijKW-hZXraMVXbgqEDO4Dp7LDw6RR0CJPKo7bpQPBS-ONaaUwCxmRbji4l0prYKrnvpPdsbObka98M6z4JeuKCALej0ye8nXc1wEkXTXqE7iPhvuQywi-tb8wEqBNPMTS0XqNZUyZ4ai9iUZG1qtUZ17hB8tEy_MkQ81Sdqhu9w3YLmSJFasCgLhthH6K5lbOwnYMk58Zvv_1rbDyVA14s54x0JF-JRgC2IA-UX3MG3C7jylT3ndpbEM"/>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<div class="flex justify-between items-center mb-3">
+<span class="text-tertiary font-bold text-xs uppercase tracking-tighter">Fine Dining Offline</span>
+<span class="text-on-surface-variant text-xs font-semibold">2/6</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-2">Trải nghiệm Tasting Menu 7 món</h3>
+<p class="text-sm text-on-surface-variant mb-6 flex-grow">Kết nối cùng những chuyên gia trong ngành sáng tạo qua bữa tiệc tối sang trọng.</p>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary text-sm">schedule</span>
+<span class="text-xs font-medium text-on-surface-variant">Thứ 7, 19:00</span>
+</div>
+<button class="w-full py-3 rounded-lg border-2 border-primary text-primary font-bold text-sm hover:bg-primary hover:text-white transition-colors">Tham gia nhóm</button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 group flex flex-col">
+<div class="h-48 relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Selection of meat and grill platter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBy7DNsKoaJlWwfWKWGIoLwTvklpyL-9duRHdlHzVcBsJ6FRNrBpnlE5g3sIzjYmgQMBW08OOvjdDe7Ga_bK-CsZCUr5GJt-2XZNCVULtXoAojyWO41KzfTOdPxa2hJyKHvPkECHNaGvuP9f2cztRaQUU-waEGY1GtXWLRSHROX8RTzrdEUxvZQ7N04JwImJ059LYzRsGa583JYtfpB_MvXi61WAFtmP4XW_-TN_sTjEPIAxGnz5T75gacTX_C5HSI9NDwAFbHVmfg"/>
+</div>
+<div class="p-6 flex-grow flex flex-col">
+<div class="flex justify-between items-center mb-3">
+<span class="text-tertiary font-bold text-xs uppercase tracking-tighter">Ẩm thực ngẫu hứng</span>
+<span class="text-on-surface-variant text-xs font-semibold">10/10</span>
+</div>
+<h3 class="text-xl font-bold text-on-surface mb-2">Steak &amp; Wine Night</h3>
+<p class="text-sm text-on-surface-variant mb-6 flex-grow">Hội ngộ những người sành vang và bít tết tại địa điểm bí mật cực chill.</p>
+<div class="flex items-center gap-2 mb-6">
+<span class="material-symbols-outlined text-primary text-sm">lock</span>
+<span class="text-xs font-medium text-on-surface-variant">Đã đủ thành viên</span>
+</div>
+<button class="w-full py-3 rounded-lg bg-surface-container-high text-stone-400 font-bold text-sm cursor-not-allowed">Hết chỗ</button>
+</div>
+</div>
+<!-- Card 5 (Bento Side) -->
+<div class="col-span-1 lg:col-span-2 bg-stone-900 text-white rounded-xl overflow-hidden flex flex-col md:flex-row relative">
+<div class="p-10 flex flex-col justify-center z-10 md:w-3/5">
+<h3 class="text-3xl font-extrabold mb-4 leading-tight">Giao lưu &amp; Kết nối <br/>Với <span class="text-primary-container">Cộng đồng Alpha</span></h3>
+<p class="text-stone-400 mb-8 max-w-sm">Tận hưởng những đặc quyền riêng biệt dành cho thành viên Premium: Private Chef, Secret Location, và những khách mời đặc biệt.</p>
+<div class="flex items-center gap-6">
+<div class="text-center">
+<div class="text-2xl font-bold text-primary-container">500+</div>
+<div class="text-[10px] uppercase tracking-widest text-stone-500">Thành viên</div>
+</div>
+<div class="w-px h-10 bg-stone-700"></div>
+<div class="text-center">
+<div class="text-2xl font-bold text-primary-container">42</div>
+<div class="text-[10px] uppercase tracking-widest text-stone-500">Sự kiện tháng này</div>
+</div>
+</div>
+</div>
+<div class="md:w-2/5 relative min-h-[300px]">
+<img class="w-full h-full object-cover opacity-60" data-alt="People raising glasses in celebration at a party" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwA7fYoGqVEAeG7NgerYV5gQ9KBehRy8pz8Kji-B1KOIrdDH3cr0-N7j_2UGB6Pscf3q0UJD6hJEl0Kh9cTGRYedE-LRjlo1SD_R6RRKFK-WKQHntHduLyD-JQut_-ygvyjJMEq71uHxRbYI1guub6aR9KV9mO6oZCsnClPteNbEjOWw7ORz_ri-Bba4co1qmS01mk-V15Mo-gygehpaj1K8dzVLKiVeXraBclynI9cK_qYfAWoZwdD-E1sodEXX71IhQ8JmDayoU"/>
+<div class="absolute inset-0 bg-gradient-to-r from-stone-900 via-transparent to-transparent"></div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button class="fixed bottom-8 right-8 w-16 h-16 rounded-full bg-coral-gradient text-white flex items-center justify-center shadow-2xl shadow-primary/40 z-[70] hover:scale-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-16 bg-white/90 backdrop-blur-xl flex items-center justify-around z-50 border-t border-stone-100">
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined">favorite</span>
+<span class="text-[10px] font-medium">Dating</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event_upcoming</span>
+<span class="text-[10px] font-bold">Events</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="text-[10px] font-medium">Bistro</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-medium">Profile</span>
+</button>
+</nav>
+</body></html>

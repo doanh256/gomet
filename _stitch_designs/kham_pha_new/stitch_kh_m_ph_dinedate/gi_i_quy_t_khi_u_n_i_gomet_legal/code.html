@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#e6e2dc",
+              "background": "#fdf9f3",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-secondary-fixed-variant": "#474747",
+              "surface-bright": "#fdf9f3",
+              "surface": "#fdf9f3",
+              "outline": "#8c706f",
+              "on-secondary-container": "#656464",
+              "surface-tint": "#ae2f34",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-surface": "#1c1c18",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-variant": "#e6e2dc",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed": "#ffdad8",
+              "on-primary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "on-primary-fixed": "#410006",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "primary-fixed-dim": "#ffb3b0",
+              "outline-variant": "#e0bfbd",
+              "on-error-container": "#93000a",
+              "secondary-fixed": "#e4e2e1",
+              "primary-container": "#ff6b6b",
+              "tertiary-container": "#cf8a7f",
+              "tertiary": "#894e45",
+              "on-tertiary-fixed": "#370e08",
+              "on-surface-variant": "#584140",
+              "on-primary-container": "#6d0010",
+              "surface-container-low": "#f7f3ed",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary-container": "#e4e2e1",
+              "secondary": "#5f5e5e",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-secondary": "#ffffff",
+              "error": "#ba1a1a",
+              "inverse-primary": "#ffb3b0",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-dim": "#dddad4",
+              "primary": "#ae2f34",
+              "on-background": "#1c1c18"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fdf9f3; color: #1c1c18; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-surface selection:bg-primary-fixed">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-stone-900/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-sm shadow-rose-900/5">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-bold tracking-tighter text-rose-700 dark:text-rose-500 font-headline">GOMET</span>
+<div class="hidden md:flex gap-6 ml-10">
+<span class="text-rose-700 dark:text-rose-400 font-semibold cursor-pointer">Resolution Center</span>
+<span class="text-stone-600 dark:text-stone-400 hover:bg-rose-50 dark:hover:bg-stone-800 transition-colors cursor-pointer px-3 py-1 rounded-full">Resources</span>
+<span class="text-stone-600 dark:text-stone-400 hover:bg-rose-50 dark:hover:bg-stone-800 transition-colors cursor-pointer px-3 py-1 rounded-full">Legal Policy</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex bg-surface-container-low px-4 py-2 rounded-full items-center gap-3">
+<span class="material-symbols-outlined text-stone-400 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 text-on-surface" placeholder="Search cases..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-stone-600 p-2 hover:bg-rose-50 transition-colors rounded-full">notifications</button>
+<button class="material-symbols-outlined text-stone-600 p-2 hover:bg-rose-50 transition-colors rounded-full">shield_with_heart</button>
+<button class="material-symbols-outlined text-stone-600 p-2 hover:bg-rose-50 transition-colors rounded-full">account_circle</button>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden md:flex flex-col fixed left-0 top-0 h-screen p-4 bg-stone-100 dark:bg-stone-900 w-64 pt-24 z-40">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 p-4 mb-6">
+<div class="w-10 h-10 rounded-full bg-primary overflow-hidden">
+<img alt="" class="w-full h-full object-cover" data-alt="Headshot of a professional legal advisor" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU5ETrQnyx1HLOEXfOBhaoT5MuN7PtD9SHYJ5cUiGTzIT0fYvN0SV0XOYx8I2JiotnflWTx8pDBkF97TpP9-XKkJ_iHxRxdNkRIqlwV0OxWaA3Drr4yYws4B2yHJxC8noL9IA_Do8ZdxKS6gbMfPIOyLkE7UWw0ZLoz7h3kiNcY8k_DQm9hRJ_655T1jVTt11xYCTNwZqMwVm-QCQqDPD32k_j0cFZ9kJZzuh1IFGP-1aPqfdbGHO-0uky8fJ9866Me71dko45_zI"/>
+</div>
+<div>
+<p class="font-headline font-black text-rose-700 text-sm">GOMET Partner</p>
+<p class="text-[10px] uppercase tracking-wider text-stone-500 font-inter">Premium Management</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:text-rose-600 hover:translate-x-1 transition-transform font-inter text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-rose-600 text-white rounded-full shadow-lg shadow-rose-500/20 font-inter text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">gpp_maybe</span>
+<span>Disputes</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:text-rose-600 hover:translate-x-1 transition-transform font-inter text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span>Transactions</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:text-rose-600 hover:translate-x-1 transition-transform font-inter text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">verified_user</span>
+<span>Safety</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:text-rose-600 hover:translate-x-1 transition-transform font-inter text-label-md uppercase tracking-wider" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<button class="mt-10 bg-gradient-to-tr from-rose-700 to-rose-400 text-white py-4 px-6 rounded-xl font-headline font-bold text-sm shadow-md hover:shadow-rose-200 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm">add_circle</span>
+                New Appeal
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-64 pt-24 pb-32 px-6 md:px-12 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<div class="mb-12">
+<span class="text-primary font-headline font-bold text-sm tracking-widest uppercase">Case ID: #GMT-88291-LX</span>
+<h1 class="text-display-lg font-headline font-extrabold -tracking-tight text-on-surface mt-2 text-4xl md:text-6xl">Service Dispute: "The Golden Truffle"</h1>
+<p class="text-secondary mt-4 max-w-2xl text-lg font-body leading-relaxed">
+                A formal inquiry into the partial fulfillment of a premier dining reservation on Oct 12th. Transparent review currently in progress by the Gomet Concierge Team.
+            </p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Case Timeline (Left Column) -->
+<div class="lg:col-span-2 space-y-8">
+<section class="bg-surface-container-low rounded-lg p-8">
+<h2 class="font-headline text-2xl font-bold mb-8">Resolution Timeline</h2>
+<div class="space-y-10 relative">
+<!-- Connecting Line -->
+<div class="absolute left-4 top-2 bottom-2 w-0.5 bg-outline-variant opacity-30"></div>
+<!-- Timeline Items -->
+<div class="relative flex gap-6">
+<div class="z-10 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="font-headline font-bold text-on-surface">Dispute Filed</p>
+<p class="text-sm text-secondary font-body">Oct 14, 2023 • 09:42 AM</p>
+<div class="mt-3 bg-surface-container-lowest p-4 rounded-md shadow-sm">
+<p class="text-sm text-on-surface-variant italic">"The reservation was for a 5-course tasting menu, but only 3 courses were served due to kitchen delays. Seeking partial refund."</p>
+</div>
+</div>
+</div>
+<div class="relative flex gap-6">
+<div class="z-10 bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<p class="font-headline font-bold text-on-surface">Concierge Assigned</p>
+<p class="text-sm text-secondary font-body">Oct 14, 2023 • 11:15 AM</p>
+<p class="text-sm text-on-surface-variant mt-1">Reviewer: Marcus Thorne (Senior Dispute Specialist)</p>
+</div>
+</div>
+<div class="relative flex gap-6">
+<div class="z-10 bg-tertiary-container text-white w-8 h-8 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">history_edu</span>
+</div>
+<div class="flex-1">
+<p class="font-headline font-bold text-on-surface">Information Requested</p>
+<p class="text-sm text-secondary font-body">Oct 15, 2023 • 02:20 PM</p>
+<p class="text-sm text-on-surface-variant mt-2">The partner has provided a counter-statement. Please provide a copy of your digital receipt and any photo evidence of the dining experience.</p>
+<div class="mt-4 flex gap-3">
+<button class="bg-primary text-white px-5 py-2 rounded-full text-xs font-bold hover:shadow-lg transition-all">Upload Evidence</button>
+<button class="bg-surface-container-high text-on-surface px-5 py-2 rounded-full text-xs font-bold hover:bg-surface-variant transition-all">View Statement</button>
+</div>
+</div>
+</div>
+<div class="relative flex gap-6">
+<div class="z-10 bg-surface-container-highest text-secondary w-8 h-8 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">pending</span>
+</div>
+<div class="flex-1">
+<p class="font-headline font-bold text-secondary opacity-60">Final Resolution Expected</p>
+<p class="text-sm text-secondary opacity-60 font-body">Est. Oct 17, 2023</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Evidence Gallery -->
+<section class="bg-surface-container-lowest rounded-lg p-8 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.06)]">
+<div class="flex justify-between items-center mb-6">
+<h2 class="font-headline text-2xl font-bold">Evidence Locker</h2>
+<span class="bg-tertiary/10 text-tertiary text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">3 Documents Secure</span>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="group relative aspect-square rounded-md overflow-hidden bg-stone-100">
+<img alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A photo of a dining receipt on a wooden table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDIa33cgX_dTH0BUz5NxChxbjFSAOCc8OntUQOlPfjgYJyMuOHr24TWUubyiGbV04ULqLqSd8c--T5aaZDAyAvbYxQ1IO1QTW6XAaOnl2gq7hhosxf43TSBvnE3K7LH_Gshy6sk4fQ7mUViakZbnnMyt8DohCIqTFKgMd9Ct2CXiR6izNEOj2rEzMh5LCz-xPeINFNqr4Gsc-Bu0D-Dy3hAD1CzP8e4QgiceT6YWbDb6LeuB8P-sEGLr0wiLEEAziIJPWAhRrTgaU"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white">zoom_in</span>
+</div>
+</div>
+<div class="group relative aspect-square rounded-md overflow-hidden bg-stone-100">
+<img alt="" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Interior of a luxury restaurant dining room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpWF1JGRbCKaemaYZdR7ZEL7yYCQwqqSwN4hbGVS9x1gArBJc4XRdDUUtDZb-hfVmpixkxUQ6Uuy6NZNg1QtLCf8Ku62439Z_Mvyuu_5WmGQH0F9iF3TiQjRuFHa6ImYVrlsdvshykjLLl-b7UG-tJgG8YqYH3_DGODZBqancEzZVlEPDVV-lL1FWzLrhKLkOuFedClK0L0IaBFb6wnbWy0U8u2GgIL4csDezweU0KQXMmpkbQjX3vhns6SNh0CmAi9IFA6OX2c9M"/>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="material-symbols-outlined text-white">zoom_in</span>
+</div>
+</div>
+<div class="bg-surface-container flex flex-col items-center justify-center rounded-md border-2 border-dashed border-outline-variant/30 hover:border-primary/50 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary mb-2">add_a_photo</span>
+<span class="text-[10px] font-bold text-on-surface-variant">ADD MEDIA</span>
+</div>
+<div class="bg-surface-container-low flex flex-col items-center justify-center rounded-md border-2 border-dashed border-outline-variant/30 hover:border-primary/50 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-primary mb-2">upload_file</span>
+<span class="text-[10px] font-bold text-on-surface-variant">PDF/LOGS</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Case Summary (Right Column) -->
+<div class="space-y-8">
+<!-- Status Card -->
+<div class="bg-surface-container-high rounded-lg p-6 relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+<p class="text-[10px] font-bold text-primary uppercase tracking-[0.2em] mb-4">Current Status</p>
+<div class="flex items-center gap-3 mb-6">
+<div class="w-3 h-3 bg-primary rounded-full animate-pulse"></div>
+<span class="text-xl font-headline font-bold text-on-surface">Under Review</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/20">
+<span class="text-sm text-secondary">Assigned To</span>
+<span class="text-sm font-bold text-on-surface">Marcus T.</span>
+</div>
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/20">
+<span class="text-sm text-secondary">Priority</span>
+<span class="text-sm font-bold text-tertiary">Medium-High</span>
+</div>
+<div class="flex justify-between items-center py-2">
+<span class="text-sm text-secondary">Est. Refund</span>
+<span class="text-sm font-bold text-on-primary-fixed-variant">$145.00</span>
+</div>
+</div>
+</div>
+<!-- Chat Sidebar -->
+<div class="bg-white rounded-lg p-6 shadow-sm border border-surface-container-highest">
+<h3 class="font-headline font-bold text-lg mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">forum</span>
+                        Concierge Chat
+                    </h3>
+<div class="space-y-4 h-64 overflow-y-auto pr-2 mb-4">
+<div class="bg-surface-container-low p-3 rounded-lg rounded-tl-none mr-8">
+<p class="text-xs text-on-surface-variant">Hello, I'm reviewing your evidence now. Could you clarify if the drinks were served as part of the 5-course package?</p>
+<p class="text-[9px] text-secondary mt-1 text-right">02:22 PM</p>
+</div>
+<div class="bg-primary/10 p-3 rounded-lg rounded-tr-none ml-8 text-right">
+<p class="text-xs text-on-primary-container">Yes, they were included. We received the wine pairing for all 5 courses but only 3 food courses.</p>
+<p class="text-[9px] text-secondary mt-1">02:45 PM</p>
+</div>
+</div>
+<div class="relative">
+<input class="w-full bg-surface-container rounded-full px-4 py-2 text-sm border-none focus:ring-primary/20" placeholder="Type a message..." type="text"/>
+<button class="absolute right-2 top-1.5 material-symbols-outlined text-primary">send</button>
+</div>
+</div>
+<!-- Safety Information -->
+<div class="p-6 bg-tertiary/5 rounded-lg border border-tertiary/10">
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">gpp_good</span>
+<div>
+<p class="font-headline font-bold text-tertiary text-sm">GOMET Guarantee</p>
+<p class="text-xs text-on-tertiary-fixed-variant mt-1">Your funds are held in escrow until this dispute is finalized. You are protected under our Premium Dining Policy.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-4 pb-6 bg-white/90 dark:bg-stone-900/90 backdrop-blur-xl shadow-[0_-10px_25px_-5px_rgba(174,47,52,0.08)]">
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-inter text-[10px] font-bold">Discover</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2">
+<span class="material-symbols-outlined">confirmation_number</span>
+<span class="font-inter text-[10px] font-bold">Events</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-tr from-rose-700 to-rose-400 text-white rounded-2xl p-3 mb-2 transform -translate-y-2">
+<span class="material-symbols-outlined">gpp_good</span>
+<span class="font-inter text-[10px] font-bold">Safety</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-inter text-[10px] font-bold">Messages</span>
+</div>
+</nav>
+<!-- Floating Action Button (Only on main dashboard) -->
+<button class="fixed bottom-24 right-6 md:bottom-12 md:right-12 bg-primary text-white w-14 h-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform md:hidden">
+<span class="material-symbols-outlined">help</span>
+</button>
+</body></html>

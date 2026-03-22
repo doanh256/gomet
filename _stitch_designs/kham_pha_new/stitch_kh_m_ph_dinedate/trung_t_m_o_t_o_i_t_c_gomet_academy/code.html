@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Partner Training Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-surface": "#1c1c18",
+                        "tertiary-container": "#cf8a7f",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#474747",
+                        "on-secondary-container": "#656464",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-container": "#e4e2e1",
+                        "primary-fixed-dim": "#ffb3b0",
+                        "on-tertiary-container": "#55251e",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#ae2f34",
+                        "inverse-surface": "#31302d",
+                        "on-background": "#1c1c18",
+                        "tertiary-fixed": "#ffdad4",
+                        "primary": "#ae2f34",
+                        "surface-dim": "#dddad4",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "on-primary-container": "#6d0010",
+                        "surface-container-highest": "#e6e2dc",
+                        "surface-bright": "#fdf9f3",
+                        "background": "#fdf9f3",
+                        "on-primary-fixed": "#410006",
+                        "on-primary-fixed-variant": "#8c1520",
+                        "surface-container": "#f1ede7",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#f4f0ea",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f7f3ed",
+                        "tertiary": "#894e45",
+                        "primary-fixed": "#ffdad8",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#c8c6c6",
+                        "inverse-primary": "#ffb3b0",
+                        "secondary": "#5f5e5e",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#e4e2e1",
+                        "error": "#ba1a1a",
+                        "outline": "#8c706f",
+                        "outline-variant": "#e0bfbd",
+                        "on-tertiary-fixed": "#370e08",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "primary-container": "#ff6b6b",
+                        "surface": "#fdf9f3",
+                        "surface-container-high": "#ebe8e2",
+                        "on-tertiary-fixed-variant": "#6d3830",
+                        "surface-variant": "#e6e2dc",
+                        "on-surface-variant": "#584140"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- SideNavBar (Authority: JSON) -->
+<aside class="fixed left-0 top-0 flex flex-col h-full p-4 bg-stone-50 dark:bg-stone-950 h-screen w-64 border-r-0 z-40">
+<div class="mb-10 px-4 pt-4">
+<span class="text-xl font-bold text-stone-900 dark:text-stone-50 tracking-tighter uppercase">GOMET</span>
+<div class="mt-4 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Headshot of a premium hospitality partner" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBho_u3PjwHoBTDPPPmlJ8ip7-tDNTk4E6bOn2vn_AxVS-IIxVfW1EFDwyYGJoIs0UM47VVMW20od9J-NMQAV-t2x-ZrPpUwcY90PPboFJKeFPhqDJck_FVLpKD_19Nb2iDtgWHH0-z0xNdolbPdkjQ04puiXlHZrgc7xvlOo281OP2D4qITpSCjCwE3F4PQbPrdqBYea6xLXaEi_nZls8ZsnHQhSnaD0n-_o7dt3mZBKEJg52GmZP9w0qUZANxaokF96kVMn-K8K0"/>
+</div>
+<div>
+<p class="font-plus-jakarta text-sm font-bold text-stone-900 leading-tight">Partner Portal</p>
+<p class="text-[10px] text-stone-500 uppercase tracking-widest">GOMET Premium</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-200/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-plus-jakarta text-sm font-medium">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-200/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-plus-jakarta text-sm font-medium">Reservations</span>
+</a>
+<a class="flex items-center gap-3 bg-white dark:bg-stone-900 text-rose-600 dark:text-rose-400 rounded-xl px-4 py-3 shadow-sm transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="school" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-plus-jakarta text-sm font-medium">Member Requests</span>
+</a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-200/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-plus-jakarta text-sm font-medium">Venue Analytics</span>
+</a>
+<a class="flex items-center gap-3 text-stone-500 dark:text-stone-400 px-4 py-3 hover:bg-stone-200/50 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-plus-jakarta text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto p-4 bg-surface-container-low rounded-xl">
+<p class="text-xs font-bold text-primary uppercase tracking-wider mb-2">Partner Support</p>
+<p class="text-[11px] text-on-surface-variant mb-3">Need help with the platform standards?</p>
+<button class="w-full py-2 bg-primary text-on-primary text-xs font-bold rounded-lg hover:opacity-90 transition-opacity">Contact Concierge</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-64 p-8 lg:p-12">
+<!-- Header Section -->
+<header class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-primary-container/20 rounded-full mb-4">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="text-[10px] font-bold text-primary uppercase tracking-widest">Training Active</span>
+</div>
+<h1 class="text-5xl lg:text-6xl font-headline font-extrabold tracking-tighter text-on-surface leading-[0.9]">
+                    Elevating the <span class="text-primary italic">Guest Canvas.</span>
+</h1>
+<p class="mt-6 text-lg text-on-surface-variant font-body leading-relaxed max-w-xl">
+                    Welcome to the GOMET Training Center. Master the nuanced art of hospitality and ensure your venue meets our world-class membership standards.
+                </p>
+</div>
+<div class="flex flex-col items-end gap-2">
+<div class="flex -space-x-3 mb-2">
+<img class="w-10 h-10 rounded-full border-2 border-surface object-cover" data-alt="Staff profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXDC5WgDN2FlZUdBOpJo9t4oY2It8SkiBgCkT7NLg3_yUSoGrgGh8XHBzhy5sGOqtyyI8-6VsOQvYmqeMb_3cXu-YyPMBRtEWQtlfIXPvQhKIyNs7FiHcBVOpDMJiLSoRSeQdSfsAsPVaP25tW3ZpYj_RhKxuLSHBbw_Nyj8-FYMcKzFedHRfv1GFmjHemC8AzNjvht0CXsk9l0GDM7pr1XefrcddKTVycNBVMi7CkyzavTiygbdWQSy3APSvL0xUw14kO0EE6p2c"/>
+<img class="w-10 h-10 rounded-full border-2 border-surface object-cover" data-alt="Staff profile photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbRHKKjNIgZeOXuw0HZzRsNToGEmLgbTZmB0OA2-XWtcf60ndX_kNXh2e5vT6KxVDwZnut9sTJBQL8PpTYeHM2Cs27DrmjRq6qOAfJtyLG5r5nbeT4zHjAlmmV7pKvOvAap-4osi7dkdtrLCfThPdKiezbk9lCnAwJIrDWMDo1cQcUF6wu6jCG2FwntPceACnUjtNEu1hFjt7a4ltIUx5KVGBKlJUjZPMSVTlv4UQDGIwLoSC6N6gHmWo6sLMCV5BQzO8UPFJXwdI"/>
+<div class="w-10 h-10 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">+12</div>
+</div>
+<p class="text-xs font-medium text-on-surface-variant">Team participation: 84%</p>
+</div>
+</header>
+<!-- Bento Grid Stats & Featured -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+<!-- Learning Progress -->
+<div class="md:col-span-2 bg-surface-container-lowest rounded-xl p-8 flex flex-col justify-between shadow-sm relative overflow-hidden group">
+<div class="relative z-10">
+<h3 class="text-2xl font-headline font-bold mb-2">Your Training Journey</h3>
+<p class="text-on-surface-variant text-sm mb-8">3 of 5 Certification Levels completed.</p>
+<div class="flex gap-4">
+<div class="flex-1">
+<div class="h-2 bg-surface-container-high rounded-full overflow-hidden mb-2">
+<div class="h-full bg-primary w-[65%] rounded-full"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface uppercase tracking-widest">Mastering Service</span>
+</div>
+<div class="flex-1">
+<div class="h-2 bg-surface-container-high rounded-full overflow-hidden mb-2">
+<div class="h-full bg-tertiary-container w-[20%] rounded-full"></div>
+</div>
+<span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-widest opacity-50">Venue Analytics</span>
+</div>
+</div>
+</div>
+<!-- Background visual -->
+<div class="absolute right-0 bottom-0 w-1/3 h-full bg-gradient-to-l from-primary/5 to-transparent pointer-events-none"></div>
+</div>
+<!-- Download PDF Section -->
+<div class="bg-primary rounded-xl p-8 text-on-primary flex flex-col justify-between group cursor-pointer hover:bg-on-primary-fixed-variant transition-colors duration-300">
+<span class="material-symbols-outlined text-4xl mb-4" data-icon="description">description</span>
+<div>
+<h3 class="text-xl font-headline font-bold mb-1">Standards PDF</h3>
+<p class="text-on-primary/70 text-sm mb-6">Download the 2024 Service Handbook.</p>
+<div class="flex items-center gap-2 font-bold text-sm">
+                        Download Now
+                        <span class="material-symbols-outlined text-sm" data-icon="download">download</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Course Library -->
+<section class="mb-20">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h2 class="text-3xl font-headline font-bold tracking-tight">Active Curriculums</h2>
+<p class="text-on-surface-variant">Hand-picked courses for your venue staff.</p>
+</div>
+<div class="flex gap-2">
+<button class="p-3 rounded-full bg-surface-container-high text-on-surface hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="p-3 rounded-full bg-surface-container-high text-on-surface hover:bg-primary hover:text-on-primary transition-all">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Course Card 1 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-xl transition-all duration-500 group">
+<div class="h-56 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Close up of fine dining table setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDH3gT2KNzbB8Fh8bmh-jTehPiWyCJ3pbGSzqwW6Lkeclyod9Prh3NeUvEsDfy-Vy0ITbdOVVNbk4b3VsPMF-H4QQYcUhljOQrCMGUad08GkH9WD4HD1i0utx0xf5IHz8rQjFyTBM0IhtV2Pb1Qqz2URBNw0elJqCHpQNXIAp_9gQQF7QznCvo58Gur9pK0lJR4jNqmupG6Kwk7G8cAtG8jTOWo5Fi5ALZ-D65whWI1rjzSVqW6thlsc4exF5D7ak_fZlluTXgApm8"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white scale-0 group-hover:scale-100 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-surface/90 backdrop-blur-md text-[10px] font-bold rounded-full uppercase tracking-widest text-primary">Masterclass</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-headline font-bold mb-2">The Art of Table Chemistry</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Learn how to read table dynamics and deliver impeccable service without breaking the social flow.</p>
+<div class="flex items-center justify-between pt-6 border-t border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="schedule">schedule</span>
+<span class="text-xs font-medium text-on-surface-variant">45 mins</span>
+</div>
+<span class="text-xs font-bold text-primary uppercase tracking-tighter">Resume Module</span>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-xl transition-all duration-500 group">
+<div class="h-56 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A professional sommelier pouring wine" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXwoyX1ceN1IjlIL0094yd-zv_jLlEgYzFE2HwKgcgPYozRZ2T4GbKPWuF7KKJGVjVBpM8dQfqGYhgew3TaBVgRYefprYj9Rx448Q6MnqJEfV40X0RUxs2PQzA7eMF8lcCH1RKOF9ZLxkQQXXgBG0ZCzCLOU0DFrdTVbOvPYqWJWHvbY8dJMs83x9OAej__-v6YigIDrZR-B2zWIv-vBxuQ2k-0oK3nKYpCZOpUw8kPOY9hLF5KFmAkwEelhM2yyoWTXlYRnPNLCM"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white scale-0 group-hover:scale-100 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-surface/90 backdrop-blur-md text-[10px] font-bold rounded-full uppercase tracking-widest text-primary">Core Skills</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-headline font-bold mb-2">Premium Service Standards</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">The GOMET fundamentals: attire, vocabulary, and technical skills for premium venues.</p>
+<div class="flex items-center justify-between pt-6 border-t border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="schedule">schedule</span>
+<span class="text-xs font-medium text-on-surface-variant">120 mins</span>
+</div>
+<span class="text-xs font-bold text-on-surface-variant opacity-50 uppercase tracking-tighter">Locked</span>
+</div>
+</div>
+</div>
+<!-- Course Card 3 -->
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col shadow-sm hover:shadow-xl transition-all duration-500 group">
+<div class="h-56 relative overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Elegant bar setting with complex cocktails" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUT-X2B362rP7y6svQyALH-xEdYqwN10pI_5lP-o6CZJ4U-ynsPdHXv7K1G0BV04vE-4zWL0gRYDf1FurBFr2Brh_8zauEaNrX03UYVkapRgrqvRbclHEB9BkrVhEmpUfgBEDlNTs0aPMaz2gpWyF9WoKv045I6QyqHpSM-XcGj9CBmndwO1adpX39FD1SADf56JCy7pzPJM6yrHlj5DX_-uowJ35Yy8gtaXKcKP6NpLSQlQeJcfQqBfn3LH96BwVLTeyLWz6XnLM"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors flex items-center justify-center">
+<div class="w-14 h-14 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white scale-0 group-hover:scale-100 transition-transform duration-300">
+<span class="material-symbols-outlined text-3xl" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute top-4 left-4">
+<span class="px-3 py-1 bg-surface/90 backdrop-blur-md text-[10px] font-bold rounded-full uppercase tracking-widest text-primary">Expertise</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-headline font-bold mb-2">The Curator's Palette</h3>
+<p class="text-sm text-on-surface-variant mb-6 line-clamp-2">Understanding flavor profiles and beverage pairings to enhance the culinary experience.</p>
+<div class="flex items-center justify-between pt-6 border-t border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-sm" data-icon="schedule">schedule</span>
+<span class="text-xs font-medium text-on-surface-variant">60 mins</span>
+</div>
+<span class="text-xs font-bold text-primary uppercase tracking-tighter">Start Now</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Video Previews / Quick Insights -->
+<section class="mb-20">
+<h2 class="text-xl font-headline font-bold tracking-tight mb-8">Short Focus Sessions</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="aspect-video rounded-lg bg-surface-container-high relative group overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Artful cocktail preparation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9rg3NZK5hW1z5vq7uFW3EP30yLIWv5LJrEShAGAH9ejEN9XT4ZtCJGvJJ773WiqVV4da-4sqMAVbZBg2Lu8IUJs0Syr1X_8ZBSJd6PRGB9Xc1skxTbxSmTH884SBARfg_4NwHz3k6oGRGHfioHivvnkhycg9m87SZzzvsPB2oBa3egmsowu3nk9oGcsN1HVPcySmW54Q9lq87opzLRLo4mRsnyusVwyn8Mgr0NycXO13NwIPWA6E2KWqwR8_90wluYpb7e-djLAg"/>
+<div class="absolute inset-0 p-4 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
+<p class="text-[10px] text-white/80 font-bold uppercase tracking-widest">3:24</p>
+<p class="text-xs font-bold text-white leading-tight">Garnish Standards</p>
+</div>
+</div>
+<div class="aspect-video rounded-lg bg-surface-container-high relative group overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Plated gourmet dish being served" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBytb7RQe43BWnsxF970H7juWlRiK4cCtNBLnVwetu6ZH8hDhJ-WEadOWGwJ6G3IWcr6_9iClAshqnumMuGfw4SqjHrVwqfI-980NHL2zbbT0t1YlQ61oxr3WTxYphWr9WnZYiAgilIqIfgwiey1UX5vpGMfvvi72irtMRZMrzlWE7AzZE7qJ-Fg9wx_bm6QUeOTtEbQGS8GiQJjGxYftURmSvMOJnDBLXwPilUo2_VPgL6nZfj91Y3k9IlFYaX1jqgfYfPntm8Qm8"/>
+<div class="absolute inset-0 p-4 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
+<p class="text-[10px] text-white/80 font-bold uppercase tracking-widest">5:10</p>
+<p class="text-xs font-bold text-white leading-tight">Plate Presentation</p>
+</div>
+</div>
+<div class="aspect-video rounded-lg bg-surface-container-high relative group overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Chef in an elegant kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCXoQmWAQHKJRKBQ-TadTSW94K2TNZr4sG-kbpI_RmKWB59yBInqZAvSo3_PpR664zcO04d4gPO8kUZrmzE88uPM2HJvfJAs_k-dycx1P97wXxVkUj7DWy46sSBlS2RwHeTisiZDEJnOLF9bAAPZ35IXEjzM9xvVrn4ky1AzELilEcQOTyIB9UFe0Qx_jCUBpXti-bGulejTVio7SpTR9aD-y_cCMamOVCwwwBaUMDTuU9Oz36VJLfz6yz236R3KTr9HtOCc8RfTA"/>
+<div class="absolute inset-0 p-4 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
+<p class="text-[10px] text-white/80 font-bold uppercase tracking-widest">2:45</p>
+<p class="text-xs font-bold text-white leading-tight">Kitchen Communication</p>
+</div>
+</div>
+<div class="aspect-video rounded-lg bg-surface-container-high relative group overflow-hidden cursor-pointer">
+<img class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" data-alt="Evening restaurant ambience" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC4K5A02Cgigm03bj62QCoLrPIh1pVgaXBHlEdqaZoDiPTFRuAQa0AnH__BWQOypirS_kjdRCdh3ClSn2l8XKztDSWYHmFXcIZsEzh12fIDsgKFssm1X22fHo1xgHx3wR7ybyZskjyXO8Vmqrd7Y2_PHShoJPQph4HsKE-5Ew1SJkBfYn33GH2V8DGRhPxXRktTxztSJdVXIAQYo3eaPF74VkTKKjvXH9Wpq15VW1QK71qGDFwR5ZSjQz7l9dIUGP6VOGsiYA-QVE"/>
+<div class="absolute inset-0 p-4 flex flex-col justify-end bg-gradient-to-t from-black/80 to-transparent">
+<p class="text-[10px] text-white/80 font-bold uppercase tracking-widest">4:15</p>
+<p class="text-xs font-bold text-white leading-tight">Managing Ambience</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer (Authority: JSON) -->
+<footer class="w-full py-12 px-8 flex flex-col md:flex-row justify-between items-center gap-6 bg-stone-100 dark:bg-stone-900 border-t-0 rounded-xl mt-20">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-plus-jakarta font-bold text-lg text-rose-600 dark:text-rose-400 uppercase tracking-tight">GOMET</span>
+<p class="font-inter text-xs uppercase tracking-widest text-stone-500 dark:text-stone-400 mt-2">© 2024 GOMET Culinary Network. All rights reserved.</p>
+</div>
+<nav class="flex gap-8">
+<a class="font-inter text-xs uppercase tracking-widest text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-all" href="#">Privacy</a>
+<a class="font-inter text-xs uppercase tracking-widest text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-all" href="#">Terms</a>
+<a class="font-inter text-xs uppercase tracking-widest text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-all" href="#">Concierge</a>
+<a class="font-inter text-xs uppercase tracking-widest text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-all" href="#">Press</a>
+</nav>
+</footer>
+</main>
+<!-- Contextual FAB (Mandate: Home/Dashboard Alignment) -->
+<button class="fixed bottom-8 right-8 w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center group hover:scale-105 transition-transform duration-300 z-50">
+<span class="material-symbols-outlined text-3xl" data-icon="help_center">help_center</span>
+<span class="absolute right-20 bg-on-surface text-surface text-[10px] px-3 py-1 rounded font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">Training Support</span>
+</button>
+</body></html>

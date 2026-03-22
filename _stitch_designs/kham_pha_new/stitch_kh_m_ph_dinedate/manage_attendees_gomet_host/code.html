@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Attendee Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface": "#fdf9f3",
+              "on-primary-container": "#6d0010",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary": "#5f5e5e",
+              "on-primary-fixed": "#410006",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-container": "#f1ede7",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#ebe8e2",
+              "error-container": "#ffdad6",
+              "on-tertiary-container": "#55251e",
+              "primary-container": "#ff6b6b",
+              "inverse-surface": "#31302d",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-dim": "#dddad4",
+              "on-surface": "#1c1c18",
+              "primary": "#ae2f34",
+              "outline-variant": "#e0bfbd",
+              "inverse-primary": "#ffb3b0",
+              "surface-container-low": "#f7f3ed",
+              "outline": "#8c706f",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-tint": "#ae2f34",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary-fixed-variant": "#474747",
+              "on-secondary-container": "#656464",
+              "on-primary": "#ffffff",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary": "#ffffff",
+              "secondary-fixed": "#e4e2e1",
+              "primary-fixed": "#ffdad8",
+              "surface-bright": "#fdf9f3",
+              "on-background": "#1c1c18",
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-highest": "#e6e2dc",
+              "error": "#ba1a1a",
+              "tertiary": "#894e45",
+              "on-surface-variant": "#584140",
+              "on-secondary-fixed": "#1b1c1c",
+              "background": "#fdf9f3",
+              "surface-variant": "#e6e2dc",
+              "on-error": "#ffffff",
+              "on-secondary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-bold text-primary dark:text-primary-container tracking-tighter font-headline">GOMET</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant hover:opacity-80 transition-opacity font-medium" href="#">Events</a>
+<a class="text-primary font-bold transition-opacity" href="#">Reservations</a>
+<a class="text-on-surface-variant hover:opacity-80 transition-opacity font-medium" href="#">Dashboard</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container rounded-full transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container rounded-full transition-colors" data-icon="person">person</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 md:px-8 max-w-7xl mx-auto">
+<!-- Header Section -->
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="font-headline text-label-md uppercase tracking-widest text-primary font-bold">Host Portal</span>
+<h1 class="font-headline text-5xl font-extrabold tracking-tighter text-on-background mt-2">Attendee Management</h1>
+<p class="text-on-surface-variant mt-4 text-lg max-w-2xl">Review applications for <span class="text-on-surface font-semibold underline decoration-primary-container">The Chef's Table: Omakase Night</span>. Select the most compatible guests for your table.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-surface-container-high px-6 py-3 rounded-full flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="group">group</span>
+<span class="font-bold">12 Applicants</span>
+</div>
+<div class="bg-surface-container-high px-6 py-3 rounded-full flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" data-icon="event_seat">event_seat</span>
+<span class="font-bold">4 Spots Left</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Main Content - Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- List Column -->
+<div class="lg:col-span-8 space-y-8">
+<!-- Applicant Card 1 -->
+<article class="bg-surface-container-lowest p-6 rounded-lg flex flex-col md:flex-row gap-8 items-start relative overflow-hidden transition-all hover:translate-y-[-4px]">
+<div class="w-full md:w-48 h-64 flex-shrink-0 rounded-md overflow-hidden relative group">
+<img alt="" class="w-full h-full object-cover" data-alt="Portrait of a friendly smiling young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkMONXRFEBYQGJV3r9mbe3UxGBx65cX1xxLaOnkHk8QOn8BYwcFXrc0-HSK31280ASPdNgFkmpoOX8r_Kj40RzEg7Ye4pnp0VwAhYOSelpzWJOjFHJycfWBTYHR08qQqAAulAlRSjgnkm_urlECrbFor9KcZaWLzaXznmINk4R3_xZYHZJsh_bElYPkMmQ-N5tvyPtk9Nxhm7fxRdrQJDKegG_2CMH6kSUnRhE-DLdjD9ztPxL4JXIsYMy6sQLib2CFtYvM9bCoes"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<span class="font-headline font-bold text-xl">Julian, 28</span>
+</div>
+</div>
+<div class="flex-grow space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-2xl font-bold tracking-tight">Tech Lead &amp; Sushi Enthusiast</h3>
+<div class="flex flex-wrap gap-2 mt-3">
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="restaurant">restaurant</span> Fine Dining
+                                    </span>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="wine_bar">wine_bar</span> Natural Wine
+                                    </span>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="handshake">handshake</span> 4 Mutuals
+                                    </span>
+</div>
+</div>
+<button class="material-symbols-outlined text-primary p-3 bg-primary/5 rounded-full hover:bg-primary/10 transition-colors" data-icon="chat_bubble">chat_bubble</button>
+</div>
+<p class="text-on-surface-variant leading-relaxed italic">"Looking forward to exploring the seasonal menu. I've been following this chef for years and would love to meet fellow foodies."</p>
+<div class="grid grid-cols-2 gap-4 pt-4">
+<button class="flex items-center justify-center gap-2 py-4 rounded-full bg-surface-container-highest text-on-surface font-bold hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="close">close</span> Decline
+                            </button>
+<button class="flex items-center justify-center gap-2 py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-white font-bold shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span> Approve
+                            </button>
+</div>
+</div>
+</article>
+<!-- Applicant Card 2 -->
+<article class="bg-surface-container-lowest p-6 rounded-lg flex flex-col md:flex-row gap-8 items-start relative overflow-hidden transition-all hover:translate-y-[-4px]">
+<div class="w-full md:w-48 h-64 flex-shrink-0 rounded-md overflow-hidden relative">
+<img alt="" class="w-full h-full object-cover" data-alt="Professional woman in a creative workspace" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7VD8NPJ-WaqQoweo7MvcmTnQ86GyZCIsnoThH8E51l_W80nX-Gl9ohaSiP-GxvYDiTOZTLRLNAh5E59Mcg2Xmeruq-7UYlfSMwi6uugBoSrFHBug4qUEmmmFdxR2xS0uYBtkQbrP_FkPIw48j1IFSHUGhOSH800pcNoByPqM-lduPzsVNZgp1DjgO6MVumOToyB5Sjq7DCQUg7zIVB_C8R8E_lUuU7nzzTu1C_a1mQcOsY0tdz7T84lhOCtgxysRob8plYScVsR8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<span class="font-headline font-bold text-xl">Elena, 31</span>
+</div>
+</div>
+<div class="flex-grow space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-2xl font-bold tracking-tight">Art Curator &amp; Amateur Baker</h3>
+<div class="flex flex-wrap gap-2 mt-3">
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="palette">palette</span> Modern Art
+                                    </span>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="bakery_dining">bakery_dining</span> Sourdough
+                                    </span>
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="handshake">handshake</span> 2 Mutuals
+                                    </span>
+</div>
+</div>
+<button class="material-symbols-outlined text-primary p-3 bg-primary/5 rounded-full hover:bg-primary/10 transition-colors" data-icon="chat_bubble">chat_bubble</button>
+</div>
+<p class="text-on-surface-variant leading-relaxed italic">"Food is an art form. I love dinners that spark great conversations about aesthetics and culture. Can't wait!"</p>
+<div class="grid grid-cols-2 gap-4 pt-4">
+<button class="flex items-center justify-center gap-2 py-4 rounded-full bg-surface-container-highest text-on-surface font-bold hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="close">close</span> Decline
+                            </button>
+<button class="flex items-center justify-center gap-2 py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-white font-bold shadow-lg shadow-primary/20 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined" data-icon="check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span> Approve
+                            </button>
+</div>
+</div>
+</article>
+<!-- Applicant Card 3 -->
+<article class="bg-surface-container-lowest p-6 rounded-lg flex flex-col md:flex-row gap-8 items-start relative overflow-hidden transition-all hover:translate-y-[-4px]">
+<div class="w-full md:w-48 h-64 flex-shrink-0 rounded-md overflow-hidden relative">
+<img alt="" class="w-full h-full object-cover" data-alt="Friendly man in a casual outdoor setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxCBLaagTchEliAXeB34ImopycDuXn7FJ9qSqINxDqnveo-UZEYnYSb0ZbiDPLyCWBpMRx5QqCBr3x2Pa43s1f3gZBxwXuHJo_n-lczKhDKOSszQrogCyMfMTalOdcSBNCEcR7D90V6DoEOIG-0n0sxdm5UD2--8yLieZmIwDEc4VMf20KjYVno1PQvsi4jnNb_6gu8HUGaaMXPy-wjE7zli8n0YjXfrVfP53mO_VHtjUK5oXz88A9GCihcE2tGUdePfa42w-eFlc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-4 left-4 text-white">
+<span class="font-headline font-bold text-xl">Marcus, 34</span>
+</div>
+</div>
+<div class="flex-grow space-y-4">
+<div class="flex justify-between items-start">
+<div>
+<h3 class="font-headline text-2xl font-bold tracking-tight">Architect &amp; Coffee Roaster</h3>
+<div class="flex flex-wrap gap-2 mt-3">
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="architecture">architecture</span> Design
+                                    </span>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]" data-icon="coffee">coffee</span> Espresso
+                                    </span>
+</div>
+</div>
+<button class="material-symbols-outlined text-primary p-3 bg-primary/5 rounded-full hover:bg-primary/10 transition-colors" data-icon="chat_bubble">chat_bubble</button>
+</div>
+<p class="text-on-surface-variant leading-relaxed italic">"Always searching for the perfect pairing. I appreciate minimal design and complex flavors. Happy to contribute some specialty beans!"</p>
+<div class="grid grid-cols-2 gap-4 pt-4">
+<button class="flex items-center justify-center gap-2 py-4 rounded-full bg-surface-container-highest text-on-surface font-bold hover:bg-surface-container-high transition-all">
+<span class="material-symbols-outlined" data-icon="close">close</span> Decline
+                            </button>
+<button class="flex items-center justify-center gap-2 py-4 rounded-full bg-gradient-to-r from-primary to-primary-container text-white font-bold shadow-lg shadow-primary/20 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined" data-icon="check" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check</span> Approve
+                            </button>
+</div>
+</div>
+</article>
+</div>
+<!-- Dashboard Sidebar -->
+<aside class="lg:col-span-4 space-y-6">
+<!-- Compatibility Matrix Card -->
+<div class="bg-surface-container-low p-8 rounded-lg">
+<h4 class="font-headline text-xl font-bold mb-6">Table Chemistry</h4>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Foodie Match</span>
+<div class="w-32 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="w-4/5 h-full bg-primary"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Social Balance</span>
+<div class="w-32 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="w-3/5 h-full bg-tertiary"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant">Interests Synergy</span>
+<div class="w-32 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="w-5/6 h-full bg-primary-container"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant/20">
+<p class="text-sm text-on-surface-variant italic leading-relaxed">"Based on your current selections, this table leans towards <span class="text-on-surface font-bold">Creative Professionals</span> with a shared interest in <span class="text-on-surface font-bold">Culinary Arts</span>."</p>
+</div>
+</div>
+<!-- Quick Action Bento -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-primary text-white p-6 rounded-md flex flex-col justify-between h-40">
+<span class="material-symbols-outlined text-3xl" data-icon="auto_awesome" data-weight="fill" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-bold text-sm leading-tight">Auto-Select Compatible</span>
+</div>
+<div class="bg-surface-container-highest p-6 rounded-md flex flex-col justify-between h-40">
+<span class="material-symbols-outlined text-3xl text-primary" data-icon="ios_share">ios_share</span>
+<span class="font-bold text-sm text-on-surface leading-tight">Export Guest List</span>
+</div>
+</div>
+<!-- Event Stats -->
+<div class="bg-surface-container-high/50 p-6 rounded-md border border-outline-variant/10">
+<h5 class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4">Host Deadlines</h5>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="w-2 h-2 rounded-full bg-primary mt-1.5"></span>
+<div>
+<p class="font-bold text-sm">Guest List Lock</p>
+<p class="text-xs text-on-surface-variant">In 2 days, 14:00 PM</p>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="w-2 h-2 rounded-full bg-outline mt-1.5"></span>
+<div>
+<p class="font-bold text-sm">Dietary Notification</p>
+<p class="text-xs text-on-surface-variant">Automatic after approval</p>
+</div>
+</li>
+</ul>
+</div>
+</aside>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-6 pb-6 pt-3 bg-surface/80 backdrop-blur-md shadow-2xl rounded-t-[2rem] z-50">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors scale-110 active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-inter text-[10px] font-medium uppercase mt-1">Explore</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary/10 text-primary rounded-full px-4 py-1 scale-110 active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-inter text-[10px] font-medium uppercase mt-1">Reservations</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors scale-110 active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-inter text-[10px] font-medium uppercase mt-1">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors scale-110 active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-inter text-[10px] font-medium uppercase mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

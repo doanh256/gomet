@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-primary": "#ffb3b0",
+              "secondary-fixed": "#e4e2e1",
+              "on-secondary-container": "#656464",
+              "surface-variant": "#e6e2dc",
+              "inverse-on-surface": "#f4f0ea",
+              "surface": "#fdf9f3",
+              "on-primary": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "surface-container-highest": "#e6e2dc",
+              "surface-bright": "#fdf9f3",
+              "on-secondary-fixed-variant": "#474747",
+              "error": "#ba1a1a",
+              "on-error": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary": "#5f5e5e",
+              "outline": "#8c706f",
+              "surface-dim": "#dddad4",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "primary-container": "#ff6b6b",
+              "primary": "#ae2f34",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-error-container": "#93000a",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "secondary-container": "#e4e2e1",
+              "error-container": "#ffdad6",
+              "on-surface-variant": "#584140",
+              "tertiary-fixed": "#ffdad4",
+              "tertiary-container": "#cf8a7f",
+              "surface-container-low": "#f7f3ed",
+              "on-background": "#1c1c18",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-primary-container": "#6d0010",
+              "background": "#fdf9f3",
+              "surface-container-high": "#ebe8e2",
+              "tertiary": "#894e45",
+              "outline-variant": "#e0bfbd",
+              "on-primary-fixed": "#410006",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1c1c18",
+              "surface-container": "#f1ede7",
+              "on-tertiary-container": "#55251e",
+              "inverse-surface": "#31302d"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .asymmetric-shape {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container/30">
+<!-- Top Navigation Bar -->
+<nav class="bg-white/80 dark:bg-stone-900/80 backdrop-blur-xl fixed top-0 w-full z-50 shadow-sm shadow-rose-900/5">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-rose-700 dark:text-rose-500 font-headline">GOMET</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-500 font-['Plus_Jakarta_Sans'] tracking-tight transition-colors duration-200" href="#">Partners</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-500 font-['Plus_Jakarta_Sans'] tracking-tight transition-colors duration-200" href="#">Verification</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-rose-500 font-['Plus_Jakarta_Sans'] tracking-tight transition-colors duration-200" href="#">Safety</a>
+<a class="text-rose-700 dark:text-rose-400 font-bold border-b-2 border-rose-600 font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Subscriptions</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-stone-600 hover:bg-stone-50 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-stone-600 hover:bg-stone-50 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant/20">
+<img alt="User profile" data-alt="Elegant user profile headshot in warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWBN39e0QtIjxWE-sJHm4OQZghL39G6L_Z_GeZ-SbIEmwJ_jXuYHnkxI6oMJskJmATs6KYv6AW2BwfkfgwA5XOoytMVMRq9fPiYjgALeQ6rA0tJxCYjYyaCnRUr8ll7z_ga6LNBVdJTu_yKU_w-mqSXXrVM1lpBlLHamNKwXRLWe9ITzLzmT-YjYjYwI8SVDNSbcfTFqLPwzxyQJJHiDeh0SiEYpxKNnvxoivtZ03OxwuirCGwMkxXXpmYuL6kgYVZh0yWXpoELm4"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<main class="pt-24 pb-32">
+<header class="max-w-7xl mx-auto px-6 text-center mb-20">
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-background mb-6 leading-[1.1]">
+                Taste the <span class="text-primary italic">Extraordinary</span>
+</h1>
+<p class="font-body text-lg text-secondary max-w-2xl mx-auto">
+                Elevate your social life with curated culinary experiences and priority matchmaking. Select a plan that matches your appetite for connection.
+            </p>
+</header>
+<!-- Pricing Grid -->
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-end">
+<!-- Basic Plan -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col h-full">
+<div class="mb-8">
+<span class="font-label uppercase tracking-widest text-[10px] text-secondary font-bold">The Taster</span>
+<h3 class="font-headline text-3xl font-bold mt-2">Free</h3>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span class="text-on-surface-variant font-body">Standard Discovery Feed</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span class="text-on-surface-variant font-body">Chat with Matches</span>
+</li>
+<li class="flex items-start gap-3 text-secondary opacity-50">
+<span class="material-symbols-outlined text-xl" data-icon="block">block</span>
+<span class="font-body">Event Priority Access</span>
+</li>
+</ul>
+<button class="w-full py-4 bg-surface-container-highest text-on-surface font-headline font-bold rounded hover:bg-surface-container-high transition-all">
+                        Current Plan
+                    </button>
+</div>
+<!-- Featured Plan: The Curator -->
+<div class="relative bg-white p-1 rounded-[2.2rem] shadow-[0_24px_48px_-12px_rgba(174,47,52,0.12)] -mt-8">
+<div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-tr from-primary to-primary-container text-white px-6 py-1.5 rounded-full font-label text-[10px] uppercase tracking-widest font-bold shadow-lg shadow-primary/30">
+                        Most Exquisite
+                    </div>
+<div class="bg-white p-8 md:p-10 rounded-xl h-full border border-primary-container/10">
+<div class="mb-8">
+<span class="font-label uppercase tracking-widest text-[10px] text-primary font-black">The Curator</span>
+<div class="flex items-baseline gap-1 mt-2">
+<h3 class="font-headline text-5xl font-extrabold tracking-tighter">$49</h3>
+<span class="text-secondary font-body">/mo</span>
+</div>
+</div>
+<div class="space-y-6 mb-12">
+<div class="p-4 bg-surface-container-low rounded-lg border-l-4 border-primary">
+<h4 class="font-headline font-bold text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                    Verified Connoisseur Badge
+                                </h4>
+<p class="text-sm text-on-surface-variant mt-1">Exclusive profile authentication for premium users.</p>
+</div>
+<ul class="space-y-4">
+<li class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<div>
+<p class="font-headline font-bold text-sm">0% Escrow Fees</p>
+<p class="text-[11px] text-secondary uppercase tracking-wider">Premium Transaction Security</p>
+</div>
+</li>
+<li class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="event" style="font-variation-settings: 'FILL' 1;">event</span>
+</div>
+<div>
+<p class="font-headline font-bold text-sm">Midnight Jazz Access</p>
+<p class="text-[11px] text-secondary uppercase tracking-wider">Early Booking Priority</p>
+</div>
+</li>
+<li class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<p class="font-headline font-bold text-sm">5 Monthly Match Boosts</p>
+<p class="text-[11px] text-secondary uppercase tracking-wider">Strategic Profile Elevation</p>
+</div>
+</li>
+</ul>
+</div>
+<button class="w-full py-5 bg-gradient-to-tr from-primary to-primary-container text-white font-headline font-extrabold text-lg rounded-lg shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform duration-300">
+                            Upgrade to Curator
+                        </button>
+</div>
+</div>
+<!-- Enterprise/VIP Plan -->
+<div class="bg-surface-container-low p-8 rounded-lg flex flex-col h-full border border-transparent">
+<div class="mb-8">
+<span class="font-label uppercase tracking-widest text-[10px] text-secondary font-bold">The Epicurean</span>
+<h3 class="font-headline text-3xl font-bold mt-2">$129</h3>
+</div>
+<ul class="space-y-4 mb-12 flex-grow">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span class="text-on-surface-variant font-body">Concierge Matchmaking</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span class="text-on-surface-variant font-body">Private Dining Access</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary text-xl" data-icon="check_circle">check_circle</span>
+<span class="text-on-surface-variant font-body">Unlimited Boosts</span>
+</li>
+</ul>
+<button class="w-full py-4 bg-surface-container-highest text-on-surface font-headline font-bold rounded hover:bg-surface-container-high transition-all">
+                        Contact Sales
+                    </button>
+</div>
+</div>
+</div>
+<!-- Comparison Table Section -->
+<section class="max-w-7xl mx-auto px-6 mt-32">
+<h2 class="font-headline text-3xl font-bold mb-12 text-center">Feature Breakdown</h2>
+<div class="overflow-hidden rounded-lg bg-surface-container-low/50">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-high/50">
+<th class="p-6 font-headline font-bold text-secondary uppercase tracking-widest text-xs">Feature</th>
+<th class="p-6 font-headline font-bold text-center">Taster</th>
+<th class="p-6 font-headline font-bold text-center text-primary">The Curator</th>
+<th class="p-6 font-headline font-bold text-center">Epicurean</th>
+</tr>
+</thead>
+<tbody class="font-body text-sm divide-y divide-surface-container-highest">
+<tr>
+<td class="p-6 font-medium">Monthly Discovery Swipes</td>
+<td class="p-6 text-center">50</td>
+<td class="p-6 text-center font-bold">Unlimited</td>
+<td class="p-6 text-center font-bold">Unlimited</td>
+</tr>
+<tr>
+<td class="p-6 font-medium">Escrow Fee Rate</td>
+<td class="p-6 text-center">5%</td>
+<td class="p-6 text-center font-bold text-primary">0%</td>
+<td class="p-6 text-center font-bold text-primary">0%</td>
+</tr>
+<tr>
+<td class="p-6 font-medium">Midnight Jazz Priority</td>
+<td class="p-6 text-center text-error"><span class="material-symbols-outlined" data-icon="close">close</span></td>
+<td class="p-6 text-center text-primary font-bold">72h Early</td>
+<td class="p-6 text-center text-primary font-bold">VIP Seating</td>
+</tr>
+<tr>
+<td class="p-6 font-medium">Profile Verification Badge</td>
+<td class="p-6 text-center">Standard</td>
+<td class="p-6 text-center font-bold text-primary italic">Connoisseur</td>
+<td class="p-6 text-center font-bold text-primary italic">Elite</td>
+</tr>
+<tr>
+<td class="p-6 font-medium">Match Boosts</td>
+<td class="p-6 text-center">—</td>
+<td class="p-6 text-center">5 / month</td>
+<td class="p-6 text-center">Unlimited</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Bento Highlights -->
+<section class="max-w-7xl mx-auto px-6 mt-32 grid grid-cols-1 md:grid-cols-4 gap-6">
+<div class="md:col-span-2 bg-inverse-surface text-inverse-on-surface p-10 rounded-lg flex flex-col justify-between min-h-[300px]">
+<div>
+<span class="material-symbols-outlined text-4xl mb-4 text-primary-container" data-icon="nightlife">nightlife</span>
+<h3 class="font-headline text-3xl font-bold mb-4">Midnight Jazz Series</h3>
+<p class="font-body text-surface-variant max-w-sm">Curator members receive first-call notifications for our underground jazz and dining pop-ups across the city.</p>
+</div>
+<div class="mt-8 flex gap-4">
+<div class="flex -space-x-3">
+<img class="w-10 h-10 rounded-full border-2 border-inverse-surface" data-alt="User avatar 1" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgxVpYH2WoCEPlRzRt8lmO6iLMbx_wdqrMY5MY5lyQomdbhT2xnHEbycmg6o68QhCtRnvjXosjZpxdM1xAOutZGG4VklS_G6pPOqjtE8v1H80ufaKClF_M1rhrN3K_iYoX7pUppLeRo8waMxPiv-MN9BL5jIU8tQtsdsGiPkKh2BbLql4LpN7iFEkcniN6M5CSKwkJT2BIbibiNXFCekM3KK8IoeOnrjwNNKeMzAxqYQ79PLrr5KQBPKVDV0V5qJVxCcNoLDVqHjw"/>
+<img class="w-10 h-10 rounded-full border-2 border-inverse-surface" data-alt="User avatar 2" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4KUzwsaEQfTvFs4xfSyVc4RMZWW_yNBUmqD45_sT6kcCn3BJKyWsCTIqhaU-rzDeUZ2mGdPJikFH2fFc-aKQ3UpUOpkmoXFBwFar_9efYPOqMu2IIqIHB-XaAwiWM7JTbi8I25HZBKC8nPW2fwGFnu1QJKW3iOJmGEn9WhaKL9P-mBR0dSNP8HuokmrGomjF5u0CPctcXmmU9mLkobWvt4qiU2CX8fmLevBsxvXp4YUTq6UPb2ou4pnaaYSqMpVcfGqLk4sc8vYg"/>
+<img class="w-10 h-10 rounded-full border-2 border-inverse-surface" data-alt="User avatar 3" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBl5_gAyIPilWj31dFfvwqGAzuRO89ACz4RvpiXj_bm01eTqM1VVey8C5ULEEcULFwEIoopzDm_2dhZ4oSx2oKYb0ovMP5ng9Iv0kOLMj8WKn8NhLV4_8BBdEJzRYcYI9UqSZsz8RrH_NFiNBDcam8Pgh9kG6NzIAME36ICkm-DCTXq_zn-520MV_NQsA18im3ysyQjD0L7km3IP1dMYI3wTsGqUfoAdNZKugH1nxqVnRjk7fzBznIwL5KNd4YhUa221Bxdx6Uy4wE"/>
+</div>
+<p class="text-sm self-center text-surface-variant font-medium">+120 booked today</p>
+</div>
+</div>
+<div class="md:col-span-1 bg-primary text-white p-8 rounded-lg flex flex-col justify-center text-center">
+<span class="material-symbols-outlined text-5xl mb-4 mx-auto" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<h4 class="font-headline font-extrabold text-xl uppercase tracking-tighter">Verified Connoisseur</h4>
+<p class="text-xs mt-2 opacity-80 uppercase tracking-widest font-bold">Instant Trust Boost</p>
+</div>
+<div class="md:col-span-1 bg-surface-container-high p-8 rounded-lg flex flex-col justify-between">
+<h4 class="font-headline font-bold text-on-background">Secure Escrow</h4>
+<div class="text-5xl font-black text-primary my-4">0%</div>
+<p class="text-sm text-secondary">Pay for dates and shared experiences with zero service fees.</p>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pb-6 pt-3 bg-white/90 dark:bg-stone-900/90 backdrop-blur-lg shadow-[0_-8px_24px_-12px_rgba(174,47,52,0.12)] rounded-t-[2rem]">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="fact_check">fact_check</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Verify</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="security">security</span>
+<span class="font-['Inter'] text-[10px] uppercase tracking-widest mt-1">Safety</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-rose-600 text-white rounded-full w-12 h-12 -translate-y-2 shadow-lg shadow-rose-500/40 scale-110 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="hidden">Plans</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="bg-surface-container-low pt-20 pb-32 lg:pb-20 border-t border-transparent">
+<div class="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-12">
+<div>
+<h4 class="font-headline font-bold mb-6">GOMET</h4>
+<p class="text-sm text-secondary font-body">Refined connections for the culinary minded.</p>
+</div>
+<div>
+<h5 class="font-label uppercase tracking-widest text-[10px] font-bold mb-6">Product</h5>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Safety Center</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy Shield</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Verification</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label uppercase tracking-widest text-[10px] font-bold mb-6">Company</h5>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">About</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Partners</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Press</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label uppercase tracking-widest text-[10px] font-bold mb-6">Legal</h5>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li><a class="hover:text-primary transition-colors" href="#">Terms</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Privacy</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Cookie Policy</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto px-6 mt-16 pt-8 border-t border-outline-variant/10 text-center text-xs text-secondary">
+            © 2024 GOMET. All rights reserved.
+        </div>
+</footer>
+</body></html>

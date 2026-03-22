@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>404 - Page Not Found | GOMET</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#ae2f34",
+              "surface-variant": "#e6e2dc",
+              "surface-container-low": "#f7f3ed",
+              "inverse-surface": "#31302d",
+              "on-primary-fixed": "#410006",
+              "secondary-container": "#e4e2e1",
+              "on-primary-container": "#6d0010",
+              "on-secondary-container": "#656464",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "background": "#fdf9f3",
+              "on-tertiary-fixed": "#370e08",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "error-container": "#ffdad6",
+              "inverse-primary": "#ffb3b0",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#dddad4",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "tertiary-container": "#cf8a7f",
+              "on-surface": "#1c1c18",
+              "tertiary": "#894e45",
+              "surface-container": "#f1ede7",
+              "on-tertiary": "#ffffff",
+              "outline": "#8c706f",
+              "on-background": "#1c1c18",
+              "primary": "#ae2f34",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-container-highest": "#e6e2dc",
+              "on-secondary-fixed-variant": "#474747",
+              "on-error-container": "#93000a",
+              "secondary": "#5f5e5e",
+              "primary-container": "#ff6b6b",
+              "outline-variant": "#e0bfbd",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#e4e2e1",
+              "on-error": "#ffffff",
+              "error": "#ba1a1a",
+              "on-surface-variant": "#584140",
+              "surface": "#fdf9f3",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-fixed": "#1b1c1c"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-gradient-primary {
+        background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+      }
+      .asymmetric-shape {
+        clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar (Suppressed navigation links for focused 404 state) -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-8 h-20 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-primary">
+                GOMET
+            </div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface/60 hover:text-primary transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface/60 hover:text-primary transition-all">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+</header>
+<main class="min-h-screen pt-32 pb-20 px-6 flex flex-col items-center justify-center overflow-hidden">
+<!-- Hero Section with Intentional Asymmetry -->
+<div class="relative w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Left Content: Editorial Typography -->
+<div class="lg:col-span-7 z-10 text-center lg:text-left">
+<span class="inline-block px-4 py-1.5 rounded-full bg-surface-container-high text-primary font-headline text-sm font-bold tracking-widest uppercase mb-6">
+                    Error 404
+                </span>
+<h1 class="font-headline font-extrabold text-6xl md:text-8xl text-on-surface tracking-tighter leading-[0.9] mb-8">
+                    Oops! You've strayed from the <span class="text-primary italic">reservation.</span>
+</h1>
+<p class="text-on-surface-variant text-lg md:text-xl max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed">
+                    It seems this table has already been cleared. Let's get you back to the main course.
+                </p>
+<div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+<a class="bg-gradient-primary text-on-primary px-8 py-4 rounded-DEFAULT font-headline font-bold text-base shadow-lg shadow-primary/20 hover:scale-95 transition-all duration-200" href="/">
+                        Back to Home
+                    </a>
+<button class="bg-surface-container-highest text-on-surface px-8 py-4 rounded-DEFAULT font-headline font-bold text-base hover:bg-surface-container-high transition-all">
+                        Support Concierge
+                    </button>
+</div>
+</div>
+<!-- Right Content: Layered Image Elements -->
+<div class="lg:col-span-5 relative hidden lg:block">
+<div class="absolute -top-12 -left-12 w-64 h-64 bg-tertiary-fixed rounded-xl -rotate-12 z-0"></div>
+<div class="relative z-10 rounded-lg overflow-hidden shadow-2xl rotate-3 scale-110">
+<img alt="Empty elegant restaurant table" class="w-full h-[500px] object-cover" data-alt="Empty elegant restaurant table with white linens" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmpJZkgnZbLf75iobiqN3yRK0k7GsBBUReHN9ckcVIAgaD0StiFAbYDfxWYfA72DlPnpcA9DhvknQrsFRc6b3DoYdHkm5zHYIMHX1gg6Wko-LB61NbNlLJwzIM__xRioAAYO3nR8s3SMJJ8CTIgJKT13LyxaYhSC4afCBLw7p9jvoXw1z_mlAfpRuuZwxmKjAheiSMPMqEP1JXsGZXhIjJJq5gwVydBQCmiOv0QUhlOhLO7Zpa6iC7tyrKikIYcG2WV4mYavknVL4"/>
+</div>
+<div class="absolute -bottom-8 -right-8 w-48 h-48 bg-primary-fixed rounded-full z-20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-6xl">no_meals</span>
+</div>
+</div>
+</div>
+<!-- Destination Bento Grid -->
+<div class="w-full max-w-7xl mx-auto mt-24">
+<h2 class="font-headline font-bold text-2xl mb-12 text-center lg:text-left">Popular Destinations</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+<!-- Bento Card 1: Find a Date -->
+<div class="group relative bg-surface-container-lowest p-8 rounded-lg shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 md:col-span-2 overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full group-hover:scale-150 transition-transform duration-500"></div>
+<span class="material-symbols-outlined text-primary text-4xl mb-4">favorite</span>
+<h3 class="font-headline font-bold text-2xl mb-2">Find a Date</h3>
+<p class="text-on-surface-variant mb-6">Discover someone who shares your taste in fine dining and adventure.</p>
+<a class="text-primary font-bold flex items-center gap-2 group-hover:gap-4 transition-all" href="#">
+                        Explore Matches <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<!-- Bento Card 2: Explore Venues -->
+<div class="group bg-surface-container-low p-8 rounded-lg hover:bg-surface-container-high transition-all duration-300">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4">restaurant</span>
+<h3 class="font-headline font-bold text-xl mb-2">Explore Venues</h3>
+<p class="text-on-surface-variant text-sm mb-6">The city's most exclusive tables are waiting for you.</p>
+<a class="text-on-surface font-semibold text-sm uppercase tracking-wider" href="#">Browse Map</a>
+</div>
+<!-- Bento Card 3: Insights -->
+<div class="group bg-surface-container-low p-8 rounded-lg hover:bg-surface-container-high transition-all duration-300">
+<span class="material-symbols-outlined text-secondary text-4xl mb-4">auto_awesome</span>
+<h3 class="font-headline font-bold text-xl mb-2">Taste Insights</h3>
+<p class="text-on-surface-variant text-sm mb-6">Learn what your palate says about your romantic compatibility.</p>
+<a class="text-on-surface font-semibold text-sm uppercase tracking-wider" href="#">View Report</a>
+</div>
+<!-- Bento Card 4: Planner (Small) -->
+<div class="group bg-surface-container-lowest p-8 rounded-lg shadow-sm flex flex-col justify-center items-center text-center">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-on-secondary-fixed">calendar_today</span>
+</div>
+<h3 class="font-headline font-bold text-lg">Planner</h3>
+<p class="text-on-surface-variant text-sm">Manage your upcoming evenings.</p>
+</div>
+<!-- Bento Card 5: Concierge (Wide) -->
+<div class="group bg-inverse-surface text-inverse-on-surface p-8 rounded-lg md:col-span-2 lg:col-span-3 flex flex-col md:flex-row items-center gap-8">
+<div class="flex-1">
+<h3 class="font-headline font-bold text-2xl mb-2">Personal Concierge</h3>
+<p class="text-inverse-on-surface/70">Our dedicated team is ready to help you find that specific link or plan your next perfect outing.</p>
+</div>
+<button class="whitespace-nowrap bg-surface-bright text-on-surface px-8 py-3 rounded-full font-bold hover:bg-primary hover:text-on-primary transition-colors">
+                        Start Chat
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Simple Footer for 404 focus -->
+<footer class="py-12 px-8 border-t border-outline-variant/10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-sm text-on-surface/40 font-medium">
+                © 2024 GOMET. All reservations reserved.
+            </div>
+<div class="flex gap-8 text-sm font-label font-medium text-on-surface/60">
+<a class="hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms</a>
+<a class="hover:text-primary transition-colors" href="#">Cookies</a>
+</div>
+</div>
+</footer>
+<!-- Decorative Elements -->
+<div class="fixed top-0 right-0 -z-10 w-1/2 h-screen bg-gradient-to-l from-surface-container-low/30 to-transparent pointer-events-none"></div>
+<div class="fixed bottom-0 left-0 -z-10 w-96 h-96 bg-primary/5 blur-3xl rounded-full pointer-events-none translate-y-1/2 -translate-x-1/2"></div>
+</body></html>

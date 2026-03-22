@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-secondary": "#ffffff",
+              "surface-dim": "#dddad4",
+              "on-secondary-fixed": "#1b1c1c",
+              "outline-variant": "#e0bfbd",
+              "inverse-surface": "#31302d",
+              "on-tertiary": "#ffffff",
+              "surface-container-low": "#f7f3ed",
+              "surface-container-highest": "#e6e2dc",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-surface": "#1c1c18",
+              "on-background": "#1c1c18",
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "primary-fixed": "#ffdad8",
+              "on-primary-fixed-variant": "#8c1520",
+              "inverse-primary": "#ffb3b0",
+              "outline": "#8c706f",
+              "surface-container-high": "#ebe8e2",
+              "surface": "#fdf9f3",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "tertiary": "#894e45",
+              "on-tertiary-fixed": "#370e08",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "on-secondary-fixed-variant": "#474747",
+              "on-error": "#ffffff",
+              "on-secondary-container": "#656464",
+              "on-primary": "#ffffff",
+              "on-error-container": "#93000a",
+              "secondary-fixed": "#e4e2e1",
+              "surface-container": "#f1ede7",
+              "secondary": "#5f5e5e",
+              "on-tertiary-container": "#55251e",
+              "primary-container": "#ff6b6b",
+              "on-primary-container": "#6d0010",
+              "surface-variant": "#e6e2dc",
+              "on-primary-fixed": "#410006",
+              "primary": "#ae2f34",
+              "inverse-on-surface": "#f4f0ea",
+              "on-surface-variant": "#584140",
+              "background": "#fdf9f3",
+              "surface-tint": "#ae2f34",
+              "error": "#ba1a1a",
+              "surface-bright": "#fdf9f3",
+              "secondary-fixed-dim": "#c8c6c6"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(253, 249, 243, 0.8);
+        backdrop-filter: blur(12px);
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar Fragment (Supressed content for focused interaction) -->
+<header class="bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-sm shadow-rose-900/5 flex justify-between items-center px-6 py-4">
+<div class="text-xl font-bold text-rose-700 dark:text-rose-500 italic font-plus-jakarta-sans tracking-tight">
+            Culinary Curator
+        </div>
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-zinc-500 hover:bg-rose-50 p-2 rounded-full transition-colors cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-zinc-500 hover:bg-rose-50 p-2 rounded-full transition-colors cursor-pointer" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<main class="min-h-screen pt-24 pb-12 px-6 flex flex-col items-center justify-center">
+<!-- Hero Section Asymmetry -->
+<div class="relative w-full max-w-xl">
+<!-- Decorative Accent -->
+<div class="absolute -top-12 -left-8 w-32 h-32 bg-primary-container/20 rounded-full blur-3xl"></div>
+<!-- Main Content Canvas -->
+<section class="relative z-10 space-y-8">
+<!-- High-Impact Header -->
+<div class="space-y-2">
+<span class="text-primary font-headline font-bold uppercase tracking-[0.2em] text-sm">Exclusive Access</span>
+<h1 class="font-headline font-extrabold text-5xl md:text-6xl text-on-surface tracking-tighter leading-tight">
+                        You're In, <br/><span class="text-primary italic">Julian!</span>
+</h1>
+</div>
+<!-- Event Bento Card -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Venue Image -->
+<div class="relative aspect-square md:aspect-auto h-full overflow-hidden rounded-lg shadow-2xl shadow-primary/10">
+<img alt="Elegant jazz bar with crimson lighting" class="w-full h-full object-cover" data-alt="Interior of a luxury jazz bar with dim red lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKbCnGVOuDJDc5VEfs59OCmFWmYNbQXPW4httLcIKo_PXIXzBy7fyA22oe7yeoQOoygKP-Uq_OXTf-EniPj5LXjAYvrvpf4qJoB-I8LHP8GI_x9bUykRn0h9hR1DMwe1fvI9r9quVfAhwzV-Lh0LbPnSTq26Exo7VPt24cVY1KMw1rybOhFVrtyF18RcKfZct6KxXqduywIwTJ3F1O504B5gI-ADx_y7Xgu_xWHYfjx9E2TUzj2NhqawQE9QM3tBLM_TERDMT58kw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="inline-flex items-center px-3 py-1 rounded-full bg-surface-container-lowest/20 backdrop-blur-md text-white text-xs font-medium border border-white/10">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+                                Priority Invite
+                            </span>
+</div>
+</div>
+<!-- Details Card -->
+<div class="bg-surface-container-lowest p-8 rounded-lg flex flex-col justify-between space-y-6">
+<div class="space-y-4">
+<h2 class="font-headline font-bold text-2xl text-on-surface">Midnight Jazz &amp; Merlot</h2>
+<div class="space-y-3">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+<span class="text-sm font-medium">Tonight at 9:00 PM</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<span class="text-sm font-medium">The Crimson Atelier</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary" data-icon="confirmation_number">confirmation_number</span>
+<span class="text-sm font-medium">2 Guests Included</span>
+</div>
+</div>
+</div>
+<!-- Urgency Indicator -->
+<div class="bg-primary/5 p-4 rounded-full flex items-center gap-3">
+<div class="relative flex items-center justify-center">
+<span class="material-symbols-outlined text-primary animate-pulse" data-icon="timer">timer</span>
+</div>
+<p class="text-[13px] text-primary leading-tight font-medium">
+                                Held for <span class="font-bold underline">15 minutes</span>. <br/>Confirm now to secure your seat.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Call to Action Cluster -->
+<div class="flex flex-col sm:flex-row items-center gap-4 pt-4">
+<button class="w-full sm:w-auto flex-1 bg-gradient-to-r from-primary to-primary-container text-on-primary py-5 px-10 rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/30 hover:scale-[1.02] active:scale-95 transition-all duration-200 flex items-center justify-center gap-2">
+                        Confirm &amp; Pay
+                        <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="w-full sm:w-auto px-10 py-5 rounded-full bg-surface-container-highest text-on-surface font-headline font-bold text-lg hover:bg-surface-container-high transition-colors active:scale-95 duration-200">
+                        Decline
+                    </button>
+</div>
+<!-- Trust Footer -->
+<div class="flex justify-center items-center gap-8 pt-8">
+<div class="flex items-center gap-2 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+<span class="text-[11px] font-bold uppercase tracking-widest">Secure Checkout</span>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant/60">
+<span class="material-symbols-outlined text-sm" data-icon="verified_user">verified_user</span>
+<span class="text-[11px] font-bold uppercase tracking-widest">Curator Verified</span>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Navigation Shell Suppressed for Transactional Focus per SOP -->
+<!-- (Optional FAB also suppressed for transactional focus) -->
+</body></html>

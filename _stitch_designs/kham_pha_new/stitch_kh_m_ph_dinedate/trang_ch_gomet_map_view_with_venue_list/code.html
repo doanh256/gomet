@@ -1,0 +1,722 @@
+<html lang="en"><head></head><body class="bg-surface selection:bg-primary-fixed selection:text-on-primary-fixed">```html
+
+
+
+    <meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | The Culinary Curator</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "outline": "#8c706f",
+                        "surface-tint": "#ae2f34",
+                        "secondary-fixed-dim": "#c8c6c6",
+                        "inverse-primary": "#ffb3b0",
+                        "primary": "#FF6B6B",
+                        "secondary": "#5f5e5e",
+                        "outline-variant": "#e0bfbd",
+                        "on-secondary-fixed-variant": "#474747",
+                        "inverse-on-surface": "#f4f0ea",
+                        "on-tertiary-fixed": "#370e08",
+                        "surface-bright": "#fdf9f3",
+                        "secondary-fixed": "#e4e2e1",
+                        "on-primary-fixed-variant": "#8c1520",
+                        "on-surface": "#1c1c18",
+                        "on-surface-variant": "#584140",
+                        "on-secondary": "#ffffff",
+                        "surface-dim": "#dddad4",
+                        "primary-fixed-dim": "#ffb3b0",
+                        "surface-variant": "#e6e2dc",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#ffdad8",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "tertiary-fixed": "#ffdad4",
+                        "primary-container": "#ff6b6b",
+                        "surface-container-highest": "#e6e2dc",
+                        "surface-container": "#f1ede7",
+                        "on-secondary-container": "#656464",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "surface-container-low": "#f7f3ed",
+                        "surface": "#fdf9f3",
+                        "on-tertiary-container": "#55251e",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#31302d",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-error-container": "#93000a",
+                        "surface-container-high": "#ebe8e2",
+                        "on-primary-container": "#6d0010",
+                        "on-background": "#1c1c18",
+                        "on-tertiary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#6d3830",
+                        "on-primary-fixed": "#410006",
+                        "background": "#fdf9f3",
+                        "tertiary-container": "#cf8a7f",
+                        "secondary-container": "#e4e2e1",
+                        "tertiary": "#894e45"
+                    },
+                    fontFamily: {
+                        "plus-jakarta": ["Plus Jakarta Sans"],
+                        "inter": ["Inter"],
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gradient-primary {
+            background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf9f3;
+            color: #1c1c18;
+        }
+        .editorial-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.04em;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    
+        /* Premium Range Slider Styling */
+        input[type='range']::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #FF6B6B;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 4px 6px -1px rgb(255 107 107 / 0.3);
+            margin-top: -6px;
+            transition: transform 0.2s ease;
+        }
+        input[type='range']::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+        input[type='range']::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: #e6e2dc;
+            border-radius: 9999px;
+        }
+        input[type='range']::-moz-range-thumb {
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #FF6B6B;
+            cursor: pointer;
+            border: 2px solid white;
+            box-shadow: 0 4px 6px -1px rgb(255 107 107 / 0.3);
+        }
+        input[type='range']::-moz-range-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: #e6e2dc;
+            border-radius: 9999px;
+        }
+
+        /* Modern Map Styling Mock */
+        .map-container {
+            background-color: #f1ede7;
+            background-image: radial-gradient(#d1cfcb 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .map-pin {
+            filter: drop-shadow(0 4px 6px rgba(255, 107, 107, 0.4));
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .map-pin:hover {
+            transform: scale(1.2) translateY(-4px);
+        }
+    </style>
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-primary">GOMET</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-plus-jakarta text-label-md tracking-tight font-bold text-primary border-b-2 border-primary" href="#">How it Works</a>
+<a class="font-plus-jakarta text-label-md tracking-tight text-on-surface opacity-80 hover:opacity-100 transition-colors duration-300" href="#">Venues</a>
+<a class="font-plus-jakarta text-label-md tracking-tight text-on-surface opacity-80 hover:opacity-100 transition-colors duration-300" href="#">Events</a>
+<a class="font-plus-jakarta text-label-md tracking-tight text-on-surface opacity-80 hover:opacity-100 transition-colors duration-300" href="#">Membership</a>
+</div>
+<button class="gradient-primary text-on-primary font-bold py-2.5 px-6 rounded-full text-sm scale-95 active:scale-90 transition-transform shadow-lg shadow-primary/20">
+            Join Alpha
+        </button>
+</div>
+</nav>
+<main class="pt-20">
+<!-- 1. Hero Section -->
+<section class="relative min-h-[921px] flex items-center px-8 max-w-7xl mx-auto py-20">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center w-full">
+<div class="lg:col-span-6 z-10">
+<span class="inline-block px-4 py-1.5 bg-surface-container-high rounded-full text-primary font-semibold text-xs uppercase tracking-widest mb-6">Premiere Access</span>
+<h1 class="editorial-title text-display-lg md:text-8xl font-extrabold text-on-surface leading-[0.9] mb-8">
+                    The Art of <br/><span class="text-primary italic">Connection.</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-md mb-10 leading-relaxed">
+                    Dining, events, and dating curated for the discerning palate. Rediscover the magic of a shared table.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="gradient-primary text-on-primary font-bold py-5 px-10 rounded-full text-lg shadow-xl shadow-primary/20">
+                        Join Alpha
+                    </button>
+<button class="bg-surface-container-highest text-on-surface font-bold py-5 px-10 rounded-full text-lg">
+                        Our Story
+                    </button>
+</div>
+</div>
+<div class="lg:col-span-6 relative h-[600px] hidden lg:block">
+<div class="absolute inset-0 bg-surface-container-low rounded-xl overflow-hidden translate-x-8 translate-y-8"></div>
+<img alt="Elegant Dinner Setting" class="absolute inset-0 w-full h-full object-cover rounded-xl shadow-2xl z-10" data-alt="Elegant table setting with candles and wine" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVsb39rIAokXdimoxHP80Q5H3zMW6a2l2MrxqDoYrCEfICHnalPnrmVFcX-OrXni8lbpVjY4FPMLXUWx89MQ5PCS2y3nqgI2WjcIOiKH0ogwtl-HsVPx3C6q60wncoJpS6dY70ASqb5y22b2jYPLHxN3CkMhG523KgBigDJxmWc25KAzF7zb2UDOmTnTpMYObW4ufnFIvuRPsUYAtxNKROmsnTIWW7f6dZ4fhU0z8MblevgBFCQ-C3HN9DSZAVuUBgUdNP_d4pt1o"/>
+<div class="absolute -bottom-10 -left-10 w-48 h-48 bg-primary-container/20 backdrop-blur-xl rounded-full z-20 border border-white/30 hidden xl:flex items-center justify-center text-center p-6">
+<p class="text-on-primary-container font-plus-jakarta font-bold text-sm">Curated by top sommeliers</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. The Concept (How it Works) -->
+<section class="bg-surface-container-low py-32 px-8">
+<div class="max-w-7xl mx-auto">
+<div class="mb-20">
+<h2 class="editorial-title text-5xl font-bold mb-4">How it Works</h2>
+<div class="w-24 h-1 gradient-primary rounded-full"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="group">
+<div class="w-16 h-16 bg-surface-container-highest rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary-container transition-colors duration-500">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-container" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<h3 class="font-plus-jakarta text-2xl font-bold mb-4">Discover Venues</h3>
+<p class="text-on-surface-variant leading-relaxed">Hand-picked locations that offer more than just a meal—they offer an atmosphere for genuine conversation.</p>
+</div>
+<div class="group">
+<div class="w-16 h-16 bg-surface-container-highest rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary-container transition-colors duration-500">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-container" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+</div>
+<h3 class="font-plus-jakarta text-2xl font-bold mb-4">Join Curated Events</h3>
+<p class="text-on-surface-variant leading-relaxed">From jazz nights to chef's table experiences, each event is designed to foster natural connections between guests.</p>
+</div>
+<div class="group">
+<div class="w-16 h-16 bg-surface-container-highest rounded-2xl flex items-center justify-center mb-8 group-hover:bg-primary-container transition-colors duration-500">
+<span class="material-symbols-outlined text-primary group-hover:text-on-primary-container" style="font-variation-settings: 'FILL' 1;">groups</span>
+</div>
+<h3 class="font-plus-jakarta text-2xl font-bold mb-4">Meet Like-minded People</h3>
+<p class="text-on-surface-variant leading-relaxed">Our curation ensures you're sharing experiences with others who value depth, quality, and fine dining.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Featured Experiences (Asymmetric Grid) -->
+<section class="py-32 px-8 max-w-7xl mx-auto">
+<div class="flex justify-between items-end mb-16">
+<div>
+<h2 class="editorial-title text-5xl font-bold mb-4">Featured Experiences</h2>
+<p class="text-on-surface-variant text-lg">Limited reservations for the upcoming season.</p>
+</div>
+<button class="hidden md:block text-primary font-bold border-b border-primary">View Calendar</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Large Featured Card -->
+<div class="md:col-span-8 group relative rounded-lg overflow-hidden h-[500px]">
+<img alt="Midnight Jazz" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Intimate jazz club with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAPhHoJuG8C1LyP14H3IqdIJY2DPabRcQ5LqtvJh-D_prspDFl_GtO4QNcdyxbXZdhBapIXyuKhg-g-o3rOC4yFpzcyBc4_H5ebJzob5rfYT1UUwMycWLhAlZbdhk4CMHb-4wH7fYH-euvV3ALaTzthzGZ6X3pJR0UBt4FIu1R_rv3Qjjh9OWfSkMwgimpdFuhO_T3A6XV29GH0FBl7N9A2ANQ9ULs-4lNRMcDBxrCLsWtVReDuaTAqekujfNXMPtYkBF9lUd3jSM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-10">
+<span class="text-primary-container font-bold text-sm tracking-widest uppercase mb-2">Music &amp; Spirits</span>
+<h3 class="text-white text-4xl font-bold mb-4">Midnight Jazz</h3>
+<p class="text-white/80 max-w-md mb-6">An intimate evening of live performances paired with vintage cocktails in a hidden speakeasy.</p>
+<div class="flex items-center space-x-4">
+<button class="bg-white text-on-surface font-bold py-3 px-8 rounded-full">Book Seat</button>
+<span class="text-white/60 text-sm">Oct 24 • Mayfair</span>
+</div>
+</div>
+</div>
+<!-- Small Card 1 -->
+<div class="md:col-span-4 group relative rounded-lg overflow-hidden h-[500px] md:h-auto">
+<img alt="Chef's Table" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Chef plating fine dining dish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh3czuDM_4Wd9f-mQSLmq6VlNBewS6rczTGcmV3GNcJ6q050476qcC4GDlip2tgEU_YXhUV3SvEr2VQf71mAsqyYlIArjBF_-mzKknQV4eDm6hpE0ZyyRhhuHW1iDQCyhWOfja_rTeynUJR__FANnRIfmWTArLmhFIyqN4nwUitshD71N7xRF-2xHqgdFG2Veojowf3xrHa7hJui4tkNeHbopmqephviTATRzKJ5nJLV012FMTrCzAPs-DOaq-SaZ1aZswyFqDbzg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
+<h3 class="text-white text-2xl font-bold mb-2">Chef's Table</h3>
+<p class="text-white/80 text-sm mb-4">8 courses. 12 guests. Infinite stories.</p>
+<button class="w-full bg-primary-container text-on-primary-container font-bold py-3 rounded-full">Explore</button>
+</div>
+</div>
+<!-- Small Card 2 -->
+<div class="md:col-span-4 group relative rounded-lg overflow-hidden h-[400px]">
+<img alt="Blind Tasting" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Wine tasting glasses in low light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeuaDPhIO-Y-ZsvCHlGAL3j56xY9OXoeOOhOaca5iZllamOSJFDDyIsKOChX9ahCDE3aObzMPP7J3WGen1Ifj-gS43rPEE4PzAy5fED-7EOq6WAq2WzG0_khWBbcgEyGXdeQcWOnxqABQ4kneAPZjO3A4SwLDImpD9uNHBNV0HQhgwcwrm93vG5hXeTJDrpKNBsO7m63_iPlIkznTnJvgioVYVC4_bSt5dQhHsq-raiNkSjTCIz3GZJ2GNWf0PB2d25gok5r1-uyE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
+<h3 class="text-white text-2xl font-bold mb-2">Blind Tasting</h3>
+<p class="text-white/80 text-sm mb-4">Sharpen your senses with our sommelier-led secret wine flights.</p>
+</div>
+</div>
+<!-- Descriptive Content -->
+<div class="md:col-span-8 bg-surface-container-high rounded-lg p-12 flex flex-col justify-center">
+<h3 class="text-3xl font-bold mb-6 italic">"Where the menu is just the beginning."</h3>
+<p class="text-lg text-on-surface-variant leading-relaxed mb-8">
+                    At GOMET, we believe the best matches happen over shared passions. Our experiences are carefully balanced to be 50% gastronomy and 50% chemistry. No awkward small talk, just exceptional flavors and even better company.
+                </p>
+<div class="flex flex-wrap gap-3">
+<span class="px-5 py-2 bg-surface text-on-surface rounded-full text-sm font-medium">#CulinaryDating</span>
+<span class="px-5 py-2 bg-surface text-on-surface rounded-full text-sm font-medium">#HighEndNetworking</span>
+<span class="px-5 py-2 bg-surface text-on-surface rounded-full text-sm font-medium">#LondonEvents</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Sự kiện Sắp diễn ra (Upcoming Events) -->
+<section class="py-24 px-8 bg-surface-container-low/30" id="events-section">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-0">
+<div>
+<h2 class="editorial-title text-5xl font-bold mb-4">Sự kiện Sắp diễn ra</h2>
+<p class="text-on-surface-variant text-lg">Đừng bỏ lỡ những khoảnh khắc ẩm thực và kết nối độc bản.</p>
+</div>
+<div class="flex items-center gap-4">
+<!-- View Switcher Toggle -->
+<div class="bg-surface-container-high p-1 rounded-full flex items-center shadow-inner border border-outline-variant/30">
+<button class="flex items-center gap-2 px-6 py-2 rounded-full transition-all bg-primary text-white shadow-md" id="list-view-btn" onclick="switchView('list')">
+<span class="material-symbols-outlined text-[20px]">grid_view</span>
+<span class="text-sm font-bold uppercase tracking-wider">Danh sách</span>
+</button>
+<button class="flex items-center gap-2 px-6 py-2 rounded-full transition-all text-on-surface-variant hover:text-on-surface" id="map-view-btn" onclick="switchView('map')">
+<span class="material-symbols-outlined text-[20px]">map</span>
+<span class="text-sm font-bold uppercase tracking-wider">Bản đồ</span>
+</button>
+</div>
+<div class="flex space-x-2">
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-12 h-12 rounded-full border border-outline-variant flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-8 mb-12 flex flex-wrap gap-4 items-center">
+<!-- Search Inputs Container -->
+<div class="flex flex-col sm:flex-row gap-4 flex-grow min-w-[320px]">
+<!-- Keyword Search Input -->
+<div class="flex-grow relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50">search</span>
+<input class="w-full bg-surface border border-outline-variant/30 rounded-full py-3.5 pl-12 pr-6 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="Tìm kiếm sự kiện..." type="text"/>
+</div>
+<!-- Location Search Input -->
+<div class="flex-grow relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/50">location_on</span>
+<input class="w-full bg-surface border border-outline-variant/30 rounded-full py-3.5 pl-12 pr-6 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all" placeholder="Địa điểm..." type="text"/>
+</div>
+</div>
+<!-- Date Filter -->
+<div class="relative min-w-[160px]">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary text-xl">calendar_month</span>
+<select class="w-full appearance-none bg-surface border border-outline-variant/30 rounded-full py-3.5 pl-12 pr-10 text-sm font-medium text-on-surface focus:ring-2 focus:ring-primary/20 transition-all">
+<option>Tất cả ngày</option>
+<option>Cuối tuần này</option>
+<option>Tháng này</option>
+</select>
+</div>
+<!-- Category Filter -->
+<div class="relative min-w-[160px]">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-primary text-xl">restaurant_menu</span>
+<select class="w-full appearance-none bg-surface border border-outline-variant/30 rounded-full py-3.5 pl-12 pr-10 text-sm font-medium text-on-surface focus:ring-2 focus:ring-primary/20 transition-all">
+<option>Tất cả thể loại</option>
+<option>Ẩm thực &amp; Rượu</option>
+<option>Âm nhạc &amp; Jazz</option>
+<option>Networking</option>
+</select>
+</div>
+<!-- Location Radius Filter -->
+<div class="flex flex-col gap-2 min-w-[220px] bg-surface border border-outline-variant/30 rounded-3xl py-2 px-6">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">distance</span>
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Bán kính</span>
+</div>
+<span class="text-sm font-bold text-primary" id="radius-val">15km</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-primary" max="50" min="0" oninput="document.getElementById('radius-val').innerText = this.value + 'km'" type="range" value="15"/>
+<div class="flex justify-between text-[10px] text-on-surface-variant/50 font-medium">
+<span>0km</span>
+<span>50km</span>
+</div>
+</div>
+<button class="flex items-center gap-2 px-6 py-3.5 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-full transition-all duration-300 group" onclick="window.location.reload()">
+<span class="material-symbols-outlined text-xl transition-transform group-hover:rotate-[-45deg]">restart_alt</span>
+<span class="text-sm font-bold uppercase tracking-wider">Làm mới</span>
+</button>
+</div>
+<!-- List View Container -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="event-list-view">
+<!-- Event Card 1 -->
+<div class="group bg-surface rounded-lg overflow-hidden border border-outline-variant/30 hover:shadow-xl transition-all duration-500">
+<div class="relative h-64 overflow-hidden">
+<img alt="Midnight Jazz &amp; Merlot" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9f-mQSLmq6VlNBewS6rczTGcmV3GNcJ6q050476qcC4GDlip2tgEU_YXhUV3SvEr2VQf71mAsqyYlIArjBF_-mzKknQV4eDm6hpE0ZyyRhhuHW1iDQCyhWOfja_rTeynUJR__FANnRIfmWTArLmhFIyqN4nwUitshD71N7xRF-2xHqgdFG2Veojowf3xrHa7hJui4tkNeHbopmqephviTATRzKJ5nJLV012FMTrCzAPs-DOaq-SaZ1aZswyFqDbzg"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">Mới nhất</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex items-center space-x-2 text-primary mb-3">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+<span class="font-bold text-sm">Bắt đầu sau: 02 ngày 14:20:10</span>
+</div>
+<h3 class="editorial-title text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Midnight Jazz &amp; Merlot</h3>
+<div class="space-y-2 mb-8 text-on-surface-variant text-sm">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-2">calendar_today</span>
+                                Thứ 7, 26 Tháng 10, 2024
+                            </div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-2">location_on</span>
+                                The Crimson Lounge, London
+                            </div>
+</div>
+<button class="w-full py-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all">
+                            Xem Chi tiết
+                        </button>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="group bg-surface rounded-lg overflow-hidden border border-outline-variant/30 hover:shadow-xl transition-all duration-500">
+<div class="relative h-64 overflow-hidden">
+<img alt="Chef's Table: Omakase Edition" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh3czuDM_4Wd9f-mQSLmq6VlNBewS6rczTGcmV3GNcJ6q050476qcC4GDlip2tgEU_YXhUV3SvEr2VQf71mAsqyYlIArjBF_-mzKknQV4eDm6hpE0ZyyRhhuHW1iDQCyhWOfja_rTeynUJR__FANnRIfmWTArLmhFIyqN4nwUitshD71N7xRF-2xHqgdFG2Veojowf3xrHa7hJui4tkNeHbopmqephviTATRzKJ5nJLV012FMTrCzAPs-DOaq-SaZ1aZswyFqDbzg"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">Hết chỗ nhanh</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex items-center space-x-2 text-primary mb-3">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+<span class="font-bold text-sm">Bắt đầu sau: 05 ngày 08:45:22</span>
+</div>
+<h3 class="editorial-title text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Chef's Table: Omakase Edition</h3>
+<div class="space-y-2 mb-8 text-on-surface-variant text-sm">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-2">calendar_today</span>
+                                Thứ 4, 30 Tháng 10, 2024
+                            </div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-2">location_on</span>
+                                Atelier 42, Mayfair
+                            </div>
+</div>
+<button class="w-full py-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all">
+                            Xem Chi tiết
+                        </button>
+</div>
+</div>
+<!-- Event Card 3 -->
+<div class="group bg-surface rounded-lg overflow-hidden border border-outline-variant/30 hover:shadow-xl transition-all duration-500">
+<div class="relative h-64 overflow-hidden">
+<img alt="Vintage Wine Rooftop Social" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVsb39rIAokXdimoxHP80Q5H3zMW6a2l2MrxqDoYrCEfICHnalPnrmVFcX-OrXni8lbpVjY4FPMLXUWx89MQ5PCS2y3nqgI2WjcIOiKH0ogwtl-HsVPx3C6q60wncoJpS6dY70ASqb5y22b2jYPLHxN3CkMhG523KgBigDJxmWc25KAzF7zb2UDOmTnTpMYObW4ufnFIvuRPsUYAtxNKROmsnTIWW7f6dZ4fhU0z8MblevgBFCQ-C3HN9DSZAVuUBgUdNP_d4pt1o"/>
+<div class="absolute top-4 left-4">
+<span class="bg-primary/90 backdrop-blur-md text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">Hội viên</span>
+</div>
+</div>
+<div class="p-8">
+<div class="flex items-center space-x-2 text-primary mb-3">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+<span class="font-bold text-sm">Bắt đầu sau: 12 ngày 02:15:00</span>
+</div>
+<h3 class="editorial-title text-2xl font-bold mb-4 group-hover:text-primary transition-colors">Vintage Wine Rooftop Social</h3>
+<div class="space-y-2 mb-8 text-on-surface-variant text-sm">
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-2">calendar_today</span>
+                                Chủ nhật, 10 Tháng 11, 2024
+                            </div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-[18px] mr-2">location_on</span>
+                                Sky Garden, London
+                            </div>
+</div>
+<button class="w-full py-4 rounded-full border-2 border-primary text-primary font-bold hover:bg-primary hover:text-white transition-all">
+                            Xem Chi tiết
+                        </button>
+</div>
+</div>
+</div>
+<!-- Map & Sidebar View Container (Hidden by default) -->
+<div class="hidden grid grid-cols-1 lg:grid-cols-12 gap-0 h-[700px] w-full rounded-3xl overflow-hidden border border-outline-variant/30 shadow-2xl relative" id="event-map-view">
+<!-- Main Map (Prominent on left) -->
+<div class="lg:col-span-8 relative map-container h-full">
+<!-- Mock Map Elements -->
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<!-- Marker 1: Midnight Jazz -->
+<div class="absolute top-[30%] left-[45%] pointer-events-auto group">
+<div class="map-pin relative flex flex-col items-center cursor-pointer">
+<div class="absolute bottom-full mb-4 opacity-0 group-hover:opacity-100 transition-opacity bg-surface p-3 rounded-xl shadow-xl w-48 border border-outline-variant/30 pointer-events-none z-20">
+<p class="font-bold text-xs text-primary mb-1">Oct 26</p>
+<p class="font-plus-jakarta font-bold text-sm leading-tight text-on-surface">Midnight Jazz &amp; Merlot</p>
+<p class="text-[10px] text-on-surface-variant">The Crimson Lounge</p>
+</div>
+<div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center border-2 border-white text-white">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">music_note</span>
+</div>
+<div class="w-3 h-3 bg-primary transform rotate-45 -mt-1.5 border-r-2 border-b-2 border-white"></div>
+</div>
+</div>
+<!-- Marker 2: Omakase -->
+<div class="absolute top-[55%] left-[58%] pointer-events-auto group">
+<div class="map-pin relative flex flex-col items-center cursor-pointer">
+<div class="absolute bottom-full mb-4 opacity-0 group-hover:opacity-100 transition-opacity bg-surface p-3 rounded-xl shadow-xl w-48 border border-outline-variant/30 pointer-events-none z-20">
+<p class="font-bold text-xs text-primary mb-1">Oct 30</p>
+<p class="font-plus-jakarta font-bold text-sm leading-tight text-on-surface">Chef's Table: Omakase</p>
+<p class="text-[10px] text-on-surface-variant">Atelier 42, Mayfair</p>
+</div>
+<div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center border-2 border-white text-white">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div class="w-3 h-3 bg-primary transform rotate-45 -mt-1.5 border-r-2 border-b-2 border-white"></div>
+</div>
+</div>
+</div>
+<!-- Map Control Overlay -->
+<div class="absolute bottom-8 right-8 flex flex-col gap-2">
+<button class="w-10 h-10 bg-surface rounded-full shadow-lg flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="w-10 h-10 bg-surface rounded-full shadow-lg flex items-center justify-center text-on-surface hover:text-primary transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<button class="w-10 h-10 bg-surface rounded-full shadow-lg flex items-center justify-center text-primary transition-colors">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+</div>
+</div>
+<!-- Trending Venues Sidebar (Right side) -->
+<div class="lg:col-span-4 bg-surface-container-low h-full flex flex-col border-l border-outline-variant/20 overflow-hidden">
+<div class="p-6 border-b border-outline-variant/10">
+<h3 class="font-plus-jakarta font-bold text-xl flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+                Trending Venues
+            </h3>
+</div>
+<div class="flex-grow overflow-y-auto p-4 space-y-4 hide-scrollbar">
+<!-- Venue Card 1 -->
+<div class="bg-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/10">
+<div class="h-32 w-full overflow-hidden relative">
+<img alt="The Crimson Lounge" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAPhHoJuG8C1LyP14H3IqdIJY2DPabRcQ5LqtvJh-D_prspDFl_GtO4QNcdyxbXZdhBapIXyuKhg-g-o3rOC4yFpzcyBc4_H5ebJzob5rfYT1UUwMycWLhAlZbdhk4CMHb-4wH7fYH-euvV3ALaTzthzGZ6X3pJR0UBt4FIu1R_rv3Qjjh9OWfSkMwgimpdFuhO_T3A6XV29GH0FBl7N9A2ANQ9ULs-4lNRMcDBxrCLsWtVReDuaTAqekujfNXMPtYkBF9lUd3jSM"/>
+<div class="absolute top-2 right-2 px-2 py-1 bg-black/40 backdrop-blur-md rounded-full text-[10px] text-white font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] fill-1">star</span> 4.9
+                    </div>
+</div>
+<div class="p-4">
+<h4 class="font-plus-jakarta font-bold text-on-surface text-base mb-2">The Crimson Lounge</h4>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-medium text-on-surface-variant">Speakeasy</span>
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-medium text-on-surface-variant">Live Jazz</span>
+</div>
+<button class="w-full py-2 bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-full text-sm font-bold transition-all flex items-center justify-center gap-2">
+                        Host Date Here
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Venue Card 2 -->
+<div class="bg-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/10">
+<div class="h-32 w-full overflow-hidden relative">
+<img alt="Sky Garden" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVsb39rIAokXdimoxHP80Q5H3zMW6a2l2MrxqDoYrCEfICHnalPnrmVFcX-OrXni8lbpVjY4FPMLXUWx89MQ5PCS2y3nqgI2WjcIOiKH0ogwtl-HsVPx3C6q60wncoJpS6dY70ASqb5y22b2jYPLHxN3CkMhG523KgBigDJxmWc25KAzF7zb2UDOmTnTpMYObW4ufnFIvuRPsUYAtxNKROmsnTIWW7f6dZ4fhU0z8MblevgBFCQ-C3HN9DSZAVuUBgUdNP_d4pt1o"/>
+</div>
+<div class="p-4">
+<h4 class="font-plus-jakarta font-bold text-on-surface text-base mb-2">Sky Garden</h4>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-medium text-on-surface-variant">Rooftop</span>
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-medium text-on-surface-variant">Modern</span>
+</div>
+<button class="w-full py-2 bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-full text-sm font-bold transition-all flex items-center justify-center gap-2">
+                        Host Date Here
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Venue Card 3 -->
+<div class="bg-surface rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/10">
+<div class="h-32 w-full overflow-hidden relative">
+<img alt="Atelier 42" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh3czuDM_4Wd9f-mQSLmq6VlNBewS6rczTGcmV3GNcJ6q050476qcC4GDlip2tgEU_YXhUV3SvEr2VQf71mAsqyYlIArjBF_-mzKknQV4eDm6hpE0ZyyRhhuHW1iDQCyhWOfja_rTeynUJR__FANnRIfmWTArLmhFIyqN4nwUitshD71N7xRF-2xHqgdFG2Veojowf3xrHa7hJui4tkNeHbopmqephviTATRzKJ5nJLV012FMTrCzAPs-DOaq-SaZ1aZswyFqDbzg"/>
+</div>
+<div class="p-4">
+<h4 class="font-plus-jakarta font-bold text-on-surface text-base mb-2">Atelier 42</h4>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-medium text-on-surface-variant">Fine Dining</span>
+<span class="text-[10px] px-2 py-0.5 bg-surface-container-high rounded-full font-medium text-on-surface-variant">Intimate</span>
+</div>
+<button class="w-full py-2 bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-full text-sm font-bold transition-all flex items-center justify-center gap-2">
+                        Host Date Here
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<script>
+    function switchView(view) {
+        const listBtn = document.getElementById('list-view-btn');
+        const mapBtn = document.getElementById('map-view-btn');
+        const listView = document.getElementById('event-list-view');
+        const mapView = document.getElementById('event-map-view');
+
+        if (view === 'map') {
+            listView.classList.add('hidden');
+            mapView.classList.remove('hidden');
+            mapView.classList.add('grid');
+            
+            mapBtn.classList.add('bg-primary', 'text-white', 'shadow-md');
+            mapBtn.classList.remove('text-on-surface-variant');
+            
+            listBtn.classList.remove('bg-primary', 'text-white', 'shadow-md');
+            listBtn.classList.add('text-on-surface-variant');
+        } else {
+            listView.classList.remove('hidden');
+            mapView.classList.add('hidden');
+            mapView.classList.remove('grid');
+            
+            listBtn.classList.add('bg-primary', 'text-white', 'shadow-md');
+            listBtn.classList.remove('text-on-surface-variant');
+            
+            mapBtn.classList.remove('bg-primary', 'text-white', 'shadow-md');
+            mapBtn.classList.add('text-on-surface-variant');
+        }
+    }
+</script>
+<!-- Alpha Experiences (Success Stories) -->
+<section class="py-32 px-8 bg-surface">
+<div class="max-w-7xl mx-auto">
+<div class="mb-20 text-center">
+<h2 class="editorial-title text-5xl font-bold mb-4">Alpha Experiences</h2>
+<p class="text-on-surface-variant text-lg">Real connections from our initial cohort.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Testimonial 1 -->
+<div class="flex flex-col group">
+<div class="relative rounded-2xl overflow-hidden mb-8 aspect-[4/5] shadow-lg group-hover:shadow-2xl transition-shadow duration-500">
+<img alt="Couple dining" class="w-full h-full object-cover" data-alt="Candid photo of a happy couple laughing over wine at a dimly lit restaurant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnE2qK_L7m4Yn490fX0X36vN3_n_Y0_K-E9v_E-Z-10X0_N-O-P-Q-R-S-T-U-V-W-X-Y-Z"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center space-x-1.5 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface">Verified Alpha Match</span>
+</div>
+</div>
+<blockquote class="text-xl font-medium text-on-surface italic mb-6 leading-relaxed">
+                        "The 'Table Chemistry' prediction was spot on. We talked for hours! It didn't feel like a first date at all."
+                    </blockquote>
+<div class="mt-auto">
+<p class="font-bold text-on-surface">Julian &amp; Elena</p>
+<p class="text-sm text-on-surface-variant">The Crimson Lounge</p>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="flex flex-col group md:mt-12">
+<div class="relative rounded-2xl overflow-hidden mb-8 aspect-[4/5] shadow-lg group-hover:shadow-2xl transition-shadow duration-500">
+<img alt="Group at chef's table" class="w-full h-full object-cover" data-alt="Warmly lit shot of a group of professionals clinking glasses at a chef's table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnE2qK_L7m4Yn490fX0X36vN3_n_Y0_K-E9v_E-Z-10X0_N-O-P-Q-R-S-T-U-V-W-X-Y-Z"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center space-x-1.5 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface">Verified Alpha Match</span>
+</div>
+</div>
+<blockquote class="text-xl font-medium text-on-surface italic mb-6 leading-relaxed">
+                        "Finally, a social circle that values quality over quantity. The food was spectacular, but the company was the real highlight."
+                    </blockquote>
+<div class="mt-auto">
+<p class="font-bold text-on-surface">Marcus &amp; Sarah</p>
+<p class="text-sm text-on-surface-variant">Atelier 42</p>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="flex flex-col group">
+<div class="relative rounded-2xl overflow-hidden mb-8 aspect-[4/5] shadow-lg group-hover:shadow-2xl transition-shadow duration-500">
+<img alt="Couple sharing dessert" class="w-full h-full object-cover" data-alt="Close up of a couple sharing a dessert in a candlelit booth, smiling at each other" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnE2qK_L7m4Yn490fX0X36vN3_n_Y0_K-E9v_E-Z-10X0_N-O-P-Q-R-S-T-U-V-W-X-Y-Z"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center space-x-1.5 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[14px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-on-surface">Verified Alpha Match</span>
+</div>
+</div>
+<blockquote class="text-xl font-medium text-on-surface italic mb-6 leading-relaxed">
+                        "GOMET removes the guesswork. We skipped the small talk and went straight to discovering our shared love for vintage wines."
+                    </blockquote>
+<div class="mt-auto">
+<p class="font-bold text-on-surface">Sophia &amp; David</p>
+<p class="text-sm text-on-surface-variant">The Blind Sommelier</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. Social Proof / Quote -->
+<section class="py-32 px-8">
+<div class="max-w-4xl mx-auto text-center">
+<span class="material-symbols-outlined text-6xl text-primary/30 mb-8" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<blockquote class="editorial-title text-4xl md:text-5xl font-bold text-on-surface leading-tight mb-12">
+                "GOMET has redefined social dining for the modern professional. It's not just about the food; it's about the <span class="italic text-primary">intentionality</span> of who you share it with."
+            </blockquote>
+<div class="flex items-center justify-center space-x-4">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Testimonial" data-alt="Portrait of a smiling man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2SKt-mDTcL-RSVE24Sb4Jq2KsKPJdIrWEv5beC8gaIWlepOipyX0xHQhT2-13ULdYqA_Zq-BNgr6_wNDawz5DP3KmTq68zG5Xo_DArwyjpEnLEvLw1c4aVrlA0JQXjvWo4PZNP6A7Da_82LfGy0NEzaeCYoonLl7pq-Gs8_TyF829koAkBSsmowHMdYznC-kti9xO82k1RAVQX9wW9mC24T4XsJrk_kuWAFaHiiiu7jrFnTuA4cCSqIrWc8F6lcJ8M-SCuW3EZGk"/>
+</div>
+<div class="text-left">
+<p class="font-bold text-on-surface">Julian Vane</p>
+<p class="text-sm text-on-surface-variant">Founding Member, London</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Membership Tiers -->
+<section class="py-32 px-8 bg-surface-container-low">
+<div class="max-w-5xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="editorial-title text-5xl font-bold mb-6">Choose Your Journey</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto text-lg">Whether you seek occasional discovery or a complete curated social life, we have a place for you.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Standard -->
+<div class="bg-surface-container-lowest p-12 rounded-lg relative overflow-hidden flex flex-col">
+<h3 class="text-2xl font-bold mb-2">Standard</h3>
+<div class="text-4xl font-black mb-8">Free <span class="text-lg font-normal text-on-surface-variant">/ Alpha Access</span></div>
+<ul class="space-y-6 mb-12 flex-grow">
+<li class="flex items-center text-on-surface-variant">
+<span class="material-symbols-outlined text-primary mr-3" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Access to Public Events
+                        </li>
+<li class="flex items-center text-on-surface-variant">
+<span class="material-symbols-outlined text-primary mr-3" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Browse Curated Venues
+                        </li>
+<li class="flex items-center text-on-surface-variant opacity-50">
+<span class="material-symbols-outlined mr-3">cancel</span>
+                            Priority Table Booking
+                        </li>
+<li class="flex items-center text-on-surface-variant opacity-50">
+<span class="material-symbols-outlined mr-3">cancel</span>
+                            Private Dining Concierge
+                        </li>
+</ul>
+<button class="w-full py-4 border-2 border-primary text-primary font-bold rounded-full hover:bg-primary hover:text-white transition-all">Get Started</button>
+</div>
+<!-- Curator (Premium) -->
+<div class="bg-primary text-on-primary p-12 rounded-lg relative overflow-hidden flex flex-col shadow-2xl shadow-primary/20">
+<div class="absolute top-0 right-0 bg-primary-container text-on-primary-container py-1 px-6 rounded-bl-lg font-bold text-xs uppercase tracking-widest">Recommended</div>
+<h3 class="text-2xl font-bold mb-2">Curator</h3>
+<div class="text-4xl font-black mb-8">£49 <span class="text-lg font-normal opacity-80">/ month</span></div>
+</div></div></div></section></main></body></html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Notification Preferences | GOMET</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-surface": "#1c1c18",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-variant": "#e6e2dc",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed": "#ffdad8",
+              "surface-container-highest": "#e6e2dc",
+              "background": "#fdf9f3",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-secondary-fixed-variant": "#474747",
+              "surface-bright": "#fdf9f3",
+              "surface": "#fdf9f3",
+              "outline": "#8c706f",
+              "on-secondary-container": "#656464",
+              "surface-tint": "#ae2f34",
+              "surface-container-low": "#f7f3ed",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary-container": "#e4e2e1",
+              "secondary": "#5f5e5e",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-secondary": "#ffffff",
+              "error": "#ba1a1a",
+              "inverse-primary": "#ffb3b0",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-dim": "#dddad4",
+              "primary": "#ae2f34",
+              "on-background": "#1c1c18",
+              "on-primary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "on-primary-fixed": "#410006",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "primary-fixed-dim": "#ffb3b0",
+              "outline-variant": "#e0bfbd",
+              "on-error-container": "#93000a",
+              "secondary-fixed": "#e4e2e1",
+              "primary-container": "#ff6b6b",
+              "tertiary-container": "#cf8a7f",
+              "tertiary": "#894e45",
+              "on-tertiary-fixed": "#370e08",
+              "on-surface-variant": "#584140",
+              "on-primary-container": "#6d0010"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background antialiased selection:bg-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface hover:bg-surface-container-low p-2 rounded-full transition-colors" data-icon="arrow_back">arrow_back</button>
+<span class="text-2xl font-black italic text-rose-700 dark:text-rose-500 tracking-tighter font-headline">GOMET</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8">
+<a class="text-stone-600 dark:text-stone-400 font-['Plus_Jakarta_Sans'] tracking-tight hover:bg-rose-50 dark:hover:bg-stone-800 transition-colors duration-300 px-3 py-1 rounded-md" href="#">Discover</a>
+<a class="text-stone-600 dark:text-stone-400 font-['Plus_Jakarta_Sans'] tracking-tight hover:bg-rose-50 dark:hover:bg-stone-800 transition-colors duration-300 px-3 py-1 rounded-md" href="#">Events</a>
+<a class="text-stone-600 dark:text-stone-400 font-['Plus_Jakarta_Sans'] tracking-tight hover:bg-rose-50 dark:hover:bg-stone-800 transition-colors duration-300 px-3 py-1 rounded-md" href="#">Venues</a>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-on-surface p-2 scale-95 active:scale-90 transition-transform cursor-pointer" data-icon="favorite">favorite</span>
+<span class="material-symbols-outlined text-on-surface p-2 scale-95 active:scale-90 transition-transform cursor-pointer" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface p-2 scale-95 active:scale-90 transition-transform cursor-pointer" data-icon="person">person</span>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-28 pb-32 px-6 max-w-4xl mx-auto">
+<!-- Header Section -->
+<div class="mb-12">
+<h1 class="font-headline text-5xl font-extrabold tracking-tight text-on-background mb-4">Notification Settings</h1>
+<p class="text-on-surface-variant text-lg">Curate your experience. Choose how and when you want to hear from us.</p>
+</div>
+<!-- Bento Grid Layout for Preferences -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Category: Social Interaction -->
+<section class="bg-surface-container-low rounded-lg p-8 space-y-8 md:col-span-2">
+<div class="flex items-center gap-4 mb-2">
+<div class="w-12 h-12 rounded-full bg-primary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div>
+<h2 class="font-headline text-2xl font-bold">New Match</h2>
+<p class="text-sm text-on-surface-variant">When someone special expresses interest in your profile.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+<!-- Push -->
+<label class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-md cursor-pointer hover:bg-white transition-all">
+<span class="font-medium text-sm">Push</span>
+<input checked="" class="w-10 h-6 bg-surface-container-high rounded-full appearance-none checked:bg-primary relative transition-colors before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-1 before:left-1 checked:before:translate-x-4 before:transition-transform cursor-pointer" type="checkbox"/>
+</label>
+<!-- Email -->
+<label class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-md cursor-pointer hover:bg-white transition-all">
+<span class="font-medium text-sm">Email</span>
+<input class="w-10 h-6 bg-surface-container-high rounded-full appearance-none checked:bg-primary relative transition-colors before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-1 before:left-1 checked:before:translate-x-4 before:transition-transform cursor-pointer" type="checkbox"/>
+</label>
+<!-- In-app -->
+<label class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-md cursor-pointer hover:bg-white transition-all">
+<span class="font-medium text-sm">In-app</span>
+<input checked="" class="w-10 h-6 bg-surface-container-high rounded-full appearance-none checked:bg-primary relative transition-colors before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-1 before:left-1 checked:before:translate-x-4 before:transition-transform cursor-pointer" type="checkbox"/>
+</label>
+</div>
+</section>
+<!-- Category: Messages -->
+<section class="bg-surface-container-low rounded-lg p-8 space-y-6">
+<div class="flex items-center gap-4 mb-2">
+<div class="w-12 h-12 rounded-full bg-tertiary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary" data-icon="chat_bubble" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</div>
+<div>
+<h2 class="font-headline text-xl font-bold">Message Alerts</h2>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between py-2 border-b border-outline-variant/10">
+<span class="text-sm font-medium">Push Notifications</span>
+<input checked="" class="w-10 h-6 bg-surface-container-high rounded-full appearance-none checked:bg-primary relative transition-colors before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-1 before:left-1 checked:before:translate-x-4 before:transition-transform cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-outline-variant/10">
+<span class="text-sm font-medium">Email Digest</span>
+<input class="w-10 h-6 bg-surface-container-high rounded-full appearance-none checked:bg-primary relative transition-colors before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-1 before:left-1 checked:before:translate-x-4 before:transition-transform cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between py-2">
+<span class="text-sm font-medium">In-app Badges</span>
+<input checked="" class="w-10 h-6 bg-surface-container-high rounded-full appearance-none checked:bg-primary relative transition-colors before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-1 before:left-1 checked:before:translate-x-4 before:transition-transform cursor-pointer" type="checkbox"/>
+</div>
+</div>
+</section>
+<!-- Category: Event Reminders -->
+<section class="bg-surface-container-low rounded-lg p-8 space-y-6">
+<div class="flex items-center gap-4 mb-2">
+<div class="w-12 h-12 rounded-full bg-secondary-container/50 flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="calendar_today">calendar_today</span>
+</div>
+<div>
+<h2 class="font-headline text-xl font-bold">Event Reminders</h2>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between py-2 border-b border-outline-variant/10">
+<span class="text-sm font-medium">Push Notifications</span>
+<input checked="" class="w-10 h-6 bg-surface-container-high rounded-full appearance-none checked:bg-primary relative transition-colors before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-1 before:left-1 checked:before:translate-x-4 before:transition-transform cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-outline-variant/10">
+<span class="text-sm font-medium">Email Reminders</span>
+<input checked="" class="w-10 h-6 bg-surface-container-high rounded-full appearance-none checked:bg-primary relative transition-colors before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-1 before:left-1 checked:before:translate-x-4 before:transition-transform cursor-pointer" type="checkbox"/>
+</div>
+<div class="flex items-center justify-between py-2">
+<span class="text-sm font-medium">Calendar Sync</span>
+<input class="w-10 h-6 bg-surface-container-high rounded-full appearance-none checked:bg-primary relative transition-colors before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-1 before:left-1 checked:before:translate-x-4 before:transition-transform cursor-pointer" type="checkbox"/>
+</div>
+</div>
+</section>
+<!-- Category: Marketing -->
+<section class="bg-surface-container-low rounded-lg p-8 space-y-8 md:col-span-2 relative overflow-hidden">
+<div class="absolute -right-8 -top-8 w-32 h-32 bg-primary/5 rounded-full blur-2xl"></div>
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="campaign">campaign</span>
+</div>
+<div>
+<h2 class="font-headline text-2xl font-bold">Marketing Promos</h2>
+<p class="text-sm text-on-surface-variant">Exclusive offers, partner events, and dining discounts.</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-4">
+<button class="px-6 py-3 rounded-full bg-surface-container-highest font-bold text-sm hover:bg-surface-variant transition-colors">Disable All</button>
+<button class="px-6 py-3 rounded-full bg-gradient-to-tr from-primary to-primary-container text-white font-bold text-sm shadow-md active:scale-95 transition-all">Keep Updates</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 pt-4">
+<div class="p-6 bg-surface-container-lowest rounded-md space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-headline font-bold">Newsletter</span>
+<input checked="" class="w-10 h-6 bg-surface-container-high rounded-full appearance-none checked:bg-primary relative transition-colors before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-1 before:left-1 checked:before:translate-x-4 before:transition-transform cursor-pointer" type="checkbox"/>
+</div>
+<p class="text-xs text-on-surface-variant">Weekly curation of the best culinary spots in your city.</p>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-md space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-headline font-bold">Sms Alerts</span>
+<input class="w-10 h-6 bg-surface-container-high rounded-full appearance-none checked:bg-primary relative transition-colors before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-1 before:left-1 checked:before:translate-x-4 before:transition-transform cursor-pointer" type="checkbox"/>
+</div>
+<p class="text-xs text-on-surface-variant">Last-minute reservations and urgent event updates.</p>
+</div>
+<div class="p-6 bg-surface-container-lowest rounded-md space-y-4">
+<div class="flex items-center justify-between">
+<span class="font-headline font-bold">Partner Deals</span>
+<input checked="" class="w-10 h-6 bg-surface-container-high rounded-full appearance-none checked:bg-primary relative transition-colors before:content-[''] before:absolute before:w-4 before:h-4 before:bg-white before:rounded-full before:top-1 before:left-1 checked:before:translate-x-4 before:transition-transform cursor-pointer" type="checkbox"/>
+</div>
+<p class="text-xs text-on-surface-variant">Discounts and perks from our venue partners.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Actions -->
+<div class="mt-12 flex flex-col items-center gap-6">
+<button class="w-full md:w-auto px-12 py-4 rounded-lg bg-primary text-white font-headline font-bold text-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.2)] hover:scale-[1.02] active:scale-95 transition-all">
+                Save All Preferences
+            </button>
+<p class="text-xs text-on-surface-variant uppercase tracking-widest font-bold">Changes may take up to 24 hours to sync</p>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-end pb-6 px-4 bg-white/90 dark:bg-stone-950/90 backdrop-blur-xl z-50">
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl" data-icon="explore">explore</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Discover</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl" data-icon="restaurant">restaurant</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Events</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl" data-icon="local_bar">local_bar</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Venues</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-tr from-rose-700 to-rose-400 text-white rounded-full p-3 mb-2 transform -translate-y-2 shadow-lg shadow-rose-200 active:scale-90 duration-200">
+<span class="material-symbols-outlined text-2xl" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

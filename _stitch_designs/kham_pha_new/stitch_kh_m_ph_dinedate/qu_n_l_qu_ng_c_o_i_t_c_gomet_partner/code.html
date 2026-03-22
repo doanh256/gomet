@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary": "#5f5e5e",
+              "primary": "#ae2f34",
+              "surface-tint": "#ae2f34",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-primary": "#ffb3b0",
+              "outline": "#8c706f",
+              "on-primary-fixed-variant": "#8c1520",
+              "secondary-fixed": "#e4e2e1",
+              "surface-bright": "#fdf9f3",
+              "on-tertiary-fixed": "#370e08",
+              "outline-variant": "#e0bfbd",
+              "on-secondary-fixed-variant": "#474747",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-variant": "#e6e2dc",
+              "surface-dim": "#dddad4",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "on-surface": "#1c1c18",
+              "primary-container": "#ff6b6b",
+              "tertiary-fixed": "#ffdad4",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdad8",
+              "on-error": "#ffffff",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "surface-container-low": "#f7f3ed",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "on-secondary-container": "#656464",
+              "surface-container-highest": "#e6e2dc",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "error": "#ba1a1a",
+              "on-tertiary": "#ffffff",
+              "on-background": "#1c1c18",
+              "surface-container-high": "#ebe8e2",
+              "on-primary-container": "#6d0010",
+              "on-error-container": "#93000a",
+              "tertiary": "#894e45",
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "background": "#fdf9f3",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed": "#410006"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 24px 48px -12px rgba(174, 47, 52, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md flex justify-between items-center px-6 h-20 w-full max-w-none shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-[#ae2f34] italic font-headline tracking-tight">GOMET</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-stone-600 hover:text-[#ae2f34] transition-all duration-300 font-medium" href="#">Discover</a>
+<a class="text-stone-600 hover:text-[#ae2f34] transition-all duration-300 font-medium" href="#">Events</a>
+<a class="text-stone-600 hover:text-[#ae2f34] transition-all duration-300 font-medium" href="#">Memories</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2 rounded-full font-headline font-bold text-sm tracking-wide active:scale-95 transition-transform">
+                Create Event
+            </button>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-stone-100/50 p-2 rounded-full transition-all" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-stone-100/50 p-2 rounded-full transition-all" data-icon="qr_code_scanner">qr_code_scanner</span>
+<img alt="Profile" class="w-10 h-10 rounded-full object-cover ring-2 ring-primary/10" data-alt="User profile avatar image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoFu678gRWrzEeW2uT4J3o3tMA17sgYGTyBllC0iGUN8mTfk3L-uc7Jeu_vfGwKMlSNQDwMdi6ueL1g0PcRFvDUy9XTxwXeDky6Z2anY95YW-g3f-i0BvgksSl3zCgyJ6VMseYLWPCx6rH-fV1y7_PBnz-19o95DGk-cVCBxvqSxv30BsPupEgCCZ9Ogql8Lr63UbPrZm4e_uRMyes7cmKpUTEZky--rWCmG60XH345TIMPmxU87ax1_F0aj3k0bTZlg8vSjvq6OU"/>
+</div>
+</header>
+<!-- Sidebar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 z-40 bg-stone-50 flex flex-col p-4 gap-2 pt-24">
+<div class="mb-8 px-2">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 bg-primary rounded-lg flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" data-icon="restaurant" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-on-surface leading-tight">Venue Dashboard</h3>
+<p class="text-[10px] uppercase tracking-widest text-primary font-bold">Premium Partner</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 bg-white text-[#ae2f34] rounded-xl shadow-sm font-medium transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="campaign" style="font-variation-settings: 'FILL' 1;">campaign</span>
+                Ad Manager
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:bg-stone-200/50 rounded-xl font-medium hover:translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:bg-stone-200/50 rounded-xl font-medium hover:translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+                Guest List
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:bg-stone-200/50 rounded-xl font-medium hover:translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+                Ticketing
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:bg-stone-200/50 rounded-xl font-medium hover:translate-x-1 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto pt-4 border-t border-stone-200/50 flex flex-col gap-1">
+<button class="w-full mb-4 bg-primary/10 text-primary py-3 rounded-xl font-bold text-sm hover:bg-primary/20 transition-colors">
+                Boost Visibility
+            </button>
+<a class="flex items-center gap-3 px-4 py-2 text-stone-500 hover:bg-stone-200/50 rounded-xl text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+                Support
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-stone-500 hover:bg-stone-200/50 rounded-xl text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                Logout
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-24 px-8 pb-12">
+<!-- Header Section -->
+<header class="flex justify-between items-end mb-12">
+<div>
+<p class="text-primary font-bold tracking-[0.2em] uppercase text-xs mb-2">Marketplace Performance</p>
+<h1 class="font-headline text-5xl font-extrabold tracking-tighter text-on-surface">Partner Ad Manager</h1>
+</div>
+<div class="flex gap-4">
+<div class="relative group">
+<button class="bg-primary text-on-primary pl-6 pr-4 py-4 rounded-full font-headline font-bold flex items-center gap-4 editorial-shadow hover:scale-105 transition-transform">
+                        Tạo Chiến dịch mới
+                        <span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</button>
+<!-- Dropdown Options -->
+<div class="absolute right-0 top-full mt-4 w-64 bg-white rounded-2xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-10 p-2 border border-outline-variant/20">
+<button class="w-full flex items-center gap-3 p-3 hover:bg-stone-50 rounded-xl text-left transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="rocket_launch">rocket_launch</span>
+<div>
+<p class="font-bold text-sm">Boost Position</p>
+<p class="text-xs text-secondary">Đẩy vị trí lên đầu</p>
+</div>
+</button>
+<button class="w-full flex items-center gap-3 p-3 hover:bg-stone-50 rounded-xl text-left transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="local_activity">local_activity</span>
+<div>
+<p class="font-bold text-sm">Attach Voucher</p>
+<p class="text-xs text-secondary">Tặng voucher đi kèm</p>
+</div>
+</button>
+<button class="w-full flex items-center gap-3 p-3 hover:bg-stone-50 rounded-xl text-left transition-colors">
+<span class="material-symbols-outlined text-primary" data-icon="event_available">event_available</span>
+<div>
+<p class="font-bold text-sm">Special Event</p>
+<p class="text-xs text-secondary">Sự kiện đặc biệt</p>
+</div>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Stats Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<!-- Reach Card -->
+<div class="bg-surface-container-lowest p-8 rounded-lg editorial-shadow relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-8xl" data-icon="trending_up">trending_up</span>
+</div>
+<p class="text-secondary font-medium text-sm mb-1 uppercase tracking-wider">Lượt tiếp cận</p>
+<h2 class="text-4xl font-headline font-black text-on-surface mb-4">42.8k</h2>
+<div class="flex items-center gap-2 text-green-600 font-bold text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_upward">arrow_upward</span>
+                    12.5% vs tháng trước
+                </div>
+</div>
+<!-- Click Card -->
+<div class="bg-surface-container-lowest p-8 rounded-lg editorial-shadow relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-8xl" data-icon="ads_click">ads_click</span>
+</div>
+<p class="text-secondary font-medium text-sm mb-1 uppercase tracking-wider">Lượt Click</p>
+<h2 class="text-4xl font-headline font-black text-on-surface mb-4">3,120</h2>
+<div class="flex items-center gap-2 text-green-600 font-bold text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="arrow_upward">arrow_upward</span>
+                    8.2% vs tháng trước
+                </div>
+</div>
+<!-- Conversion Card -->
+<div class="bg-surface-container-lowest p-8 rounded-lg editorial-shadow relative overflow-hidden group">
+<div class="absolute -right-4 -top-4 opacity-5 group-hover:opacity-10 transition-opacity">
+<span class="material-symbols-outlined text-8xl" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<p class="text-secondary font-medium text-sm mb-1 uppercase tracking-wider">Chuyển đổi</p>
+<h2 class="text-4xl font-headline font-black text-on-surface mb-4">428</h2>
+<div class="flex items-center gap-2 text-primary font-bold text-sm">
+<span class="material-symbols-outlined text-sm" data-icon="remove">remove</span>
+                    Ổn định
+                </div>
+</div>
+<!-- CTR Card (Asymmetric highlight) -->
+<div class="bg-primary-container/10 p-8 rounded-lg border-2 border-primary/10 relative">
+<p class="text-primary font-bold text-sm mb-1 uppercase tracking-wider">CTR Trung bình</p>
+<h2 class="text-4xl font-headline font-black text-primary mb-4">7.3%</h2>
+<p class="text-on-surface-variant/70 text-sm leading-relaxed">Top 5% các nhà hàng cùng phân khúc cao cấp.</p>
+</div>
+</section>
+<!-- Main Dashboard Split -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Campaign List (2/3 width) -->
+<div class="lg:col-span-2 space-y-8">
+<div>
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline text-2xl font-extrabold tracking-tight">Chiến dịch đang chạy</h3>
+<div class="flex items-center gap-2 bg-stone-100 p-1 rounded-full">
+<button class="px-4 py-1 text-xs font-bold bg-white rounded-full shadow-sm text-primary">Tất cả</button>
+<button class="px-4 py-1 text-xs font-bold text-stone-400">Gần đây</button>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Active Campaign Item -->
+<div class="bg-white p-6 rounded-2xl flex items-center gap-6 group hover:translate-x-2 transition-transform duration-300">
+<img alt="Campaign" class="w-20 h-20 rounded-xl object-cover" data-alt="Martini cocktail campaign visual" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDD5rwO6CXeF66EoMSq8dFo5MAiwGPPdYFIEIPnpe0cQbruXbm_xQeIsejMeZ5GHpGxcu7t4cfu_ElzbxPRMq1dN1Z4BQUAjdSuJfKiqvC1pTvYiveLD1oSMoN7_hcbi28XV7nin3KF-xy0x0sXyjWhXCd4NNv1qoM3NQURtzhF8VdWSYC04ObnADIyvYaJ4rwgB9NNzA83x5ObGC8lXrzCW1vMBQW7Q9BREWSigwo6oVZ91bT-nxH5h2ZOQjrjv0oEG6QmYfB7eAw"/>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<h4 class="font-headline font-bold text-lg">Velvet Night Martini Boost</h4>
+</div>
+<p class="text-stone-500 text-sm">Loại: Boost Position • Bắt đầu: 12/10/2023</p>
+</div>
+<div class="text-right">
+<p class="font-headline font-black text-xl">12.4k</p>
+<p class="text-xs text-stone-400 uppercase font-bold tracking-widest">Views</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-stone-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-stone-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Active Campaign Item -->
+<div class="bg-white p-6 rounded-2xl flex items-center gap-6 group hover:translate-x-2 transition-transform duration-300">
+<img alt="Campaign" class="w-20 h-20 rounded-xl object-cover" data-alt="Fine dining table setting campaign" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1OCvs33IFXAA4Ch8nBggKkt8sQHGsb5nwdv1AYwmrnsSKy0_Q8SitJ-k9iEL5VSFSCGrBHwOPMhkH870k9kK-vBA1Xzo0BKtByqP_M3n4B8Txlm4neW5BniN7k9HIaMqmVWEhpl7qetujThBal2GO5BNSiCO9Q5rYmCuFD3siNDB1Dk6uZCB7mP3f9yinUVFKgkMdoxyxrvq7uNqNM5xkVn9VvvZ9LdggXFJIIOl785LgsoJ0OHkY-wyhKgpVsGmJqK9_swqtHcM"/>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<h4 class="font-headline font-bold text-lg">Weekend Gourmet Voucher</h4>
+</div>
+<p class="text-stone-500 text-sm">Loại: Attach Voucher • Bắt đầu: 05/10/2023</p>
+</div>
+<div class="text-right">
+<p class="font-headline font-black text-xl">8.9k</p>
+<p class="text-xs text-stone-400 uppercase font-bold tracking-widest">Views</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-stone-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="edit">edit</span>
+</button>
+<button class="p-2 text-stone-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h3 class="font-headline text-xl font-extrabold tracking-tight mb-6 text-stone-400">Đã kết thúc (Ended)</h3>
+<div class="space-y-3 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+<div class="bg-stone-50 p-5 rounded-2xl flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-stone-200 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-stone-400" data-icon="history">history</span>
+</div>
+<div>
+<h4 class="font-bold text-stone-600">Summer Soirée Event</h4>
+<p class="text-xs text-stone-400">Kết thúc: 30/09/2023 • 25.4k Lượt tiếp cận</p>
+</div>
+</div>
+<button class="text-xs font-bold text-primary hover:underline">Xem báo cáo</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Performance Chart (1/3 width) -->
+<div class="space-y-8">
+<div class="bg-white p-8 rounded-2xl editorial-shadow h-full">
+<div class="flex justify-between items-center mb-8">
+<h3 class="font-headline font-bold text-xl">Biểu đồ hiệu suất</h3>
+<span class="material-symbols-outlined text-stone-400" data-icon="fullscreen">fullscreen</span>
+</div>
+<!-- Simplified Visual Representation of a Chart -->
+<div class="relative h-64 flex items-end justify-between gap-2 mb-8 px-2">
+<div class="w-full bg-stone-100 rounded-t-lg relative group h-[40%]">
+<div class="absolute inset-0 bg-primary opacity-20 group-hover:opacity-40 transition-opacity rounded-t-lg"></div>
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-white text-[10px] py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity">1.2k</div>
+</div>
+<div class="w-full bg-stone-100 rounded-t-lg relative group h-[65%]">
+<div class="absolute inset-0 bg-primary opacity-30 group-hover:opacity-50 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="w-full bg-stone-100 rounded-t-lg relative group h-[55%]">
+<div class="absolute inset-0 bg-primary opacity-25 group-hover:opacity-45 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="w-full bg-stone-100 rounded-t-lg relative group h-[85%]">
+<div class="absolute inset-0 bg-primary opacity-40 group-hover:opacity-60 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="w-full bg-stone-100 rounded-t-lg relative group h-[70%]">
+<div class="absolute inset-0 bg-primary opacity-35 group-hover:opacity-55 transition-opacity rounded-t-lg"></div>
+</div>
+<div class="w-full bg-stone-100 rounded-t-lg relative group h-[95%]">
+<div class="absolute inset-0 bg-primary opacity-100 transition-opacity rounded-t-lg"></div>
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-white text-[10px] py-1 px-2 rounded">Peak</div>
+</div>
+<div class="w-full bg-stone-100 rounded-t-lg relative group h-[60%]">
+<div class="absolute inset-0 bg-primary opacity-30 transition-opacity rounded-t-lg"></div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-stone-50 p-4 rounded-xl border-l-4 border-primary">
+<p class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Thời gian cao điểm</p>
+<p class="font-headline font-bold text-on-surface">19:00 - 21:00</p>
+</div>
+<div class="bg-stone-50 p-4 rounded-xl border-l-4 border-secondary">
+<p class="text-[10px] font-bold text-stone-400 uppercase tracking-widest mb-1">Ngày tốt nhất</p>
+<p class="font-headline font-bold text-on-surface">Thứ 6, Thứ 7</p>
+</div>
+</div>
+<div class="mt-8">
+<div class="p-6 bg-surface-container rounded-2xl relative overflow-hidden group">
+<div class="absolute right-0 bottom-0 translate-x-1/4 translate-y-1/4 opacity-10 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-8xl text-primary" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<h4 class="font-headline font-bold text-primary text-sm mb-2">Gợi ý AI (Curator Insights)</h4>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                                Chiến dịch "Special Event" của bạn có tỉ lệ chuyển đổi cao hơn 40% vào các buổi tối thứ 5. Hãy thử đẩy mạnh ngân sách vào khung giờ này.
+                            </p>
+<button class="mt-4 text-xs font-black uppercase tracking-widest text-primary flex items-center gap-1 group">
+                                Apply suggestion 
+                                <span class="material-symbols-outlined text-xs group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB (Suppressing as per mandate on management pages, but provided for context if user navigates back to main feed) -->
+<!-- Hidden here to strictly follow Suppression logic for Management pages -->
+<div class="fixed bottom-8 right-8 hidden">
+<button class="w-16 h-16 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center editorial-shadow">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</body></html>

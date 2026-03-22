@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Notification Preferences</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-highest": "#e6e2dc",
+              "background": "#fdf9f3",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-secondary-fixed-variant": "#474747",
+              "surface-bright": "#fdf9f3",
+              "surface": "#fdf9f3",
+              "outline": "#8c706f",
+              "on-secondary-container": "#656464",
+              "surface-tint": "#ae2f34",
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-surface": "#1c1c18",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-variant": "#e6e2dc",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed": "#ffdad8",
+              "on-primary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "on-primary-fixed": "#410006",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "primary-fixed-dim": "#ffb3b0",
+              "outline-variant": "#e0bfbd",
+              "on-error-container": "#93000a",
+              "secondary-fixed": "#e4e2e1",
+              "primary-container": "#ff6b6b",
+              "tertiary-container": "#cf8a7f",
+              "tertiary": "#894e45",
+              "on-tertiary-fixed": "#370e08",
+              "on-surface-variant": "#584140",
+              "on-primary-container": "#6d0010",
+              "surface-container-low": "#f7f3ed",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary-container": "#e4e2e1",
+              "secondary": "#5f5e5e",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-secondary": "#ffffff",
+              "error": "#ba1a1a",
+              "inverse-primary": "#ffb3b0",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-dim": "#dddad4",
+              "primary": "#ae2f34",
+              "on-background": "#1c1c18"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-dot {
+            position: relative;
+        }
+        .active-dot::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background-color: currentColor;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed-dim selection:text-on-primary-container">
+<!-- TopAppBar Shell -->
+<header class="bg-white/80 dark:bg-stone-900/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-sm shadow-rose-900/5">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-bold tracking-tighter text-rose-700 dark:text-rose-500 font-headline">GOMET</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="text-stone-600 dark:text-stone-400 hover:bg-rose-50 dark:hover:bg-stone-800 transition-colors px-3 py-1 rounded-full font-label text-sm" href="#">Discover</a>
+<a class="text-stone-600 dark:text-stone-400 hover:bg-rose-50 dark:hover:bg-stone-800 transition-colors px-3 py-1 rounded-full font-label text-sm" href="#">Events</a>
+<a class="text-rose-700 dark:text-rose-400 font-semibold active-dot font-label text-sm" href="#">Settings</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-stone-600 hover:bg-rose-50 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-stone-600 hover:bg-rose-50 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="shield_with_heart">shield_with_heart</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border-2 border-primary-container/20">
+<img class="w-full h-full object-cover" data-alt="Portrait of a user for profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaVTVnmTAb5dLonXl5BGuw5WewzKK3drGGw82_arGw9WCNQ7VR_-YoVXas7DXcotH24CMh9hdgZeKGgJaKxQlnT0LjT_fdatypUT0LUjWPkiNTLmGGPciYSPu71Cu-m43LsCPx69C9hBWz9iwfS0x9_znLbUOUajrjkSVAzCyVInYsPWR58ywtu1iZ9XlDV0bOi4rug1ssCkbig1r0F3tYadZcQtQXRXs0t9EKfEwfEDi0UjDaDvP2jkqXIK9b2rA9MCnIiV_kUxU"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-28 pb-32 px-6 max-w-5xl mx-auto min-h-screen">
+<!-- Header Section -->
+<section class="mb-12">
+<h1 class="font-headline text-display-lg -tracking-tight text-on-surface font-extrabold mb-2">Notification Settings</h1>
+<p class="text-on-surface-variant body-md max-w-2xl">Tailor how and when you receive updates. Curate your experience to stay connected without the noise.</p>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="hidden lg:block lg:col-span-3">
+<nav class="space-y-2">
+<a class="flex items-center gap-3 p-4 rounded-xl text-stone-500 hover:bg-stone-100 transition-all font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span>Account</span>
+</a>
+<a class="flex items-center gap-3 p-4 rounded-xl bg-rose-600 text-white shadow-lg shadow-rose-500/20 transition-all font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="notifications" style="font-variation-settings: 'FILL' 1;">notifications</span>
+<span>Notifications</span>
+</a>
+<a class="flex items-center gap-3 p-4 rounded-xl text-stone-500 hover:bg-stone-100 transition-all font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+<span>Privacy</span>
+</a>
+<a class="flex items-center gap-3 p-4 rounded-xl text-stone-500 hover:bg-stone-100 transition-all font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span>Payments</span>
+</a>
+</nav>
+</aside>
+<!-- Main Settings Canvas -->
+<div class="lg:col-span-9 space-y-8">
+<!-- Bento Grid: Focus Modes -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Quiet Hours Card -->
+<div class="bg-surface-container-low p-8 rounded-lg relative overflow-hidden group">
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-rose-600" data-icon="bedtime">bedtime</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-stone-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-rose-600"></div>
+</label>
+</div>
+<h3 class="font-headline text-xl font-bold mb-2">Quiet Hours</h3>
+<p class="text-sm text-on-surface-variant mb-6">Mute all non-emergency alerts during your downtime.</p>
+<div class="flex gap-2">
+<div class="bg-white px-4 py-2 rounded-lg text-xs font-bold text-stone-600">22:00</div>
+<div class="text-stone-400 self-center">to</div>
+<div class="bg-white px-4 py-2 rounded-lg text-xs font-bold text-stone-600">07:00</div>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-9xl" data-icon="bedtime">bedtime</span>
+</div>
+</div>
+<!-- Do Not Disturb Card -->
+<div class="bg-stone-900 p-8 rounded-lg relative overflow-hidden group">
+<div class="relative z-10 text-white">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-stone-800 rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-rose-400" data-icon="do_not_disturb_on">do_not_disturb_on</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-stone-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-rose-500"></div>
+</label>
+</div>
+<h3 class="font-headline text-xl font-bold mb-2">Instant Focus</h3>
+<p class="text-sm text-stone-400 mb-6">One-tap silence for all notifications until you turn it off.</p>
+<button class="bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold px-6 py-2.5 rounded-full transition-colors">Activate Now</button>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10 group-hover:rotate-12 transition-transform duration-500">
+<span class="material-symbols-outlined text-9xl text-rose-500" data-icon="do_not_disturb_on">do_not_disturb_on</span>
+</div>
+</div>
+</div>
+<!-- Toggle Sections: Categories -->
+<div class="space-y-12 py-8">
+<!-- Social Category -->
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<h2 class="font-headline text-lg font-bold tracking-tight uppercase text-stone-500 text-[11px] tracking-widest">Match &amp; Social</h2>
+</div>
+<div class="space-y-2">
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-center justify-between group hover:bg-surface-container-low transition-colors">
+<div class="flex gap-5 items-center">
+<div class="w-10 h-10 rounded-full bg-rose-50 flex items-center justify-center text-rose-600">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">New Matches</h4>
+<p class="text-sm text-on-surface-variant">When someone wants to dine with you</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="px-3 py-1 bg-surface-container text-[10px] font-bold uppercase tracking-tighter rounded-md text-stone-500">Push</span>
+<span class="px-3 py-1 bg-primary/10 text-[10px] font-bold uppercase tracking-tighter rounded-md text-primary">Email</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-center justify-between group hover:bg-surface-container-low transition-colors">
+<div class="flex gap-5 items-center">
+<div class="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-600">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Messages</h4>
+<p class="text-sm text-on-surface-variant">New activity in your conversations</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-stone-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-rose-600"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Events Category -->
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="confirmation_number" style="font-variation-settings: 'FILL' 1;">confirmation_number</span>
+<h2 class="font-headline text-lg font-bold tracking-tight uppercase text-stone-500 text-[11px] tracking-widest">Events &amp; Curations</h2>
+</div>
+<div class="space-y-2">
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-center justify-between group hover:bg-surface-container-low transition-colors">
+<div class="flex gap-5 items-center">
+<div class="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-600">
+<span class="material-symbols-outlined" data-icon="star">star</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Favorite Categories</h4>
+<p class="text-sm text-on-surface-variant">New venues matching your tastes</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-stone-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-rose-600"></div>
+</label>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-center justify-between group hover:bg-surface-container-low transition-colors">
+<div class="flex gap-5 items-center">
+<div class="w-10 h-10 rounded-full bg-stone-50 flex items-center justify-center text-stone-600">
+<span class="material-symbols-outlined" data-icon="campaign">campaign</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Community News</h4>
+<p class="text-sm text-on-surface-variant">GOMET exclusive updates and features</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-stone-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-rose-600"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Transactions Category -->
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+<h2 class="font-headline text-lg font-bold tracking-tight uppercase text-stone-500 text-[11px] tracking-widest">Transactions &amp; Security</h2>
+</div>
+<div class="bg-primary/5 p-6 rounded-lg border border-primary/10">
+<div class="flex items-center justify-between">
+<div class="flex gap-5 items-center">
+<div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Purchase Receipts</h4>
+<p class="text-sm text-on-surface-variant">Sent for all event bookings and subscriptions</p>
+</div>
+</div>
+<div class="flex items-center gap-2 text-primary font-bold text-xs uppercase">
+<span class="material-symbols-outlined text-sm" data-icon="lock">lock</span>
+                                    Always On
+                                </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Action -->
+<div class="pt-8 flex justify-end gap-4">
+<button class="px-8 py-3 text-stone-500 font-bold text-sm hover:bg-stone-100 rounded-full transition-colors">Discard Changes</button>
+<button class="px-8 py-3 bg-gradient-to-tr from-rose-700 to-rose-400 text-white font-bold text-sm rounded-full shadow-lg shadow-rose-500/20 active:scale-95 transition-all">Save Preferences</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-4 pb-6 bg-white/90 dark:bg-stone-900/90 backdrop-blur-xl shadow-[0_-10px_25px_-5px_rgba(174,47,52,0.08)]">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-inter text-[10px] font-bold mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+<span class="font-inter text-[10px] font-bold mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2" href="#">
+<span class="material-symbols-outlined" data-icon="gpp_good">gpp_good</span>
+<span class="font-inter text-[10px] font-bold mt-1">Safety</span>
+</a>
+<div class="flex flex-col items-center justify-center bg-gradient-to-tr from-rose-700 to-rose-400 text-white rounded-2xl p-3 mb-2 transform -translate-y-2">
+<span class="material-symbols-outlined" data-icon="settings" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-inter text-[10px] font-bold">Settings</span>
+</div>
+</nav>
+</body></html>

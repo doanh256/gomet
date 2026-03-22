@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET - Permission Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#1c1c18",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#31302d",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#c8c6c6",
+                        "surface-variant": "#e6e2dc",
+                        "surface-container-high": "#ebe8e2",
+                        "primary-fixed": "#ffdad8",
+                        "surface-container-highest": "#e6e2dc",
+                        "background": "#fdf9f3",
+                        "on-primary-fixed-variant": "#8c1520",
+                        "on-secondary-fixed-variant": "#474747",
+                        "surface-bright": "#fdf9f3",
+                        "surface": "#fdf9f3",
+                        "outline": "#8c706f",
+                        "on-secondary-container": "#656464",
+                        "surface-tint": "#ae2f34",
+                        "surface-container-low": "#f7f3ed",
+                        "inverse-on-surface": "#f4f0ea",
+                        "secondary-container": "#e4e2e1",
+                        "secondary": "#5f5e5e",
+                        "on-tertiary-container": "#55251e",
+                        "on-tertiary-fixed-variant": "#6d3830",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#ffb3b0",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "surface-dim": "#dddad4",
+                        "primary": "#ae2f34",
+                        "on-background": "#1c1c18",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffdad4",
+                        "on-primary-fixed": "#410006",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "surface-container": "#f1ede7",
+                        "primary-fixed-dim": "#ffb3b0",
+                        "outline-variant": "#e0bfbd",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e4e2e1",
+                        "primary-container": "#ff6b6b",
+                        "tertiary-container": "#cf8a7f",
+                        "tertiary": "#894e45",
+                        "on-tertiary-fixed": "#370e08",
+                        "on-surface-variant": "#584140",
+                        "on-primary-container": "#6d0010"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-pill {
+            font-variation-settings: 'FILL' 1;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-rose-50 rounded-full transition-colors active:scale-90 duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">arrow_back</span>
+</button>
+<span class="text-2xl font-black italic text-rose-700 dark:text-rose-500 tracking-tighter font-headline">GOMET</span>
+</div>
+<div class="hidden md:flex items-center gap-8 font-headline tracking-tight">
+<a class="text-stone-600 dark:text-stone-400 hover:bg-rose-50 transition-colors duration-300 px-3 py-1 rounded-md" href="#">Discover</a>
+<a class="text-stone-600 dark:text-stone-400 hover:bg-rose-50 transition-colors duration-300 px-3 py-1 rounded-md" href="#">Events</a>
+<a class="text-stone-600 dark:text-stone-400 hover:bg-rose-50 transition-colors duration-300 px-3 py-1 rounded-md" href="#">Venues</a>
+<a class="text-rose-700 dark:text-rose-400 font-bold border-b-2 border-rose-600 px-3 py-1" href="#">Profile</a>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined p-2 text-stone-600 hover:bg-rose-50 rounded-full cursor-pointer transition-all active:scale-95">favorite</span>
+<span class="material-symbols-outlined p-2 text-stone-600 hover:bg-rose-50 rounded-full cursor-pointer transition-all active:scale-95">notifications</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center ml-2 border-2 border-primary-container overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile picture with warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALjgzwJICGHwiH4Uc0SbCOkuJboz2YU2Sw4DYgrDz2tvNLl93T8yhaYM1CFb7_7UTpPeMhRzetWZkUCUH-pu6KdMWrjlvLoNB9yFSx68gslcMQVLMuqtlxRSiLRCpqcMJhKJPp5UVgejn8hWSwda2685W_elu5H53jX5EqLAcctjnKyoHNxMOJn4vo5-y5tgkneU5HLmD2i6gItwSlKWxblp4ezMtNw0gh_CDaitDuEj_EMu4orAsuVLK7Lz7hR2L83k046AeWcgE"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="pt-28 pb-32 px-6 max-w-4xl mx-auto">
+<!-- Hero Header -->
+<header class="mb-12 relative">
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold tracking-tighter text-on-surface mb-4 leading-none">
+                Privacy <br/> <span class="text-primary">&amp; Permissions</span>
+</h1>
+<p class="text-on-surface-variant text-lg max-w-md leading-relaxed">
+                You’re in control of your data. Tailor your GOMET experience by managing how we access your device features.
+            </p>
+<div class="absolute top-0 right-0 -z-10 opacity-10">
+<span class="material-symbols-outlined text-[12rem]" style="font-variation-settings: 'wght' 100;">lock_open</span>
+</div>
+</header>
+<!-- Permissions List -->
+<div class="space-y-4">
+<!-- Location Permission -->
+<div class="bg-surface-container-lowest p-6 rounded-lg flex items-center justify-between group transition-all hover:bg-white border-l-4 border-primary">
+<div class="flex items-center gap-6">
+<div class="w-14 h-14 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">location_on</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Location</h3>
+<p class="text-on-surface-variant text-sm mt-1">Used for discovering nearby curated events and local bistros.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Notifications Permission -->
+<div class="bg-surface-container-low p-6 rounded-lg flex items-center justify-between group transition-all hover:bg-surface-container-lowest">
+<div class="flex items-center gap-6">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-3xl">notifications_active</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Notifications</h3>
+<p class="text-on-surface-variant text-sm mt-1">Get real-time updates on table reservations and event invites.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Camera Permission -->
+<div class="bg-surface-container-low p-6 rounded-lg flex items-center justify-between group transition-all hover:bg-surface-container-lowest">
+<div class="flex items-center gap-6">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-3xl">photo_camera</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Camera</h3>
+<p class="text-on-surface-variant text-sm mt-1">Capture your culinary moments and upload profile photos.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Microphone Permission -->
+<div class="bg-surface-container-low p-6 rounded-lg flex items-center justify-between group transition-all hover:bg-surface-container-lowest">
+<div class="flex items-center gap-6">
+<div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-3xl">mic</span>
+</div>
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Microphone</h3>
+<p class="text-on-surface-variant text-sm mt-1">Send voice notes to your matches and record video intros.</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Informational Card (Asymmetric Layering) -->
+<div class="mt-16 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<div class="md:col-span-7 bg-tertiary-fixed p-8 rounded-lg relative overflow-hidden shadow-[0_24px_48px_-12px_rgba(137,78,69,0.15)]">
+<div class="relative z-10">
+<h4 class="font-headline font-bold text-2xl text-on-tertiary-fixed mb-4">Why we ask?</h4>
+<p class="text-on-tertiary-fixed-variant leading-relaxed">
+                        At <span class="font-bold">GOMET</span>, privacy is the main ingredient. We only request permissions that directly enhance your discovery of culinary experiences. Your data is encrypted and never sold to third parties.
+                    </p>
+<button class="mt-6 flex items-center gap-2 text-primary font-bold hover:underline">
+                        Read Data Policy
+                        <span class="material-symbols-outlined">open_in_new</span>
+</button>
+</div>
+<!-- Decor element -->
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/10 rounded-full blur-3xl"></div>
+</div>
+<div class="md:col-span-5 aspect-square bg-surface-container-highest rounded-lg relative transform md:rotate-3 shadow-lg overflow-hidden border-4 border-white">
+<img class="w-full h-full object-cover" data-alt="Close up of a premium cocktail being prepared" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBD2ZBikvrTz-Ncj5v9PDBIRL0W3cmxtiX-iZwhguHSR4frD9ufagfvP1sqdWKUuCfsRDKc3CIKMjXFcIh8jSYLvUrFXPQB3Bvq-O4cHN1tPv4OfAFhmd9RPUT0AGN5i2BVQcNeZIXFCytlGhb3f_HEDFgfjKoj-baWY2DlLbcuN_DZElNI-QbA8NAyxqifD-gLpSiXO4uLthRLdp8ttvvFEA3T3E-swEeoB4GQxfpsFmtaNtkuVSz7uPhNNAO9tSY_8_XoKB3-IEU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-end pb-6 px-4 bg-white/90 dark:bg-stone-950/90 backdrop-blur-xl z-50 rounded-t-[2rem] shadow-[0_-10px_40px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">local_bar</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Venues</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Messages</span>
+</a>
+<div class="flex flex-col items-center justify-center bg-gradient-to-tr from-rose-700 to-rose-400 text-white rounded-full p-3 mb-2 transform -translate-y-2 shadow-lg shadow-rose-200 active:scale-90 duration-200">
+<span class="material-symbols-outlined active-pill" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</div>
+</div>
+</body></html>

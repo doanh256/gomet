@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Velvet Bistro | Culinary Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary-fixed": "#ffdad8",
+                        "on-secondary-fixed-variant": "#474747",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#ffb3b0",
+                        "surface-container-low": "#f7f3ed",
+                        "surface": "#fdf9f3",
+                        "surface-tint": "#ae2f34",
+                        "on-tertiary-fixed": "#370e08",
+                        "primary-container": "#ff6b6b",
+                        "on-tertiary-fixed-variant": "#6d3830",
+                        "background": "#fdf9f3",
+                        "surface-container-highest": "#e6e2dc",
+                        "secondary": "#5f5e5e",
+                        "outline": "#8c706f",
+                        "on-tertiary-container": "#55251e",
+                        "on-tertiary": "#ffffff",
+                        "inverse-primary": "#ffb3b0",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#e4e2e1",
+                        "on-secondary": "#ffffff",
+                        "tertiary-container": "#cf8a7f",
+                        "inverse-surface": "#31302d",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "surface-dim": "#dddad4",
+                        "surface-container-high": "#ebe8e2",
+                        "surface-bright": "#fdf9f3",
+                        "on-primary-fixed": "#410006",
+                        "on-primary-fixed-variant": "#8c1520",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#6d0010",
+                        "inverse-on-surface": "#f4f0ea",
+                        "tertiary": "#894e45",
+                        "secondary-fixed-dim": "#c8c6c6",
+                        "primary": "#ae2f34",
+                        "on-secondary-container": "#656464",
+                        "surface-container": "#f1ede7",
+                        "secondary-fixed": "#e4e2e1",
+                        "tertiary-fixed": "#ffdad4",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1c1c18",
+                        "surface-variant": "#e6e2dc",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "on-surface-variant": "#584140",
+                        "outline-variant": "#e0bfbd",
+                        "on-surface": "#1c1c18"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdf9f3;
+            color: #1c1c18;
+        }
+        .font-plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-md no-border bg-surface-container-low/50">
+<div class="flex justify-between items-center w-full px-8 h-20 max-w-screen-2xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-[#ae2f34] dark:text-[#ff6b6b] font-plus-jakarta">
+                Velvet Bistro
+            </div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-background/70 dark:text-zinc-400 hover:text-[#ae2f34] transition-colors font-plus-jakarta text-sm font-medium" href="#">Discover</a>
+<a class="text-on-background/70 dark:text-zinc-400 hover:text-[#ae2f34] transition-colors font-plus-jakarta text-sm font-medium" href="#">Reservations</a>
+<a class="text-on-background/70 dark:text-zinc-400 hover:text-[#ae2f34] transition-colors font-plus-jakarta text-sm font-medium" href="#">Menus</a>
+<a class="text-on-background/70 dark:text-zinc-400 hover:text-[#ae2f34] transition-colors font-plus-jakarta text-sm font-medium" href="#">Our Story</a>
+</nav>
+<div class="flex items-center gap-6">
+<div class="hidden md:block">
+<button class="bg-gradient-to-r from-primary to-primary-container text-white px-6 py-2.5 rounded-full font-bold text-sm hover:scale-105 active:scale-95 transition-all shadow-lg">
+                        Book a Table
+                    </button>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-2xl text-on-surface-variant">search</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Sidebar (Large Screens Only) -->
+<aside class="hidden lg:flex flex-col fixed left-0 top-0 h-full border-r-0 z-40 bg-surface dark:bg-zinc-950 h-screen w-64 bg-surface-container-low">
+<div class="p-8 pb-4">
+<h2 class="text-xl font-bold text-[#ae2f34] font-plus-jakarta">Velvet Bistro</h2>
+<p class="text-[10px] tracking-[0.2em] uppercase text-on-surface-variant/60 font-medium">The Culinary Curator</p>
+</div>
+<nav class="mt-8 flex flex-col gap-1">
+<a class="text-on-background/60 dark:text-zinc-500 flex items-center gap-4 py-3 px-6 hover:translate-x-1 transition-transform font-plus-jakarta font-medium text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">home</span> Home
+            </a>
+<a class="text-on-background/60 dark:text-zinc-500 flex items-center gap-4 py-3 px-6 hover:translate-x-1 transition-transform font-plus-jakarta font-medium text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">explore</span> Explore
+            </a>
+<a class="text-on-background/60 dark:text-zinc-500 flex items-center gap-4 py-3 px-6 hover:translate-x-1 transition-transform font-plus-jakarta font-medium text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">favorite</span> Favorites
+            </a>
+<a class="text-on-background/60 dark:text-zinc-500 flex items-center gap-4 py-3 px-6 hover:translate-x-1 transition-transform font-plus-jakarta font-medium text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">chat_bubble</span> Messages
+            </a>
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] font-extrabold flex items-center gap-4 py-3 px-6 bg-surface-container-high rounded-r-full font-plus-jakarta text-xs uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span> Profile
+            </a>
+</nav>
+<div class="mt-auto p-6">
+<button class="w-full bg-primary/10 text-primary py-4 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-primary/20 transition-colors">
+                New Reservation
+            </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-24 pb-32 px-4 md:px-12 max-w-7xl mx-auto">
+<!-- Hero Profile Section: Editorial Asymmetry -->
+<section class="relative grid grid-cols-1 md:grid-cols-12 gap-8 items-end mb-20">
+<div class="md:col-span-5 relative">
+<div class="aspect-[4/5] rounded-xl overflow-hidden bg-surface-container shadow-xl">
+<img alt="Editorial Portrait" class="w-full h-full object-cover" data-alt="Sophisticated woman in a high-end restaurant setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJy5EtPa2d2jUHAOGvuTKCtbKHf2IMDYQa7ivQkZAWmKoeJRj_49Cmb_zr77Ri3aaaNI5S4BNp15nuGTgPzlTq5iv4Y6DlNlqsiRTdmlQIVXR5Xf4JfgsGrpUOM4IjYSowNuLpIw5mQjFqz6BBeJo-7QLI4K_5d1jJhxErZGiXGQWgENsCGtek2eBOX0jO30eAzTJhPTRlsj2bH5jcm5MGsKvpZ_c5J140HtDTOFo6YokjwkeZjQWgGlo2wxiQa3tHpcQLsHfv4Z0"/>
+</div>
+<!-- Floating Badge -->
+<div class="absolute -bottom-6 -right-6 bg-surface-container-lowest p-6 rounded-lg shadow-2xl flex items-center gap-4 backdrop-blur-md">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<div>
+<p class="text-label-md font-bold text-on-surface uppercase tracking-tighter">Verified Epicurean</p>
+<p class="text-xs text-on-surface-variant">Top 5% Food Critic</p>
+</div>
+</div>
+</div>
+<div class="md:col-span-7 md:pl-12 pb-4">
+<h1 class="font-headline text-6xl md:text-8xl font-black tracking-tighter text-on-surface leading-none mb-4 -ml-1 md:-ml-20 md:relative z-10">
+                    Julianne <br/> <span class="text-primary italic">Vance.</span>
+</h1>
+<p class="font-body text-on-surface-variant max-w-md text-lg leading-relaxed mb-8">
+                    An architect by day, a relentless seeker of the perfect saffron risotto by night. Finding the soul of a city through its hidden bistros.
+                </p>
+<div class="flex flex-wrap gap-3">
+<span class="px-5 py-2 bg-surface-container-high rounded-full font-label text-xs font-bold uppercase tracking-widest text-on-surface">Modernist</span>
+<span class="px-5 py-2 bg-surface-container-high rounded-full font-label text-xs font-bold uppercase tracking-widest text-on-surface">Late Night</span>
+<span class="px-5 py-2 bg-surface-container-high rounded-full font-label text-xs font-bold uppercase tracking-widest text-on-surface">Jazz Bars</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Culinary Details -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Dietary Base & Allergies -->
+<div class="md:col-span-2 bg-surface-container-low rounded-lg p-10 flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<h3 class="font-headline text-3xl font-bold tracking-tight mb-8">Dietary Foundation</h3>
+<div class="flex flex-wrap gap-4 mb-12">
+<!-- Dine-Tag Component -->
+<div class="bg-primary text-on-primary px-8 py-4 rounded-full font-bold flex items-center gap-3 shadow-lg">
+<span class="material-symbols-outlined">eco</span> Pescatarian
+                        </div>
+<div class="bg-surface-container-highest text-on-surface px-8 py-4 rounded-full font-bold flex items-center gap-3">
+<span class="material-symbols-outlined">grain</span> Gluten-Aware
+                        </div>
+</div>
+<div class="pt-8 border-t border-outline-variant/30">
+<h4 class="font-label text-xs font-bold uppercase tracking-[0.2em] text-error mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">warning</span> Allergy Alerts
+                        </h4>
+<div class="flex flex-wrap gap-2">
+<span class="text-on-surface-variant font-medium text-lg italic">Shellfish (Severe), Peanuts (Mild), Stone Fruit.</span>
+</div>
+</div>
+</div>
+<div class="absolute -bottom-10 -right-10 opacity-5 group-hover:scale-110 transition-transform duration-700">
+<span class="material-symbols-outlined text-[200px]">restaurant_menu</span>
+</div>
+</div>
+<!-- Epicurean Nuances: Spice -->
+<div class="bg-surface-container-highest rounded-lg p-10 flex flex-col justify-between">
+<div>
+<h3 class="font-headline text-2xl font-bold tracking-tight mb-2">Spice Threshold</h3>
+<p class="text-sm text-on-surface-variant mb-8">The heat Julianne prefers</p>
+<div class="space-y-6">
+<div class="flex items-center justify-between font-label text-xs font-bold uppercase tracking-widest">
+<span>Mild</span>
+<span class="text-primary">Volcanic</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-orange-300 to-primary w-[75%] rounded-full"></div>
+</div>
+<p class="text-sm italic text-on-surface/70 leading-relaxed">
+                            "A slow burn that enhances the ingredients, never masks them. Think Thai Bird's Eye, not pure extract."
+                        </p>
+</div>
+</div>
+</div>
+<!-- Table Ambiance -->
+<div class="bg-tertiary-container/10 rounded-lg p-10 flex flex-col border border-tertiary-container/20">
+<h3 class="font-headline text-2xl font-bold tracking-tight mb-8">Table Ambiance</h3>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary">flare</span>
+</div>
+<div>
+<p class="font-bold text-sm">Candlelight Only</p>
+<p class="text-xs text-on-surface-variant">Low lux, intimate acoustics.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary">chair_alt</span>
+</div>
+<div>
+<p class="font-bold text-sm">Velvet Booths</p>
+<p class="text-xs text-on-surface-variant">Corner privacy over center stage.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-tertiary">music_note</span>
+</div>
+<div>
+<p class="font-bold text-sm">Analog Sounds</p>
+<p class="text-xs text-on-surface-variant">Vinyl records or live acoustic jazz.</p>
+</div>
+</li>
+</ul>
+</div>
+<!-- Chef Notes Section: Premium Card -->
+<div class="md:col-span-2 bg-surface-container-lowest rounded-lg p-10 shadow-sm border border-outline-variant/10">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-headline text-3xl font-bold tracking-tight">Chef Notes</h3>
+<span class="px-4 py-1.5 bg-secondary-container text-on-secondary-container rounded-full text-[10px] font-black uppercase tracking-widest">Confidential</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="space-y-6">
+<div class="relative">
+<span class="absolute -left-6 top-0 text-primary opacity-20 text-4xl font-serif">"</span>
+<p class="font-body text-lg italic leading-relaxed text-on-surface/80">
+                                Never offer the house red; she prefers to explore the cellar herself. Starts with extra-dry vermouth.
+                            </p>
+</div>
+<p class="text-sm text-on-surface-variant leading-relaxed">
+                            Julianne values the story behind the plate. She’s likely to ask about the provenance of the sea salt or the specific vineyard block.
+                        </p>
+</div>
+<div class="bg-surface-container-low rounded-xl p-6">
+<h4 class="font-label text-xs font-bold uppercase tracking-widest text-on-surface mb-4">Preferred Service Tempo</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="text-sm font-medium">Slow &amp; Curated (2.5h+)</span>
+</div>
+<div class="flex items-center gap-3 opacity-40">
+<div class="w-2 h-2 rounded-full bg-on-surface"></div>
+<span class="text-sm font-medium">Efficient &amp; Brisk</span>
+</div>
+</div>
+<div class="mt-8 pt-6 border-t border-outline-variant/30">
+<p class="text-[11px] font-bold uppercase tracking-widest text-on-surface-variant mb-1">Last Visit Note</p>
+<p class="text-sm italic">"Mentioned a fondness for the 2018 Barolo."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Visual Palette: Food Imagery -->
+<section class="mt-20">
+<h3 class="font-headline text-xl font-bold tracking-tight mb-8 text-center uppercase tracking-[0.3em]">The Visual Palette</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="aspect-square rounded-lg overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="Plated Dish" class="w-full h-full object-cover" data-alt="Exquisite seafood appetizer on white ceramic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGjy-AukZkwb5jasQPolNs9IY__F1JAI85aM9xxDIqsUzklCO3AKaR_0jicyhyKD9QJ65UA8k4RcjVTCUjIiEpn0BQvn6MuteLBMTYTTvbNpmrCwHOBulVBnu_mP4QUtIXdaDfUQfbzr5w6a3ZF4Uxj1wALULgSOx-Mj8stc5mGA5sSNSafqeFBl0WQMUNFdPQFIe1BqG4YHVu3mP6T7-_7BTf5epxHCNOL9yQQJEIwlgYUQcWjhrgLQUNq13z589c_43azAnbfRs"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden translate-y-4 grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="Wine Glass" class="w-full h-full object-cover" data-alt="Wine being poured in a dimly lit bar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDyRe1tONJQ_OB3_s78sWEnCj4S9gmB3LlZnhQKJ80zPiYGUBE8nO_Fyniene9zBTtibLq3wXpbjpjcaQ4ek3QiwJHK36WXk5FalYgTwIFCVdPZjT_CXZiT9hVkHTSd22krRIt2v66cSkm-UwNnodQJeOFqkpyJ9r3jKh13QQPPUN7J1SudEMiw5srCjhAu-RxLAi_HRE2f7e3aZdE9Fn6lP-M5_I0ijaQZSgxFNjJ2WOhLvp0IjJoPYSuSzA8vhOQF9nhLZ1qZMo"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="Fine Dining Interior" class="w-full h-full object-cover" data-alt="Luxury restaurant interior with velvet chairs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk_sk4bt90pqLpCXT2FIfW_G1OPmv6IiUcSioFC44ovHfKjVMrIV3v6005SAX8jgj42xrWoksWe7R8YyLz66TTCexwOo5vqeH4Utn2lrJpW8DUD5TpzTvllFHloPrdWWZlJYKtWN0FWU-WCZkAEtIgIHzjPCD44roEGpmWAkxEYJg6U5UdHAsoJ2rlRhNMsla6GuE2QWz2SZ2n-OypTG5iwkrf819ODAAntxJ1eZudi5vqdCjw76YAw1e1oUBpw6z1DMtRwhK1Upo"/>
+</div>
+<div class="aspect-square rounded-lg overflow-hidden translate-y-4 grayscale hover:grayscale-0 transition-all duration-500">
+<img alt="Craft Cocktail" class="w-full h-full object-cover" data-alt="Elegant cocktail with orange garnish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIuU5fL-OBwiTVoWxwV5xd-Eg9TgTIpRn0GUenO4j918mWR5GUzwV4WGnElM6cO3aABZmIrnw3MosO7dGH_V3bfdu6xZF51zajMUpFB7FT3NiJxl1yGTBG9ryXpDQtaFfrNz1g5Bda0N9awIv5fY7_dGkENZzRRjZWeWdrM5gyOriUk5RqlyRQLQpTACCGFAAm_o1-qzPXWH2g9pfb2PVlwPSbGMD0G1SebTIMQrS82F5A_1Pg5yD_nXbGuQk-p7OBay8MF6-iObk"/>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full flex justify-around items-end px-6 pb-6 pt-2 bg-surface/90 dark:bg-zinc-900/90 backdrop-blur-xl z-50 rounded-t-[2rem] shadow-[0_-24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex flex-col items-center justify-center text-on-background/40 dark:text-zinc-500 p-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">restaurant</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-tighter mt-1">Dine</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-background/40 dark:text-zinc-500 p-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">search</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-tighter mt-1">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-background/40 dark:text-zinc-500 p-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">bookmark</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-tighter mt-1">Saved</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-2 scale-110 shadow-lg active:scale-90 transition-all duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-tighter mt-1">Account</span>
+</div>
+</nav>
+</body></html>

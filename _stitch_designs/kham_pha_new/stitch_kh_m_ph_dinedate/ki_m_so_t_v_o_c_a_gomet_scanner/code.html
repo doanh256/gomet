@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdad8",
+              "primary-container": "#ff6b6b",
+              "tertiary-fixed": "#ffdad4",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-surface-variant": "#584140",
+              "on-surface": "#1c1c18",
+              "surface-variant": "#e6e2dc",
+              "surface-dim": "#dddad4",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-secondary": "#ffffff",
+              "surface-bright": "#fdf9f3",
+              "on-tertiary-fixed": "#370e08",
+              "outline-variant": "#e0bfbd",
+              "on-secondary-fixed-variant": "#474747",
+              "inverse-on-surface": "#f4f0ea",
+              "on-primary-fixed-variant": "#8c1520",
+              "secondary-fixed": "#e4e2e1",
+              "surface-tint": "#ae2f34",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-primary": "#ffb3b0",
+              "outline": "#8c706f",
+              "secondary": "#5f5e5e",
+              "primary": "#ae2f34",
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "background": "#fdf9f3",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed": "#410006",
+              "tertiary": "#894e45",
+              "surface-container-high": "#ebe8e2",
+              "on-primary-container": "#6d0010",
+              "on-error-container": "#93000a",
+              "error": "#ba1a1a",
+              "on-tertiary": "#ffffff",
+              "on-background": "#1c1c18",
+              "inverse-surface": "#31302d",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "on-secondary-container": "#656464",
+              "surface-container-highest": "#e6e2dc",
+              "on-error": "#ffffff",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "surface-container-low": "#f7f3ed"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scanner-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #ff6b6b, transparent);
+            animation: scan 3s infinite linear;
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-xl fixed top-0 w-full z-50 tonal-shift bg-[#f7f3ed] dark:bg-[#2a2a24]">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-extrabold tracking-tighter text-[#ae2f34] dark:text-[#ff6b6b] font-['Plus_Jakarta_Sans']">Culinary Curator</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] font-bold font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Events</a>
+<a class="text-[#1c1c18] dark:text-[#fdf9f3] opacity-60 font-['Plus_Jakarta_Sans'] tracking-tight hover:opacity-80 transition-opacity" href="#">Tickets</a>
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] font-bold font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Scanner</a>
+<a class="text-[#1c1c18] dark:text-[#fdf9f3] opacity-60 font-['Plus_Jakarta_Sans'] tracking-tight hover:opacity-80 transition-opacity" href="#">Profile</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface hover:opacity-80 transition-opacity active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Bento Layout Grid -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Left Column: Scanner Station -->
+<div class="col-span-12 lg:col-span-7 flex flex-col gap-6">
+<!-- Main Scanner Surface -->
+<div class="bg-surface-container-lowest p-8 rounded-lg flex flex-col items-center justify-center relative overflow-hidden h-[500px]">
+<div class="absolute inset-0 opacity-5 pointer-events-none">
+<div class="w-full h-full" style="background-image: radial-gradient(#ae2f34 1px, transparent 1px); background-size: 24px 24px;"></div>
+</div>
+<!-- Scan Area -->
+<div class="relative w-80 h-80 rounded-lg border-4 border-dashed border-outline-variant flex items-center justify-center bg-surface-container-low group">
+<div class="scanner-line absolute w-full left-0 z-10"></div>
+<!-- Simulated Camera View -->
+<div class="absolute inset-2 bg-neutral-900 rounded-md flex items-center justify-center overflow-hidden">
+<img alt="QR Scanner View" class="w-full h-full object-cover opacity-60 grayscale" data-alt="Modern high-end restaurant interior background with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCOQe4N19PGMQEvY0kmMoHBjGqaC__nPIKZzcg-V2V4pWaOoU-Q8VoOlGnkEZEopj9UeHdBaWdL6ilC3cpfV24Ag6WDLw3-6ohojwsd9ECPT5zOp-wHeAHX9eOloh8qJyjP7PIvZwgGQzqXvX6X0KqfEJN9gQRBAIXohgY0i52Qwzc662EjU1Mbt6a1ElrpBJSMKsGM6pMk6V0jAZDDu9huJy5Sd_-6sPRl8Swm0SsPQsR2g2Vhe7PKkHQTp2AtPaN1Z1HYK9IzUq0"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+<span class="material-symbols-outlined text-white/40 text-6xl scale-150" data-icon="qr_code_2">qr_code_2</span>
+</div>
+<div class="z-20 flex flex-col items-center gap-2">
+<div class="bg-primary/90 text-white px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-sm" data-icon="center_focus_strong">center_focus_strong</span>
+                                ALIGN TICKET
+                            </div>
+</div>
+</div>
+<!-- Real-time Status -->
+<div class="mt-8 text-center">
+<h2 class="text-display-sm font-headline font-extrabold tracking-tight text-on-surface mb-2">Awaiting Scan...</h2>
+<p class="text-tertiary font-medium">Position the QR code within the central frame</p>
+</div>
+<!-- Success Toast Simulation (Manual Overlay for UI Demo) -->
+<div class="absolute bottom-6 right-6 flex items-center gap-4 bg-primary-container text-on-primary-container px-6 py-4 rounded-lg shadow-xl animate-bounce">
+<div class="bg-on-primary-container text-primary-container rounded-full p-2">
+<span class="material-symbols-outlined font-bold" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<p class="text-xs font-bold uppercase tracking-widest opacity-80">Access Granted</p>
+<p class="text-lg font-headline font-bold">Julian B.</p>
+</div>
+</div>
+</div>
+<!-- Live Log -->
+<div class="bg-surface-container-low p-6 rounded-lg">
+<div class="flex justify-between items-center mb-4">
+<h3 class="font-headline font-bold text-on-surface">Recent Activity</h3>
+<span class="text-xs font-bold text-primary px-3 py-1 bg-primary-fixed rounded-full">LIVE</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded-md">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm text-tertiary" data-icon="person">person</span>
+</div>
+<span class="font-bold text-on-surface">Marcus Thorne</span>
+</div>
+<span class="text-sm opacity-60">12:04 PM</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-lowest rounded-md">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-sm text-tertiary" data-icon="person">person</span>
+</div>
+<span class="font-bold text-on-surface">Elena Rodriguez</span>
+</div>
+<span class="text-sm opacity-60">12:02 PM</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Stats & Manual List -->
+<div class="col-span-12 lg:col-span-5 flex flex-col gap-6">
+<!-- Event Stats Bento Card -->
+<div class="bg-primary p-8 rounded-lg text-on-primary relative overflow-hidden">
+<div class="relative z-10">
+<p class="text-xs font-bold uppercase tracking-[0.2em] mb-2 opacity-80">Event Progress</p>
+<h1 class="text-5xl font-headline font-extrabold mb-4">142/200</h1>
+<p class="text-lg font-medium opacity-90 mb-6">Attendees Checked In</p>
+<div class="w-full bg-on-primary/20 h-3 rounded-full overflow-hidden">
+<div class="bg-white h-full w-[71%] rounded-full"></div>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-[12rem] opacity-10 rotate-12" data-icon="bar_chart">bar_chart</span>
+</div>
+<!-- Attendee List Surface -->
+<div class="bg-surface-container-lowest flex-1 rounded-lg overflow-hidden flex flex-col shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+<div class="p-6 border-b border-outline-variant/30 flex items-center justify-between">
+<h3 class="font-headline font-bold text-xl">Attendee List</h3>
+<div class="flex gap-2">
+<button class="p-2 bg-surface-container-low rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button class="p-2 bg-surface-container-low rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto max-h-[520px] no-scrollbar">
+<div class="divide-y divide-outline-variant/10">
+<!-- Attendee Row 1 -->
+<div class="p-6 flex items-center justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Portrait of a young man with a friendly smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDDg0Gsa6KZHFUFnPclMeLJt4bqoxV6ZU31JaqHIUPfxveKiM49DLUox6OObOApmx-zerW9FvTWMXSNXMnOHshnr9v0AEz-6x8namnecCk2zsVb0u_nQILtvpeebCrrtny-blHYFogjnvxpof0fmPo_3daUjen4ZRuqRTiI0gLzcE2N8p4w1iBcaH4_tQ99WZju_sKjtAEmbBfkw0jphpUupRwuqAlRoEFI1T_zqjxoCWIKXpyv7tdIM1etU3goyDBAo6N1uKt068"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Arthur Pendragon</p>
+<p class="text-sm opacity-60">VIP • Table 12</p>
+</div>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                    Check In
+                                </button>
+</div>
+<!-- Attendee Row 2 -->
+<div class="p-6 flex items-center justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Portrait of a woman smiling at the camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3dAGBQkKsEnAOGXCjbN2QdhPwdzhJrteZatTMM9D3yYXCqAtMrEi2jOwndmO7OS625mOctFelWjFaZ1qKl0YyEwZF6mbaXBB2vpoqdL3uDgr7aFd9s4h1oPAkrhpOk8IC0JufEqM_ZTnwFwDFrjBN7zmofRpic8eJ9C5xOcSoqOaWmPQPZTSdTTAPSFKJNppNu_zWpBVosYTTKjYPl3c71DZtRuz6WriiJ8JvRoyuO-p549eM7jyQnMBhq3GLbkXRx5hSs49x9EY"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Sarah Jenkins</p>
+<p class="text-sm opacity-60">General • Standing</p>
+</div>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                    Check In
+                                </button>
+</div>
+<!-- Attendee Row 3 (Already Checked In) -->
+<div class="p-6 flex items-center justify-between bg-surface-container-low/50">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container opacity-40">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Portrait of a professional man in business casual" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjZZT-GrbIfTG4RW1LktlmxWCFRCSj5Gr2sQwhfcimHAPBrIYKpB2gn_xHSwy3unlv8PCGO502Z26wDZmZmd7mtZPGwZOC0QTIqJYptEJV7YxPWy60OAj7Kus-_4C0kSE1St-lfHXBFka7tC2znLPy_EtCOfKXNUnff-eMXWUMDxeGb0SRbpBERgLZJJhZxPjDCGK91FHVvW92fGRE-kEZhaM0rMRkpltb28GNOssczzhWiBVgm3jzmwpWDbpGMFKHoX6wgUeNEW4"/>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-green-500 text-white rounded-full p-0.5 border-2 border-white">
+<span class="material-symbols-outlined text-[10px] block" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+</div>
+<div>
+<p class="font-bold text-on-surface opacity-50">Marcus Thorne</p>
+<p class="text-sm opacity-40">Standard • Table 4</p>
+</div>
+</div>
+<span class="text-xs font-bold text-green-600 bg-green-100 px-3 py-1 rounded-full uppercase tracking-tighter">Verified</span>
+</div>
+<!-- Attendee Row 4 -->
+<div class="p-6 flex items-center justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-lg overflow-hidden bg-surface-container">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Portrait of a woman with dark hair against a blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeYrEwST99QFGhpPskqP-8W-A-3Df1y3f6G9n2eGgoRicX5yyPioRUB-ueE-2-A3ftEHfe-qlhsNSJ_W1AQ9NqQIr6iPOIOVZPnttqfS0OJU4WvZXWaQDnAd6yKlSpFCP2Wo7_aFOQTJl2POozV6tNd8INyu0BRyAzqs4_z5nG64Wlk3Igr3dIwmeLZMMTlU-P2G3_XzVZWYrnHCF9t9_a_a5ZhCiZPhyj4D2ZOHXwp_k_x6cwiJIgzNWW4jg2r_v1fG9QIppC-ms"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">Linda Wu</p>
+<p class="text-sm opacity-60">VIP • Table 1</p>
+</div>
+</div>
+<button class="bg-primary text-white px-4 py-2 rounded-full text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                                    Check In
+                                </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Suppressed for Desktop Admin View as per guidelines but structure maintained for mobile responsiveness) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-xl rounded-t-[2rem] z-50 shadow-[0_-4px_24px_rgba(174,47,52,0.08)]">
+<div class="flex flex-col items-center justify-center text-[#894e45] dark:text-[#e0bfbd] opacity-70 p-2">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-wider">Events</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#894e45] dark:text-[#e0bfbd] opacity-70 p-2">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-wider">Tickets</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-tr from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-1">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-wider">Scanner</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#894e45] dark:text-[#e0bfbd] opacity-70 p-2">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-wider">Profile</span>
+</div>
+</nav>
+</body></html>

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Midnight Jazz &amp; Merlot - GOMET</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "secondary-fixed": "#e4e2e1",
+              "primary-fixed": "#ffdad8",
+              "surface-bright": "#fdf9f3",
+              "on-background": "#1c1c18",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#656464",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed-variant": "#474747",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e6e2dc",
+              "on-error": "#ffffff",
+              "tertiary": "#894e45",
+              "on-surface-variant": "#584140",
+              "on-secondary-fixed": "#1b1c1c",
+              "background": "#fdf9f3",
+              "error": "#ba1a1a",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-highest": "#e6e2dc",
+              "primary-container": "#ff6b6b",
+              "inverse-surface": "#31302d",
+              "on-tertiary-container": "#55251e",
+              "surface-container": "#f1ede7",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#ebe8e2",
+              "error-container": "#ffdad6",
+              "secondary": "#5f5e5e",
+              "on-primary-fixed": "#410006",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface": "#fdf9f3",
+              "on-primary-container": "#6d0010",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-tint": "#ae2f34",
+              "outline": "#8c706f",
+              "surface-container-low": "#f7f3ed",
+              "primary": "#ae2f34",
+              "outline-variant": "#e0bfbd",
+              "inverse-primary": "#ffb3b0",
+              "on-surface": "#1c1c18",
+              "surface-dim": "#dddad4",
+              "on-primary-fixed-variant": "#8c1520"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-shadow {
+            box-shadow: 0 24px 48px -12px rgba(174, 47, 52, 0.08);
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background selection:bg-primary-container selection:text-on-primary-container">
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-zinc-900 dark:text-zinc-50 font-headline">GOMET</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-orange-600 dark:text-orange-400 font-bold border-b-2 border-orange-600 font-plus-jakarta text-sm tracking-tight transition-colors" href="#">Events</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 font-plus-jakarta text-sm font-medium tracking-tight transition-colors" href="#">Discover</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 font-plus-jakarta text-sm font-medium tracking-tight transition-colors" href="#">Feed</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 font-plus-jakarta text-sm font-medium tracking-tight transition-colors" href="#">Profile</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-zinc-100/50 rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-zinc-600" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 hover:bg-zinc-100/50 rounded-full transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined text-zinc-600" data-icon="receipt_long">receipt_long</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-16 pb-32 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="relative mt-8 group">
+<div class="aspect-[21/9] w-full overflow-hidden rounded-lg sm:rounded-xl lg:rounded-lg">
+<img alt="Jazz club interior" class="w-full h-full object-cover" data-alt="Elegant jazz club with dim lighting and instruments" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD19kflDU3HmTlY-THa9TOaS__x5Src3D4oAZ3Mha7UxprMiSc9CCTR3BY71P40K5u0QYPe4MylkXPbF8LjS_M-S-QW8o22fsDmFxsTcy_gPVcy5m-Xs93gDzNQJoVK3ofOe68Ozgk-MW3VTFcevs9V0HkEYGZhXYv9BoI8tbZdvIftQeqb614hLRPilqEr_4Sa0f4yb51Jpej9mE34dtgEAcNyi0J0I8acOI4gVX2BpVQRgd64XAwCv9gVm_WyOCTLS3fX_1aw13Y"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+</div>
+<div class="absolute bottom-0 left-0 p-8 md:p-12 w-full">
+<div class="inline-flex items-center px-3 py-1 bg-primary text-on-primary text-xs font-bold uppercase tracking-widest rounded-full mb-4">
+                    Exclusive Experience
+                </div>
+<h1 class="text-4xl md:text-7xl font-black text-white font-headline tracking-tighter leading-none mb-4 max-w-3xl">
+                    Midnight Jazz <span class="text-primary-container">&amp;</span> Merlot
+                </h1>
+<div class="flex flex-wrap items-center gap-6 text-white/90">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="calendar_today">calendar_today</span>
+<span class="font-semibold tracking-tight">Friday, Oct 24</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="schedule">schedule</span>
+<span class="font-semibold tracking-tight">10:00 PM — 01:30 AM</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container" data-icon="location_on">location_on</span>
+<span class="font-semibold tracking-tight">The Crimson Parlor</span>
+</div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-12">
+<div class="lg:col-span-8 space-y-12">
+<section>
+<h2 class="text-2xl font-black font-headline tracking-tight text-on-background mb-4">The Narrative</h2>
+<p class="text-lg text-secondary leading-relaxed font-body">
+                        Step into a world where the notes are as smooth as the vintage. The Crimson Parlor transforms for one night into a sanctuary of syncopation. We've curated a nocturnal journey that pairs the soul-stirring improvisations of the <span class="text-primary font-bold">Vanguard Quartet</span> with a hand-selected collection of bold, aged Merlots.
+                    </p>
+</section>
+<section class="bg-surface-container-low p-8 rounded-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-8xl" data-icon="restaurant_menu">restaurant_menu</span>
+</div>
+<h2 class="text-2xl font-black font-headline tracking-tight text-on-background mb-8 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="skillet">skillet</span>
+                        Curated Menu
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="space-y-2">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-tertiary">Appetizer</span>
+<h3 class="text-xl font-bold font-headline">Truffle Arancini</h3>
+<p class="text-sm text-secondary">Wild mushroom, 24-month parmesan, saffron aioli.</p>
+</div>
+<div class="space-y-2">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-tertiary">Main Course</span>
+<h3 class="text-xl font-bold font-headline">Braised Wagyu</h3>
+<p class="text-sm text-secondary">Red wine reduction, parsnip silk, charred heirloom carrots.</p>
+</div>
+<div class="space-y-2 border-l-2 border-primary-container/20 pl-6">
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">Wine Pairing</span>
+<h3 class="text-xl font-bold font-headline">2018 Estate Merlot</h3>
+<p class="text-sm text-secondary">Notes of dark cherry, cedar, and velvety plum finish.</p>
+</div>
+</div>
+</section>
+<section>
+<div class="flex justify-between items-end mb-6">
+<h2 class="text-2xl font-black font-headline tracking-tight text-on-background">Confirmed Guests</h2>
+<span class="text-sm font-bold text-primary px-3 py-1 bg-primary-fixed rounded-full">12 / 20 Seats Taken</span>
+</div>
+<div class="flex flex-wrap gap-4">
+<div class="group relative">
+<img alt="Attendee 1" class="w-16 h-16 rounded-full object-cover ring-2 ring-background group-hover:ring-primary transition-all" data-alt="Portrait of a woman smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6_bNSkrXRe8kmvXqGnlhcdwneQImHOCkX1G_khfUjbUnP13RsaZV1YROAFRWeji0EZAa4Szk2uaY3LsmmJ6AA4Zsm0SO9J1axHd7FkworZGVrCn42w8AIrIJU_TuP630j2ehbVgpAssK5shxaVl5suh2Xf7B2ThG18b4gx8tmaBSfuyjE0E04QOV93a6rQjsCLsHCZqrDHg6LDdbvODaKAyA9A8ofSrScn8Rhu5FZFql69HZeEZyaCqxsBj7dNL7obJgvxLLG3As"/>
+<div class="absolute -bottom-1 -right-1 bg-surface-container-highest rounded-full p-1 border-2 border-background">
+<span class="material-symbols-outlined text-[12px] text-tertiary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="group relative">
+<img alt="Attendee 2" class="w-16 h-16 rounded-full object-cover ring-2 ring-background group-hover:ring-primary transition-all" data-alt="Portrait of a young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCa2A0MlTvzw5IB3hdcxgWQ_tiK7jLJbzda5wLv1z1sgRiCn0k9X5TEf9RqY57rR-Gs0NsUykir_sJYxGqwk839VV24UUAku-T7PIr5fhUJqn6L1j9vgKzxx5e8Zw9_zcx_gFKr-41OUylrYnXiMHtEDEtjg2jPyHRCsKpIL5ZkLW0RfAGrzjNs5AKbncXKpZEbUgBwaFQ82Ryj7ar9-IBVJhM6RSYqVqCptlckThHHCSg0Qvci7KwW4UQLO2vhQgI610qQeJdpVPc"/>
+</div>
+<div class="group relative">
+<img alt="Attendee 3" class="w-16 h-16 rounded-full object-cover ring-2 ring-background group-hover:ring-primary transition-all" data-alt="Portrait of a woman with dark hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7Eu3MzZUBFJ3YJHZyjFUkN68EdXDvMIlINt5Izdwh7-IzBIOXJbDu9HZjlRXnUcDTz4BcgOI4Gq7yuKPcL4IGbnhHMK3TjsTWnxa0yKj3-hQ0Avkqzc_LvaI-PipfqVE982i2PBMr1ACwZ5A8j87ouQGt2aAIr1JQH02bi6crXe2G_pxYK6kJLvc-bg72Bzx5TNqHZGQI12SH6qZ-8LgJ3mGkuj_UN2giP2uMnHv00x5RhGORNe9ueEDtIcIKeBmtD1pl-AZorsU"/>
+</div>
+<div class="group relative">
+<img alt="Attendee 4" class="w-16 h-16 rounded-full object-cover ring-2 ring-background group-hover:ring-primary transition-all" data-alt="Portrait of a man with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmpE2vrH8WzdTnap4PtyXfBIrIo9-9wS4KSqh8Z_rtR_arMmVA8DHKZNL04D2nTyC3YVWyonTOCwT9huxcuPOFyTNRk2eXpR6uPAmWHTBu5vaGDwIe3sWernFjvx38DWHZ_9v_Y-OUP6Y4lIuJUfmFz0HwoJRVbmomS3g08m1YVAMH3urc-AH4jQEJz-24XiAPhmY1XZO4y0VxKcPLo3wTXl10kz1GSIqNYVLtLCpRKPD5CLYeJy2d1QHDnwxRsZ7YGkHYVfTXtM4"/>
+</div>
+<div class="group relative">
+<img alt="Attendee 5" class="w-16 h-16 rounded-full object-cover ring-2 ring-background group-hover:ring-primary transition-all" data-alt="Portrait of a woman in sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtxKaCStKuZXRY_Aahx75CLv5nx4o1qZ3GTIK4OSUk0pbWlM0DXZbxLV4dIGOXeZJKGn2gFZt4BWprcV5mYn72Z-kHjyEl8pqdR4M5MBA-kJSpB4yQYHlL5pDAjcYT3UKV_W-BpmWGUz7HtRqOP6P_C7a3J4i_HhdoGrPB8pfgSVpV9vUWrOSBA8jMFG3L-wwwUNNvHBMesZ-2nyLwsxgS_XqXYyoxFk6uyfe4g0biqwtSefLNLc7hRPqMT4Mq24Fj_YUZ2Wy4O8A"/>
+</div>
+<div class="w-16 h-16 rounded-full bg-surface-container-high flex items-center justify-center text-sm font-black text-secondary ring-2 ring-background">
+                            +7
+                        </div>
+</div>
+</section>
+</div>
+<aside class="lg:col-span-4">
+<div class="sticky top-24 space-y-6">
+<div class="bg-surface-container-lowest editorial-shadow rounded-lg p-8 border border-outline-variant/10">
+<div class="flex justify-between items-start mb-6">
+<div>
+<span class="text-[10px] font-bold uppercase tracking-[0.2em] text-secondary">Admission</span>
+<div class="text-3xl font-black font-headline text-on-background">$85<span class="text-sm font-medium text-secondary ml-1">/ person</span></div>
+</div>
+<div class="bg-primary-fixed p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-primary-fixed" data-icon="confirmation_number">confirmation_number</span>
+</div>
+</div>
+<div class="space-y-4 mb-8">
+<div class="flex items-start gap-4 p-3 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-primary mt-0.5" data-icon="check_circle">check_circle</span>
+<div class="text-sm">
+<span class="font-bold block">All-Inclusive</span>
+<span class="text-secondary">3-course meal and wine pairing included.</span>
+</div>
+</div>
+<div class="flex items-start gap-4 p-3 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-primary mt-0.5" data-icon="verified_user">verified_user</span>
+<div class="text-sm">
+<span class="font-bold block">Verified Space</span>
+<span class="text-secondary">Safety protocols strictly followed.</span>
+</div>
+</div>
+</div>
+<button class="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-white font-bold rounded-lg shadow-lg active:scale-[0.98] transition-all flex items-center justify-center gap-2 group">
+                            Join Experience
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-center text-[11px] text-tertiary mt-4 font-medium uppercase tracking-widest">
+                            Cancel up to 24 hours before
+                        </p>
+</div>
+<div class="bg-surface-container-low rounded-lg p-6">
+<h4 class="font-black font-headline text-sm uppercase tracking-widest mb-4">Location</h4>
+<div class="h-40 bg-zinc-200 rounded-lg overflow-hidden mb-4 relative">
+<img alt="Map location" class="w-full h-full object-cover" data-location="The Crimson Parlor, New York" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDoY5xVAqqQeGaxZcmhEwCr815zsHgI9LRdevLhPJ1H2mvfYAUdkGKEh3rRTH_V5qWtE6XuOiuUtzFhD3Qyg3WwyfZt1qnfOtU4D9wMBafAChvdP_eMJVM0BFD8IJdepwR7foKYJcuQzdFOV7eAW12-UIj5F-O6O36uvklimcKIy_wKeOq8qe4LSIXeNXzcrBjismii_8qt99NHGgOu34kiv0uS8QKET6g9mFN1U6b1sqfqEVRZIbPm-Ppi-2YhWTPfXwT6rwfCCg"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="location_on" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+<p class="text-sm font-bold">The Crimson Parlor</p>
+<p class="text-sm text-secondary">128 Velvet Lane, Lower East Side</p>
+</div>
+</div>
+</aside>
+</div>
+<section class="mt-20">
+<h2 class="text-3xl font-black font-headline tracking-tight mb-8">Other Curated Moments</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden editorial-shadow group">
+<div class="aspect-video overflow-hidden">
+<img alt="Brunch event" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A table full of breakfast food and flowers" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtU6RsT801TNsYXsk-fgxj1QwqMMYD-SfkPGhcco8wqO_7I7Rsub-1l9H-2tuJ953Kl5ZcocNzGV5KLhzlggDr10G4Mj488v8Kv87f56I4IJQoXjOt3EROdwArTa1r_5z0qY820qmWkbBLbZ3ZtrDleGTd-23BRDdoiw2IlgAo4oZOgrsw2Yne-Whme9GSeuj_RUzOAPW-M5E3--sFZO2dwYvHsuILurZ7p-2_NOlVv1FrdJWucFtbH6ucLpq9fCjLzmQ2CMAkKus"/>
+</div>
+<div class="p-6">
+<span class="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">Dining</span>
+<h3 class="text-xl font-bold font-headline mt-1">Secret Terrace Brunch</h3>
+<p class="text-sm text-secondary mt-2">Oct 26 • Greenwich Village</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden editorial-shadow group">
+<div class="aspect-video overflow-hidden">
+<img alt="Dance event" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="People dancing at a night event" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDENv6wY_fsasMwo36h-CaFrSQG8hFNONbj3CxQb9vF3NMhP_rHnu0lLL2MqEdicEqEwpadkftn6raIaX2C5b_cIjUJV1a2lEfWWmruazP49xyzfDoFPdR4pgdKNHRvaOYmUF_VzGeEwGjkXw0p7ENHFcVcCEQu-O1wTIZEVEBXVC7x6__x_nCsQ9lvquSQ28l8ALYRB9GDBEqx_qCHzyvZhzmk-VLGeYF8PLC774F2w7D2ziOlXEYP-r2sbCYJX41c1zIEx3UY7bo"/>
+</div>
+<div class="p-6">
+<span class="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">Music</span>
+<h3 class="text-xl font-bold font-headline mt-1">Deep House &amp; Oysters</h3>
+<p class="text-sm text-secondary mt-2">Oct 29 • The Waterfront</p>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg overflow-hidden editorial-shadow group">
+<div class="aspect-video overflow-hidden">
+<img alt="Social event" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="People gathering in a stylish lounge" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHjrjMgZ3Vuwf6QKNU1PMxnvSTj9_VlZf50BTGuB_pZObggdEf662RrKIDlEvI3GNNsqQL5ibfmiNC-MAwt5ja11W7Le-xOnCy0VnG8rHdPxmlR8ndK2Ss6kEF_f8CHBrd8l17B4PodSKIW7djXCM17zGmmmvFj0YsIIwQIEnxlSN27_5h37s2U4YZDcmf62CGXYkSeWfYuIX9Pu2kWiGPf3uZCniIv7uGUcUcbB27wE4JDUUjDZFEI7oYHq7nLwLvyMOS8D1-svs"/>
+</div>
+<div class="p-6">
+<span class="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">Community</span>
+<h3 class="text-xl font-bold font-headline mt-1">Midnight Rooftop Yoga</h3>
+<p class="text-sm text-secondary mt-2">Nov 01 • Tribeca Loft</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="md:hidden fixed bottom-0 w-full rounded-t-3xl z-50 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl shadow-[0_-8px_30px_rgb(0,0,0,0.04)]">
+<div class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3">
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Discover</span>
+</button>
+<button class="flex flex-col items-center justify-center text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/30 rounded-2xl px-3 py-1 active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Events</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Dining</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined" data-icon="forum">forum</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Feed</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</button>
+</div>
+</nav>
+</body></html>

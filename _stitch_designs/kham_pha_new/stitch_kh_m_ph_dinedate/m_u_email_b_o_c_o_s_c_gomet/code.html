@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#ffffff",
+              "tertiary-container": "#cf8a7f",
+              "on-surface-variant": "#584140",
+              "inverse-surface": "#31302d",
+              "primary-fixed": "#ffdad8",
+              "tertiary-fixed": "#ffdad4",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "secondary-container": "#e4e2e1",
+              "secondary-fixed-dim": "#c8c6c6",
+              "on-primary": "#ffffff",
+              "surface-variant": "#e6e2dc",
+              "outline-variant": "#e0bfbd",
+              "primary-container": "#ff6b6b",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-primary-fixed": "#410006",
+              "inverse-primary": "#ffb3b0",
+              "surface-dim": "#dddad4",
+              "surface-bright": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "surface-container-low": "#f7f3ed",
+              "on-background": "#1c1c18",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-tint": "#ae2f34",
+              "outline": "#8c706f",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "background": "#fdf9f3",
+              "on-secondary-fixed-variant": "#474747",
+              "on-secondary": "#ffffff",
+              "tertiary": "#894e45",
+              "on-surface": "#1c1c18",
+              "on-secondary-container": "#656464",
+              "surface-container-highest": "#e6e2dc",
+              "secondary": "#5f5e5e",
+              "primary": "#ae2f34",
+              "on-error-container": "#93000a",
+              "surface": "#fdf9f3",
+              "secondary-fixed": "#e4e2e1",
+              "on-tertiary": "#ffffff",
+              "surface-container-high": "#ebe8e2",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-fixed": "#370e08",
+              "on-primary-container": "#6d0010",
+              "error": "#ba1a1a",
+              "inverse-on-surface": "#f4f0ea"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #fdf9f3;
+      }
+      .editorial-header {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Top Navigation (Shell Implementation) -->
+<header class="bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-xl fixed top-0 w-full z-50 shadow-sm shadow-[#ae2f34]/5">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+<div class="text-xl font-bold italic text-[#ae2f34] dark:text-[#ff6b6b] font-['Plus_Jakarta_Sans'] tracking-tight">
+                Culinary Curator Admin
+            </div>
+<nav class="hidden md:flex items-center gap-8">
+<span class="text-[#ae2f34] dark:text-[#ff6b6b] font-semibold transition-colors duration-300 cursor-pointer">Dashboard</span>
+<span class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 hover:text-[#ae2f34] transition-colors duration-300 cursor-pointer">Reports</span>
+<span class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 hover:text-[#ae2f34] transition-colors duration-300 cursor-pointer">Venues</span>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer scale-95 active:scale-90 transition-transform" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer scale-95 active:scale-90 transition-transform" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</header>
+<!-- Email Template Canvas -->
+<main class="pt-32 pb-20 px-4 flex flex-col items-center">
+<!-- Main Container -->
+<div class="w-full max-w-2xl bg-surface-container-lowest rounded-lg overflow-hidden shadow-sm shadow-[#ae2f34]/5 border border-outline-variant/10">
+<!-- Email Header -->
+<div class="p-8 md:p-12 text-center bg-surface-container-low">
+<div class="mb-6 inline-flex items-center justify-center p-3 bg-primary/5 rounded-full">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="restaurant_menu">restaurant_menu</span>
+</div>
+<h1 class="editorial-header text-3xl md:text-4xl font-extrabold text-on-background tracking-tight mb-2">
+                    Incident Report Summary
+                </h1>
+<p class="font-label text-sm uppercase tracking-widest text-primary font-semibold">
+                    System Alert • Internal Admin Notification
+                </p>
+</div>
+<!-- Email Body Content -->
+<div class="p-8 md:p-12 space-y-10">
+<!-- Greeting -->
+<section>
+<p class="text-lg font-medium text-on-background">Dear Administrator,</p>
+<p class="mt-4 text-secondary leading-relaxed">
+                        A critical system event has been recorded and successfully resolved within the monitored infrastructure. Please review the following summary of <span class="text-on-background font-semibold">Incident #882-C</span>.
+                    </p>
+</section>
+<!-- Status Cards (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-surface-container-low p-6 rounded-DEFAULT flex flex-col items-center text-center">
+<span class="text-xs font-label uppercase tracking-widest text-secondary mb-2">Status</span>
+<div class="flex items-center gap-2 text-[#2e7d32] font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>RESOLVED</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-DEFAULT flex flex-col items-center text-center border-2 border-primary/10">
+<span class="text-xs font-label uppercase tracking-widest text-secondary mb-2">Severity</span>
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined text-sm" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span>CRITICAL</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-DEFAULT flex flex-col items-center text-center">
+<span class="text-xs font-label uppercase tracking-widest text-secondary mb-2">Incident ID</span>
+<div class="text-on-background font-bold font-headline">#882-C</div>
+</div>
+</div>
+<!-- Timeline Section -->
+<div class="bg-surface-container-high/50 p-8 rounded-lg relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4 opacity-5">
+<span class="material-symbols-outlined text-8xl" data-icon="schedule">schedule</span>
+</div>
+<h3 class="font-headline font-bold text-on-background mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="event_note">event_note</span>
+                        Key Timestamps
+                    </h3>
+<div class="space-y-6 relative">
+<div class="absolute left-3 top-2 bottom-2 w-px bg-outline-variant"></div>
+<div class="flex gap-6 relative">
+<div class="z-10 bg-surface-container-lowest w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center">
+<div class="w-2 h-2 bg-primary rounded-full"></div>
+</div>
+<div>
+<p class="text-xs font-label uppercase tracking-widest text-secondary">Start Time</p>
+<p class="text-lg font-headline font-semibold text-on-background">22:15:04</p>
+</div>
+</div>
+<div class="flex gap-6 relative">
+<div class="z-10 bg-primary w-6 h-6 rounded-full border-2 border-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-on-primary" data-icon="done" style="font-variation-settings: 'wght' 700;">done</span>
+</div>
+<div>
+<p class="text-xs font-label uppercase tracking-widest text-secondary">Resolution Time</p>
+<p class="text-lg font-headline font-semibold text-on-background">22:58:30</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Summary -->
+<div class="space-y-4">
+<h3 class="font-headline font-bold text-on-background">Summary Details</h3>
+<div class="p-6 bg-surface-container-low rounded-DEFAULT italic border-l-4 border-primary text-on-surface-variant leading-relaxed">
+                        "The hardware fault at Venue A2 (Le Petit Bistro) has been successfully addressed. A full post-incident analysis is now available for your review."
+                    </div>
+</div>
+<!-- CTA -->
+<div class="pt-4 flex flex-col items-center gap-4">
+<a class="group relative px-10 py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary font-headline font-bold rounded-DEFAULT shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all flex items-center gap-3" href="#">
+                        View Full Report
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</a>
+<p class="text-xs text-secondary italic">This action will open the Culinary Curator Admin Dashboard.</p>
+</div>
+</div>
+<!-- Footer Section -->
+<footer class="bg-[#f7f3ed] dark:bg-[#1c1c18] w-full pb-12 pt-8 flex flex-col items-center gap-4 text-center px-4 border-t border-[#e0bfbd]/20">
+<div class="flex flex-wrap justify-center gap-6 mb-2">
+<a class="text-xs font-['Inter'] uppercase tracking-widest text-[#1c1c18]/50 dark:text-[#fdf9f3]/40 hover:text-[#ae2f34] transition-all opacity-80 hover:opacity-100" href="#">Support Center</a>
+<a class="text-xs font-['Inter'] uppercase tracking-widest text-[#1c1c18]/50 dark:text-[#fdf9f3]/40 hover:text-[#ae2f34] transition-all opacity-80 hover:opacity-100 underline decoration-primary" href="#">Privacy Policy</a>
+<a class="text-xs font-['Inter'] uppercase tracking-widest text-[#1c1c18]/50 dark:text-[#fdf9f3]/40 hover:text-[#ae2f34] transition-all opacity-80 hover:opacity-100" href="#">Incident Logs</a>
+</div>
+<div class="text-[10px] text-secondary/60 font-medium">
+                    SYSTEM INFO: NODE-PROD-A2 | REPLICA-03 | LOG-HASH: 8F2D-C11A
+                </div>
+<p class="text-xs font-['Inter'] uppercase tracking-widest text-[#1c1c18]/50 dark:text-[#fdf9f3]/40">
+                    © 2024 Culinary Curator Admin. All rights reserved.
+                </p>
+</footer>
+</div>
+<!-- Secondary Info Area -->
+<div class="mt-12 max-w-2xl w-full text-center">
+<p class="text-secondary text-sm">
+                If you did not expect this notification, please contact the <span class="text-primary font-semibold">Security Operations Center</span> immediately. This is an automated message, please do not reply.
+            </p>
+</div>
+</main>
+</body></html>

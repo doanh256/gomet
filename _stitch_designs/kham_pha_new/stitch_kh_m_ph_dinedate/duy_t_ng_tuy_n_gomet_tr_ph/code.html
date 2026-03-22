@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "tertiary-fixed": "#ffdad4",
+            "on-secondary": "#ffffff",
+            "inverse-on-surface": "#f4f0ea",
+            "surface-container-highest": "#e6e2dc",
+            "secondary": "#5f5e5e",
+            "inverse-surface": "#31302d",
+            "surface-bright": "#fdf9f3",
+            "surface": "#fdf9f3",
+            "on-primary-fixed-variant": "#8c1520",
+            "outline-variant": "#e0bfbd",
+            "tertiary-container": "#cf8a7f",
+            "surface-tint": "#ae2f34",
+            "error-container": "#ffdad6",
+            "on-error": "#ffffff",
+            "surface-dim": "#dddad4",
+            "primary-container": "#ff6b6b",
+            "on-surface": "#1c1c18",
+            "primary-fixed": "#ffdad8",
+            "on-secondary-container": "#656464",
+            "inverse-primary": "#ffb3b0",
+            "secondary-fixed": "#e4e2e1",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed": "#370e08",
+            "on-secondary-fixed-variant": "#474747",
+            "background": "#fdf9f3",
+            "tertiary-fixed-dim": "#ffb4a8",
+            "on-tertiary-fixed-variant": "#6d3830",
+            "secondary-fixed-dim": "#c8c6c6",
+            "surface-container-low": "#f7f3ed",
+            "tertiary": "#894e45",
+            "on-primary-fixed": "#410006",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-background": "#1c1c18",
+            "error": "#ba1a1a",
+            "outline": "#8c706f",
+            "secondary-container": "#e4e2e1",
+            "primary-fixed-dim": "#ffb3b0",
+            "on-tertiary-container": "#55251e",
+            "surface-container": "#f1ede7",
+            "on-primary": "#ffffff",
+            "on-secondary-fixed": "#1b1c1c",
+            "surface-variant": "#e6e2dc",
+            "on-primary-container": "#6d0010",
+            "surface-container-high": "#ebe8e2",
+            "on-surface-variant": "#584140",
+            "primary": "#ae2f34"
+          },
+          fontFamily: {
+            "headline": ["Plus Jakarta Sans"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .premium-gradient {
+      background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+    }
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- TopAppBar from JSON -->
+<header class="bg-white/80 dark:bg-stone-900/80 backdrop-blur-md fixed top-0 w-full z-50 flex justify-between items-center px-8 h-20 w-full mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-[#ae2f34] dark:text-[#FF6B6B] tracking-tighter">GOMET</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-stone-500 dark:text-stone-400 hover:text-[#ae2f34] font-['Plus_Jakarta_Sans'] font-semibold tracking-tight" href="#">Events</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-[#ae2f34] font-['Plus_Jakarta_Sans'] font-semibold tracking-tight" href="#">Discover</a>
+<a class="text-[#ae2f34] dark:text-[#FF6B6B] border-b-2 border-[#ae2f34] pb-1 font-['Plus_Jakarta_Sans'] font-semibold tracking-tight" href="#">Dating</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-surface-container-low px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-stone-400 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 ml-2" placeholder="Search experiences..." type="text"/>
+</div>
+<button class="p-2 hover:bg-stone-100/50 transition-colors rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-stone-100/50 transition-colors rounded-full">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<img alt="User profile avatar" class="w-10 h-10 rounded-full object-cover ml-2" data-alt="Close up of a smiling man portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOAdvndpoNp9uAnNwZAQFY7YKN95Xmaqnis_XPGsh3HPyW0rWNU8H6EaXlKLZZB5KA0EbwdqeoNC8yVSrS_cLemTpEhb8GqwC7HiHXzWzD85VnDG7WdAOtORDVScEUXSFv810qJO57dhzmLT3GvHNVF2mLSISUY1o-h8aKdBC-mwStOp5494G5gj5mDDQHH497CQ5mlsgnugjU5ccnZBF_bZE1Jps_y3451VnQRNDR6aT-Sx3ZrVQe7VfLBdImNi_lG7ahdahVaRM"/>
+</div>
+</header>
+<div class="flex pt-20">
+<!-- SideNavBar from JSON -->
+<aside class="fixed left-0 top-0 h-full flex flex-col z-40 h-screen w-72 bg-[#fdf9f3] dark:bg-stone-950 shadow-2xl shadow-[#ae2f34]/5 pt-24">
+<div class="px-8 mb-10">
+<div class="flex items-center gap-4 mb-4">
+<img alt="User's premium profile picture" class="w-12 h-12 rounded-full object-cover ring-2 ring-primary" data-alt="Professional headshot of a premium member" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVAKfmNQLqbe1XfRBhhVEBFZHdRu4s8xApFVwYCIb0dKxfFgLh631IgsGCkBbhRvS5B7LNX2yQPXNKrKBX2W56PbDSqFh3_sSEGGBW-pUWwohHv3Y4S-ccxdCIbH95gbm5u04q0UO8u_m4xAn_Z3dhZt2lB5c5mG2nI_inDbKzZL78HW9VKmV9rlj7r7IimaC2QbjCNd2EHGym3wgMIYtOHU4o-zSWGQh5QEkIW62L2IR9KXuo7lVo8Lz1Hd1wbwQkBV1L6lW3ZC0"/>
+<div>
+<h3 class="text-xl font-bold text-[#ae2f34]">The Culinary Curator</h3>
+<p class="text-[10px] uppercase tracking-widest text-stone-500">Gold Member</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center gap-4 text-stone-600 dark:text-stone-400 py-4 px-6 hover:pl-8 transition-all duration-300 font-['Plus_Jakarta_Sans'] text-sm uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">person</span> My Profile
+        </a>
+<a class="flex items-center gap-4 bg-[#f7f3ed] dark:bg-stone-900 text-[#ae2f34] font-bold rounded-r-full py-4 px-6 font-['Plus_Jakarta_Sans'] text-sm uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">calendar_today</span> Bookings
+        </a>
+<a class="flex items-center gap-4 text-stone-600 dark:text-stone-400 py-4 px-6 hover:pl-8 transition-all duration-300 font-['Plus_Jakarta_Sans'] text-sm uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">restaurant</span> Dining History
+        </a>
+<a class="flex items-center gap-4 text-stone-600 dark:text-stone-400 py-4 px-6 hover:pl-8 transition-all duration-300 font-['Plus_Jakarta_Sans'] text-sm uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">flatware</span> Preferences
+        </a>
+<a class="flex items-center gap-4 text-stone-600 dark:text-stone-400 py-4 px-6 hover:pl-8 transition-all duration-300 font-['Plus_Jakarta_Sans'] text-sm uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+        </a>
+</nav>
+<div class="p-8">
+<button class="w-full premium-gradient text-white py-4 rounded-DEFAULT font-bold shadow-lg shadow-primary/20 hover:scale-95 transition-transform">
+          Book a Table
+        </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-72 flex-1 p-12 bg-surface">
+<div class="max-w-6xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="flex items-center gap-2 text-primary font-bold mb-4">
+<span class="material-symbols-outlined">payments</span>
+<span class="uppercase tracking-widest text-xs">Paid Request Active</span>
+</div>
+<h1 class="text-6xl font-black text-on-background tracking-tighter mb-4 leading-tight">
+            Dinner at <span class="text-primary italic">Lumière d'Or</span>
+</h1>
+<div class="flex items-center gap-8 text-on-surface-variant font-medium">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span>District 1, HCMC</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">schedule</span>
+<span>Tomorrow, 19:30</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">group</span>
+<span>12 Applicants</span>
+</div>
+</div>
+</header>
+<!-- Bento Grid Layout for Applicants -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Applicant Card 1: Featured -->
+<div class="col-span-1 md:col-span-2 bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col md:flex-row group transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5">
+<div class="md:w-1/2 relative h-80 md:h-auto overflow-hidden">
+<img alt="Applicant Profile" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Fashionable woman posing in a restaurant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAycrh0eOxyeV-uGVxT2at12oXUyzU-xvmDkw7DoB3EvwazR35ndU69cLyJNjZjD3MEJJbvTKHA_F6-cXMOwR2i7o7j1UaIhLJpwwSMMvVZrEjtzOyKOC9uC500dKsCRVIgFPZGmj6ce8yBcOmOcOsvIcylpy_A4CJz5ZKRSFWPvxIi-nNSdaaWRqwdbZ6_hSsrUKIwAhxWRdxHRaUSf0GUBPgkcmIJ7qMuN8blxBLTk6yQw5oopQDvRf5TKMmZiko3hY45dTCrcEs"/>
+<div class="absolute top-4 left-4 bg-primary text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Top Choice</div>
+</div>
+<div class="md:w-1/2 p-8 flex flex-col justify-between bg-surface-container-low">
+<div>
+<div class="flex justify-between items-start mb-6">
+<div>
+<h2 class="text-3xl font-bold tracking-tight">Elena Vance, 26</h2>
+<p class="text-on-surface-variant font-medium">Luxury Travel Curator</p>
+</div>
+<div class="text-right">
+<p class="text-xs uppercase tracking-widest text-stone-500 mb-1">Proposed Fee</p>
+<p class="text-2xl font-black text-primary">$250</p>
+</div>
+</div>
+<p class="text-on-surface italic mb-8 leading-relaxed">"I've been wanting to try the tasting menu at Lumière d'Or for months! I'm a great conversationalist and love exploring fine wines. Let's make it a memorable evening."</p>
+<div class="flex flex-wrap gap-2 mb-8">
+<span class="bg-surface-container-high px-4 py-1 rounded-full text-xs font-medium">Sommelier Certified</span>
+<span class="bg-surface-container-high px-4 py-1 rounded-full text-xs font-medium">French Cuisine</span>
+<span class="bg-surface-container-high px-4 py-1 rounded-full text-xs font-medium">Jazz Lover</span>
+</div>
+</div>
+<button class="w-full premium-gradient text-white py-4 rounded-DEFAULT font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+                Select Partner <span class="material-symbols-outlined text-sm">check_circle</span>
+</button>
+</div>
+</div>
+<!-- Applicant Card 2 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg flex flex-col justify-between transition-all duration-300 hover:bg-surface-container-low">
+<div>
+<div class="flex items-center gap-4 mb-6">
+<img alt="Applicant 2" class="w-16 h-16 rounded-full object-cover ring-2 ring-outline-variant" data-alt="Stylish woman with elegant accessories" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw8zPk12ytaKEFwlCs_Uf8SC4yPdpojy2TgVw61YCdHzUm3ssDsNu8j2E8hgA-IjJFmBUZTY5owma6AJMIAy-pn3SfALymIibDALMCZCLb5YatZu4HZXj7eyPS1lwVUTaeOeOdHvB0_FzQDOjOI6xE8TVQPL60j9xm_VF1f6pCraLoSQ2RVtEdmFzvFUWB8PVOcedVQWnk9rD1yTHMrLH46DQT3NgEQ7AOYL4eilXFyjvt_Ha_SVMnqkhKppl0ld--IKYhNm69BRc"/>
+<div>
+<h3 class="font-bold text-lg">Sophia Chen, 24</h3>
+<p class="text-xs text-stone-500 uppercase tracking-widest">Freelance Artist</p>
+</div>
+</div>
+<div class="bg-surface px-4 py-3 rounded-md mb-6">
+<p class="text-[10px] uppercase tracking-widest text-stone-400 mb-1">Deal Proposal</p>
+<p class="font-bold text-lg text-on-background">Pay for Dinner + $100</p>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-3 mb-6 leading-relaxed">
+                "I'm easy-going and love quiet dinners. I can talk about art and philosophy for hours. Looking forward to meeting you!"
+              </p>
+</div>
+<button class="w-full py-3 bg-on-surface text-surface rounded-DEFAULT text-sm font-bold hover:bg-primary transition-colors">
+              Select
+            </button>
+</div>
+<!-- Applicant Card 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg flex flex-col justify-between transition-all duration-300 hover:bg-surface-container-low">
+<div>
+<div class="flex items-center gap-4 mb-6">
+<img alt="Applicant 3" class="w-16 h-16 rounded-full object-cover ring-2 ring-outline-variant" data-alt="Young woman with bright smile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD2_IDViuKm_SUsAHGL1GA8tXL-jxWvGMT-XZYoe5uUDj1fw9-lRr47kYfF-mUjJK06aZKZa1npMRR2L4eRp2azV3PqZ0DMK9GJoFH9sQmoBovYQLR34ndvrgROCJCP1mWQnYKCRpLmpkUuMMfl_l2xfM-xmW4Gs17JHQMJhakg_QOkf8nDG32tnkceVucG0IXh3H1pCfJf1tC7-kgReASj096cj541gr7LrqZRG2oc67lPwOG6LOiC3CcOhkME2aF_Gmn-fdh8hfo"/>
+<div>
+<h3 class="font-bold text-lg">Mina Sato, 27</h3>
+<p class="text-xs text-stone-500 uppercase tracking-widest">Marketing Exec</p>
+</div>
+</div>
+<div class="bg-surface px-4 py-3 rounded-md mb-6">
+<p class="text-[10px] uppercase tracking-widest text-stone-400 mb-1">Proposed Fee</p>
+<p class="font-bold text-lg text-on-background">$150</p>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-3 mb-6 leading-relaxed">
+                "Professional, punctual, and very friendly. I enjoy fine dining and great stories. Let's see if we vibe!"
+              </p>
+</div>
+<button class="w-full py-3 bg-on-surface text-surface rounded-DEFAULT text-sm font-bold hover:bg-primary transition-colors">
+              Select
+            </button>
+</div>
+<!-- Applicant Card 4 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg flex flex-col justify-between transition-all duration-300 hover:bg-surface-container-low">
+<div>
+<div class="flex items-center gap-4 mb-6">
+<img alt="Applicant 4" class="w-16 h-16 rounded-full object-cover ring-2 ring-outline-variant" data-alt="Woman portrait in outdoor lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAKpAo_mowHn9HvvAFIjM0NVi9V1zwxLqIfQVwmv6RboRTwLZ8MB7wbdTnrdmOGhUu3QsoDE_HEDVjSkLiGojz2zzB7XGPSk_oUBv17QOLoD7BTsSHkpI0D-AeEv3je3N-qvXwUrfWKZV9Ar29yd54bt3cUZqAsIXJpiQNx18GEnkT_veNcUe2DCXzOJMd_9XHE8mJtnfbYMiJ97NfmGVB3mhLA70CEpdaBsS-kFqu9oTIMCcAL9j8mU9lZhJ7hWZmDd28KC_7ReE"/>
+<div>
+<h3 class="font-bold text-lg">Chloe Lim, 25</h3>
+<p class="text-xs text-stone-500 uppercase tracking-widest">Lifestyle Blogger</p>
+</div>
+</div>
+<div class="bg-surface px-4 py-3 rounded-md mb-6">
+<p class="text-[10px] uppercase tracking-widest text-stone-400 mb-1">Proposed Fee</p>
+<p class="font-bold text-lg text-on-background">$300</p>
+</div>
+<p class="text-sm text-on-surface-variant line-clamp-3 mb-6 leading-relaxed">
+                "I'm very familiar with Lumière's menu and would love to join you. I can help with some great photos of our dinner too!"
+              </p>
+</div>
+<button class="w-full py-3 bg-on-surface text-surface rounded-DEFAULT text-sm font-bold hover:bg-primary transition-colors">
+              Select
+            </button>
+</div>
+<!-- Load More / Empty State Placeholder -->
+<div class="col-span-1 md:col-span-2 lg:col-span-2 border-2 border-dashed border-outline-variant rounded-lg flex items-center justify-center p-12 opacity-50 hover:opacity-100 transition-opacity cursor-pointer group">
+<div class="text-center">
+<span class="material-symbols-outlined text-4xl text-primary mb-4 block transition-transform group-hover:rotate-90">add_circle</span>
+<p class="font-bold text-xl">View 8 More Applicants</p>
+<p class="text-sm text-on-surface-variant">New bids arriving every hour</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Bottom Navigation for Mobile -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-low flex justify-around items-center h-20 px-4 z-50">
+<button class="flex flex-col items-center gap-1 text-stone-500">
+<span class="material-symbols-outlined">explore</span>
+<span class="text-[10px] font-bold uppercase">Explore</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="text-[10px] font-bold uppercase">Bids</span>
+</button>
+<div class="relative -top-6">
+<button class="premium-gradient w-14 h-14 rounded-full flex items-center justify-center text-white shadow-xl shadow-primary/40">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-stone-500">
+<span class="material-symbols-outlined">forum</span>
+<span class="text-[10px] font-bold uppercase">Chat</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-stone-500">
+<span class="material-symbols-outlined">person</span>
+<span class="text-[10px] font-bold uppercase">Profile</span>
+</button>
+</nav>
+</body></html>

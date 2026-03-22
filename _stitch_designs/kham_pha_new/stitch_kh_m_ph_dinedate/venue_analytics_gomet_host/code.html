@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Grand Lounge Analytics | GOMET</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ae2f34",
+              "on-secondary-fixed-variant": "#474747",
+              "tertiary-fixed": "#ffdad4",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#e4e2e1",
+              "surface-container-lowest": "#ffffff",
+              "primary-container": "#ff6b6b",
+              "on-secondary": "#ffffff",
+              "inverse-on-surface": "#f4f0ea",
+              "background": "#fdf9f3",
+              "outline": "#8c706f",
+              "on-primary-fixed": "#410006",
+              "on-primary-container": "#6d0010",
+              "on-background": "#1c1c18",
+              "surface-dim": "#dddad4",
+              "secondary": "#5f5e5e",
+              "primary-fixed": "#ffdad8",
+              "on-surface": "#1c1c18",
+              "surface-variant": "#e6e2dc",
+              "on-primary": "#ffffff",
+              "surface-container-low": "#f7f3ed",
+              "surface-bright": "#fdf9f3",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-secondary-container": "#656464",
+              "inverse-surface": "#31302d",
+              "secondary-container": "#e4e2e1",
+              "on-tertiary": "#ffffff",
+              "outline-variant": "#e0bfbd",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-tint": "#ae2f34",
+              "surface-container-highest": "#e6e2dc",
+              "error-container": "#ffdad6",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container-high": "#ebe8e2",
+              "surface-container": "#f1ede7",
+              "error": "#ba1a1a",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-error": "#ffffff",
+              "on-tertiary-fixed": "#370e08",
+              "on-error-container": "#93000a",
+              "tertiary-container": "#cf8a7f",
+              "on-surface-variant": "#584140",
+              "inverse-primary": "#ffb3b0",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "tertiary": "#894e45"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #fdf9f3;
+        color: #1c1c18;
+      }
+    </style>
+</head>
+<body class="font-body selection:bg-primary-fixed-dim overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur-xl shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface cursor-pointer active:scale-95 transition-transform" data-icon="arrow_back">arrow_back</span>
+<span class="text-2xl font-black text-rose-800 dark:text-rose-500 italic font-['Plus_Jakarta_Sans'] tracking-tight">GOMET</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8 items-center text-stone-600 dark:text-stone-400 font-semibold uppercase tracking-wider text-[11px]">
+<a class="hover:opacity-80 transition-opacity" href="#">Matches</a>
+<a class="hover:opacity-80 transition-opacity" href="#">Events</a>
+<a class="hover:opacity-80 transition-opacity" href="#">Messages</a>
+<a class="text-rose-700 dark:text-rose-400 font-bold active:scale-95 transition-transform" href="#">Insights</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-stone-600 dark:text-stone-400 cursor-pointer hover:opacity-80" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-stone-600 dark:text-stone-400 cursor-pointer hover:opacity-80" data-icon="account_circle">account_circle</span>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto space-y-12">
+<!-- Hero Title Section -->
+<section class="relative space-y-2">
+<span class="text-primary font-bold tracking-[0.2em] uppercase text-xs">Venue Performance</span>
+<h1 class="text-4xl md:text-6xl font-headline font-extrabold tracking-tighter text-on-background">
+                The Grand Lounge <span class="text-primary italic">Analytics</span>
+</h1>
+<p class="text-on-surface-variant max-w-xl text-lg">Detailed insight into your venue's impact within the GOMET ecosystem for the last 30 days.</p>
+</section>
+<!-- Bento Grid: Key Metrics & Revenue Attribution -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Revenue Attribution Card -->
+<div class="md:col-span-2 bg-surface-container-lowest rounded-lg p-8 flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-8">
+<div>
+<p class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">GOMET Revenue Share</p>
+<h2 class="text-4xl font-headline font-bold text-on-background">$24,840.00</h2>
+<p class="text-sm text-green-700 mt-2 flex items-center gap-1">
+<span class="material-symbols-outlined text-sm" data-icon="trending_up">trending_up</span>
+                                +18% from last month
+                            </p>
+</div>
+<div class="bg-primary-fixed px-4 py-2 rounded-full">
+<span class="text-primary font-bold text-xs uppercase">32% of Total Venue Revenue</span>
+</div>
+</div>
+<div class="h-48 w-full flex items-end justify-between gap-2 mt-4">
+<div class="w-full bg-primary-container/20 rounded-t-lg h-[40%]"></div>
+<div class="w-full bg-primary-container/30 rounded-t-lg h-[55%]"></div>
+<div class="w-full bg-primary-container/40 rounded-t-lg h-[45%]"></div>
+<div class="w-full bg-primary-container/60 rounded-t-lg h-[70%]"></div>
+<div class="w-full bg-primary-container/80 rounded-t-lg h-[85%]"></div>
+<div class="w-full bg-primary rounded-t-lg h-[95%]"></div>
+<div class="w-full bg-primary-container/50 rounded-t-lg h-[60%]"></div>
+</div>
+</div>
+<!-- Asymmetric Decorative Element -->
+<div class="absolute -right-12 -bottom-12 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+</div>
+<!-- Booking Stats -->
+<div class="bg-surface-container-low rounded-lg p-8 space-y-8">
+<div>
+<p class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Total GOMET Guests</p>
+<h3 class="text-3xl font-headline font-bold text-on-background">1,248</h3>
+<p class="text-sm text-on-surface-variant mt-1">Confirmed check-ins</p>
+</div>
+<div class="h-[1px] bg-outline-variant/20"></div>
+<div>
+<p class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Avg. Party Size</p>
+<h3 class="text-3xl font-headline font-bold text-on-background">2.4</h3>
+<p class="text-sm text-on-surface-variant mt-1">Primarily date pairings</p>
+</div>
+<div class="h-[1px] bg-outline-variant/20"></div>
+<div>
+<p class="font-label text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-1">Repeat Rate</p>
+<h3 class="text-3xl font-headline font-bold text-on-background">14%</h3>
+<p class="text-sm text-on-surface-variant mt-1">Returned within 14 days</p>
+</div>
+</div>
+</div>
+<!-- Peak Hour Heatmap -->
+<section class="bg-surface-container-lowest rounded-lg p-8">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+<div>
+<h3 class="text-2xl font-headline font-bold text-on-background">Peak Hour Heatmap</h3>
+<p class="text-on-surface-variant">Optimal staffing based on GOMET booking intensity</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container-highest px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-on-surface">Mon-Thu</button>
+<button class="bg-primary px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider text-on-primary">Fri-Sun</button>
+</div>
+</div>
+<div class="grid grid-cols-12 gap-2">
+<!-- Hour Labels -->
+<div class="col-span-1 flex flex-col justify-between py-2 text-[10px] font-bold text-on-surface-variant/60 uppercase">
+<span>18:00</span>
+<span>20:00</span>
+<span>22:00</span>
+<span>00:00</span>
+</div>
+<!-- Heatmap Grid -->
+<div class="col-span-11 grid grid-cols-7 gap-2">
+<!-- Day Columns (Mon-Sun) -->
+<div class="flex flex-col gap-2">
+<div class="h-12 bg-primary/10 rounded-sm"></div>
+<div class="h-12 bg-primary/20 rounded-sm"></div>
+<div class="h-12 bg-primary/40 rounded-sm"></div>
+<div class="h-12 bg-primary/10 rounded-sm"></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="h-12 bg-primary/10 rounded-sm"></div>
+<div class="h-12 bg-primary/30 rounded-sm"></div>
+<div class="h-12 bg-primary/50 rounded-sm"></div>
+<div class="h-12 bg-primary/20 rounded-sm"></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="h-12 bg-primary/20 rounded-sm"></div>
+<div class="h-12 bg-primary/40 rounded-sm"></div>
+<div class="h-12 bg-primary/60 rounded-sm"></div>
+<div class="h-12 bg-primary/30 rounded-sm"></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="h-12 bg-primary/30 rounded-sm"></div>
+<div class="h-12 bg-primary/60 rounded-sm"></div>
+<div class="h-12 bg-primary/80 rounded-sm"></div>
+<div class="h-12 bg-primary/40 rounded-sm"></div>
+</div>
+<!-- Weekend -->
+<div class="flex flex-col gap-2">
+<div class="h-12 bg-primary/60 rounded-sm"></div>
+<div class="h-12 bg-primary/90 rounded-sm"></div>
+<div class="h-12 bg-primary rounded-sm shadow-[0_0_15px_rgba(174,47,52,0.3)]"></div>
+<div class="h-12 bg-primary/70 rounded-sm"></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="h-12 bg-primary/70 rounded-sm"></div>
+<div class="h-12 bg-primary rounded-sm shadow-[0_0_15px_rgba(174,47,52,0.3)]"></div>
+<div class="h-12 bg-primary/90 rounded-sm"></div>
+<div class="h-12 bg-primary/60 rounded-sm"></div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="h-12 bg-primary/40 rounded-sm"></div>
+<div class="h-12 bg-primary/60 rounded-sm"></div>
+<div class="h-12 bg-primary/50 rounded-sm"></div>
+<div class="h-12 bg-primary/20 rounded-sm"></div>
+</div>
+</div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] font-bold text-on-surface-variant/60 uppercase">
+<div></div>
+<div class="grid grid-cols-7 gap-2 w-11/12 text-center">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+</section>
+<!-- Demographics & Trends -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+<!-- Guest Demographics -->
+<div class="space-y-8">
+<div>
+<h3 class="text-2xl font-headline font-bold text-on-background">Guest Demographics</h3>
+<p class="text-on-surface-variant">Understanding the profile of your visitors</p>
+</div>
+<div class="grid grid-cols-2 gap-8">
+<div class="space-y-4">
+<p class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Gender Split</p>
+<div class="space-y-3">
+<div class="flex justify-between items-center text-sm font-semibold">
+<span>Women</span>
+<span>52%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[52%]"></div>
+</div>
+<div class="flex justify-between items-center text-sm font-semibold pt-2">
+<span>Men</span>
+<span>45%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full w-[45%]"></div>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<p class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant">Top Interests</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container-high px-3 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant">Mixology</span>
+<span class="bg-surface-container-high px-3 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant">Live Jazz</span>
+<span class="bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-semibold">Gourmet Tapas</span>
+<span class="bg-surface-container-high px-3 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant">Speakeasies</span>
+<span class="bg-surface-container-high px-3 py-1.5 rounded-full text-xs font-semibold text-on-surface-variant">Organic Wine</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-lg relative overflow-hidden group">
+<p class="font-label text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-4">Age Distribution</p>
+<div class="flex items-end justify-between h-24 gap-4">
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-full bg-outline-variant/30 rounded-t h-[20%]"></div>
+<span class="text-[9px] font-bold opacity-60">18-24</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-full bg-primary-container h-[75%] rounded-t"></div>
+<span class="text-[9px] font-bold opacity-100">25-34</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-full bg-primary h-[90%] rounded-t"></div>
+<span class="text-[9px] font-bold opacity-100">35-44</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-full bg-tertiary h-[45%] rounded-t"></div>
+<span class="text-[9px] font-bold opacity-60">45-54</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1">
+<div class="w-full bg-outline-variant/30 h-[15%] rounded-t"></div>
+<span class="text-[9px] font-bold opacity-60">55+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Trend Analysis -->
+<div class="space-y-8">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="text-2xl font-headline font-bold text-on-background">Trend Analysis</h3>
+<p class="text-on-surface-variant">Weekly growth of GOMET interactions</p>
+</div>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="ios_share">ios_share</span>
+</div>
+<div class="relative bg-surface-container-low rounded-lg p-1 aspect-video flex items-center justify-center overflow-hidden">
+<img alt="Growth Chart" class="absolute inset-0 w-full h-full object-cover opacity-10 grayscale mix-blend-overlay" data-alt="Abstract data visualization with upward lines and soft textures" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYFTn8vz_GGRk6m-a_ZAFwRS8siqnQIXaD7Reb9vAr1I6FZ-kfA2qceGrJ966DltRGung28gZPo75MReiaxBQZKPUkiaNnkkl7fG596B7yDl2akgOMZOgzuH04FFoNW_CLMUM6QSE9LoZ2TpPQzHPIWTX1eLispRIMnaLnzh1NipnInpeKCZzQ04LPjYeoELnv33uO2OcDuh_rr8ttaYnxjl9YRrrdlhrGVAlq25uIKq5q3E3mkMOrsBTxnWwIuuvg-qto97BS9mE"/>
+<div class="relative w-full h-full p-8 flex flex-col justify-end">
+<svg class="w-full h-full" viewbox="0 0 400 200">
+<path d="M0 180 Q 50 170, 80 140 T 150 120 T 220 70 T 300 90 T 400 20" fill="none" stroke="#ae2f34" stroke-linecap="round" stroke-width="4"></path>
+<circle cx="400" cy="20" fill="#ae2f34" r="6"></circle>
+<circle cx="400" cy="20" fill="#ae2f34" fill-opacity="0.2" r="12"></circle>
+</svg>
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-on-surface-variant mt-4">
+<span>Week 1</span>
+<span>Week 2</span>
+<span>Week 3</span>
+<span>Week 4</span>
+</div>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-lg">
+<div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center text-green-700">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h4 class="font-bold text-on-background">Insight of the Week</h4>
+<p class="text-sm text-on-surface-variant">Matches are spending 24% more on appetizers when they arrive before 7:30 PM.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-stone-50/80 dark:bg-stone-950/80 backdrop-blur-xl rounded-t-[2rem] z-50 shadow-[0_-10px_30px_rgba(0,0,0,0.03)] md:hidden">
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:text-rose-600 dark:hover:text-rose-300 active:scale-90 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Matches</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:text-rose-600 dark:hover:text-rose-300 active:scale-90 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="event">event</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-5 py-2 hover:text-rose-600 dark:hover:text-rose-300 active:scale-90 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-rose-100 dark:bg-rose-900/30 text-rose-800 dark:text-rose-200 rounded-full px-5 py-2 active:scale-90 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-['Inter'] text-[11px] font-semibold uppercase tracking-wider mt-1">Insights</span>
+</a>
+</nav>
+</body></html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Advanced Event Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary-container": "#e4e2e1",
+              "surface-tint": "#ae2f34",
+              "primary-fixed-dim": "#ffb3b0",
+              "primary-container": "#ff6b6b",
+              "inverse-primary": "#ffb3b0",
+              "surface-dim": "#dddad4",
+              "surface-variant": "#e6e2dc",
+              "secondary-fixed-dim": "#c8c6c6",
+              "primary-fixed": "#ffdad8",
+              "surface-container-lowest": "#ffffff",
+              "on-surface": "#1c1c18",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "surface-container": "#f1ede7",
+              "background": "#fdf9f3",
+              "outline-variant": "#e0bfbd",
+              "on-primary-fixed": "#410006",
+              "tertiary": "#894e45",
+              "secondary": "#5f5e5e",
+              "secondary-fixed": "#e4e2e1",
+              "inverse-surface": "#31302d",
+              "on-tertiary-fixed": "#370e08",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "outline": "#8c706f",
+              "on-secondary-fixed": "#1b1c1c",
+              "tertiary-container": "#cf8a7f",
+              "on-tertiary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "surface-container-low": "#f7f3ed",
+              "on-error-container": "#93000a",
+              "surface-container-highest": "#e6e2dc",
+              "on-error": "#ffffff",
+              "on-secondary-fixed-variant": "#474747",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "primary": "#ae2f34",
+              "on-surface-variant": "#584140",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "on-background": "#1c1c18",
+              "inverse-on-surface": "#f4f0ea",
+              "on-primary-fixed-variant": "#8c1520",
+              "error": "#ba1a1a",
+              "on-secondary-container": "#656464",
+              "on-primary-container": "#6d0010",
+              "on-primary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .asymmetric-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 2rem;
+      }
+      @media (max-width: 1024px) {
+        .asymmetric-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen">
+<!-- TopAppBar Navigation Shell -->
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-8 py-4 bg-[#fdf9f3]/80 dark:bg-stone-900/80 backdrop-blur-md shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-[#ae2f34] dark:text-[#ff6b6b] tracking-tighter uppercase font-headline">GOMET</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-[#1c1c18] dark:text-stone-400 font-medium hover:bg-[#f7f3ed] dark:hover:bg-stone-800 transition-colors duration-300 px-3 py-1 rounded-md" href="#">Venues</a>
+<a class="text-[#1c1c18] dark:text-stone-400 font-medium hover:bg-[#f7f3ed] dark:hover:bg-stone-800 transition-colors duration-300 px-3 py-1 rounded-md" href="#">Connect</a>
+<a class="text-[#1c1c18] dark:text-stone-400 font-medium hover:bg-[#f7f3ed] dark:hover:bg-stone-800 transition-colors duration-300 px-3 py-1 rounded-md" href="#">Events</a>
+<a class="text-[#ae2f34] font-bold border-b-2 border-[#ae2f34] px-3 py-1" href="#">Alpha</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary cursor-pointer active:scale-95 transition-transform" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-secondary cursor-pointer active:scale-95 transition-transform" data-icon="account_circle">account_circle</span>
+</div>
+</nav>
+<main class="pt-28 pb-32 px-4 md:px-12 max-w-7xl mx-auto">
+<!-- Hero Header -->
+<header class="mb-12 relative">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="text-primary font-bold tracking-widest uppercase text-xs mb-2 block">Host Command Center</span>
+<h1 class="text-display-lg font-headline font-extrabold tracking-[-0.04em] leading-tight text-5xl md:text-7xl">
+                        Event <br/><span class="text-primary">Intelligence.</span>
+</h1>
+</div>
+<div class="bg-surface-container-high p-6 rounded-lg flex items-center gap-4 max-w-xs shadow-sm">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white">
+<span class="material-symbols-outlined" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<p class="text-xs uppercase font-bold text-secondary opacity-70">AI Prediction</p>
+<p class="font-bold text-on-surface">94% Success Likelihood</p>
+</div>
+</div>
+</div>
+</header>
+<!-- Metrics Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<!-- Metric Card 1 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg relative overflow-hidden group shadow-[0_24px_48px_-12px_rgba(174,47,52,0.04)]">
+<div class="relative z-10">
+<h3 class="text-label-md uppercase tracking-wider text-secondary font-bold mb-8">Attendee Retention</h3>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-headline font-black text-on-surface">84.2</span>
+<span class="text-2xl font-headline font-bold text-primary">%</span>
+</div>
+<p class="text-body-md text-secondary mt-4">+12.4% from last venue</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5 group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[120px]" data-icon="group_add">group_add</span>
+</div>
+</div>
+<!-- Metric Card 2 (Highlight) -->
+<div class="bg-gradient-to-br from-primary to-primary-container p-8 rounded-lg text-white relative shadow-lg shadow-primary/20">
+<h3 class="text-label-md uppercase tracking-wider text-white/80 font-bold mb-8">Table Chemistry</h3>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-headline font-black">9.1</span>
+<span class="text-2xl font-headline font-bold text-white/70">/10</span>
+</div>
+<p class="text-body-md text-white/90 mt-4">Optimized via GOMET Match™</p>
+<div class="mt-6 flex -space-x-3 overflow-hidden">
+<img alt="" class="inline-block h-8 w-8 rounded-full ring-2 ring-primary" data-alt="Portrait of a diverse event attendee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWVO9h697bSnQhxTEqhx8N7QqDtqjOQLwyhcAKZY_7pO5tXeXPXCTd7Mn1IZcd9_BNVF4Piese3QFCZgz0C939CaXSDxc7Z17ea6LbLY7RuJ5OC7TbxNNZxbLclGvBXWedKnnVcjllE4OfFqnc5x7QzARe2cYzo89UP1IIZ3yFd4nQjLhSvu8O-slcuwLz9e5-AO2ATxg-etcvfM02ABmBDekhjjY-ktg2dTGVEOpXn9kKGRsAnvl1XRERvKWFSnCS4shEcw3cICU"/>
+<img alt="" class="inline-block h-8 w-8 rounded-full ring-2 ring-primary" data-alt="Portrait of a diverse event attendee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTTgS3wp2pdtt3B4Z4ALRzzfPh6IdZbRTY5fik4rQ_viWAtF1eJQQsdm4CUwK-NztmPEXzoZot7gu6GbjQhrgTDNOPP9199c90a0O9OhhS5DQZJBbWRcAuYCtaEPrvIkBgBDURfCo0hzMK61ura28xF1QAwFR2MULsDxWrBphrC-4EfzeW3QzYx9Y0XXGpuA7N3SO6gTjnnycjQt5S-wSDmOO-Gx_OdQ6NVrvzK2tFZ1xT5OAjMDCQ3F6OFAoLD20Efid7AcMKf78"/>
+<img alt="" class="inline-block h-8 w-8 rounded-full ring-2 ring-primary" data-alt="Portrait of a diverse event attendee" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYoiAYqikvISXzJP9K0H0YZhzqEf-A1yulhzgu6VggAEkWBHSOIWGWt7IUMc9lOcu3Qih1K3ilWpfZS9H7TL6LjwWuSNJmw5wBYp9_EN_NeiTOZnzXJvJlxrq5Xmd25mpeFLY5vBk_n4XfAKwufNppIepHfjF0R01IDblE8p6FenLYEVVBEY4FzVAPTd-NsDK4L-z2UzSDOEiFpPrj1GEaoRW9G8fBQt4djDLONNGfg7mYb_UOF3SeXShq9keQYsZ_VcR46aeYD6Y"/>
+<div class="flex items-center justify-center h-8 w-8 rounded-full ring-2 ring-primary bg-on-primary-container text-[10px] font-bold">+18</div>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-surface-container-lowest p-8 rounded-lg relative overflow-hidden group shadow-[0_24px_48px_-12px_rgba(174,47,52,0.04)]">
+<div class="relative z-10">
+<h3 class="text-label-md uppercase tracking-wider text-secondary font-bold mb-8">Venue Sentiment</h3>
+<div class="flex items-baseline gap-2">
+<span class="text-5xl font-headline font-black text-on-surface">Very</span>
+<span class="text-2xl font-headline font-bold text-primary">Warm</span>
+</div>
+<div class="mt-6 flex gap-1 h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%] rounded-full"></div>
+</div>
+<p class="text-body-md text-secondary mt-4">75% reported "Perfect Lighting"</p>
+</div>
+</div>
+</section>
+<!-- Heatmap & Analysis Asymmetry -->
+<section class="asymmetric-grid">
+<!-- Venue Heatmap -->
+<div class="bg-surface-container-low p-10 rounded-lg">
+<div class="flex justify-between items-start mb-10">
+<div>
+<h2 class="text-3xl font-headline font-bold tracking-tight mb-2">Sentiment Heatmap</h2>
+<p class="text-secondary body-md">Guest engagement levels across venue zones</p>
+</div>
+<div class="flex gap-2">
+<button class="bg-surface-container-highest px-4 py-2 rounded-full text-xs font-bold uppercase">Map</button>
+<button class="text-secondary px-4 py-2 rounded-full text-xs font-bold uppercase">List</button>
+</div>
+</div>
+<div class="relative aspect-video rounded-lg overflow-hidden bg-surface-container-highest shadow-inner">
+<!-- Faux Map Visualization -->
+<img alt="" class="w-full h-full object-cover opacity-30 mix-blend-multiply" data-alt="Overhead floor plan of a restaurant and bar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBw3BRRrMw61t3n3iNsZB_gqRthzO7xLNzauJfKLsegYKMTSFkEImY9RfqCrMbDNrmi9eZEUJIHCq79s_aaakztyD9ArDYnwyNefi_e9OodISfk9Q_jyav2LJMg4SkTlrFiSOG1eyaijktfJrr6S3zGGBPRvCLKbDYcTg8cPKIiyDb-VrnRbWBeBL6G6SEJGjK2p3DtiJ1Q2R5rGV_d2BLa__J8E0zNaEJI4SNKnbIR7bkcAW7Dk_ScgRlfd-YRAOxiq-a4ZZ7SDfY"/>
+<!-- Sentiment Overlays -->
+<div class="absolute top-1/4 left-1/4 w-32 h-32 bg-primary/40 blur-3xl rounded-full"></div>
+<div class="absolute bottom-1/3 right-1/4 w-48 h-48 bg-primary/20 blur-3xl rounded-full"></div>
+<div class="absolute top-1/2 right-1/3 w-24 h-24 bg-tertiary-container/30 blur-2xl rounded-full"></div>
+<!-- Zone Pins -->
+<div class="absolute top-[30%] left-[30%] group">
+<div class="w-6 h-6 bg-primary border-4 border-white rounded-full shadow-lg cursor-pointer"></div>
+<div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 mt-2 glass-effect bg-white/90 p-3 rounded-lg shadow-xl min-w-[120px] z-20">
+<p class="text-xs font-bold uppercase mb-1">Main Bar</p>
+<p class="text-sm font-black">9.8/10 Energy</p>
+</div>
+</div>
+<div class="absolute bottom-[40%] right-[35%] group">
+<div class="w-6 h-6 bg-tertiary border-4 border-white rounded-full shadow-lg cursor-pointer"></div>
+<div class="hidden group-hover:block absolute top-full left-1/2 -translate-x-1/2 mt-2 glass-effect bg-white/90 p-3 rounded-lg shadow-xl min-w-[120px] z-20">
+<p class="text-xs font-bold uppercase mb-1">Library Corner</p>
+<p class="text-sm font-black">7.2/10 Intimacy</p>
+</div>
+</div>
+</div>
+<div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-primary"></div>
+<span class="text-xs font-bold uppercase tracking-tight text-secondary">High Vibes</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-tertiary"></div>
+<span class="text-xs font-bold uppercase tracking-tight text-secondary">Deep Talk</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-outline-variant"></div>
+<span class="text-xs font-bold uppercase tracking-tight text-secondary">Neutral</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-3 h-3 rounded-full bg-error"></div>
+<span class="text-xs font-bold uppercase tracking-tight text-secondary">Congestion</span>
+</div>
+</div>
+</div>
+<!-- AI Sidebar Insights -->
+<div class="space-y-6">
+<div class="bg-surface-container-highest p-8 rounded-lg">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="lightbulb" style="font-variation-settings: 'FILL' 1;">lightbulb</span>
+<h3 class="text-xl font-headline font-bold">Smart Insights</h3>
+</div>
+<ul class="space-y-6">
+<li class="flex gap-4">
+<div class="h-6 w-6 rounded-full bg-primary-fixed flex-shrink-0 mt-1 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="trending_up">trending_up</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Retention Spike</p>
+<p class="text-xs text-secondary mt-1">Hosting "The Library" event on Tuesdays increases repeat attendance by 22%.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<div class="h-6 w-6 rounded-full bg-secondary-fixed flex-shrink-0 mt-1 flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px] text-secondary" data-icon="restaurant">restaurant</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Menu Optimization</p>
+<p class="text-xs text-secondary mt-1">78% of guests ordered the 'Signature Spritz'. Consider a pairing package.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="bg-white p-8 rounded-lg shadow-sm border border-outline-variant/10">
+<h3 class="text-label-md font-bold uppercase text-secondary mb-6">Next Event Success Rate</h3>
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between">
+<div>
+<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-on-primary-container bg-primary-container">
+                                    Projected
+                                </span>
+</div>
+<div class="text-right">
+<span class="text-sm font-bold inline-block text-primary">
+                                    92%
+                                </span>
+</div>
+</div>
+<div class="overflow-hidden h-3 mb-4 text-xs flex rounded-full bg-surface-container">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary" style="width:92%"></div>
+</div>
+<p class="text-[10px] uppercase font-bold text-secondary text-center tracking-widest">Confidence: High</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Navigation Shell -->
+<footer class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-end pb-6 px-4 bg-[#fdf9f3]/80 dark:bg-stone-900/80 backdrop-blur-md shadow-[0_-4px_24px_rgba(0,0,0,0.04)] md:hidden">
+<div class="flex flex-col items-center justify-center text-[#1c1c18] dark:text-stone-400 opacity-70 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-['Inter'] font-semibold text-[10px] uppercase tracking-wider mt-1">Venues</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#1c1c18] dark:text-stone-400 opacity-70 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined" data-icon="psychology">psychology</span>
+<span class="font-['Inter'] font-semibold text-[10px] uppercase tracking-wider mt-1">Connect</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#1c1c18] dark:text-stone-400 opacity-70 hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined" data-icon="local_dining">local_dining</span>
+<span class="font-['Inter'] font-semibold text-[10px] uppercase tracking-wider mt-1">Events</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] text-white rounded-full w-14 h-14 -translate-y-4 shadow-lg active:scale-90 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="biotech">biotech</span>
+<span class="font-['Inter'] font-semibold text-[10px] uppercase tracking-wider">Alpha</span>
+</div>
+</footer>
+</body></html>

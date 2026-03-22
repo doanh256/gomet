@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Ticket &amp; Entry Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary": "#5f5e5e",
+              "primary": "#ae2f34",
+              "surface-tint": "#ae2f34",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-primary": "#ffb3b0",
+              "outline": "#8c706f",
+              "on-primary-fixed-variant": "#8c1520",
+              "secondary-fixed": "#e4e2e1",
+              "surface-bright": "#fdf9f3",
+              "on-tertiary-fixed": "#370e08",
+              "outline-variant": "#e0bfbd",
+              "on-secondary-fixed-variant": "#474747",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-variant": "#e6e2dc",
+              "surface-dim": "#dddad4",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "on-surface": "#1c1c18",
+              "primary-container": "#ff6b6b",
+              "tertiary-fixed": "#ffdad4",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdad8",
+              "on-error": "#ffffff",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "surface-container-low": "#f7f3ed",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "on-secondary-container": "#656464",
+              "surface-container-highest": "#e6e2dc",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "error": "#ba1a1a",
+              "on-tertiary": "#ffffff",
+              "on-background": "#1c1c18",
+              "surface-container-high": "#ebe8e2",
+              "on-primary-container": "#6d0010",
+              "on-error-container": "#93000a",
+              "tertiary": "#894e45",
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "background": "#fdf9f3",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed": "#410006"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        background-color: #fdf9f3;
+        font-family: 'Inter', sans-serif;
+      }
+      .glass-effect {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .primary-gradient {
+        background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+      }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center px-6 h-20 w-full max-w-none">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-[#ae2f34] dark:text-[#ff6b6b] italic font-['Plus_Jakarta_Sans'] tracking-tight">GOMET</span>
+<nav class="hidden md:flex gap-6 items-center font-['Plus_Jakarta_Sans'] font-bold">
+<a class="text-stone-600 dark:text-stone-400 hover:text-[#ae2f34] transition-all duration-300" href="#">Discover</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-[#ae2f34] transition-all duration-300" href="#">Events</a>
+<a class="text-stone-600 dark:text-stone-400 hover:text-[#ae2f34] transition-all duration-300" href="#">Memories</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined p-2 rounded-full hover:bg-stone-100/50 dark:hover:bg-stone-800/50 transition-all text-stone-600">notifications</button>
+<button class="material-symbols-outlined p-2 rounded-full hover:bg-stone-100/50 dark:hover:bg-stone-800/50 transition-all text-stone-600">qr_code_scanner</button>
+<div class="h-10 w-10 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqhsTJu2db3eBb4F7bpo4JOGfrQ9DJVOiTr0zsTxW1npjZyGYZVt7Fcr6lbxyFufz2UM-u_7WpkFlfBX9Y5vXyk8eZ1RVdqEdy3ITqvs-UrL9vHHRjxWp4hGI6K7FYKXuFI98MuaCz--wV1PA0FJkWL4A5g_5ZzHMcEL-joPvVgeVfBKaTRmiQVF8Xb4x_MKBSnc0Vr9_yqoDDIh9LBfaCR9cM8Ic67T_4iLQ6Y77fTsgASDYmS8x6BjZBaEPnSVMfacDI9u7ZcFo"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Venue Dashboard Mode) -->
+<aside class="h-screen w-64 fixed left-0 top-0 z-40 bg-stone-50 dark:bg-stone-950 flex flex-col p-4 gap-2 border-r border-stone-200/20 pt-24 hidden md:flex">
+<div class="px-4 py-6 mb-4">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div>
+<h3 class="font-bold text-on-surface leading-tight">Venue Dashboard</h3>
+<p class="text-xs text-stone-500 font-medium">Premium Partner</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 rounded-xl transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-['Inter'] text-sm font-medium">Ad Manager</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 rounded-xl transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">insights</span>
+<span class="font-['Inter'] text-sm font-medium">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 rounded-xl transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-['Inter'] text-sm font-medium">Guest List</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-white dark:bg-stone-900 text-[#ae2f34] dark:text-[#ff6b6b] rounded-xl shadow-sm transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">confirmation_number</span>
+<span class="font-['Inter'] text-sm font-medium">Ticketing</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 dark:text-stone-400 hover:bg-stone-200/50 dark:hover:bg-stone-800/50 rounded-xl transition-transform duration-200 hover:translate-x-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-['Inter'] text-sm font-medium">Settings</span>
+</a>
+</nav>
+<div class="mt-auto flex flex-col gap-1 border-t border-stone-200/20 pt-4">
+<button class="primary-gradient text-white py-3 px-4 rounded-xl font-bold text-sm mb-4 active:scale-95 transition-transform">Boost Visibility</button>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">help</span>
+<span class="text-sm font-medium">Support</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-stone-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="text-sm font-medium">Logout</span>
+</a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-64 pt-24 px-6 pb-24 min-h-screen">
+<div class="max-w-6xl mx-auto">
+<!-- Header Section -->
+<div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="text-primary font-bold tracking-widest uppercase text-xs mb-2 block">Entry Control</span>
+<h1 class="font-headline text-4xl md:text-5xl font-black tracking-tight text-on-surface">Midnight Jazz &amp; Merlot</h1>
+<p class="text-secondary mt-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_today</span> Oct 24, 2023 • 20:00 - 23:00
+                    </p>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-surface-container-high px-6 py-4 rounded-2xl flex flex-col items-center">
+<span class="text-2xl font-black text-primary">25/50</span>
+<span class="text-[10px] uppercase tracking-wider font-bold text-secondary">Checked-in</span>
+</div>
+</div>
+</div>
+<!-- Bento Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Left Column: Scanner -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<div class="bg-surface-container-lowest p-8 rounded-3xl shadow-[0_24px_48px_-12px_rgba(174,47,52,0.06)] relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-4">
+<span class="flex h-3 w-3">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+</span>
+</div>
+<h2 class="font-headline text-xl font-bold mb-6">Scan Ticket</h2>
+<div class="aspect-square w-full rounded-2xl bg-surface-container-highest border-2 border-dashed border-outline-variant flex flex-col items-center justify-center gap-4 relative">
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<div class="w-4/5 h-1 bg-primary/40 absolute top-1/4 animate-pulse"></div>
+</div>
+<span class="material-symbols-outlined text-6xl text-outline-variant">qr_code_2</span>
+<p class="text-sm text-secondary font-medium px-12 text-center">Place the QR code within the frame to scan</p>
+</div>
+<button class="w-full mt-6 primary-gradient text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 active:scale-95 transition-transform shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">camera_alt</span>
+                            Open Scanner
+                        </button>
+<div class="mt-6 flex items-center gap-3 p-4 bg-surface-container-low rounded-xl">
+<span class="material-symbols-outlined text-primary">info</span>
+<p class="text-xs text-on-surface-variant font-medium leading-relaxed">System is online. Ready to validate Premium and Standard tickets for tonight's gala.</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Guest List -->
+<div class="lg:col-span-7">
+<div class="bg-surface-container-lowest rounded-3xl shadow-[0_24px_48px_-12px_rgba(174,47,52,0.06)] overflow-hidden h-full flex flex-col">
+<div class="p-6 border-b border-surface-container flex items-center justify-between sticky top-0 bg-white/90 backdrop-blur-md z-10">
+<h2 class="font-headline text-xl font-bold">Guest List</h2>
+<div class="flex gap-2">
+<div class="relative">
+<input class="bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary/20 w-48 transition-all focus:w-64" placeholder="Search guests..." type="text"/>
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-sm">search</span>
+</div>
+<button class="p-2 rounded-full bg-surface-container-high text-stone-600 hover:bg-stone-200 transition-colors">
+<span class="material-symbols-outlined">filter_list</span>
+</button>
+</div>
+</div>
+<!-- Guest Items -->
+<div class="flex-1 overflow-y-auto max-h-[600px] p-2">
+<!-- Guest 1 -->
+<div class="p-4 hover:bg-surface-container-low transition-colors rounded-2xl flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-2xl object-cover" data-alt="Female guest portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBqzSfpiDypjDIZOzWSJETOCwa0j3NCfSEMa2SJOL-MjQY2xvy53-9l42VEqJhoKGr6lKD1okzjM5clkJiUqB4ubb-zNiYS6YTrLGoVGACrfEGRb8uFvTbvNo-ArbjY6LYhFE3wTy_dzF6aFXdcSdo7WAFsU1kHXaPc-46tgllcwjxmVLPky_mbvwiFrkjMb1OfiHcX4_3WRRp0DATCQh_2v66V0xBJm7VlC309nhOk_WFgpIVMmvHVTr8nFPIs9wn9Ojt_YifMumA"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 border-2 border-white rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-white font-bold">check</span>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Sophia Lorenza</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-black uppercase rounded-full">Premium</span>
+<span class="text-xs text-secondary">#TKT-9921</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-bold text-green-600 uppercase block mb-1">Checked-in</span>
+<span class="text-xs text-stone-400">20:12 PM</span>
+</div>
+</div>
+<!-- Guest 2 -->
+<div class="p-4 hover:bg-surface-container-low transition-colors rounded-2xl flex items-center justify-between group opacity-90">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-2xl object-cover" data-alt="Male guest portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE91CVanIsGfMdtoEVePPyFAcJcQphCW8eNwKJBbyQqRlJJsqK_rvAYuHHmOlCn2nK7oWPDmzJJzFwY-X048P8NLEb8CNY9EOnPGKxQYX1XEoOP04PPtt2Y_Ej3qurvpJLVnhpXJykcdA1tRUmpfwTEyBJ9lAeFUBTZxapVt3wdrPZ-jULzCTsXx5SMCK1VIyc2VxIWdjguLuTez3IO6CPH4f1KmwsVM87mwr5OoDcd7ZqDaPttilk5uWC2-XyrOxdw4fQck19Nxo"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-stone-300 border-2 border-white rounded-full"></div>
+</div>
+<div>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Marcus Thorne</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 bg-stone-200 text-stone-600 text-[10px] font-black uppercase rounded-full">Standard</span>
+<span class="text-xs text-secondary">#TKT-8845</span>
+</div>
+</div>
+</div>
+<button class="px-4 py-2 border-2 border-outline-variant rounded-full text-xs font-bold text-primary hover:bg-primary hover:text-white transition-all">Check-in</button>
+</div>
+<!-- Guest 3 -->
+<div class="p-4 hover:bg-surface-container-low transition-colors rounded-2xl flex items-center justify-between group">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-2xl object-cover" data-alt="Female guest profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB6jaaIhOxqgBnbQjwH1hMb7Co9fsYHjjo87hkbE_Sy72a3flZuYgV9sUksLVbYFqR4OHO2zkMcai9gita6gLv-nAhPERkVXaUOLnRLMytpEUibNFFLMgN8LPuWAmcfCOzKmSR-3vdnyhpax96GVq8DDnZr47aLQ1HzYRYRpYzUI8dg7Oq3d-hDDad1QZMS5Edv22JROeVLiAu3VMtzfHPvXpZK-L8t46IVvh5-MPsNF2eE4jKuhOYGQ_gxVzz0Jely2ID5J--en1A"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 border-2 border-white rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-white font-bold">check</span>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">Elena Rodriguez</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-black uppercase rounded-full">Premium</span>
+<span class="text-xs text-secondary">#TKT-9011</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<span class="text-[10px] font-bold text-green-600 uppercase block mb-1">Checked-in</span>
+<span class="text-xs text-stone-400">20:05 PM</span>
+</div>
+</div>
+<!-- Guest 4 -->
+<div class="p-4 hover:bg-surface-container-low transition-colors rounded-2xl flex items-center justify-between group opacity-90">
+<div class="flex items-center gap-4">
+<div class="relative">
+<img class="w-14 h-14 rounded-2xl object-cover" data-alt="Male guest profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaBKPgFL9N8MAn8-sabpE69zcM3Y-OeXwKNubg0cpPNUUzGGCjFgsKfbXLxTaY2rpPwqlSwE7wQJYVqhyZn52X1uu2kEl3uLSaYROUFtkdLOu-Q70dmcXu31UsQ2kdVZb-TMNdzv56DX17qg5S-nu89iqPmrHKKiYMpccN0IWSmi7SFFa8Fx4iqLPwyKQJyTApL-Q-ppLq09Ua_qfLLRAxEOXImeHeriNirSO3DhDk67AfcIf9PO8P8Y69MNoepAEvFTylh_B2A8M"/>
+<div class="absolute -bottom-1 -right-1 w-5 h-5 bg-stone-300 border-2 border-white rounded-full"></div>
+</div>
+<div>
+<h4 class="font-bold text-on-surface group-hover:text-primary transition-colors">David Chen</h4>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 bg-stone-200 text-stone-600 text-[10px] font-black uppercase rounded-full">Standard</span>
+<span class="text-xs text-secondary">#TKT-8712</span>
+</div>
+</div>
+</div>
+<button class="px-4 py-2 border-2 border-outline-variant rounded-full text-xs font-bold text-primary hover:bg-primary hover:text-white transition-all">Check-in</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-white/80 backdrop-blur-lg flex justify-around items-center h-16 z-50 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">confirmation_number</span>
+<span class="text-[10px] font-bold">Manager</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined">insights</span>
+<span class="text-[10px] font-medium">Stats</span>
+</button>
+<div class="relative -top-6">
+<button class="w-14 h-14 primary-gradient text-white rounded-full shadow-lg shadow-primary/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl">qr_code_scanner</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined">group</span>
+<span class="text-[10px] font-medium">Guests</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-stone-400">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</button>
+</nav>
+</body></html>

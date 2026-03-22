@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET - Culinary Discovery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "secondary-fixed": "#e4e2e1",
+              "primary-fixed": "#ffdad8",
+              "surface-bright": "#fdf9f3",
+              "on-background": "#1c1c18",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#656464",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed-variant": "#474747",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e6e2dc",
+              "on-error": "#ffffff",
+              "tertiary": "#894e45",
+              "on-surface-variant": "#584140",
+              "on-secondary-fixed": "#1b1c1c",
+              "background": "#fdf9f3",
+              "error": "#ba1a1a",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-highest": "#e6e2dc",
+              "primary-container": "#ff6b6b",
+              "inverse-surface": "#31302d",
+              "on-tertiary-container": "#55251e",
+              "surface-container": "#f1ede7",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#ebe8e2",
+              "error-container": "#ffdad6",
+              "secondary": "#5f5e5e",
+              "on-primary-fixed": "#410006",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface": "#fdf9f3",
+              "on-primary-container": "#6d0010",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-tint": "#ae2f34",
+              "outline": "#8c706f",
+              "surface-container-low": "#f7f3ed",
+              "primary": "#ae2f34",
+              "outline-variant": "#e0bfbd",
+              "inverse-primary": "#ffb3b0",
+              "on-surface": "#1c1c18",
+              "surface-dim": "#dddad4",
+              "on-primary-fixed-variant": "#8c1520"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .font-plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+      .font-inter { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-sm dark:shadow-none no-border bg-zinc-100/50 dark:bg-zinc-800/50">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-zinc-900 dark:text-zinc-50 font-plus-jakarta">GOMET</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-orange-600 dark:text-orange-400 font-bold border-b-2 border-orange-600 font-plus-jakarta text-sm tracking-tight px-1 py-5" href="#">Discover</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 transition-colors font-plus-jakarta text-sm font-medium tracking-tight" href="#">Events</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 transition-colors font-plus-jakarta text-sm font-medium tracking-tight" href="#">Dining</a>
+<a class="text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 transition-colors font-plus-jakarta text-sm font-medium tracking-tight" href="#">Feed</a>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center bg-surface-container-low px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-zinc-400 text-sm">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm font-medium w-32 lg:w-48 text-zinc-700" placeholder="Search venues..." type="text"/>
+</div>
+<button class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 transition-colors active:scale-95 duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined text-zinc-600">notifications</span>
+</button>
+<button class="hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 transition-colors active:scale-95 duration-200 p-2 rounded-full">
+<span class="material-symbols-outlined text-zinc-600">receipt_long</span>
+</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-32 px-4 max-w-5xl mx-auto space-y-16">
+<!-- Hero Section: Top Venues Bento Grid -->
+<section>
+<div class="flex justify-between items-end mb-8">
+<div>
+<span class="font-label text-primary font-bold uppercase tracking-widest text-xs">Curated Selection</span>
+<h2 class="font-headline text-4xl font-extrabold tracking-tighter mt-1 text-on-surface">Top Venues this Week</h2>
+</div>
+<button class="text-primary font-bold text-sm flex items-center gap-2 hover:translate-x-1 transition-transform">
+                    View Rankings <span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-[600px] md:h-[500px]">
+<!-- Main Feature -->
+<div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-lg bg-surface-container-low">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Dark moody jazz bistro interior with velvet seating" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-DLzTnduZrQECfglLHrtmpF6Q3KsTaXvOHu0moFm8RoBF2JaV0q0FtnY8M-MyzWxauM4c_OHdwqios6zVdvIwWzMwOOvLVSx1OfHX9qyOk-JgIKsOMUG_EqlNtIJ805zoSnSyS72YQJpvZbZwFNxp9icqHj5MqMn8bW5nk5zL5h9xOjueatfbIeE2OKqr7tvIHFUf1RF0jyPa_NfGNBGvrSGAICnLjltsG469GZskfDIkfLSfk8VSPnrfQekwyj5wzuq_bIJnQZM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 p-8 w-full">
+<div class="flex items-center gap-2 mb-3">
+<span class="bg-primary px-3 py-1 rounded-full text-[10px] font-bold text-white uppercase tracking-tighter">Rank #1</span>
+<div class="flex items-center gap-1 bg-white/20 backdrop-blur-md px-2 py-1 rounded-full text-white text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span> 4.9
+                            </div>
+</div>
+<h3 class="font-headline text-3xl font-black text-white tracking-tighter mb-2">Velvet Bistro</h3>
+<p class="text-white/80 font-body text-sm line-clamp-2 max-w-md">Atmospheric jazz nights paired with avant-garde French techniques. The talk of the city this week.</p>
+</div>
+</div>
+<!-- Second Feature -->
+<div class="md:col-span-2 relative group overflow-hidden rounded-lg bg-surface-container-low">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Artistic plating of high-end sushi" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3TV2WLui4g4kn75oRbF6K7EZZri51yCHWhGdIBH00-sjWJrDsOeOscHmxkwXVRW1tCvtOlmsj96351doz0Ab2IyhpDpVVmrIgAPRx5WDVe2PLzU6VBBrW_yOItIAhT0zqlgG07kdQnrTxwFXcCRerYGfPc8gba2LaDoO9MSYgljPygQt0sAogbHjHUrMqFN6YPqkP8K8ieF8hiIu1N7d0VO6QWOgvgoc07imQtayhBLzYRtme_TFNMOcAcj1As8Uka3yyrZylymA"/>
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="absolute inset-0 p-6 flex flex-col justify-end">
+<div class="flex justify-between items-end">
+<div>
+<h4 class="font-headline text-xl font-bold text-white tracking-tight">Orai Omakase</h4>
+<div class="flex items-center gap-1 text-white/80 text-xs mt-1">
+<span class="material-symbols-outlined text-sm">location_on</span> Soho, NY
+                                </div>
+</div>
+<div class="bg-white/90 rounded-full px-3 py-1 text-xs font-bold text-primary">4.8 Rating</div>
+</div>
+</div>
+</div>
+<!-- Third & Fourth (Small) -->
+<div class="relative group overflow-hidden rounded-lg bg-surface-container-low">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Modern rooftop garden bar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXE7dplqnVzbhKQZs8rSFud_rPEEQX5PeiZ6ScdAf0AvChhnfgVRo6XDHdx-apxdX7Riea3RnRuiY5DKNRVXr_O3R-avxMf75djxOrP8AQX53HS4h4U-kNgX7rHuM-hUgaW-_aDVapQ_V29dmOWBwmgOn34PyWb4m_ymKdHIdCnfbq3mvO_pFx19DLNgkD9QHQtgw7nv5eDv8FFGIxIlPoDqSzrtVA_p1BCxiWwDcSbHAgdPez0WdnYlmJxl0_bw8dtCQ33mZAzlw"/>
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="absolute bottom-4 left-4">
+<h4 class="font-headline text-sm font-bold text-white tracking-tight">Flora Rooftop</h4>
+<p class="text-white/70 text-[10px] uppercase font-bold tracking-widest">4.8 • Mid-Town</p>
+</div>
+</div>
+<div class="relative group overflow-hidden rounded-lg bg-surface-container-low">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Industrial chic bakery interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkAhV9ZhW5Ynf6BcaIMALrFsdygtvhwLrF83R3DswXT3nr4P_dFJiImD5hMrG7b8na6_8o6nyAOYkHejMJrNScXTvFMsHe7HyiKAziVp9aoVO6oaLKD0FQCp9jS5pfUhOvzD5d8gIY5SAD1xf7lnIooI3UAAYWcVwLtkKhuuU7dJqs_j7UEbVaRl0BRe3YqvBIr3wYPdaTYilPhKRv1_bIvkwASY-2EwAKJf-b1JrZoWQ1qYyhQiM-lXysMitrmcllXpeEOV862Qo"/>
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="absolute bottom-4 left-4">
+<h4 class="font-headline text-sm font-bold text-white tracking-tight">The Grindery</h4>
+<p class="text-white/70 text-[10px] uppercase font-bold tracking-widest">4.8 • Brooklyn</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Social Discovery Feed -->
+<section class="space-y-12">
+<div class="text-center max-w-2xl mx-auto mb-16">
+<span class="font-label text-primary font-bold uppercase tracking-[0.3em] text-[10px] mb-4 block">Discovery Feed</span>
+<h2 class="font-headline text-5xl font-black tracking-tighter text-on-background leading-tight">Trending Palates</h2>
+<p class="text-on-surface-variant font-body text-lg mt-4">Hand-picked highlights from the most immersive culinary journeys in the city.</p>
+</div>
+<!-- Feed Post 1 -->
+<article class="relative bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col md:flex-row gap-0 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="md:w-3/5 relative h-[450px] md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Exquisite seafood tower on a marble table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsXwjIiAlFWoSN34kDb3ibzzx8wRPhAvetL93UPhRa32SQ-cGpQ6Jwlabw7OnW7RlPOVqVGyGsPy-Z-SpvQYUwNCilzkKr705y4DlxGxb1KgODDf1gWjIX5W9IV2nT1dPac5vJ_OuTwYcQi4L5l0xNlm-CEGxUaLt5E5mzNriayQQ4_ldyqfin9kYELfc3-Oj4jZtiTzQhaHS_-eVt2EmrOphhoc5dSx4gvwj7dcbTfqJS7nuuSRNd61Xx5dDdyF5T6nmco4XQ820"/>
+<div class="absolute top-6 left-6">
+<div class="flex items-center gap-2 bg-white/80 backdrop-blur-md p-1.5 pr-4 rounded-full shadow-sm">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-white text-xs font-bold">AC</div>
+<span class="text-[10px] font-bold text-on-surface uppercase tracking-widest font-label">AI Curator's Choice</span>
+</div>
+</div>
+</div>
+<div class="md:w-2/5 p-10 flex flex-col justify-between bg-surface-container-lowest">
+<div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[10px] font-bold text-tertiary uppercase tracking-wider">#FineDining</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[10px] font-bold text-tertiary uppercase tracking-wider">#OysterBar</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[10px] font-bold text-tertiary uppercase tracking-wider">#DateNight</span>
+</div>
+<h3 class="font-headline text-3xl font-bold tracking-tight text-on-surface mb-4">Midnight at Azure</h3>
+<p class="text-on-surface-variant font-body leading-relaxed mb-6 italic">
+                            "The seasonal seafood tower at Azure isn't just a meal; it's a coastal odyssey. Recommend pairing with their house dry gin martini for the full sensory experience."
+                        </p>
+</div>
+<div class="flex items-center justify-between pt-8 border-t border-surface-container">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1.5 text-primary active:scale-90 duration-300">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="text-sm font-bold">1.2k</span>
+</button>
+<button class="flex items-center gap-1.5 text-on-surface-variant active:scale-90 duration-300">
+<span class="material-symbols-outlined text-2xl">bookmark</span>
+<span class="text-sm font-bold">482</span>
+</button>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-white px-6 py-3 rounded-DEFAULT font-bold text-sm shadow-md active:opacity-80 transition-all">
+                            Book Table
+                        </button>
+</div>
+</div>
+</article>
+<!-- Feed Post 2 -->
+<article class="relative bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col md:flex-row-reverse gap-0 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="md:w-3/5 relative h-[450px] md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Sophisticated bar with amber lighting and whiskey bottles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAolhan4wOb6KSpDnM-NiSc3OgaY96fGzNAXIG8jgil4cH0cll6CdWiYwQGU30bLIOs9Bnp_lZy8Wmo9YydniFgPYW9Eg8DK1jzTzGlu9hRZiB6CFXoplRX2gqTCRPQtWuFnZyTZoGZwNCsmn59nqOfidCRlLMefmvGUaaFUIp_oOZQPPRpSNUkWDMpMJfLgNGJ0y-lYwQAovVS8Lrvy4SOxgeiZNA45vGHDY-fm-MDPxXsyHoExE_it_8IE5Q6nMpxwdxH5z3CUrY"/>
+<div class="absolute top-6 right-6">
+<div class="flex items-center gap-2 bg-black/40 backdrop-blur-md p-1.5 pr-4 rounded-full text-white">
+<span class="material-symbols-outlined text-lg">local_fire_department</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Trending Now</span>
+</div>
+</div>
+</div>
+<div class="md:w-2/5 p-10 flex flex-col justify-between bg-surface-container-lowest">
+<div>
+<div class="flex flex-wrap gap-2 mb-6">
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[10px] font-bold text-tertiary uppercase tracking-wider">#Speakeasy</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[10px] font-bold text-tertiary uppercase tracking-wider">#JazzNight</span>
+<span class="px-3 py-1 bg-surface-container-high rounded-full text-[10px] font-bold text-tertiary uppercase tracking-wider">#HiddenGem</span>
+</div>
+<h3 class="font-headline text-3xl font-bold tracking-tight text-on-surface mb-4">The Velvet Whisper</h3>
+<p class="text-on-surface-variant font-body leading-relaxed mb-6 italic">
+                            "A dimly lit sanctuary for jazz purists. Their 'Smoked Old Fashioned' arrives in a glass bell jar, unveiling a cloud of hickory that fills the booth."
+                        </p>
+</div>
+<div class="flex items-center justify-between pt-8 border-t border-surface-container">
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-1.5 text-primary active:scale-90 duration-300">
+<span class="material-symbols-outlined text-2xl">favorite</span>
+<span class="text-sm font-bold">856</span>
+</button>
+<button class="flex items-center gap-1.5 text-on-surface-variant active:scale-90 duration-300">
+<span class="material-symbols-outlined text-2xl">bookmark</span>
+<span class="text-sm font-bold">2.1k</span>
+</button>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container text-white px-6 py-3 rounded-DEFAULT font-bold text-sm shadow-md active:opacity-80 transition-all">
+                            View Menu
+                        </button>
+</div>
+</div>
+</article>
+</section>
+<!-- Newsletter / Join Section -->
+<section class="bg-tertiary-container rounded-lg p-12 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+<div class="relative z-10">
+<h3 class="font-headline text-3xl font-extrabold text-on-tertiary-container tracking-tighter mb-4">Get the Curator's Digest</h3>
+<p class="text-on-tertiary-container/80 font-body mb-8 max-w-lg mx-auto">Weekly secret menu items and first-access to venue openings, delivered to your inbox.</p>
+<div class="flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+<input class="bg-white/90 border-none rounded-full px-6 py-4 text-sm focus:ring-2 focus:ring-primary w-full shadow-sm" placeholder="Your email address" type="email"/>
+<button class="bg-on-tertiary-container text-white rounded-full px-8 py-4 font-bold text-sm hover:scale-105 transition-transform active:scale-95 whitespace-nowrap">Subscribe Now</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl rounded-t-3xl z-50 shadow-[0_-8px_30px_rgb(0,0,0,0.04)] no-line bg-surface-container-low">
+<button class="flex flex-col items-center justify-center text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/30 rounded-2xl px-3 py-1 transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Discover</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined">event</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Events</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined">group</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Dining</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Feed</span>
+</button>
+<button class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</button>
+</nav>
+<!-- FAB (Suppressed on this discovery-heavy scroll feed as per logic for "focused journey") -->
+<!-- But if needed based on "Home" logic: -->
+<div class="fixed bottom-24 right-6 md:bottom-10 md:right-10 z-40 md:block hidden">
+<button class="w-14 h-14 rounded-full bg-gradient-to-tr from-primary to-primary-container text-white shadow-xl flex items-center justify-center hover:scale-110 active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">restaurant</span>
+</button>
+</div>
+</body></html>

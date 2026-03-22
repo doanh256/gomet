@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "outline": "#8c706f",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "surface": "#fdf9f3",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-dim": "#dddad4",
+              "surface-variant": "#e6e2dc",
+              "on-secondary": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "inverse-primary": "#ffb3b0",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "outline-variant": "#e0bfbd",
+              "tertiary-container": "#cf8a7f",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-low": "#f7f3ed",
+              "on-tertiary-fixed": "#370e08",
+              "on-error-container": "#93000a",
+              "secondary-fixed": "#e4e2e1",
+              "on-primary": "#ffffff",
+              "inverse-on-surface": "#f4f0ea",
+              "surface-tint": "#ae2f34",
+              "on-primary-fixed": "#410006",
+              "on-secondary-fixed-variant": "#474747",
+              "secondary-fixed-dim": "#c8c6c6",
+              "on-tertiary-container": "#55251e",
+              "surface-container-lowest": "#ffffff",
+              "on-error": "#ffffff",
+              "on-surface": "#1c1c18",
+              "surface-container": "#f1ede7",
+              "primary-fixed-dim": "#ffb3b0",
+              "inverse-surface": "#31302d",
+              "tertiary": "#894e45",
+              "secondary": "#5f5e5e",
+              "primary": "#ae2f34",
+              "secondary-container": "#e4e2e1",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-container-highest": "#e6e2dc",
+              "primary-fixed": "#ffdad8",
+              "primary-container": "#ff6b6b",
+              "on-secondary-container": "#656464",
+              "error": "#ba1a1a",
+              "background": "#fdf9f3",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "on-primary-container": "#6d0010",
+              "on-background": "#1c1c18"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #fdf9f3; color: #1c1c18; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-nav { background: rgba(253, 249, 243, 0.8); backdrop-filter: blur(12px); }
+        .text-gradient { background: linear-gradient(45deg, #ae2f34, #ff6b6b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .primary-gradient { background: linear-gradient(45deg, #ae2f34, #ff6b6b); }
+    </style>
+</head>
+<body class="min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 backdrop-blur-md shadow-[0_8px_32px_rgba(174,47,52,0.05)]">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-black text-[#1c1c18] tracking-[-0.04em] uppercase font-headline">GOMET</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-[#ae2f34] font-bold border-b-2 border-[#ae2f34] transition-colors duration-300" href="#">Alpha</a>
+<a class="text-[#1c1c18]/60 font-medium hover:text-[#ae2f34] transition-colors duration-300" href="#">AR Menu</a>
+<a class="text-[#1c1c18]/60 font-medium hover:text-[#ae2f34] transition-colors duration-300" href="#">Wallet</a>
+<a class="text-[#1c1c18]/60 font-medium hover:text-[#ae2f34] transition-colors duration-300" href="#">Concierge</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-[#1c1c18]/60 hover:text-[#ae2f34] transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-[#1c1c18]/60 hover:text-[#ae2f34] transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-screen-xl mx-auto">
+<!-- Hero Section: Editorial Style -->
+<section class="relative py-12 mb-16 overflow-hidden">
+<div class="relative z-10 max-w-2xl">
+<span class="inline-block px-4 py-1.5 mb-6 text-[10px] font-bold tracking-[0.2em] uppercase bg-surface-container-high rounded-full text-primary">Testing Phase 2.0</span>
+<h1 class="font-headline text-6xl md:text-7xl font-extrabold tracking-tight text-on-background leading-[0.9] mb-6">
+                    Trung tâm Thông tin <span class="text-gradient">Alpha</span>
+</h1>
+<p class="text-lg text-secondary leading-relaxed max-w-md">
+                    Khám phá những hương vị công nghệ mới nhất trước khi ra mắt chính thức. Đóng góp ý kiến của bạn để tạo nên trải nghiệm ẩm thực số hoàn hảo.
+                </p>
+</div>
+<div class="absolute -right-12 top-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute right-0 top-12 hidden md:block w-96 h-96 rounded-lg rotate-6 shadow-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+<img alt="Culinary testing" class="w-full h-full object-cover" data-alt="High end restaurant interior blurred background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvaFTxkhvnffkkjc-zfFOUaIbh4S5Z9F9o8_GF3M2cAyZp7cfVm5hsJBu699is-pyGoiwOJ8YTsEchsZo0EAq6OfHm8Fo9mkWxKExQpkJe8D-oG_-SlyCb8Av6QadluMUL8jwoC17WLeJUn2wmg-zn-20TAfoJYGl_iCsIbdSNu5-OLdpGIamuIQp2lnFXSY7wSGjVpi8oKEZnC8Li3PpfWhm3VIdZz_LeLEWDJFHdwDrlM3pT07brKs2HXHV_GC7VM9o6pYmSw90"/>
+</div>
+</section>
+<!-- Bento Grid: Progress and Features -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-16">
+<!-- Testing Progress -->
+<div class="md:col-span-8 bg-surface-container-lowest p-8 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.04)] flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-12">
+<div>
+<h2 class="font-headline text-2xl font-bold mb-1">Tiến độ Bản Test</h2>
+<p class="text-sm text-secondary">Cập nhật lần cuối: 2 giờ trước</p>
+</div>
+<span class="px-4 py-2 bg-primary/10 text-primary font-bold rounded-full text-sm">84% Hoàn tất</span>
+</div>
+<div class="space-y-8">
+<div>
+<div class="flex justify-between text-sm mb-2 font-medium">
+<span>Giao diện AR Menu</span>
+<span class="text-primary">95%</span>
+</div>
+<div class="h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full primary-gradient rounded-full" style="width: 95%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-sm mb-2 font-medium">
+<span>Tích hợp Thanh toán Wallet</span>
+<span class="text-primary">70%</span>
+</div>
+<div class="h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full primary-gradient rounded-full" style="width: 70%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 flex gap-4">
+<button class="px-6 py-3 primary-gradient text-white font-bold rounded-DEFAULT shadow-lg hover:opacity-90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Cập nhật ngay
+                    </button>
+<button class="px-6 py-3 bg-surface-container-highest text-on-surface font-bold rounded-DEFAULT hover:bg-surface-container-high transition-all">
+                        Xem chi tiết (v2.4.1)
+                    </button>
+</div>
+</div>
+<!-- Quick Report FAB-Alternative Card -->
+<div class="md:col-span-4 bg-primary p-8 rounded-lg text-white shadow-xl flex flex-col">
+<div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">bug_report</span>
+</div>
+<h2 class="font-headline text-2xl font-bold mb-4">Báo cáo lỗi nhanh</h2>
+<p class="text-white/80 text-sm mb-8 leading-relaxed">
+                    Phát hiện điều gì đó chưa ổn? Hãy cho chúng tôi biết ngay để "đầu bếp" của GOMET xử lý kịp thời.
+                </p>
+<div class="mt-auto">
+<div class="bg-white/10 rounded-lg p-4 mb-4 backdrop-blur-sm border border-white/10">
+<textarea class="w-full bg-transparent border-none text-white placeholder-white/50 text-sm focus:ring-0 resize-none h-20" placeholder="Mô tả ngắn gọn lỗi..."></textarea>
+</div>
+<button class="w-full py-4 bg-white text-primary font-bold rounded-DEFAULT hover:bg-surface-bright transition-all uppercase tracking-wider text-xs">
+                        Gửi báo cáo
+                    </button>
+</div>
+</div>
+<!-- Upcoming Features - Horizontal Scroll Style -->
+<div class="md:col-span-12">
+<div class="flex items-end justify-between mb-8">
+<h2 class="font-headline text-3xl font-bold tracking-tight">Tính năng sắp ra mắt</h2>
+<a class="text-primary font-bold text-sm uppercase tracking-widest border-b-2 border-primary/20 hover:border-primary transition-all" href="#">Xem lộ trình</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Feature Card 1 -->
+<div class="group relative bg-surface-container-low rounded-lg p-1 transition-all hover:bg-white hover:shadow-xl">
+<div class="aspect-[4/3] rounded-md overflow-hidden mb-6">
+<img alt="Sommelier feature" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="AI Sommelier recommendation app screen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDryfcHa_29iUc3H7YeBge58jsO44ZX8HXfXnxb9-aoZyCs6ogxJEhZQThY9o16L2ezM3qZw9I6cEFlqI6AySiVlx3COWRVqTVXCn_jJuVjVof79CRCyyqYE3rGnhi_V_EqNN2FkZpqDzq3FmD_h4u7Ejzlj6dMrx3IGAfR9wuKyaO-I9D7QI_VbTYdFGKUlR7fp1vCGQp0NKIAGfjfopFatJobK7JzMoh2unAz_kw5WE_a0M1LjaJ_vpzMDGM2LDhvD9bAe0fyr6s"/>
+</div>
+<div class="px-5 pb-6">
+<span class="inline-block px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold rounded-full mb-3 uppercase tracking-tighter">AI Concierge</span>
+<h3 class="text-xl font-bold mb-2">Gợi ý Rượu thông minh</h3>
+<p class="text-secondary text-sm leading-relaxed">Phân tích thực đơn và đề xuất loại vang hoàn hảo nhất cho bữa tối của bạn.</p>
+</div>
+</div>
+<!-- Feature Card 2 -->
+<div class="group relative bg-surface-container-low rounded-lg p-1 transition-all hover:bg-white hover:shadow-xl">
+<div class="aspect-[4/3] rounded-md overflow-hidden mb-6">
+<img alt="Social dining" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Gourmet dinner table with people" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvn1XsPf4Gl4gfqLQkzPJaVZ4dIt-mVfGhyYB5gpOR75ptv-f-M5LY3h5aWR5OaTBzluiRd0oPzRkbMl7bjewceNJUEcpIivO0XHq5OAdFGjOEJ_qZYPlAC8g5eKZw9YzUulIfYMq6h6gRd1LOqC9W0DX9wjA0kWlcL9oPXQhaKWA7jO5eEmMjePtwY8LPua4ngOrIqTW1cFaRyVR3qwrv0BvSxsZDDGrOzRyrDIr0_QHxSjAuU6wU10wDEG43kuJwVPq-VBH74zs"/>
+</div>
+<div class="px-5 pb-6">
+<span class="inline-block px-3 py-1 bg-primary-fixed text-on-primary-fixed text-[10px] font-bold rounded-full mb-3 uppercase tracking-tighter">Social</span>
+<h3 class="text-xl font-bold mb-2">Bàn tiệc Nhóm</h3>
+<p class="text-secondary text-sm leading-relaxed">Dễ dàng chia hóa đơn và đặt bàn cho nhóm lớn chỉ với một chạm.</p>
+</div>
+</div>
+<!-- Feature Card 3 -->
+<div class="group relative bg-surface-container-low rounded-lg p-1 transition-all hover:bg-white hover:shadow-xl">
+<div class="aspect-[4/3] rounded-md overflow-hidden mb-6">
+<img alt="VIP rewards" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="Fine dining table setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCywZlA0Yj9u26GvdHOQRs9Mk8NCqDiLBhnmyNWUdQK2juPbORsx0YdZ9VQiniha_3dkOvM0rti6NK2JzidkkawpE_Ezj5Zr5DEHxQhzZqVMgkKEIdGJ2uQ32amtGad9qsAUL91mN0eELOmTv3QN7wtU5obMS7Y25mXuKj-Tdye9CjuwW9dQJ9bsP0lcWwsuIr-lnWgk-uatDYafEDgih41mc9o7O2dhf9fe9xkRnvvFlmryHvecFewhnYLTj2uP8_0wd6wdb_QI_0"/>
+</div>
+<div class="px-5 pb-6">
+<span class="inline-block px-3 py-1 bg-surface-container-highest text-on-surface text-[10px] font-bold rounded-full mb-3 uppercase tracking-tighter">Wallet</span>
+<h3 class="text-xl font-bold mb-2">Đặc quyền Alpha</h3>
+<p class="text-secondary text-sm leading-relaxed">Hệ thống tích điểm dành riêng cho người dùng thử nghiệm giai đoạn đầu.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-[#fdf9f3]/90 backdrop-blur-xl rounded-t-[2rem] shadow-2xl">
+<a class="flex flex-col items-center justify-center bg-gradient-to-tr from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-2 scale-110 transition-all duration-500 shadow-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">science</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Alpha</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 p-2 hover:bg-[#f7f3ed] rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">view_in_ar</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">AR Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 p-2 hover:bg-[#f7f3ed] rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Wallet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 p-2 hover:bg-[#f7f3ed] rounded-full transition-all" href="#">
+<span class="material-symbols-outlined">smart_toy</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Concierge</span>
+</a>
+</nav>
+</body></html>

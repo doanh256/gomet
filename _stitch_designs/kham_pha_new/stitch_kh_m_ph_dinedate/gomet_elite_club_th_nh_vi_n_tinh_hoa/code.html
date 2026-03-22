@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-container-highest": "#e6e2dc",
+            "on-secondary-fixed": "#1b1c1c",
+            "tertiary-fixed": "#ffdad4",
+            "on-tertiary-fixed": "#370e08",
+            "surface-container-lowest": "#ffffff",
+            "on-surface": "#1c1c18",
+            "surface-container": "#f1ede7",
+            "tertiary-fixed-dim": "#ffb4a8",
+            "on-primary": "#ffffff",
+            "secondary-container": "#e4e2e1",
+            "on-secondary-fixed-variant": "#474747",
+            "surface": "#fdf9f3",
+            "secondary-fixed": "#e4e2e1",
+            "outline": "#8c706f",
+            "surface-container-high": "#ebe8e2",
+            "primary-fixed-dim": "#ffb3b0",
+            "on-surface-variant": "#584140",
+            "secondary-fixed-dim": "#c8c6c6",
+            "surface-tint": "#ae2f34",
+            "surface-bright": "#fdf9f3",
+            "on-secondary-container": "#656464",
+            "tertiary": "#894e45",
+            "surface-dim": "#dddad4",
+            "on-error": "#ffffff",
+            "inverse-on-surface": "#f4f0ea",
+            "surface-variant": "#e6e2dc",
+            "tertiary-container": "#cf8a7f",
+            "on-tertiary": "#ffffff",
+            "on-secondary": "#ffffff",
+            "on-primary-fixed-variant": "#8c1520",
+            "on-primary-container": "#6d0010",
+            "error": "#ba1a1a",
+            "outline-variant": "#e0bfbd",
+            "background": "#fdf9f3",
+            "primary-fixed": "#ffdad8",
+            "on-error-container": "#93000a",
+            "primary-container": "#ff6b6b",
+            "on-tertiary-fixed-variant": "#6d3830",
+            "on-tertiary-container": "#55251e",
+            "error-container": "#ffdad6",
+            "primary": "#ae2f34",
+            "surface-container-low": "#f7f3ed",
+            "on-primary-fixed": "#410006",
+            "inverse-surface": "#31302d",
+            "on-background": "#1c1c18",
+            "inverse-primary": "#ffb3b0",
+            "secondary": "#5f5e5e"
+          },
+          fontFamily: {
+            "headline": ["Plus Jakarta Sans"],
+            "body": ["Inter"],
+            "label": ["Inter"]
+          },
+          borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-effect {
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .text-shadow-sm {
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopAppBar Navigation -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 dark:bg-[#1c1c18]/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-[#ae2f34] dark:text-[#ff6b6b] font-headline">GOMET</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 font-label hover:text-[#ff6b6b] transition-colors duration-300" href="#">Discover</a>
+<a class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 font-label hover:text-[#ff6b6b] transition-colors duration-300" href="#">Shared Palette</a>
+<a class="text-[#ae2f34] dark:text-[#ff6b6b] font-bold font-label" href="#">Elite Club</a>
+<a class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 font-label hover:text-[#ff6b6b] transition-colors duration-300" href="#">Curators</a>
+<a class="text-[#1c1c18]/60 dark:text-[#fdf9f3]/60 font-label hover:text-[#ff6b6b] transition-colors duration-300" href="#">Academy</a>
+</nav>
+<div class="flex items-center space-x-4">
+<button class="material-symbols-outlined text-[#1c1c18] hover:text-[#ae2f34] transition-colors" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-[#1c1c18] hover:text-[#ae2f34] transition-colors" data-icon="auto_awesome">auto_awesome</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo0zzMwp40jm0TEQuAEZAu69Ucaq_Pk90Xt3455H2lEg49ltYd_vo8SxxHnXwZRb5hdIVDTgXhLC1pmNOohw02mEC0k92KHp95Lt6qzh_irSDnSjG5jft7vbYKKIBZWLAUd7x7Vm6M5LBHBOk_HntlYg17oOjd5snK5sVBCfsSEFxfp0von32-D12Pp15WRp2eEBEyBHCAgP-AHbhAYEFNC9Vf5Y4rhHPgmec4OMq0qlTA_Cre3EqvMZP_avbIIglsnpn8HTroiJY"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32">
+<!-- Hero Section -->
+<section class="px-6 max-w-7xl mx-auto mb-16 relative">
+<div class="relative h-[614px] rounded-xl overflow-hidden group">
+<img class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-700" data-alt="Atmospheric dimly lit private dining room" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-OJYaKi048Il9afqAGriLIJNAP3suQEHCayjHMXAkncR8i1KZ8406cFkDHeZy08zLSbiNgsGxWD4h6sjwCaMU-dcKy2bdKlwQcK7FH_xYJ9WnWyv4cSnhzdgWiyjPtXEy1Qr8hGesVibM6RPMLmDlYiLI-qTFubq9rKUy8GGY0XW1xnPhotcFOwRv2ZCPvLbMmRehhzDU2Cnr19HOUez-77d5rCyBQ6rtzpxJW06Wdx3Dx_58_39wHvLaCmaeHpcv_FqFP6BNt64"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/40 to-transparent"></div>
+<div class="absolute bottom-12 left-12 right-12">
+<span class="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/20 backdrop-blur-md border border-primary/30 text-primary-fixed-dim font-label text-xs tracking-widest uppercase font-bold">Member Exclusive</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-white tracking-tighter mb-4 leading-none">The Elite Club</h1>
+<p class="text-surface-container-highest/80 max-w-xl text-lg md:text-xl font-light">Access the unattainable. Private chef's tables, hidden cellar tours, and 24/7 concierge service for the true culinary connoisseur.</p>
+</div>
+</div>
+</section>
+<!-- Bento Grid Services -->
+<section class="px-6 max-w-7xl mx-auto mb-16">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-full">
+<!-- Concierge Service (Large) -->
+<div class="md:col-span-7 bg-surface-container-low rounded-lg p-10 flex flex-col justify-between relative overflow-hidden min-h-[400px]">
+<div class="z-10">
+<h2 class="text-3xl font-headline font-bold text-on-surface tracking-tight mb-4">Personal Concierge</h2>
+<p class="text-on-surface-variant max-w-sm mb-8">Priority reservations at Michelin-starred venues worldwide, even with zero notice. Your table is always ready.</p>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-4 rounded-full font-label font-bold text-sm tracking-wide shadow-lg shadow-primary/20 active:scale-95 transition-all">Request Service</button>
+</div>
+<div class="absolute -right-10 -bottom-10 opacity-10">
+<span class="material-symbols-outlined text-[20rem]" data-icon="support_agent">support_agent</span>
+</div>
+</div>
+<!-- Secret Kitchens (Tall) -->
+<div class="md:col-span-5 bg-on-background rounded-lg p-8 text-white flex flex-col relative overflow-hidden">
+<img class="absolute inset-0 w-full h-full object-cover opacity-40" data-alt="Chef plating food in a dark kitchen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_PZmhoDix3rNzTCihUEDOhx_Md0swrQjdx-qxS9ohfSs2psCyCLuZ1W68PxB6-HAeOCrsFUWyibwmls39jHba3uSs4wVKWO9kOBXiT7FlxWRSjDktvvES_6JbPNZOVa-arCTSRNn9D2yIxAaYxZ-KhlEKaXk-bFDpSgKl9UUwk71Ptaw1yf8JBCiORlObwhabDoAEOfATOKbA1c1FmObuoxGG-WOyd3jgTh7H_DuMnREVpM02HWrZGqmZI-xuYzjS5QrybVTx0iY"/>
+<div class="relative z-10 flex flex-col h-full">
+<span class="material-symbols-outlined text-primary-container mb-6 text-4xl" data-icon="restaurant_menu">restaurant_menu</span>
+<h3 class="text-3xl font-headline font-bold mb-4">Secret Kitchen</h3>
+<p class="text-surface-container-highest/60 mb-8">Weekly invites to undisclosed locations where top chefs experiment with avant-garde menus.</p>
+<div class="mt-auto pt-6 border-t border-white/10 flex items-center justify-between">
+<span class="font-label text-xs uppercase tracking-widest font-bold">New events every Friday</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Privileges -->
+<div class="md:col-span-4 bg-tertiary-container/10 rounded-lg p-8 border border-outline-variant/15">
+<span class="material-symbols-outlined text-tertiary mb-4" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<h4 class="text-xl font-headline font-bold text-on-surface mb-2">High-End Privileges</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Complimentary airport lounge access, exclusive cellar selections, and priority gifting services.</p>
+</div>
+<!-- Academy Access -->
+<div class="md:col-span-4 bg-surface-container-high rounded-lg p-8">
+<span class="material-symbols-outlined text-on-surface mb-4" data-icon="school">school</span>
+<h4 class="text-xl font-headline font-bold text-on-surface mb-2">Private Academy</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">Masterclasses led by legendary sommeliers and world-renowned chefs, exclusive to Elite members.</p>
+</div>
+<!-- Global Map -->
+<div class="md:col-span-4 bg-surface-container-lowest rounded-lg p-8 flex items-center justify-between shadow-sm">
+<div>
+<h4 class="text-xl font-headline font-bold text-on-surface mb-1">Global Reach</h4>
+<p class="text-on-surface-variant text-xs">Curated experiences in 45 cities.</p>
+</div>
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl" data-icon="public">public</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Exclusive Events Horizontal Scroll -->
+<section class="mb-16">
+<div class="px-6 max-w-7xl mx-auto flex justify-between items-end mb-8">
+<div>
+<h2 class="text-4xl font-headline font-extrabold text-on-surface tracking-tighter">Elite Gatherings</h2>
+<p class="text-on-surface-variant">The upcoming itinerary for our members</p>
+</div>
+<button class="text-primary font-label font-bold text-sm tracking-wide hover:underline">View Full Calendar</button>
+</div>
+<div class="flex overflow-x-auto pb-8 px-6 gap-6 no-scrollbar">
+<!-- Event Card 1 -->
+<div class="flex-none w-[350px] bg-surface-container-lowest rounded-lg overflow-hidden group shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Sophisticated bar setup with amber lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHjCbt2yz4mmtoR8DxHokjh-X9I8w3nDpfj5DkSFhBBX3Wczl1ukHvYHtD4Bm9TYqjTYzBGQdiXmqMl3lAUSF2K8nx-fup0oMwPy7u8p9aH7sq0_SAxBdf2RJ5S4t70Vmj_Cik0JDHvp9RTRdGGx1a4ZAcgtmYYPqOcfIZGjsdYYlQjVAPJD0a6qk0K59l_a_qaqWiFfz92czhVR8Y6EAuE5bh1ZVM9MJKvmV88wyolsbP2immEeFT8ppVv7Oe8RG7adtCqHBTCZs"/>
+<div class="absolute top-4 left-4 bg-on-background/80 glass-effect text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">London</div>
+</div>
+<div class="p-6">
+<p class="text-primary font-label text-xs font-bold uppercase tracking-widest mb-2">OCT 24 • Secret Location</p>
+<h5 class="text-xl font-headline font-bold text-on-surface mb-4">The Amber Cask Experience</h5>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Member avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIj21L5eMYTQQ7xouy4erCTBsnvw3nT3F2kK4nLHsNr3c7MFYxo_ExbwYDh74RysVsuNBc_5aaTRiiw3rTUxytx3V6xB6uWisq9fXzeGzpUMAnyvNUZRsRYVqaqDu4qTYFavUX7KyTgBzPd2sdiP_FPX1PTtOtjYAovcsaUBN7BI_P1XN_FgPS2AYbGhYfTDVjxDWLqYqRvKnCb1lvlulFkKFJkSZyRBPtfFb2zgk41D1M1Xg8OD4Dq5HO5FAHU6qrgjgOBn-IDc0"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">+12</div>
+</div>
+<button class="text-on-surface font-label text-xs font-bold uppercase tracking-widest flex items-center">Join <span class="material-symbols-outlined ml-1 text-sm" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="flex-none w-[350px] bg-surface-container-lowest rounded-lg overflow-hidden group shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Elegant restaurant table setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdRCtRbLr8xox6ujVI3bNDj08iB20tS4Xewvi3nWnkef3JUPWzPWZvUcH9l0LDJZ9qweE_G2FImuO7tiROgupaFALHE7sTUcg2N7__KQpVYcmjzbBjtmwkFikBAmTcBcQxvqjTKk0L6hyw9mh-E68Y11Y-OnpftEiLpvS_tSKgrU7rPO3zmhVgbQ9qYLS0wLfnekZaispvtBBZjI-g7Ki2v-wlkQydiCnJtxCN6qvVxNnq4dLVgBf2_7NQ9FWePtC7t7k9rb8WKNg"/>
+<div class="absolute top-4 left-4 bg-on-background/80 glass-effect text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Paris</div>
+</div>
+<div class="p-6">
+<p class="text-primary font-label text-xs font-bold uppercase tracking-widest mb-2">NOV 12 • Le Jardin Noir</p>
+<h5 class="text-xl font-headline font-bold text-on-surface mb-4">Midnight Truffle Gala</h5>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Member avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeb3jsOnpyqsGVlrCC9Q_wyDHSP4g9XCUdWrdpFgOdI403p4ZWsjatur0VU9Cb_FoxPhGL1Ek1QGbBnautknogIRCJHT1Fg7vOJeDFdEHNzfZbGkqAGUjGz_rR-W4skm8SEqQX8O2qeuCQ1wEKe3iznUEF484nopv5RXCIzLRiZiY18s_r__5pzonjaOLyrBW6xm4NN7jiqd0gzIW3_kDyi4KD7pZzDNjVBg_qDm9rXSh340CmKcFMbRuNzOrP8bPvLMhOaQITaXA"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">+8</div>
+</div>
+<button class="text-on-surface font-label text-xs font-bold uppercase tracking-widest flex items-center">Join <span class="material-symbols-outlined ml-1 text-sm" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Event Card 3 -->
+<div class="flex-none w-[350px] bg-surface-container-lowest rounded-lg overflow-hidden group shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="h-48 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Modern rooftop view at night" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEnxdk9YkzHMNXYGin3FZOHyaLB7fLEklPDuOFC0XdWwbNNgGmRQltP2cvq5m9Uiq46Dfcne-bdwLIrmOkXqqOI0d0o5W2Lq_8pFYqKRQyIIxFnxV3czL1kDSrX37djOqO8NBcWq658sutbUFfhWYPw_EEaAsr39JmNVqmL-KzOSVQH2wO0-6HlfHCIPqf39Hp7ELs7x1hep0Dn-fO_GoyldOsy_168a7--zlf76Slw1v_Pm1POgpReOuaCZDxIMXSrw5zzbcxviU"/>
+<div class="absolute top-4 left-4 bg-on-background/80 glass-effect text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Tokyo</div>
+</div>
+<div class="p-6">
+<p class="text-primary font-label text-xs font-bold uppercase tracking-widest mb-2">NOV 29 • Private Estate</p>
+<h5 class="text-xl font-headline font-bold text-on-surface mb-4">Skyline Omakase Ritual</h5>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Member avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzMwzMqHJdkhDPvMC2BtigcsK-qXw2aEuTqXRGMMfb1RDd1cHZjYAweEYChfuixdFCYDjtt18pBHd2lxB-UJdaknVVDjNPCPogWybtry1GorSujxqVZ5VWfYx2Dq5yfsp8kkwZQFDGjbP-rfR3mtNeKOMwULBAAJhLychTM56xXFd3DNbEESN5QicVPPXUxcssO4YjpbFhzan-ONMtHBaX7_0x3fbOF--eVKiB13nn9IwgHU62_iOjqFF0qeapi-bGlJTHkHQIbO8"/>
+</div>
+<div class="w-8 h-8 rounded-full border-2 border-white bg-surface-container-highest flex items-center justify-center text-[10px] font-bold">+24</div>
+</div>
+<button class="text-on-surface font-label text-xs font-bold uppercase tracking-widest flex items-center">Join <span class="material-symbols-outlined ml-1 text-sm" data-icon="chevron_right">chevron_right</span></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Navigation -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end px-4 pb-6 pt-2 bg-[#fdf9f3] dark:bg-[#1c1c18] border-t border-[#e0bfbd]/15 shadow-[0_-24px_48px_-12px_rgba(174,47,52,0.08)] z-50 md:hidden">
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 dark:text-[#fdf9f3]/40 p-2 group hover:text-[#ae2f34] transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="restaurant">restaurant</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 dark:text-[#fdf9f3]/40 p-2 group hover:text-[#ae2f34] transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="palette">palette</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Shared Palette</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#ae2f34] to-[#ff6b6b] text-white rounded-full p-3 mb-2 shadow-lg shadow-[#ae2f34]/20 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="sr-only text-[10px] font-bold uppercase tracking-widest">Elite Club</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 dark:text-[#fdf9f3]/40 p-2 group hover:text-[#ae2f34] transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="leaderboard">leaderboard</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Curators</span>
+</a>
+<a class="flex flex-col items-center justify-center text-[#1c1c18]/40 dark:text-[#fdf9f3]/40 p-2 group hover:text-[#ae2f34] transition-all" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="school">school</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest">Academy</span>
+</a>
+</nav>
+</body></html>

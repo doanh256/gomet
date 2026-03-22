@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET Live - Velvet Bistro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary-fixed-dim": "#ffb3b0",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#e4e2e1",
+              "tertiary-container": "#cf8a7f",
+              "on-primary-fixed": "#410006",
+              "on-background": "#1c1c18",
+              "tertiary": "#894e45",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdad8",
+              "secondary": "#5f5e5e",
+              "inverse-primary": "#ffb3b0",
+              "error-container": "#ffdad6",
+              "surface-tint": "#ae2f34",
+              "surface-container-highest": "#e6e2dc",
+              "on-surface-variant": "#584140",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e6e2dc",
+              "error": "#ba1a1a",
+              "surface-container": "#f1ede7",
+              "surface-dim": "#dddad4",
+              "surface": "#fdf9f3",
+              "on-secondary-container": "#656464",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "on-error-container": "#93000a",
+              "background": "#fdf9f3",
+              "primary-container": "#ff6b6b",
+              "on-surface": "#1c1c18",
+              "outline-variant": "#e0bfbd",
+              "secondary-container": "#e4e2e1",
+              "on-secondary-fixed": "#1b1c1c",
+              "on-primary": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "surface-container-low": "#f7f3ed",
+              "primary": "#ae2f34",
+              "outline": "#8c706f",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-secondary-fixed-variant": "#474747",
+              "on-primary-container": "#6d0010",
+              "inverse-surface": "#31302d",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "on-tertiary-fixed": "#370e08",
+              "tertiary-fixed": "#ffdad4",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-tertiary-container": "#55251e"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .headline-font { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(28, 28, 24, 0.6);
+            backdrop-filter: blur(12px);
+        }
+        .live-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 overflow-hidden h-screen flex flex-col">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md shadow-sm dark:shadow-none h-20 px-8 flex justify-between items-center max-w-full mx-auto">
+<div class="flex items-center gap-12">
+<span class="text-2xl font-bold tracking-tighter text-[#ae2f34] dark:text-[#ff6b6b] headline-font">GOMET</span>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-semibold text-[#ae2f34] dark:text-[#ff6b6b] border-b-2 border-[#ae2f34] pb-1" href="#">Discover</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-semibold text-[#1c1c18] dark:text-slate-300 hover:text-[#ae2f34] transition-colors" href="#">Events</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-semibold text-[#1c1c18] dark:text-slate-300 hover:text-[#ae2f34] transition-colors" href="#">Venues</a>
+<a class="font-['Plus_Jakarta_Sans'] tracking-tight font-semibold text-[#1c1c18] dark:text-slate-300 hover:text-[#ae2f34] transition-colors" href="#">Admin</a>
+</div>
+</div>
+<div class="flex items-center gap-6">
+<button class="p-2 hover:bg-slate-800 rounded-lg transition-all text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 hover:bg-slate-800 rounded-lg transition-all text-slate-300">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</nav>
+<!-- Main Livestream Canvas -->
+<main class="flex-grow pt-20 flex flex-col lg:flex-row gap-0 overflow-hidden">
+<!-- Large Video Player Section -->
+<section class="relative flex-grow h-full bg-black group overflow-hidden">
+<!-- Video Placeholder -->
+<img alt="Live event at Velvet Bistro" class="w-full h-full object-cover" data-alt="Cinematic shot of a dimly lit jazz club with a performer on stage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwalsio38QFl9NYrsFnFP6gtORb2-Z6Ifuc2ZtA4Y0459kHYyg-wg6hzxZpW6dSBf_gOhY1F-6lOY84eMGgMh_K4mex7XmN3LW-p7XI1cGUpxbxB14Jy-1SKgOuZDNRV7lO4fm3qkjeeii54LQVNBM2rmHwkmwl_W-SwV6hcsD69an5R_V-gXHTTjEPNCPiG-wCHBpQ6uzSOOdz1T-HCKpiSD8CdQfCS3wZEdxGtP93FZhR91giUOW3-M1bSEWaZ5DaxpgyxZoNfQ"/>
+<!-- Overlay UI -->
+<div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/40 p-8 flex flex-col justify-between pointer-events-none">
+<div class="flex justify-between items-start pointer-events-auto">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3">
+<span class="bg-primary px-3 py-1 rounded-full text-white text-xs font-bold tracking-widest uppercase flex items-center gap-2">
+<span class="w-2 h-2 bg-white rounded-full live-pulse"></span>
+                                LIVE
+                            </span>
+<span class="glass-panel px-3 py-1 rounded-full text-slate-200 text-xs font-medium flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">visibility</span>
+                                1,248 WATCHING
+                            </span>
+</div>
+<h1 class="text-4xl md:text-5xl font-extrabold headline-font tracking-tighter text-white mt-4 drop-shadow-2xl">Midnight Jazz &amp; Merlot</h1>
+<p class="text-slate-300 font-medium text-lg flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-container">location_on</span>
+                            Velvet Bistro • District 1, HCMC
+                        </p>
+</div>
+<div class="flex gap-3">
+<button class="glass-panel p-3 rounded-full text-white hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined">share</span>
+</button>
+<button class="glass-panel p-3 rounded-full text-white hover:bg-white/20 transition-all">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+</div>
+<!-- Join Now CTA / Progress -->
+<div class="flex flex-col md:flex-row items-end justify-between gap-6 pointer-events-auto">
+<div class="flex items-center gap-4 bg-slate-900/40 backdrop-blur-md p-4 rounded-xl border border-white/5">
+<div class="w-12 h-12 rounded-lg overflow-hidden flex-shrink-0">
+<img alt="Current Drink" class="w-full h-full object-cover" data-alt="Close up of a deep red wine in a crystal glass" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMpMj5VvR1ooewcMWjOIvSd-fMohWHWaJr0gdVt-uwkzqelavZnqYi0vKYgEWioect_54b0RHyohv_Pth5-a6KH2kChEKa820CpaZKAssszPlf_XfWyGfsefT8aNS5U4KIjJHVuMgwDMp-eF8cS2KozBB78CCMPXUYSdysJiw3gzI-cO1ymjYQqoE0I3Lw7SfPW_t955SrQqo3VG7B4MDFsMz3x0gDWxghusklnyqbwYGlZRKUniw9ktXKO_RMfiNt9KBIlrlatSY"/>
+</div>
+<div>
+<p class="text-xs text-slate-400 font-bold tracking-widest uppercase">Now Serving</p>
+<p class="text-white font-semibold">Vintage Merlot Selection</p>
+</div>
+</div>
+<button class="bg-gradient-to-r from-primary to-primary-container px-10 py-5 rounded-lg text-white font-bold headline-font text-xl shadow-2xl hover:scale-105 transition-transform">
+                        Join Now at Venue
+                    </button>
+</div>
+</div>
+</section>
+<!-- Live Chat & Community Sidebar -->
+<aside class="w-full lg:w-[400px] bg-slate-900 flex flex-col h-full border-l border-white/5">
+<!-- Chat Header -->
+<div class="p-6 border-b border-white/5 flex items-center justify-between">
+<h3 class="headline-font font-bold text-lg text-white">Live Community</h3>
+<div class="flex gap-2">
+<div class="flex -space-x-3">
+<img alt="user" class="w-8 h-8 rounded-full border-2 border-slate-900" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeuWhRL1wg6aCpCdpMjdc9uNZYySAXfVonAY_-lkOddNH91YtkoRVetZU9Q0PeyTVvihapG_Tg4Kpc-L45qMFseTNuaexJco68z28YPhYL782Aw4_PR5KOIZSYh2Lzd02Z3ljxjUqHJFm9ZKNEBPDlmxCwVL0NUGubiw1mYevY_p7n8oi_x1kBvvG-VAv-wLbipGjt4fRiXNpFFbGevNADrmIshFxP26hu8PCBZJhHMG88G1pnnFcwlBKpk53G7Yn-XG1-v9X6ljg"/>
+<img alt="user" class="w-8 h-8 rounded-full border-2 border-slate-900" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_5D7GHqSZPl5a8CBemdTv56i9B-4jz4MJYI3tBoYFxL6MhWSjb8h5JVz7kJZArA94rxYnkkJ5cXb3MUFTZjOA2sGfAaN3ob-LRm4gWRXoawmws_j3-rM1HC2ukgKkWipx5DLul2c5SSPGdeNVi-kGOcNWqrdK0kptbj7pgYQAvv2N4vTIb1W2lMAdkbyARX5MRKFsBlMEyzlcDD1spRZJ24rjYnvAwu3xiKl5XtXUb4RE-MwPcjWpwuVxWlc_c0L5PpOAbHWwYB0"/>
+<img alt="user" class="w-8 h-8 rounded-full border-2 border-slate-900" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtLVCfilM117hQiibQBLta6rx3lgBCimeVi-ABhY0kXO9F6YOEf-u7AH4otkEkGNCkHaYKShxxJEgHN6s06r7Uy47uf7AGVNSPVXv0yC7FYMz-o_c1DzOuJ3tsvtC_UYnRRs8UKd3p_LVR4mrzNEMx2TY9eCztWm6HzkiwXrqn_vlroMYm9WNegj2r1J57SET3pjP8m70m1rQZ6_Rc4vsHgogI7bqFxu02fdUB7_8JPNpbk34kugXlHP3w_DGS0doGRa7-hbL0jRs"/>
+</div>
+</div>
+</div>
+<!-- Chat Messages (Scrolling) -->
+<div class="flex-grow overflow-y-auto p-6 space-y-6 scroll-smooth">
+<!-- Message -->
+<div class="flex gap-4">
+<img alt="avatar" class="w-10 h-10 rounded-lg flex-shrink-0" data-alt="Profile photo of a young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD33ksrKCxZItsBK0BufuRPT7xNY15nq-Hz9xkotTB2P2PGkpKzauVPQKCb-eSI4eb-3CHzhy_qegD91YrnJO_OibIEcdItCFnCwY8PS12_q7QmAjjVaHBCm0X_Vycb4pUjALePzc6uHtZA6DOfZBCuU_9T-nr2f9djBIW7pT7AbEn13p80s0oAgpLmshlD3QtM0aN9C1xpKvns6j2VS_f7ey3RujllGDesfjhb09Pt2Z3i6hmCPrMUQ4PCSvs2TNG9jlT0PJA99Vc"/>
+<div class="space-y-1">
+<p class="text-sm font-bold text-primary-container">Alex Rivers</p>
+<p class="text-sm text-slate-300 bg-slate-800/50 p-3 rounded-tr-xl rounded-b-xl leading-relaxed">The vibe tonight is incredible! Just ordered that Merlot. 🍷</p>
+</div>
+</div>
+<!-- System Notice -->
+<div class="text-center py-2">
+<span class="text-[10px] text-slate-500 font-bold tracking-widest uppercase bg-slate-800/30 px-3 py-1 rounded-full">Venue pinned a message</span>
+</div>
+<!-- Message -->
+<div class="flex gap-4">
+<img alt="avatar" class="w-10 h-10 rounded-lg flex-shrink-0" data-alt="Profile photo of a woman in evening wear" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByBNuDmVH6NSGSz3qUATZXNAmoBmiYpYb6fI5QC-_BjN0QA-dWVjXwIsyUiJ2KUnDghxdX38IXUFWmBWZL_A0ICLD40s0iOiDtGvzLmzvvugE4hIN4A0P2pH68ZOeUlRQbKbT1sejJdsVNFoYxs9qKF2VbRzHd6HG4ZDmHDHwTBPhsAFKg-p7YxwX96aQ7z7eAzhkdThAwCqlyCR5Atbzimo3JZOAYDskJT8b9mF9O2oxUdIrcZffWsrO81je-i2RJMHht3lmwAic"/>
+<div class="space-y-1">
+<p class="text-sm font-bold text-slate-200">Elena Joy</p>
+<p class="text-sm text-slate-300 bg-slate-800/50 p-3 rounded-tr-xl rounded-b-xl leading-relaxed">Is there still seating available for a group of 4? On my way!</p>
+</div>
+</div>
+<!-- Message with Interaction -->
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+<div class="space-y-1">
+<p class="text-xs text-slate-500 font-medium">System</p>
+<p class="text-sm italic text-primary-fixed-dim">Velvet Bistro sent a heart to the audience.</p>
+</div>
+</div>
+<!-- Message -->
+<div class="flex gap-4">
+<img alt="avatar" class="w-10 h-10 rounded-lg flex-shrink-0" data-alt="Profile photo of a man with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4VsOdTQeCZOSPWzvImdQ2HpUxK3I4weoytTTH0qP5LgAQLzcnZSgxqlNDqOUw4oMKOatfHisfQIokqTLUJh3ocVX4-GCApogxgWLTPUXQVQsRnCRDtXNtmAPART6dcr-jbhiv9zIQ9phcixjxyBAvlOvwF6u3aHXMyP9HvDmLZbRgby888kTpOvqHbXN8Z4tAv2SGc8N0O9HZX47taAdMazSvJgZlNLfmcnzawjMHMRTJO_AzaEKw1_LN5ypeUMHmcynSkct1FMY"/>
+<div class="space-y-1">
+<p class="text-sm font-bold text-slate-200">Marcus T.</p>
+<p class="text-sm text-slate-300 bg-slate-800/50 p-3 rounded-tr-xl rounded-b-xl leading-relaxed">That sax solo was otherworldly. WOW.</p>
+</div>
+</div>
+<!-- Extra messages to show scroll -->
+<div class="flex gap-4">
+<img alt="avatar" class="w-10 h-10 rounded-lg flex-shrink-0" data-alt="User avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxHLbqHuLOgaUUviUfM4L8x48PnWYAbdfWMNpXW4RSkzbJKS0E4E64v6ZFtGixKhG3VVtUVX8TiI4NhwLonuuEzKprE_lfVR9s5SpxPk9m9eXmnujey6KnoKSkdwI1AKuZZfWtnOZ9ZY5pO5Fde57BlYD799lVe-xbFOn3g3RYKz0IEZ23TKnjwqRp1ZuiMqisTDe8xZkE0fvA6VNLTsQvOO-K_cGfHJ8oBvcUcFyItdLHsPqj73bFXAiRZLwaE3mbPg1b0xu9NXY"/>
+<div class="space-y-1">
+<p class="text-sm font-bold text-slate-200">Sarah K.</p>
+<p class="text-sm text-slate-300 bg-slate-800/50 p-3 rounded-tr-xl rounded-b-xl leading-relaxed">Love the lighting today!</p>
+</div>
+</div>
+</div>
+<!-- Chat Input -->
+<div class="p-6 bg-slate-900 border-t border-white/5">
+<div class="relative flex items-center">
+<input class="w-full bg-slate-800 border-none rounded-full py-3 px-6 text-sm text-slate-200 focus:ring-1 focus:ring-primary-container placeholder-slate-500" placeholder="Say something..." type="text"/>
+<button class="absolute right-2 p-2 text-primary-container hover:text-primary transition-colors">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+<div class="flex justify-between items-center mt-4">
+<div class="flex gap-2">
+<button class="text-slate-500 hover:text-slate-300"><span class="material-symbols-outlined text-xl">mood</span></button>
+<button class="text-slate-500 hover:text-slate-300"><span class="material-symbols-outlined text-xl">image</span></button>
+</div>
+<button class="text-[10px] text-slate-500 font-bold uppercase tracking-widest hover:text-primary transition-colors">Community Rules</button>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer (Suppressed based on logic but structure kept minimal if needed) -->
+<footer class="hidden md:flex justify-between items-center py-4 px-8 bg-slate-950 border-t border-white/5 z-50">
+<span class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500">© 2024 GOMET. The Culinary Curator.</span>
+<div class="flex gap-6">
+<a class="text-xs uppercase tracking-widest text-slate-500 hover:underline decoration-[#ae2f34] underline-offset-4" href="#">Privacy</a>
+<a class="text-xs uppercase tracking-widest text-slate-500 hover:underline decoration-[#ae2f34] underline-offset-4" href="#">Terms</a>
+<a class="text-xs uppercase tracking-widest text-slate-500 hover:underline decoration-[#ae2f34] underline-offset-4" href="#">Safety</a>
+</div>
+</footer>
+</body></html>

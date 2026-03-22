@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "secondary-fixed": "#e4e2e1",
+              "primary-fixed": "#ffdad8",
+              "surface-bright": "#fdf9f3",
+              "on-background": "#1c1c18",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#656464",
+              "on-primary": "#ffffff",
+              "on-secondary-fixed-variant": "#474747",
+              "on-tertiary-fixed": "#370e08",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e6e2dc",
+              "on-error": "#ffffff",
+              "tertiary": "#894e45",
+              "on-surface-variant": "#584140",
+              "on-secondary-fixed": "#1b1c1c",
+              "background": "#fdf9f3",
+              "error": "#ba1a1a",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-highest": "#e6e2dc",
+              "primary-container": "#ff6b6b",
+              "inverse-surface": "#31302d",
+              "on-tertiary-container": "#55251e",
+              "surface-container": "#f1ede7",
+              "on-error-container": "#93000a",
+              "surface-container-high": "#ebe8e2",
+              "error-container": "#ffdad6",
+              "secondary": "#5f5e5e",
+              "on-primary-fixed": "#410006",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface": "#fdf9f3",
+              "on-primary-container": "#6d0010",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-tint": "#ae2f34",
+              "outline": "#8c706f",
+              "surface-container-low": "#f7f3ed",
+              "primary": "#ae2f34",
+              "outline-variant": "#e0bfbd",
+              "inverse-primary": "#ffb3b0",
+              "on-surface": "#1c1c18",
+              "surface-dim": "#dddad4",
+              "on-primary-fixed-variant": "#8c1520"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chat-container::-webkit-scrollbar {
+            width: 4px;
+        }
+        .chat-container::-webkit-scrollbar-thumb {
+            background-color: #e6e2dc;
+            border-radius: 10px;
+        }
+        .glass-nav {
+            background: rgba(253, 249, 243, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface antialiased">
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black tracking-tighter text-zinc-900 dark:text-zinc-50">GOMET</span>
+<nav class="hidden md:flex gap-6 items-center">
+<a class="font-headline text-sm font-medium tracking-tight text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 transition-colors" href="#">Discover</a>
+<a class="font-headline text-sm font-bold tracking-tight text-orange-600 dark:text-orange-400 border-b-2 border-orange-600 transition-colors" href="#">Events</a>
+<a class="font-headline text-sm font-medium tracking-tight text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 transition-colors" href="#">Dining</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center bg-zinc-100/50 dark:bg-zinc-800/50 rounded-full px-4 py-1.5">
+<span class="material-symbols-outlined text-zinc-400 text-sm">search</span>
+<span class="ml-2 text-sm text-zinc-500 font-headline">Search events...</span>
+</div>
+<button class="material-symbols-outlined text-zinc-500 hover:bg-zinc-100/50 p-2 rounded-full transition-colors active:scale-95">notifications</button>
+<button class="material-symbols-outlined text-zinc-500 hover:bg-zinc-100/50 p-2 rounded-full transition-colors active:scale-95">receipt_long</button>
+</div>
+</div>
+</header>
+<main class="pt-16 pb-24 md:pb-0 min-h-screen flex max-w-7xl mx-auto w-full">
+<!-- Main Chat Area -->
+<section class="flex-1 flex flex-col h-[calc(100vh-4rem)]">
+<!-- Chat Header -->
+<div class="px-6 py-4 flex items-center justify-between bg-surface-container-low/50">
+<div class="flex items-center gap-4">
+<button class="md:hidden material-symbols-outlined text-on-surface-variant">arrow_back</button>
+<div class="relative">
+<img class="w-12 h-12 rounded-lg object-cover" data-alt="Jazz club atmosphere with instruments" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANe5dqcbyLuijHLN8R396O5oQnPSqkWYm8FFZM5eS9n9y8yv3NY1PRxHoPZX4ORO7XOX_1ElTfvomxOP3pFbka7c6FyMLOS5XZsyGZTcRx7TMeFdODac-2NMs5y4ippjPSoMZiQWw3BZygOkA8_wwbq_zMP-04p_XkmbVSbZzr4e58GOOWSHA5vdQ4gIeFur9Bv-MWEdRjjixqMjPTxP-jve77MvlMT-BgWqsf0YNbMgh6Epm8UAkfnm142vx65I104Z4Rg863RA0"/>
+<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-surface rounded-full"></div>
+</div>
+<div>
+<h1 class="font-headline text-lg font-bold tracking-tight leading-tight">Midnight Jazz &amp; Merlot</h1>
+<p class="font-label text-xs uppercase tracking-widest text-primary font-semibold">12 Confirmed Attendees</p>
+</div>
+</div>
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-surface object-cover" data-alt="Attendee profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuByzHAl0ELl4NIuS4v9HVF-Ce60ve3SbhoFcf-mn3VF79EemqkEvTvLz5Y0WGU-ys_zuuCTitKYVFjnlq3p8JLHaXQKzxb8i-ACXslTX-DuCcnClyiIikxto1R2V9rqBWSzfaD9yCC_Qr4k9p4E9zY_hMst2avGeFPgU15gvDANcJAnmbla_tveY4ZCGQZeuIct_za2L6miUriNFvAPCyX3Dh4SykoxJeklUJs2L91bY5O_jozlYzYU64mGpEm6LOXtdxroCT8fbPc"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface object-cover" data-alt="Attendee profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUocS-eTDtUub4l68cvPuHupKogUSHAmZHPbHWqeNlqO1GAehNzXomvx33UXiqLPvL92Ct7UKekDr5w7B-kNK4ySQgwy7oKaGeXwegPs7k4cl8RhEaxjOmj6YemiqwWnlN22eactc0DfZFmerDDI96r2l_6g49GcESvDqnPbEWtZVKagIxLNl0BSpHyzHgPDJyzoB3LUtycJx__8vS05uavSKXIp9iccW9wtIgJJAC5HyNUqYkUFYsUHAMcz-E73CbxwhNEpv4syg"/>
+<img class="w-8 h-8 rounded-full border-2 border-surface object-cover" data-alt="Attendee profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAko--Mn3RcxhrnJmm1fDVlTcokqy-G5pYar6NKLYfkMMmlndsgeDOa_xxJSz_TIZzfG7OP-GVSiY4Ti7M8q1U-j6EV24T8G4rwHKnooSnhrKmNbKXqfcsE2IVUBk2oNyEQbc-c3X-OMS52WX11rjKmZ5IMpM_VrAahTCTz4r3vNWAiO-I4TjMIggvCP3we5MBPcT_LWr0auz5ljj7qeAwYOaw53ChsOa8yizEVvu5CvlUwW-_4GIr0-N3--kRcUjRrLB41iKxodXE"/>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-surface-container-highest flex items-center justify-center text-[10px] font-bold text-on-surface-variant">+9</div>
+</div>
+</div>
+<!-- Messages Stream -->
+<div class="chat-container flex-1 overflow-y-auto px-6 py-8 space-y-8 bg-surface">
+<!-- System Divider -->
+<div class="flex justify-center">
+<span class="px-4 py-1 bg-surface-container-low rounded-full font-label text-[10px] text-on-surface-variant uppercase tracking-widest font-bold">Today</span>
+</div>
+<!-- Message Received -->
+<div class="flex gap-3 max-w-[85%]">
+<img class="w-10 h-10 rounded-lg object-cover self-end mb-4" data-alt="Sarah attendee profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvLyw0p2URtEjszw8o1Q7ZECJ2uSCAjSY3bzz8g9ADPQAZgdiwgWjbrJk08r1XziImS5YLh2RT8oA8e1u1Kvq_ltt_fMcDid5fFMnBa10FP6tP-M2BwzFjjH2VBDN29RjA1nB7h91_nY0cVILl89LkufkBpbEzxUzLVvS4sE20FSgazReMmRO4ivThe5Ak9Cjqz8hnVegsCYP6lrPusXVj2qjJPPMfOTk_YMxDHRD-FxcfJMbJYjejz4y7SjI682glxDK2LlkcovI"/>
+<div class="flex flex-col gap-1">
+<span class="font-headline text-xs font-bold ml-2 text-on-surface-variant">Sarah Jenkins</span>
+<div class="bg-surface-container-low px-4 py-3 rounded-t-2xl rounded-br-2xl text-sm leading-relaxed">
+                            Hey everyone! So excited for tonight. Does anyone know if there's a specific dress code for the Velvet Bistro? 🎷🍷
+                        </div>
+<span class="font-label text-[10px] text-outline ml-2">8:12 PM</span>
+</div>
+</div>
+<!-- Message Sent (Self) -->
+<div class="flex flex-row-reverse gap-3 max-w-[85%] ml-auto">
+<div class="flex flex-col items-end gap-1">
+<span class="font-headline text-xs font-bold mr-2 text-primary">You</span>
+<div class="bg-gradient-to-br from-primary to-primary-container px-4 py-3 rounded-t-2xl rounded-bl-2xl text-white text-sm shadow-md">
+                            The venue suggests "Smart Casual with a touch of elegance." I'm wearing a dark blazer!
+                        </div>
+<span class="font-label text-[10px] text-outline mr-2 flex items-center gap-1">
+                            8:14 PM <span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">done_all</span>
+</span>
+</div>
+</div>
+<!-- Message Received with Image -->
+<div class="flex gap-3 max-w-[85%]">
+<img class="w-10 h-10 rounded-lg object-cover self-end mb-4" data-alt="Marcus attendee profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJEUo0DJnFmeO8xAEJ20QHPSwn6DQoumCzlOtO3I8ADPG2YDyq1MdHhl-kcUFpVCzQqmMQq_6mTLXXOuDtQH0ZpBXS33LEbyXeaVnPBHnpkgOuuJnQNBtASWyoGDfv84C1IIQ9XYh5-YOrhnIJYi6YucGGK2lgomR8-Z2_jr74R_3Qnd6N1hHUz_HWeRPmXJjwgA3vT5CCHBONehqsQakYbVWTJPpRrW6UDESbRNSLmBbjPiHGRkVUDFHMzLGxYo1FChHb3FipvGQ"/>
+<div class="flex flex-col gap-1">
+<span class="font-headline text-xs font-bold ml-2 text-on-surface-variant">Marcus Reed</span>
+<div class="bg-surface-container-low p-2 rounded-t-2xl rounded-br-2xl space-y-2">
+<img class="rounded-lg w-full max-h-48 object-cover" data-alt="Dark cocktail and bar setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqWKVzmGZWh9Ag1htOf3BqPnxrRVSElwbjr1LafCg62hdgdjpe3HESv3GO-WYs9BP-yl9G4NSbwJrrMPBEzKZIcq_QOqhG1SnQIxAPPONtAxyJG_XmIbjy87NtM4CyNU8UGGqQwQsXqv9AEH945YuRbN3yr9vH7UN5olSiCy0_tBZBuAl2CZ0cFIxwb_wKJWpZVWwKTc0ZoUMYC1gz8_l1i1tzTFI8v--DydL4kmaTtczsHojqlnad2tZLNktKrApuKsB964S6TZs"/>
+<p class="text-sm px-2 pb-1">Found the perfect spot for pre-drinks! See you all in an hour.</p>
+</div>
+<span class="font-label text-[10px] text-outline ml-2">8:20 PM</span>
+</div>
+</div>
+<!-- Message Received -->
+<div class="flex gap-3 max-w-[85%]">
+<img class="w-10 h-10 rounded-lg object-cover self-end mb-4" data-alt="Elena attendee profile" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2rZ4iOmw0EkoMnMpPRnhF2E-4IBy1dyhDeBezdNK90AnVWl_Vo6VDjI0ba8RdM0LpjF9g0J4N3FT4oSh_HWhMZ6HkXFTdtCMZ3BoTa1Fh7BjkwZroVEZqPXZlISDUek74I6b7S6GmoqlNmxw4PIUY8JSG1uf1i0Fqz_WaQ6B29RkXkcJdyu3fr1RQ83QZY0zkSr9GOSZkYuqjArhyBV7huqmMPfTSy_gJhyh6V4XW29oC_WF3Mu1jJhicdd6fWLtTPs8X71OUrpA"/>
+<div class="flex flex-col gap-1">
+<span class="font-headline text-xs font-bold ml-2 text-on-surface-variant">Elena Rossi</span>
+<div class="bg-surface-container-low px-4 py-3 rounded-t-2xl rounded-br-2xl text-sm leading-relaxed">
+                            Can't wait! Just arrived in the city. The jazz lineup looks incredible tonight. 🎹
+                        </div>
+<span class="font-label text-[10px] text-outline ml-2">8:22 PM</span>
+</div>
+</div>
+</div>
+<!-- Message Input Area -->
+<div class="px-6 py-4 bg-surface-container-low">
+<div class="flex items-center gap-3 bg-white dark:bg-zinc-900 rounded-2xl p-2 shadow-sm border border-outline-variant/20">
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors p-2">add_circle</button>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-sm font-body" placeholder="Type your message..." type="text"/>
+<button class="material-symbols-outlined text-outline hover:text-primary transition-colors p-2">mood</button>
+<button class="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Sidebar: Event Info -->
+<aside class="hidden lg:flex w-80 flex-col bg-surface-container-low p-6 gap-8 border-l border-outline-variant/10">
+<div>
+<h2 class="font-headline text-sm font-extrabold uppercase tracking-widest text-on-surface-variant mb-4">Event Details</h2>
+<div class="bg-white rounded-2xl p-4 shadow-sm space-y-4">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+</div>
+<div>
+<p class="font-headline text-xs font-bold">Tonight, 9:00 PM</p>
+<p class="font-label text-[10px] text-outline">Arrival by 8:45 PM recommended</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+</div>
+<div>
+<p class="font-headline text-xs font-bold">Velvet Bistro</p>
+<p class="font-label text-[10px] text-outline">42nd Street, French Quarter</p>
+</div>
+</div>
+</div>
+</div>
+<div>
+<h2 class="font-headline text-sm font-extrabold uppercase tracking-widest text-on-surface-variant mb-4">Live Location</h2>
+<div class="rounded-2xl overflow-hidden h-40 relative group">
+<img class="w-full h-full object-cover" data-alt="Stylized city map fragment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD0NGFh3ApEeq22Xmv2O4KsjRhKzGdZhI7GMxHnmJfeocqUlE-iBSiib-vokLuZBkyJqasxdj5BOJ6hWZdt04wqc3rWCpHDLGbqPJS29uBHvjtCiPuXGIyGBxW1L_uKwbvWPe-nh9cb95zElmQTZxV8Ix8Z9IU3Rhgrkeg78PsOQhTVOR8x9Qk6LgiRvcyItlOmQWo4e9bE5HO1fvGM4uGOYqnYeU95yL9i7bEAcmc6K9efy7lR7Wjjh5MawbS4m1QX1zPuIxsXljs"/>
+<div class="absolute inset-0 bg-primary/5 group-hover:bg-transparent transition-colors"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+<div class="relative">
+<div class="absolute -inset-4 bg-primary/20 rounded-full animate-ping"></div>
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">location_on</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-4 py-3 bg-surface-container-highest rounded-xl font-headline text-xs font-bold text-on-surface-variant hover:bg-outline-variant/30 transition-colors">Open in Maps</button>
+</div>
+<div class="mt-auto">
+<div class="p-4 bg-tertiary-fixed rounded-2xl border border-tertiary/10">
+<h3 class="font-headline text-xs font-bold text-on-tertiary-fixed mb-1">Host Tip</h3>
+<p class="text-[11px] leading-relaxed text-on-tertiary-fixed-variant">"Mention GOMET at the door for your complimentary glass of Merlot before the first set starts."</p>
+</div>
+</div>
+</aside>
+</main>
+<!-- BottomNavBar (Shared Component - Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/90 dark:bg-zinc-950/90 backdrop-blur-xl shadow-[0_-8px_30px_rgb(0,0,0,0.04)] rounded-t-3xl z-50">
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-orange-600 dark:text-orange-400 bg-orange-50 dark:bg-orange-950/30 rounded-2xl px-3 py-1 active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">event</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Dining</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">forum</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Feed</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-orange-500 transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-inter text-[10px] font-bold uppercase tracking-widest mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

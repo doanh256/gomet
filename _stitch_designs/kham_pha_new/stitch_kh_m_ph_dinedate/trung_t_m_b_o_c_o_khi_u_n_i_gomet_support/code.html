@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Report &amp; Dispute Center | GOMET</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#ffffff",
+              "error-container": "#ffdad6",
+              "on-surface": "#1c1c18",
+              "on-tertiary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "surface-container-lowest": "#ffffff",
+              "secondary-fixed-dim": "#c8c6c6",
+              "surface-variant": "#e6e2dc",
+              "surface-container-high": "#ebe8e2",
+              "primary-fixed": "#ffdad8",
+              "surface-container-highest": "#e6e2dc",
+              "background": "#fdf9f3",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-secondary-fixed-variant": "#474747",
+              "surface-bright": "#fdf9f3",
+              "surface": "#fdf9f3",
+              "outline": "#8c706f",
+              "on-secondary-container": "#656464",
+              "surface-tint": "#ae2f34",
+              "surface-container-low": "#f7f3ed",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary-container": "#e4e2e1",
+              "secondary": "#5f5e5e",
+              "on-tertiary-container": "#55251e",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-secondary": "#ffffff",
+              "error": "#ba1a1a",
+              "inverse-primary": "#ffb3b0",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-dim": "#dddad4",
+              "primary": "#ae2f34",
+              "on-background": "#1c1c18",
+              "on-primary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "on-primary-fixed": "#410006",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "primary-fixed-dim": "#ffb3b0",
+              "outline-variant": "#e0bfbd",
+              "on-error-container": "#93000a",
+              "secondary-fixed": "#e4e2e1",
+              "primary-container": "#ff6b6b",
+              "tertiary-container": "#cf8a7f",
+              "tertiary": "#894e45",
+              "on-tertiary-fixed": "#370e08",
+              "on-surface-variant": "#584140",
+              "on-primary-container": "#6d0010"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-stone-900/80 backdrop-blur-md no-border bg-stone-100/50 dark:bg-stone-800/50 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-screen-2xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black italic text-rose-700 dark:text-rose-500 tracking-tighter font-headline">GOMET</span>
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-stone-600 dark:text-stone-400 hover:bg-rose-50 dark:hover:bg-stone-800 transition-colors duration-300 font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Discover</a>
+<a class="text-stone-600 dark:text-stone-400 hover:bg-rose-50 dark:hover:bg-stone-800 transition-colors duration-300 font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Events</a>
+<a class="text-rose-700 dark:text-rose-400 font-bold border-b-2 border-rose-600 font-['Plus_Jakarta_Sans'] tracking-tight" href="#">Support</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-stone-600 hover:bg-rose-50 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+<button class="p-2 text-stone-600 hover:bg-rose-50 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden scale-95 active:scale-90 transition-transform cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="User profile picture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaN0iPOn32VodeVtjpQMnraqg2tk9vG9EQ_Hot-KiozPjSPME2Nk9t-w0zEC3DsQMSdzqKKmcNGjxyNO6HCdUbF11RDR73IXpxnG7kfKSc5wasUPNv5lRnnmccUKg-o9ClEW17q_8kOsGtc7wuHO4NKkvWcTGbysCKL-TIpH1yjHbsCwodnfCOzgmJBp4oC6KTYAKzzc4PlfVhgq3uw2CNhI68CIceSmY6ux0jlj9Bzut5-M19KzLCxLVdo-SfCYTk2DWg_BsGDQk"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 max-w-4xl mx-auto">
+<!-- Header Section -->
+<section class="mb-12">
+<h1 class="text-5xl font-extrabold font-headline tracking-tight text-on-surface mb-4">Report &amp; Dispute Center</h1>
+<p class="text-lg text-secondary font-body max-w-2xl leading-relaxed">
+                Your safety and experience are our top priorities. If something wasn't right during your culinary experience, please let us know. We're here to support you.
+            </p>
+</section>
+<!-- Main Form Container -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<!-- Sidebar Info -->
+<div class="md:col-span-4 space-y-6">
+<div class="bg-surface-container-low p-8 rounded-lg">
+<h3 class="font-headline font-bold text-xl mb-4 text-primary">Need immediate help?</h3>
+<p class="text-sm text-on-surface-variant leading-loose mb-6">If you are in immediate danger, please contact local emergency services first.</p>
+<div class="flex items-center gap-3 text-sm font-bold text-on-surface">
+<span class="material-symbols-outlined text-primary" data-icon="support_agent">support_agent</span>
+                        24/7 Priority Support
+                    </div>
+</div>
+<div class="p-8 border border-outline-variant/20 rounded-lg">
+<h4 class="font-headline font-bold text-sm uppercase tracking-widest text-secondary mb-4">Our Process</h4>
+<ul class="space-y-4 text-sm text-on-surface-variant">
+<li class="flex gap-3">
+<span class="font-bold text-primary">01</span>
+<span>Report received and assigned to a specialist.</span>
+</li>
+<li class="flex gap-3">
+<span class="font-bold text-primary">02</span>
+<span>Review of evidence and communication history.</span>
+</li>
+<li class="flex gap-3">
+<span class="font-bold text-primary">03</span>
+<span>Resolution within 24-48 hours.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Dispute Form -->
+<form class="md:col-span-8 bg-surface-container-lowest p-8 md:p-12 rounded-lg shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] space-y-10">
+<!-- Entity Selection -->
+<div class="space-y-4">
+<label class="font-headline font-bold text-lg block">Who or what are you reporting?</label>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<button class="flex items-center gap-4 p-4 bg-surface-container-low rounded-md hover:bg-surface-container-high transition-colors text-left group" type="button">
+<div class="w-12 h-12 rounded-full overflow-hidden shrink-0 ring-2 ring-primary/10 group-focus:ring-primary">
+<img class="w-full h-full object-cover" data-alt="User avatar for selection" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpJ0hxv5oAQsdQQnAZGS6nXgnpjK1qur8QOzai9maYL0iMTSiKSuikhCyhmoMFGPBCIm1bTf6iEYB2S17oZxG0WIqeUvGuPGMwxKjH_niYee4z5F4zN766d_hUytbq_eA7sxGwJTsglUw8RZmTtmRKd71a3z0g_f8UrgCWuL6_C5tK8veVSTrf3GMeV8Zk8LbDMkfp8fRtkfr6QlL1FjcpaH_S4KPj3jS5_s03rBG2WhqKGjnPmgQoLdeDy-pghQAvw8gaJfbSWj8"/>
+</div>
+<div>
+<p class="font-bold text-on-surface">The Velvet Bistro</p>
+<p class="text-xs text-secondary">Past Dinner, Oct 24</p>
+</div>
+</button>
+<button class="flex items-center justify-center gap-2 p-4 border-2 border-dashed border-outline-variant rounded-md text-secondary hover:border-primary hover:text-primary transition-all group" type="button">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-bold text-sm">Select other event</span>
+</button>
+</div>
+</div>
+<!-- Category Selection -->
+<div class="space-y-4">
+<label class="font-headline font-bold text-lg block text-on-surface">Category of concern</label>
+<div class="flex flex-wrap gap-3">
+<label class="cursor-pointer">
+<input class="hidden peer" name="category" type="radio" value="safety"/>
+<div class="px-6 py-3 rounded-full bg-surface-container-high text-on-surface-variant font-medium peer-checked:bg-primary peer-checked:text-on-primary transition-all">
+                                Safety concern
+                            </div>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="category" type="radio" value="behavior"/>
+<div class="px-6 py-3 rounded-full bg-surface-container-high text-on-surface-variant font-medium peer-checked:bg-primary peer-checked:text-on-primary transition-all">
+                                Unprofessional behavior
+                            </div>
+</label>
+<label class="cursor-pointer">
+<input class="hidden peer" name="category" type="radio" value="payment"/>
+<div class="px-6 py-3 rounded-full bg-surface-container-high text-on-surface-variant font-medium peer-checked:bg-primary peer-checked:text-on-primary transition-all">
+                                Payment issue
+                            </div>
+</label>
+</div>
+</div>
+<!-- Detailed Description -->
+<div class="space-y-4">
+<label class="font-headline font-bold text-lg block">Describe what happened</label>
+<textarea class="w-full min-h-[160px] bg-surface-container-highest border-none rounded-sm p-6 focus:ring-2 focus:ring-primary/20 text-on-surface placeholder:text-stone-400" placeholder="Please provide as much detail as possible about the incident..."></textarea>
+</div>
+<!-- Evidence Upload -->
+<div class="space-y-4">
+<label class="font-headline font-bold text-lg block">Supporting evidence</label>
+<div class="grid grid-cols-3 gap-4">
+<div class="aspect-square bg-surface-container-low rounded-md flex flex-col items-center justify-center border-2 border-dashed border-outline-variant hover:bg-surface-container-high cursor-pointer transition-all group">
+<span class="material-symbols-outlined text-secondary group-hover:text-primary mb-2" data-icon="add_a_photo">add_a_photo</span>
+<span class="text-[10px] font-bold uppercase tracking-widest text-secondary">Upload</span>
+</div>
+<div class="aspect-square relative rounded-md overflow-hidden group">
+<img class="w-full h-full object-cover" data-alt="Uploaded evidence thumbnail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhiIhlFJxqtd8Zmc6YCeCq_d-R-kO1CbalwEYq2WfK0uWDmFX82d0FTtc1p3b4yXK7hro3U5e_4eUVIhxMhU6AV0WdGGsxqVXFTB3uLcsfiPEdUQ3g5ssrZ--PUlCOnyl4CYby3QBJZh3kHen2vv4TYC1yEk_5Et8P6i6xqViOGHb2ohbsjjV8uxSVYCjUfLeiXoVmRSiSA84cnKnVANJbOaCFmfx3eKt2rBnBuwmMK6tBAVQvdyW9Bi-1S_6oONgzW6FUJmpUr5g"/>
+<button class="absolute top-2 right-2 w-6 h-6 bg-on-surface/80 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+</div>
+<p class="text-xs text-secondary italic">Upload screenshots of chats, receipts, or photos. Max 5 files.</p>
+</div>
+<!-- Submission Actions -->
+<div class="pt-6 flex flex-col sm:flex-row items-center gap-4">
+<button class="w-full sm:w-auto px-10 py-4 bg-gradient-to-tr from-primary to-primary-container text-on-primary font-bold rounded-full shadow-lg hover:shadow-primary/20 transition-all active:scale-95" type="submit">
+                        Submit Report
+                    </button>
+<button class="w-full sm:w-auto px-10 py-4 text-on-surface-variant font-bold hover:bg-surface-container-high rounded-full transition-all" type="button">
+                        Cancel
+                    </button>
+</div>
+<div class="pt-6 border-t border-outline-variant/10">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary text-sm" data-icon="verified_user">verified_user</span>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">
+                            By submitting this report, you confirm that the information provided is accurate and truthful. GOMET takes all reports seriously and misusing this feature may result in account suspension.
+                        </p>
+</div>
+</div>
+</form>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-end pb-6 px-4 bg-white/90 dark:bg-stone-950/90 backdrop-blur-xl z-50 rounded-t-[2rem]">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="explore">explore</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="local_bar">local_bar</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Venues</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:text-rose-500 transition-all active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="font-['Inter'] text-[10px] font-bold uppercase tracking-widest mt-1">Messages</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-tr from-rose-700 to-rose-400 text-white rounded-full p-3 mb-2 transform -translate-y-2 shadow-lg shadow-rose-200 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="hidden">Profile</span>
+</a>
+</nav>
+</body></html>

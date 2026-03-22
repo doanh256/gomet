@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Community Feed</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface-variant": "#584140",
+              "surface": "#fdf9f3",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#e4e2e1",
+              "on-error": "#ffffff",
+              "error": "#ba1a1a",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-container-highest": "#e6e2dc",
+              "on-secondary-fixed-variant": "#474747",
+              "on-error-container": "#93000a",
+              "secondary": "#5f5e5e",
+              "primary-container": "#ff6b6b",
+              "outline-variant": "#e0bfbd",
+              "primary": "#ae2f34",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed-variant": "#8c1520",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "tertiary-container": "#cf8a7f",
+              "on-surface": "#1c1c18",
+              "tertiary": "#894e45",
+              "surface-container": "#f1ede7",
+              "on-tertiary": "#ffffff",
+              "on-background": "#1c1c18",
+              "outline": "#8c706f",
+              "surface-bright": "#fdf9f3",
+              "surface-container-high": "#ebe8e2",
+              "surface-dim": "#dddad4",
+              "inverse-on-surface": "#f4f0ea",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed": "#ffdad4",
+              "error-container": "#ffdad6",
+              "inverse-primary": "#ffb3b0",
+              "on-secondary-container": "#656464",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "background": "#fdf9f3",
+              "on-tertiary-fixed": "#370e08",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "surface-container-low": "#f7f3ed",
+              "inverse-surface": "#31302d",
+              "on-primary-fixed": "#410006",
+              "surface-tint": "#ae2f34",
+              "surface-variant": "#e6e2dc",
+              "secondary-container": "#e4e2e1",
+              "on-primary-container": "#6d0010"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #fdf9f3; }
+        .font-plus-jakarta { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface/80 dark:bg-zinc-950/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-sm dark:shadow-none bg-surface-container-low/50">
+<div class="flex justify-between items-center px-6 h-16 w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-primary dark:text-primary-container italic font-plus-jakarta tracking-tight">GOMET</span>
+<nav class="hidden md:flex gap-6">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-inter transition-all" href="#">Feed</a>
+<a class="text-on-surface-variant font-medium hover:bg-primary/10 transition-colors px-2 py-1 rounded" href="#">Bookings</a>
+<a class="text-on-surface-variant font-medium hover:bg-primary/10 transition-colors px-2 py-1 rounded" href="#">Wallet</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-primary/10 transition-colors rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-primary/10 transition-colors rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</button>
+<div class="h-8 w-8 rounded-full bg-surface-container-highest border border-outline-variant overflow-hidden">
+<img alt="User profile" data-alt="Close up portrait of a smiling young man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxBdde1ygQWw0OqdAOnb9Z4pA9rRhyzzfqN-cxm0myQmNL5TCjEAw0DcIIMs1f9Usy1w9HcQ0KcWXM0o4dizKLPDyHh1V0-3Ow0M-ESZMUQUSBOVzOPOIg3EKwHCxtm7aSznL2m44eTO0WtMjTxuKy3SL6rWHxDoYAxaBrfm-pL4Wzdp5KnBJpGbIU7q9R6Fm8el74C36_jTxySszq2W-_1_VtbW5YcvEGCZhCILPcMyeJLC3XvvjZIXcXuqz4YfpqStSsUuzpAg8"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-28 px-4 md:px-6 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Sidebar: Trending Tags (SideNavBar Logic) -->
+<aside class="hidden lg:block lg:col-span-3 h-[calc(100vh-8rem)] sticky top-24">
+<div class="bg-surface-container-low rounded-lg p-6 flex flex-col gap-8">
+<div>
+<h2 class="font-plus-jakarta text-display-sm font-extrabold tracking-tight text-primary mb-1">Explore</h2>
+<p class="text-label-md text-on-surface-variant font-medium">Saigon's Culinary Pulse</p>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="bg-primary/10 text-primary font-bold rounded-r-full px-4 py-3 flex items-center gap-3 transition-transform hover:translate-x-1" href="#">
+<span class="material-symbols-outlined" data-icon="amp_stories">amp_stories</span>
+<span class="font-plus-jakarta">Daily Feed</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-highest px-4 py-3 flex items-center gap-3 transition-transform hover:translate-x-1 rounded-r-full" href="#">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+<span class="font-plus-jakarta">Top Venues</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-container-highest px-4 py-3 flex items-center gap-3 transition-transform hover:translate-x-1 rounded-r-full" href="#">
+<span class="material-symbols-outlined" data-icon="local_fire_department">local_fire_department</span>
+<span class="font-plus-jakarta">Hot Matches</span>
+</a>
+</nav>
+<div class="mt-4">
+<h3 class="text-label-md uppercase tracking-wider font-bold text-on-surface-variant mb-4 px-4">Trending Tags</h3>
+<div class="flex flex-wrap gap-2 px-2">
+<span class="bg-surface-container-high text-on-surface px-4 py-2 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition-colors cursor-pointer">#WineNight</span>
+<span class="bg-surface-container-high text-on-surface px-4 py-2 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition-colors cursor-pointer">#JazzLover</span>
+<span class="bg-surface-container-high text-on-surface px-4 py-2 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition-colors cursor-pointer">#DatingSaigon</span>
+<span class="bg-surface-container-high text-on-surface px-4 py-2 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition-colors cursor-pointer">#RooftopVibes</span>
+<span class="bg-surface-container-high text-on-surface px-4 py-2 rounded-full text-sm font-medium hover:bg-primary hover:text-white transition-colors cursor-pointer">#HiddenGems</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Feed Content -->
+<div class="lg:col-span-9 space-y-12">
+<!-- Bento Hero Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="md:col-span-2 relative h-80 rounded-lg overflow-hidden group">
+<img alt="Romantic Dinner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Cozy restaurant interior with warm lighting and wine glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_KQDpUvbjoGuB05YGDspmy9VeBf0CptBhzuggH5HCTnuwsMPGBUkrVgkIdCz2ysp1vRyG2rRkTINQE_XlvasJE1V-lu_hfuS8KE22AeeBnDLRyDvoN6zjgLabuR7PFRCp8bQFEXJNYxy0Glx58xQf2Zo5A9OA1NZ8S8fvG1waFi247SRkhRNASeJHyaywIvU5gi_411vwVoIgGRKXj73seQ5icPkZDpAEHVJsc5OnxnuVdzLmSTUen6btVWrbKpy0K0goQ-ZIRks"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-8">
+<span class="bg-primary-container text-on-primary-container px-3 py-1 rounded-full text-xs font-bold w-fit mb-3">FEATURED DATE</span>
+<h1 class="text-white font-plus-jakarta text-4xl font-extrabold tracking-tight mb-2">Midnight Jazz &amp; Merlot</h1>
+<p class="text-white/80 font-inter max-w-md">Discover why the District 1 Jazz Club is the most booked spot this weekend.</p>
+</div>
+</div>
+<div class="bg-primary/5 rounded-lg p-8 flex flex-col justify-between border-outline-variant/20 border">
+<div>
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-plus-jakarta text-2xl font-bold text-primary leading-tight">Match Your Palate</h3>
+</div>
+<p class="text-on-surface-variant font-inter text-sm mb-6">Connect with people who share your love for authentic Izakaya.</p>
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-white py-4 rounded-full font-bold shadow-lg active:scale-95 duration-300">Start Curating</button>
+</div>
+</section>
+<!-- Social Feed List -->
+<div class="space-y-16">
+<!-- Feed Post 1 -->
+<article class="bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col md:flex-row shadow-[0_24px_48px_-12px_rgba(174,47,52,0.06)] group">
+<div class="md:w-2/5 relative h-64 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Sophisticated cocktail being prepared with ice and garnish" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyRWkSOjjrqSnMUuNXdWGcYZ4tDxRaTsclhsK2ygKxmYT1746ZF2b6ISTAoDcYoJ2q_cJh76FECCgFCDYh3cOs4Cu28DFhIa0WteVCUs-xFEKOCDI_t7XlakOkhRGAyEiY4dj_UzGR3T9X_sDCvb9dm3jOHxSmoqxEbpmCqFsFX7jsGPRHNvQUpGLB9NYy1O1w0iDXL0nu9iLjc0xn3-830eWAkj4slT3y5TA9Y_oLHEWW8UCjsy4aKt71T8n8JWGfIHYVz1ZEWDk"/>
+<div class="absolute top-4 left-4">
+<span class="bg-surface/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+                                4.9
+                            </span>
+</div>
+</div>
+<div class="md:w-3/5 p-8 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<img class="h-10 w-10 rounded-full object-cover" data-alt="Portrait of a young woman smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2wcD0vDQg1QL_z87bIJBKNrABmyeaf79N6G_Pyd0eJyc64JsVgdG2x_useSD4N8pAlQQj8dDUaZcIDSxdR0bRZrkaQHwzAexvPxzlxvA3fGHNVLtoHYbicPOYJsssCTYuByCaqv2HtCME4QWOC8AQFSezDqCw6nAD14dIs-4eu3_eCQ6csz45cX3FfVWbBNCmBSsEZijGKZEg5pUET3SL2tDCgAbqY2c5SbW0LJJe-SCgsftBDnnkp2CihZXV_U4hcMYx_2EvPdQ"/>
+<div>
+<h4 class="font-bold text-on-surface">Elena Rose</h4>
+<p class="text-xs text-on-surface-variant">2 hours ago</p>
+</div>
+</div>
+<button class="text-primary hover:bg-primary/5 p-2 rounded-full transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<p class="text-on-surface font-inter leading-relaxed mb-6">
+                                Found this incredible speakeasy tucked away in an old apartment building. The "Saffron Old Fashioned" was a revelation. Perfect for a quiet second date. <span class="text-primary font-medium">#HiddenGem #SaigonCocktails</span>
+</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-surface-container">
+<div class="flex gap-4">
+<button class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="text-sm font-bold">124</span>
+</button>
+<button class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-sm font-bold">18</span>
+</button>
+</div>
+<button class="bg-surface-container-highest text-on-surface px-6 py-2 rounded-full text-sm font-bold hover:bg-primary hover:text-white transition-all flex items-center gap-2 group/btn">
+                                Go There
+                                <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+<!-- Feed Post 2 (Asymmetric Layout) -->
+<article class="relative flex flex-col md:flex-row-reverse items-center">
+<div class="w-full md:w-3/4 bg-surface-container-high rounded-lg p-8 md:pr-48 md:pl-12">
+<div class="flex items-center gap-3 mb-6">
+<img class="h-10 w-10 rounded-full object-cover" data-alt="Smiling bearded man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkRwxwh3unH_ZjFzSuHciGmuU0_MXmDRqJuVrF5C5hN7ePKOq9jKVanelW3zoxEJ4uOrNdBVx-przR9oDd90M2fZuZlLDrAnvoKji2PYs7OfdXmC4VdBOASPGVgwaXLuWSeV8xrzPp1zrSqbcVK-yWT4JZm4pKPYHWbv1sNbDjZWNButmqmPt7QWevl0J2I45LHQzrCUkgq6hp5Y8XNi5IamdstkmcJwV_dYAgFn2K8eof2F47uyyjUni-2d17F840J2FgRqxx_jU"/>
+<div>
+<h4 class="font-bold text-on-surface">Marcus Nguyen</h4>
+<p class="text-xs text-on-surface-variant">Yesterday</p>
+</div>
+</div>
+<h3 class="font-plus-jakarta text-2xl font-extrabold mb-4 tracking-tight">The Best Omakase in Thao Dien?</h3>
+<p class="text-on-surface-variant font-inter mb-8 line-clamp-3">
+                            After trying five different spots this month, I think I've found the winner. The attention to detail here is unmatched. Every course tells a story...
+                        </p>
+<div class="flex gap-6 items-center">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="location_on">location_on</span>
+<span class="text-sm font-bold">Sora Dining</span>
+</div>
+<button class="text-primary font-bold text-sm hover:underline underline-offset-4">Read Review</button>
+</div>
+</div>
+<div class="w-full md:w-2/5 md:absolute md:right-0 mt-6 md:mt-0 shadow-xl rounded-lg overflow-hidden border-4 border-surface translate-x-4 md:translate-x-0">
+<img class="w-full h-80 object-cover" data-alt="Platter of fresh sushi and sashimi beautifully arranged" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHJQWerbrldAaxW8uXduiJKNlHOS7OJe2aWDrttcUCxlvrdynRlLqvTZle8TchaD80W4ly0-9yzG2YxVPd6NL50aSNFdhaowPC__5x3gM_JYVB0zoHXIGMMTGhzov5Ao0eQ6JDiZYBmBKU2HtJhkhVJIBSgzDaTWewMqcbeb3D_pYcnR5CnPQEI6hDCVRwjFdFv0O1CCRJVPmvF7W_dovuswL3VC1dMg9ErhBUVBiIh25aUbvmCCUx9O3W5CC1_CpRiWIEG6QM6K8"/>
+</div>
+</article>
+<!-- Feed Post 3 -->
+<article class="bg-surface-container-lowest rounded-lg overflow-hidden flex flex-col md:flex-row shadow-[0_24px_48px_-12px_rgba(174,47,52,0.06)] group">
+<div class="md:w-2/5 relative h-64 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Elegant restaurant dining room with tablecloths and wine glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDAoSq_LeRna3_VkGI02mjrBjLr9KLST6itMtPVYA2E2qryqqoMIT3mKZTrKC27Pq0mIUEPECCSI-UjlhOGMrAszrduaBCFrENy6NbGhdFlp6_GckmjpWK6gZ3bWBLB1zjPAJHK-9s_Z3GF91dTa4Dv-SzgZhUUxqdPmlkZIhy9tLyCkA3MvdGoAGB-w5zY-YNs1a7lyDypBkJL2rxMuyCMl2RuYfpHXzoeaZooW2G_pwslc0EK2Fo26fi-psK_kcCD8-6MGPnVo0"/>
+</div>
+<div class="md:w-3/5 p-8 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-6">
+<img class="h-10 w-10 rounded-full object-cover" data-alt="Young woman with colorful background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9YbgmRjwuCH4qdOy-3GAMD8O-ci0PPyGSboZ6uLSy6nG98m5Ulcs6QG9CbHgQpa65BcI05ZSRm3LjeYMrP_FRyt79ZeYQWV8eCk7XVIhMANMzu9DSfZB1xYWiCCWykmn_-RB0dEv8z3VC-TphprR-78sEaNs9fZO2x1UCpYMTnb62UEGMGCCkZEM_6MKqU2HZM6NA5CzamlXBcrzaoRppbK2VFp0Yt4IZ5Z1jgxw2thJXsiA0kr7wuQbpAOCY5Lj2U9csL-E2nwc"/>
+<div>
+<h4 class="font-bold text-on-surface">Sophia Chen</h4>
+<p class="text-xs text-on-surface-variant">5 hours ago</p>
+</div>
+</div>
+<p class="text-on-surface font-inter leading-relaxed mb-6">
+                                Anniversary dinner was a success! Thanks to GOMET for the reservation assist. This place has the best sunset view in the city. 🌅 <span class="text-primary font-medium">#Anniversary #DateNight</span>
+</p>
+</div>
+<div class="flex items-center justify-between pt-6 border-t border-surface-container">
+<div class="flex gap-4">
+<button class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="text-sm font-bold">342</span>
+</button>
+<button class="flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="chat_bubble">chat_bubble</span>
+<span class="text-sm font-bold">45</span>
+</button>
+</div>
+<button class="bg-surface-container-highest text-on-surface px-6 py-2 rounded-full text-sm font-bold hover:bg-primary hover:text-white transition-all flex items-center gap-2">
+                                Go There
+                                <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</article>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface/80 dark:bg-zinc-900/80 backdrop-blur-xl fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 z-50 rounded-t-[2rem] shadow-[0_-8px_32px_rgba(174,47,52,0.08)] bg-surface-container-low">
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-primary to-primary-container text-white rounded-full p-3 shadow-lg active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="amp_stories">amp_stories</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-3 hover:text-primary transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="confirmation_number">confirmation_number</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-3 hover:text-primary transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-3 hover:text-primary transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="event_available">event_available</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-3 hover:text-primary transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</a>
+</nav>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 md:bottom-8 md:right-8 bg-primary text-on-primary h-14 w-14 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</body></html>

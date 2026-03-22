@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Performance Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#e6e2dc",
+                        "surface-dim": "#dddad4",
+                        "outline": "#8c706f",
+                        "surface-container-high": "#ebe8e2",
+                        "surface-bright": "#fdf9f3",
+                        "surface": "#fdf9f3",
+                        "on-primary-fixed-variant": "#8c1520",
+                        "tertiary-fixed": "#ffdad4",
+                        "inverse-primary": "#ffb3b0",
+                        "tertiary-fixed-dim": "#ffb4a8",
+                        "outline-variant": "#e0bfbd",
+                        "tertiary-container": "#cf8a7f",
+                        "on-tertiary-fixed-variant": "#6d3830",
+                        "on-surface": "#1c1c18",
+                        "surface-container": "#f1ede7",
+                        "primary-fixed-dim": "#ffb3b0",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#ae2f34",
+                        "on-primary-fixed": "#410006",
+                        "on-secondary-fixed-variant": "#474747",
+                        "secondary-fixed-dim": "#c8c6c6",
+                        "on-tertiary-container": "#55251e",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f7f3ed",
+                        "on-tertiary-fixed": "#370e08",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#e4e2e1",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f4f0ea",
+                        "error": "#ba1a1a",
+                        "background": "#fdf9f3",
+                        "on-tertiary": "#ffffff",
+                        "on-surface-variant": "#584140",
+                        "on-primary-container": "#6d0010",
+                        "on-background": "#1c1c18",
+                        "surface-container-highest": "#e6e2dc",
+                        "primary-fixed": "#ffdad8",
+                        "primary-container": "#ff6b6b",
+                        "on-secondary-container": "#656464",
+                        "primary": "#ae2f34",
+                        "secondary-container": "#e4e2e1",
+                        "on-secondary-fixed": "#1b1c1c",
+                        "inverse-surface": "#31302d",
+                        "tertiary": "#894e45",
+                        "secondary": "#5f5e5e"
+                    },
+                    fontFamily: {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; background-color: #fdf9f3; color: #1c1c18; }
+        h1, h2, h3 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-nav { background: rgba(253, 249, 243, 0.8); backdrop-filter: blur(12px); }
+    </style>
+</head>
+<body class="bg-background">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 glass-nav shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] flex justify-between items-center px-6 h-16">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-black text-[#ae2f34] dark:text-[#ff6b6b] italic font-['Plus_Jakarta_Sans'] tracking-tight">GOMET</span>
+<div class="hidden md:flex items-center space-x-8 ml-10">
+<a class="text-[#ae2f34] font-bold border-b-2 border-[#ae2f34] transition-colors duration-200" href="#">Insights</a>
+<a class="text-on-surface-variant font-medium hover:bg-[#ae2f34]/5 px-3 py-1 rounded-full transition-colors duration-200" href="#">Inventory</a>
+<a class="text-on-surface-variant font-medium hover:bg-[#ae2f34]/5 px-3 py-1 rounded-full transition-colors duration-200" href="#">Marketing</a>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<button class="p-2 rounded-full hover:bg-[#ae2f34]/5 transition-colors"><span class="material-symbols-outlined text-on-surface-variant">notifications</span></button>
+<button class="p-2 rounded-full hover:bg-[#ae2f34]/5 transition-colors"><span class="material-symbols-outlined text-on-surface-variant">settings</span></button>
+<img class="w-8 h-8 rounded-full border border-outline-variant/30 object-cover" data-alt="Professional male venue manager avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhySBLwhTmDvCN5PDcGODH6Jl0StaFjloThtbljlkvOzNqSGF1HHQ5Ka98sAbHaUZlj855BpJ3epCfyt7JTb6PxNiCQ12xI0BksHO9aBmBGbaAzIGWCcsrl3syKZPfJLSkW_L7WaycxDj2xtEza1RVgp0eeLtUEjnWuBxgqIQFBnDKGRFiD6xSqSWzVk0NttXKv3MERwpPDxLODUXuWB9I-Ynn4AjswnMVpJb0IJSd8Q8ndRfNtdUQXU08Hjb8qaj9Bs15rP_CLas"/>
+</div>
+</header>
+<!-- SideNavBar (Hidden on mobile) -->
+<aside class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container-low py-8 pt-24 space-y-2 font-['Inter'] text-sm font-semibold uppercase tracking-wider">
+<div class="px-6 mb-8">
+<h2 class="text-lg font-bold text-[#1c1c18] dark:text-zinc-100">Partner Hub</h2>
+<p class="text-[10px] text-tertiary tracking-widest font-bold">PREMIUM MANAGEMENT</p>
+</div>
+<nav class="flex-1">
+<a class="bg-gradient-to-r from-[#ae2f34] to-[#ff6b6b] text-white rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-3 translate-x-1 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span>Analytics</span>
+</a>
+<a class="text-on-surface-variant hover:text-[#ae2f34] hover:bg-surface-container-highest px-4 py-3 mx-2 rounded-full flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">travel_explore</span>
+<span>Matches</span>
+</a>
+<a class="text-on-surface-variant hover:text-[#ae2f34] hover:bg-surface-container-highest px-4 py-3 mx-2 rounded-full flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">event</span>
+<span>Events</span>
+</a>
+<a class="text-on-surface-variant hover:text-[#ae2f34] hover:bg-surface-container-highest px-4 py-3 mx-2 rounded-full flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">handshake</span>
+<span>Negotiations</span>
+</a>
+<a class="text-on-surface-variant hover:text-[#ae2f34] hover:bg-surface-container-highest px-4 py-3 mx-2 rounded-full flex items-center gap-3 transition-all" href="#">
+<span class="material-symbols-outlined">group</span>
+<span>Community</span>
+</a>
+</nav>
+<div class="px-4">
+<button class="w-full bg-primary text-white py-4 rounded-full font-bold shadow-lg shadow-primary/20 hover:scale-105 transition-transform">
+                Create Event
+            </button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-64 pt-24 pb-20 px-6 md:px-10 max-w-7xl mx-auto">
+<!-- Header Section -->
+<header class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<span class="inline-block px-3 py-1 rounded-full bg-surface-container-highest text-tertiary text-xs font-bold tracking-widest uppercase mb-4">Performance Deep-Dive</span>
+<h1 class="text-5xl font-extrabold text-on-surface -tracking-[0.04em] leading-tight">Venue Insights</h1>
+<p class="text-on-surface-variant text-lg mt-2 font-medium">Reporting period: Oct 1 — Oct 31, 2023</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="bg-surface-container-lowest px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-semibold text-on-surface shadow-sm">
+<span class="material-symbols-outlined text-primary text-base">calendar_today</span>
+                    Last 30 Days
+                    <span class="material-symbols-outlined text-outline">expand_more</span>
+</div>
+<button class="bg-surface-container-highest px-4 py-2 rounded-lg text-sm font-bold flex items-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-base">download</span> Export PDF
+                </button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- High-Level ROI Card -->
+<section class="md:col-span-8 bg-surface-container-lowest rounded-lg p-8 relative overflow-hidden flex flex-col justify-between min-h-[400px]">
+<div class="relative z-10">
+<h3 class="text-2xl font-bold mb-1">Dating ROI Performance</h3>
+<p class="text-on-surface-variant font-medium">Gross GOMET revenue vs. Platform service fees</p>
+</div>
+<!-- Abstract Chart Visualization -->
+<div class="flex-1 flex items-end gap-2 mt-8 mb-4 h-48">
+<div class="flex-1 bg-surface-container-high rounded-t-lg h-[40%] relative group">
+<div class="absolute inset-0 bg-primary/20 rounded-t-lg opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg h-[65%]"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg h-[55%]"></div>
+<div class="flex-1 bg-gradient-to-t from-primary to-primary-container rounded-t-lg h-[90%] relative">
+<div class="absolute -top-10 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-2 py-1 rounded text-xs font-bold">Peak</div>
+</div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg h-[75%]"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg h-[60%]"></div>
+<div class="flex-1 bg-surface-container-high rounded-t-lg h-[82%]"></div>
+</div>
+<div class="grid grid-cols-3 gap-6 pt-8 border-t border-outline-variant/10">
+<div>
+<p class="text-xs text-tertiary font-bold uppercase tracking-widest mb-1">Total Revenue</p>
+<p class="text-3xl font-black text-on-surface">$24,850</p>
+</div>
+<div>
+<p class="text-xs text-tertiary font-bold uppercase tracking-widest mb-1">Platform Fees</p>
+<p class="text-3xl font-black text-on-surface">$1,420</p>
+</div>
+<div>
+<p class="text-xs text-tertiary font-bold uppercase tracking-widest mb-1">Net ROI</p>
+<p class="text-3xl font-black text-primary">17.5x</p>
+</div>
+</div>
+<!-- Background Decorative Layer -->
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+</section>
+<!-- Table Turn-Over Rates (Small Bento Box) -->
+<section class="md:col-span-4 bg-surface-container-low rounded-lg p-8 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-6">
+<h3 class="text-xl font-bold">Turnover Rate</h3>
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-full">restaurant</span>
+</div>
+<div class="text-center py-4">
+<p class="text-6xl font-black text-on-surface mb-2">48<span class="text-2xl font-bold text-on-surface-variant">min</span></p>
+<p class="text-sm font-semibold text-on-surface-variant px-8">Average table duration for GOMET pairs (12% faster than walk-ins)</p>
+</div>
+</div>
+<div class="space-y-3 mt-6">
+<div class="w-full bg-surface-container rounded-full h-2 overflow-hidden">
+<div class="bg-primary h-full w-[82%] rounded-full"></div>
+</div>
+<div class="flex justify-between text-[10px] font-bold text-tertiary uppercase tracking-tighter">
+<span>Efficiency Target</span>
+<span>82% of Baseline</span>
+</div>
+</div>
+</section>
+<!-- Crowd Sentiment (AI Analysis) -->
+<section class="md:col-span-6 bg-surface-container-lowest rounded-lg p-8 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-2xl font-bold">Crowd Sentiment</h3>
+<p class="text-on-surface-variant font-medium">AI-processed review synthesis</p>
+</div>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary-container font-black text-xs">AI</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="p-4 rounded-lg bg-surface-container-low relative group hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-bold text-primary px-2 py-0.5 bg-primary/10 rounded">Positive Trend</span>
+<span class="text-xs font-bold text-on-surface-variant italic">"Perfect first-date atmosphere"</span>
+</div>
+<h4 class="font-bold text-lg mb-1">Ambiance &amp; Lighting</h4>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden mt-3">
+<div class="bg-primary h-full w-[94%]"></div>
+</div>
+</div>
+<div class="p-4 rounded-lg bg-surface-container-low relative group hover:bg-surface-container transition-colors">
+<div class="flex justify-between items-start mb-2">
+<span class="text-xs font-bold text-[#894e45] px-2 py-0.5 bg-tertiary/10 rounded">Neutral Trend</span>
+<span class="text-xs font-bold text-on-surface-variant italic">"Wait time slightly long on Friday"</span>
+</div>
+<h4 class="font-bold text-lg mb-1">Service Speed</h4>
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden mt-3">
+<div class="bg-tertiary h-full w-[68%]"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Partner Opportunities -->
+<section class="md:col-span-6 bg-surface-container-high rounded-lg p-8 flex flex-col overflow-hidden relative">
+<h3 class="text-2xl font-bold mb-6">Growth Opportunities</h3>
+<div class="space-y-4 relative z-10">
+<div class="flex items-center gap-4 p-4 bg-surface-container-lowest rounded-lg shadow-sm">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">campaign</span>
+</div>
+<div>
+<p class="font-bold text-on-surface leading-tight">Host a 'Speed Dating' Mixology Class</p>
+<p class="text-xs text-on-surface-variant font-medium">Estimated 24% revenue lift</p>
+</div>
+<button class="ml-auto text-primary font-bold text-sm">Review</button>
+</div>
+<div class="flex items-center gap-4 p-4 bg-surface-container-lowest rounded-lg shadow-sm">
+<div class="w-12 h-12 bg-tertiary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">local_bar</span>
+</div>
+<div>
+<p class="font-bold text-on-surface leading-tight">Featured 'First Date' Pairing</p>
+<p class="text-xs text-on-surface-variant font-medium">Targeting 500+ active locals</p>
+</div>
+<button class="ml-auto text-primary font-bold text-sm">Setup</button>
+</div>
+</div>
+<div class="mt-auto pt-6 flex justify-center">
+<img class="w-full h-32 object-cover rounded-md opacity-40 grayscale hover:grayscale-0 transition-all duration-500" data-alt="Close up of two cocktails on a bar counter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNxFKurQaNup8BlmeenSSfliZngG76VAUhFnhknotBGrv8LtLdmDlV1KrhrxpuUzSXyYl_28oMBGabqHO9c414xeAOQF_cWDCX_76v6idyeZtpOg9XBjKe5byjjUEu71fGfik0EeKfv0ctHharGbq40y6JHiPHvP_wdCG_szohxpVNMqazTlj5wnhPHCnoOLBkXjH4D4qa90yOoQS2mMCT0f8FEil8qTbPS62tEZScWAiVvixls7l2WgwbcknL3b9OTqERVgftBQQ"/>
+</div>
+</section>
+<!-- Detailed Stats Table (Editorial Style) -->
+<section class="md:col-span-12 bg-surface rounded-lg mt-8">
+<div class="flex items-center justify-between px-2 mb-6">
+<h3 class="text-2xl font-bold tracking-tight">Recent GOMET Bookings</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-xs font-bold rounded-full bg-surface-container-highest">Filters</button>
+<button class="px-3 py-1 text-xs font-bold rounded-full bg-surface-container-highest">Search</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-tertiary border-b border-outline-variant/20">
+<th class="pb-4 font-bold text-xs uppercase tracking-widest px-2">Guest Initials</th>
+<th class="pb-4 font-bold text-xs uppercase tracking-widest">Date/Time</th>
+<th class="pb-4 font-bold text-xs uppercase tracking-widest text-center">Party Size</th>
+<th class="pb-4 font-bold text-xs uppercase tracking-widest text-right">Estimated Spend</th>
+<th class="pb-4 font-bold text-xs uppercase tracking-widest text-right">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-5 font-bold text-on-surface px-2">A.R. &amp; J.M.</td>
+<td class="py-5 text-on-surface-variant font-medium">Oct 28, 7:30 PM</td>
+<td class="py-5 text-on-surface-variant font-medium text-center">2</td>
+<td class="py-5 text-on-surface font-black text-right">$145.00</td>
+<td class="py-5 text-right"><span class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-[10px] font-black uppercase">Completed</span></td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-5 font-bold text-on-surface px-2">T.W. &amp; S.B.</td>
+<td class="py-5 text-on-surface-variant font-medium">Oct 28, 8:15 PM</td>
+<td class="py-5 text-on-surface-variant font-medium text-center">2</td>
+<td class="py-5 text-on-surface font-black text-right">$92.50</td>
+<td class="py-5 text-right"><span class="px-3 py-1 rounded-full bg-green-100 text-green-700 text-[10px] font-black uppercase">Completed</span></td>
+</tr>
+<tr class="group hover:bg-surface-container-low transition-colors">
+<td class="py-5 font-bold text-on-surface px-2">M.K. &amp; D.P.</td>
+<td class="py-5 text-on-surface-variant font-medium">Oct 29, 6:00 PM</td>
+<td class="py-5 text-on-surface-variant font-medium text-center">2</td>
+<td class="py-5 text-on-surface font-black text-right">$210.00</td>
+<td class="py-5 text-right"><span class="px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-[10px] font-black uppercase">Arriving</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar (Visible on Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 glass-nav rounded-t-[2rem] z-50 shadow-[0_-10px_30px_rgba(174,47,52,0.05)]">
+<div class="flex flex-col items-center justify-center bg-[#ae2f34] text-white rounded-2xl p-2 scale-110 shadow-lg shadow-[#ae2f34]/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-['Inter'] text-[10px] font-bold">Discover</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#894e45] p-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-['Inter'] text-[10px] font-bold">Deals</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#894e45] p-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">chat_bubble</span>
+<span class="font-['Inter'] text-[10px] font-bold">Messages</span>
+</div>
+<div class="flex flex-col items-center justify-center text-[#894e45] p-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-['Inter'] text-[10px] font-bold">Profile</span>
+</div>
+</nav>
+</body></html>

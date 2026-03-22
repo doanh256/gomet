@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#894e45",
+              "on-background": "#1c1c18",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-primary-fixed-variant": "#8c1520",
+              "on-error-container": "#93000a",
+              "on-primary-fixed": "#410006",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-dim": "#dddad4",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-on-surface": "#f4f0ea",
+              "on-surface": "#1c1c18",
+              "secondary-fixed": "#e4e2e1",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "outline-variant": "#e0bfbd",
+              "on-primary": "#ffffff",
+              "primary-container": "#ff6b6b",
+              "on-tertiary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "outline": "#8c706f",
+              "primary-fixed": "#ffdad8",
+              "error-container": "#ffdad6",
+              "surface-container": "#f1ede7",
+              "primary": "#ae2f34",
+              "inverse-surface": "#31302d",
+              "inverse-primary": "#ffb3b0",
+              "surface-container-low": "#f7f3ed",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-tertiary-container": "#55251e",
+              "on-primary-container": "#6d0010",
+              "error": "#ba1a1a",
+              "tertiary-container": "#cf8a7f",
+              "surface-variant": "#e6e2dc",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-highest": "#e6e2dc",
+              "surface": "#fdf9f3",
+              "on-secondary": "#ffffff",
+              "surface-tint": "#ae2f34",
+              "background": "#fdf9f3",
+              "on-secondary-fixed-variant": "#474747",
+              "secondary": "#5f5e5e",
+              "on-tertiary-fixed": "#370e08",
+              "surface-bright": "#fdf9f3",
+              "on-secondary-container": "#656464"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .bg-gradient-primary {
+        background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+      }
+      body {
+        background-color: #fdf9f3;
+        color: #1c1c18;
+      }
+    </style>
+</head>
+<body class="font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<header class="bg-white/80 dark:bg-stone-900/80 backdrop-blur-md font-['Plus_Jakarta_Sans'] tracking-tight fixed top-0 w-full z-50 shadow-sm shadow-rose-900/5">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-bold tracking-tighter text-rose-800 dark:text-rose-500">GOMET</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-colors" href="#">Go &amp; Meet</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-colors" href="#">Favorites</a>
+<a class="text-rose-800 dark:text-rose-400 font-bold hover:text-rose-600 transition-colors" href="#">Support</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-rose-600 transition-colors" href="#">Profile</a>
+</nav>
+<div class="flex gap-4">
+<span class="material-symbols-outlined text-stone-500 cursor-pointer hover:text-rose-600 transition-colors active:scale-95 duration-200">notifications</span>
+<span class="material-symbols-outlined text-stone-500 cursor-pointer hover:text-rose-600 transition-colors active:scale-95 duration-200">settings</span>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-5xl mx-auto">
+<section class="mb-16">
+<div class="relative overflow-hidden rounded-lg bg-surface-container-low p-8 md:p-12 mb-12">
+<div class="relative z-10 max-w-2xl">
+<h1 class="font-headline text-4xl md:text-5xl font-extrabold text-on-background tracking-tight mb-4 leading-tight">
+                        Chúng tôi có thể giúp gì cho bạn?
+                    </h1>
+<p class="text-on-surface-variant text-lg mb-8">Tìm kiếm câu trả lời nhanh chóng hoặc liên hệ trực tiếp với đội ngũ GOMET.</p>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-stone-400">search</span>
+<input class="w-full pl-12 pr-6 py-4 bg-surface-container-lowest rounded-full border-none focus:ring-2 focus:ring-primary shadow-sm text-on-surface placeholder-stone-400" placeholder="Tìm kiếm câu hỏi, ví dụ: 'Cách nạp tiền'..." type="text"/>
+</div>
+</div>
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute right-10 bottom-10 opacity-10">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'FILL' 1;">help_center</span>
+</div>
+</div>
+</section>
+<section class="mb-16">
+<h2 class="font-headline text-2xl font-bold mb-8 text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">category</span>
+                Chuyên mục FAQ phổ biến
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-surface-container-lowest p-8 rounded-lg transition-all hover:bg-surface-container hover:-translate-y-1">
+<div class="w-12 h-12 bg-rose-50 text-primary flex items-center justify-center rounded-full mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-4">Vấn đề nạp tiền</h3>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="hover:text-primary cursor-pointer flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            Các phương thức thanh toán hỗ trợ
+                        </li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            Xử lý lỗi nạp tiền không thành công
+                        </li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            Chính sách hoàn tiền GOMET
+                        </li>
+</ul>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-lg transition-all hover:bg-surface-container hover:-translate-y-1">
+<div class="w-12 h-12 bg-rose-50 text-primary flex items-center justify-center rounded-full mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-4">Cách tạo cuộc hẹn</h3>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="hover:text-primary cursor-pointer flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            Hướng dẫn gửi lời mời hẹn hò
+                        </li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            Thay đổi địa điểm cuộc hẹn
+                        </li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            Xác nhận trạng thái cuộc hẹn
+                        </li>
+</ul>
+</div>
+<div class="bg-surface-container-lowest p-8 rounded-lg transition-all hover:bg-surface-container hover:-translate-y-1">
+<div class="w-12 h-12 bg-rose-50 text-primary flex items-center justify-center rounded-full mb-6">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">report</span>
+</div>
+<h3 class="font-headline text-xl font-bold mb-4">Báo cáo người dùng</h3>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="hover:text-primary cursor-pointer flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            Quy trình báo cáo vi phạm
+                        </li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            Bảo mật thông tin người báo cáo
+                        </li>
+<li class="hover:text-primary cursor-pointer flex items-center gap-2">
+<span class="material-symbols-outlined text-xs">arrow_forward</span>
+                            Lý do tài khoản bị tạm khóa
+                        </li>
+</ul>
+</div>
+</div>
+</section>
+<section class="mb-16">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+<div class="bg-gradient-primary rounded-lg p-10 text-on-primary shadow-xl shadow-primary/20 flex flex-col justify-between">
+<div>
+<div class="bg-white/20 w-max px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-6">Alpha Test</div>
+<h2 class="font-headline text-3xl font-extrabold mb-4 leading-tight">Bạn phát hiện lỗi trong bản Alpha?</h2>
+<p class="text-on-primary/90 mb-8 font-medium">Phản hồi của bạn giúp chúng tôi hoàn thiện GOMET. Mọi đóng góp đều được ghi nhận và có quà tặng cho Tester tích cực nhất.</p>
+</div>
+<button class="bg-white text-primary font-bold py-4 px-8 rounded-full flex items-center justify-center gap-3 active:scale-95 transition-transform w-max group">
+                        Gửi phản hồi Alpha Test
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">bug_report</span>
+</button>
+</div>
+<div class="bg-surface-container-high rounded-lg p-10 flex flex-col justify-between">
+<div>
+<h2 class="font-headline text-2xl font-bold mb-4 text-on-background">Hỗ trợ trực tiếp</h2>
+<p class="text-on-surface-variant mb-8">Chúng tôi luôn sẵn sàng lắng nghe bạn qua các kênh liên hệ chính thức dưới đây.</p>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">mail</span>
+<div>
+<p class="font-bold text-on-background">Email hỗ trợ</p>
+<p class="text-sm text-on-surface-variant">support@gomet.vn</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">phone_in_talk</span>
+<div>
+<p class="font-bold text-on-background">Hotline (24/7)</p>
+<p class="text-sm text-on-surface-variant">1900 88 99 00</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">chat</span>
+<div>
+<p class="font-bold text-on-background">Live Chat</p>
+<p class="text-sm text-on-surface-variant">Phản hồi trung bình trong 5 phút</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="text-center bg-surface-container-low rounded-lg p-12">
+<h2 class="font-headline text-2xl font-bold mb-4">Vẫn chưa tìm thấy câu trả lời?</h2>
+<p class="text-on-surface-variant mb-8">Tham gia cộng đồng người dùng GOMET để cùng trao đổi và chia sẻ kinh nghiệm.</p>
+<div class="flex flex-wrap justify-center gap-4">
+<a class="flex items-center gap-2 bg-on-background text-white px-6 py-3 rounded-full hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-sm">groups</span>
+                    Cộng đồng Facebook
+                </a>
+<a class="flex items-center gap-2 bg-on-background text-white px-6 py-3 rounded-full hover:opacity-90 transition-opacity" href="#">
+<span class="material-symbols-outlined text-sm">forum</span>
+                    Kênh Discord
+                </a>
+</div>
+</section>
+</main>
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-2 bg-white/90 dark:bg-stone-950/90 backdrop-blur-xl shadow-[0_-8px_30px_rgb(174,47,52,0.08)] rounded-t-[2rem]">
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-6 py-2 active:scale-90 transition-transform duration-300">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Go &amp; Meet</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-6 py-2 active:scale-90 transition-transform duration-300">
+<span class="material-symbols-outlined">favorite</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Favorites</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-300 rounded-full px-6 py-2 active:scale-90 transition-transform duration-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">help_center</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Support</span>
+</div>
+<div class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 px-6 py-2 active:scale-90 transition-transform duration-300">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-widest mt-1">Profile</span>
+</div>
+</nav>
+</body></html>

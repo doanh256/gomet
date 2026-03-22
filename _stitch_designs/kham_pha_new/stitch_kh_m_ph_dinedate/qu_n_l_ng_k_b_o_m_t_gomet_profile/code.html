@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Privacy &amp; Security Management | GOMET</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-tint": "#ae2f34",
+              "surface-variant": "#e6e2dc",
+              "surface-container-low": "#f7f3ed",
+              "inverse-surface": "#31302d",
+              "on-primary-fixed": "#410006",
+              "secondary-container": "#e4e2e1",
+              "on-primary-container": "#6d0010",
+              "on-secondary-container": "#656464",
+              "surface-container-lowest": "#ffffff",
+              "on-primary": "#ffffff",
+              "background": "#fdf9f3",
+              "on-tertiary-fixed": "#370e08",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-tertiary-container": "#55251e",
+              "error-container": "#ffdad6",
+              "inverse-primary": "#ffb3b0",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-high": "#ebe8e2",
+              "surface-bright": "#fdf9f3",
+              "on-secondary": "#ffffff",
+              "surface-dim": "#dddad4",
+              "inverse-on-surface": "#f4f0ea",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "tertiary-container": "#cf8a7f",
+              "on-surface": "#1c1c18",
+              "tertiary": "#894e45",
+              "surface-container": "#f1ede7",
+              "on-tertiary": "#ffffff",
+              "outline": "#8c706f",
+              "on-background": "#1c1c18",
+              "primary": "#ae2f34",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed-variant": "#8c1520",
+              "surface-container-highest": "#e6e2dc",
+              "on-secondary-fixed-variant": "#474747",
+              "on-error-container": "#93000a",
+              "secondary": "#5f5e5e",
+              "primary-container": "#ff6b6b",
+              "outline-variant": "#e0bfbd",
+              "secondary-fixed-dim": "#c8c6c6",
+              "secondary-fixed": "#e4e2e1",
+              "on-error": "#ffffff",
+              "error": "#ba1a1a",
+              "on-surface-variant": "#584140",
+              "surface": "#fdf9f3",
+              "primary-fixed": "#ffdad8",
+              "on-secondary-fixed": "#1b1c1c"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-nav {
+            background: rgba(253, 249, 243, 0.8);
+            backdrop-filter: blur(12px);
+        }
+        .coral-gradient {
+            background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background font-body text-on-background selection:bg-primary-container/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#fdf9f3]/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-8 h-20 w-full max-w-7xl mx-auto">
+<div class="text-2xl font-black tracking-tighter text-[#ae2f34]">GOMET</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#1c1c18]/60 hover:text-[#ae2f34] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight font-bold text-sm uppercase" href="#">Concierge</a>
+<a class="text-[#ae2f34] border-b-2 border-[#ae2f34] pb-1 font-['Plus_Jakarta_Sans'] tracking-tight font-bold text-sm uppercase" href="#">Profile</a>
+<a class="text-[#1c1c18]/60 hover:text-[#ae2f34] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight font-bold text-sm uppercase" href="#">Planner</a>
+<a class="text-[#1c1c18]/60 hover:text-[#ae2f34] transition-colors font-['Plus_Jakarta_Sans'] tracking-tight font-bold text-sm uppercase" href="#">Insights</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#f7f3ed]/50 transition-all text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 rounded-full hover:bg-[#f7f3ed]/50 transition-all text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="User profile avatar close up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYjUhRfmScKL-Ob9eH5wGV4lj-y8km2iORBRCnl2T6ra6_YTp0d6KqYHdO-xpCwTVTeaQqiJth72XYIitYNtDCTq2OC0stdLJSOgT4gGzH0TMTqh0K283kNtyZLCpq5CJzw-U5A-7_A-WqmvnoO5H-4l5SFu-JhJtUw-EZvIhp8NaIXrSacdK_cc-LiEetxnwFczY_z_d0SqCG70DgJrytr1Xod_QRWSSNBvJArQ6KP7qMu-D5Ybz5y8mcXzBYIdTCaAuwl_FRjCY"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-28 pb-20 px-6 max-w-7xl mx-auto min-h-screen">
+<!-- Hero Section / Title -->
+<div class="mb-16">
+<span class="font-headline text-primary font-bold uppercase tracking-widest text-xs mb-4 block">Security Center</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold text-on-background tracking-tighter -ml-1">
+                Privacy <span class="text-outline-variant italic font-normal">&amp;</span><br/>Management
+            </h1>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="lg:col-span-3 space-y-2">
+<nav class="sticky top-32">
+<a class="flex items-center gap-3 px-6 py-4 rounded-full bg-surface-container-lowest text-primary font-semibold shadow-sm transition-all" href="#account-security">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+<span class="text-sm">Account Security</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 rounded-full text-on-surface-variant hover:bg-surface-container-low transition-all" href="#data-privacy">
+<span class="material-symbols-outlined" data-icon="lock">lock</span>
+<span class="text-sm">Data Privacy</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 rounded-full text-on-surface-variant hover:bg-surface-container-low transition-all" href="#visibility">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+<span class="text-sm">Profile Visibility</span>
+</a>
+<a class="flex items-center gap-3 px-6 py-4 rounded-full text-on-surface-variant hover:bg-surface-container-low transition-all" href="#blocking">
+<span class="material-symbols-outlined" data-icon="block">block</span>
+<span class="text-sm">Blocked Users</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<div class="lg:col-span-9 space-y-12">
+<!-- Account Security (2FA) Section -->
+<section class="bg-surface-container-low p-8 md:p-12 rounded-lg" id="account-security">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
+<div class="max-w-md">
+<h2 class="font-headline text-2xl font-bold mb-2">Two-Factor Authentication</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed">Add an extra layer of security to your account by requiring a code from your mobile device when logging in.</p>
+</div>
+<div class="coral-gradient text-on-primary px-6 py-2 rounded-full font-bold text-xs uppercase tracking-widest">Highly Recommended</div>
+</div>
+<div class="grid md:grid-cols-2 gap-6">
+<!-- 2FA Card 1 -->
+<div class="bg-surface-container-lowest p-6 rounded-md group hover:bg-surface-bright transition-all">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="smartphone">smartphone</span>
+</div>
+<div class="relative inline-block w-12 h-6 rounded-full bg-surface-container-highest cursor-pointer">
+<div class="absolute left-1 top-1 w-4 h-4 bg-on-surface-variant rounded-full"></div>
+</div>
+</div>
+<h3 class="font-bold mb-1">SMS Verification</h3>
+<p class="text-on-surface-variant text-xs mb-6">Receive a code via text message to +1 ••• ••• 42</p>
+<button class="text-primary font-bold text-xs uppercase hover:underline">Setup SMS</button>
+</div>
+<!-- 2FA Card 2 -->
+<div class="bg-surface-container-lowest p-6 rounded-md border-2 border-primary/20">
+<div class="flex justify-between items-start mb-6">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+</div>
+<div class="relative inline-block w-12 h-6 rounded-full bg-primary/20 cursor-pointer">
+<div class="absolute right-1 top-1 w-4 h-4 bg-primary rounded-full"></div>
+</div>
+</div>
+<h3 class="font-bold mb-1">Authenticator App</h3>
+<p class="text-on-surface-variant text-xs mb-6">Use apps like Google Authenticator or Authy to generate codes.</p>
+<button class="text-primary font-bold text-xs uppercase hover:underline">Manage Settings</button>
+</div>
+</div>
+</section>
+<!-- Data Privacy & Profile Visibility -->
+<div class="grid md:grid-cols-2 gap-8">
+<!-- Visibility Section -->
+<section class="bg-surface p-8 rounded-lg outline outline-1 outline-outline-variant/15" id="visibility">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="visibility">visibility</span>
+<h2 class="font-headline text-xl font-bold">Profile Visibility</h2>
+</div>
+<div class="space-y-8">
+<div class="flex justify-between items-center">
+<div>
+<p class="font-semibold text-sm">Discoverable Mode</p>
+<p class="text-xs text-on-surface-variant">Allow others to find you in search</p>
+</div>
+<div class="relative inline-block w-12 h-6 rounded-full bg-primary cursor-pointer">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-semibold text-sm">Dining History</p>
+<p class="text-xs text-on-surface-variant">Show your favorite restaurants</p>
+</div>
+<div class="relative inline-block w-12 h-6 rounded-full bg-surface-container-highest cursor-pointer">
+<div class="absolute left-1 top-1 w-4 h-4 bg-on-surface-variant rounded-full"></div>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<div>
+<p class="font-semibold text-sm">Distance Radius</p>
+<p class="text-xs text-on-surface-variant">Only show my general location</p>
+</div>
+<div class="relative inline-block w-12 h-6 rounded-full bg-primary cursor-pointer">
+<div class="absolute right-1 top-1 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Data Privacy Section -->
+<section class="bg-surface p-8 rounded-lg outline outline-1 outline-outline-variant/15" id="data-privacy">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+<h2 class="font-headline text-xl font-bold">Data Privacy</h2>
+</div>
+<div class="space-y-6">
+<p class="text-xs text-on-surface-variant leading-relaxed">
+                                Control how your personal data is used to improve the GOMET experience. We never sell your data to third parties.
+                            </p>
+<button class="w-full text-left bg-surface-container-low px-5 py-4 rounded-md flex justify-between items-center group hover:bg-surface-container-high transition-all">
+<span class="text-sm font-semibold">Download My Data</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="download">download</span>
+</button>
+<button class="w-full text-left bg-surface-container-low px-5 py-4 rounded-md flex justify-between items-center group hover:bg-surface-container-high transition-all">
+<span class="text-sm font-semibold">Personalized Recommendations</span>
+<div class="relative inline-block w-10 h-5 rounded-full bg-primary cursor-pointer">
+<div class="absolute right-1 top-0.5 w-4 h-4 bg-white rounded-full"></div>
+</div>
+</button>
+</div>
+</section>
+</div>
+<!-- Blocked Users Bento Section -->
+<section class="space-y-6" id="blocking">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline text-3xl font-bold mb-2">Blocked Users</h2>
+<p class="text-on-surface-variant text-sm">Manage who you've restricted from contacting you or viewing your profile.</p>
+</div>
+<button class="bg-surface-container-highest px-6 py-3 rounded-full text-sm font-bold hover:bg-surface-variant transition-all">
+                            Add New
+                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<!-- Blocked Card 1 -->
+<div class="bg-white p-4 rounded-lg flex items-center gap-4 shadow-sm group">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait of blocked male user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuASxb5qpUSw8QLN1W-C8R59IyATfcGIG_bcVvxtlDCV34oKdZFpx5rHEfrHVe9JJM07rash0HO4sn4JpXdB0JP_rJUTl3NU3N3z_XWarHfSsQ2rB6PsjY99JRg2AiB_jWqFuACJgpsOndn04BLr7NwHKFHY34xHgd6LL5NNKN7hHTbNdjcSqBHccqui-0RngK5aDU-yJxdqjGlHeS3W5X91-LaYJ6WrWfjzXLDn5q063yZ-YUG6LG3gZVoD9_Ei4E2fTWHqUaCuTUY"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-sm">Marcus V.</h4>
+<p class="text-xs text-on-surface-variant">Blocked Jun 12</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 p-2 text-primary hover:bg-primary/5 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="person_remove">person_remove</span>
+</button>
+</div>
+<!-- Blocked Card 2 -->
+<div class="bg-white p-4 rounded-lg flex items-center gap-4 shadow-sm group">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait of blocked female user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKBMgD-Y3SSu_1QIQclAvpqrc28sepJsbvBJusuTFsIUNDQbqUI_-mpIaKitW-KgAEFiLxwpIR0vUZPfk4HzPHtdDPN75xbrZSC19OvAbAoU_gJQNCQRE-4hpE42nl4QB2FWiKx2B2nW_WBsxLxC9txLHHnyU70LaH9zQXUCZFyvO2AHYqZR5ghSVvyI8BINzVvlFGBp3SwCYhS-laHHIcDBgoBIb1DiI4Cd67AzHQduB9a06og5pHFpru1Z4exOYuGWLfrlXqWxk"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-sm">Sarah L.</h4>
+<p class="text-xs text-on-surface-variant">Blocked May 24</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 p-2 text-primary hover:bg-primary/5 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="person_remove">person_remove</span>
+</button>
+</div>
+<!-- Blocked Card 3 -->
+<div class="bg-white p-4 rounded-lg flex items-center gap-4 shadow-sm group">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Portrait of blocked male user" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgnahJD7KRxfVdVqMdXcZuuIxDfEn84jgXsgXwen4WeqcqroKMhArFna7BXKNk_ZRp75WsXrHBJmX35R9kuZkzH6-l9q8n_wUsAhGWVlw2M4Voav-8f_Sjyh4KnC4t2DOwnuvKxpK5LEBRPVACc0qJtlc3aW0Yy_bZvtj7klF_hk136DqqGLdyf7we2pKOJnCLedhsTcFPl6Qs8ZZlfmofhxdqqa4iDhS0d-g1BqvSLPRKP0OZY3TObcg3PMDkiD8hg8yA5y6ljjM"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-bold text-sm">Julian R.</h4>
+<p class="text-xs text-on-surface-variant">Blocked Apr 02</p>
+</div>
+<button class="opacity-0 group-hover:opacity-100 p-2 text-primary hover:bg-primary/5 rounded-full transition-all">
+<span class="material-symbols-outlined" data-icon="person_remove">person_remove</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Danger Zone -->
+<section class="mt-20 pt-12 border-t-2 border-surface-container-high">
+<div class="bg-red-50/50 p-8 rounded-lg flex flex-col md:flex-row justify-between items-center gap-8">
+<div>
+<h2 class="font-headline text-xl font-bold text-error mb-2">Deactivate Account</h2>
+<p class="text-sm text-on-surface-variant max-w-lg">Temporarily hide your profile or permanently delete your data. This action cannot be undone.</p>
+</div>
+<button class="px-8 py-3 rounded-full border-2 border-error text-error font-bold text-sm uppercase tracking-wider hover:bg-error hover:text-white transition-all">
+                            Manage Deactivation
+                        </button>
+</div>
+</section>
+</div>
+</div>
+</main>
+<!-- Footer Space -->
+<footer class="py-12 bg-surface-container-low mt-20">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8 text-on-surface-variant text-sm">
+<div class="flex gap-8">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Trust &amp; Safety</a>
+</div>
+<div class="font-headline font-bold text-primary tracking-tighter">GOMET © 2024</div>
+</div>
+</footer>
+</body></html>

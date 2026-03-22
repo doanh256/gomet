@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET | Dating Insights</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,600;0,700;0,800;1,800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-surface-variant": "#584140",
+              "primary": "#ae2f34",
+              "on-secondary-container": "#656464",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "outline-variant": "#e0bfbd",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-secondary-fixed": "#1b1c1c",
+              "secondary-fixed": "#e4e2e1",
+              "secondary-container": "#e4e2e1",
+              "secondary": "#5f5e5e",
+              "on-tertiary": "#ffffff",
+              "on-error": "#ffffff",
+              "outline": "#8c706f",
+              "on-tertiary-container": "#55251e",
+              "surface-dim": "#dddad4",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "primary-container": "#ff6b6b",
+              "on-error-container": "#93000a",
+              "inverse-primary": "#ffb3b0",
+              "inverse-on-surface": "#f4f0ea",
+              "surface": "#fdf9f3",
+              "primary-fixed": "#ffdad8",
+              "on-tertiary-fixed": "#370e08",
+              "background": "#fdf9f3",
+              "surface-container": "#f1ede7",
+              "on-primary": "#ffffff",
+              "surface-container-high": "#ebe8e2",
+              "error": "#ba1a1a",
+              "tertiary-fixed": "#ffdad4",
+              "surface-container-low": "#f7f3ed",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-primary-fixed-variant": "#8c1520",
+              "tertiary-container": "#cf8a7f",
+              "on-secondary": "#ffffff",
+              "on-surface": "#1c1c18",
+              "surface-container-highest": "#e6e2dc",
+              "surface-tint": "#ae2f34",
+              "on-primary-container": "#6d0010",
+              "surface-bright": "#fdf9f3",
+              "inverse-surface": "#31302d",
+              "on-primary-fixed": "#410006",
+              "on-background": "#1c1c18",
+              "surface-variant": "#e6e2dc",
+              "secondary-fixed-dim": "#c8c6c6",
+              "tertiary": "#894e45",
+              "on-secondary-fixed-variant": "#474747"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-line-rule { border: none !important; }
+      .tonal-layering { border: none !important; }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary/20">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-stone-950/80 backdrop-blur-md fixed top-0 w-full z-50 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)] no-line-rule">
+<div class="flex justify-between items-center px-6 py-4 w-full max-w-screen-2xl mx-auto">
+<div class="text-2xl font-bold italic text-rose-800 dark:text-rose-300 font-['Plus_Jakarta_Sans'] tracking-tight">GOMET</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-stone-500 hover:text-rose-600 transition-colors font-medium" href="#">Concierge</a>
+<a class="text-stone-500 hover:text-rose-600 transition-colors font-medium" href="#">Planner</a>
+<a class="text-rose-800 font-semibold transition-colors" href="#">Insights</a>
+<a class="text-stone-500 hover:text-rose-600 transition-colors font-medium" href="#">Profile</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="active:scale-95 duration-200 text-stone-500 hover:text-rose-600 transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="active:scale-95 duration-200 text-stone-500 hover:text-rose-600 transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-4 max-w-7xl mx-auto overflow-x-hidden">
+<!-- Hero Section: Intentional Asymmetry -->
+<section class="relative mb-24 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+<div class="lg:col-span-7 z-10">
+<span class="inline-block bg-primary-container/20 text-primary font-bold text-xs tracking-widest uppercase px-4 py-1 rounded-full mb-6 font-label">Quarterly Report 2024</span>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold text-on-background tracking-tighter leading-[0.9] mb-8">
+                    The Pulse of <br/>
+<span class="text-primary italic">Modern Romance</span>
+</h1>
+<p class="text-lg text-on-surface-variant max-w-xl mb-10 leading-relaxed">
+                    Data-driven discoveries from the GOMET community. From favorite late-night speakeasies to the rising popularity of morning coffee walks, we've analyzed over 50,000 dates to reveal how our members are connecting.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-gradient-to-br from-primary to-primary-container text-white px-8 py-4 rounded-DEFAULT font-bold shadow-lg shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all">Download Full PDF</button>
+<button class="bg-surface-container-highest text-on-surface px-8 py-4 rounded-DEFAULT font-bold hover:bg-surface-container-high transition-all">Explore Trends</button>
+</div>
+</div>
+<div class="lg:col-span-5 relative mt-12 lg:mt-0">
+<div class="relative w-full aspect-square rounded-lg overflow-hidden rotate-3 shadow-2xl">
+<img alt="Atmospheric restaurant interior" class="w-full h-full object-cover" data-alt="Intimate candlelit dining room with warm atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCc1HJsx9wLMu0z5AMVmrzSjOkZxHfEIqyWS3V3Ao44BZWXXTN445a_np_n9ng9Yotrz1p21B_F-_z4bkeuU3Z7tPyk-xCsqcqi5YZxJrtRqlkc778zMiGiutBTaBcrroOdB8a-7EkjWWZvhtQpJlVjsDsKIj8R8RXck7kPT5IhRQBOPQiB6GmN9CW_kdXRMd_uzw6V4tLPj2eaqchSbqaiyNpuIk07NnjR5v5O2UnfrH1qFJGck-boqb79Oy7IoKxx4YAYUbAu8JE"/>
+</div>
+<div class="absolute -bottom-10 -left-10 w-48 h-48 bg-tertiary-container rounded-lg -rotate-6 shadow-xl z-20 flex flex-col items-center justify-center p-4 text-center">
+<span class="text-4xl font-headline font-extrabold text-white">84%</span>
+<span class="text-white text-xs font-bold leading-tight mt-2">SUCCESS RATE FOR DINNER DATES</span>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Behavioral Data -->
+<section class="mb-24">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline text-3xl font-bold tracking-tight">Community Behavior</h2>
+<p class="text-on-surface-variant">Anonymized patterns across the ecosystem</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-auto md:h-[600px]">
+<!-- Bento Card 1: Popular Times -->
+<div class="md:col-span-2 md:row-span-1 bg-surface-container-low p-8 rounded-lg flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-primary">schedule</span>
+<h3 class="font-headline font-bold text-xl">Peak Activity Hours</h3>
+</div>
+<div class="flex items-end gap-2 h-24 mt-8">
+<div class="w-full bg-primary/10 h-1/4 rounded-t-sm"></div>
+<div class="w-full bg-primary/20 h-2/4 rounded-t-sm"></div>
+<div class="w-full bg-primary/40 h-3/4 rounded-t-sm"></div>
+<div class="w-full bg-primary h-full rounded-t-sm shadow-sm"></div>
+<div class="w-full bg-primary/60 h-4/5 rounded-t-sm"></div>
+<div class="w-full bg-primary/20 h-2/5 rounded-t-sm"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant font-bold mt-2 font-label">
+<span>12PM</span>
+<span>4PM</span>
+<span>8PM (PEAK)</span>
+<span>12AM</span>
+</div>
+</div>
+<p class="text-sm text-on-surface-variant mt-4">8:00 PM remains the golden hour for first messages.</p>
+</div>
+<!-- Bento Card 2: Interaction Types -->
+<div class="md:col-span-1 md:row-span-2 bg-primary text-white p-8 rounded-lg relative overflow-hidden">
+<div class="relative z-10 h-full flex flex-col justify-between">
+<h3 class="font-headline font-bold text-xl leading-tight">Interaction Modes</h3>
+<div class="space-y-6">
+<div>
+<div class="flex justify-between text-xs font-bold mb-2">
+<span>TEXTING</span>
+<span>45%</span>
+</div>
+<div class="w-full bg-white/20 h-1 rounded-full overflow-hidden">
+<div class="bg-white h-full w-[45%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold mb-2">
+<span>VOICE NOTES</span>
+<span>32%</span>
+</div>
+<div class="w-full bg-white/20 h-1 rounded-full overflow-hidden">
+<div class="bg-white h-full w-[32%]"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold mb-2">
+<span>VIDEO CALLS</span>
+<span>23%</span>
+<span>23%</span>
+</div>
+<div class="w-full bg-white/20 h-1 rounded-full overflow-hidden">
+<div class="bg-white h-full w-[23%]"></div>
+</div>
+</div>
+</div>
+<p class="text-xs opacity-80 leading-relaxed italic">Voice notes have seen a 12% rise since last quarter.</p>
+</div>
+<!-- Decorative element -->
+<div class="absolute -right-10 -bottom-10 opacity-20 transform rotate-12">
+<span class="material-symbols-outlined text-[180px]" style="font-variation-settings: 'FILL' 1;">graphic_eq</span>
+</div>
+</div>
+<!-- Bento Card 3: Response Rate -->
+<div class="md:col-span-1 md:row-span-1 bg-surface-container-highest p-8 rounded-lg">
+<h3 class="font-headline font-bold text-4xl text-primary">2.4m</h3>
+<p class="text-sm font-bold mt-1 text-on-surface">Matches Made</p>
+<div class="mt-8 pt-8 border-t border-outline-variant/30">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-green-600 text-sm">trending_up</span>
+<span class="text-xs font-bold text-on-surface-variant">14% YoY Increase</span>
+</div>
+</div>
+</div>
+<!-- Bento Card 4: Most Popular Cuisine -->
+<div class="md:col-span-2 md:row-span-1 bg-white p-2 rounded-lg relative flex shadow-[0_4px_24px_rgba(0,0,0,0.02)]">
+<div class="w-1/2 rounded-lg overflow-hidden m-2">
+<img alt="Sushi platter" class="w-full h-full object-cover" data-alt="Artfully arranged sushi and sashimi platter" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA8NnGOc1J_6L_4VhkvtlUBx8zzG_DajSUHVKhK2rVW6-94Wo-v5o1JXCr8BgR1XgqtSHtio5RfUVRr8flJ4OEmSZxAwbYVBUJtzK7bjTCQyFE1PtaSxwViBGKdbOWPiYYxO6sLUMiRH7mGa8AnBrdswuGyHhCtrPsH7eL8zGKslFDkS6famGqju2QHV24xo62QaR6sSrugPYM_i_l9RGswCmJ4gfBUUrUjtxfUJqp2QByYli2C9Ej40G7PmuRJCzEA58o9kTCzd10"/>
+</div>
+<div class="w-1/2 p-6 flex flex-col justify-center">
+<span class="text-primary font-bold text-[10px] uppercase tracking-widest font-label mb-2">Top Cuisine</span>
+<h3 class="font-headline font-bold text-2xl leading-none mb-4">Omakase &amp; <br/>Modern Japanese</h3>
+<p class="text-xs text-on-surface-variant italic">Selected in 42% of dinner dates</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Popular Date Spots Section: Layered Layout -->
+<section class="mb-24 bg-surface-container-low rounded-xl p-12 relative overflow-hidden">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
+<div>
+<h2 class="font-headline text-4xl font-extrabold tracking-tight mb-8">Trending Spots <br/><span class="text-primary">New York City</span></h2>
+<div class="space-y-8">
+<div class="flex items-start gap-6 group">
+<div class="w-20 h-20 shrink-0 rounded-lg overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-500">
+<img alt="Bar interior" class="w-full h-full object-cover" data-alt="Vibrant cocktail bar with neon lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSR7XWV7h_H4T_sqh7c5IztICXEd89usKsUVbDGVuS0lcAvYtbYeC_mPdtQTvj4apautYfrQMxcP7l6f1euNzujx0PWzGvJa7WFLjLymddqs0pxFJ2Mi1xY3lvQfRAXpI48dpGUsqhyIuFE_RJHFiSNfDRLV8rWx3k6a9AMPqvZlrus5711VEnS8DGrAS6Il6tfVjXHAbbaQz6nhusb41VJvqU65PFoBBraDlbPYZiGD-IzCUFBYhsGCZB-qNsFnpAS_bpQkBRvEU"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg mb-1">The Velvet Room</h4>
+<p class="text-sm text-on-surface-variant mb-2">Speakeasy • West Village</p>
+<div class="flex gap-1">
+<span class="bg-surface-container-high px-2 py-1 rounded-full text-[10px] font-bold">Romantic</span>
+<span class="bg-surface-container-high px-2 py-1 rounded-full text-[10px] font-bold">Late Night</span>
+</div>
+</div>
+<div class="ml-auto">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">+120%</span>
+</div>
+</div>
+<div class="flex items-start gap-6 group">
+<div class="w-20 h-20 shrink-0 rounded-lg overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-500">
+<img alt="Cafe" class="w-full h-full object-cover" data-alt="Light and airy modern minimalist cafe" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAFvVf3EgOWNEpsUrM9Sn3Tm5Od4-HNNncgF_idNpM6excusUNj9Y3f71UdiSpDVI9hP9WhoUTI6QqWuNYu3yUuDOkGID7UR7W5rdvtwtSzqdlXjm2_2APOMlZzXyN7xLkszgSw1z-7BNvlb9qbNz8xIn9UhDniW9R7grGV0PmIxUhD1s9WwplFJoNruyoWtLq97VoAELGpAqsCtNzEgSM0vhHrqnh1IX_jyftN1Y1BSQbTB4rir6bwg6XWdWXJIMgaCcGM_HhDiNI"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg mb-1">Flora &amp; Fauna</h4>
+<p class="text-sm text-on-surface-variant mb-2">Café • Williamsburg</p>
+<div class="flex gap-1">
+<span class="bg-surface-container-high px-2 py-1 rounded-full text-[10px] font-bold">Coffee</span>
+<span class="bg-surface-container-high px-2 py-1 rounded-full text-[10px] font-bold">Casual</span>
+</div>
+</div>
+<div class="ml-auto">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">+85%</span>
+</div>
+</div>
+<div class="flex items-start gap-6 group">
+<div class="w-20 h-20 shrink-0 rounded-lg overflow-hidden shadow-lg group-hover:scale-110 transition-transform duration-500">
+<img alt="Art gallery" class="w-full h-full object-cover" data-alt="Minimalist art gallery space with paintings" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ-dSQSCi8fxGXzuGRewbLJlB-cceqi6OZb1w7lCk2su4Ja-CpZcsdczBKeyec9RyQGOmpbMvIVwYbYBI53fRETZMG4_OSi5Lo0F4kX4Pc5Akt_bCUqyIMmYW-ScxCGJi9GGa4RVzOsRwriID9YyGeo2lDmuc0vVBToG-pT5JnBd5Eb4c-QHFGB0XwZmkBTWSAc6FbgmkVqYRDRwa6JVP6t8t_c4A_9GT1eqC1m6IOrZtaVXrN47GzAFv3l93oULlRsXA-kbZxaMY"/>
+</div>
+<div>
+<h4 class="font-headline font-bold text-lg mb-1">The Monolith</h4>
+<p class="text-sm text-on-surface-variant mb-2">Gallery • Chelsea</p>
+<div class="flex gap-1">
+<span class="bg-surface-container-high px-2 py-1 rounded-full text-[10px] font-bold">Culture</span>
+<span class="bg-surface-container-high px-2 py-1 rounded-full text-[10px] font-bold">Unique</span>
+</div>
+</div>
+<div class="ml-auto">
+<span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">+62%</span>
+</div>
+</div>
+</div>
+</div>
+<div class="relative min-h-[400px]">
+<div class="absolute inset-0 rounded-lg overflow-hidden shadow-2xl">
+<img alt="Map of NYC" class="w-full h-full object-cover opacity-80" data-location="New York City" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK0tDwE0LKI_97HuNmLoSRTfD_nlQXnUPKWJ-eViB0jlbpddlncCQvwoNaUJP-MAwQiutqJZhpGhSZWsl8vwJtLEWU1KJ-UwrCMb3jhfOSi-PxJpqsPnwCRdDUEO5wzLFS_ah8zpygjRYaboUHR1z1L6XunlldOlWu8St-2s8KF7e8uL3yanMW_RtVQT1J-ibXb3gsgQb8bioAlr_iE1HWbbHOyhopfa3CxQNX3XCGTWkMaM35SGbHScXlFSZU2gorgGMZ3CiuTVA"/>
+<div class="absolute top-1/4 left-1/3 w-4 h-4 bg-primary rounded-full animate-pulse">
+<div class="absolute inset-0 bg-primary/40 rounded-full scale-[3]"></div>
+</div>
+<div class="absolute bottom-1/3 right-1/4 w-4 h-4 bg-primary rounded-full animate-pulse">
+<div class="absolute inset-0 bg-primary/40 rounded-full scale-[2.5]"></div>
+</div>
+<div class="absolute top-2/3 left-1/2 w-4 h-4 bg-primary rounded-full animate-pulse">
+<div class="absolute inset-0 bg-primary/40 rounded-full scale-[3.5]"></div>
+</div>
+</div>
+<div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-lg shadow-xl max-w-[240px]">
+<p class="text-xs font-bold text-on-surface-variant italic mb-2">"GOMET users have a strong preference for venues with outdoor seating this season."</p>
+<p class="text-xs font-bold text-primary">— Community Manager</p>
+</div>
+</div>
+</div>
+<!-- Decorative circle -->
+<div class="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+</section>
+<!-- Data Deep Dive: Infographic Style -->
+<section class="mb-24 text-center">
+<h2 class="font-headline text-3xl font-bold mb-16">The Anatomy of a Perfect Match</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="flex flex-col items-center">
+<div class="w-32 h-32 rounded-full border-4 border-primary/20 flex items-center justify-center mb-6 relative">
+<span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<div class="absolute -top-2 -right-2 bg-primary text-white text-[10px] font-bold px-2 py-1 rounded-full">88%</div>
+</div>
+<h5 class="font-headline font-bold text-lg mb-2">Shared Values</h5>
+<p class="text-sm text-on-surface-variant max-w-[200px]">88% of long-term connections started with a discussion about future goals.</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-32 h-32 rounded-full border-4 border-tertiary-container/20 flex items-center justify-center mb-6 relative">
+<span class="material-symbols-outlined text-4xl text-tertiary-container" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+<div class="absolute -top-2 -right-2 bg-tertiary-container text-white text-[10px] font-bold px-2 py-1 rounded-full">72%</div>
+</div>
+<h5 class="font-headline font-bold text-lg mb-2">Culinary Chemistry</h5>
+<p class="text-sm text-on-surface-variant max-w-[200px]">Matching dietary preferences leads to a 72% higher second date rate.</p>
+</div>
+<div class="flex flex-col items-center">
+<div class="w-32 h-32 rounded-full border-4 border-on-surface-variant/20 flex items-center justify-center mb-6 relative">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<div class="absolute -top-2 -right-2 bg-on-surface-variant text-white text-[10px] font-bold px-2 py-1 rounded-full">65%</div>
+</div>
+<h5 class="font-headline font-bold text-lg mb-2">Fast Connection</h5>
+<p class="text-sm text-on-surface-variant max-w-[200px]">Dates planned within 3 days of matching are 65% more likely to happen.</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="mb-24">
+<div class="bg-inverse-surface rounded-xl p-12 text-center text-white relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-headline text-4xl font-extrabold mb-6">Ready to create your own <br/>success story?</h2>
+<p class="text-white/70 max-w-xl mx-auto mb-10">Join the thousands of GOMET members who have already found their perfect culinary and romantic match.</p>
+<button class="bg-primary text-white px-10 py-4 rounded-full font-bold hover:bg-primary-container transition-all shadow-xl shadow-black/20">Find My Match</button>
+</div>
+<!-- Abstract pattern -->
+<div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+<div class="grid grid-cols-12 gap-2 h-full">
+<div class="bg-white/20 col-span-1 h-32 rounded-b-full"></div>
+<div class="bg-white/20 col-span-1 h-48 rounded-b-full"></div>
+<div class="bg-white/20 col-span-1 h-24 rounded-b-full"></div>
+<div class="bg-white/20 col-span-1 h-64 rounded-b-full"></div>
+<div class="bg-white/20 col-span-1 h-32 rounded-b-full"></div>
+<div class="bg-white/20 col-span-1 h-56 rounded-b-full"></div>
+<div class="bg-white/20 col-span-1 h-40 rounded-b-full"></div>
+<div class="bg-white/20 col-span-1 h-20 rounded-b-full"></div>
+<div class="bg-white/20 col-span-1 h-44 rounded-b-full"></div>
+<div class="bg-white/20 col-span-1 h-32 rounded-b-full"></div>
+<div class="bg-white/20 col-span-1 h-60 rounded-b-full"></div>
+<div class="bg-white/20 col-span-1 h-36 rounded-b-full"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-end px-4 pb-6 pt-2 bg-white/90 dark:bg-stone-950/90 backdrop-blur-xl shadow-[0_-10px_40px_rgba(0,0,0,0.04)] rounded-t-[2rem]">
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1">auto_awesome</span>
+<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Concierge</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1">restaurant_menu</span>
+<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Profile</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-400 dark:text-stone-500 p-2 hover:bg-stone-100 dark:hover:bg-stone-800 rounded-full transition-all active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1">event_note</span>
+<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Planner</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-rose-700 to-rose-500 text-white rounded-full p-3 mb-1 scale-110 shadow-lg shadow-rose-200/50 active:scale-90 duration-300 ease-out" href="#">
+<span class="material-symbols-outlined mb-1">trending_up</span>
+<span class="font-['Inter'] text-[11px] font-medium uppercase tracking-wider">Insights</span>
+</a>
+</nav>
+</body></html>

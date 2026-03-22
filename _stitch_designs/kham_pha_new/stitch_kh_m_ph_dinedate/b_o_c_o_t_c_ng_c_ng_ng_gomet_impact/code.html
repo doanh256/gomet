@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET ALPHA | Community Impact Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#894e45",
+              "tertiary-container": "#cf8a7f",
+              "secondary-container": "#e4e2e1",
+              "background": "#fdf9f3",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "on-primary-fixed": "#410006",
+              "error": "#ba1a1a",
+              "on-tertiary": "#ffffff",
+              "on-background": "#1c1c18",
+              "surface-container-high": "#ebe8e2",
+              "on-primary-container": "#6d0010",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "on-primary": "#ffffff",
+              "inverse-surface": "#31302d",
+              "on-error": "#ffffff",
+              "surface": "#fdf9f3",
+              "on-tertiary-container": "#55251e",
+              "surface-container-low": "#f7f3ed",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "surface-container": "#f1ede7",
+              "on-secondary-container": "#656464",
+              "surface-container-highest": "#e6e2dc",
+              "primary-container": "#ff6b6b",
+              "tertiary-fixed": "#ffdad4",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-container-lowest": "#ffffff",
+              "primary-fixed": "#ffdad8",
+              "surface-variant": "#e6e2dc",
+              "surface-dim": "#dddad4",
+              "primary-fixed-dim": "#ffb3b0",
+              "on-secondary": "#ffffff",
+              "on-surface-variant": "#584140",
+              "on-surface": "#1c1c18",
+              "on-primary-fixed-variant": "#8c1520",
+              "secondary-fixed": "#e4e2e1",
+              "surface-bright": "#fdf9f3",
+              "on-tertiary-fixed": "#370e08",
+              "outline-variant": "#e0bfbd",
+              "on-secondary-fixed-variant": "#474747",
+              "inverse-on-surface": "#f4f0ea",
+              "secondary": "#5f5e5e",
+              "primary": "#ae2f34",
+              "surface-tint": "#ae2f34",
+              "secondary-fixed-dim": "#c8c6c6",
+              "inverse-primary": "#ffb3b0",
+              "outline": "#8c706f"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bg-primary-gradient {
+            background: linear-gradient(45deg, #ae2f34, #ff6b6b);
+        }
+        .glass-nav {
+            background: rgba(253, 249, 243, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 glass-nav shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<nav class="flex justify-between items-center px-8 py-4 w-full max-w-screen-2xl mx-auto font-headline">
+<div class="text-2xl font-black italic tracking-tighter text-stone-900 dark:text-stone-50">GOMET ALPHA</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" href="#">Discover</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" href="#">Reservations</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" href="#">Events</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors" href="#">Curators</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex gap-4 items-center">
+<span class="material-symbols-outlined text-stone-600 cursor-pointer hover:opacity-80 transition-opacity">notifications</span>
+<span class="material-symbols-outlined text-stone-600 cursor-pointer hover:opacity-80 transition-opacity">favorite</span>
+</div>
+<button class="bg-primary-gradient text-white px-6 py-2.5 rounded-full font-bold text-sm scale-95 active:scale-90 transition-transform shadow-lg shadow-rose-500/20">
+                    Book a Table
+                </button>
+</div>
+</nav>
+</header>
+<main class="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+<!-- Hero Section: Intentional Asymmetry -->
+<section class="mb-24 flex flex-col md:flex-row items-end gap-12">
+<div class="flex-1">
+<span class="inline-block py-1 px-4 bg-surface-container-high text-primary font-label text-xs uppercase tracking-widest rounded-full mb-6">Annual Report 2024</span>
+<h1 class="font-headline text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] text-on-background mb-8">
+                    Taste that <br/><span class="text-primary italic">Transforms</span>.
+                </h1>
+<p class="text-xl text-on-surface-variant max-w-lg leading-relaxed">
+                    Our community isn't just about fine dining; it's about the legacy of impact we leave behind. Explore how GOMET Alpha members shaped the culinary world this year.
+                </p>
+</div>
+<div class="w-full md:w-1/3 aspect-[4/5] bg-surface-container-low rounded-xl relative overflow-hidden group">
+<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="Group of diverse people laughing at a dinner table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB72JklF-nYIdc3BupRNMfcX3T4a8FdAwAqLj8kH3Ov1_-bolmLkiUY1ovU0QwepiPv7t6-3MJwURmkT2eOqP2GlVIKhuSqTotpLkJwAejMBKtr7P-baHrPcrEQyTCifMnmIJUdQHJ4P-B5BkAkWHC8Rbc4_cKWfJ4LZG2x6pM32xJwkqud5AevmF3SbCyD8lzD4hVDdqhslCBdx9o0s1M6eBrcLq8BtTlfsRH_81Fjfij_BlxuopWKwItHYBPWiewX_Sl4ssW9XW8"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+</section>
+<!-- Impact Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 mb-24">
+<!-- Large Stat: Meals Shared -->
+<div class="md:col-span-8 bg-surface-container-lowest p-10 rounded-lg flex flex-col justify-between min-h-[400px]">
+<div>
+<h3 class="font-headline text-2xl font-bold mb-2">Meals shared</h3>
+<p class="text-on-surface-variant text-sm">Direct contributions to local food redistribution networks.</p>
+</div>
+<div class="flex items-baseline gap-4 mt-8">
+<span class="font-headline text-9xl font-black text-primary tracking-tighter">142K</span>
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">restaurant</span>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant/20 flex gap-4 overflow-x-auto no-scrollbar">
+<div class="flex flex-col gap-1 min-w-32">
+<div class="h-24 w-full bg-surface-container-highest rounded-md relative flex items-end">
+<div class="w-full bg-primary h-[40%] rounded-b-md"></div>
+</div>
+<span class="text-[10px] font-label uppercase tracking-tighter text-on-surface-variant">Q1 Growth</span>
+</div>
+<div class="flex flex-col gap-1 min-w-32">
+<div class="h-24 w-full bg-surface-container-highest rounded-md relative flex items-end">
+<div class="w-full bg-primary h-[65%] rounded-b-md"></div>
+</div>
+<span class="text-[10px] font-label uppercase tracking-tighter text-on-surface-variant">Q2 Growth</span>
+</div>
+<div class="flex flex-col gap-1 min-w-32">
+<div class="h-24 w-full bg-surface-container-highest rounded-md relative flex items-end">
+<div class="w-full bg-primary h-[85%] rounded-b-md"></div>
+</div>
+<span class="text-[10px] font-label uppercase tracking-tighter text-on-surface-variant">Q3 Growth</span>
+</div>
+<div class="flex flex-col gap-1 min-w-32">
+<div class="h-24 w-full bg-surface-container-highest rounded-md relative flex items-end">
+<div class="w-full bg-primary h-[95%] rounded-b-md"></div>
+</div>
+<span class="text-[10px] font-label uppercase tracking-tighter text-on-surface-variant">Current Peak</span>
+</div>
+</div>
+</div>
+<!-- Small Stat: Eco Partners -->
+<div class="md:col-span-4 bg-tertiary text-on-tertiary p-10 rounded-lg flex flex-col justify-between">
+<span class="material-symbols-outlined text-5xl">eco</span>
+<div>
+<h3 class="font-headline text-5xl font-black tracking-tighter mb-2">84%</h3>
+<p class="text-on-tertiary/80 leading-snug">Of our venue partners have achieved zero-waste certification this year.</p>
+</div>
+<div class="pt-4">
+<button class="flex items-center gap-2 font-label text-xs uppercase tracking-widest hover:gap-4 transition-all">
+                        View Partners <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Charity Events -->
+<div class="md:col-span-5 bg-surface-container-low p-10 rounded-lg relative overflow-hidden">
+<div class="relative z-10">
+<h3 class="font-headline text-3xl font-bold mb-4">Charity events hosted</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-md">
+<span class="font-bold text-sm">Gala for Gardens</span>
+<span class="text-primary font-bold">+$42,000</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-md">
+<span class="font-bold text-sm">Curator's Cup</span>
+<span class="text-primary font-bold">+$18,500</span>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-md">
+<span class="font-bold text-sm">Harvest Table</span>
+<span class="text-primary font-bold">+$31,200</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Impact Story Card -->
+<div class="md:col-span-7 bg-surface-container-highest rounded-lg flex flex-col md:flex-row overflow-hidden">
+<div class="w-full md:w-1/2">
+<img class="h-full w-full object-cover" data-alt="Chef teaching children how to cook healthy meals" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDSQYGci8qwAaHf3yGJm8CSnawKo5rTDNZESKs_9Iyy3Kl4TgT0n1TlfIRNEzxlREPU21Zkrn9sFi9G7-FcpQ_6qEfQaZctJBtsltcB64MZSL3qcT7fDvH1sP1TOOs2hiQ6KjWt_iO6vfcpMyY4vF-LDJV4_NUeaxqrxX4sksP90kGV_B6pqxy2HgKQhge0ezEa_kI4tdGoyW07sE5_q6k3lDbQnislxWdathj2QhEeUsnmxdOZCvd62aUA7gP0uwMWtcJxb0Waw90"/>
+</div>
+<div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
+<span class="font-label text-xs uppercase text-primary font-bold mb-2">Member Impact</span>
+<h4 class="font-headline text-2xl font-bold mb-4">The 'Seed to Plate' Initiative</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+                        In partnership with Chef Elena Vance, we launched 12 urban gardens across the city, providing fresh produce for over 500 local families.
+                    </p>
+<a class="text-on-background font-bold text-sm underline underline-offset-8 decoration-primary decoration-2" href="#">Read the full story</a>
+</div>
+</div>
+</div>
+<!-- Quote Section: Glassmorphism -->
+<section class="mb-24 py-20 px-10 rounded-xl bg-surface-container relative overflow-hidden flex flex-col items-center text-center">
+<div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -right-24 w-64 h-64 bg-tertiary/5 rounded-full blur-3xl"></div>
+<span class="material-symbols-outlined text-primary text-6xl mb-8 opacity-20" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+<blockquote class="font-headline text-3xl md:text-5xl font-light tracking-tight max-w-4xl leading-tight mb-10 italic">
+                "GOMET Alpha has turned social dining into a social movement. Every reservation contributes to a more sustainable, more inclusive food ecosystem."
+            </blockquote>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Portrait of a male community leader" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4SZoeapk1VBB5E4LCtaoPYIm3_77mj20DmPd38BRtwLYxEZ7klnTeq_L130VCOOX806ROpEUYvIoltyMnPJCpzIQ6jFQYOxoYQuhFvS7NtKTUbx4HWkQSX5o1NUmm16E7fKRZ9TIE9LksGBc5mDnlvu8Zr80H8QaZxJ6IISpfg8_10qGctcLe1pSNcvJ4k6eCElBYIG-JFdKU0JSQTB9KgqZNibVbD3N_C9uHjJ8khqUZgvg3GqnJ_wPrbAc6Z7OYASp9tgk_Jr8"/>
+</div>
+<div class="text-left">
+<p class="font-bold text-sm uppercase tracking-wider">Julian Thorne</p>
+<p class="text-xs text-on-surface-variant">Founding Curator, GOMET</p>
+</div>
+</div>
+</section>
+<!-- Get Involved: Call to Action -->
+<section class="bg-primary-gradient rounded-xl p-12 md:p-20 text-white flex flex-col md:flex-row items-center justify-between gap-12 shadow-2xl shadow-primary/30">
+<div class="max-w-xl">
+<h2 class="font-headline text-5xl font-black tracking-tight mb-6">Want to be part of the impact?</h2>
+<p class="text-white/80 text-lg">Join GOMET Alpha today and start contributing to our 2025 impact goals through exclusive dining experiences and curated events.</p>
+</div>
+<div class="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+<button class="bg-white text-primary px-10 py-5 rounded-full font-bold text-lg hover:bg-stone-50 transition-colors shadow-lg shadow-black/10">Become a Member</button>
+<button class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-full font-bold text-lg hover:bg-white/20 transition-colors">Partner with Us</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-stone-100 dark:bg-stone-900 w-full rounded-t-[3rem] mt-20">
+<div class="w-full py-16 px-12 flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl mx-auto">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="font-['Plus_Jakarta_Sans'] font-black text-xl text-stone-900 dark:text-stone-50">GOMET ALPHA</div>
+<p class="font-['Inter'] text-xs uppercase tracking-widest text-stone-500">© 2024 GOMET Alpha. The Culinary Curator. All rights reserved.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-8 font-['Inter'] text-xs uppercase tracking-widest">
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors hover:underline decoration-[#FF6B6B] underline-offset-4" href="#">Privacy Policy</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors hover:underline decoration-[#FF6B6B] underline-offset-4" href="#">Terms of Service</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors hover:underline decoration-[#FF6B6B] underline-offset-4" href="#">Cookie Settings</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors hover:underline decoration-[#FF6B6B] underline-offset-4" href="#">Editorial Guidelines</a>
+<a class="text-stone-500 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100 transition-colors hover:underline decoration-[#FF6B6B] underline-offset-4" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</body></html>

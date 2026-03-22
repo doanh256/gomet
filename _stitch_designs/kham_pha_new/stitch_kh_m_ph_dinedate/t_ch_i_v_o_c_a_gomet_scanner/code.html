@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GOMET - Từ chối Vào cửa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "inverse-surface": "#31302d",
+              "tertiary-fixed": "#ffdad4",
+              "surface-dim": "#dddad4",
+              "on-tertiary-fixed": "#370e08",
+              "surface-tint": "#ae2f34",
+              "surface-container-low": "#f7f3ed",
+              "outline-variant": "#e0bfbd",
+              "on-secondary-fixed": "#1b1c1c",
+              "surface-container": "#f1ede7",
+              "primary-fixed": "#ffdad8",
+              "on-primary-fixed": "#410006",
+              "surface-container-lowest": "#ffffff",
+              "on-surface-variant": "#584140",
+              "tertiary-container": "#cf8a7f",
+              "on-surface": "#1c1c18",
+              "surface-variant": "#e6e2dc",
+              "surface-bright": "#fdf9f3",
+              "on-background": "#1c1c18",
+              "on-secondary-fixed-variant": "#474747",
+              "on-tertiary-fixed-variant": "#6d3830",
+              "primary": "#ae2f34",
+              "surface-container-highest": "#e6e2dc",
+              "on-tertiary": "#ffffff",
+              "on-secondary-container": "#656464",
+              "on-primary": "#ffffff",
+              "error-container": "#ffdad6",
+              "tertiary": "#894e45",
+              "secondary-container": "#e4e2e1",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed-variant": "#8c1520",
+              "secondary": "#5f5e5e",
+              "on-error": "#ffffff",
+              "on-tertiary-container": "#55251e",
+              "secondary-fixed-dim": "#c8c6c6",
+              "tertiary-fixed-dim": "#ffb4a8",
+              "secondary-fixed": "#e4e2e1",
+              "surface-container-high": "#ebe8e2",
+              "on-error-container": "#93000a",
+              "inverse-on-surface": "#f4f0ea",
+              "background": "#fdf9f3",
+              "outline": "#8c706f",
+              "primary-fixed-dim": "#ffb3b0",
+              "inverse-primary": "#ffb3b0",
+              "surface": "#fdf9f3",
+              "primary-container": "#ff6b6b",
+              "on-primary-container": "#6d0010",
+              "error": "#ba1a1a"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-effect {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+    </style>
+</head>
+<body class="bg-surface font-body text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl fixed top-0 w-full z-50 shadow-sm dark:shadow-none">
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<h1 class="text-2xl font-bold tracking-tighter text-rose-600 dark:text-rose-400 font-['Plus_Jakarta_Sans']">GOMET</h1>
+<div class="flex gap-4">
+<button class="hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-colors p-2 rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined text-zinc-500 dark:text-zinc-400" data-icon="notifications">notifications</span>
+</button>
+<button class="hover:bg-rose-50 dark:hover:bg-rose-900/20 transition-colors p-2 rounded-full active:scale-95 duration-200">
+<span class="material-symbols-outlined text-zinc-500 dark:text-zinc-400" data-icon="settings">settings</span>
+</button>
+</div>
+</div>
+<div class="bg-zinc-100 dark:bg-zinc-900 h-[1px] w-full"></div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-md mx-auto">
+<!-- Error Status Section -->
+<section class="text-center mb-10">
+<div class="inline-flex items-center justify-center w-24 h-24 rounded-full bg-error-container mb-6">
+<span class="material-symbols-outlined text-error text-5xl" data-icon="block">block</span>
+</div>
+<h2 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface mb-2">Từ chối Vào cửa</h2>
+<p class="text-on-surface-variant font-medium">Vui lòng kiểm tra lại thông tin vé của khách hàng.</p>
+</section>
+<!-- Reason Card -->
+<div class="bg-surface-container-lowest rounded-lg p-6 mb-6 shadow-[0_24px_48px_-12px_rgba(174,47,52,0.08)]">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-primary" data-icon="error">error</span>
+<span class="font-headline font-bold text-lg">Lý do từ chối</span>
+</div>
+<div class="bg-surface-container-low rounded-md p-4">
+<p class="text-primary font-bold text-xl mb-1">Vé đã được sử dụng</p>
+<p class="text-on-surface-variant text-sm">Lần check-in cuối: Hôm nay, 19:42 tại Cổng A</p>
+</div>
+</div>
+<!-- Guest Info Bento Layout -->
+<div class="grid grid-cols-2 gap-4 mb-8">
+<!-- Guest Identity -->
+<div class="col-span-2 bg-surface-container rounded-lg p-5 flex items-center gap-4 relative overflow-hidden">
+<div class="w-16 h-16 rounded-full overflow-hidden flex-shrink-0 bg-surface-variant">
+<img alt="Guest profile" class="w-full h-full object-cover" data-alt="Portrait of a young male guest" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1uP7qknzx07iFKODqtfs1RbzGWOi31ZCKvxrHYlDphDY2DozIyU-3HKYiryLpmXvZyQeemFMSP3QEEoDXJkQUh9vouXnnrKa12M93TtulWXooCGywNKrHc2igj3eBbCxTIeN9KeX6qibwQKqZAea18IiQFwHQIBzj7LJsoatyEYKfFHjtOdBNM208_4vdvomeiXxCd7xOqxoEJLHKRb3MHB42h57yrPDFv3MXJbWvaiT6muScfWg1r-5iZeLzEQ5mh6Bv9fij6KY"/>
+</div>
+<div>
+<h3 class="font-headline font-bold text-xl text-on-surface">Minh Hoàng</h3>
+<p class="text-label-md uppercase tracking-wider text-secondary text-xs">Thành viên Gold</p>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-8xl" data-icon="person">person</span>
+</div>
+</div>
+<!-- Event Details -->
+<div class="bg-surface-container-low rounded-lg p-4">
+<p class="text-[10px] font-bold text-tertiary uppercase tracking-widest mb-2">Sự kiện</p>
+<p class="font-bold text-sm leading-tight">Dạ tiệc Ánh trăng 2024</p>
+</div>
+<!-- Ticket ID -->
+<div class="bg-surface-container-low rounded-lg p-4">
+<p class="text-[10px] font-bold text-tertiary uppercase tracking-widest mb-2">Mã vé</p>
+<p class="font-bold text-sm leading-tight">#GMT-8829-01</p>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-4">
+<button class="w-full py-4 bg-gradient-to-r from-primary to-primary-container text-on-primary rounded-full font-headline font-bold shadow-lg shadow-rose-500/20 active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+                Quét lại mã khác
+            </button>
+<button class="w-full py-4 bg-surface-container-highest text-on-surface rounded-full font-headline font-bold active:scale-95 transition-transform flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+                Liên hệ Concierge
+            </button>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-end px-4 pb-6 pt-2 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl border-t border-rose-100/20 dark:border-rose-900/20 shadow-[0_-8px_30px_rgb(174,47,52,0.06)] z-50 rounded-t-[2rem]">
+<a class="flex flex-col items-center justify-center bg-rose-600 text-white rounded-full p-3 mb-2 scale-110 shadow-lg shadow-rose-500/30 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="qr_code_scanner">qr_code_scanner</span>
+<span class="text-[10px] font-medium uppercase tracking-wider font-['Inter'] mt-1 hidden">Check-in</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-rose-500 transition-all active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="text-[10px] font-medium uppercase tracking-wider font-['Inter'] mt-1">Events</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-rose-500 transition-all active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="text-[10px] font-medium uppercase tracking-wider font-['Inter'] mt-1">Guests</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 p-2 hover:text-rose-500 transition-all active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-[10px] font-medium uppercase tracking-wider font-['Inter'] mt-1">Reports</span>
+</a>
+</nav>
+</body></html>
