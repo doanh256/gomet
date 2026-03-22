@@ -1,8 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 import { PrismaClient } from '@prisma/client';
 
 import authRoutes from './routes/auth.js';
@@ -59,15 +63,14 @@ setupSocket(io);
 
 // Serve static frontend in production
 if (isProd) {
-  const __dirname = path.dirname(new URL(import.meta.url).pathname);
   const distPath = path.resolve(__dirname, '..', 'dist');
   console.log('📁 Serving static files from:', distPath);
 
   // Serve built assets
   app.use(express.static(distPath, { index: 'index.html' }));
 
-  // SPA catch-all - must be after API routes
-  app.get('*', (req, res, next) => {
+  // SPA catch-all - must be after API routes (Express 5 syntax)
+  app.get('{*path}', (req, res, next) => {
     if (req.path.startsWith('/api') || req.path.startsWith('/uploads') || req.path.startsWith('/socket.io')) {
       return next();
     }
