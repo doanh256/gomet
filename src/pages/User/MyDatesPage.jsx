@@ -442,14 +442,16 @@ const MyDatesPage = () => {
                               )}
 
                               {/* Interest tags */}
-                              {app.applicant?.interests && app.applicant.interests.length > 0 && (
+                              {(() => {
+                                const tags = Array.isArray(app.applicant?.interests) ? app.applicant.interests : (typeof app.applicant?.interests === 'string' ? (() => { try { return JSON.parse(app.applicant.interests); } catch { return []; } })() : []);
+                                return tags.length > 0 ? (
                                 <div style={{
                                   display: 'flex',
                                   flexWrap: 'wrap',
                                   gap: '6px',
                                   marginBottom: '12px',
                                 }}>
-                                  {app.applicant.interests.slice(0, 4).map((tag, i) => (
+                                  {tags.slice(0, 4).map((tag, i) => (
                                     <span key={i} style={{
                                       backgroundColor: 'var(--surface-container-high)',
                                       color: 'var(--on-surface-variant)',
@@ -463,7 +465,8 @@ const MyDatesPage = () => {
                                     </span>
                                   ))}
                                 </div>
-                              )}
+                                ) : null;
+                              })()}
 
                               {/* Action buttons */}
                               {app.status === 'pending' ? (

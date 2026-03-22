@@ -559,13 +559,16 @@ const SwipePage = () => {
                 <div style={styles.bio}>{currentProfile.bio}</div>
               )}
 
-              {currentProfile.interests && currentProfile.interests.length > 0 && (
-                <div style={styles.interestChips}>
-                  {currentProfile.interests.slice(0, 5).map((tag, i) => (
-                    <span key={i} style={styles.chip}>{tag}</span>
-                  ))}
-                </div>
-              )}
+              {(() => {
+                const tags = Array.isArray(currentProfile.interests) ? currentProfile.interests : (typeof currentProfile.interests === 'string' ? (() => { try { return JSON.parse(currentProfile.interests); } catch { return []; } })() : []);
+                return tags.length > 0 ? (
+                  <div style={styles.interestChips}>
+                    {tags.slice(0, 5).map((tag, i) => (
+                      <span key={i} style={styles.chip}>{tag}</span>
+                    ))}
+                  </div>
+                ) : null;
+              })()}
             </div>
 
             {/* Info button */}

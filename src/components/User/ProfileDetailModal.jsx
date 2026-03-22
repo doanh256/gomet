@@ -85,7 +85,7 @@ const ProfileDetailModal = ({ isOpen, onClose, profile }) => {
 
           <h3 style={{ fontSize: '18px', fontWeight: 700, margin: '0 0 12px 0' }}>Sở thích</h3>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '32px' }}>
-            {(profile.interests || ['Cafe', 'Du lịch']).map((interest, idx) => (
+            {(Array.isArray(profile.interests) ? profile.interests : (typeof profile.interests === 'string' ? (() => { try { return JSON.parse(profile.interests); } catch { return []; } })() : ['Cafe', 'Du lịch'])).map((interest, idx) => (
               <span key={idx} style={{ padding: '6px 16px', borderRadius: '20px', border: '1px solid #ddd', fontSize: '14px', color: '#555', fontWeight: 500 }}>
                 {interest}
               </span>
