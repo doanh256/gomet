@@ -49,7 +49,7 @@ const PersonalInsightsPage = () => {
   const s = {
     page: {
       flex: 1,
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#131313',
       overflowY: 'auto',
       padding: '40px 24px 80px',
       maxWidth: 600,
@@ -61,21 +61,21 @@ const PersonalInsightsPage = () => {
     },
     headerIcon: {
       fontSize: 48,
-      color: 'var(--primary)',
+      color: '#FFB59E',
       marginBottom: 8,
     },
     heading: {
       fontFamily: 'var(--font-headline)',
       fontSize: 28,
       fontWeight: 800,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 6,
     },
     sectionTitle: {
       fontFamily: 'var(--font-headline)',
       fontSize: 18,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 14,
       marginTop: 32,
     },
@@ -86,34 +86,34 @@ const PersonalInsightsPage = () => {
       marginBottom: 8,
     },
     statCard: {
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '20px 16px',
       textAlign: 'center',
-      boxShadow: 'var(--card-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     statIcon: {
       fontSize: 28,
-      color: 'var(--primary)',
+      color: '#FFB59E',
       marginBottom: 8,
     },
     statValue: {
       fontFamily: 'var(--font-headline)',
       fontSize: 28,
       fontWeight: 800,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 4,
     },
     statLabel: {
       fontFamily: 'var(--font-body)',
       fontSize: 13,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     chartContainer: {
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '20px 16px',
-      boxShadow: 'var(--card-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     chartRow: {
       display: 'flex',
@@ -132,7 +132,7 @@ const PersonalInsightsPage = () => {
     barTrack: {
       width: '100%',
       height: 120,
-      backgroundColor: 'var(--surface-container-high)',
+      backgroundColor: '#2A2A2A',
       borderRadius: 8,
       position: 'relative',
       overflow: 'hidden',
@@ -141,22 +141,22 @@ const PersonalInsightsPage = () => {
     },
     barFill: {
       width: '100%',
-      background: 'var(--primary-gradient)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
       borderRadius: 8,
       transition: 'height 0.5s ease',
     },
     barLabel: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       fontWeight: 600,
     },
     traitCard: {
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '16px 18px',
       marginBottom: 10,
-      boxShadow: 'var(--card-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     traitHeader: {
       display: 'flex',
@@ -171,49 +171,49 @@ const PersonalInsightsPage = () => {
     },
     traitIcon: {
       fontSize: 22,
-      color: 'var(--primary)',
+      color: '#FFB59E',
     },
     traitLabel: {
       fontFamily: 'var(--font-headline)',
       fontSize: 15,
       fontWeight: 600,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     traitPct: {
       fontFamily: 'var(--font-headline)',
       fontSize: 15,
       fontWeight: 700,
-      color: 'var(--primary)',
+      color: '#FFB59E',
     },
     progressTrack: {
       height: 8,
-      backgroundColor: 'var(--surface-container-high)',
-      borderRadius: 'var(--radius-full)',
+      backgroundColor: '#2A2A2A',
+      borderRadius: 9999,
       overflow: 'hidden',
     },
     progressFill: {
       height: '100%',
-      background: 'var(--primary-gradient)',
-      borderRadius: 'var(--radius-full)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      borderRadius: 9999,
       transition: 'width 0.6s ease',
     },
     matchCard: {
       display: 'flex',
       alignItems: 'center',
       gap: 14,
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '14px 18px',
       marginBottom: 10,
-      boxShadow: 'var(--card-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     matchIcon: {
       fontSize: 24,
-      color: 'var(--on-primary)',
+      color: '#3A0B00',
       width: 44,
       height: 44,
-      borderRadius: 'var(--radius)',
-      background: 'var(--primary-gradient)',
+      borderRadius: '1.5rem',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -222,50 +222,50 @@ const PersonalInsightsPage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 14,
       fontWeight: 600,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     matchScore: {
       fontFamily: 'var(--font-headline)',
       fontSize: 16,
       fontWeight: 800,
-      color: 'var(--primary)',
+      color: '#FFB59E',
       marginLeft: 'auto',
     },
     tipCard: {
       display: 'flex',
       gap: 12,
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '16px 18px',
       marginBottom: 10,
-      boxShadow: 'var(--card-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     tipIcon: {
       fontSize: 22,
-      color: 'var(--tertiary)',
+      color: '#FFD54F',
       flexShrink: 0,
       marginTop: 2,
     },
     tipText: {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       lineHeight: 1.5,
     },
     trendCard: {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '14px 18px',
       marginBottom: 10,
-      boxShadow: 'var(--card-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     trendLabel: {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     trendValues: {
       display: 'flex',
@@ -276,12 +276,12 @@ const PersonalInsightsPage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 20,
       fontWeight: 800,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     trendPrev: {
       fontFamily: 'var(--font-body)',
       fontSize: 13,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     trendArrow: {
       fontSize: 20,
@@ -324,7 +324,7 @@ const PersonalInsightsPage = () => {
       </div>
 
       {/* Dating Traits */}
-      <div style={s.sectionTitle}>Kieu hen ho cua ban</div>
+      <div style={s.sectionTitle}>Kieu hen do cua ban</div>
       {datingTraits.map((trait, i) => (
         <div key={i} style={s.traitCard}>
           <div style={s.traitHeader}>
@@ -363,7 +363,7 @@ const PersonalInsightsPage = () => {
 
       {/* Monthly Trends */}
       <div style={s.sectionTitle}>Xu huong cua ban</div>
-      <div style={{ fontSize: 13, color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)', marginBottom: 12 }}>
+      <div style={{ fontSize: 13, color: '#E6BEB2', fontFamily: 'var(--font-body)', marginBottom: 12 }}>
         Thang nay vs thang truoc
       </div>
       {monthlyTrends.map((t, i) => (
@@ -376,7 +376,7 @@ const PersonalInsightsPage = () => {
               className="material-symbols-outlined"
               style={{
                 ...s.trendArrow,
-                color: t.up ? '#2e7d32' : 'var(--error)',
+                color: t.up ? '#117500' : '#FF571A',
               }}
             >
               {t.up ? 'trending_up' : 'trending_down'}

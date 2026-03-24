@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const dailyQuests = [
-  { id: 1, icon: 'message', color: '#ae2f34', title: 'Gui 3 tin nhan', desc: 'Ket noi voi nhung nguoi ban moi', progress: 2, total: 3, reward: 50, done: false },
-  { id: 2, icon: 'favorite', color: '#ff6b6b', title: 'Thich 5 ho so', desc: 'Kham pha va the hien su quan tam', progress: 5, total: 5, reward: 50, done: true },
-  { id: 3, icon: 'restaurant', color: '#894e45', title: 'Dat 1 buoi hen', desc: 'Len lich hen ho tai nha hang', progress: 0, total: 1, reward: 50, done: false },
+  { id: 1, icon: 'message', color: '#FF571A', title: 'Gui 3 tin nhan', desc: 'Ket noi voi nhung nguoi ban moi', progress: 2, total: 3, reward: 50, done: false },
+  { id: 2, icon: 'favorite', color: '#FFB59E', title: 'Thich 5 ho so', desc: 'Kham pha va the hien su quan tam', progress: 5, total: 5, reward: 50, done: true },
+  { id: 3, icon: 'restaurant', color: '#2A2A2A', title: 'Dat 1 buoi hen', desc: 'Len lich hen ho tai nha hang', progress: 0, total: 1, reward: 50, done: false },
 ];
 
 const specialQuests = [
@@ -29,7 +29,7 @@ const QuestsPage = () => {
   const s = {
     page: {
       flex: 1,
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#131313',
       overflowY: 'auto',
       padding: '40px 24px 80px',
       maxWidth: 600,
@@ -41,20 +41,20 @@ const QuestsPage = () => {
     },
     headerIcon: {
       fontSize: 48,
-      color: 'var(--primary)',
+      color: '#FFB59E',
       marginBottom: 8,
     },
     heading: {
       fontFamily: 'var(--font-headline)',
       fontSize: 28,
       fontWeight: 800,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 6,
     },
     subtitle: {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     statsRow: {
       display: 'flex',
@@ -63,27 +63,27 @@ const QuestsPage = () => {
     },
     statCard: {
       flex: 1,
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '16px 12px',
       textAlign: 'center',
-      boxShadow: 'var(--card-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     statIcon: {
       fontSize: 28,
-      color: 'var(--primary)',
+      color: '#FFB59E',
       marginBottom: 4,
     },
     statValue: {
       fontFamily: 'var(--font-headline)',
       fontSize: 22,
       fontWeight: 800,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     statLabel: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       marginTop: 2,
     },
     section: {
@@ -93,18 +93,18 @@ const QuestsPage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 18,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 14,
     },
     questCard: {
       display: 'flex',
       alignItems: 'center',
       gap: 14,
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '16px',
       marginBottom: 10,
-      boxShadow: 'var(--card-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     questCardDone: {
       opacity: 0.6,
@@ -112,7 +112,7 @@ const QuestsPage = () => {
     questIconWrap: {
       width: 48,
       height: 48,
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -130,41 +130,41 @@ const QuestsPage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 15,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 2,
     },
     questDesc: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       marginBottom: 8,
     },
     progressBar: {
       height: 6,
-      backgroundColor: 'var(--outline-variant)',
-      borderRadius: 'var(--radius-full)',
+      backgroundColor: '#353535',
+      borderRadius: '9999px',
       overflow: 'hidden',
     },
     progressFill: {
       height: '100%',
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary-gradient)',
+      borderRadius: '9999px',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
       transition: 'width 0.3s',
     },
     progressText: {
       fontFamily: 'var(--font-body)',
       fontSize: 11,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       marginTop: 4,
     },
     rewardBadge: {
-      backgroundColor: 'var(--primary-fixed)',
-      color: 'var(--on-primary-container)',
+      backgroundColor: 'rgba(255,181,158,0.15)',
+      color: '#FFB59E',
       fontFamily: 'var(--font-headline)',
       fontSize: 12,
       fontWeight: 700,
       padding: '6px 10px',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       whiteSpace: 'nowrap',
       flexShrink: 0,
     },
@@ -172,14 +172,14 @@ const QuestsPage = () => {
       display: 'flex',
       alignItems: 'center',
       gap: 4,
-      color: 'var(--tertiary)',
+      color: '#117500',
       fontFamily: 'var(--font-body)',
       fontSize: 12,
       flexShrink: 0,
     },
     specialCard: {
-      backgroundColor: 'var(--inverse-surface)',
-      borderRadius: 'var(--radius-lg)',
+      backgroundColor: '#2A2A2A',
+      borderRadius: '1.5rem',
       padding: '24px 20px',
       marginBottom: 12,
     },
@@ -191,18 +191,18 @@ const QuestsPage = () => {
     },
     specialIcon: {
       fontSize: 32,
-      color: 'var(--primary-container)',
+      color: '#FF571A',
     },
     specialTitle: {
       fontFamily: 'var(--font-headline)',
       fontSize: 17,
       fontWeight: 700,
-      color: 'var(--inverse-on-surface)',
+      color: '#FDF9F3',
     },
     specialDesc: {
       fontFamily: 'var(--font-body)',
       fontSize: 13,
-      color: 'var(--inverse-on-surface)',
+      color: '#E6BEB2',
       opacity: 0.8,
       lineHeight: 1.5,
       marginBottom: 12,
@@ -213,18 +213,18 @@ const QuestsPage = () => {
       alignItems: 'center',
     },
     specialReward: {
-      background: 'var(--primary-gradient)',
-      color: '#fff',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
       fontFamily: 'var(--font-headline)',
       fontSize: 14,
       fontWeight: 700,
       padding: '6px 14px',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
     },
     specialDeadline: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: 'var(--inverse-on-surface)',
+      color: '#E6BEB2',
       opacity: 0.6,
       display: 'flex',
       alignItems: 'center',
@@ -239,27 +239,27 @@ const QuestsPage = () => {
     rewardItem: {
       flex: '0 0 auto',
       width: 100,
-      backgroundColor: 'var(--surface-container-low)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '14px 10px',
       textAlign: 'center',
     },
     rewardItemIcon: {
       fontSize: 28,
-      color: 'var(--tertiary)',
+      color: '#FFD54F',
       marginBottom: 6,
     },
     rewardItemName: {
       fontFamily: 'var(--font-headline)',
       fontSize: 13,
       fontWeight: 600,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 2,
     },
     rewardItemDate: {
       fontFamily: 'var(--font-body)',
       fontSize: 11,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
   };
 
@@ -283,7 +283,7 @@ const QuestsPage = () => {
           <div style={s.statLabel}>Diem tich luy</div>
         </div>
         <div style={s.statCard}>
-          <span className="material-symbols-outlined filled" style={{...s.statIcon, color: 'var(--error)'}}>local_fire_department</span>
+          <span className="material-symbols-outlined filled" style={{...s.statIcon, color: '#FF571A'}}>local_fire_department</span>
           <div style={s.statValue}>{streak}</div>
           <div style={s.statLabel}>Chuoi ngay</div>
         </div>

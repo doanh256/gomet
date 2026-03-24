@@ -32,7 +32,7 @@ const ReferralPage = () => {
   const s = {
     page: {
       flex: 1,
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#131313',
       overflowY: 'auto',
       padding: '40px 24px 80px',
       maxWidth: 600,
@@ -44,24 +44,24 @@ const ReferralPage = () => {
     },
     heroIcon: {
       fontSize: 48,
-      color: 'var(--primary)',
+      color: '#FFB59E',
       marginBottom: 12,
     },
     heading: {
       fontFamily: 'var(--font-headline)',
       fontSize: 28,
       fontWeight: 800,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 8,
     },
     heroSub: {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     codeCard: {
-      backgroundColor: 'var(--inverse-surface)',
-      borderRadius: 'var(--radius-lg)',
+      backgroundColor: '#2A2A2A',
+      borderRadius: '1.5rem',
       padding: '28px 24px',
       textAlign: 'center',
       marginBottom: 32,
@@ -69,7 +69,7 @@ const ReferralPage = () => {
     codeLabel: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: 'var(--inverse-on-surface)',
+      color: '#E6BEB2',
       opacity: 0.7,
       marginBottom: 12,
     },
@@ -77,7 +77,7 @@ const ReferralPage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 32,
       fontWeight: 800,
-      color: 'var(--inverse-on-surface)',
+      color: '#FDF9F3',
       letterSpacing: 3,
       marginBottom: 16,
     },
@@ -86,10 +86,12 @@ const ReferralPage = () => {
       alignItems: 'center',
       gap: 8,
       padding: '10px 24px',
-      backgroundColor: copied ? '#4ecdc4' : 'rgba(255,255,255,0.15)',
-      color: 'var(--inverse-on-surface)',
+      backgroundColor: copied ? '#117500' : 'rgba(57,57,57,0.6)',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
+      color: '#FDF9F3',
       border: 'none',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       fontFamily: 'var(--font-body)',
       fontSize: 13,
       fontWeight: 600,
@@ -100,7 +102,7 @@ const ReferralPage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 18,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 20,
     },
     stepsRow: {
@@ -112,15 +114,15 @@ const ReferralPage = () => {
       flex: 1,
       textAlign: 'center',
       padding: '20px 12px',
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
-      boxShadow: 'var(--card-shadow)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     stepIconCircle: {
       width: 44,
       height: 44,
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: 'var(--primary-fixed)',
+      borderRadius: '9999px',
+      backgroundColor: '#2A2A2A',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -128,20 +130,20 @@ const ReferralPage = () => {
     },
     stepIcon: {
       fontSize: 22,
-      color: 'var(--on-primary-container)',
+      color: '#FFB59E',
     },
     stepNum: {
       fontFamily: 'var(--font-headline)',
       fontSize: 11,
       fontWeight: 800,
-      color: 'var(--primary)',
+      color: '#FFB59E',
       marginBottom: 6,
     },
     stepLabel: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
       fontWeight: 500,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     rewardsRow: {
       display: 'flex',
@@ -151,27 +153,27 @@ const ReferralPage = () => {
     rewardCard: (accent) => ({
       flex: 1,
       padding: 20,
-      backgroundColor: accent ? 'var(--primary-fixed)' : 'var(--tertiary-container)',
-      borderRadius: 'var(--radius-lg)',
+      backgroundColor: accent ? 'rgba(255,181,158,0.15)' : '#2A2A2A',
+      borderRadius: '1.5rem',
       textAlign: 'center',
     }),
     rewardLabel: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
       fontWeight: 500,
-      color: 'var(--on-primary-container)',
+      color: '#E6BEB2',
       marginBottom: 8,
     },
     rewardAmount: {
       fontFamily: 'var(--font-headline)',
       fontSize: 24,
       fontWeight: 800,
-      color: 'var(--on-primary-container)',
+      color: '#FFB59E',
     },
     rewardUnit: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: 'var(--on-primary-container)',
+      color: '#E6BEB2',
       marginTop: 4,
     },
     shareRow: {
@@ -183,7 +185,7 @@ const ReferralPage = () => {
     shareBtn: (bg) => ({
       width: 52,
       height: 52,
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       backgroundColor: bg,
       border: 'none',
       display: 'flex',
@@ -204,19 +206,19 @@ const ReferralPage = () => {
       flex: 1,
       textAlign: 'center',
       padding: '16px 12px',
-      backgroundColor: 'var(--surface-container-high)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#2A2A2A',
+      borderRadius: '1.5rem',
     },
     statNum: {
       fontFamily: 'var(--font-headline)',
       fontSize: 22,
       fontWeight: 800,
-      color: 'var(--primary)',
+      color: '#FFB59E',
     },
     statLabel: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       marginTop: 4,
     },
     friendList: {
@@ -227,7 +229,6 @@ const ReferralPage = () => {
       alignItems: 'center',
       justifyContent: 'space-between',
       padding: '14px 0',
-      borderBottom: '1px solid var(--outline-variant)',
     },
     friendLeft: {
       display: 'flex',
@@ -237,35 +238,35 @@ const ReferralPage = () => {
     friendAvatar: {
       width: 36,
       height: 36,
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: 'var(--surface-container-high)',
+      borderRadius: '9999px',
+      backgroundColor: '#2A2A2A',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       fontFamily: 'var(--font-headline)',
       fontSize: 14,
       fontWeight: 700,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     friendName: {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
       fontWeight: 500,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     friendDate: {
       fontFamily: 'var(--font-body)',
       fontSize: 11,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     badge: (isJoined) => ({
       padding: '4px 12px',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       fontFamily: 'var(--font-body)',
       fontSize: 11,
       fontWeight: 600,
-      backgroundColor: isJoined ? '#e8f5e9' : 'var(--error-container)',
-      color: isJoined ? '#2e7d32' : 'var(--error)',
+      backgroundColor: isJoined ? 'rgba(17,117,0,0.2)' : 'rgba(255,87,26,0.15)',
+      color: isJoined ? '#117500' : '#FF571A',
     }),
   };
 
@@ -325,7 +326,7 @@ const ReferralPage = () => {
       <div style={s.shareRow}>
         <button style={s.shareBtn('#1877f2')} title="Facebook">f</button>
         <button style={s.shareBtn('#0068ff')} title="Zalo">Z</button>
-        <button style={s.shareBtn('#8c706f')} title="Copy link" onClick={handleCopy}>
+        <button style={s.shareBtn('#FF571A')} title="Copy link" onClick={handleCopy}>
           <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#fff' }}>link</span>
         </button>
       </div>

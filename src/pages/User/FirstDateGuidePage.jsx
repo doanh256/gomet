@@ -6,37 +6,31 @@ const tips = [
     icon: 'location_on',
     title: 'Chon dia diem phu hop',
     desc: 'Chon noi yeu tinh, thoai mai de ca hai co the tro chuyen thoai mai. Quan ca phe hoac cong vien la lua chon tuyet voi.',
-    color: 'var(--primary-fixed)',
   },
   {
     icon: 'checkroom',
     title: 'An mac tu tin',
     desc: 'Mac trang phuc gon gang, lich su va phu hop voi dia diem. Tu tin voi phong cach cua ban se tao an tuong tot.',
-    color: 'var(--tertiary-container)',
   },
   {
     icon: 'schedule',
     title: 'Den dung gio',
     desc: 'Dung gio the hien su ton trong. Hay den som 5-10 phut de chuan bi tinh than va tao khong khi thoai mai.',
-    color: 'var(--primary-fixed)',
   },
   {
     icon: 'hearing',
     title: 'Lang nghe nhieu hon',
     desc: 'Dat cau hoi va lang nghe chan thanh. Moi nguoi deu thich cam giac duoc quan tam va thau hieu.',
-    color: 'var(--tertiary-container)',
   },
   {
     icon: 'phonelink_off',
     title: 'Dat dien thoai xuong',
     desc: 'Tap trung vao nguoi doi dien. Tat thong bao va dat dien thoai sang mot ben the hien su ton trong.',
-    color: 'var(--primary-fixed)',
   },
   {
     icon: 'favorite',
     title: 'La chinh minh',
     desc: 'Dung co tao an tuong bang hinh anh gia tao. Su chan thanh va tu nhien la dieu hap dan nhat.',
-    color: 'var(--tertiary-container)',
   },
 ];
 
@@ -46,7 +40,7 @@ const FirstDateGuidePage = () => {
   const s = {
     page: {
       flex: 1,
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#131313',
       overflowY: 'auto',
       padding: '40px 24px 80px',
       maxWidth: 720,
@@ -58,24 +52,24 @@ const FirstDateGuidePage = () => {
     },
     heroIcon: {
       fontSize: 48,
-      color: 'var(--primary)',
+      color: '#FFB59E',
       marginBottom: 12,
     },
     heading: {
       fontFamily: 'var(--font-headline)',
       fontSize: 28,
       fontWeight: 800,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 4,
     },
     headingAccent: {
       fontStyle: 'italic',
-      color: 'var(--primary)',
+      color: '#FFB59E',
     },
     heroSub: {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       marginTop: 8,
     },
     grid: {
@@ -86,49 +80,49 @@ const FirstDateGuidePage = () => {
     },
     card: {
       padding: 24,
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius-lg)',
-      boxShadow: 'var(--card-shadow)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
       transition: 'transform 0.2s ease, box-shadow 0.2s ease',
     },
-    iconCircle: (bg) => ({
+    iconCircle: {
       width: 48,
       height: 48,
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: bg,
+      borderRadius: '9999px',
+      backgroundColor: '#2A2A2A',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       marginBottom: 16,
-    }),
+    },
     cardIcon: {
       fontSize: 24,
-      color: 'var(--on-primary-container)',
+      color: '#FFB59E',
     },
     cardTitle: {
       fontFamily: 'var(--font-headline)',
       fontSize: 16,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 8,
     },
     cardDesc: {
       fontFamily: 'var(--font-body)',
       fontSize: 13,
       lineHeight: 1.6,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     cta: {
       textAlign: 'center',
       padding: '40px 24px',
-      backgroundColor: 'var(--surface-container-low)',
-      borderRadius: 'var(--radius-lg)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
     },
     ctaTitle: {
       fontFamily: 'var(--font-headline)',
       fontSize: 22,
       fontWeight: 800,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 16,
     },
     ctaBtn: {
@@ -136,25 +130,25 @@ const FirstDateGuidePage = () => {
       alignItems: 'center',
       gap: 8,
       padding: '14px 32px',
-      background: 'var(--primary-gradient)',
-      color: 'var(--on-primary)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
       border: 'none',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       fontFamily: 'var(--font-headline)',
       fontSize: 15,
       fontWeight: 700,
       cursor: 'pointer',
-      boxShadow: 'var(--editorial-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     number: {
       fontFamily: 'var(--font-headline)',
       fontSize: 12,
       fontWeight: 800,
-      color: 'var(--primary)',
-      backgroundColor: 'var(--primary-fixed)',
+      color: '#3A0B00',
+      backgroundColor: '#FFB59E',
       width: 24,
       height: 24,
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -179,15 +173,15 @@ const FirstDateGuidePage = () => {
             style={s.card}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = 'translateY(-4px)';
-              e.currentTarget.style.boxShadow = 'var(--editorial-shadow)';
+              e.currentTarget.style.boxShadow = '0 24px 48px rgba(0,0,0,0.5)';
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = 'var(--card-shadow)';
+              e.currentTarget.style.boxShadow = '0px 20px 40px rgba(0,0,0,0.4)';
             }}
           >
             <div style={s.number}>{i + 1}</div>
-            <div style={s.iconCircle(tip.color)}>
+            <div style={s.iconCircle}>
               <span className="material-symbols-outlined" style={s.cardIcon}>{tip.icon}</span>
             </div>
             <div style={s.cardTitle}>{tip.title}</div>

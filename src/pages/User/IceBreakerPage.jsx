@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const suggestions = [
-  { text: 'Ey, minh thay ban cung thich ca phe sua da. Ban hay uong o dau nhat?', category: 'Am thuc', categoryColor: 'var(--tertiary-container)' },
-  { text: 'Neu duoc chon mot noi de di ngay bay gio, ban se chon dau?', category: 'Phieu luu', categoryColor: 'var(--primary-fixed)' },
-  { text: 'Minh vua xem mot video hai huoc, muon nghe khong? 😄', category: 'Hai huoc', categoryColor: '#fff3cd' },
-  { text: 'Minh thay ban tung tham gia su kien am thuc roi, cam nhan cua ban the nao?', category: 'Tu nhien', categoryColor: 'var(--surface-container-high)' },
-  { text: 'Ban tin vao tinh yeu tu cai nhin dau tien khong?', category: 'Sau sac', categoryColor: 'var(--error-container)' },
+  { text: 'Ey, minh thay ban cung thich ca phe sua da. Ban hay uong o dau nhat?', category: 'Am thuc', categoryColor: '#2A2A2A' },
+  { text: 'Neu duoc chon mot noi de di ngay bay gio, ban se chon dau?', category: 'Phieu luu', categoryColor: 'rgba(255,181,158,0.15)' },
+  { text: 'Minh vua xem mot video hai huoc, muon nghe khong? 😄', category: 'Hai huoc', categoryColor: 'rgba(255,213,79,0.15)' },
+  { text: 'Minh thay ban tung tham gia su kien am thuc roi, cam nhan cua ban the nao?', category: 'Tu nhien', categoryColor: '#353535' },
+  { text: 'Ban tin vao tinh yeu tu cai nhin dau tien khong?', category: 'Sau sac', categoryColor: 'rgba(255,87,26,0.15)' },
 ];
 
 const tips = [
@@ -29,7 +29,7 @@ const IceBreakerPage = () => {
   const s = {
     page: {
       flex: 1,
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#131313',
       overflowY: 'auto',
       padding: '40px 24px 80px',
       maxWidth: 720,
@@ -39,7 +39,7 @@ const IceBreakerPage = () => {
       background: 'none',
       border: 'none',
       cursor: 'pointer',
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       display: 'flex',
       alignItems: 'center',
       gap: 4,
@@ -56,51 +56,51 @@ const IceBreakerPage = () => {
     },
     headerIcon: {
       fontSize: 28,
-      color: 'var(--primary)',
+      color: '#FFB59E',
     },
     heading: {
       fontFamily: 'var(--font-headline)',
       fontSize: 28,
       fontWeight: 800,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     subtitle: {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       marginBottom: 28,
     },
     partnerCard: {
       display: 'flex',
       alignItems: 'center',
       gap: 14,
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '14px 18px',
       marginBottom: 28,
-      boxShadow: 'var(--card-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     partnerAvatar: {
       width: 48,
       height: 48,
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       objectFit: 'cover',
     },
     partnerName: {
       fontFamily: 'var(--font-headline)',
       fontWeight: 700,
       fontSize: 16,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     partnerStatus: {
       fontSize: 13,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     sectionTitle: {
       fontFamily: 'var(--font-headline)',
       fontSize: 18,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 14,
       display: 'flex',
       alignItems: 'center',
@@ -108,14 +108,14 @@ const IceBreakerPage = () => {
     },
     sectionIcon: {
       fontSize: 20,
-      color: 'var(--primary)',
+      color: '#FFB59E',
     },
     suggestionCard: {
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '16px',
       marginBottom: 12,
-      boxShadow: 'var(--card-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     suggestionTop: {
       display: 'flex',
@@ -125,7 +125,7 @@ const IceBreakerPage = () => {
     },
     lightbulbIcon: {
       fontSize: 22,
-      color: 'var(--tertiary)',
+      color: '#FFD54F',
       flexShrink: 0,
       marginTop: 2,
     },
@@ -133,7 +133,7 @@ const IceBreakerPage = () => {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
       fontStyle: 'italic',
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       lineHeight: 1.5,
       flex: 1,
     },
@@ -147,15 +147,15 @@ const IceBreakerPage = () => {
       fontSize: 11,
       fontWeight: 600,
       padding: '4px 10px',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       backgroundColor: bg,
-      color: 'var(--on-surface)',
+      color: '#E6BEB2',
     }),
     sendBtn: {
-      background: 'var(--primary-gradient)',
-      color: 'var(--on-primary)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
       border: 'none',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       padding: '7px 16px',
       fontSize: 13,
       fontWeight: 700,
@@ -166,10 +166,10 @@ const IceBreakerPage = () => {
       gap: 4,
     },
     sentBtn: {
-      background: 'var(--surface-container-high)',
-      color: 'var(--on-surface-variant)',
+      background: '#2A2A2A',
+      color: '#E6BEB2',
       border: 'none',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       padding: '7px 16px',
       fontSize: 13,
       fontWeight: 700,
@@ -192,20 +192,20 @@ const IceBreakerPage = () => {
       flex: 1,
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface)',
-      backgroundColor: 'var(--surface-container-lowest)',
-      border: '1px solid var(--outline-variant)',
-      borderRadius: 'var(--radius)',
+      color: '#FDF9F3',
+      backgroundColor: '#1C1B1B',
+      border: 'none',
+      borderRadius: '1.5rem',
       padding: '14px 16px',
       resize: 'vertical',
       minHeight: 80,
       outline: 'none',
     },
     sendCustomBtn: {
-      background: 'var(--primary-gradient)',
-      color: 'var(--on-primary)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
       border: 'none',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       width: 44,
       height: 44,
       display: 'flex',
@@ -225,12 +225,12 @@ const IceBreakerPage = () => {
     },
     tipIcon: {
       fontSize: 18,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     tipText: {
       fontFamily: 'var(--font-body)',
       fontSize: 13,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
   };
 
@@ -302,7 +302,7 @@ const IceBreakerPage = () => {
             onChange={(e) => setCustomMsg(e.target.value)}
           />
           <button style={s.sendCustomBtn}>
-            <span className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--on-primary)' }}>send</span>
+            <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#3A0B00' }}>send</span>
           </button>
         </div>
       </div>

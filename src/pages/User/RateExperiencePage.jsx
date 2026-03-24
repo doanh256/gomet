@@ -23,7 +23,7 @@ const RateExperiencePage = () => {
   const s = {
     page: {
       flex: 1,
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#131313',
       overflowY: 'auto',
       padding: '40px 24px 80px',
       maxWidth: 560,
@@ -37,32 +37,32 @@ const RateExperiencePage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 26,
       fontWeight: 800,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 8,
     },
     subtitle: {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     partnerCard: {
       display: 'flex',
       alignItems: 'center',
       gap: 16,
       padding: 20,
-      backgroundColor: 'var(--surface-container-low)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       marginBottom: 32,
     },
     avatar: {
       width: 64,
       height: 64,
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary-gradient)',
+      borderRadius: '9999px',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      color: 'var(--on-primary)',
+      color: '#3A0B00',
       fontSize: 24,
       fontWeight: 700,
       fontFamily: 'var(--font-headline)',
@@ -72,13 +72,13 @@ const RateExperiencePage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 18,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 4,
     },
     partnerDetail: {
       fontFamily: 'var(--font-body)',
       fontSize: 13,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       display: 'flex',
       alignItems: 'center',
       gap: 4,
@@ -90,7 +90,7 @@ const RateExperiencePage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 15,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 12,
     },
     overallStars: {
@@ -105,17 +105,17 @@ const RateExperiencePage = () => {
       transition: 'transform 0.15s ease, color 0.15s ease',
     },
     starActive: {
-      color: '#f5a623',
+      color: '#FFD54F',
       fontVariationSettings: "'FILL' 1",
     },
     starInactive: {
-      color: 'var(--outline-variant)',
+      color: '#353535',
     },
     ratingCount: {
       textAlign: 'center',
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       marginBottom: 24,
     },
     categoryRow: {
@@ -123,13 +123,12 @@ const RateExperiencePage = () => {
       alignItems: 'center',
       justifyContent: 'space-between',
       padding: '14px 0',
-      borderBottom: '1px solid var(--outline-variant)',
     },
     categoryLabel: {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
       fontWeight: 500,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     categoryStars: {
       display: 'flex',
@@ -149,19 +148,19 @@ const RateExperiencePage = () => {
       padding: 16,
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface)',
-      backgroundColor: 'var(--surface-container-lowest)',
-      border: '1.5px solid var(--outline-variant)',
-      borderRadius: 'var(--radius)',
+      color: '#FDF9F3',
+      backgroundColor: '#1C1B1B',
+      border: 'none',
+      borderRadius: '1.5rem',
       resize: 'vertical',
       outline: 'none',
-      transition: 'border-color 0.2s ease',
+      transition: 'box-shadow 0.2s ease',
     },
     charCount: {
       textAlign: 'right',
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: comment.length > 450 ? 'var(--error)' : 'var(--on-surface-variant)',
+      color: comment.length > 450 ? '#FF571A' : '#E6BEB2',
       marginTop: 6,
     },
     toggleRow: {
@@ -169,8 +168,8 @@ const RateExperiencePage = () => {
       alignItems: 'center',
       justifyContent: 'space-between',
       padding: '16px 20px',
-      backgroundColor: 'var(--surface-container-low)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       marginBottom: 32,
     },
     toggleLabel: {
@@ -180,13 +179,13 @@ const RateExperiencePage = () => {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
       fontWeight: 500,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     toggleTrack: {
       width: 48,
       height: 26,
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: anonymous ? 'var(--primary)' : 'var(--outline-variant)',
+      borderRadius: '9999px',
+      backgroundColor: anonymous ? '#FFB59E' : '#353535',
       position: 'relative',
       cursor: 'pointer',
       transition: 'background-color 0.2s ease',
@@ -194,8 +193,8 @@ const RateExperiencePage = () => {
     toggleThumb: {
       width: 20,
       height: 20,
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: 'var(--on-primary)',
+      borderRadius: '9999px',
+      backgroundColor: '#3A0B00',
       position: 'absolute',
       top: 3,
       left: anonymous ? 25 : 3,
@@ -204,23 +203,23 @@ const RateExperiencePage = () => {
     submitBtn: {
       width: '100%',
       padding: '16px 0',
-      background: 'var(--primary-gradient)',
-      color: 'var(--on-primary)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
       border: 'none',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       fontFamily: 'var(--font-headline)',
       fontSize: 16,
       fontWeight: 700,
       cursor: 'pointer',
       marginBottom: 16,
-      boxShadow: 'var(--editorial-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     skipLink: {
       display: 'block',
       textAlign: 'center',
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       background: 'none',
       border: 'none',
       cursor: 'pointer',
@@ -314,8 +313,8 @@ const RateExperiencePage = () => {
             onChange={(e) => {
               if (e.target.value.length <= 500) setComment(e.target.value);
             }}
-            onFocus={(e) => (e.target.style.borderColor = 'var(--primary)')}
-            onBlur={(e) => (e.target.style.borderColor = 'var(--outline-variant)')}
+            onFocus={(e) => (e.target.style.boxShadow = '0 0 0 2px #FFB59E')}
+            onBlur={(e) => (e.target.style.boxShadow = 'none')}
           />
         </div>
         <div style={s.charCount}>{comment.length}/500</div>
@@ -323,7 +322,7 @@ const RateExperiencePage = () => {
 
       <div style={s.toggleRow}>
         <div style={s.toggleLabel}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20, color: 'var(--on-surface-variant)' }}>
+          <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#E6BEB2' }}>
             visibility_off
           </span>
           Gui an danh

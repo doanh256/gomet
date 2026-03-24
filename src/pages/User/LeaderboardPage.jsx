@@ -29,11 +29,11 @@ const rankings = [
 
 const filters = ['Tuan nay', 'Thang nay', 'Tat ca'];
 
-const rankColors = { 1: '#f59e0b', 2: '#9ca3af', 3: 'var(--tertiary)' };
+const rankColors = { 1: '#FFD54F', 2: '#9ca3af', 3: '#FF571A' };
 
 const trendConfig = {
-  up: { icon: 'trending_up', color: '#16a34a' },
-  down: { icon: 'trending_down', color: 'var(--error)' },
+  up: { icon: 'trending_up', color: '#117500' },
+  down: { icon: 'trending_down', color: '#FF571A' },
   flat: { icon: 'trending_flat', color: '#9ca3af' },
 };
 
@@ -44,7 +44,7 @@ const LeaderboardPage = () => {
   const s = {
     page: {
       flex: 1,
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#131313',
       overflowY: 'auto',
       padding: '40px 24px 100px',
       maxWidth: 600,
@@ -56,14 +56,14 @@ const LeaderboardPage = () => {
     },
     headerIcon: {
       fontSize: 48,
-      color: 'var(--primary)',
+      color: '#FFB59E',
       marginBottom: 8,
     },
     heading: {
       fontFamily: 'var(--font-headline)',
       fontSize: 28,
       fontWeight: 800,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     chips: {
       display: 'flex',
@@ -76,17 +76,16 @@ const LeaderboardPage = () => {
       fontSize: 13,
       fontWeight: 600,
       padding: '8px 18px',
-      borderRadius: 'var(--radius-full)',
-      border: '1.5px solid var(--outline-variant)',
-      backgroundColor: 'transparent',
-      color: 'var(--on-surface-variant)',
+      borderRadius: '9999px',
+      border: 'none',
+      backgroundColor: '#2A2A2A',
+      color: '#E6BEB2',
       cursor: 'pointer',
       transition: 'all 0.2s',
     },
     chipActive: {
-      backgroundColor: 'var(--primary)',
-      color: 'var(--on-primary)',
-      borderColor: 'var(--primary)',
+      backgroundColor: '#FFB59E',
+      color: '#3A0B00',
     },
     podium: {
       display: 'flex',
@@ -106,7 +105,7 @@ const LeaderboardPage = () => {
       position: 'relative',
     },
     avatar: {
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -121,7 +120,7 @@ const LeaderboardPage = () => {
       transform: 'translateX(-50%)',
       width: 22,
       height: 22,
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -129,19 +128,19 @@ const LeaderboardPage = () => {
       fontSize: 11,
       fontWeight: 800,
       color: '#fff',
-      border: '2px solid var(--surface)',
+      border: 'none',
     },
     podiumName: {
       fontFamily: 'var(--font-headline)',
       fontSize: 13,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       textAlign: 'center',
     },
     podiumPts: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     list: {
       display: 'flex',
@@ -153,8 +152,8 @@ const LeaderboardPage = () => {
       display: 'flex',
       alignItems: 'center',
       gap: 12,
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '12px 16px',
       transition: 'background 0.15s',
       cursor: 'default',
@@ -163,7 +162,7 @@ const LeaderboardPage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 14,
       fontWeight: 700,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       width: 24,
       textAlign: 'center',
       flexShrink: 0,
@@ -171,15 +170,15 @@ const LeaderboardPage = () => {
     rowAvatar: {
       width: 40,
       height: 40,
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: 'var(--surface-container-high)',
+      borderRadius: '9999px',
+      backgroundColor: '#2A2A2A',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       fontFamily: 'var(--font-headline)',
       fontSize: 13,
       fontWeight: 700,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       flexShrink: 0,
     },
     rowName: {
@@ -187,12 +186,12 @@ const LeaderboardPage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 14,
       fontWeight: 600,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     rowPts: {
       fontFamily: 'var(--font-body)',
       fontSize: 13,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       marginRight: 8,
     },
     sticky: {
@@ -202,33 +201,35 @@ const LeaderboardPage = () => {
       transform: 'translateX(-50%)',
       width: 'calc(100% - 48px)',
       maxWidth: 552,
-      backgroundColor: 'var(--primary-fixed)',
-      borderRadius: 'var(--radius-lg)',
+      backgroundColor: 'rgba(57,57,57,0.6)',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
+      borderRadius: '1.5rem',
       padding: '16px 20px',
       display: 'flex',
       alignItems: 'center',
       gap: 14,
-      boxShadow: 'var(--editorial-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
       zIndex: 10,
     },
     stickyRank: {
       fontFamily: 'var(--font-headline)',
       fontSize: 20,
       fontWeight: 800,
-      color: 'var(--on-primary-container)',
+      color: '#FFB59E',
     },
     stickyAvatar: {
       width: 44,
       height: 44,
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary-gradient)',
+      borderRadius: '9999px',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       fontFamily: 'var(--font-headline)',
       fontSize: 15,
       fontWeight: 700,
-      color: '#fff',
+      color: '#3A0B00',
       flexShrink: 0,
     },
     stickyInfo: {
@@ -238,12 +239,12 @@ const LeaderboardPage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 15,
       fontWeight: 700,
-      color: 'var(--on-primary-container)',
+      color: '#FDF9F3',
     },
     stickyTrend: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: 'var(--tertiary)',
+      color: '#117500',
       display: 'flex',
       alignItems: 'center',
       gap: 4,
@@ -253,7 +254,7 @@ const LeaderboardPage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 16,
       fontWeight: 700,
-      color: 'var(--on-primary-container)',
+      color: '#FFB59E',
     },
   };
 
@@ -292,7 +293,7 @@ const LeaderboardPage = () => {
                   height: size,
                   fontSize,
                   backgroundColor: rankColors[p.rank],
-                  boxShadow: isFirst ? '0 8px 24px rgba(245,158,11,0.3)' : 'none',
+                  boxShadow: isFirst ? '0 8px 24px rgba(255,213,79,0.3)' : 'none',
                 }}>
                   {p.avatar}
                 </div>
@@ -328,7 +329,7 @@ const LeaderboardPage = () => {
         <div style={s.stickyInfo}>
           <div style={s.stickyName}>Ban (Doanh)</div>
           <div style={s.stickyTrend}>
-            <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#16a34a' }}>trending_up</span>
+            <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#117500' }}>trending_up</span>
             Tang 5 bac so voi tuan truoc
           </div>
         </div>
