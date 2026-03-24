@@ -118,7 +118,22 @@ const SecretTableSelectionPage = lazy(() => import('./pages/User/SecretTableSele
 const SecretTableBookingPage = lazy(() => import('./pages/User/SecretTableBookingPage'));
 const EliteLandingPage = lazy(() => import('./pages/User/EliteLandingPage'));
 
+// Phase 10 - Final 13 pages (88/88 MASTER coverage)
+const PalateEvolutionPage = lazy(() => import('./pages/User/PalateEvolutionPage'));
+const TasteTwinPage = lazy(() => import('./pages/User/TasteTwinPage'));
+const TasteMatchLivePage = lazy(() => import('./pages/User/TasteMatchLivePage'));
+const GroupSynergyPage = lazy(() => import('./pages/User/GroupSynergyPage'));
+const SecretTableDesktopPage = lazy(() => import('./pages/User/SecretTableDesktopPage'));
+const NotificationsDesktopPage = lazy(() => import('./pages/User/NotificationsDesktopPage'));
+const SearchResultsPage = lazy(() => import('./pages/User/SearchResultsPage'));
+const ReviewDesktopPage = lazy(() => import('./pages/User/ReviewDesktopPage'));
+const EmptyStatesPage = lazy(() => import('./pages/User/EmptyStatesPage'));
+const MomentDetailPage = lazy(() => import('./pages/User/MomentDetailPage'));
+const EliteUpgradeSuccessPage = lazy(() => import('./pages/User/EliteUpgradeSuccessPage'));
+
 // Partner portal
+const RestaurantManagerMobilePage = lazy(() => import('./pages/Partner/RestaurantManagerMobilePage'));
+const B2BMenuMobilePage = lazy(() => import('./pages/Partner/B2BMenuMobilePage'));
 const PartnerDashboard = lazy(() => import('./pages/Partner/PartnerDashboard'));
 const ManageEvents = lazy(() => import('./pages/Partner/ManageEvents'));
 const ManageMenu = lazy(() => import('./pages/Partner/ManageMenu'));
@@ -242,6 +257,17 @@ function App() {
               <Route path="secret-tables" element={<SecretTableSelectionPage />} />
               <Route path="secret-table-booking/:id" element={<SecretTableBookingPage />} />
               <Route path="elite-landing" element={<EliteLandingPage />} />
+              <Route path="palate-evolution" element={<PalateEvolutionPage />} />
+              <Route path="taste-twin" element={<TasteTwinPage />} />
+              <Route path="taste-match-live" element={<TasteMatchLivePage />} />
+              <Route path="group-synergy" element={<GroupSynergyPage />} />
+              <Route path="secret-tables-desktop" element={<SecretTableDesktopPage />} />
+              <Route path="notifications-desktop" element={<NotificationsDesktopPage />} />
+              <Route path="search-results" element={<SearchResultsPage />} />
+              <Route path="review-desktop" element={<ReviewDesktopPage />} />
+              <Route path="empty-states" element={<EmptyStatesPage />} />
+              <Route path="moment/:id" element={<MomentDetailPage />} />
+              <Route path="elite-upgrade-success" element={<EliteUpgradeSuccessPage />} />
             </Route>
 
             {/* Admin */}
@@ -271,6 +297,8 @@ function App() {
               <Route path="promotions" element={<PromotionManager />} />
               <Route path="guests" element={<GuestManager />} />
               <Route path="revenue" element={<RevenueReport />} />
+              <Route path="restaurant-manager" element={<RestaurantManagerMobilePage />} />
+              <Route path="b2b-menu" element={<B2BMenuMobilePage />} />
             </Route>
 
             <Route path="*" element={<NotFound />} />
