@@ -83,9 +83,9 @@ const DatePlannerPage = () => {
   const s = {
     page: {
       minHeight: '100vh',
-      background: 'var(--surface)',
+      background: '#131313',
       fontFamily: 'var(--font-body)',
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     header: {
       padding: '16px 20px',
@@ -94,10 +94,10 @@ const DatePlannerPage = () => {
       gap: 12,
     },
     backBtn: {
-      background: 'var(--surface-container-low)',
+      background: '#1C1B1B',
       border: 'none',
-      color: 'var(--on-surface)',
-      borderRadius: 'var(--radius-full)',
+      color: '#FDF9F3',
+      borderRadius: '9999px',
       width: 40,
       height: 40,
       display: 'flex',
@@ -116,7 +116,7 @@ const DatePlannerPage = () => {
     },
     heroIcon: {
       fontSize: 36,
-      color: 'var(--primary)',
+      color: '#FFB59E',
     },
     heroTitle: {
       fontFamily: 'var(--font-headline)',
@@ -125,7 +125,7 @@ const DatePlannerPage = () => {
     },
     heroSub: {
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     progressBar: {
       display: 'flex',
@@ -136,7 +136,7 @@ const DatePlannerPage = () => {
       flex: 1,
       height: 4,
       borderRadius: 2,
-      background: done ? 'var(--primary)' : active ? 'var(--primary-container)' : 'var(--outline-variant)',
+      background: done ? '#FFB59E' : active ? '#FF571A' : '#353535',
       transition: 'background 0.3s',
     }),
     stepLabel: {
@@ -144,7 +144,7 @@ const DatePlannerPage = () => {
       justifyContent: 'space-between',
       padding: '0 20px 8px',
       fontSize: 12,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     section: {
       padding: '0 20px 24px',
@@ -162,8 +162,8 @@ const DatePlannerPage = () => {
       width: 24,
       height: 24,
       borderRadius: '50%',
-      background: 'var(--primary)',
-      color: 'var(--on-primary)',
+      background: '#FFB59E',
+      color: '#3A0B00',
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -176,33 +176,32 @@ const DatePlannerPage = () => {
       gap: 12,
     },
     typeCard: (active) => ({
-      background: active ? 'var(--primary-fixed)' : 'var(--surface-container-lowest)',
-      border: active ? '2px solid var(--primary)' : '1px solid var(--outline-variant)',
-      borderRadius: 'var(--radius)',
+      background: active ? '#FF571A' : '#1C1B1B',
+      border: 'none',
+      borderRadius: '1.5rem',
       padding: 20,
       textAlign: 'center',
       cursor: 'pointer',
-      boxShadow: active ? 'var(--card-shadow)' : 'none',
       transition: 'all 0.2s',
     }),
     typeIcon: (active) => ({
       fontSize: 32,
-      color: active ? 'var(--primary)' : 'var(--on-surface-variant)',
+      color: active ? '#3A0B00' : '#E6BEB2',
       marginBottom: 8,
     }),
     typeLabel: (active) => ({
       fontWeight: active ? 700 : 500,
       fontSize: 14,
-      color: active ? 'var(--primary)' : 'var(--on-surface)',
+      color: active ? '#3A0B00' : '#FDF9F3',
     }),
     dateInput: {
       width: '100%',
       padding: '12px 16px',
-      borderRadius: 'var(--radius)',
-      border: '1px solid var(--outline-variant)',
-      background: 'var(--surface-container-lowest)',
+      borderRadius: '1.5rem',
+      border: 'none',
+      background: '#1C1B1B',
       fontSize: 14,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       fontFamily: 'var(--font-body)',
       outline: 'none',
       marginBottom: 12,
@@ -217,15 +216,16 @@ const DatePlannerPage = () => {
       alignItems: 'center',
       gap: 8,
       padding: '10px 14px',
-      borderRadius: 'var(--radius)',
-      border: active ? '2px solid var(--primary)' : '1px solid var(--outline-variant)',
-      background: active ? 'var(--primary-fixed)' : 'var(--surface-container-lowest)',
+      borderRadius: '1.5rem',
+      border: 'none',
+      background: active ? '#FF571A' : '#1C1B1B',
       cursor: 'pointer',
       fontSize: 13,
+      color: active ? '#3A0B00' : '#FDF9F3',
     }),
     timeChipIcon: (active) => ({
       fontSize: 20,
-      color: active ? 'var(--primary)' : 'var(--on-surface-variant)',
+      color: active ? '#3A0B00' : '#E6BEB2',
     }),
     venueCards: {
       display: 'flex',
@@ -237,21 +237,22 @@ const DatePlannerPage = () => {
       alignItems: 'center',
       gap: 12,
       padding: 14,
-      borderRadius: 'var(--radius)',
-      border: active ? '2px solid var(--primary)' : '1px solid var(--outline-variant)',
-      background: active ? 'var(--primary-fixed)' : 'var(--surface-container-lowest)',
+      borderRadius: '1.5rem',
+      border: 'none',
+      background: active ? '#FF571A' : '#1C1B1B',
       cursor: 'pointer',
       transition: 'all 0.2s',
+      color: active ? '#3A0B00' : '#FDF9F3',
     }),
     venueIcon: {
       width: 40,
       height: 40,
-      borderRadius: 'var(--radius)',
-      background: 'var(--surface-container-high)',
+      borderRadius: '1.5rem',
+      background: '#2A2A2A',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     venueName: {
       fontWeight: 600,
@@ -259,7 +260,7 @@ const DatePlannerPage = () => {
     },
     venueAddr: {
       fontSize: 12,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     venueRating: {
       marginLeft: 'auto',
@@ -268,16 +269,16 @@ const DatePlannerPage = () => {
       gap: 2,
       fontSize: 13,
       fontWeight: 600,
-      color: '#d4a853',
+      color: '#FFD54F',
     },
     customInput: {
       width: '100%',
       padding: '10px 14px',
-      borderRadius: 'var(--radius)',
-      border: '1px solid var(--outline-variant)',
-      background: 'var(--surface-container-lowest)',
+      borderRadius: '1.5rem',
+      border: 'none',
+      background: '#1C1B1B',
       fontSize: 13,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       fontFamily: 'var(--font-body)',
       outline: 'none',
       marginTop: 8,
@@ -292,7 +293,7 @@ const DatePlannerPage = () => {
       position: 'relative',
       height: 6,
       borderRadius: 3,
-      background: 'var(--outline-variant)',
+      background: '#353535',
       marginBottom: 6,
     },
     budgetFill: {
@@ -302,7 +303,7 @@ const DatePlannerPage = () => {
       height: '100%',
       width: `${(budget / 4) * 100}%`,
       borderRadius: 3,
-      background: 'var(--primary-gradient)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
     },
     budgetSlider: {
       position: 'absolute',
@@ -318,16 +319,16 @@ const DatePlannerPage = () => {
       display: 'flex',
       justifyContent: 'space-between',
       fontSize: 11,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     textarea: {
       width: '100%',
       padding: '12px 14px',
-      borderRadius: 'var(--radius)',
-      border: '1px solid var(--outline-variant)',
-      background: 'var(--surface-container-lowest)',
+      borderRadius: '1.5rem',
+      border: 'none',
+      background: '#1C1B1B',
       fontSize: 13,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       fontFamily: 'var(--font-body)',
       outline: 'none',
       resize: 'vertical',
@@ -350,7 +351,7 @@ const DatePlannerPage = () => {
       width: 44,
       height: 24,
       borderRadius: 12,
-      background: on ? 'var(--primary)' : 'var(--outline-variant)',
+      background: on ? '#FFB59E' : '#353535',
       position: 'relative',
       cursor: 'pointer',
       transition: 'background 0.2s',
@@ -364,15 +365,14 @@ const DatePlannerPage = () => {
       width: 20,
       height: 20,
       borderRadius: '50%',
-      background: '#fff',
+      background: '#131313',
       transition: 'left 0.2s',
-      boxShadow: '0 1px 3px rgba(0,0,0,0.2)',
+      boxShadow: '0 1px 3px rgba(0,0,0,0.4)',
     }),
     summaryCard: {
-      background: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius-lg)',
+      background: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: 24,
-      boxShadow: 'var(--editorial-shadow)',
     },
     summaryTitle: {
       fontFamily: 'var(--font-headline)',
@@ -388,11 +388,11 @@ const DatePlannerPage = () => {
       alignItems: 'center',
       gap: 10,
       padding: '8px 0',
-      borderBottom: '1px solid var(--outline-variant)',
+      borderBottom: '1px solid #2A2A2A',
       fontSize: 13,
     },
     summaryLabel: {
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       width: 100,
       flexShrink: 0,
     },
@@ -402,10 +402,10 @@ const DatePlannerPage = () => {
     ctaBtn: {
       width: '100%',
       padding: '14px 0',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       border: 'none',
-      background: 'var(--primary-gradient)',
-      color: 'var(--on-primary)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
       fontFamily: 'var(--font-headline)',
       fontSize: 16,
       fontWeight: 700,
@@ -424,10 +424,10 @@ const DatePlannerPage = () => {
     navBtn: (primary) => ({
       flex: 1,
       padding: '12px 0',
-      borderRadius: 'var(--radius-full)',
-      border: primary ? 'none' : '1px solid var(--outline-variant)',
-      background: primary ? 'var(--primary)' : 'transparent',
-      color: primary ? 'var(--on-primary)' : 'var(--on-surface)',
+      borderRadius: '9999px',
+      border: 'none',
+      background: primary ? '#FFB59E' : '#2A2A2A',
+      color: primary ? '#3A0B00' : '#FDF9F3',
       fontWeight: 600,
       fontSize: 14,
       cursor: 'pointer',
@@ -442,8 +442,8 @@ const DatePlannerPage = () => {
       gap: 10,
     },
     tipCard: {
-      background: 'var(--primary-fixed)',
-      borderRadius: 'var(--radius)',
+      background: '#2A2A2A',
+      borderRadius: '1.5rem',
       padding: 16,
       display: 'flex',
       gap: 12,
@@ -451,19 +451,19 @@ const DatePlannerPage = () => {
     },
     tipIcon: {
       fontSize: 22,
-      color: 'var(--primary)',
+      color: '#FFB59E',
       flexShrink: 0,
     },
     tipTitle: {
       fontWeight: 700,
       fontSize: 13,
       marginBottom: 4,
-      color: 'var(--on-primary-container)',
+      color: '#FDF9F3',
     },
     tipText: {
       fontSize: 12,
       lineHeight: 1.5,
-      color: 'var(--on-primary-container)',
+      color: '#E6BEB2',
     },
   };
 
@@ -530,7 +530,7 @@ const DatePlannerPage = () => {
                 <span className="material-symbols-outlined" style={s.timeChipIcon(timeSlot === ts.id)}>{ts.icon}</span>
                 <div>
                   <div style={{ fontWeight: 600 }}>{ts.label}</div>
-                  <div style={{ fontSize: 11, color: 'var(--on-surface-variant)' }}>{ts.time}</div>
+                  <div style={{ fontSize: 11, color: '#E6BEB2' }}>{ts.time}</div>
                 </div>
               </div>
             ))}
@@ -556,7 +556,7 @@ const DatePlannerPage = () => {
                   <div style={s.venueAddr}>{v.address}</div>
                 </div>
                 <div style={s.venueRating}>
-                  <span className="material-symbols-outlined filled" style={{ fontSize: 16, color: '#d4a853' }}>star</span>
+                  <span className="material-symbols-outlined filled" style={{ fontSize: 16, color: '#FFD54F' }}>star</span>
                   {v.rating}
                 </div>
               </div>
@@ -621,7 +621,7 @@ const DatePlannerPage = () => {
 
           <div style={s.toggleRow}>
             <div style={s.toggleLabel}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, color: 'var(--primary)' }}>notifications_active</span>
+              <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E' }}>notifications_active</span>
               Them nhac nho
             </div>
             <button style={s.toggleSwitch(reminder)} onClick={() => setReminder(!reminder)}>
@@ -632,7 +632,7 @@ const DatePlannerPage = () => {
           {/* Summary */}
           <div style={{ ...s.summaryCard, marginTop: 20 }}>
             <div style={s.summaryTitle}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, color: 'var(--primary)' }}>summarize</span>
+              <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E' }}>summarize</span>
               Tong ket ke hoach
             </div>
             <div style={s.summaryRow}>
@@ -686,7 +686,7 @@ const DatePlannerPage = () => {
       {/* Tips */}
       <div style={s.section}>
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20, color: 'var(--primary)' }}>tips_and_updates</span>
+          <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E' }}>tips_and_updates</span>
           Meo hay
         </div>
         <div style={s.tipCards}>

@@ -51,7 +51,7 @@ const NotificationSettingsPage = () => {
   const s = {
     page: {
       minHeight: '100vh',
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#131313',
       fontFamily: 'var(--font-body)',
       padding: '0 0 40px',
       overflowY: 'auto',
@@ -65,20 +65,20 @@ const NotificationSettingsPage = () => {
     backBtn: {
       background: 'none',
       border: 'none',
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
     },
     headerIcon: {
       fontSize: '28px',
-      color: 'var(--primary)',
+      color: '#FFB59E',
     },
     headerTitle: {
       fontFamily: 'var(--font-headline)',
       fontSize: '22px',
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     section: {
       margin: '0 20px 24px',
@@ -87,7 +87,7 @@ const NotificationSettingsPage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: '15px',
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: '12px',
       display: 'flex',
       alignItems: 'center',
@@ -95,38 +95,34 @@ const NotificationSettingsPage = () => {
     },
     sectionIcon: {
       fontSize: '20px',
-      color: 'var(--primary)',
+      color: '#FFB59E',
     },
     card: {
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
-      boxShadow: 'var(--card-shadow)',
+      backgroundColor: '#1C1B1B',
+      borderRadius: '1.5rem',
       overflow: 'hidden',
     },
     row: {
       display: 'flex',
       alignItems: 'center',
       padding: '14px 16px',
-      borderBottom: '1px solid var(--outline-variant)',
     },
-    rowLast: {
-      borderBottom: 'none',
-    },
+    rowLast: {},
     rowIcon: {
       fontSize: '22px',
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       marginRight: '12px',
     },
     rowLabel: {
       flex: 1,
       fontSize: '15px',
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     toggle: (active) => ({
       width: '48px',
       height: '28px',
       borderRadius: '14px',
-      backgroundColor: active ? 'var(--primary)' : 'var(--surface-container-high)',
+      backgroundColor: active ? '#FFB59E' : '#2A2A2A',
       position: 'relative',
       cursor: 'pointer',
       transition: 'background-color 0.2s ease',
@@ -138,7 +134,7 @@ const NotificationSettingsPage = () => {
       width: '22px',
       height: '22px',
       borderRadius: '50%',
-      backgroundColor: active ? 'var(--on-primary)' : 'var(--on-surface-variant)',
+      backgroundColor: active ? '#3A0B00' : '#E6BEB2',
       position: 'absolute',
       top: '3px',
       left: active ? '23px' : '3px',
@@ -149,7 +145,6 @@ const NotificationSettingsPage = () => {
       alignItems: 'center',
       justifyContent: 'space-between',
       padding: '14px 16px',
-      borderBottom: '1px solid var(--outline-variant)',
     },
     quietLabel: {
       display: 'flex',
@@ -158,16 +153,16 @@ const NotificationSettingsPage = () => {
     },
     quietTime: {
       fontSize: '12px',
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     saveBtn: {
       margin: '32px 20px 0',
       width: 'calc(100% - 40px)',
       padding: '16px',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       border: 'none',
-      background: 'var(--primary-gradient)',
-      color: 'var(--on-primary)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
       fontSize: '16px',
       fontWeight: 700,
       fontFamily: 'var(--font-headline)',
@@ -178,7 +173,7 @@ const NotificationSettingsPage = () => {
       textAlign: 'center',
       marginTop: '12px',
       fontSize: '14px',
-      color: '#2e7d32',
+      color: '#117500',
       fontWeight: 600,
     },
   };
@@ -247,7 +242,7 @@ const NotificationSettingsPage = () => {
             </div>
             <Toggle active={quietHours} onToggle={() => setQuietHours(!quietHours)} />
           </div>
-          <div style={{ ...s.quietRow, borderBottom: 'none' }}>
+          <div style={s.quietRow}>
             <span style={s.rowLabel}>Ngay nghi</span>
             <Toggle active={dayOff} onToggle={() => setDayOff(!dayOff)} />
           </div>
