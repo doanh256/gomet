@@ -1,26 +1,34 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAppContext } from '../../AppContext';
 import { api } from '../../api/client';
-import PremiumModal from '../../components/User/PremiumModal';
-import ProfileDetailModal from '../../components/User/ProfileDetailModal';
 import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
   const { currentUser } = useAppContext();
-  const [isPremiumModalOpen, setIsPremiumModalOpen] = useState(false);
-  const [selectedProfile, setSelectedProfile] = useState(null);
-  const [trendingPosts, setTrendingPosts] = useState([]);
-  const [recommendedUsers, setRecommendedUsers] = useState([]);
   const navigate = useNavigate();
-  const trendingScrollRef = useRef(null);
+
+  const [posts, setPosts] = useState([]);
+  const [profiles, setProfiles] = useState([]);
+  const [venues, setVenues] = useState([]);
+  const [events, setEvents] = useState([]);
 
   useEffect(() => {
-    api.get('/date-posts?status=open&limit=8').then(data => {
-      if (data?.posts) setTrendingPosts(data.posts);
+    api.get('/date-posts?status=open&limit=12').then(data => {
+      if (data?.posts) setPosts(data.posts);
     }).catch(console.error);
 
-    api.get('/users/profiles?limit=6').then(data => {
-      if (data?.profiles) setRecommendedUsers(data.profiles);
+    api.get('/users/profiles?limit=10').then(data => {
+      if (data?.profiles) setProfiles(data.profiles);
+    }).catch(console.error);
+
+    api.get('/venues?limit=10').then(data => {
+      if (data?.venues) setVenues(data.venues);
+      else if (Array.isArray(data)) setVenues(data);
+    }).catch(console.error);
+
+    api.get('/events?limit=6').then(data => {
+      if (data?.events) setEvents(data.events);
+      else if (Array.isArray(data)) setEvents(data);
     }).catch(console.error);
   }, []);
 
@@ -34,29 +42,12 @@ const HomePage = () => {
   };
 
   const formatDate = (dateStr) => {
-    if (!dateStr) return 'Sap toi';
+    if (!dateStr) return '';
     try {
       const d = new Date(dateStr);
-      return d.toLocaleDateString('vi-VN', { weekday: 'short', day: 'numeric', month: 'short' });
-    } catch {
-      return dateStr;
-    }
+      return d.toLocaleDateString('vi-VN', { day: 'numeric', month: 'short' });
+    } catch { return dateStr; }
   };
-
-  const curatedSpaces = [
-    { id: 1, name: 'The Coffee House', location: 'Quan 1, TP.HCM', icon: 'local_cafe' },
-    { id: 2, name: 'Maison Marou', location: 'Quan 3, TP.HCM', icon: 'cake' },
-    { id: 3, name: "L'Usine", location: 'Quan 1, TP.HCM', icon: 'restaurant' },
-    { id: 4, name: 'The Workshop', location: 'Quan 1, TP.HCM', icon: 'coffee' },
-    { id: 5, name: 'Okkio Caffe', location: 'Quan 3, TP.HCM', icon: 'brunch_dining' },
-    { id: 6, name: 'Shin Coffee', location: 'Quan 1, TP.HCM', icon: 'emoji_food_beverage' },
-  ];
-
-  const pulseStories = [
-    { id: 1, user: 'Linh', text: 'Vua tim duoc mot quan ca phe tuyet voi o Quan 3!', time: '2 gio truoc' },
-    { id: 2, user: 'Minh', text: 'Ai muon di xem phim toi nay khong?', time: '4 gio truoc' },
-    { id: 3, user: 'Trang', text: 'Date dau tien thanh cong nho GOMET!', time: '6 gio truoc' },
-  ];
 
   // --- Styles ---
   const s = {
@@ -65,80 +56,153 @@ const HomePage = () => {
       backgroundColor: 'var(--surface)',
       overflowY: 'auto',
       minHeight: '100vh',
+      fontFamily: 'var(--font-body)',
     },
     inner: {
-      maxWidth: '1280px',
+      maxWidth: '480px',
       margin: '0 auto',
-      padding: '0 24px 80px',
-    },
-    desktopLayout: {
-      display: 'flex',
-      gap: '40px',
-      alignItems: 'flex-start',
-    },
-    mainCol: {
-      flex: 1,
-      minWidth: 0,
-    },
-    sidebarCol: {
-      width: '320px',
-      flexShrink: 0,
-      position: 'sticky',
-      top: '24px',
+      padding: '0 16px 100px',
     },
 
-    // --- Hero Header ---
-    heroSection: {
-      padding: '56px 0 40px',
+    // Welcome header
+    welcomeSection: {
+      padding: '48px 0 8px',
     },
-    heroLabel: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '11px',
-      fontWeight: 600,
-      color: 'var(--primary)',
-      textTransform: 'uppercase',
-      letterSpacing: '0.15em',
-      marginBottom: '12px',
-    },
-    heroHeading: {
+    welcomeText: {
       fontFamily: 'var(--font-headline)',
-      fontSize: 'clamp(32px, 5vw, 56px)',
+      fontSize: '28px',
       fontWeight: 800,
       color: 'var(--on-surface)',
-      lineHeight: 1.05,
-      letterSpacing: '-0.03em',
       margin: 0,
+      lineHeight: 1.2,
     },
-    heroHeadingAccent: {
+    welcomeAccent: {
       color: 'var(--primary)',
     },
-    heroSub: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '16px',
-      color: 'var(--on-surface-variant)',
-      marginTop: '16px',
-      lineHeight: 1.6,
-      maxWidth: '520px',
-    },
 
-    // --- Section Headers ---
-    sectionHeader: {
+    // Vang Gold tier card
+    vangCard: {
+      marginTop: '16px',
+      background: 'linear-gradient(135deg, #FFD54F 0%, #FFC107 100%)',
+      borderRadius: '1.5rem',
+      padding: '20px 24px',
       display: 'flex',
-      alignItems: 'baseline',
+      alignItems: 'center',
       justifyContent: 'space-between',
-      marginBottom: '24px',
-      marginTop: '48px',
+      boxShadow: '0px 8px 24px rgba(0,0,0,0.15)',
     },
-    sectionTitle: {
+    vangLeft: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '12px',
+    },
+    vangIconWrap: {
+      width: '44px',
+      height: '44px',
+      borderRadius: '50%',
+      background: 'rgba(0,0,0,0.12)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    vangLabel: {
+      fontSize: '12px',
+      fontWeight: 600,
+      color: 'rgba(0,0,0,0.6)',
+      margin: 0,
+    },
+    vangPoints: {
       fontFamily: 'var(--font-headline)',
       fontSize: '22px',
+      fontWeight: 800,
+      color: '#3A0B00',
+      margin: '2px 0 0',
+    },
+    vangTier: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '13px',
+      fontWeight: 700,
+      color: '#3A0B00',
+      background: 'rgba(0,0,0,0.1)',
+      padding: '6px 16px',
+      borderRadius: '9999px',
+    },
+
+    // Challenge card
+    challengeOuter: {
+      marginTop: '24px',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      borderRadius: '1.5rem',
+      padding: '2px',
+    },
+    challengeInner: {
+      background: 'var(--surface-container-low)',
+      borderRadius: 'calc(1.5rem - 2px)',
+      padding: '20px',
+    },
+    challengeHeader: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: '12px',
+    },
+    challengeTitle: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '16px',
       fontWeight: 700,
       color: 'var(--on-surface)',
       margin: 0,
-      letterSpacing: '-0.01em',
+    },
+    challengeReward: {
+      fontSize: '12px',
+      fontWeight: 700,
+      color: '#FFD54F',
+      background: 'rgba(255,213,79,0.15)',
+      padding: '4px 12px',
+      borderRadius: '9999px',
+    },
+    challengeName: {
+      fontSize: '14px',
+      color: 'var(--on-surface-variant)',
+      margin: '0 0 12px',
+      lineHeight: 1.5,
+    },
+    progressBarOuter: {
+      width: '100%',
+      height: '6px',
+      borderRadius: '3px',
+      background: 'var(--surface-container-high)',
+    },
+    progressBarInner: {
+      height: '6px',
+      borderRadius: '3px',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      width: '65%',
+      transition: 'width 0.5s ease',
+    },
+    progressText: {
+      fontSize: '12px',
+      color: 'var(--on-surface-variant)',
+      marginTop: '6px',
+      textAlign: 'right',
+    },
+
+    // Section header
+    sectionHeader: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginTop: '36px',
+      marginBottom: '16px',
+    },
+    sectionTitle: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '18px',
+      fontWeight: 700,
+      color: 'var(--on-surface)',
+      margin: 0,
     },
     sectionLink: {
-      fontFamily: 'var(--font-body)',
       fontSize: '13px',
       fontWeight: 600,
       color: 'var(--primary)',
@@ -150,425 +214,240 @@ const HomePage = () => {
       gap: '4px',
     },
 
-    // --- Trending Tonight Horizontal Scroll ---
-    trendingScroll: {
+    // Horizontal scroll
+    hScroll: {
       display: 'flex',
-      gap: '20px',
+      gap: '12px',
       overflowX: 'auto',
-      paddingBottom: '12px',
-      scrollbarWidth: 'none',
-      msOverflowStyle: 'none',
+      paddingBottom: '8px',
       scrollSnapType: 'x mandatory',
-      WebkitOverflowScrolling: 'touch',
+      msOverflowStyle: 'none',
+      scrollbarWidth: 'none',
     },
-    trendingCard: {
-      minWidth: '320px',
-      maxWidth: '380px',
-      height: '450px',
-      borderRadius: 'var(--radius-lg)',
+
+    // Venue cards (Kham Pha Quanh Day)
+    venueCard: {
+      width: '200px',
+      height: '200px',
+      flexShrink: 0,
+      borderRadius: '1.5rem',
       overflow: 'hidden',
       position: 'relative',
-      flexShrink: 0,
-      cursor: 'pointer',
       scrollSnapAlign: 'start',
-      backgroundColor: 'var(--surface-container-high)',
+      cursor: 'pointer',
     },
-    trendingImg: {
+    venueImg: {
       width: '100%',
       height: '100%',
       objectFit: 'cover',
       display: 'block',
     },
-    trendingImgPlaceholder: {
+    venueImgPlaceholder: {
       width: '100%',
       height: '100%',
-      background: 'linear-gradient(135deg, var(--primary) 0%, var(--tertiary) 100%)',
+      background: 'linear-gradient(135deg, #FFB59E 0%, #FF571A 100%)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
     },
-    trendingGradient: {
+    venueOverlay: {
       position: 'absolute',
       bottom: 0,
       left: 0,
       right: 0,
-      height: '60%',
-      background: 'linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, transparent 100%)',
-      pointerEvents: 'none',
+      padding: '16px',
+      background: 'linear-gradient(to top, rgba(19,19,19,0.9) 0%, transparent 100%)',
     },
-    trendingContent: {
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      padding: '24px',
-      zIndex: 2,
+    venueGlass: {
+      background: 'rgba(57,57,57,0.6)',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
+      borderRadius: '12px',
+      padding: '10px 12px',
     },
-    trendingCategory: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '11px',
-      fontWeight: 600,
-      color: 'var(--primary-container)',
-      textTransform: 'uppercase',
-      letterSpacing: '0.1em',
-      marginBottom: '8px',
-    },
-    trendingTitle: {
+    venueName: {
       fontFamily: 'var(--font-headline)',
-      fontSize: '20px',
-      fontWeight: 700,
-      color: '#ffffff',
-      lineHeight: 1.3,
-      margin: '0 0 12px 0',
-    },
-    trendingMeta: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '6px',
-      fontFamily: 'var(--font-body)',
       fontSize: '13px',
-      color: 'rgba(255,255,255,0.8)',
-      marginBottom: '16px',
-    },
-    trendingFooter: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-    },
-    avatarStack: {
-      display: 'flex',
-      alignItems: 'center',
-    },
-    avatarStackItem: (i) => ({
-      width: '30px',
-      height: '30px',
-      borderRadius: 'var(--radius-full)',
-      border: '2px solid rgba(255,255,255,0.9)',
-      marginLeft: i > 0 ? '-10px' : '0',
-      backgroundColor: ['var(--primary)', 'var(--tertiary)', 'var(--primary-container)'][i % 3],
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontSize: '11px',
-      color: 'white',
-      fontWeight: 600,
-      overflow: 'hidden',
-    }),
-    avatarStackCount: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '12px',
-      color: 'rgba(255,255,255,0.7)',
-      marginLeft: '8px',
-    },
-    getInvitesBtn: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '12px',
-      fontWeight: 600,
-      color: '#ffffff',
-      backgroundColor: 'var(--primary)',
-      border: 'none',
-      borderRadius: 'var(--radius-full)',
-      padding: '8px 18px',
-      cursor: 'pointer',
-      transition: 'background-color 0.2s ease, transform 0.15s ease',
-    },
-
-    // --- Curated Spaces Grid ---
-    spacesGrid: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-      gap: '16px',
-    },
-    spaceCard: {
-      borderRadius: 'var(--radius)',
-      overflow: 'hidden',
-      backgroundColor: 'var(--surface-container-lowest)',
-      boxShadow: 'var(--card-shadow)',
-      cursor: 'pointer',
-      transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-    },
-    spaceImgWrap: {
-      width: '100%',
-      height: '140px',
-      background: 'linear-gradient(135deg, var(--surface-container-high) 0%, var(--outline-variant) 100%)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      position: 'relative',
-    },
-    spaceInfo: {
-      padding: '14px 16px',
-    },
-    spaceName: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: '14px',
       fontWeight: 700,
       color: 'var(--on-surface)',
       margin: 0,
     },
-    spaceLocation: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '12px',
+    venueMeta: {
+      fontSize: '11px',
       color: 'var(--on-surface-variant)',
-      marginTop: '4px',
+      marginTop: '2px',
       display: 'flex',
       alignItems: 'center',
-      gap: '3px',
-    },
-    spaceActions: {
-      display: 'flex',
-      gap: '8px',
-      padding: '0 16px 14px',
-    },
-    spaceActionBtn: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '11px',
-      fontWeight: 600,
-      color: 'var(--primary)',
-      backgroundColor: 'transparent',
-      border: '1px solid var(--outline-variant)',
-      borderRadius: 'var(--radius-full)',
-      padding: '5px 12px',
-      cursor: 'pointer',
-      transition: 'all 0.15s ease',
+      gap: '4px',
     },
 
-    // --- Who's Looking to Go Feed ---
-    feedList: {
-      display: 'flex',
-      flexDirection: 'column',
-      gap: '0',
-    },
-    feedItem: {
-      display: 'flex',
-      gap: '16px',
-      padding: '20px 0',
-      borderBottom: '1px solid var(--surface-container-high)',
-    },
-    feedAvatar: {
-      width: '52px',
-      height: '52px',
-      borderRadius: 'var(--radius-full)',
-      objectFit: 'cover',
+    // Profile suggestion cards (Goi Y Cho Ban)
+    profileCard: {
+      width: '140px',
       flexShrink: 0,
-      backgroundColor: 'var(--surface-container-high)',
+      scrollSnapAlign: 'start',
+      cursor: 'pointer',
+      textAlign: 'center',
     },
-    feedAvatarFallback: {
-      width: '52px',
-      height: '52px',
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary-gradient)',
+    profileAvatarWrap: {
+      width: '80px',
+      height: '80px',
+      borderRadius: '50%',
+      margin: '0 auto 10px',
+      overflow: 'hidden',
+      background: 'var(--surface-container-high)',
+    },
+    profileAvatar: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      display: 'block',
+    },
+    profileAvatarFallback: {
+      width: '100%',
+      height: '100%',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      color: 'white',
+      color: '#fff',
       fontFamily: 'var(--font-headline)',
-      fontSize: '20px',
+      fontSize: '28px',
+      fontWeight: 800,
+    },
+    profileName: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '14px',
       fontWeight: 700,
-      flexShrink: 0,
+      color: 'var(--on-surface)',
+      margin: '0 0 4px',
     },
-    feedBody: {
-      flex: 1,
-      minWidth: 0,
+    matchBadge: {
+      display: 'inline-block',
+      fontSize: '11px',
+      fontWeight: 700,
+      color: '#3A0B00',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      padding: '3px 10px',
+      borderRadius: '9999px',
     },
-    feedNameRow: {
-      display: 'flex',
-      alignItems: 'baseline',
+    profileTier: {
+      fontSize: '11px',
+      color: '#FFD54F',
+      marginTop: '4px',
+      fontWeight: 600,
+    },
+
+    // Moments grid
+    momentsGrid: {
+      display: 'grid',
+      gridTemplateColumns: 'repeat(4, 1fr)',
       gap: '8px',
-      marginBottom: '6px',
     },
-    feedName: {
+    momentCard: {
+      aspectRatio: '3/4',
+      borderRadius: '1rem',
+      overflow: 'hidden',
+      position: 'relative',
+      cursor: 'pointer',
+      background: 'var(--surface-container-high)',
+    },
+    momentImg: {
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      display: 'block',
+    },
+    momentPlaceholder: {
+      width: '100%',
+      height: '100%',
+      background: 'linear-gradient(135deg, var(--surface-container-high), var(--surface-container-highest))',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    momentOverlay: {
+      position: 'absolute',
+      bottom: 0,
+      left: 0,
+      right: 0,
+      padding: '8px',
+      background: 'linear-gradient(to top, rgba(19,19,19,0.85) 0%, transparent 100%)',
+    },
+    momentUser: {
+      fontSize: '10px',
+      fontWeight: 600,
+      color: '#fff',
+    },
+    momentHearts: {
+      fontSize: '10px',
+      color: 'rgba(255,255,255,0.7)',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '3px',
+      marginTop: '2px',
+    },
+
+    // Event cards
+    eventCard: {
+      width: '260px',
+      flexShrink: 0,
+      borderRadius: '1.5rem',
+      overflow: 'hidden',
+      background: 'var(--surface-container-low)',
+      boxShadow: '0px 8px 24px rgba(0,0,0,0.15)',
+      scrollSnapAlign: 'start',
+      cursor: 'pointer',
+    },
+    eventImgWrap: {
+      width: '100%',
+      height: '140px',
+      position: 'relative',
+      background: 'linear-gradient(135deg, var(--primary-container), var(--tertiary-container))',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    eventDateBadge: {
+      position: 'absolute',
+      top: '12px',
+      left: '12px',
+      background: 'var(--primary-container)',
+      color: '#fff',
+      borderRadius: '12px',
+      padding: '6px 12px',
+      fontFamily: 'var(--font-headline)',
+      fontSize: '12px',
+      fontWeight: 700,
+    },
+    eventInfo: {
+      padding: '16px',
+    },
+    eventTitle: {
       fontFamily: 'var(--font-headline)',
       fontSize: '15px',
       fontWeight: 700,
       color: 'var(--on-surface)',
+      margin: '0 0 6px',
+      lineHeight: 1.3,
     },
-    feedAge: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '13px',
-      color: 'var(--on-surface-variant)',
-    },
-    feedBio: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '14px',
-      color: 'var(--on-surface-variant)',
-      fontStyle: 'italic',
-      lineHeight: 1.5,
-      marginBottom: '10px',
-    },
-    feedTags: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: '6px',
-      marginBottom: '12px',
-    },
-    feedTag: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '11px',
-      fontWeight: 500,
-      color: 'var(--tertiary)',
-      backgroundColor: 'var(--surface-container-low)',
-      borderRadius: 'var(--radius-full)',
-      padding: '4px 10px',
-      border: '1px solid var(--outline-variant)',
-    },
-    feedActions: {
-      display: 'flex',
-      gap: '8px',
-    },
-    feedBtnOutline: {
-      fontFamily: 'var(--font-body)',
+    eventVenue: {
       fontSize: '12px',
-      fontWeight: 600,
-      color: 'var(--on-surface)',
-      backgroundColor: 'transparent',
-      border: '1.5px solid var(--surface-container-high)',
-      borderRadius: 'var(--radius-full)',
-      padding: '7px 16px',
-      cursor: 'pointer',
-      transition: 'all 0.15s ease',
-    },
-    feedBtnFilled: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '12px',
-      fontWeight: 600,
-      color: '#ffffff',
-      backgroundColor: 'var(--primary)',
-      border: '1.5px solid var(--primary)',
-      borderRadius: 'var(--radius-full)',
-      padding: '7px 16px',
-      cursor: 'pointer',
-      transition: 'all 0.15s ease',
-    },
-
-    // --- Pulse Sidebar ---
-    pulseCard: {
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius-lg)',
-      padding: '24px',
-      boxShadow: 'var(--card-shadow)',
-      marginBottom: '24px',
-    },
-    pulseTitle: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: '16px',
-      fontWeight: 700,
-      color: 'var(--on-surface)',
-      margin: '0 0 20px 0',
+      color: 'var(--on-surface-variant)',
       display: 'flex',
       alignItems: 'center',
-      gap: '8px',
-    },
-    pulseItem: {
-      display: 'flex',
-      gap: '12px',
-      padding: '12px 0',
-      borderBottom: '1px solid var(--surface-container-high)',
-    },
-    pulseDot: {
-      width: '36px',
-      height: '36px',
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary-gradient)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: 'white',
-      fontFamily: 'var(--font-headline)',
-      fontSize: '14px',
-      fontWeight: 700,
-      flexShrink: 0,
-    },
-    pulseText: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '13px',
-      color: 'var(--on-surface)',
-      lineHeight: 1.5,
-    },
-    pulseTime: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '11px',
-      color: 'var(--on-surface-variant)',
-      marginTop: '2px',
-    },
-
-    // --- Premium Upsell ---
-    premiumCard: {
-      background: 'linear-gradient(135deg, var(--primary) 0%, var(--tertiary) 100%)',
-      borderRadius: 'var(--radius-lg)',
-      padding: '32px 28px',
-      color: '#ffffff',
-      position: 'relative',
-      overflow: 'hidden',
-      cursor: 'pointer',
-      marginTop: '48px',
-      transition: 'transform 0.2s ease',
-    },
-    premiumBg: {
-      position: 'absolute',
-      top: '-30px',
-      right: '-30px',
-      width: '120px',
-      height: '120px',
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: 'rgba(255,255,255,0.08)',
-    },
-    premiumLabel: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '11px',
-      fontWeight: 600,
-      textTransform: 'uppercase',
-      letterSpacing: '0.12em',
-      color: 'rgba(255,255,255,0.7)',
+      gap: '4px',
       marginBottom: '8px',
     },
-    premiumTitle: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: '22px',
-      fontWeight: 800,
-      margin: '0 0 8px 0',
-      letterSpacing: '-0.02em',
-    },
-    premiumDesc: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '14px',
-      color: 'rgba(255,255,255,0.85)',
-      lineHeight: 1.5,
-      marginBottom: '20px',
-      maxWidth: '400px',
-    },
-    premiumBtn: {
-      fontFamily: 'var(--font-body)',
+    eventPrice: {
       fontSize: '13px',
       fontWeight: 700,
       color: 'var(--primary)',
-      backgroundColor: '#ffffff',
-      border: 'none',
-      borderRadius: 'var(--radius-full)',
-      padding: '10px 24px',
-      cursor: 'pointer',
-      transition: 'transform 0.15s ease',
-    },
-
-    // --- Empty State ---
-    emptyState: {
-      textAlign: 'center',
-      padding: '48px 20px',
-      color: 'var(--on-surface-variant)',
-    },
-    emptyIcon: {
-      fontSize: '48px',
-      color: 'var(--outline-variant)',
-      marginBottom: '12px',
     },
   };
 
-  // Hide scrollbar via inline style tag
   const scrollbarCSS = `
-    .gomet-no-scrollbar::-webkit-scrollbar { display: none; }
-    @media (max-width: 960px) {
-      .gomet-sidebar-col { display: none !important; }
-    }
+    .gomet-hscroll::-webkit-scrollbar { display: none; }
   `;
 
   return (
@@ -576,380 +455,197 @@ const HomePage = () => {
       <style>{scrollbarCSS}</style>
       <div style={s.inner}>
 
-        {/* ========== HERO HEADER ========== */}
-        <div style={s.heroSection}>
-          <div style={s.heroLabel}>Curated Experience</div>
-          <h1 style={s.heroHeading}>
-            GOMET Hub{' '}
-            <span style={s.heroHeadingAccent}>&mdash;</span>{' '}
-            <span style={s.heroHeadingAccent}>Go & Meet</span>
+        {/* ===== WELCOME HEADER ===== */}
+        <div style={s.welcomeSection}>
+          <h1 style={s.welcomeText}>
+            Xin chao,{' '}
+            <span style={s.welcomeAccent}>{currentUser?.name || 'ban'}</span>
           </h1>
-          <p style={s.heroSub}>
-            Xin chao{currentUser?.name ? `, ${currentUser.name}` : ''}. Kham pha nhung trai nghiem duoc tuyen chon rieng cho ban.
-          </p>
         </div>
 
-        <div style={s.desktopLayout}>
-          {/* ========== MAIN COLUMN ========== */}
-          <div style={s.mainCol}>
-
-            {/* ===== TRENDING TONIGHT ===== */}
+        {/* ===== VANG GOLD TIER CARD ===== */}
+        <div style={s.vangCard}>
+          <div style={s.vangLeft}>
+            <div style={s.vangIconWrap}>
+              <span className="material-symbols-outlined" style={{ fontSize: '24px', color: '#3A0B00' }}>toll</span>
+            </div>
             <div>
-              <div style={s.sectionHeader}>
-                <h2 style={s.sectionTitle}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '22px', verticalAlign: 'middle', marginRight: '8px', color: 'var(--primary)' }}>local_fire_department</span>
-                  Trending Tonight
-                </h2>
-                <button style={s.sectionLink} onClick={() => navigate('/app/dates/all')}>
-                  Xem tat ca
-                  <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>arrow_forward</span>
-                </button>
-              </div>
+              <p style={s.vangLabel}>Diem Vang</p>
+              <p style={s.vangPoints}>12,450</p>
+            </div>
+          </div>
+          <span style={s.vangTier}>Gold Tier</span>
+        </div>
 
-              {trendingPosts.length === 0 ? (
-                <div style={s.emptyState}>
-                  <span className="material-symbols-outlined" style={s.emptyIcon}>celebration</span>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px' }}>Chua co su kien nao toi nay. Hay quay lai sau!</p>
-                </div>
+        {/* ===== THU THACH HOM NAY ===== */}
+        <div style={s.sectionHeader}>
+          <h2 style={s.sectionTitle}>Thu Thach Hom Nay</h2>
+        </div>
+        <div style={s.challengeOuter}>
+          <div style={s.challengeInner}>
+            <div style={s.challengeHeader}>
+              <h3 style={s.challengeTitle}>Kham pha quan moi</h3>
+              <span style={s.challengeReward}>+50 Vang</span>
+            </div>
+            <p style={s.challengeName}>Check-in tai mot quan an ban chua tung den va chia se trai nghiem.</p>
+            <div style={s.progressBarOuter}>
+              <div style={s.progressBarInner} />
+            </div>
+            <p style={s.progressText}>2/3 hoan thanh</p>
+          </div>
+        </div>
+
+        {/* ===== KHAM PHA QUANH DAY ===== */}
+        <div style={s.sectionHeader}>
+          <h2 style={s.sectionTitle}>Kham Pha Quanh Day</h2>
+          <button style={s.sectionLink} onClick={() => navigate('/app/venues')}>
+            Xem tat ca
+            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>arrow_forward</span>
+          </button>
+        </div>
+        <div className="gomet-hscroll" style={s.hScroll}>
+          {(venues.length > 0 ? venues : [
+            { id: 1, name: 'The Coffee House', address: 'Quan 1', rating: 4.5, distance: '0.3km' },
+            { id: 2, name: 'Maison Marou', address: 'Quan 3', rating: 4.8, distance: '1.2km' },
+            { id: 3, name: "L'Usine", address: 'Quan 1', rating: 4.6, distance: '0.8km' },
+            { id: 4, name: 'Shin Coffee', address: 'Quan 1', rating: 4.4, distance: '0.5km' },
+          ]).map((venue, idx) => (
+            <div key={venue.id || idx} style={s.venueCard}>
+              {venue.image ? (
+                <img src={venue.image} alt={venue.name} style={s.venueImg} onError={(e) => { e.target.style.display = 'none'; }} />
               ) : (
-                <div
-                  ref={trendingScrollRef}
-                  className="gomet-no-scrollbar"
-                  style={s.trendingScroll}
-                >
-                  {trendingPosts.map((post, idx) => {
-                    const imgUrl = getPostImage(post);
-                    return (
-                      <div
-                        key={post.id || idx}
-                        style={s.trendingCard}
-                        onClick={() => navigate(`/app/dates/${post.category || 'all'}`)}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.transform = 'scale(1.02)';
-                          e.currentTarget.style.boxShadow = 'var(--editorial-shadow)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.transform = 'scale(1)';
-                          e.currentTarget.style.boxShadow = 'none';
-                        }}
-                      >
-                        {imgUrl ? (
-                          <img
-                            src={imgUrl}
-                            alt={post.title}
-                            style={s.trendingImg}
-                            onError={(e) => { e.target.style.display = 'none'; }}
-                          />
-                        ) : (
-                          <div style={s.trendingImgPlaceholder}>
-                            <span className="material-symbols-outlined" style={{ fontSize: '64px', color: 'rgba(255,255,255,0.25)' }}>nightlife</span>
-                          </div>
-                        )}
-
-                        {/* Gradient Overlay */}
-                        <div style={s.trendingGradient} />
-
-                        {/* Content */}
-                        <div style={s.trendingContent}>
-                          <div style={s.trendingCategory}>
-                            {post.category || 'Su kien'}
-                          </div>
-                          <h3 style={s.trendingTitle}>{post.title}</h3>
-                          <div style={s.trendingMeta}>
-                            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>calendar_today</span>
-                            {formatDate(post.dateTime || post.date)}
-                            <span style={{ margin: '0 4px', opacity: 0.5 }}>|</span>
-                            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>location_on</span>
-                            {post.place || post.author?.location || 'TP.HCM'}
-                          </div>
-                          <div style={s.trendingFooter}>
-                            <div style={{ display: 'flex', alignItems: 'center' }}>
-                              <div style={s.avatarStack}>
-                                {[0, 1, 2].map((i) => (
-                                  <div key={i} style={s.avatarStackItem(i)}>
-                                    {post.author?.name?.charAt(0) || '?'}
-                                  </div>
-                                ))}
-                              </div>
-                              <span style={s.avatarStackCount}>+{Math.floor(Math.random() * 12) + 3}</span>
-                            </div>
-                            <button
-                              style={s.getInvitesBtn}
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                navigate(`/app/dates/${post.category || 'all'}`);
-                              }}
-                              onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; }}
-                              onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-                            >
-                              Get Invites
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
+                <div style={s.venueImgPlaceholder}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '48px', color: 'rgba(255,255,255,0.3)' }}>restaurant</span>
                 </div>
               )}
-            </div>
-
-            {/* ===== CURATED SPACES ===== */}
-            <div>
-              <div style={s.sectionHeader}>
-                <h2 style={s.sectionTitle}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '22px', verticalAlign: 'middle', marginRight: '8px', color: 'var(--tertiary)' }}>explore</span>
-                  Curated Spaces
-                </h2>
-              </div>
-              <div style={s.spacesGrid}>
-                {curatedSpaces.map((space) => (
-                  <div
-                    key={space.id}
-                    style={s.spaceCard}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = 'translateY(-4px)';
-                      e.currentTarget.style.boxShadow = 'var(--editorial-shadow)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = 'translateY(0)';
-                      e.currentTarget.style.boxShadow = 'var(--card-shadow)';
-                    }}
-                  >
-                    <div style={s.spaceImgWrap}>
-                      <span className="material-symbols-outlined" style={{ fontSize: '40px', color: 'var(--on-surface-variant)', opacity: 0.4 }}>
-                        {space.icon}
-                      </span>
-                    </div>
-                    <div style={s.spaceInfo}>
-                      <p style={s.spaceName}>{space.name}</p>
-                      <p style={s.spaceLocation}>
-                        <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>location_on</span>
-                        {space.location}
-                      </p>
-                    </div>
-                    <div style={s.spaceActions}>
-                      <button
-                        style={s.spaceActionBtn}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.backgroundColor = 'var(--primary)';
-                          e.currentTarget.style.color = '#fff';
-                          e.currentTarget.style.borderColor = 'var(--primary)';
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.backgroundColor = 'transparent';
-                          e.currentTarget.style.color = 'var(--primary)';
-                          e.currentTarget.style.borderColor = 'var(--outline-variant)';
-                        }}
-                      >
-                        Kham pha
-                      </button>
-                      <button
-                        style={{ ...s.spaceActionBtn, border: 'none', color: 'var(--on-surface-variant)' }}
-                      >
-                        <span className="material-symbols-outlined" style={{ fontSize: '16px', verticalAlign: 'middle' }}>bookmark_border</span>
-                      </button>
-                    </div>
+              <div style={s.venueOverlay}>
+                <div style={s.venueGlass}>
+                  <p style={s.venueName}>{venue.name}</p>
+                  <div style={s.venueMeta}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '12px' }}>location_on</span>
+                    {venue.distance || venue.address || ''}
+                    {venue.rating && (
+                      <>
+                        <span style={{ margin: '0 2px', opacity: 0.5 }}>|</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: '12px', color: '#FFD54F' }}>star</span>
+                        {venue.rating}
+                      </>
+                    )}
                   </div>
-                ))}
+                </div>
               </div>
             </div>
+          ))}
+        </div>
 
-            {/* ===== WHO'S LOOKING TO GO? ===== */}
-            <div>
-              <div style={s.sectionHeader}>
-                <h2 style={s.sectionTitle}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '22px', verticalAlign: 'middle', marginRight: '8px', color: 'var(--primary-container)' }}>group</span>
-                  Who's Looking to Go?
-                </h2>
-                <button style={s.sectionLink} onClick={() => navigate('/app/explore')}>
-                  Xem them
-                  <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>arrow_forward</span>
-                </button>
-              </div>
-
-              {recommendedUsers.length === 0 ? (
-                <div style={s.emptyState}>
-                  <span className="material-symbols-outlined" style={s.emptyIcon}>person_search</span>
-                  <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px' }}>Dang tim kiem nhung nguoi phu hop...</p>
+        {/* ===== GOI Y CHO BAN ===== */}
+        <div style={s.sectionHeader}>
+          <h2 style={s.sectionTitle}>Goi Y Cho Ban</h2>
+          <button style={s.sectionLink} onClick={() => navigate('/app/explore')}>
+            Xem them
+            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>arrow_forward</span>
+          </button>
+        </div>
+        <div className="gomet-hscroll" style={s.hScroll}>
+          {(profiles.length > 0 ? profiles : []).map((profile, idx) => {
+            const avatar = getAvatarUrl(profile);
+            const matchPercent = Math.floor(Math.random() * 20) + 75;
+            return (
+              <div key={profile.id || idx} style={s.profileCard} onClick={() => navigate('/app/swipe')}>
+                <div style={s.profileAvatarWrap}>
+                  {avatar ? (
+                    <img src={avatar} alt={profile.name} style={s.profileAvatar} onError={(e) => { e.target.style.display = 'none'; }} />
+                  ) : (
+                    <div style={s.profileAvatarFallback}>{profile.name?.charAt(0) || '?'}</div>
+                  )}
                 </div>
-              ) : (
-                <div style={s.feedList}>
-                  {recommendedUsers.map((profile, idx) => {
-                    const avatar = getAvatarUrl(profile);
-                    const interests = profile.interests || profile.tags || [];
-                    const bio = profile.bio || profile.description || 'Dang tim ai do de di cafe cuoi tuan nay!';
-                    return (
-                      <div key={profile.id || idx} style={{
-                        ...s.feedItem,
-                        borderBottom: idx === recommendedUsers.length - 1 ? 'none' : s.feedItem.borderBottom,
-                      }}>
-                        {avatar ? (
-                          <img
-                            src={avatar}
-                            alt={profile.name}
-                            style={s.feedAvatar}
-                            onError={(e) => { e.target.style.display = 'none'; }}
-                          />
-                        ) : (
-                          <div style={s.feedAvatarFallback}>
-                            {profile.name?.charAt(0) || '?'}
-                          </div>
-                        )}
-                        <div style={s.feedBody}>
-                          <div style={s.feedNameRow}>
-                            <span style={s.feedName}>{profile.name}</span>
-                            {profile.age && <span style={s.feedAge}>{profile.age} tuoi</span>}
-                          </div>
-                          <p style={s.feedBio}>"{bio}"</p>
-                          {interests.length > 0 && (
-                            <div style={s.feedTags}>
-                              {(Array.isArray(interests) ? interests : [interests]).slice(0, 4).map((tag, ti) => (
-                                <span key={ti} style={s.feedTag}>{tag}</span>
-                              ))}
-                            </div>
-                          )}
-                          <div style={s.feedActions}>
-                            <button
-                              style={s.feedBtnOutline}
-                              onClick={() => setSelectedProfile(profile)}
-                              onMouseEnter={(e) => {
-                                e.currentTarget.style.borderColor = 'var(--on-surface)';
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.borderColor = 'var(--surface-container-high)';
-                              }}
-                            >
-                              View Profile
-                            </button>
-                            <button
-                              style={s.feedBtnFilled}
-                              onClick={() => setSelectedProfile(profile)}
-                              onMouseEnter={(e) => {
-                                e.currentTarget.style.backgroundColor = 'var(--tertiary)';
-                                e.currentTarget.style.borderColor = 'var(--tertiary)';
-                              }}
-                              onMouseLeave={(e) => {
-                                e.currentTarget.style.backgroundColor = 'var(--primary)';
-                                e.currentTarget.style.borderColor = 'var(--primary)';
-                              }}
-                            >
-                              Accept
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-
-            {/* ===== GOMET PREMIUM UPSELL ===== */}
-            <div
-              style={s.premiumCard}
-              onClick={() => setIsPremiumModalOpen(true)}
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.01)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-            >
-              <div style={s.premiumBg} />
-              <div style={{ position: 'relative', zIndex: 1 }}>
-                <div style={s.premiumLabel}>Nang cap trai nghiem</div>
-                <h3 style={s.premiumTitle}>GOMET Premium</h3>
-                <p style={s.premiumDesc}>
-                  Mo khoa tat ca tinh nang — xem ai da thich ban, uu tien hien thi, va gui loi moi khong gioi han.
+                <p style={s.profileName}>{profile.name || 'Nguoi dung'}</p>
+                <span style={s.matchBadge}>{matchPercent}% phu hop</span>
+                <p style={s.profileTier}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '12px', verticalAlign: 'middle', marginRight: '2px' }}>toll</span>
+                  Gold
                 </p>
-                <button
-                  style={s.premiumBtn}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setIsPremiumModalOpen(true);
-                  }}
-                  onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-                >
-                  <span className="material-symbols-outlined" style={{ fontSize: '16px', verticalAlign: 'middle', marginRight: '6px' }}>diamond</span>
-                  Tim hieu them
-                </button>
+              </div>
+            );
+          })}
+          {profiles.length === 0 && (
+            <p style={{ fontSize: '14px', color: 'var(--on-surface-variant)', padding: '20px 0' }}>Dang tai goi y...</p>
+          )}
+        </div>
+
+        {/* ===== MOMENTS FEED ===== */}
+        <div style={s.sectionHeader}>
+          <h2 style={s.sectionTitle}>Moments</h2>
+          <button style={s.sectionLink} onClick={() => navigate('/app/dates/all')}>
+            Xem tat ca
+            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>arrow_forward</span>
+          </button>
+        </div>
+        <div style={s.momentsGrid}>
+          {(posts.length > 0 ? posts.slice(0, 8) : []).map((post, idx) => {
+            const imgUrl = getPostImage(post);
+            return (
+              <div key={post.id || idx} style={s.momentCard} onClick={() => navigate(`/app/dates/${post.category || 'all'}`)}>
+                {imgUrl ? (
+                  <img src={imgUrl} alt={post.title} style={s.momentImg} onError={(e) => { e.target.style.display = 'none'; }} />
+                ) : (
+                  <div style={s.momentPlaceholder}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--on-surface-variant)', opacity: 0.3 }}>image</span>
+                  </div>
+                )}
+                <div style={s.momentOverlay}>
+                  <p style={s.momentUser}>{post.author?.name || 'GOMET'}</p>
+                  <div style={s.momentHearts}>
+                    <span className="material-symbols-outlined" style={{ fontSize: '10px' }}>favorite</span>
+                    {post.likes || Math.floor(Math.random() * 50) + 5}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+          {posts.length === 0 && [1,2,3,4].map(i => (
+            <div key={i} style={s.momentCard}>
+              <div style={s.momentPlaceholder}>
+                <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--on-surface-variant)', opacity: 0.3 }}>image</span>
               </div>
             </div>
-
-          </div>
-
-          {/* ========== PULSE SIDEBAR (Desktop) ========== */}
-          <div style={s.sidebarCol} className="gomet-sidebar-col">
-
-            {/* Pulse Card */}
-            <div style={s.pulseCard}>
-              <h3 style={s.pulseTitle}>
-                <span className="material-symbols-outlined" style={{ fontSize: '20px', color: 'var(--primary)' }}>sensors</span>
-                Pulse
-              </h3>
-              {pulseStories.map((story, idx) => (
-                <div key={story.id} style={{
-                  ...s.pulseItem,
-                  borderBottom: idx === pulseStories.length - 1 ? 'none' : s.pulseItem.borderBottom,
-                }}>
-                  <div style={s.pulseDot}>{story.user.charAt(0)}</div>
-                  <div>
-                    <p style={s.pulseText}>
-                      <strong>{story.user}</strong>: {story.text}
-                    </p>
-                    <p style={s.pulseTime}>{story.time}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Quick Stats */}
-            <div style={{
-              ...s.pulseCard,
-              background: 'var(--surface-container-low)',
-            }}>
-              <h3 style={{ ...s.pulseTitle, marginBottom: '16px' }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '20px', color: 'var(--tertiary)' }}>insights</span>
-                Thong ke nhanh
-              </h3>
-              {[
-                { label: 'Su kien toi nay', value: trendingPosts.length, icon: 'event' },
-                { label: 'Nguoi dang tim', value: recommendedUsers.length, icon: 'people' },
-                { label: 'Dia diem hot', value: curatedSpaces.length, icon: 'place' },
-              ].map((stat, idx) => (
-                <div key={idx} style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  padding: '10px 0',
-                  borderBottom: idx < 2 ? '1px solid var(--surface-container-high)' : 'none',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span className="material-symbols-outlined" style={{ fontSize: '18px', color: 'var(--on-surface-variant)' }}>{stat.icon}</span>
-                    <span style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--on-surface-variant)' }}>{stat.label}</span>
-                  </div>
-                  <span style={{
-                    fontFamily: 'var(--font-headline)',
-                    fontSize: '18px',
-                    fontWeight: 700,
-                    color: 'var(--on-surface)',
-                  }}>{stat.value}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
+
+        {/* ===== SU KIEN SAP TOI ===== */}
+        <div style={s.sectionHeader}>
+          <h2 style={s.sectionTitle}>Su Kien Sap Toi</h2>
+          <button style={s.sectionLink} onClick={() => navigate('/app/events')}>
+            Xem tat ca
+            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>arrow_forward</span>
+          </button>
+        </div>
+        <div className="gomet-hscroll" style={s.hScroll}>
+          {(events.length > 0 ? events : [
+            { id: 1, title: 'Coffee Tasting Night', venue: 'The Workshop', date: '2026-04-01', price: '150,000d' },
+            { id: 2, title: 'Street Food Tour Q1', venue: 'Ben Thanh Area', date: '2026-04-05', price: 'Mien phi' },
+            { id: 3, title: 'Cooking Class: Pho', venue: 'Saigon Cooking Center', date: '2026-04-10', price: '350,000d' },
+          ]).map((event, idx) => (
+            <div key={event.id || idx} style={s.eventCard}>
+              <div style={s.eventImgWrap}>
+                <span className="material-symbols-outlined" style={{ fontSize: '48px', color: 'rgba(255,255,255,0.3)' }}>celebration</span>
+                <div style={s.eventDateBadge}>
+                  {formatDate(event.date || event.dateTime) || 'Sap toi'}
+                </div>
+              </div>
+              <div style={s.eventInfo}>
+                <h3 style={s.eventTitle}>{event.title || event.name}</h3>
+                <div style={s.eventVenue}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>location_on</span>
+                  {event.venue || event.location || 'TP.HCM'}
+                </div>
+                <span style={s.eventPrice}>{event.price || 'Mien phi'}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
-
-      {/* ========== MODALS ========== */}
-      {selectedProfile && (
-        <ProfileDetailModal
-          profile={selectedProfile}
-          onClose={() => setSelectedProfile(null)}
-        />
-      )}
-
-      <PremiumModal
-        isOpen={isPremiumModalOpen}
-        onClose={() => setIsPremiumModalOpen(false)}
-      />
     </div>
   );
 };

@@ -6,11 +6,21 @@ import { api } from '../../api/client';
 
 const INTEREST_OPTIONS = ['Cong nghe', 'Nau an', 'Coffee', 'Du lich', 'The thao', 'Am nhac', 'Phim anh', 'Doc sach', 'Gaming', 'Nhiep anh', 'Yoga', 'Thu cung', 'An uong', 'Thoi trang', 'Nghe thuat'];
 
-const TRANSACTION_FILTERS = [
-  { key: 'all', label: 'Tat ca' },
-  { key: 'topup', label: 'Nap tien' },
-  { key: 'payment', label: 'Dat keo' },
-  { key: 'earning', label: 'Thuong' },
+const TASTE_AXES = [
+  { key: 'cay', label: 'Cay', value: 75, color: '#FF571A' },
+  { key: 'umami', label: 'Umami', value: 60, color: '#FFB59E' },
+  { key: 'chua', label: 'Chua', value: 45, color: '#FFD54F' },
+  { key: 'ngot', label: 'Ngot', value: 80, color: '#117500' },
+  { key: 'dang', label: 'Dang', value: 30, color: '#E6BEB2' },
+  { key: 'man', label: 'Man', value: 55, color: '#FF571A' },
+];
+
+const RECENT_DISHES = [
+  { id: 1, name: 'Bun bo Hue', restaurant: 'Quan Hue Xua', points: '+10 Vang' },
+  { id: 2, name: 'Pho bo', restaurant: 'Pho Thin', points: '+10 Vang' },
+  { id: 3, name: 'Com tam', restaurant: 'Com Tam Ba Ghien', points: '+10 Vang' },
+  { id: 4, name: 'Banh mi', restaurant: 'Banh Mi Huynh Hoa', points: '+10 Vang' },
+  { id: 5, name: 'Bun cha', restaurant: 'Bun Cha Dac Kim', points: '+10 Vang' },
 ];
 
 const ProfilePage = () => {
@@ -32,20 +42,14 @@ const ProfilePage = () => {
   });
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
-  const [avatarHover, setAvatarHover] = useState(false);
 
-  // Wallet state
+  // Wallet
   const [walletBalance, setWalletBalance] = useState(currentUser?.walletBalance || 0);
-  const [transactions, setTransactions] = useState([]);
-  const [txFilter, setTxFilter] = useState('all');
   const [walletLoading, setWalletLoading] = useState(true);
 
   useEffect(() => {
     api.get('/wallet').then(data => {
-      if (data) {
-        setWalletBalance(data.balance);
-        setTransactions(data.transactions || []);
-      }
+      if (data) setWalletBalance(data.balance);
     }).catch(console.error).finally(() => setWalletLoading(false));
   }, []);
 
@@ -61,9 +65,7 @@ const ProfilePage = () => {
     try {
       await api.upload('/upload/avatar', file, 'avatar');
       const data = await api.get('/auth/me');
-      if (data?.user) {
-        await updateProfile({ avatar: data.user.avatar });
-      }
+      if (data?.user) await updateProfile({ avatar: data.user.avatar });
       addToast('Da cap nhat anh dai dien!', 'success');
     } catch (err) {
       addToast('Upload that bai', 'error');
@@ -94,20 +96,6 @@ const ProfilePage = () => {
     }
   };
 
-  const handleTopup = async (amount) => {
-    try {
-      const data = await api.post('/wallet/topup', { amount });
-      setWalletBalance(data.balance);
-      addToast(`Nap ${amount.toLocaleString('vi-VN')}d thanh cong!`, 'success');
-      const walletData = await api.get('/wallet');
-      if (walletData) {
-        setTransactions(walletData.transactions || []);
-      }
-    } catch (err) {
-      addToast(err.message, 'error');
-    }
-  };
-
   const handleLogout = () => {
     if (logout) logout();
     navigate('/login');
@@ -124,292 +112,388 @@ const ProfilePage = () => {
     }
   };
 
-  const genderLabel = { male: 'Nam', female: 'Nu', other: 'Khac' };
-
-  const filteredTransactions = txFilter === 'all'
-    ? transactions
-    : transactions.filter(tx => tx.type === txFilter);
-
-  const txIconMap = {
-    topup: { icon: 'account_balance_wallet', color: '#4ecdc4' },
-    payment: { icon: 'receipt_long', color: 'var(--primary)' },
-    earning: { icon: 'stars', color: '#2e7d32' },
-    refund: { icon: 'replay', color: '#ff7854' },
-  };
+  // Points and tier
+  const vangPoints = walletBalance || 12450;
+  const dishCount = 84;
+  const tierTarget = 15000;
+  const tierProgress = Math.min((vangPoints / tierTarget) * 100, 100);
+  const pointsToNext = tierTarget - vangPoints;
 
   const s = {
     page: {
       flex: 1,
-      backgroundColor: 'var(--surface)',
+      backgroundColor: 'var(--surface-container-low)',
       overflowY: 'auto',
-      padding: '40px 32px 80px',
+      minHeight: '100vh',
+      fontFamily: 'var(--font-body)',
     },
-    heroRow: {
-      display: 'flex',
-      gap: '32px',
-      alignItems: 'flex-start',
-      marginBottom: '48px',
-      flexWrap: 'wrap',
+    inner: {
+      maxWidth: '480px',
+      margin: '0 auto',
+      padding: '32px 16px 100px',
     },
-    heroLeft: {
+
+    // Avatar hero
+    heroSection: {
       display: 'flex',
-      gap: '24px',
+      flexDirection: 'column',
       alignItems: 'center',
-      flex: 1,
-      minWidth: '300px',
-    },
-    avatarWrap: {
+      marginBottom: '28px',
       position: 'relative',
-      flexShrink: 0,
+    },
+    avatarRingOuter: {
+      width: '134px',
+      height: '134px',
+      borderRadius: '50%',
+      background: 'linear-gradient(135deg, #FFD54F, #FF571A)',
+      padding: '3px',
+      position: 'relative',
+    },
+    avatarRingInner: {
+      width: '100%',
+      height: '100%',
+      borderRadius: '50%',
+      overflow: 'hidden',
+      background: 'var(--surface-container-low)',
     },
     avatar: {
-      width: '120px',
-      height: '120px',
-      borderRadius: 'var(--radius-lg)',
+      width: '128px',
+      height: '128px',
+      borderRadius: '50%',
       objectFit: 'cover',
-      boxShadow: 'var(--editorial-shadow)',
-      transition: 'transform 0.3s ease',
-      transform: avatarHover ? 'rotate(-3deg) scale(1.03)' : 'rotate(0deg) scale(1)',
-      cursor: 'pointer',
+      display: 'block',
     },
-    avatarPlaceholder: {
-      width: '120px',
-      height: '120px',
-      borderRadius: 'var(--radius-lg)',
-      background: 'var(--primary-gradient)',
+    avatarFallback: {
+      width: '128px',
+      height: '128px',
+      borderRadius: '50%',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      color: 'white',
+      color: '#fff',
       fontFamily: 'var(--font-headline)',
-      fontSize: '40px',
+      fontSize: '48px',
       fontWeight: 800,
-      boxShadow: 'var(--editorial-shadow)',
-      transition: 'transform 0.3s ease',
-      transform: avatarHover ? 'rotate(-3deg) scale(1.03)' : 'rotate(0deg) scale(1)',
-      cursor: 'pointer',
     },
-    cameraBtn: {
+    avatarGlow: {
+      position: 'absolute',
+      top: '-10px',
+      left: '50%',
+      transform: 'translateX(-50%)',
+      width: '150px',
+      height: '150px',
+      borderRadius: '50%',
+      background: 'radial-gradient(circle, rgba(255,87,26,0.25) 0%, transparent 70%)',
+      pointerEvents: 'none',
+      zIndex: 0,
+    },
+    tierBadgeAbsolute: {
       position: 'absolute',
       bottom: '-4px',
       right: '-4px',
+      background: 'linear-gradient(135deg, #FFD54F, #FFC107)',
+      color: '#3A0B00',
+      fontSize: '11px',
+      fontWeight: 700,
+      fontFamily: 'var(--font-headline)',
+      padding: '4px 12px',
+      borderRadius: '9999px',
+      boxShadow: '0px 4px 12px rgba(0,0,0,0.3)',
+      zIndex: 2,
+    },
+    cameraBtn: {
+      position: 'absolute',
+      bottom: '0px',
+      left: '-4px',
       width: '36px',
       height: '36px',
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary-gradient)',
-      border: '3px solid var(--surface)',
-      color: 'white',
+      borderRadius: '50%',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       cursor: 'pointer',
-      boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-    },
-    nameRow: {
-      flex: 1,
+      border: 'none',
+      color: '#fff',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.3)',
+      zIndex: 2,
     },
     nameText: {
       fontFamily: 'var(--font-headline)',
-      fontSize: '28px',
+      fontSize: '24px',
       fontWeight: 800,
       color: 'var(--on-surface)',
-      margin: 0,
-      lineHeight: 1.3,
+      margin: '16px 0 4px',
+      textAlign: 'center',
     },
-    verifiedBadge: {
+    goldBadge: {
       display: 'inline-flex',
       alignItems: 'center',
       gap: '4px',
-      background: 'var(--surface-container-high)',
-      padding: '4px 10px',
-      borderRadius: 'var(--radius-full)',
-      fontSize: '11px',
+      fontSize: '12px',
       fontWeight: 700,
-      color: 'var(--primary)',
-      fontFamily: 'var(--font-body)',
-      letterSpacing: '0.5px',
-      marginTop: '8px',
+      color: '#FFD54F',
+      background: 'rgba(255,213,79,0.15)',
+      padding: '4px 14px',
+      borderRadius: '9999px',
+      marginBottom: '4px',
     },
-    bioText: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '15px',
+    locationText: {
+      fontSize: '13px',
       color: 'var(--on-surface-variant)',
-      marginTop: '10px',
-      lineHeight: 1.6,
-    },
-    editBtn: {
-      background: 'none',
-      border: 'none',
-      color: 'var(--primary)',
-      cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
       gap: '4px',
-      fontFamily: 'var(--font-body)',
-      fontSize: '14px',
-      fontWeight: 600,
-      marginTop: '12px',
-      padding: 0,
+      justifyContent: 'center',
     },
-    creditsCard: {
-      background: 'var(--primary-gradient)',
-      borderRadius: 'var(--radius-lg)',
-      padding: '28px',
-      color: 'white',
-      minWidth: '260px',
-      boxShadow: 'var(--editorial-shadow)',
+
+    // Stats grid (2 cols)
+    statsGrid: {
+      display: 'grid',
+      gridTemplateColumns: '1fr 1fr',
+      gap: '12px',
+      marginBottom: '24px',
     },
-    creditsLabel: {
-      fontFamily: 'var(--font-body)',
-      fontSize: '13px',
-      fontWeight: 600,
-      opacity: 0.85,
-      margin: 0,
+    statCard: {
+      background: 'var(--surface-container)',
+      borderRadius: '1.5rem',
+      padding: '20px',
+      textAlign: 'center',
+      boxShadow: '0px 8px 24px rgba(0,0,0,0.15)',
     },
-    creditsAmount: {
+    statValue: (color) => ({
       fontFamily: 'var(--font-headline)',
-      fontSize: '32px',
+      fontSize: '28px',
       fontWeight: 800,
-      margin: '8px 0 16px',
-    },
-    topupBtn: {
-      background: 'rgba(255,255,255,0.2)',
-      backdropFilter: 'blur(8px)',
-      border: '1px solid rgba(255,255,255,0.3)',
-      color: 'white',
-      padding: '10px 20px',
-      borderRadius: 'var(--radius-full)',
-      fontFamily: 'var(--font-body)',
-      fontSize: '14px',
+      color: color,
+      margin: '8px 0 4px',
+    }),
+    statLabel: {
+      fontSize: '13px',
+      color: 'var(--on-surface-variant)',
       fontWeight: 600,
-      cursor: 'pointer',
+    },
+
+    // Tier progress
+    tierSection: {
+      background: 'var(--surface-container)',
+      borderRadius: '1.5rem',
+      padding: '20px',
+      marginBottom: '24px',
+      boxShadow: '0px 8px 24px rgba(0,0,0,0.15)',
+    },
+    tierHeader: {
       display: 'flex',
       alignItems: 'center',
-      gap: '6px',
-      transition: 'background 0.2s',
+      justifyContent: 'space-between',
+      marginBottom: '12px',
     },
+    tierTitle: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '16px',
+      fontWeight: 700,
+      color: 'var(--on-surface)',
+      margin: 0,
+    },
+    tierTarget: {
+      fontSize: '12px',
+      color: 'var(--on-surface-variant)',
+    },
+    progressOuter: {
+      width: '100%',
+      height: '8px',
+      borderRadius: '4px',
+      background: 'var(--surface-container-high)',
+      marginBottom: '8px',
+    },
+    progressInner: {
+      height: '8px',
+      borderRadius: '4px',
+      background: 'linear-gradient(135deg, #FFD54F, #FF571A)',
+      transition: 'width 0.6s ease',
+    },
+    tierHint: {
+      fontSize: '12px',
+      color: 'var(--on-surface-variant)',
+      textAlign: 'right',
+    },
+
+    // Section
     section: {
-      marginBottom: '40px',
+      marginBottom: '24px',
     },
     sectionTitle: {
       fontFamily: 'var(--font-headline)',
-      fontSize: '20px',
+      fontSize: '18px',
       fontWeight: 700,
       color: 'var(--on-surface)',
-      margin: '0 0 20px',
+      margin: '0 0 14px',
     },
-    card: {
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
-      padding: '24px',
-      boxShadow: 'var(--card-shadow)',
-    },
-    chip: (selected) => ({
-      padding: '8px 18px',
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: selected ? 'var(--primary)' : 'var(--surface-container-high)',
-      color: selected ? 'white' : 'var(--on-surface)',
-      fontSize: '13px',
-      fontWeight: 600,
-      fontFamily: 'var(--font-body)',
-      border: 'none',
-      cursor: 'pointer',
-      transition: 'all 0.2s ease',
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: '4px',
-    }),
-    filterTab: (active) => ({
-      padding: '8px 16px',
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: active ? 'var(--on-surface)' : 'transparent',
-      color: active ? 'var(--surface)' : 'var(--on-surface-variant)',
-      fontSize: '13px',
-      fontWeight: 600,
-      fontFamily: 'var(--font-body)',
-      border: 'none',
-      cursor: 'pointer',
-      transition: 'all 0.2s ease',
-    }),
-    txItem: {
+
+    // Taste Radar bars
+    tasteBarRow: {
       display: 'flex',
       alignItems: 'center',
-      gap: '14px',
-      padding: '14px 0',
+      gap: '10px',
+      marginBottom: '10px',
     },
-    txDivider: {
-      height: '1px',
-      backgroundColor: 'var(--surface-container-high)',
-      border: 'none',
+    tasteBarLabel: {
+      fontSize: '13px',
+      fontWeight: 600,
+      color: 'var(--on-surface-variant)',
+      width: '55px',
+      flexShrink: 0,
     },
-    txIcon: (color) => ({
-      width: '40px',
-      height: '40px',
-      borderRadius: 'var(--radius)',
-      backgroundColor: 'var(--surface-container-low)',
+    tasteBarOuter: {
+      flex: 1,
+      height: '8px',
+      borderRadius: '4px',
+      background: 'var(--surface-container-high)',
+    },
+    tasteBarInner: (width, color) => ({
+      height: '8px',
+      borderRadius: '4px',
+      background: color,
+      width: `${width}%`,
+      transition: 'width 0.5s ease',
+    }),
+    tasteBarValue: {
+      fontSize: '12px',
+      fontWeight: 700,
+      color: 'var(--on-surface)',
+      width: '30px',
+      textAlign: 'right',
+    },
+
+    // Recent dishes horizontal scroll
+    hScroll: {
+      display: 'flex',
+      gap: '12px',
+      overflowX: 'auto',
+      paddingBottom: '8px',
+      scrollbarWidth: 'none',
+      msOverflowStyle: 'none',
+    },
+    dishCard: {
+      width: '120px',
+      flexShrink: 0,
+      textAlign: 'center',
+      cursor: 'pointer',
+    },
+    dishImg: {
+      width: '100px',
+      height: '100px',
+      borderRadius: '1rem',
+      background: 'linear-gradient(135deg, var(--surface-container-high), var(--surface-container-highest))',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      flexShrink: 0,
-    }),
-    settingsGrid: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-      gap: '12px',
+      margin: '0 auto 8px',
     },
-    settingsCard: {
-      backgroundColor: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
-      padding: '20px',
-      cursor: 'pointer',
-      transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-      boxShadow: 'var(--card-shadow)',
+    dishName: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '13px',
+      fontWeight: 700,
+      color: 'var(--on-surface)',
+      margin: '0 0 2px',
+    },
+    dishRestaurant: {
+      fontSize: '11px',
+      color: 'var(--on-surface-variant)',
+      margin: '0 0 2px',
+    },
+    dishPoints: {
+      fontSize: '11px',
+      fontWeight: 700,
+      color: '#FFD54F',
+    },
+
+    // Interest chips
+    chipsWrap: {
       display: 'flex',
-      flexDirection: 'column',
+      flexWrap: 'wrap',
       gap: '8px',
     },
-    settingsIcon: {
-      width: '40px',
-      height: '40px',
-      borderRadius: 'var(--radius)',
-      backgroundColor: 'var(--surface-container-high)',
+    chip: {
+      padding: '8px 18px',
+      borderRadius: '9999px',
+      background: 'var(--surface-variant)',
+      color: 'var(--on-surface)',
+      fontSize: '13px',
+      fontWeight: 600,
+    },
+
+    // Edit button
+    editBtn: {
+      width: '100%',
+      padding: '16px',
+      borderRadius: '9999px',
+      border: 'none',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
+      fontFamily: 'var(--font-headline)',
+      fontSize: '16px',
+      fontWeight: 700,
+      cursor: 'pointer',
+      boxShadow: '0 4px 16px rgba(255,87,26,0.3)',
+      marginBottom: '16px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      gap: '8px',
     },
-    settingsLabel: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: '14px',
-      fontWeight: 700,
-      color: 'var(--on-surface)',
-    },
-    dangerBtn: {
-      background: 'none',
-      border: '2px solid var(--error)',
-      color: 'var(--error)',
-      padding: '12px 24px',
-      borderRadius: 'var(--radius-full)',
-      fontFamily: 'var(--font-body)',
+
+    // Logout / danger
+    logoutBtn: {
+      width: '100%',
+      padding: '14px',
+      borderRadius: '9999px',
+      border: 'none',
+      background: 'var(--surface-container)',
+      color: 'var(--on-surface-variant)',
       fontSize: '14px',
       fontWeight: 600,
       cursor: 'pointer',
-      transition: 'all 0.2s',
+      marginBottom: '12px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      gap: '6px',
     },
-    // Edit mode styles
+    deleteBtn: {
+      width: '100%',
+      padding: '14px',
+      borderRadius: '9999px',
+      border: 'none',
+      background: 'transparent',
+      color: '#FF5252',
+      fontSize: '13px',
+      fontWeight: 600,
+      cursor: 'pointer',
+    },
+
+    // ========== EDIT MODE STYLES ==========
+    editCard: {
+      background: 'var(--surface-container)',
+      borderRadius: '1.5rem',
+      padding: '24px',
+      boxShadow: '0px 8px 24px rgba(0,0,0,0.15)',
+      marginBottom: '16px',
+    },
     inputLabel: {
       display: 'block',
       fontSize: '13px',
       fontWeight: 600,
       marginBottom: '6px',
       color: 'var(--on-surface-variant)',
-      fontFamily: 'var(--font-body)',
     },
     input: {
       width: '100%',
       padding: '12px 16px',
-      borderRadius: 'var(--radius)',
+      borderRadius: '1rem',
       border: 'none',
-      backgroundColor: 'var(--surface-container-low)',
+      backgroundColor: 'var(--surface-container-high)',
       fontSize: '15px',
       fontFamily: 'var(--font-body)',
       color: 'var(--on-surface)',
@@ -420,9 +504,9 @@ const ProfilePage = () => {
       width: '100%',
       minHeight: '100px',
       padding: '14px 16px',
-      borderRadius: 'var(--radius)',
+      borderRadius: '1rem',
       border: 'none',
-      backgroundColor: 'var(--surface-container-low)',
+      backgroundColor: 'var(--surface-container-high)',
       fontSize: '15px',
       fontFamily: 'var(--font-body)',
       color: 'var(--on-surface)',
@@ -430,77 +514,65 @@ const ProfilePage = () => {
       outline: 'none',
       boxSizing: 'border-box',
     },
+    editChip: (selected) => ({
+      padding: '8px 18px',
+      borderRadius: '9999px',
+      backgroundColor: selected ? 'var(--primary)' : 'var(--surface-container-high)',
+      color: selected ? '#3A0B00' : 'var(--on-surface)',
+      fontSize: '13px',
+      fontWeight: 600,
+      border: 'none',
+      cursor: 'pointer',
+      display: 'inline-flex',
+      alignItems: 'center',
+      gap: '4px',
+    }),
     cancelBtn: {
       flex: 1,
       padding: '14px',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       border: 'none',
       backgroundColor: 'var(--surface-container-high)',
       fontWeight: 600,
       fontSize: '15px',
-      fontFamily: 'var(--font-body)',
       color: 'var(--on-surface)',
       cursor: 'pointer',
     },
     saveBtn: (disabled) => ({
       flex: 1,
       padding: '14px',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       border: 'none',
-      background: 'var(--primary-gradient)',
-      color: 'white',
-      fontWeight: 600,
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
+      fontWeight: 700,
       fontSize: '15px',
-      fontFamily: 'var(--font-body)',
       cursor: 'pointer',
       opacity: disabled ? 0.7 : 1,
     }),
-    photoGrid: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(3, 1fr)',
-      gap: '8px',
-    },
-    photoItem: {
-      aspectRatio: '1',
-      borderRadius: 'var(--radius)',
-      overflow: 'hidden',
-      backgroundColor: 'var(--surface-container-high)',
-    },
-    topupChips: {
-      display: 'flex',
-      gap: '8px',
-      flexWrap: 'wrap',
-      marginTop: '12px',
-    },
-    topupChip: {
-      padding: '8px 16px',
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: 'var(--surface-container-high)',
-      border: 'none',
-      cursor: 'pointer',
-      fontSize: '13px',
-      fontWeight: 700,
-      fontFamily: 'var(--font-body)',
-      color: 'var(--on-surface)',
-      transition: 'all 0.2s',
-    },
   };
 
+  const scrollbarCSS = `
+    .gomet-hscroll-profile::-webkit-scrollbar { display: none; }
+  `;
+
+  // ========== EDIT MODE ==========
   if (editing) {
     return (
       <div style={s.page}>
-        <div style={{ marginBottom: '32px', display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <button onClick={() => setEditing(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '24px', color: 'var(--on-surface)' }}>arrow_back</span>
-          </button>
-          <h1 style={{ fontFamily: 'var(--font-headline)', fontSize: '24px', fontWeight: 800, color: 'var(--on-surface)', margin: 0 }}>Chinh sua ho so</h1>
-        </div>
+        <style>{scrollbarCSS}</style>
+        <div style={s.inner}>
+          <div style={{ marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <button onClick={() => setEditing(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '24px', color: 'var(--on-surface)' }}>arrow_back</span>
+            </button>
+            <h1 style={{ fontFamily: 'var(--font-headline)', fontSize: '22px', fontWeight: 800, color: 'var(--on-surface)', margin: 0 }}>Chinh sua ho so</h1>
+          </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', maxWidth: '600px' }}>
           {/* Basic Info */}
-          <div style={s.card}>
-            <h2 style={{ ...s.sectionTitle, marginBottom: '20px' }}>Thong tin co ban</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+          <div style={s.editCard}>
+            <h2 style={{ ...s.sectionTitle, marginBottom: '16px' }}>Thong tin co ban</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
               <div>
                 <label style={s.inputLabel}>Ten</label>
                 <input value={name} onChange={e => setName(e.target.value)} style={s.input} />
@@ -511,7 +583,7 @@ const ProfilePage = () => {
               </div>
               <div>
                 <label style={s.inputLabel}>Gioi tinh</label>
-                <select value={gender} onChange={e => setGender(e.target.value)} style={{ ...s.input, backgroundColor: 'var(--surface-container-low)' }}>
+                <select value={gender} onChange={e => setGender(e.target.value)} style={s.input}>
                   <option value="">Chon</option>
                   <option value="male">Nam</option>
                   <option value="female">Nu</option>
@@ -526,14 +598,14 @@ const ProfilePage = () => {
           </div>
 
           {/* Bio */}
-          <div style={s.card}>
+          <div style={s.editCard}>
             <h2 style={{ ...s.sectionTitle, marginBottom: '12px' }}>Gioi thieu ban than</h2>
             <textarea value={bio} onChange={e => setBio(e.target.value)} maxLength={300} placeholder="Viet vai dong ve ban than ban..." style={s.textarea} />
-            <p style={{ textAlign: 'right', fontSize: '12px', color: 'var(--on-surface-variant)', marginTop: '4px', fontFamily: 'var(--font-body)' }}>{bio.length}/300</p>
+            <p style={{ textAlign: 'right', fontSize: '12px', color: 'var(--on-surface-variant)', marginTop: '4px' }}>{bio.length}/300</p>
           </div>
 
           {/* Interests */}
-          <div style={s.card}>
+          <div style={s.editCard}>
             <h2 style={{ ...s.sectionTitle, marginBottom: '12px' }}>
               So thich <span style={{ fontSize: '13px', fontWeight: 400, color: 'var(--on-surface-variant)' }}>({interests.length}/8)</span>
             </h2>
@@ -541,7 +613,7 @@ const ProfilePage = () => {
               {INTEREST_OPTIONS.map(interest => {
                 const selected = interests.includes(interest);
                 return (
-                  <button key={interest} onClick={() => toggleInterest(interest)} style={s.chip(selected)}>
+                  <button key={interest} onClick={() => toggleInterest(interest)} style={s.editChip(selected)}>
                     <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>{selected ? 'close' : 'add'}</span>
                     {interest}
                   </button>
@@ -562,272 +634,134 @@ const ProfilePage = () => {
     );
   }
 
+  // ========== PROFILE VIEW ==========
   return (
     <div style={s.page}>
-      {/* Hero Section */}
-      <div style={s.heroRow}>
-        <div style={s.heroLeft}>
-          {/* Avatar */}
-          <div
-            style={s.avatarWrap}
-            onMouseEnter={() => setAvatarHover(true)}
-            onMouseLeave={() => setAvatarHover(false)}
-          >
-            {getAvatarUrl() ? (
-              <img
-                src={getAvatarUrl()}
-                alt="Avatar"
-                style={s.avatar}
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                }}
-              />
-            ) : (
-              <div style={s.avatarPlaceholder}>
-                {currentUser?.name?.charAt(0) || '?'}
+      <style>{scrollbarCSS}</style>
+      <div style={s.inner}>
+
+        {/* ===== AVATAR HERO ===== */}
+        <div style={s.heroSection}>
+          <div style={s.avatarGlow} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <div style={s.avatarRingOuter}>
+              <div style={s.avatarRingInner}>
+                {getAvatarUrl() ? (
+                  <img src={getAvatarUrl()} alt="Avatar" style={s.avatar} onError={(e) => { e.target.style.display = 'none'; }} />
+                ) : (
+                  <div style={s.avatarFallback}>{currentUser?.name?.charAt(0) || '?'}</div>
+                )}
               </div>
-            )}
-            <button
-              onClick={() => fileRef.current?.click()}
-              disabled={uploading}
-              style={s.cameraBtn}
-            >
+            </div>
+            <span style={s.tierBadgeAbsolute}>
+              <span className="material-symbols-outlined" style={{ fontSize: '12px', verticalAlign: 'middle', marginRight: '2px' }}>toll</span>
+              Gold
+            </span>
+            <button onClick={() => fileRef.current?.click()} disabled={uploading} style={s.cameraBtn}>
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>photo_camera</span>
             </button>
             <input ref={fileRef} type="file" accept="image/*" onChange={handleAvatarUpload} style={{ display: 'none' }} />
           </div>
 
-          {/* Name + Badge */}
-          <div style={s.nameRow}>
-            <h1 style={s.nameText}>
-              {currentUser?.name}{currentUser?.age ? `, ${currentUser.age}` : ''}
-            </h1>
-            <div style={s.verifiedBadge}>
-              <span className="material-symbols-outlined filled" style={{ fontSize: '14px', color: 'var(--primary)' }}>verified</span>
-              THANH VIEN XAC THUC
-            </div>
-            <p style={s.bioText}>
-              {currentUser?.bio || 'Chua co gioi thieu. Nhan "Chinh sua" de them.'}
+          <h1 style={s.nameText}>{currentUser?.name}{currentUser?.age ? `, ${currentUser.age}` : ''}</h1>
+          <span style={s.goldBadge}>
+            <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>toll</span>
+            Gold Tier
+          </span>
+          {currentUser?.location && (
+            <p style={s.locationText}>
+              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>location_on</span>
+              {currentUser.location}
             </p>
-            {currentUser?.location && (
-              <p style={{ ...s.bioText, marginTop: '4px', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '13px' }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>location_on</span>
-                {currentUser.location}
-              </p>
-            )}
-            <button onClick={() => setEditing(true)} style={s.editBtn}>
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>edit</span>
-              Chinh sua ho so
-            </button>
+          )}
+        </div>
+
+        {/* ===== STATS GRID ===== */}
+        <div style={s.statsGrid}>
+          <div style={s.statCard}>
+            <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--primary)' }}>toll</span>
+            <p style={s.statValue('var(--primary)')}>{vangPoints.toLocaleString('vi-VN')}</p>
+            <p style={s.statLabel}>Diem Vang</p>
+          </div>
+          <div style={s.statCard}>
+            <span className="material-symbols-outlined" style={{ fontSize: '28px', color: '#117500' }}>restaurant</span>
+            <p style={s.statValue('#117500')}>{dishCount}</p>
+            <p style={s.statLabel}>Mon Da Thu</p>
           </div>
         </div>
 
-        {/* Credits Balance Card */}
-        <div style={s.creditsCard}>
-          <p style={s.creditsLabel}>
-            <span className="material-symbols-outlined" style={{ fontSize: '18px', verticalAlign: 'middle', marginRight: '4px' }}>account_balance_wallet</span>
-            So du Credits
-          </p>
-          <p style={s.creditsAmount}>
-            {walletBalance.toLocaleString('vi-VN')}d
-          </p>
-          <button
-            style={s.topupBtn}
-            onClick={() => handleTopup(100000)}
-            onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.35)'}
-            onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'}
-          >
-            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>add</span>
-            Nap Credits
-          </button>
-          <div style={s.topupChips}>
-            {[50000, 100000, 200000, 500000].map(amount => (
-              <button
-                key={amount}
-                style={s.topupChip}
-                onClick={() => handleTopup(amount)}
-                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--primary)'; e.currentTarget.style.color = 'white'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--surface-container-high)'; e.currentTarget.style.color = 'var(--on-surface)'; }}
-              >
-                {amount >= 1000 ? `${amount / 1000}k` : amount}
-              </button>
-            ))}
+        {/* ===== TIER PROGRESS ===== */}
+        <div style={s.tierSection}>
+          <div style={s.tierHeader}>
+            <h3 style={s.tierTitle}>Tien trinh len Diamond</h3>
+            <span style={s.tierTarget}>{vangPoints.toLocaleString('vi-VN')} / {tierTarget.toLocaleString('vi-VN')}</span>
           </div>
+          <div style={s.progressOuter}>
+            <div style={{ ...s.progressInner, width: `${tierProgress}%` }} />
+          </div>
+          <p style={s.tierHint}>Con {pointsToNext > 0 ? pointsToNext.toLocaleString('vi-VN') : 0} diem nua</p>
         </div>
-      </div>
 
-      {/* Your Moments (Photo Grid) */}
-      {currentUser?.images?.length > 0 && (
+        {/* ===== TASTE RADAR ===== */}
         <div style={s.section}>
-          <h2 style={s.sectionTitle}>Khoanh Khac Cua Ban</h2>
-          <div style={s.photoGrid}>
-            {currentUser.images.map((img, i) => (
-              <div key={i} style={s.photoItem}>
-                <img
-                  src={typeof img === 'string' ? img : img.url}
-                  alt=""
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                />
+          <h2 style={s.sectionTitle}>Taste Radar</h2>
+          <div style={{ background: 'var(--surface-container)', borderRadius: '1.5rem', padding: '20px', boxShadow: '0px 8px 24px rgba(0,0,0,0.15)' }}>
+            {TASTE_AXES.map(axis => (
+              <div key={axis.key} style={s.tasteBarRow}>
+                <span style={s.tasteBarLabel}>{axis.label}</span>
+                <div style={s.tasteBarOuter}>
+                  <div style={s.tasteBarInner(axis.value, axis.color)} />
+                </div>
+                <span style={s.tasteBarValue}>{axis.value}%</span>
               </div>
             ))}
           </div>
         </div>
-      )}
 
-      {/* Dine Interests */}
-      {interests.length > 0 && (
+        {/* ===== MON GAN DAY ===== */}
         <div style={s.section}>
-          <h2 style={s.sectionTitle}>So Thich Hen Ho</h2>
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            {interests.map((interest, i) => (
-              <span key={i} style={s.chip(false)}>
-                {interest}
-              </span>
+          <h2 style={s.sectionTitle}>Mon Gan Day</h2>
+          <div className="gomet-hscroll-profile" style={s.hScroll}>
+            {RECENT_DISHES.map(dish => (
+              <div key={dish.id} style={s.dishCard}>
+                <div style={s.dishImg}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '32px', color: 'var(--on-surface-variant)', opacity: 0.3 }}>lunch_dining</span>
+                </div>
+                <p style={s.dishName}>{dish.name}</p>
+                <p style={s.dishRestaurant}>{dish.restaurant}</p>
+                <span style={s.dishPoints}>{dish.points}</span>
+              </div>
             ))}
           </div>
         </div>
-      )}
 
-      {/* Transaction History */}
-      <div style={s.section}>
-        <h2 style={s.sectionTitle}>Lich Su Giao Dich</h2>
-
-        {/* Filter Tabs */}
-        <div style={{ display: 'flex', gap: '4px', marginBottom: '16px', backgroundColor: 'var(--surface-container-low)', borderRadius: 'var(--radius-full)', padding: '4px', width: 'fit-content' }}>
-          {TRANSACTION_FILTERS.map(f => (
-            <button
-              key={f.key}
-              style={s.filterTab(txFilter === f.key)}
-              onClick={() => setTxFilter(f.key)}
-            >
-              {f.label}
-            </button>
-          ))}
-        </div>
-
-        <div style={s.card}>
-          {walletLoading ? (
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px', color: 'var(--on-surface-variant)', textAlign: 'center', padding: '20px 0' }}>Dang tai...</p>
-          ) : filteredTransactions.length === 0 ? (
-            <div style={{ textAlign: 'center', padding: '32px 0', color: 'var(--on-surface-variant)' }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '40px', color: 'var(--outline-variant)', display: 'block', marginBottom: '8px' }}>receipt_long</span>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: '14px' }}>Chua co giao dich nao</p>
+        {/* ===== SO THICH ===== */}
+        {interests.length > 0 && (
+          <div style={s.section}>
+            <h2 style={s.sectionTitle}>So Thich</h2>
+            <div style={s.chipsWrap}>
+              {interests.map((interest, i) => (
+                <span key={i} style={s.chip}>{interest}</span>
+              ))}
             </div>
-          ) : (
-            filteredTransactions.map((tx, idx) => {
-              const txMeta = txIconMap[tx.type] || { icon: 'credit_card', color: 'var(--on-surface-variant)' };
-              return (
-                <React.Fragment key={tx.id}>
-                  <div style={s.txItem}>
-                    <div style={s.txIcon(txMeta.color)}>
-                      <span className="material-symbols-outlined" style={{ fontSize: '20px', color: txMeta.color }}>{txMeta.icon}</span>
-                    </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--on-surface)', fontFamily: 'var(--font-body)' }}>
-                        {tx.description || tx.type}
-                      </div>
-                      <div style={{ fontSize: '12px', color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)', marginTop: '2px' }}>
-                        {new Date(tx.createdAt).toLocaleDateString('vi-VN')}
-                      </div>
-                    </div>
-                    <div style={{
-                      fontSize: '15px',
-                      fontWeight: 700,
-                      fontFamily: 'var(--font-headline)',
-                      color: tx.amount > 0 ? '#2e7d32' : 'var(--primary)',
-                    }}>
-                      {tx.amount > 0 ? '+' : ''}{tx.amount.toLocaleString('vi-VN')}d
-                    </div>
-                  </div>
-                  {idx < filteredTransactions.length - 1 && <hr style={s.txDivider} />}
-                </React.Fragment>
-              );
-            })
-          )}
-        </div>
-      </div>
-
-      {/* Settings & Preferences */}
-      <div style={s.section}>
-        <h2 style={s.sectionTitle}>Cai Dat & Tuy Chon</h2>
-        <div style={s.settingsGrid}>
-          <div
-            style={s.settingsCard}
-            onClick={() => setEditing(true)}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--editorial-shadow)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--card-shadow)'; }}
-          >
-            <div style={s.settingsIcon}>
-              <span className="material-symbols-outlined" style={{ fontSize: '22px', color: 'var(--on-surface-variant)' }}>person</span>
-            </div>
-            <span style={s.settingsLabel}>Thong Tin Ca Nhan</span>
           </div>
+        )}
 
-          <div
-            style={s.settingsCard}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--editorial-shadow)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--card-shadow)'; }}
-          >
-            <div style={s.settingsIcon}>
-              <span className="material-symbols-outlined" style={{ fontSize: '22px', color: 'var(--on-surface-variant)' }}>shield</span>
-            </div>
-            <span style={s.settingsLabel}>Bao Mat & Quyen Rieng Tu</span>
-          </div>
+        {/* ===== CHINH SUA HO SO BUTTON ===== */}
+        <button style={s.editBtn} onClick={() => setEditing(true)}>
+          <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>edit</span>
+          Chinh sua ho so
+        </button>
 
-          <div
-            style={s.settingsCard}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--editorial-shadow)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--card-shadow)'; }}
-          >
-            <div style={s.settingsIcon}>
-              <span className="material-symbols-outlined" style={{ fontSize: '22px', color: 'var(--on-surface-variant)' }}>help</span>
-            </div>
-            <span style={s.settingsLabel}>Phan Hoi & Ho Tro</span>
-          </div>
+        {/* ===== LOGOUT & DELETE ===== */}
+        <button style={s.logoutBtn} onClick={handleLogout}>
+          <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>logout</span>
+          Dang xuat
+        </button>
+        <button style={s.deleteBtn} onClick={handleDeleteAccount}>
+          Xoa tai khoan
+        </button>
 
-          <div
-            style={{ ...s.settingsCard, cursor: 'pointer' }}
-            onClick={handleLogout}
-            onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--editorial-shadow)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'var(--card-shadow)'; }}
-          >
-            <div style={s.settingsIcon}>
-              <span className="material-symbols-outlined" style={{ fontSize: '22px', color: 'var(--primary)' }}>logout</span>
-            </div>
-            <span style={{ ...s.settingsLabel, color: 'var(--primary)' }}>Dang Xuat</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Delete Account */}
-      <div style={{ ...s.section, marginBottom: 0 }}>
-        <div style={{
-          backgroundColor: 'var(--surface-container-lowest)',
-          borderRadius: 'var(--radius)',
-          padding: '24px',
-          boxShadow: 'var(--card-shadow)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          flexWrap: 'wrap',
-          gap: '16px',
-        }}>
-          <div>
-            <h3 style={{ fontFamily: 'var(--font-headline)', fontSize: '16px', fontWeight: 700, color: 'var(--error)', margin: '0 0 4px' }}>Xoa Tai Khoan</h3>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '13px', color: 'var(--on-surface-variant)', margin: 0 }}>
-              Hanh dong nay se xoa vinh vien du lieu cua ban.
-            </p>
-          </div>
-          <button
-            style={s.dangerBtn}
-            onClick={handleDeleteAccount}
-            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--error)'; e.currentTarget.style.color = 'white'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; e.currentTarget.style.color = 'var(--error)'; }}
-          >
-            <span className="material-symbols-outlined" style={{ fontSize: '16px', verticalAlign: 'middle', marginRight: '4px' }}>delete_forever</span>
-            Xoa tai khoan
-          </button>
-        </div>
       </div>
     </div>
   );

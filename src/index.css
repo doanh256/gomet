@@ -2,48 +2,107 @@
 @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
 
 :root {
-  --primary: #ae2f34;
-  --primary-container: #ff6b6b;
-  --on-primary: #ffffff;
-  --on-primary-container: #6d0010;
-  --primary-fixed: #ffdad8;
-  --secondary: #5f5e5e;
-  --secondary-container: #e4e2e1;
-  --tertiary: #894e45;
-  --tertiary-container: #cf8a7f;
-  --surface: #fdf9f3;
-  --surface-dim: #dddad4;
-  --surface-container-lowest: #ffffff;
-  --surface-container-low: #f7f3ed;
-  --surface-container: #f1ede7;
-  --surface-container-high: #ebe8e2;
-  --surface-container-highest: #e6e2dc;
-  --on-surface: #1c1c18;
-  --on-surface-variant: #584140;
-  --on-background: #1c1c18;
+  /* === PERSIMMON PULSE NOCTURNAL (Dark Mode - Primary) === */
+
+  /* Primary Persimmon */
+  --primary: #FFB59E;
+  --primary-container: #FF571A;
+  --on-primary: #3A0B00;
+  --on-primary-container: #FFDBD1;
+  --primary-fixed: #FFDBD1;
+
+  /* Secondary (Neon Green - "Tried" status) */
+  --secondary: #117500;
+  --secondary-container: #842502;
+  --on-secondary: #ffffff;
+
+  /* Tertiary (Gold - Vang points) */
+  --tertiary: #815f00;
+  --tertiary-container: #FFD54F;
+
+  /* Surface Hierarchy (Nocturnal) */
+  --surface: #131313;
+  --surface-dim: #131313;
+  --surface-bright: #393939;
+  --surface-container-lowest: #0E0E0E;
+  --surface-container-low: #1C1B1B;
+  --surface-container: #20201F;
+  --surface-container-high: #2A2A2A;
+  --surface-container-highest: #353535;
+  --surface-variant: #353535;
+
+  /* On-Surface */
+  --on-surface: #FDF9F3;
+  --on-surface-variant: #E6BEB2;
+  --on-background: #E5E2E1;
+
+  /* Outline */
   --outline: #8c706f;
-  --outline-variant: #e0bfbd;
-  --error: #ba1a1a;
-  --error-container: #ffdad6;
-  --inverse-surface: #31302d;
-  --inverse-on-surface: #f4f0ea;
-  --primary-gradient: linear-gradient(45deg, #ae2f34, #ff6b6b);
-  --editorial-shadow: 0 24px 48px -12px rgba(174, 47, 52, 0.08);
-  --card-shadow: 0 8px 24px rgba(174, 47, 52, 0.04);
+  --outline-variant: #453533;
+
+  /* Error */
+  --error: #FFB4AB;
+  --error-container: #93000A;
+
+  /* Inverse */
+  --inverse-surface: #E5E2E1;
+  --inverse-on-surface: #313030;
+
+  /* Gradients */
+  --primary-gradient: linear-gradient(135deg, #FFB59E, #FF571A);
+  --primary-gradient-light: linear-gradient(135deg, #b83500, #ff784d);
+
+  /* Shadows (Ghost shadows - 6% opacity) */
+  --ghost-shadow: 0px 16px 40px rgba(0, 0, 0, 0.25);
+  --editorial-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
+  --card-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+
+  /* Glass */
+  --glass-bg: rgba(57, 57, 57, 0.6);
+  --glass-blur: 20px;
+
+  /* Radius (24px cards, pill buttons) */
   --radius: 1rem;
-  --radius-lg: 2rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2rem;
   --radius-full: 9999px;
+
+  /* Typography */
   --font-headline: 'Plus Jakarta Sans', sans-serif;
   --font-body: 'Inter', sans-serif;
 
+  /* Vang Gold */
+  --vang-gold: #FFD54F;
+  --vang-bronze: #CD7F32;
+  --vang-silver: #C0C0C0;
+  --vang-diamond: #B9F2FF;
+
   /* Legacy compat */
-  --primary-color: #ae2f34;
-  --secondary-color: #ff6b6b;
-  --accent-gold: #894e45;
-  --bg-color: #fdf9f3;
-  --text-color: #1c1c18;
-  --text-light: #584140;
-  --border-color: #e0bfbd;
+  --primary-color: #FF571A;
+  --secondary-color: #FFB59E;
+  --accent-gold: #FFD54F;
+  --bg-color: #131313;
+  --text-color: #FDF9F3;
+  --text-light: #E6BEB2;
+  --border-color: #353535;
+}
+
+/* Light mode override */
+@media (prefers-color-scheme: light) {
+  :root.light {
+    --primary: #b83500;
+    --primary-container: #FF571A;
+    --on-primary: #ffffff;
+    --surface: #FDF9F3;
+    --surface-container-lowest: #ffffff;
+    --surface-container-low: #fdf9f2;
+    --surface-container: #f1ede7;
+    --surface-container-high: #ebe8e2;
+    --surface-container-highest: #e6e2dc;
+    --on-surface: #393834;
+    --on-surface-variant: #584140;
+    --primary-gradient: linear-gradient(135deg, #b83500, #ff784d);
+  }
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -53,19 +112,27 @@ body {
   background-color: var(--surface);
   color: var(--on-surface);
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   overscroll-behavior: none;
 }
 
-h1, h2, h3, h4, h5, h6 { font-family: var(--font-headline); }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-headline);
+}
 
+/* Material Symbols */
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 .material-symbols-outlined.filled {
-  font-variation-settings: 'FILL' 1;
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
+/* Scrollbar - dark themed */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--outline-variant); border-radius: 3px; }
-::selection { background: var(--primary-fixed); color: var(--on-primary-container); }
+::-webkit-scrollbar-thumb { background: var(--surface-variant); border-radius: 3px; }
+::selection { background: var(--primary-container); color: var(--on-primary); }
+
+/* No-Line Rule: no 1px borders anywhere. Use bg color shifts */
+/* Ghost borders max 15% opacity */

@@ -14,7 +14,7 @@ const SwipePage = () => {
   const [matchUser, setMatchUser] = useState(null);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [imgLoaded, setImgLoaded] = useState(false);
-  const [swipeFeedback, setSwipeFeedback] = useState(null); // 'like' | 'nope' | null
+  const [swipeFeedback, setSwipeFeedback] = useState(null);
   const [dragX, setDragX] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const lastSwipeRef = useRef(0);
@@ -86,7 +86,6 @@ const SwipePage = () => {
     dragStartRef.current = e.clientX;
     setIsDragging(true);
   };
-
   const handlePointerMove = (e) => {
     if (!isDragging) return;
     const diff = e.clientX - dragStartRef.current;
@@ -95,18 +94,12 @@ const SwipePage = () => {
     else if (diff < -50) setSwipeFeedback('nope');
     else setSwipeFeedback(null);
   };
-
   const handlePointerUp = () => {
     if (!isDragging) return;
     setIsDragging(false);
-    if (dragX > 100) {
-      handleSwipe('right');
-    } else if (dragX < -100) {
-      handleSwipe('left');
-    } else {
-      setDragX(0);
-      setSwipeFeedback(null);
-    }
+    if (dragX > 100) handleSwipe('right');
+    else if (dragX < -100) handleSwipe('left');
+    else { setDragX(0); setSwipeFeedback(null); }
   };
 
   // Keyboard shortcuts
@@ -115,32 +108,18 @@ const SwipePage = () => {
       if (!currentProfile) return;
       if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
       switch (e.key) {
-        case 'ArrowLeft':
-          handleSwipe('left');
-          break;
-        case 'ArrowRight':
-          handleSwipe('right');
-          break;
+        case 'ArrowLeft': handleSwipe('left'); break;
+        case 'ArrowRight': handleSwipe('right'); break;
         case ' ':
           e.preventDefault();
           if (getImages(currentProfile).length > 1) {
             setCurrentImageIndex(prev => prev < getImages(currentProfile).length - 1 ? prev + 1 : 0);
           }
           break;
-        case 'ArrowUp':
-          e.preventDefault();
-          setIsDetailOpen(true);
-          break;
-        case 'ArrowDown':
-          e.preventDefault();
-          setIsDetailOpen(false);
-          break;
-        case 'Enter':
-          e.preventDefault();
-          handleSuperLike();
-          break;
-        default:
-          break;
+        case 'ArrowUp': e.preventDefault(); setIsDetailOpen(true); break;
+        case 'ArrowDown': e.preventDefault(); setIsDetailOpen(false); break;
+        case 'Enter': e.preventDefault(); handleSuperLike(); break;
+        default: break;
       }
     };
     window.addEventListener('keydown', handleKeyDown);
@@ -152,42 +131,64 @@ const SwipePage = () => {
 
   useEffect(() => {
     document.title = currentProfile
-      ? `Smart Matches: ${currentProfile.name} (${currentProfile.age})`
-      : 'Smart Matches';
+      ? `GOMET: ${currentProfile.name} (${currentProfile.age})`
+      : 'GOMET - Tim nguoi phu hop';
   }, [currentProfile]);
 
   const images = currentProfile ? getImages(currentProfile) : [];
   const currentImg = images[currentImageIndex] || currentProfile?.avatar;
 
-  // Card transform during drag
   const cardTransform = isDragging
     ? `translateX(${dragX}px) rotate(${dragX * 0.05}deg)`
     : animationClass === 'exit-right'
       ? 'translateX(120%) rotate(15deg)'
       : animationClass === 'exit-left'
         ? 'translateX(-120%) rotate(-15deg)'
-        : animationClass === 'entering'
-          ? 'translateX(0) rotate(0)'
-          : 'none';
+        : 'translateX(0) rotate(0)';
 
   const cardOpacity = animationClass === 'exit-right' || animationClass === 'exit-left' ? 0 : 1;
 
-  // Styles
-  const styles = {
+  // Taste profile data
+  const tasteProfile = currentProfile?.tasteProfile || {
+    spice: 3,
+    style: 'Street food',
+    region: 'Nam Bo',
+  };
+
+  const matchScore = currentProfile?.matchScore || Math.floor(Math.random() * 15) + 82;
+
+  // Icebreaker
+  const icebreakers = [
+    'Ban thich an pho hay bun bo hon?',
+    'Quan ca phe nao la so mot cua ban?',
+    'Mon an comfort food cua ban la gi?',
+    'Ban co thich nau an khong?',
+  ];
+  const icebreaker = currentProfile?.icebreaker || icebreakers[currentIndex % icebreakers.length];
+
+  // Next profiles preview
+  const nextProfiles = profiles.slice(currentIndex + 1, currentIndex + 4);
+
+  // Vang tier
+  const tierLabels = ['Silver', 'Gold', 'Platinum', 'Diamond'];
+  const tier = currentProfile?.tier || tierLabels[currentIndex % tierLabels.length];
+
+  const s = {
     container: {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      padding: '24px 16px',
+      padding: '16px 16px 24px',
       maxWidth: '440px',
       margin: '0 auto',
       width: '100%',
       minHeight: '100vh',
+      backgroundColor: 'var(--surface)',
       fontFamily: 'var(--font-body)',
     },
     header: {
       width: '100%',
-      marginBottom: '20px',
+      marginBottom: '12px',
       textAlign: 'center',
     },
     headerLabel: {
@@ -196,24 +197,26 @@ const SwipePage = () => {
       letterSpacing: '2px',
       color: 'var(--primary)',
       textTransform: 'uppercase',
-      marginBottom: '4px',
+      marginBottom: '2px',
       fontFamily: 'var(--font-headline)',
     },
     headerTitle: {
-      fontSize: '24px',
+      fontSize: '22px',
       fontWeight: 800,
       color: 'var(--on-surface)',
       fontFamily: 'var(--font-headline)',
       margin: 0,
     },
+
+    // Main card
     cardWrapper: {
       position: 'relative',
       width: '100%',
-      aspectRatio: '3/4',
-      maxHeight: '600px',
-      borderRadius: 'var(--radius-lg)',
+      aspectRatio: '3/4.5',
+      maxHeight: '580px',
+      borderRadius: '1.5rem',
       overflow: 'hidden',
-      boxShadow: 'var(--editorial-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
       cursor: 'grab',
       userSelect: 'none',
       transform: cardTransform,
@@ -232,32 +235,65 @@ const SwipePage = () => {
       bottom: 0,
       left: 0,
       right: 0,
-      height: '55%',
-      background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.3) 50%, transparent 100%)',
+      height: '65%',
+      background: 'linear-gradient(to top, #131313 0%, rgba(19,19,19,0.7) 40%, transparent 100%)',
       pointerEvents: 'none',
     },
+    gradientOverlayTop: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      height: '30%',
+      background: 'linear-gradient(to bottom, rgba(19,19,19,0.4) 0%, transparent 100%)',
+      pointerEvents: 'none',
+    },
+
+    // Match score badge
+    matchBadge: {
+      position: 'absolute',
+      top: '16px',
+      right: '16px',
+      width: '60px',
+      height: '60px',
+      borderRadius: '50%',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      zIndex: 5,
+      boxShadow: '0 0 20px rgba(255,87,26,0.5)',
+    },
+    matchBadgeText: {
+      fontFamily: 'var(--font-headline)',
+      fontSize: '18px',
+      fontWeight: 800,
+      color: '#fff',
+    },
+
+    // Card info overlay
     cardInfo: {
       position: 'absolute',
       bottom: 0,
       left: 0,
       right: 0,
-      padding: '24px',
+      padding: '20px',
       zIndex: 3,
     },
     nameRow: {
       display: 'flex',
       alignItems: 'center',
       gap: '8px',
-      marginBottom: '4px',
+      marginBottom: '6px',
     },
     name: {
-      fontSize: '26px',
+      fontSize: '28px',
       fontWeight: 800,
       color: '#fff',
       fontFamily: 'var(--font-headline)',
     },
     age: {
-      fontSize: '22px',
+      fontSize: '24px',
       fontWeight: 400,
       color: 'rgba(255,255,255,0.9)',
     },
@@ -265,61 +301,87 @@ const SwipePage = () => {
       display: 'inline-flex',
       alignItems: 'center',
       justifyContent: 'center',
-      width: '22px',
-      height: '22px',
+      width: '24px',
+      height: '24px',
       borderRadius: '50%',
-      background: '#1a73e8',
+      background: 'var(--primary)',
       color: '#fff',
       fontSize: '14px',
     },
-    location: {
-      display: 'flex',
+    tierBadge: {
+      display: 'inline-flex',
       alignItems: 'center',
       gap: '4px',
-      fontSize: '13px',
-      color: 'rgba(255,255,255,0.8)',
-      marginBottom: '8px',
+      fontSize: '11px',
+      fontWeight: 700,
+      color: '#FFD54F',
+      background: 'rgba(255,213,79,0.15)',
+      padding: '4px 10px',
+      borderRadius: '9999px',
+      marginLeft: '4px',
     },
-    bio: {
-      fontSize: '14px',
+
+    // Taste profile glass card
+    tasteCard: {
+      background: 'rgba(42,42,42,0.7)',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
+      borderRadius: '16px',
+      padding: '14px 16px',
+      marginTop: '10px',
+    },
+    tasteRow: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '8px',
+      marginBottom: '6px',
+    },
+    tasteLabel: {
+      fontSize: '12px',
+      color: 'rgba(255,255,255,0.6)',
+      width: '80px',
+      flexShrink: 0,
+    },
+    tasteValue: {
+      fontSize: '13px',
+      fontWeight: 600,
+      color: '#fff',
+    },
+
+    // Icebreaker
+    icebreakerBox: {
+      background: 'rgba(255,181,158,0.1)',
+      borderRadius: '12px',
+      padding: '12px 16px',
+      marginTop: '10px',
+    },
+    icebreakerLabel: {
+      fontSize: '10px',
+      fontWeight: 700,
+      letterSpacing: '1px',
+      color: 'var(--primary)',
+      textTransform: 'uppercase',
+      marginBottom: '4px',
+    },
+    icebreakerText: {
+      fontSize: '13px',
+      fontStyle: 'italic',
       color: 'rgba(255,255,255,0.85)',
       lineHeight: 1.5,
-      marginBottom: '10px',
-      display: '-webkit-box',
-      WebkitLineClamp: 2,
-      WebkitBoxOrient: 'vertical',
-      overflow: 'hidden',
     },
-    interestChips: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: '6px',
-    },
-    chip: {
-      padding: '4px 12px',
-      borderRadius: 'var(--radius-full)',
-      background: 'rgba(255,255,255,0.2)',
-      backdropFilter: 'blur(8px)',
-      color: '#fff',
-      fontSize: '12px',
-      fontWeight: 600,
-    },
+
+    // Image indicators
     imageIndicators: {
       position: 'absolute',
       top: '12px',
       left: '12px',
-      right: '12px',
+      right: '80px',
       display: 'flex',
       gap: '4px',
-      zIndex: 4,
+      zIndex: 6,
     },
-    indicator: (active) => ({
-      flex: 1,
-      height: '3px',
-      borderRadius: '2px',
-      background: active ? '#fff' : 'rgba(255,255,255,0.4)',
-      transition: 'background 0.2s',
-    }),
+
+    // Feedback overlay
     feedbackOverlay: (type) => ({
       position: 'absolute',
       top: '50%',
@@ -331,35 +393,62 @@ const SwipePage = () => {
       letterSpacing: '4px',
       padding: '8px 24px',
       borderRadius: '12px',
-      border: `4px solid ${type === 'like' ? '#4CAF50' : 'var(--error)'}`,
-      color: type === 'like' ? '#4CAF50' : 'var(--error)',
+      color: type === 'like' ? '#4CAF50' : '#FF5252',
       opacity: type ? 1 : 0,
       transition: 'opacity 0.15s',
       pointerEvents: 'none',
-      zIndex: 5,
-      textShadow: '0 2px 8px rgba(0,0,0,0.3)',
+      zIndex: 7,
+      textShadow: '0 2px 12px rgba(0,0,0,0.5)',
     }),
+
+    // Action buttons
     actionsRow: {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      gap: '20px',
-      marginTop: '24px',
+      gap: '24px',
+      marginTop: '20px',
     },
-    actionBtn: (size, bg, shadow) => ({
-      width: `${size}px`,
-      height: `${size}px`,
-      borderRadius: '50%',
-      border: 'none',
-      background: bg,
+
+    // Waiting preview
+    waitingRow: {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      cursor: 'pointer',
-      boxShadow: shadow || 'none',
-      transition: 'transform 0.15s, box-shadow 0.15s',
-      outline: 'none',
-    }),
+      gap: '8px',
+      marginTop: '20px',
+    },
+    waitingLabel: {
+      fontSize: '12px',
+      color: 'var(--on-surface-variant)',
+      marginBottom: '8px',
+      textAlign: 'center',
+      marginTop: '16px',
+    },
+    waitingThumb: {
+      width: '40px',
+      height: '40px',
+      borderRadius: '50%',
+      objectFit: 'cover',
+      opacity: 0.4,
+      background: 'var(--surface-container-high)',
+    },
+    waitingThumbFallback: {
+      width: '40px',
+      height: '40px',
+      borderRadius: '50%',
+      opacity: 0.4,
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: '#fff',
+      fontSize: '16px',
+      fontWeight: 700,
+      fontFamily: 'var(--font-headline)',
+    },
+
+    // Empty / Loading
     emptyState: {
       display: 'flex',
       flexDirection: 'column',
@@ -390,14 +479,14 @@ const SwipePage = () => {
     },
     refreshBtn: {
       padding: '12px 32px',
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary-gradient)',
-      color: 'var(--on-primary)',
+      borderRadius: '9999px',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
       border: 'none',
       fontSize: '15px',
       fontWeight: 700,
       cursor: 'pointer',
-      boxShadow: '0 4px 16px rgba(174,47,52,0.25)',
+      boxShadow: '0 4px 16px rgba(255,87,26,0.3)',
     },
     loadingSpinner: {
       display: 'flex',
@@ -408,9 +497,9 @@ const SwipePage = () => {
     spinner: {
       width: '40px',
       height: '40px',
+      borderRadius: '50%',
       border: '3px solid var(--surface-container-high)',
       borderTop: '3px solid var(--primary)',
-      borderRadius: '50%',
       animation: 'spin 0.8s linear infinite',
     },
     navZone: (side) => ({
@@ -422,57 +511,63 @@ const SwipePage = () => {
       zIndex: 2,
       cursor: 'pointer',
     }),
-    infoBtn: {
-      position: 'absolute',
-      bottom: '24px',
-      right: '24px',
-      width: '32px',
-      height: '32px',
-      borderRadius: '50%',
-      background: 'rgba(255,255,255,0.2)',
-      backdropFilter: 'blur(8px)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      cursor: 'pointer',
-      border: 'none',
-      color: '#fff',
-      zIndex: 4,
-    },
   };
 
-  // Inject keyframes for spinner
+  // Keyframes
   useEffect(() => {
     const styleId = 'swipe-keyframes';
     if (!document.getElementById(styleId)) {
       const styleEl = document.createElement('style');
       styleEl.id = styleId;
-      styleEl.textContent = `
-        @keyframes spin { to { transform: rotate(360deg); } }
-      `;
+      styleEl.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
       document.head.appendChild(styleEl);
     }
   }, []);
 
+  const renderActionBtn = (size, bg, shadow, icon, iconSize, iconColor, onClick, label) => (
+    <button
+      onClick={onClick}
+      aria-label={label}
+      style={{
+        width: `${size}px`,
+        height: `${size}px`,
+        borderRadius: '50%',
+        border: 'none',
+        background: bg,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        cursor: 'pointer',
+        boxShadow: shadow || 'none',
+        transition: 'transform 0.15s, box-shadow 0.15s',
+        outline: 'none',
+      }}
+      onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
+      onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+    >
+      <span className="material-symbols-outlined" style={{ fontSize: `${iconSize}px`, color: iconColor }}>{icon}</span>
+    </button>
+  );
+
   return (
-    <div style={styles.container}>
+    <div style={s.container}>
       {matchUser && <MatchPopup user={matchUser} onClose={() => setMatchUser(null)} />}
 
       {/* Header */}
-      <div style={styles.header}>
-        <p style={styles.headerLabel}>SMART MATCHES</p>
-        <h1 style={styles.headerTitle}>Tim nguoi phu hop</h1>
+      <div style={s.header}>
+        <p style={s.headerLabel}>GOMET MEET</p>
+        <h1 style={s.headerTitle}>Tim nguoi phu hop</h1>
       </div>
 
       {/* Main Card */}
       {!profiles.length && !currentProfile ? (
-        <div style={styles.loadingSpinner}>
-          <div style={styles.spinner} />
+        <div style={s.loadingSpinner}>
+          <div style={s.spinner} />
         </div>
       ) : currentProfile ? (
         <>
           <div
-            style={styles.cardWrapper}
+            style={s.cardWrapper}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
             onPointerUp={handlePointerUp}
@@ -480,9 +575,13 @@ const SwipePage = () => {
           >
             {/* Image indicators */}
             {images.length > 1 && (
-              <div style={styles.imageIndicators}>
+              <div style={s.imageIndicators}>
                 {images.map((_, idx) => (
-                  <div key={idx} style={styles.indicator(idx === currentImageIndex)} />
+                  <div key={idx} style={{
+                    flex: 1, height: '3px', borderRadius: '2px',
+                    background: idx === currentImageIndex ? '#fff' : 'rgba(255,255,255,0.4)',
+                    transition: 'background 0.2s',
+                  }} />
                 ))}
               </div>
             )}
@@ -496,138 +595,127 @@ const SwipePage = () => {
               }} />
             )}
 
-            <img
-              src={currentImg}
-              alt={currentProfile.name}
-              style={{ ...styles.cardImage, opacity: imgLoaded ? 1 : 0 }}
-              onLoad={() => setImgLoaded(true)}
-              onError={(e) => {
-                setImgLoaded(true);
-                e.target.style.display = 'none';
-              }}
-              draggable={false}
-            />
+            {/* Photo */}
+            {currentImg ? (
+              <img
+                src={currentImg}
+                alt={currentProfile.name}
+                style={{ ...s.cardImage, opacity: imgLoaded ? 1 : 0 }}
+                onLoad={() => setImgLoaded(true)}
+                onError={(e) => { setImgLoaded(true); e.target.style.display = 'none'; }}
+                draggable={false}
+              />
+            ) : (
+              <div style={{
+                width: '100%', height: '100%',
+                background: 'linear-gradient(135deg, #FFB59E 0%, #FF571A 100%)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <span className="material-symbols-outlined" style={{ fontSize: '80px', color: 'rgba(255,255,255,0.2)' }}>person</span>
+              </div>
+            )}
 
-            {/* Gradient overlay */}
-            <div style={styles.gradientOverlay} />
+            {/* Gradient overlays */}
+            <div style={s.gradientOverlayTop} />
+            <div style={s.gradientOverlay} />
 
-            {/* Tap zones for image navigation */}
+            {/* Match score badge */}
+            <div style={s.matchBadge}>
+              <span style={s.matchBadgeText}>{matchScore}%</span>
+            </div>
+
+            {/* Tap zones */}
             {images.length > 1 && (
               <>
-                <div
-                  style={styles.navZone('left')}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (currentImageIndex > 0) setCurrentImageIndex(prev => prev - 1);
-                  }}
-                />
-                <div
-                  style={styles.navZone('right')}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    if (currentImageIndex < images.length - 1) setCurrentImageIndex(prev => prev + 1);
-                  }}
-                />
+                <div style={s.navZone('left')} onClick={(e) => {
+                  e.stopPropagation();
+                  if (currentImageIndex > 0) setCurrentImageIndex(prev => prev - 1);
+                }} />
+                <div style={s.navZone('right')} onClick={(e) => {
+                  e.stopPropagation();
+                  if (currentImageIndex < images.length - 1) setCurrentImageIndex(prev => prev + 1);
+                }} />
               </>
             )}
 
-            {/* Swipe feedback overlay */}
+            {/* Swipe feedback */}
             {swipeFeedback && (
-              <div style={styles.feedbackOverlay(swipeFeedback)}>
+              <div style={s.feedbackOverlay(swipeFeedback)}>
                 {swipeFeedback === 'like' ? 'LIKE' : 'NOPE'}
               </div>
             )}
 
             {/* Card info */}
-            <div style={styles.cardInfo}>
-              <div style={styles.nameRow}>
-                <span style={styles.name}>{currentProfile.name}</span>
-                <span style={styles.age}>{currentProfile.age}</span>
+            <div style={s.cardInfo}>
+              <div style={s.nameRow}>
+                <span style={s.name}>{currentProfile.name}</span>
+                <span style={s.age}>{currentProfile.age}</span>
                 {currentProfile.verified && (
-                  <span style={styles.verifiedBadge}>
+                  <span style={s.verifiedBadge}>
                     <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>verified</span>
                   </span>
                 )}
+                <span style={s.tierBadge}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '12px' }}>toll</span>
+                  {tier}
+                </span>
               </div>
 
-              <div style={styles.location}>
-                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>location_on</span>
-                <span>{currentProfile.location || 'Ha Noi'}</span>
+              {/* Taste profile glass card */}
+              <div style={s.tasteCard}>
+                <div style={s.tasteRow}>
+                  <span style={s.tasteLabel}>Do cay:</span>
+                  <span style={s.tasteValue}>{'🌶️'.repeat(tasteProfile.spice || 2)}</span>
+                </div>
+                <div style={s.tasteRow}>
+                  <span style={s.tasteLabel}>Phong cach:</span>
+                  <span style={s.tasteValue}>{tasteProfile.style || 'Street food'}</span>
+                </div>
+                <div style={{ ...s.tasteRow, marginBottom: 0 }}>
+                  <span style={s.tasteLabel}>Vung mien:</span>
+                  <span style={s.tasteValue}>{tasteProfile.region || 'Nam Bo'}</span>
+                </div>
               </div>
 
-              {currentProfile.bio && (
-                <div style={styles.bio}>{currentProfile.bio}</div>
-              )}
-
-              {(() => {
-                const tags = Array.isArray(currentProfile.interests) ? currentProfile.interests : (typeof currentProfile.interests === 'string' ? (() => { try { return JSON.parse(currentProfile.interests); } catch { return []; } })() : []);
-                return tags.length > 0 ? (
-                  <div style={styles.interestChips}>
-                    {tags.slice(0, 5).map((tag, i) => (
-                      <span key={i} style={styles.chip}>{tag}</span>
-                    ))}
-                  </div>
-                ) : null;
-              })()}
+              {/* Culinary Spark icebreaker */}
+              <div style={s.icebreakerBox}>
+                <p style={s.icebreakerLabel}>Culinary Spark</p>
+                <p style={s.icebreakerText}>"{icebreaker}"</p>
+              </div>
             </div>
-
-            {/* Info button */}
-            <button
-              style={styles.infoBtn}
-              onClick={(e) => { e.stopPropagation(); setIsDetailOpen(true); }}
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>info</span>
-            </button>
           </div>
 
           {/* Action Buttons */}
-          <div style={styles.actionsRow}>
-            {/* Pass */}
-            <button
-              style={styles.actionBtn(56, 'var(--surface-container-high)', 'var(--card-shadow)')}
-              onClick={() => handleSwipe('left')}
-              aria-label="Pass"
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--on-surface-variant)' }}>close</span>
-            </button>
-
-            {/* Super Like */}
-            <button
-              style={styles.actionBtn(48, 'var(--tertiary-container)', 'var(--card-shadow)')}
-              onClick={handleSuperLike}
-              aria-label="Super Like"
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-            >
-              <span className="material-symbols-outlined" style={{ fontSize: '24px', color: '#fff' }}>star</span>
-            </button>
-
-            {/* Like */}
-            <button
-              style={{
-                ...styles.actionBtn(64, 'var(--primary-gradient)', '0 6px 20px rgba(174,47,52,0.35)'),
-              }}
-              onClick={() => handleSwipe('right')}
-              aria-label="Like"
-              onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-            >
-              <span className="material-symbols-outlined filled" style={{ fontSize: '32px', color: 'var(--on-primary)' }}>favorite</span>
-            </button>
+          <div style={s.actionsRow}>
+            {renderActionBtn(56, 'var(--surface-variant)', '0px 8px 24px rgba(0,0,0,0.15)', 'close', 28, 'var(--on-surface-variant)', () => handleSwipe('left'), 'Bo qua')}
+            {renderActionBtn(48, 'var(--surface-container-high)', '0px 8px 24px rgba(0,0,0,0.15)', 'chat_bubble', 22, 'var(--on-surface)', handleSuperLike, 'Nhan tin')}
+            {renderActionBtn(64, 'linear-gradient(135deg, #FFB59E, #FF571A)', '0 0 20px rgba(255,87,26,0.4)', 'favorite', 32, '#fff', () => handleSwipe('right'), 'Thich')}
           </div>
+
+          {/* Dang cho preview thumbnails */}
+          {nextProfiles.length > 0 && (
+            <>
+              <p style={s.waitingLabel}>Dang cho</p>
+              <div style={s.waitingRow}>
+                {nextProfiles.map((p, idx) => {
+                  const av = getImages(p)[0] || p.avatar;
+                  return av ? (
+                    <img key={idx} src={av} alt="" style={s.waitingThumb} onError={(e) => { e.target.style.display = 'none'; }} />
+                  ) : (
+                    <div key={idx} style={s.waitingThumbFallback}>{p.name?.charAt(0) || '?'}</div>
+                  );
+                })}
+              </div>
+            </>
+          )}
         </>
       ) : (
-        /* Empty state */
-        <div style={styles.emptyState}>
-          <span className="material-symbols-outlined" style={styles.emptyIcon}>sentiment_satisfied</span>
-          <h3 style={styles.emptyTitle}>Het roi!</h3>
-          <p style={styles.emptySubtext}>
-            Ban da xem het cac goi y. Quay lai sau de gap nguoi moi nhe!
-          </p>
+        <div style={s.emptyState}>
+          <span className="material-symbols-outlined" style={s.emptyIcon}>sentiment_satisfied</span>
+          <h3 style={s.emptyTitle}>Het roi!</h3>
+          <p style={s.emptySubtext}>Ban da xem het cac goi y. Quay lai sau de gap nguoi moi nhe!</p>
           <button
-            style={styles.refreshBtn}
+            style={s.refreshBtn}
             onClick={() => {
               setCurrentIndex(0);
               setCurrentImageIndex(0);
