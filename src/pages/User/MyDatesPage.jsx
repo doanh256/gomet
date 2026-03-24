@@ -11,13 +11,13 @@ const TABS = [
 ];
 
 const STATUS_MAP = {
-  open: { bg: '#e8f5e9', color: '#2e7d32', text: 'Dang mo' },
-  filled: { bg: '#fff3e0', color: '#e65100', text: 'Da du' },
-  completed: { bg: '#e3f2fd', color: '#1565c0', text: 'Hoan thanh' },
-  cancelled: { bg: 'var(--error-container)', color: 'var(--error)', text: 'Da huy' },
-  pending: { bg: '#fff8e1', color: '#f57f17', text: 'Cho duyet' },
-  accepted: { bg: '#e8f5e9', color: '#2e7d32', text: 'Duoc chon' },
-  rejected: { bg: 'var(--error-container)', color: 'var(--error)', text: 'Bi tu choi' },
+  open: { bg: 'rgba(255,181,158,0.1)', color: '#FFB59E', text: 'Dang mo' },
+  filled: { bg: 'rgba(255,213,79,0.15)', color: '#FFD54F', text: 'Da du' },
+  completed: { bg: 'rgba(17,117,0,0.15)', color: '#117500', text: 'Hoan thanh' },
+  cancelled: { bg: 'rgba(255,87,26,0.15)', color: '#FF571A', text: 'Da huy' },
+  pending: { bg: 'rgba(255,213,79,0.15)', color: '#FFD54F', text: 'Cho duyet' },
+  accepted: { bg: 'rgba(17,117,0,0.15)', color: '#117500', text: 'Duoc chon' },
+  rejected: { bg: 'rgba(255,87,26,0.15)', color: '#FF571A', text: 'Bi tu choi' },
 };
 
 const MyDatesPage = () => {
@@ -78,10 +78,10 @@ const MyDatesPage = () => {
         background: s.bg,
         color: s.color,
         padding: '4px 14px',
-        borderRadius: 'var(--radius-full)',
+        borderRadius: '9999px',
         fontSize: '0.75rem',
         fontWeight: 600,
-        fontFamily: 'var(--font-body)',
+        fontFamily: 'Inter, var(--font-body)',
       }}>
         {s.text}
       </span>
@@ -92,13 +92,13 @@ const MyDatesPage = () => {
     if (post.category === 'tra_phi' && post.price) {
       return (
         <span style={{
-          background: '#e3f2fd',
-          color: '#1565c0',
+          background: 'rgba(255,213,79,0.15)',
+          color: '#FFD54F',
           padding: '4px 14px',
-          borderRadius: 'var(--radius-full)',
+          borderRadius: '9999px',
           fontSize: '0.75rem',
           fontWeight: 700,
-          fontFamily: 'var(--font-body)',
+          fontFamily: 'Inter, var(--font-body)',
         }}>
           {post.price.toLocaleString('vi-VN')}d - Tra Phi
         </span>
@@ -106,13 +106,13 @@ const MyDatesPage = () => {
     }
     return (
       <span style={{
-        background: 'var(--surface-container-high)',
-        color: 'var(--on-surface-variant)',
+        background: '#353535',
+        color: '#E6BEB2',
         padding: '4px 14px',
-        borderRadius: 'var(--radius-full)',
+        borderRadius: '9999px',
         fontSize: '0.75rem',
         fontWeight: 600,
-        fontFamily: 'var(--font-body)',
+        fontFamily: 'Inter, var(--font-body)',
       }}>
         Keo Thuong
       </span>
@@ -146,9 +146,9 @@ const MyDatesPage = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: 'var(--surface)',
+        backgroundColor: '#131313',
       }}>
-        <div style={{ textAlign: 'center', color: 'var(--on-surface-variant)' }}>
+        <div style={{ textAlign: 'center', color: '#E6BEB2' }}>
           <span className="material-symbols-outlined" style={{ fontSize: '48px', opacity: 0.4, display: 'block', marginBottom: '12px' }}>hourglass_empty</span>
           Dang tai...
         </div>
@@ -160,7 +160,7 @@ const MyDatesPage = () => {
     <div style={{
       flex: 1,
       overflowY: 'auto',
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#131313',
       minHeight: '100vh',
     }}>
       <div style={{
@@ -174,19 +174,19 @@ const MyDatesPage = () => {
         <div style={{ flex: 1, minWidth: 0 }}>
           {/* Header */}
           <h1 style={{
-            fontFamily: 'var(--font-headline)',
+            fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
             fontSize: '2.5rem',
             fontWeight: 800,
-            color: 'var(--on-surface)',
+            color: '#FDF9F3',
             margin: '0 0 4px',
           }}>
             Buoi Hen{' '}
-            <span style={{ fontStyle: 'italic', color: 'var(--primary)' }}>Cua Toi</span>
+            <span style={{ fontStyle: 'italic', color: '#FFB59E' }}>Cua Toi</span>
           </h1>
           <p style={{
-            color: 'var(--on-surface-variant)',
+            color: '#E6BEB2',
             fontSize: '1rem',
-            fontFamily: 'var(--font-body)',
+            fontFamily: 'Inter, var(--font-body)',
             margin: '0 0 28px',
           }}>
             Quan ly cac keo da dang va ung tuyen cua ban
@@ -207,17 +207,17 @@ const MyDatesPage = () => {
                   onClick={() => setActiveTab(tab.key)}
                   style={{
                     padding: '10px 20px',
-                    borderRadius: 'var(--radius-full)',
+                    borderRadius: '9999px',
                     border: 'none',
                     cursor: 'pointer',
                     fontWeight: 600,
                     fontSize: '0.875rem',
-                    fontFamily: 'var(--font-body)',
+                    fontFamily: 'Inter, var(--font-body)',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '6px',
-                    background: isActive ? 'var(--primary)' : 'var(--surface-container-high)',
-                    color: isActive ? 'var(--on-primary)' : 'var(--on-surface-variant)',
+                    background: isActive ? '#FF571A' : '#353535',
+                    color: isActive ? '#3A0B00' : '#E6BEB2',
                     transition: 'all 0.2s ease',
                   }}
                 >
@@ -236,16 +236,15 @@ const MyDatesPage = () => {
             marginBottom: '28px',
           }}>
             <div style={{
-              backgroundColor: 'var(--surface-container-lowest)',
-              borderRadius: 'var(--radius-lg)',
+              backgroundColor: '#1C1B1B',
+              borderRadius: '1.5rem',
               padding: '24px',
-              boxShadow: 'var(--card-shadow)',
             }}>
               <div style={{
                 fontSize: '0.75rem',
                 fontWeight: 600,
-                color: 'var(--on-surface-variant)',
-                fontFamily: 'var(--font-body)',
+                color: '#E6BEB2',
+                fontFamily: 'Inter, var(--font-body)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
                 marginBottom: '8px',
@@ -255,23 +254,22 @@ const MyDatesPage = () => {
               <div style={{
                 fontSize: '2.25rem',
                 fontWeight: 800,
-                color: 'var(--primary)',
-                fontFamily: 'var(--font-headline)',
+                color: '#FFB59E',
+                fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
               }}>
                 {matchRate}%
               </div>
             </div>
             <div style={{
-              backgroundColor: 'var(--surface-container-lowest)',
-              borderRadius: 'var(--radius-lg)',
+              backgroundColor: '#1C1B1B',
+              borderRadius: '1.5rem',
               padding: '24px',
-              boxShadow: 'var(--card-shadow)',
             }}>
               <div style={{
                 fontSize: '0.75rem',
                 fontWeight: 600,
-                color: 'var(--on-surface-variant)',
-                fontFamily: 'var(--font-body)',
+                color: '#E6BEB2',
+                fontFamily: 'Inter, var(--font-body)',
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
                 marginBottom: '8px',
@@ -281,8 +279,8 @@ const MyDatesPage = () => {
               <div style={{
                 fontSize: '2.25rem',
                 fontWeight: 800,
-                color: 'var(--on-surface)',
-                fontFamily: 'var(--font-headline)',
+                color: '#FDF9F3',
+                fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
               }}>
                 {totalDates}
               </div>
@@ -294,17 +292,17 @@ const MyDatesPage = () => {
             <div style={{
               textAlign: 'center',
               padding: '60px 20px',
-              backgroundColor: 'var(--surface-container-low)',
-              borderRadius: 'var(--radius-lg)',
+              backgroundColor: '#1C1B1B',
+              borderRadius: '1.5rem',
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '56px', color: 'var(--outline)', display: 'block', marginBottom: '12px' }}>event_busy</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '56px', color: '#353535', display: 'block', marginBottom: '12px' }}>event_busy</span>
               <h3 style={{
-                fontFamily: 'var(--font-headline)',
+                fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                 fontWeight: 700,
-                color: 'var(--on-surface)',
+                color: '#FDF9F3',
                 margin: '0 0 8px',
               }}>Chua co keo nao</h3>
-              <p style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}>
+              <p style={{ color: '#E6BEB2', fontFamily: 'Inter, var(--font-body)' }}>
                 Ban chua dang hoac ung tuyen keo nao trong muc nay
               </p>
             </div>
@@ -312,10 +310,9 @@ const MyDatesPage = () => {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               {filteredPosts.map(post => (
                 <div key={post.id} style={{
-                  backgroundColor: 'var(--surface-container-lowest)',
-                  borderRadius: 'var(--radius-lg)',
+                  backgroundColor: '#1C1B1B',
+                  borderRadius: '1.5rem',
                   padding: '24px',
-                  boxShadow: 'var(--card-shadow)',
                 }}>
                   {/* Post header */}
                   <div style={{
@@ -328,10 +325,10 @@ const MyDatesPage = () => {
                   }}>
                     <div>
                       <h3 style={{
-                        fontFamily: 'var(--font-headline)',
+                        fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                         fontSize: '1.125rem',
                         fontWeight: 700,
-                        color: 'var(--on-surface)',
+                        color: '#FDF9F3',
                         margin: '0 0 6px',
                       }}>
                         {post.title}
@@ -340,8 +337,8 @@ const MyDatesPage = () => {
                         display: 'flex',
                         gap: '12px',
                         fontSize: '0.8125rem',
-                        color: 'var(--on-surface-variant)',
-                        fontFamily: 'var(--font-body)',
+                        color: '#E6BEB2',
+                        fontFamily: 'Inter, var(--font-body)',
                         flexWrap: 'wrap',
                       }}>
                         {post.time && (
@@ -370,8 +367,8 @@ const MyDatesPage = () => {
                       <div style={{
                         fontSize: '0.8125rem',
                         fontWeight: 600,
-                        color: 'var(--on-surface-variant)',
-                        fontFamily: 'var(--font-body)',
+                        color: '#E6BEB2',
+                        fontFamily: 'Inter, var(--font-body)',
                         marginBottom: '12px',
                         textTransform: 'uppercase',
                         letterSpacing: '0.04em',
@@ -385,8 +382,8 @@ const MyDatesPage = () => {
                             alignItems: 'flex-start',
                             gap: '16px',
                             padding: '16px',
-                            backgroundColor: 'var(--surface-container-low)',
-                            borderRadius: 'var(--radius)',
+                            backgroundColor: '#20201F',
+                            borderRadius: '1.5rem',
                           }}>
                             {/* Applicant photo */}
                             <img
@@ -408,10 +405,10 @@ const MyDatesPage = () => {
                                 marginBottom: '4px',
                               }}>
                                 <h4 style={{
-                                  fontFamily: 'var(--font-headline)',
+                                  fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                                   fontWeight: 700,
                                   fontSize: '1rem',
-                                  color: 'var(--on-surface)',
+                                  color: '#FDF9F3',
                                   margin: 0,
                                 }}>
                                   {app.applicant?.name}{app.applicant?.age ? `, ${app.applicant.age}` : ''}
@@ -421,8 +418,8 @@ const MyDatesPage = () => {
 
                               <div style={{
                                 fontSize: '0.8125rem',
-                                color: 'var(--on-surface-variant)',
-                                fontFamily: 'var(--font-body)',
+                                color: '#E6BEB2',
+                                fontFamily: 'Inter, var(--font-body)',
                                 marginBottom: '6px',
                               }}>
                                 Ung tuyen: {post.title}
@@ -431,9 +428,9 @@ const MyDatesPage = () => {
                               {app.message && (
                                 <p style={{
                                   fontStyle: 'italic',
-                                  color: 'var(--on-surface-variant)',
+                                  color: '#E6BEB2',
                                   fontSize: '0.875rem',
-                                  fontFamily: 'var(--font-body)',
+                                  fontFamily: 'Inter, var(--font-body)',
                                   margin: '0 0 10px',
                                   lineHeight: 1.5,
                                 }}>
@@ -453,13 +450,13 @@ const MyDatesPage = () => {
                                 }}>
                                   {tags.slice(0, 4).map((tag, i) => (
                                     <span key={i} style={{
-                                      backgroundColor: 'var(--surface-container-high)',
-                                      color: 'var(--on-surface-variant)',
+                                      backgroundColor: '#353535',
+                                      color: '#E6BEB2',
                                       padding: '3px 10px',
-                                      borderRadius: 'var(--radius-full)',
+                                      borderRadius: '9999px',
                                       fontSize: '0.6875rem',
                                       fontWeight: 500,
-                                      fontFamily: 'var(--font-body)',
+                                      fontFamily: 'Inter, var(--font-body)',
                                     }}>
                                       {tag}
                                     </span>
@@ -475,13 +472,13 @@ const MyDatesPage = () => {
                                     onClick={() => handleAccept(app.id)}
                                     style={{
                                       padding: '8px 20px',
-                                      borderRadius: 'var(--radius-full)',
+                                      borderRadius: '9999px',
                                       border: 'none',
-                                      background: 'var(--primary-gradient)',
-                                      color: 'var(--on-primary)',
+                                      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+                                      color: '#3A0B00',
                                       fontWeight: 700,
                                       fontSize: '0.8125rem',
-                                      fontFamily: 'var(--font-body)',
+                                      fontFamily: 'Inter, var(--font-body)',
                                       cursor: 'pointer',
                                       display: 'flex',
                                       alignItems: 'center',
@@ -495,13 +492,13 @@ const MyDatesPage = () => {
                                     onClick={() => navigate(`/app/profile/${app.applicant?.id}`)}
                                     style={{
                                       padding: '8px 20px',
-                                      borderRadius: 'var(--radius-full)',
+                                      borderRadius: '9999px',
                                       border: 'none',
-                                      background: 'var(--surface-container-high)',
-                                      color: 'var(--on-surface)',
+                                      background: '#353535',
+                                      color: '#FDF9F3',
                                       fontWeight: 600,
                                       fontSize: '0.8125rem',
-                                      fontFamily: 'var(--font-body)',
+                                      fontFamily: 'Inter, var(--font-body)',
                                       cursor: 'pointer',
                                       display: 'flex',
                                       alignItems: 'center',
@@ -515,13 +512,13 @@ const MyDatesPage = () => {
                                     onClick={() => handleReject(app.id)}
                                     style={{
                                       padding: '8px 20px',
-                                      borderRadius: 'var(--radius-full)',
+                                      borderRadius: '9999px',
                                       border: 'none',
-                                      background: 'transparent',
-                                      color: 'var(--error)',
+                                      background: '#353535',
+                                      color: '#FF571A',
                                       fontWeight: 600,
                                       fontSize: '0.8125rem',
-                                      fontFamily: 'var(--font-body)',
+                                      fontFamily: 'Inter, var(--font-body)',
                                       cursor: 'pointer',
                                       display: 'flex',
                                       alignItems: 'center',
@@ -537,13 +534,13 @@ const MyDatesPage = () => {
                                   onClick={() => navigate('/app/chat')}
                                   style={{
                                     padding: '8px 20px',
-                                    borderRadius: 'var(--radius-full)',
+                                    borderRadius: '9999px',
                                     border: 'none',
-                                    background: 'var(--primary-gradient)',
-                                    color: 'var(--on-primary)',
+                                    background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+                                    color: '#3A0B00',
                                     fontWeight: 700,
                                     fontSize: '0.8125rem',
-                                    fontFamily: 'var(--font-body)',
+                                    fontFamily: 'Inter, var(--font-body)',
                                     cursor: 'pointer',
                                     display: 'flex',
                                     alignItems: 'center',
@@ -561,10 +558,10 @@ const MyDatesPage = () => {
                     </div>
                   ) : (
                     <p style={{
-                      color: 'var(--on-surface-variant)',
+                      color: '#E6BEB2',
                       fontSize: '0.875rem',
                       margin: 0,
-                      fontFamily: 'var(--font-body)',
+                      fontFamily: 'Inter, var(--font-body)',
                     }}>
                       Chua co ai ung tuyen
                     </p>
@@ -578,10 +575,10 @@ const MyDatesPage = () => {
           {myApplications.length > 0 && activeTab === 'all' && (
             <div style={{ marginTop: '32px' }}>
               <h2 style={{
-                fontFamily: 'var(--font-headline)',
+                fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                 fontSize: '1.25rem',
                 fontWeight: 700,
-                color: 'var(--on-surface)',
+                color: '#FDF9F3',
                 margin: '0 0 16px',
               }}>
                 Don Ung Tuyen Cua Toi
@@ -589,28 +586,27 @@ const MyDatesPage = () => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {myApplications.map(app => (
                   <div key={app.id} style={{
-                    backgroundColor: 'var(--surface-container-lowest)',
-                    borderRadius: 'var(--radius)',
+                    backgroundColor: '#1C1B1B',
+                    borderRadius: '1.5rem',
                     padding: '16px 20px',
-                    boxShadow: 'var(--card-shadow)',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
                   }}>
                     <div>
                       <h4 style={{
-                        fontFamily: 'var(--font-headline)',
+                        fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                         fontWeight: 700,
                         fontSize: '0.9375rem',
-                        color: 'var(--on-surface)',
+                        color: '#FDF9F3',
                         margin: '0 0 4px',
                       }}>
                         {app.post?.title}
                       </h4>
                       <div style={{
                         fontSize: '0.8125rem',
-                        color: 'var(--on-surface-variant)',
-                        fontFamily: 'var(--font-body)',
+                        color: '#E6BEB2',
+                        fontFamily: 'Inter, var(--font-body)',
                       }}>
                         Nguoi dang: {app.post?.author?.name}
                         {app.post?.time ? ` | ${app.post.time}` : ''}
@@ -635,18 +631,18 @@ const MyDatesPage = () => {
         }}>
           {/* Next Date Card */}
           <div style={{
-            background: 'var(--primary-gradient)',
-            borderRadius: 'var(--radius-lg)',
+            background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+            borderRadius: '1.5rem',
             padding: '28px',
-            color: 'var(--on-primary)',
-            boxShadow: '0 8px 32px rgba(174, 47, 52, 0.2)',
+            color: '#3A0B00',
+            boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
           }}>
             <div style={{
               fontSize: '0.6875rem',
               fontWeight: 700,
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
-              fontFamily: 'var(--font-body)',
+              fontFamily: 'Inter, var(--font-body)',
               marginBottom: '16px',
               opacity: 0.85,
             }}>
@@ -655,7 +651,7 @@ const MyDatesPage = () => {
             {nextDate ? (
               <>
                 <h3 style={{
-                  fontFamily: 'var(--font-headline)',
+                  fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                   fontSize: '1.25rem',
                   fontWeight: 800,
                   margin: '0 0 12px',
@@ -692,7 +688,7 @@ const MyDatesPage = () => {
               <div style={{
                 fontSize: '0.9375rem',
                 opacity: 0.85,
-                fontFamily: 'var(--font-body)',
+                fontFamily: 'Inter, var(--font-body)',
               }}>
                 Chua co buoi hen nao sap toi.
                 <br />Dang keo de bat dau!
@@ -703,18 +699,17 @@ const MyDatesPage = () => {
           {/* Past Dates Preview */}
           {myPosts.filter(p => p.status === 'completed').length > 0 && (
             <div style={{
-              backgroundColor: 'var(--surface-container-lowest)',
-              borderRadius: 'var(--radius-lg)',
+              backgroundColor: '#1C1B1B',
+              borderRadius: '1.5rem',
               padding: '24px',
-              boxShadow: 'var(--card-shadow)',
             }}>
               <div style={{
                 fontSize: '0.6875rem',
                 fontWeight: 700,
                 textTransform: 'uppercase',
                 letterSpacing: '0.1em',
-                fontFamily: 'var(--font-body)',
-                color: 'var(--on-surface-variant)',
+                fontFamily: 'Inter, var(--font-body)',
+                color: '#E6BEB2',
                 marginBottom: '16px',
               }}>
                 Buoi Hen Da Qua
@@ -729,8 +724,8 @@ const MyDatesPage = () => {
                     <div style={{
                       width: '40px',
                       height: '40px',
-                      borderRadius: 'var(--radius-full)',
-                      backgroundColor: 'var(--surface-container-high)',
+                      borderRadius: '9999px',
+                      backgroundColor: '#2A2A2A',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -744,15 +739,15 @@ const MyDatesPage = () => {
                           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
                       ) : (
-                        <span className="material-symbols-outlined" style={{ fontSize: '20px', color: 'var(--outline)' }}>person</span>
+                        <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#353535' }}>person</span>
                       )}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{
-                        fontFamily: 'var(--font-body)',
+                        fontFamily: 'Inter, var(--font-body)',
                         fontWeight: 600,
                         fontSize: '0.875rem',
-                        color: 'var(--on-surface)',
+                        color: '#FDF9F3',
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
                         whiteSpace: 'nowrap',
@@ -761,7 +756,7 @@ const MyDatesPage = () => {
                       </div>
                       <div style={{
                         fontSize: '0.75rem',
-                        color: 'var(--on-surface-variant)',
+                        color: '#E6BEB2',
                       }}>
                         {post.place || 'Hoan thanh'}
                       </div>

@@ -81,7 +81,6 @@ const ChatPage = () => {
     navigate('/app/chat', { replace: true });
   };
 
-  // Find active conversation for proposal details
   const activeConv = conversations.find(c => c.id === activeConvId);
   const proposal = activeConv?.datePost || null;
 
@@ -90,12 +89,27 @@ const ChatPage = () => {
     return c.otherUser?.name?.toLowerCase().includes(searchText.toLowerCase());
   });
 
+  // ==================== PULSE DOT KEYFRAMES (injected once) ====================
+  useEffect(() => {
+    if (!document.getElementById('chat-pulse-anim')) {
+      const style = document.createElement('style');
+      style.id = 'chat-pulse-anim';
+      style.textContent = `
+        @keyframes chatPulse {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.6); opacity: 0.4; }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }, []);
+
   // ==================== CONVERSATION LIST PANEL ====================
   const ConversationListPanel = () => (
     <div style={{
       width: '320px',
       flexShrink: 0,
-      backgroundColor: 'var(--surface-container-lowest)',
+      backgroundColor: '#1C1B1B',
       display: 'flex',
       flexDirection: 'column',
       overflow: 'hidden',
@@ -103,10 +117,10 @@ const ChatPage = () => {
       {/* Header */}
       <div style={{ padding: '24px 20px 16px' }}>
         <h2 style={{
-          fontFamily: 'var(--font-headline)',
+          fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
           fontSize: '1.5rem',
           fontWeight: 800,
-          color: 'var(--on-surface)',
+          color: '#FDF9F3',
           margin: '0 0 16px',
         }}>
           Tin Nhan
@@ -117,11 +131,12 @@ const ChatPage = () => {
           display: 'flex',
           alignItems: 'center',
           gap: '8px',
-          backgroundColor: 'var(--surface-container-low)',
-          borderRadius: 'var(--radius-full)',
+          backgroundColor: '#2A2A2A',
+          borderRadius: '9999px',
           padding: '10px 16px',
+          border: 'none',
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: '20px', color: 'var(--outline)' }}>search</span>
+          <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>search</span>
           <input
             type="text"
             placeholder="Tim kiem..."
@@ -132,8 +147,8 @@ const ChatPage = () => {
               background: 'transparent',
               outline: 'none',
               fontSize: '0.875rem',
-              fontFamily: 'var(--font-body)',
-              color: 'var(--on-surface)',
+              fontFamily: 'Inter, var(--font-body)',
+              color: '#FDF9F3',
               flex: 1,
             }}
           />
@@ -146,10 +161,10 @@ const ChatPage = () => {
           <div style={{
             textAlign: 'center',
             padding: '40px 20px',
-            color: 'var(--on-surface-variant)',
+            color: '#E6BEB2',
           }}>
             <span className="material-symbols-outlined" style={{ fontSize: '48px', opacity: 0.3, display: 'block', marginBottom: '8px' }}>chat_bubble</span>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem' }}>Chua co tin nhan</p>
+            <p style={{ fontFamily: 'Inter, var(--font-body)', fontSize: '0.875rem' }}>Chua co tin nhan</p>
           </div>
         ) : (
           filteredConversations.map(conv => {
@@ -165,44 +180,61 @@ const ChatPage = () => {
                   gap: '12px',
                   padding: '14px 20px',
                   cursor: 'pointer',
-                  backgroundColor: isActive ? 'var(--surface-container-low)' : 'transparent',
-                  transition: 'background 0.15s ease',
+                  backgroundColor: isActive ? 'rgba(255,181,158,0.1)' : 'transparent',
+                  borderLeft: isActive ? '4px solid #FF571A' : '4px solid transparent',
+                  transition: 'all 0.15s ease',
                 }}
               >
-                {/* Avatar */}
+                {/* Avatar with tier badge */}
                 <div style={{
                   position: 'relative',
                   width: '48px',
                   height: '48px',
-                  borderRadius: 'var(--radius-full)',
+                  borderRadius: '9999px',
                   overflow: 'hidden',
                   flexShrink: 0,
-                  backgroundColor: 'var(--surface-container-high)',
+                  backgroundColor: '#2A2A2A',
                 }}>
                   {getAvatarUrl(conv.otherUser) ? (
                     <img src={getAvatarUrl(conv.otherUser)} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="" />
                   ) : (
                     <div style={{
                       width: '100%', height: '100%',
-                      background: 'var(--primary-gradient)',
+                      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: 'var(--on-primary)', fontWeight: 700, fontSize: '1.125rem',
-                      fontFamily: 'var(--font-headline)',
+                      color: '#3A0B00', fontWeight: 700, fontSize: '1.125rem',
+                      fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                     }}>
                       {(conv.otherUser?.name || '?')[0].toUpperCase()}
                     </div>
                   )}
+                  {/* Vang tier badge */}
+                  {conv.otherUser?.tier === 'vang' && (
+                    <div style={{
+                      position: 'absolute',
+                      bottom: '-2px',
+                      right: '-2px',
+                      width: '18px',
+                      height: '18px',
+                      borderRadius: '9999px',
+                      backgroundColor: '#FFD54F',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      border: '2px solid #1C1B1B',
+                    }}>
+                      <span className="material-symbols-outlined" style={{ fontSize: '10px', color: '#3A0B00' }}>star</span>
+                    </div>
+                  )}
                   {/* Online indicator */}
-                  {conv.otherUser?.isOnline && (
+                  {conv.otherUser?.isOnline && !conv.otherUser?.tier && (
                     <div style={{
                       position: 'absolute',
                       bottom: '1px',
                       right: '1px',
                       width: '12px',
                       height: '12px',
-                      borderRadius: 'var(--radius-full)',
-                      backgroundColor: '#4caf50',
-                      border: '2px solid var(--surface-container-lowest)',
+                      borderRadius: '9999px',
+                      backgroundColor: '#117500',
+                      border: '2px solid #1C1B1B',
                     }} />
                   )}
                 </div>
@@ -211,18 +243,18 @@ const ChatPage = () => {
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <h4 style={{
                       margin: 0,
-                      fontFamily: 'var(--font-headline)',
+                      fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                       fontSize: '0.9375rem',
                       fontWeight: unread > 0 ? 700 : 600,
-                      color: 'var(--on-surface)',
+                      color: '#FDF9F3',
                     }}>
                       {conv.otherUser?.name || 'Unknown'}
                     </h4>
                     <span style={{
                       fontSize: '0.6875rem',
-                      color: 'var(--on-surface-variant)',
+                      color: '#E6BEB2',
                       flexShrink: 0,
-                      fontFamily: 'var(--font-body)',
+                      fontFamily: 'Inter, var(--font-body)',
                     }}>
                       {conv.lastMessage?.createdAt
                         ? new Date(conv.lastMessage.createdAt).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' })
@@ -233,8 +265,8 @@ const ChatPage = () => {
                     <p style={{
                       margin: '2px 0 0',
                       fontSize: '0.8125rem',
-                      fontFamily: 'var(--font-body)',
-                      color: unread > 0 ? 'var(--on-surface)' : 'var(--on-surface-variant)',
+                      fontFamily: 'Inter, var(--font-body)',
+                      color: unread > 0 ? '#FDF9F3' : '#E6BEB2',
                       fontWeight: unread > 0 ? 600 : 400,
                       overflow: 'hidden',
                       textOverflow: 'ellipsis',
@@ -245,18 +277,20 @@ const ChatPage = () => {
                     </p>
                     {unread > 0 && (
                       <span style={{
-                        backgroundColor: 'var(--primary)',
-                        color: 'var(--on-primary)',
+                        position: 'relative',
+                        backgroundColor: '#FF571A',
+                        color: '#3A0B00',
                         fontSize: '0.6875rem',
                         fontWeight: 700,
                         minWidth: '20px',
                         height: '20px',
-                        borderRadius: 'var(--radius-full)',
+                        borderRadius: '9999px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                         padding: '0 6px',
                         flexShrink: 0,
+                        animation: 'chatPulse 2s ease-in-out infinite',
                       }}>
                         {unread}
                       </span>
@@ -277,43 +311,44 @@ const ChatPage = () => {
       flex: 1,
       display: 'flex',
       flexDirection: 'column',
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#131313',
       overflow: 'hidden',
       minWidth: 0,
     }}>
       {!activeConvId || !otherUser ? (
-        // No conversation selected
         <div style={{
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          color: 'var(--on-surface-variant)',
+          color: '#E6BEB2',
         }}>
           <span className="material-symbols-outlined" style={{ fontSize: '72px', opacity: 0.2, marginBottom: '16px' }}>forum</span>
           <h3 style={{
-            fontFamily: 'var(--font-headline)',
+            fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
             fontWeight: 700,
             fontSize: '1.25rem',
-            color: 'var(--on-surface)',
+            color: '#FDF9F3',
             margin: '0 0 8px',
           }}>
             Chon mot cuoc tro chuyen
           </h3>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem' }}>
+          <p style={{ fontFamily: 'Inter, var(--font-body)', fontSize: '0.875rem' }}>
             Chon nguoi ban muon nhan tin tu danh sach ben trai
           </p>
         </div>
       ) : (
         <>
-          {/* Chat Header */}
+          {/* Chat Header - Glass */}
           <div style={{
             padding: '12px 20px',
             display: 'flex',
             alignItems: 'center',
             gap: '12px',
-            backgroundColor: 'var(--surface-container-lowest)',
+            backgroundColor: 'rgba(19,19,19,0.6)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
             flexShrink: 0,
           }}>
             {/* Mobile back button */}
@@ -325,8 +360,8 @@ const ChatPage = () => {
                 cursor: 'pointer',
                 padding: '8px',
                 display: 'flex',
-                color: 'var(--on-surface)',
-                borderRadius: 'var(--radius-full)',
+                color: '#FDF9F3',
+                borderRadius: '9999px',
               }}
             >
               <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>arrow_back</span>
@@ -336,19 +371,19 @@ const ChatPage = () => {
             <div style={{
               width: '40px',
               height: '40px',
-              borderRadius: 'var(--radius-full)',
+              borderRadius: '9999px',
               overflow: 'hidden',
               flexShrink: 0,
-              backgroundColor: 'var(--surface-container-high)',
+              backgroundColor: '#2A2A2A',
             }}>
               {getAvatarUrl(otherUser) ? (
                 <img src={getAvatarUrl(otherUser)} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="" />
               ) : (
                 <div style={{
                   width: '100%', height: '100%',
-                  background: 'var(--primary-gradient)',
+                  background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: 'var(--on-primary)', fontWeight: 700, fontFamily: 'var(--font-headline)',
+                  color: '#3A0B00', fontWeight: 700, fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                 }}>
                   {(otherUser.name || '?')[0].toUpperCase()}
                 </div>
@@ -358,17 +393,17 @@ const ChatPage = () => {
             <div style={{ flex: 1 }}>
               <h3 style={{
                 margin: 0,
-                fontFamily: 'var(--font-headline)',
+                fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                 fontSize: '1rem',
                 fontWeight: 700,
-                color: 'var(--on-surface)',
+                color: '#FDF9F3',
               }}>
                 {otherUser.name}
               </h3>
               <span style={{
                 fontSize: '0.75rem',
-                color: otherUser.isOnline ? '#4caf50' : 'var(--on-surface-variant)',
-                fontFamily: 'var(--font-body)',
+                color: otherUser.isOnline ? '#117500' : '#E6BEB2',
+                fontFamily: 'Inter, var(--font-body)',
                 fontWeight: 500,
               }}>
                 {otherUser.isOnline ? 'Dang hoat dong' : 'Ngoai tuyen'}
@@ -378,10 +413,10 @@ const ChatPage = () => {
             <div style={{ display: 'flex', gap: '4px' }}>
               <button style={{
                 width: '40px', height: '40px',
-                borderRadius: 'var(--radius-full)',
+                borderRadius: '9999px',
                 border: 'none',
-                background: 'var(--surface-container-low)',
-                color: 'var(--on-surface-variant)',
+                background: '#20201F',
+                color: '#E6BEB2',
                 cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
@@ -389,10 +424,10 @@ const ChatPage = () => {
               </button>
               <button style={{
                 width: '40px', height: '40px',
-                borderRadius: 'var(--radius-full)',
+                borderRadius: '9999px',
                 border: 'none',
-                background: 'var(--surface-container-low)',
-                color: 'var(--on-surface-variant)',
+                background: '#20201F',
+                color: '#E6BEB2',
                 cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
@@ -421,12 +456,12 @@ const ChatPage = () => {
                     margin: '12px 0',
                   }}>
                     <div style={{
-                      backgroundColor: 'var(--surface-container-low)',
-                      borderRadius: 'var(--radius)',
+                      backgroundColor: '#20201F',
+                      borderRadius: '1.5rem',
                       padding: '10px 16px',
                       fontSize: '0.8125rem',
-                      color: 'var(--on-surface-variant)',
-                      fontFamily: 'var(--font-body)',
+                      color: '#E6BEB2',
+                      fontFamily: 'Inter, var(--font-body)',
                       textAlign: 'center',
                       lineHeight: 1.5,
                     }}>
@@ -442,17 +477,19 @@ const ChatPage = () => {
                   maxWidth: '70%',
                 }}>
                   <div style={{
-                    background: isMine ? 'var(--primary-gradient)' : 'var(--surface-container-lowest)',
-                    color: isMine ? 'var(--on-primary)' : 'var(--on-surface)',
+                    background: isMine
+                      ? 'linear-gradient(135deg, #FFB59E, #FF571A)'
+                      : '#2A2A2A',
+                    color: isMine ? '#FFFFFF' : '#FDF9F3',
                     padding: '12px 16px',
                     borderRadius: '20px',
                     borderBottomLeftRadius: isMine ? '20px' : '6px',
                     borderBottomRightRadius: isMine ? '6px' : '20px',
                     boxShadow: isMine
-                      ? '0 4px 12px rgba(174, 47, 52, 0.15)'
-                      : 'var(--card-shadow)',
+                      ? '0px 20px 40px rgba(0,0,0,0.4)'
+                      : 'none',
                     fontSize: '0.9375rem',
-                    fontFamily: 'var(--font-body)',
+                    fontFamily: 'Inter, var(--font-body)',
                     wordBreak: 'break-word',
                     lineHeight: 1.5,
                   }}>
@@ -460,11 +497,11 @@ const ChatPage = () => {
                   </div>
                   <div style={{
                     fontSize: '0.6875rem',
-                    color: 'var(--on-surface-variant)',
+                    color: '#E6BEB2',
                     marginTop: '4px',
                     textAlign: isMine ? 'right' : 'left',
                     padding: '0 4px',
-                    fontFamily: 'var(--font-body)',
+                    fontFamily: 'Inter, var(--font-body)',
                   }}>
                     {msg.createdAt ? new Date(msg.createdAt).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }) : ''}
                   </div>
@@ -477,20 +514,21 @@ const ChatPage = () => {
           {/* Input Bar */}
           <div style={{
             padding: '12px 16px',
-            backgroundColor: 'var(--surface-container-lowest)',
+            backgroundColor: '#1C1B1B',
             flexShrink: 0,
           }}>
             <div style={{
               display: 'flex',
               alignItems: 'center',
               gap: '8px',
-              backgroundColor: 'var(--surface-container-low)',
-              borderRadius: 'var(--radius-full)',
+              backgroundColor: '#2A2A2A',
+              borderRadius: '9999px',
               padding: '6px 6px 6px 16px',
+              border: 'none',
             }}>
               <button style={{
                 background: 'none', border: 'none', cursor: 'pointer', padding: '4px',
-                color: 'var(--on-surface-variant)', display: 'flex',
+                color: '#E6BEB2', display: 'flex',
               }}>
                 <span className="material-symbols-outlined" style={{ fontSize: '22px' }}>mood</span>
               </button>
@@ -508,15 +546,15 @@ const ChatPage = () => {
                   background: 'transparent',
                   outline: 'none',
                   fontSize: '0.9375rem',
-                  fontFamily: 'var(--font-body)',
-                  color: 'var(--on-surface)',
+                  fontFamily: 'Inter, var(--font-body)',
+                  color: '#FDF9F3',
                   padding: '8px 0',
                 }}
               />
 
               <button style={{
                 background: 'none', border: 'none', cursor: 'pointer', padding: '4px',
-                color: 'var(--on-surface-variant)', display: 'flex',
+                color: '#E6BEB2', display: 'flex',
               }}>
                 <span className="material-symbols-outlined" style={{ fontSize: '22px' }}>image</span>
               </button>
@@ -526,10 +564,10 @@ const ChatPage = () => {
                 style={{
                   width: '40px',
                   height: '40px',
-                  borderRadius: 'var(--radius-full)',
-                  background: inputText.trim() ? 'var(--primary-gradient)' : 'var(--surface-container-high)',
+                  borderRadius: '9999px',
+                  background: inputText.trim() ? 'linear-gradient(135deg, #FFB59E, #FF571A)' : '#353535',
                   border: 'none',
-                  color: inputText.trim() ? 'var(--on-primary)' : 'var(--on-surface-variant)',
+                  color: inputText.trim() ? '#FFFFFF' : '#E6BEB2',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -555,7 +593,7 @@ const ChatPage = () => {
       <div style={{
         width: '384px',
         flexShrink: 0,
-        backgroundColor: 'var(--surface-container-lowest)',
+        backgroundColor: '#1C1B1B',
         overflowY: 'auto',
         padding: '24px',
         display: 'flex',
@@ -569,17 +607,17 @@ const ChatPage = () => {
             fontWeight: 700,
             textTransform: 'uppercase',
             letterSpacing: '0.1em',
-            fontFamily: 'var(--font-body)',
-            color: 'var(--primary)',
+            fontFamily: 'Inter, var(--font-body)',
+            color: '#FFB59E',
             marginBottom: '12px',
           }}>
             De Xuat Hien Tai
           </div>
           <h3 style={{
-            fontFamily: 'var(--font-headline)',
+            fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
             fontSize: '1.25rem',
             fontWeight: 800,
-            color: 'var(--on-surface)',
+            color: '#FDF9F3',
             margin: '0 0 6px',
           }}>
             {proposal.title}
@@ -587,9 +625,9 @@ const ChatPage = () => {
           {proposal.description && (
             <p style={{
               fontStyle: 'italic',
-              color: 'var(--on-surface-variant)',
+              color: '#E6BEB2',
               fontSize: '0.875rem',
-              fontFamily: 'var(--font-body)',
+              fontFamily: 'Inter, var(--font-body)',
               margin: 0,
               lineHeight: 1.5,
             }}>
@@ -601,8 +639,8 @@ const ChatPage = () => {
         {/* Budget */}
         {proposal.price && (
           <div style={{
-            backgroundColor: 'var(--surface-container-low)',
-            borderRadius: 'var(--radius)',
+            backgroundColor: '#20201F',
+            borderRadius: '1.5rem',
             padding: '16px',
           }}>
             <div style={{
@@ -610,12 +648,12 @@ const ChatPage = () => {
               alignItems: 'center',
               gap: '10px',
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '24px', color: 'var(--primary)' }}>account_balance_wallet</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '24px', color: '#FFB59E' }}>account_balance_wallet</span>
               <div>
                 <div style={{
                   fontSize: '0.75rem',
-                  color: 'var(--on-surface-variant)',
-                  fontFamily: 'var(--font-body)',
+                  color: '#E6BEB2',
+                  fontFamily: 'Inter, var(--font-body)',
                   fontWeight: 500,
                 }}>
                   Ngan Sach
@@ -623,8 +661,8 @@ const ChatPage = () => {
                 <div style={{
                   fontSize: '1.25rem',
                   fontWeight: 800,
-                  color: 'var(--on-surface)',
-                  fontFamily: 'var(--font-headline)',
+                  color: '#FDF9F3',
+                  fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                 }}>
                   {proposal.price.toLocaleString('vi-VN')}d
                 </div>
@@ -641,20 +679,20 @@ const ChatPage = () => {
             gap: '12px',
             padding: '12px 0',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '22px', color: 'var(--tertiary)' }}>restaurant</span>
+            <span className="material-symbols-outlined" style={{ fontSize: '22px', color: '#FFD54F' }}>restaurant</span>
             <div>
               <div style={{
                 fontSize: '0.75rem',
-                color: 'var(--on-surface-variant)',
-                fontFamily: 'var(--font-body)',
+                color: '#E6BEB2',
+                fontFamily: 'Inter, var(--font-body)',
               }}>
                 Dia Diem
               </div>
               <div style={{
-                fontFamily: 'var(--font-body)',
+                fontFamily: 'Inter, var(--font-body)',
                 fontWeight: 600,
                 fontSize: '0.9375rem',
-                color: 'var(--on-surface)',
+                color: '#FDF9F3',
               }}>
                 {proposal.place}
               </div>
@@ -670,20 +708,20 @@ const ChatPage = () => {
             gap: '12px',
             padding: '12px 0',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '22px', color: 'var(--tertiary)' }}>calendar_today</span>
+            <span className="material-symbols-outlined" style={{ fontSize: '22px', color: '#FFD54F' }}>calendar_today</span>
             <div>
               <div style={{
                 fontSize: '0.75rem',
-                color: 'var(--on-surface-variant)',
-                fontFamily: 'var(--font-body)',
+                color: '#E6BEB2',
+                fontFamily: 'Inter, var(--font-body)',
               }}>
                 Thoi Gian
               </div>
               <div style={{
-                fontFamily: 'var(--font-body)',
+                fontFamily: 'Inter, var(--font-body)',
                 fontWeight: 600,
                 fontSize: '0.9375rem',
-                color: 'var(--on-surface)',
+                color: '#FDF9F3',
               }}>
                 {proposal.time}
               </div>
@@ -694,19 +732,19 @@ const ChatPage = () => {
         {/* Payment Status */}
         {proposal.category === 'tra_phi' && (
           <div style={{
-            backgroundColor: '#e8f5e9',
-            borderRadius: 'var(--radius)',
+            backgroundColor: 'rgba(17,117,0,0.15)',
+            borderRadius: '1.5rem',
             padding: '12px 16px',
             display: 'flex',
             alignItems: 'center',
             gap: '10px',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#2e7d32' }}>verified</span>
+            <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#117500' }}>verified</span>
             <span style={{
-              fontFamily: 'var(--font-body)',
+              fontFamily: 'Inter, var(--font-body)',
               fontWeight: 600,
               fontSize: '0.875rem',
-              color: '#2e7d32',
+              color: '#117500',
             }}>
               Thanh toan tam giu (Escrow)
             </span>
@@ -718,19 +756,19 @@ const ChatPage = () => {
           <button style={{
             width: '100%',
             padding: '14px',
-            borderRadius: 'var(--radius-full)',
+            borderRadius: '9999px',
             border: 'none',
-            background: 'var(--primary-gradient)',
-            color: 'var(--on-primary)',
+            background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+            color: '#3A0B00',
             fontWeight: 700,
             fontSize: '0.9375rem',
-            fontFamily: 'var(--font-body)',
+            fontFamily: 'Inter, var(--font-body)',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             gap: '8px',
-            boxShadow: '0 4px 16px rgba(174, 47, 52, 0.2)',
+            boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
           }}>
             <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>handshake</span>
             Xac Nhan Thoa Thuan
@@ -738,13 +776,13 @@ const ChatPage = () => {
           <button style={{
             width: '100%',
             padding: '14px',
-            borderRadius: 'var(--radius-full)',
-            border: '2px solid var(--outline-variant)',
-            background: 'transparent',
-            color: 'var(--on-surface-variant)',
+            borderRadius: '9999px',
+            border: 'none',
+            background: '#353535',
+            color: '#E6BEB2',
             fontWeight: 600,
             fontSize: '0.9375rem',
-            fontFamily: 'var(--font-body)',
+            fontFamily: 'Inter, var(--font-body)',
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
@@ -758,8 +796,8 @@ const ChatPage = () => {
 
         {/* Safety Info */}
         <div style={{
-          backgroundColor: 'var(--surface-container-low)',
-          borderRadius: 'var(--radius)',
+          backgroundColor: '#20201F',
+          borderRadius: '1.5rem',
           padding: '16px',
           marginTop: '8px',
         }}>
@@ -769,12 +807,12 @@ const ChatPage = () => {
             gap: '8px',
             marginBottom: '10px',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '20px', color: 'var(--tertiary)' }}>shield</span>
+            <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFD54F' }}>shield</span>
             <span style={{
-              fontFamily: 'var(--font-headline)',
+              fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
               fontWeight: 700,
               fontSize: '0.875rem',
-              color: 'var(--on-surface)',
+              color: '#FDF9F3',
             }}>
               An Toan Hen Ho
             </span>
@@ -782,9 +820,9 @@ const ChatPage = () => {
           <ul style={{
             margin: 0,
             paddingLeft: '20px',
-            color: 'var(--on-surface-variant)',
+            color: '#E6BEB2',
             fontSize: '0.8125rem',
-            fontFamily: 'var(--font-body)',
+            fontFamily: 'Inter, var(--font-body)',
             lineHeight: 1.7,
           }}>
             <li>Luon gap o noi cong cong</li>
@@ -798,13 +836,12 @@ const ChatPage = () => {
   };
 
   // ==================== MOBILE VIEW ====================
-  // On mobile: show either list or chat, not both
   const isMobileWidth = typeof window !== 'undefined' && window.innerWidth < 768;
 
   if (isMobileWidth) {
     if (isMobileChat && activeConvId && otherUser) {
       return (
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', backgroundColor: '#131313' }}>
           <ChatPanel />
         </div>
       );
@@ -813,7 +850,7 @@ const ChatPage = () => {
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
         <div style={{
           flex: 1,
-          backgroundColor: 'var(--surface-container-lowest)',
+          backgroundColor: '#1C1B1B',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
@@ -821,10 +858,10 @@ const ChatPage = () => {
           {/* Header */}
           <div style={{ padding: '24px 20px 16px' }}>
             <h2 style={{
-              fontFamily: 'var(--font-headline)',
+              fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
               fontSize: '1.75rem',
               fontWeight: 800,
-              color: 'var(--on-surface)',
+              color: '#FDF9F3',
               margin: '0 0 16px',
             }}>
               Tin Nhan
@@ -833,11 +870,12 @@ const ChatPage = () => {
               display: 'flex',
               alignItems: 'center',
               gap: '8px',
-              backgroundColor: 'var(--surface-container-low)',
-              borderRadius: 'var(--radius-full)',
+              backgroundColor: '#2A2A2A',
+              borderRadius: '9999px',
               padding: '10px 16px',
+              border: 'none',
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '20px', color: 'var(--outline)' }}>search</span>
+              <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>search</span>
               <input
                 type="text"
                 placeholder="Tim kiem..."
@@ -845,18 +883,18 @@ const ChatPage = () => {
                 onChange={e => setSearchText(e.target.value)}
                 style={{
                   border: 'none', background: 'transparent', outline: 'none',
-                  fontSize: '0.875rem', fontFamily: 'var(--font-body)',
-                  color: 'var(--on-surface)', flex: 1,
+                  fontSize: '0.875rem', fontFamily: 'Inter, var(--font-body)',
+                  color: '#FDF9F3', flex: 1,
                 }}
               />
             </div>
           </div>
           <div style={{ flex: 1, overflowY: 'auto' }}>
             {filteredConversations.length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--on-surface-variant)' }}>
+              <div style={{ textAlign: 'center', padding: '60px 20px', color: '#E6BEB2' }}>
                 <span className="material-symbols-outlined" style={{ fontSize: '56px', opacity: 0.2, display: 'block', marginBottom: '12px' }}>chat_bubble</span>
-                <h3 style={{ fontFamily: 'var(--font-headline)', fontWeight: 700, color: 'var(--on-surface)', marginBottom: '8px' }}>Chua co tin nhan</h3>
-                <p style={{ fontFamily: 'var(--font-body)', fontSize: '0.875rem' }}>Match voi ai do de bat dau tro chuyen!</p>
+                <h3 style={{ fontFamily: 'Plus Jakarta Sans, var(--font-headline)', fontWeight: 700, color: '#FDF9F3', marginBottom: '8px' }}>Chua co tin nhan</h3>
+                <p style={{ fontFamily: 'Inter, var(--font-body)', fontSize: '0.875rem' }}>Match voi ai do de bat dau tro chuyen!</p>
               </div>
             ) : (
               filteredConversations.map(conv => {
@@ -873,16 +911,16 @@ const ChatPage = () => {
                   >
                     <div style={{
                       position: 'relative', width: '52px', height: '52px',
-                      borderRadius: 'var(--radius-full)', overflow: 'hidden', flexShrink: 0,
-                      backgroundColor: 'var(--surface-container-high)',
+                      borderRadius: '9999px', overflow: 'hidden', flexShrink: 0,
+                      backgroundColor: '#2A2A2A',
                     }}>
                       {getAvatarUrl(conv.otherUser) ? (
                         <img src={getAvatarUrl(conv.otherUser)} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="" />
                       ) : (
                         <div style={{
-                          width: '100%', height: '100%', background: 'var(--primary-gradient)',
+                          width: '100%', height: '100%', background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
                           display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          color: 'var(--on-primary)', fontWeight: 700, fontSize: '1.25rem', fontFamily: 'var(--font-headline)',
+                          color: '#3A0B00', fontWeight: 700, fontSize: '1.25rem', fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                         }}>
                           {(conv.otherUser?.name || '?')[0].toUpperCase()}
                         </div>
@@ -890,17 +928,17 @@ const ChatPage = () => {
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <h4 style={{ margin: 0, fontFamily: 'var(--font-headline)', fontSize: '1rem', fontWeight: unread > 0 ? 700 : 600, color: 'var(--on-surface)' }}>
+                        <h4 style={{ margin: 0, fontFamily: 'Plus Jakarta Sans, var(--font-headline)', fontSize: '1rem', fontWeight: unread > 0 ? 700 : 600, color: '#FDF9F3' }}>
                           {conv.otherUser?.name || 'Unknown'}
                         </h4>
-                        <span style={{ fontSize: '0.75rem', color: 'var(--on-surface-variant)', flexShrink: 0, fontFamily: 'var(--font-body)' }}>
+                        <span style={{ fontSize: '0.75rem', color: '#E6BEB2', flexShrink: 0, fontFamily: 'Inter, var(--font-body)' }}>
                           {conv.lastMessage?.createdAt ? new Date(conv.lastMessage.createdAt).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' }) : ''}
                         </span>
                       </div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                         <p style={{
-                          margin: '2px 0 0', fontSize: '0.875rem', fontFamily: 'var(--font-body)',
-                          color: unread > 0 ? 'var(--on-surface)' : 'var(--on-surface-variant)',
+                          margin: '2px 0 0', fontSize: '0.875rem', fontFamily: 'Inter, var(--font-body)',
+                          color: unread > 0 ? '#FDF9F3' : '#E6BEB2',
                           fontWeight: unread > 0 ? 600 : 400,
                           overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1,
                         }}>
@@ -908,11 +946,12 @@ const ChatPage = () => {
                         </p>
                         {unread > 0 && (
                           <span style={{
-                            backgroundColor: 'var(--primary)', color: 'var(--on-primary)',
+                            backgroundColor: '#FF571A', color: '#3A0B00',
                             fontSize: '0.6875rem', fontWeight: 700,
-                            minWidth: '20px', height: '20px', borderRadius: 'var(--radius-full)',
+                            minWidth: '20px', height: '20px', borderRadius: '9999px',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                             padding: '0 6px', flexShrink: 0,
+                            animation: 'chatPulse 2s ease-in-out infinite',
                           }}>
                             {unread}
                           </span>
@@ -935,7 +974,7 @@ const ChatPage = () => {
       flex: 1,
       display: 'flex',
       overflow: 'hidden',
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#131313',
     }}>
       <ConversationListPanel />
       <ChatPanel />

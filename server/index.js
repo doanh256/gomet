@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
@@ -30,8 +31,15 @@ export const prisma = new PrismaClient();
 const app = express();
 const httpServer = createServer(app);
 const isProd = process.env.NODE_ENV === 'production';
+const RAILWAY_URL = process.env.RAILWAY_PUBLIC_DOMAIN
+  ? `https://${process.env.RAILWAY_PUBLIC_DOMAIN}`
+  : null;
 const allowedOrigins = isProd
-  ? ['https://gomet.vn', 'https://www.gomet.vn']
+  ? [
+      'https://gomet.vn',
+      'https://www.gomet.vn',
+      ...(RAILWAY_URL ? [RAILWAY_URL] : []),
+    ]
   : ['http://localhost:5173', 'http://localhost:4173'];
 
 const io = new Server(httpServer, {
@@ -65,39 +73,36 @@ app.get('/api/health', (req, res) => {
 });
 
 // Debug endpoint
-app.get('/api/debug', async (req, res) => {
-  const fs = await import('fs');
-  const distPath = path.resolve(__dirname, '..', 'dist');
-  const indexFile = path.join(distPath, 'index.html');
-  const distExists = fs.existsSync(distPath);
-  const indexExists = fs.existsSync(indexFile);
+app.get('/api/debug', (req, res) => {
+  const debugDistPath = path.resolve(__dirname, '..', 'dist');
+  const debugIndexFile = path.join(debugDistPath, 'index.html');
+  const debugDistExists = fs.existsSync(debugDistPath);
+  const debugIndexExists = fs.existsSync(debugIndexFile);
   let files = [];
   let indexPreview = '';
-  if (distExists) {
-    files = fs.readdirSync(distPath);
-    if (indexExists) indexPreview = fs.readFileSync(indexFile, 'utf8').substring(0, 500);
+  if (debugDistExists) {
+    files = fs.readdirSync(debugDistPath);
+    if (debugIndexExists) indexPreview = fs.readFileSync(debugIndexFile, 'utf8').substring(0, 500);
   }
-  res.json({ distPath, distExists, indexExists, files, indexPreview, cwd: process.cwd(), dirname: __dirname });
+  res.json({ distPath: debugDistPath, distExists: debugDistExists, indexExists: debugIndexExists, files, indexPreview, cwd: process.cwd(), dirname: __dirname });
 });
 
 // Socket.io
 setupSocket(io);
 
-// Serve static frontend in production
-if (isProd) {
-  const distPath = path.resolve(__dirname, '..', 'dist');
-  const indexFile = path.join(distPath, 'index.html');
+// Serve static frontend - always serve dist/ if it exists
+const distPath = path.resolve(__dirname, '..', 'dist');
+const indexFile = path.join(distPath, 'index.html');
+const distExists = fs.existsSync(distPath);
+const indexExists = fs.existsSync(indexFile);
 
-  // Check if dist exists
-  import('fs').then(fs => {
-    const exists = fs.existsSync(indexFile);
-    console.log('📁 Dist path:', distPath);
-    console.log('📁 index.html exists:', exists);
-    if (exists) {
-      const content = fs.readFileSync(indexFile, 'utf8');
-      console.log('📁 index.html has assets:', content.includes('/assets/'));
-    }
-  });
+console.log('Static files - distPath:', distPath);
+console.log('Static files - dist/ exists:', distExists);
+console.log('Static files - index.html exists:', indexExists);
+
+if (indexExists) {
+  const content = fs.readFileSync(indexFile, 'utf8');
+  console.log('Static files - index.html has /assets/ refs:', content.includes('/assets/'));
 
   // Serve built assets (CSS, JS, images from dist/)
   app.use(express.static(distPath));
@@ -109,6 +114,9 @@ if (isProd) {
     }
     res.sendFile(indexFile);
   });
+} else {
+  console.log('WARNING: dist/index.html not found. Frontend will not be served.');
+  console.log('Run "npm run build" to generate the dist/ folder.');
 }
 
 const PORT = process.env.PORT || 3001;

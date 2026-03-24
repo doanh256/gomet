@@ -5,16 +5,16 @@ import { useAppContext } from '../../AppContext';
 import { useToast } from '../../components/ToastNotification';
 
 const CATEGORIES = {
-  all: { label: 'Tất Cả', icon: 'grid_view', color: 'var(--primary)', desc: 'Tất cả các lời mời hẹn hò' },
-  tim_yeu: { label: 'Tìm Yêu', icon: 'favorite', color: 'var(--primary)', desc: 'Tìm chân ái cuộc đời' },
-  tim_ban: { label: 'Tìm Bạn', icon: 'group', color: 'var(--secondary)', desc: 'Ăn uống, chụp hình, đi chơi nhóm' },
-  tra_phi: { label: 'Trả Phí', icon: 'paid', color: 'var(--tertiary)', desc: 'Cuộc hẹn đặc thù, có chi phí kèm theo' },
+  all: { label: 'Tat Ca', icon: 'grid_view', color: '#FFB59E', desc: 'Tat ca cac loi moi hen ho' },
+  tim_yeu: { label: 'Tim Yeu', icon: 'favorite', color: '#FFB59E', desc: 'Tim chan ai cuoc doi' },
+  tim_ban: { label: 'Tim Ban', icon: 'group', color: '#117500', desc: 'An uong, chup hinh, di choi nhom' },
+  tra_phi: { label: 'Tra Phi', icon: 'paid', color: '#FFD54F', desc: 'Cuoc hen dac thu, co chi phi kem theo' },
 };
 
 const CATEGORY_BADGE = {
-  tim_yeu: { bg: 'var(--primary)', label: 'Tìm Yêu' },
-  tim_ban: { bg: 'var(--secondary)', label: 'Tìm Bạn' },
-  tra_phi: { bg: 'var(--tertiary)', label: 'Trả Phí' },
+  tim_yeu: { bg: '#FF571A', label: 'Tim Yeu' },
+  tim_ban: { bg: 'rgba(17,117,0,0.8)', label: 'Tim Ban' },
+  tra_phi: { bg: 'rgba(255,213,79,0.85)', textColor: '#3A0B00', label: 'Tra Phi' },
 };
 
 const DatePostsPage = () => {
@@ -80,7 +80,7 @@ const DatePostsPage = () => {
     <div style={{
       flex: 1,
       overflowY: 'auto',
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#131313',
       minHeight: '100vh',
     }}>
       {/* Hero Section */}
@@ -90,20 +90,20 @@ const DatePostsPage = () => {
         margin: '0 auto',
       }}>
         <h1 style={{
-          fontFamily: 'var(--font-headline)',
+          fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
           fontSize: '3rem',
           fontWeight: 800,
-          color: 'var(--on-surface)',
+          color: '#FDF9F3',
           margin: 0,
           lineHeight: 1.1,
         }}>
           Tim mot{' '}
-          <span style={{ fontStyle: 'italic', color: 'var(--primary)' }}>Buoi Hen</span>
+          <span style={{ fontStyle: 'italic', color: '#FFB59E' }}>Buoi Hen</span>
         </h1>
         <p style={{
-          fontFamily: 'var(--font-body)',
+          fontFamily: 'Inter, var(--font-body)',
           fontSize: '1.125rem',
-          color: 'var(--on-surface-variant)',
+          color: '#E6BEB2',
           margin: '12px 0 0',
           maxWidth: '540px',
           lineHeight: 1.6,
@@ -135,17 +135,17 @@ const DatePostsPage = () => {
                 }}
                 style={{
                   padding: '10px 22px',
-                  borderRadius: 'var(--radius-full)',
+                  borderRadius: '9999px',
                   border: 'none',
                   cursor: 'pointer',
-                  fontFamily: 'var(--font-body)',
+                  fontFamily: 'Inter, var(--font-body)',
                   fontWeight: 600,
                   fontSize: '0.875rem',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '8px',
-                  background: isActive ? 'var(--primary)' : 'var(--surface-container-high)',
-                  color: isActive ? 'var(--on-primary)' : 'var(--on-surface-variant)',
+                  background: isActive ? '#FF571A' : '#353535',
+                  color: isActive ? '#3A0B00' : '#E6BEB2',
                   transition: 'all 0.2s ease',
                 }}
               >
@@ -167,8 +167,8 @@ const DatePostsPage = () => {
           <div style={{
             textAlign: 'center',
             padding: '60px',
-            color: 'var(--on-surface-variant)',
-            fontFamily: 'var(--font-body)',
+            color: '#E6BEB2',
+            fontFamily: 'Inter, var(--font-body)',
           }}>
             <span className="material-symbols-outlined" style={{ fontSize: '48px', marginBottom: '12px', display: 'block', opacity: 0.4 }}>hourglass_empty</span>
             Dang tai...
@@ -177,18 +177,18 @@ const DatePostsPage = () => {
           <div style={{
             textAlign: 'center',
             padding: '80px 20px',
-            backgroundColor: 'var(--surface-container-low)',
-            borderRadius: 'var(--radius-lg)',
+            backgroundColor: '#1C1B1B',
+            borderRadius: '1.5rem',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '64px', color: 'var(--outline)', marginBottom: '16px', display: 'block' }}>mail</span>
+            <span className="material-symbols-outlined" style={{ fontSize: '64px', color: '#353535', marginBottom: '16px', display: 'block' }}>mail</span>
             <h3 style={{
-              fontFamily: 'var(--font-headline)',
-              color: 'var(--on-surface)',
+              fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
+              color: '#FDF9F3',
               fontWeight: 700,
               fontSize: '1.25rem',
               margin: '0 0 8px',
             }}>Chua co keo nao</h3>
-            <p style={{ color: 'var(--on-surface-variant)', fontFamily: 'var(--font-body)' }}>
+            <p style={{ color: '#E6BEB2', fontFamily: 'Inter, var(--font-body)' }}>
               Hay la nguoi dau tien dang keo!
             </p>
           </div>
@@ -202,10 +202,9 @@ const DatePostsPage = () => {
               const catBadge = CATEGORY_BADGE[post.category] || CATEGORY_BADGE.tim_yeu;
               return (
                 <div key={post.id} style={{
-                  backgroundColor: 'var(--surface-container-lowest)',
-                  borderRadius: 'var(--radius-lg)',
+                  backgroundColor: '#1C1B1B',
+                  borderRadius: '1.5rem',
                   overflow: 'hidden',
-                  boxShadow: 'var(--card-shadow)',
                   transition: 'transform 0.25s ease, box-shadow 0.25s ease',
                 }}>
                   {/* Image Section */}
@@ -213,7 +212,7 @@ const DatePostsPage = () => {
                     position: 'relative',
                     height: '320px',
                     overflow: 'hidden',
-                    backgroundColor: 'var(--surface-container-high)',
+                    backgroundColor: '#2A2A2A',
                   }}>
                     <img
                       src={post.image || post.author?.avatar || 'https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600'}
@@ -231,12 +230,12 @@ const DatePostsPage = () => {
                       top: '16px',
                       left: '16px',
                       backgroundColor: catBadge.bg,
-                      color: 'var(--on-primary)',
+                      color: catBadge.textColor || '#FFFFFF',
                       padding: '6px 14px',
-                      borderRadius: 'var(--radius-full)',
+                      borderRadius: '9999px',
                       fontSize: '0.75rem',
                       fontWeight: 700,
-                      fontFamily: 'var(--font-body)',
+                      fontFamily: 'Inter, var(--font-body)',
                       letterSpacing: '0.02em',
                     }}>
                       {catBadge.label}
@@ -248,14 +247,14 @@ const DatePostsPage = () => {
                         position: 'absolute',
                         top: '16px',
                         right: '16px',
-                        backgroundColor: 'var(--surface-container-lowest)',
-                        color: 'var(--tertiary)',
+                        backgroundColor: '#1C1B1B',
+                        color: '#FFD54F',
                         padding: '6px 14px',
-                        borderRadius: 'var(--radius-full)',
+                        borderRadius: '9999px',
                         fontSize: '0.875rem',
                         fontWeight: 800,
-                        fontFamily: 'var(--font-headline)',
-                        boxShadow: '0 2px 8px rgba(0,0,0,0.12)',
+                        fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
+                        boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
                       }}>
                         {formatPrice(post.price)}
                       </div>
@@ -267,11 +266,11 @@ const DatePostsPage = () => {
                       bottom: 0,
                       left: 0,
                       right: 0,
-                      height: '120px',
-                      background: 'linear-gradient(to top, rgba(0,0,0,0.6), transparent)',
+                      height: '140px',
+                      background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
                     }} />
 
-                    {/* Author info on image */}
+                    {/* Author info - glass overlay */}
                     <div style={{
                       position: 'absolute',
                       bottom: '16px',
@@ -280,6 +279,11 @@ const DatePostsPage = () => {
                       display: 'flex',
                       alignItems: 'center',
                       gap: '10px',
+                      backgroundColor: 'rgba(57,57,57,0.6)',
+                      backdropFilter: 'blur(20px)',
+                      WebkitBackdropFilter: 'blur(20px)',
+                      borderRadius: '1.5rem',
+                      padding: '10px 14px',
                     }}>
                       <img
                         src={post.author?.avatar || 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100'}
@@ -287,15 +291,14 @@ const DatePostsPage = () => {
                         style={{
                           width: '40px',
                           height: '40px',
-                          borderRadius: 'var(--radius-full)',
+                          borderRadius: '9999px',
                           objectFit: 'cover',
-                          border: '2px solid white',
                         }}
                       />
                       <div>
                         <div style={{
-                          color: 'white',
-                          fontFamily: 'var(--font-headline)',
+                          color: '#FDF9F3',
+                          fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                           fontWeight: 700,
                           fontSize: '0.9375rem',
                           display: 'flex',
@@ -304,11 +307,11 @@ const DatePostsPage = () => {
                         }}>
                           {post.author?.name}{post.author?.age ? `, ${post.author.age}` : ''}
                           {post.author?.verified && (
-                            <span className="material-symbols-outlined filled" style={{ fontSize: '16px', color: '#4fc3f7' }}>verified</span>
+                            <span className="material-symbols-outlined filled" style={{ fontSize: '16px', color: '#FFB59E' }}>verified</span>
                           )}
                         </div>
                         {post.author?.location && (
-                          <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '0.8125rem' }}>
+                          <div style={{ color: '#E6BEB2', fontSize: '0.8125rem' }}>
                             {post.author.location}
                           </div>
                         )}
@@ -319,10 +322,10 @@ const DatePostsPage = () => {
                   {/* Card Content */}
                   <div style={{ padding: '20px' }}>
                     <h3 style={{
-                      fontFamily: 'var(--font-headline)',
+                      fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                       fontSize: '1.125rem',
                       fontWeight: 700,
-                      color: 'var(--on-surface)',
+                      color: '#FDF9F3',
                       margin: '0 0 8px',
                     }}>
                       {post.title}
@@ -330,9 +333,9 @@ const DatePostsPage = () => {
 
                     {post.description && (
                       <p style={{
-                        fontFamily: 'var(--font-body)',
+                        fontFamily: 'Inter, var(--font-body)',
                         fontSize: '0.875rem',
-                        color: 'var(--on-surface-variant)',
+                        color: '#E6BEB2',
                         fontStyle: 'italic',
                         margin: '0 0 14px',
                         lineHeight: 1.5,
@@ -352,8 +355,8 @@ const DatePostsPage = () => {
                       gap: '12px',
                       marginBottom: '14px',
                       fontSize: '0.8125rem',
-                      color: 'var(--on-surface-variant)',
-                      fontFamily: 'var(--font-body)',
+                      color: '#E6BEB2',
+                      fontFamily: 'Inter, var(--font-body)',
                     }}>
                       {post.time && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
@@ -383,13 +386,13 @@ const DatePostsPage = () => {
                       }}>
                         {post.tags.map((tag, i) => (
                           <span key={i} style={{
-                            backgroundColor: 'var(--surface-container-high)',
-                            color: 'var(--on-surface-variant)',
+                            backgroundColor: '#353535',
+                            color: '#E6BEB2',
                             padding: '4px 12px',
-                            borderRadius: 'var(--radius-full)',
+                            borderRadius: '9999px',
                             fontSize: '0.75rem',
                             fontWeight: 500,
-                            fontFamily: 'var(--font-body)',
+                            fontFamily: 'Inter, var(--font-body)',
                           }}>
                             {tag}
                           </span>
@@ -404,13 +407,13 @@ const DatePostsPage = () => {
                         style={{
                           width: '100%',
                           padding: '12px',
-                          borderRadius: 'var(--radius-full)',
+                          borderRadius: '9999px',
                           border: 'none',
-                          background: 'var(--surface-container-high)',
-                          color: 'var(--on-surface-variant)',
+                          background: '#353535',
+                          color: '#E6BEB2',
                           fontWeight: 600,
                           fontSize: '0.875rem',
-                          fontFamily: 'var(--font-body)',
+                          fontFamily: 'Inter, var(--font-body)',
                           cursor: 'pointer',
                           display: 'flex',
                           alignItems: 'center',
@@ -429,13 +432,13 @@ const DatePostsPage = () => {
                           placeholder="Loi nhan cho nguoi dang (tuy chon)..."
                           style={{
                             padding: '12px 16px',
-                            borderRadius: 'var(--radius)',
+                            borderRadius: '1.5rem',
                             border: 'none',
-                            backgroundColor: 'var(--surface-container-low)',
+                            backgroundColor: '#20201F',
                             fontSize: '0.875rem',
-                            fontFamily: 'var(--font-body)',
+                            fontFamily: 'Inter, var(--font-body)',
                             outline: 'none',
-                            color: 'var(--on-surface)',
+                            color: '#FDF9F3',
                           }}
                         />
                         <div style={{ display: 'flex', gap: '8px' }}>
@@ -444,13 +447,13 @@ const DatePostsPage = () => {
                             style={{
                               flex: 1,
                               padding: '12px',
-                              borderRadius: 'var(--radius-full)',
+                              borderRadius: '9999px',
                               border: 'none',
-                              background: 'var(--surface-container-high)',
-                              color: 'var(--on-surface-variant)',
+                              background: '#353535',
+                              color: '#E6BEB2',
                               fontWeight: 600,
                               fontSize: '0.875rem',
-                              fontFamily: 'var(--font-body)',
+                              fontFamily: 'Inter, var(--font-body)',
                               cursor: 'pointer',
                             }}
                           >
@@ -461,13 +464,13 @@ const DatePostsPage = () => {
                             style={{
                               flex: 1,
                               padding: '12px',
-                              borderRadius: 'var(--radius-full)',
+                              borderRadius: '9999px',
                               border: 'none',
-                              background: 'var(--primary-gradient)',
-                              color: 'var(--on-primary)',
+                              background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+                              color: '#3A0B00',
                               fontWeight: 700,
                               fontSize: '0.875rem',
-                              fontFamily: 'var(--font-body)',
+                              fontFamily: 'Inter, var(--font-body)',
                               cursor: 'pointer',
                             }}
                           >
@@ -482,19 +485,19 @@ const DatePostsPage = () => {
                           style={{
                             flex: 1,
                             padding: '12px 20px',
-                            borderRadius: 'var(--radius-full)',
+                            borderRadius: '9999px',
                             border: 'none',
-                            background: 'var(--primary-gradient)',
-                            color: 'var(--on-primary)',
+                            background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+                            color: '#3A0B00',
                             fontWeight: 700,
                             fontSize: '0.875rem',
-                            fontFamily: 'var(--font-body)',
+                            fontFamily: 'Inter, var(--font-body)',
                             cursor: 'pointer',
                             display: 'flex',
                             alignItems: 'center',
                             justifyContent: 'center',
                             gap: '6px',
-                            boxShadow: '0 4px 16px rgba(174, 47, 52, 0.2)',
+                            boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
                             transition: 'transform 0.2s ease',
                           }}
                         >
@@ -506,13 +509,13 @@ const DatePostsPage = () => {
                             onClick={() => navigate(`/app/dates/${post.id}/group`)}
                             style={{
                               padding: '12px 20px',
-                              borderRadius: 'var(--radius-full)',
+                              borderRadius: '9999px',
                               border: 'none',
-                              background: 'var(--surface-container-high)',
-                              color: 'var(--on-surface)',
+                              background: '#353535',
+                              color: '#FDF9F3',
                               fontWeight: 600,
                               fontSize: '0.875rem',
-                              fontFamily: 'var(--font-body)',
+                              fontFamily: 'Inter, var(--font-body)',
                               cursor: 'pointer',
                               display: 'flex',
                               alignItems: 'center',
@@ -542,15 +545,15 @@ const DatePostsPage = () => {
           right: '32px',
           width: '60px',
           height: '60px',
-          borderRadius: 'var(--radius-full)',
-          background: 'var(--primary-gradient)',
-          color: 'var(--on-primary)',
+          borderRadius: '9999px',
+          background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+          color: '#3A0B00',
           border: 'none',
           cursor: 'pointer',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          boxShadow: '0 8px 24px rgba(174, 47, 52, 0.3)',
+          boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
           zIndex: 100,
           transition: 'transform 0.2s ease',
         }}
@@ -590,13 +593,13 @@ const CreatePostModal = ({ category, onClose, onSubmit }) => {
   const inputStyle = {
     width: '100%',
     padding: '14px 16px',
-    borderRadius: 'var(--radius)',
+    borderRadius: '1.5rem',
     border: 'none',
-    backgroundColor: 'var(--surface-container-low)',
+    backgroundColor: '#20201F',
     fontSize: '0.9375rem',
-    fontFamily: 'var(--font-body)',
+    fontFamily: 'Inter, var(--font-body)',
     outline: 'none',
-    color: 'var(--on-surface)',
+    color: '#FDF9F3',
     boxSizing: 'border-box',
   };
 
@@ -604,9 +607,9 @@ const CreatePostModal = ({ category, onClose, onSubmit }) => {
     display: 'block',
     fontSize: '0.8125rem',
     fontWeight: 600,
-    color: 'var(--on-surface)',
+    color: '#FDF9F3',
     marginBottom: '6px',
-    fontFamily: 'var(--font-body)',
+    fontFamily: 'Inter, var(--font-body)',
   };
 
   return (
@@ -614,7 +617,7 @@ const CreatePostModal = ({ category, onClose, onSubmit }) => {
       style={{
         position: 'fixed',
         top: 0, left: 0, right: 0, bottom: 0,
-        background: 'rgba(0,0,0,0.4)',
+        background: 'rgba(0,0,0,0.6)',
         backdropFilter: 'blur(8px)',
         display: 'flex',
         alignItems: 'center',
@@ -625,31 +628,31 @@ const CreatePostModal = ({ category, onClose, onSubmit }) => {
     >
       <div
         style={{
-          background: 'var(--surface-container-lowest)',
-          borderRadius: 'var(--radius-lg)',
+          background: '#1C1B1B',
+          borderRadius: '1.5rem',
           padding: '36px',
           maxWidth: '500px',
           width: '90%',
           maxHeight: '90vh',
           overflowY: 'auto',
-          boxShadow: 'var(--editorial-shadow)',
+          boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
         }}
         onClick={e => e.stopPropagation()}
       >
         <h2 style={{
-          fontFamily: 'var(--font-headline)',
+          fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
           fontSize: '1.5rem',
           fontWeight: 800,
-          color: 'var(--on-surface)',
+          color: '#FDF9F3',
           margin: '0 0 6px',
         }}>
           Dang Keo Moi
         </h2>
         <p style={{
           margin: '0 0 28px',
-          color: 'var(--on-surface-variant)',
+          color: '#E6BEB2',
           fontSize: '0.875rem',
-          fontFamily: 'var(--font-body)',
+          fontFamily: 'Inter, var(--font-body)',
         }}>
           {CATEGORIES[category]?.label || 'Tim Yeu'} - {CATEGORIES[category]?.desc || ''}
         </p>
@@ -697,13 +700,13 @@ const CreatePostModal = ({ category, onClose, onSubmit }) => {
               style={{
                 flex: 1,
                 padding: '14px',
-                borderRadius: 'var(--radius-full)',
+                borderRadius: '9999px',
                 border: 'none',
-                background: 'var(--surface-container-high)',
-                color: 'var(--on-surface-variant)',
+                background: '#353535',
+                color: '#E6BEB2',
                 fontWeight: 700,
                 fontSize: '0.9375rem',
-                fontFamily: 'var(--font-body)',
+                fontFamily: 'Inter, var(--font-body)',
                 cursor: 'pointer',
               }}
             >
@@ -714,15 +717,15 @@ const CreatePostModal = ({ category, onClose, onSubmit }) => {
               style={{
                 flex: 1,
                 padding: '14px',
-                borderRadius: 'var(--radius-full)',
+                borderRadius: '9999px',
                 border: 'none',
-                background: 'var(--primary-gradient)',
-                color: 'var(--on-primary)',
+                background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+                color: '#3A0B00',
                 fontWeight: 700,
                 fontSize: '0.9375rem',
-                fontFamily: 'var(--font-body)',
+                fontFamily: 'Inter, var(--font-body)',
                 cursor: 'pointer',
-                boxShadow: '0 4px 16px rgba(174, 47, 52, 0.2)',
+                boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
               }}
             >
               Dang Keo
