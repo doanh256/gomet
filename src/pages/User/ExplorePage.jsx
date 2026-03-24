@@ -16,19 +16,38 @@ const ExplorePage = () => {
   ];
 
   return (
-    <div style={{ flex: 1, backgroundColor: 'white', overflowY: 'auto', padding: '32px' }}>
+    <div style={{ flex: 1, backgroundColor: '#131313', overflowY: 'auto', padding: '32px' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
-        <Compass size={28} color="#fd5068" />
-        <h1 style={{ fontSize: '28px', fontWeight: 700, margin: 0 }}>Khám phá</h1>
+        <Compass size={28} color="#FFB59E" />
+        <h1 style={{ fontSize: '28px', fontWeight: 700, margin: 0, color: '#FDF9F3' }}>Khám phá</h1>
       </div>
-      <p style={{ color: '#505965', marginBottom: '32px' }}>Tìm những người có chung sở thích với bạn ngay hôm nay.</p>
-      
+      <p style={{ color: '#E6BEB2', marginBottom: '32px' }}>Tìm những người có chung sở thích với bạn ngay hôm nay.</p>
+
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
         {categories.map((cat, idx) => (
-          <div key={idx} onClick={() => navigate(`/app/explore/${cat.id}`)} style={{ height: '320px', borderRadius: '16px', overflow: 'hidden', position: 'relative', cursor: 'pointer', boxShadow: '0 4px 12px rgba(0,0,0,0.1)' }}>
+          <div
+            key={idx}
+            onClick={() => navigate(`/app/explore/${cat.id}`)}
+            style={{
+              height: '320px',
+              borderRadius: '1.5rem',
+              overflow: 'hidden',
+              position: 'relative',
+              cursor: 'pointer',
+              boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
+              transition: 'transform 0.2s',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
+            onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+          >
             <img src={cat.img} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt={cat.title} />
-            <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', padding: '24px', background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)' }}>
-              <h3 style={{ color: 'white', margin: 0, fontSize: '24px', fontWeight: 700 }}>{cat.title}</h3>
+            <div style={{
+              position: 'absolute',
+              inset: 0,
+              background: 'linear-gradient(to top, rgba(19,19,19,0.95) 0%, rgba(19,19,19,0.3) 40%, transparent 100%)',
+            }} />
+            <div style={{ position: 'absolute', bottom: 0, left: 0, width: '100%', padding: '24px' }}>
+              <h3 style={{ color: '#FDF9F3', margin: 0, fontSize: '24px', fontWeight: 700 }}>{cat.title}</h3>
             </div>
           </div>
         ))}

@@ -41,7 +41,7 @@ const VenueProfilePage = () => {
         <span
           key={i}
           className={`material-symbols-outlined ${i <= Math.round(rating) ? 'filled' : ''}`}
-          style={{ fontSize: 16, color: i <= Math.round(rating) ? '#f59e0b' : 'var(--outline-variant)' }}
+          style={{ fontSize: 16, color: i <= Math.round(rating) ? '#FFD54F' : '#353535' }}
         >
           star
         </span>
@@ -53,15 +53,14 @@ const VenueProfilePage = () => {
   const styles = {
     page: {
       minHeight: '100vh',
-      background: 'var(--surface)',
-      fontFamily: 'var(--font-body)',
-      color: 'var(--on-surface)',
+      background: '#131313',
+      color: '#FDF9F3',
       paddingBottom: 100,
     },
     hero: {
       position: 'relative',
       height: 350,
-      background: 'linear-gradient(135deg, var(--tertiary-container), var(--primary-container))',
+      background: 'linear-gradient(135deg, #2A2A2A, #FF571A)',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'flex-end',
@@ -70,7 +69,7 @@ const VenueProfilePage = () => {
     heroOverlay: {
       position: 'absolute',
       inset: 0,
-      background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 60%)',
+      background: 'linear-gradient(to top, rgba(19,19,19,0.85) 0%, transparent 60%)',
       zIndex: 1,
     },
     heroContent: {
@@ -84,21 +83,21 @@ const VenueProfilePage = () => {
       zIndex: 3,
       width: 40,
       height: 40,
-      borderRadius: 'var(--radius-full)',
-      background: 'rgba(255,255,255,0.2)',
-      backdropFilter: 'blur(10px)',
+      borderRadius: '9999px',
+      background: 'rgba(57,57,57,0.6)',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
       border: 'none',
-      color: '#fff',
+      color: '#FDF9F3',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       cursor: 'pointer',
     },
     venueName: {
-      fontFamily: 'var(--font-headline)',
       fontSize: 28,
       fontWeight: 800,
-      color: '#fff',
+      color: '#FDF9F3',
       marginBottom: 6,
     },
     ratingRow: {
@@ -107,7 +106,7 @@ const VenueProfilePage = () => {
       gap: 8,
     },
     ratingText: {
-      color: '#fff',
+      color: '#FDF9F3',
       fontSize: 16,
       fontWeight: 700,
     },
@@ -115,11 +114,12 @@ const VenueProfilePage = () => {
       display: 'inline-flex',
       alignItems: 'center',
       gap: 4,
-      background: 'rgba(255,255,255,0.2)',
-      backdropFilter: 'blur(8px)',
-      color: '#fff',
+      background: 'rgba(57,57,57,0.6)',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
+      color: '#FDF9F3',
       padding: '4px 12px',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       fontSize: 12,
       fontWeight: 600,
       marginLeft: 8,
@@ -129,22 +129,22 @@ const VenueProfilePage = () => {
       alignItems: 'center',
       gap: 10,
       padding: '16px 20px',
-      borderBottom: '1px solid var(--outline-variant)',
+      borderBottom: '1px solid rgba(255,255,255,0.06)',
       flexWrap: 'wrap',
     },
     chip: {
-      background: 'var(--primary-fixed)',
-      color: 'var(--on-primary-container)',
+      background: 'rgba(255,181,158,0.15)',
+      color: '#FFB59E',
       padding: '6px 14px',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       fontSize: 13,
       fontWeight: 600,
     },
     priceChip: {
-      background: 'var(--surface-container-high)',
-      color: 'var(--on-surface)',
+      background: '#2A2A2A',
+      color: '#FDF9F3',
       padding: '6px 14px',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       fontSize: 13,
       fontWeight: 600,
     },
@@ -152,7 +152,7 @@ const VenueProfilePage = () => {
       display: 'flex',
       alignItems: 'center',
       gap: 4,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       fontSize: 13,
     },
     body: {
@@ -162,16 +162,15 @@ const VenueProfilePage = () => {
       marginBottom: 28,
     },
     sectionTitle: {
-      fontFamily: 'var(--font-headline)',
       fontSize: 18,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 14,
     },
     description: {
       fontSize: 15,
       lineHeight: 1.7,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     menuGrid: {
       display: 'flex',
@@ -180,15 +179,15 @@ const VenueProfilePage = () => {
     },
     menuCard: {
       display: 'flex',
-      background: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius)',
+      background: '#1C1B1B',
+      borderRadius: '1.5rem',
       overflow: 'hidden',
-      boxShadow: 'var(--card-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     menuImage: {
       width: 100,
       height: 100,
-      background: 'linear-gradient(135deg, var(--primary-container), var(--tertiary-container))',
+      background: 'linear-gradient(135deg, #2A2A2A, #353535)',
       flexShrink: 0,
     },
     menuInfo: {
@@ -201,18 +200,17 @@ const VenueProfilePage = () => {
     menuName: {
       fontSize: 15,
       fontWeight: 700,
-      fontFamily: 'var(--font-headline)',
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 6,
     },
     menuPrice: {
       fontSize: 15,
       fontWeight: 700,
-      color: 'var(--primary)',
+      color: '#FFB59E',
     },
     reviewCard: {
-      background: 'var(--surface-container-low)',
-      borderRadius: 'var(--radius)',
+      background: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: 16,
       marginBottom: 12,
     },
@@ -225,12 +223,12 @@ const VenueProfilePage = () => {
     reviewAvatar: {
       width: 40,
       height: 40,
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary-gradient)',
+      borderRadius: '9999px',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      color: 'var(--on-primary)',
+      color: '#3A0B00',
       fontSize: 16,
       fontWeight: 700,
       flexShrink: 0,
@@ -238,17 +236,17 @@ const VenueProfilePage = () => {
     reviewName: {
       fontSize: 14,
       fontWeight: 600,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     reviewText: {
       fontSize: 14,
       lineHeight: 1.6,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       fontStyle: 'italic',
     },
     locationSection: {
-      background: 'var(--surface-container-low)',
-      borderRadius: 'var(--radius)',
+      background: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: 16,
     },
     addressText: {
@@ -256,7 +254,7 @@ const VenueProfilePage = () => {
       alignItems: 'flex-start',
       gap: 8,
       fontSize: 14,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 12,
     },
     mapsBtn: {
@@ -264,14 +262,13 @@ const VenueProfilePage = () => {
       alignItems: 'center',
       gap: 6,
       background: 'transparent',
-      color: 'var(--primary)',
-      border: '1.5px solid var(--primary)',
-      borderRadius: 'var(--radius-full)',
+      color: '#FFB59E',
+      border: '1.5px solid #FFB59E',
+      borderRadius: '9999px',
       padding: '10px 20px',
       fontSize: 14,
       fontWeight: 600,
       cursor: 'pointer',
-      fontFamily: 'var(--font-body)',
     },
     hoursGrid: {
       display: 'flex',
@@ -283,17 +280,17 @@ const VenueProfilePage = () => {
       justifyContent: 'space-between',
       alignItems: 'center',
       padding: '10px 14px',
-      background: 'var(--surface-container-low)',
+      background: '#1C1B1B',
       borderRadius: 12,
     },
     hoursDay: {
       fontSize: 14,
       fontWeight: 600,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     hoursTime: {
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     ctaBar: {
       position: 'fixed',
@@ -301,25 +298,26 @@ const VenueProfilePage = () => {
       left: 0,
       right: 0,
       padding: '16px 20px',
-      background: 'var(--surface-container-lowest)',
-      boxShadow: '0 -4px 20px rgba(0,0,0,0.08)',
+      background: 'rgba(57,57,57,0.6)',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
       zIndex: 10,
     },
     ctaBtn: {
       width: '100%',
-      background: 'var(--primary-gradient)',
-      color: 'var(--on-primary)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
       border: 'none',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       padding: '16px 24px',
       fontSize: 16,
       fontWeight: 700,
-      fontFamily: 'var(--font-headline)',
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       gap: 8,
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
   };
 
@@ -402,7 +400,7 @@ const VenueProfilePage = () => {
           <div style={styles.sectionTitle}>Vi tri</div>
           <div style={styles.locationSection}>
             <div style={styles.addressText}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, color: 'var(--primary)', marginTop: 2 }}>location_on</span>
+              <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E', marginTop: 2 }}>location_on</span>
               {venue.location}
             </div>
             <button style={styles.mapsBtn}>

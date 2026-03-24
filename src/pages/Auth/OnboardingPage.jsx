@@ -33,7 +33,6 @@ const OnboardingPage = () => {
 
   const totalSteps = 4;
 
-  // Show confetti on step 4
   useEffect(() => {
     if (step === 4) {
       const timer = setTimeout(() => setShowConfetti(true), 200);
@@ -42,7 +41,6 @@ const OnboardingPage = () => {
     setShowConfetti(false);
   }, [step]);
 
-  // Inject keyframes
   useEffect(() => {
     const styleId = 'onboarding-keyframes';
     if (!document.getElementById(styleId)) {
@@ -131,8 +129,8 @@ const OnboardingPage = () => {
 
   const progressPercent = (step / totalSteps) * 100;
 
-  // Confetti elements
-  const confettiColors = ['var(--primary)', 'var(--primary-container)', 'var(--tertiary)', 'var(--tertiary-container)', '#FFD700', '#4CAF50'];
+  // Confetti with gradient-matching particles
+  const confettiColors = ['#FFB59E', '#FF571A', '#FFD54F', '#117500', '#E6BEB2', '#FDF9F3'];
   const confettiPieces = Array.from({ length: 20 }, (_, i) => ({
     id: i,
     left: `${Math.random() * 100}%`,
@@ -142,378 +140,159 @@ const OnboardingPage = () => {
     size: 6 + Math.random() * 8,
   }));
 
-  const s = {
-    page: {
-      minHeight: '100vh',
-      backgroundColor: 'var(--surface)',
-      display: 'flex',
-      flexDirection: 'column',
-      fontFamily: 'var(--font-body)',
-      position: 'relative',
-      overflow: 'hidden',
-    },
-    progressTrack: {
-      height: '4px',
-      backgroundColor: 'var(--surface-container-high)',
-      position: 'relative',
-    },
-    progressFill: {
-      height: '100%',
-      width: `${progressPercent}%`,
-      background: 'var(--primary-gradient)',
-      borderRadius: '0 4px 4px 0',
-      transition: 'width 0.4s cubic-bezier(.4,0,.2,1)',
-    },
-    content: {
-      flex: 1,
-      padding: '32px 24px',
-      maxWidth: '480px',
-      margin: '0 auto',
-      width: '100%',
-      boxSizing: 'border-box',
-    },
-    stepLabel: {
-      textAlign: 'center',
-      fontSize: '13px',
-      color: 'var(--on-surface-variant)',
-      marginBottom: '4px',
-      fontWeight: 600,
-    },
-    stepDots: {
-      display: 'flex',
-      justifyContent: 'center',
-      gap: '8px',
-      marginBottom: '24px',
-    },
-    dot: (active, completed) => ({
-      width: active ? '24px' : '8px',
-      height: '8px',
-      borderRadius: 'var(--radius-full)',
-      background: active ? 'var(--primary-gradient)' : completed ? 'var(--primary)' : 'var(--surface-container-highest)',
-      transition: 'all 0.3s ease',
-    }),
-    heading: {
-      fontSize: '26px',
-      fontWeight: 800,
-      color: 'var(--on-surface)',
-      textAlign: 'center',
-      marginBottom: '8px',
-      fontFamily: 'var(--font-headline)',
-    },
-    subtitle: {
-      textAlign: 'center',
-      color: 'var(--on-surface-variant)',
-      fontSize: '14px',
-      marginBottom: '32px',
-    },
-    label: {
-      fontSize: '14px',
-      fontWeight: 600,
-      color: 'var(--on-surface)',
-      marginBottom: '10px',
-      display: 'block',
-    },
-    genderGrid: {
-      display: 'flex',
-      gap: '12px',
-      marginBottom: '24px',
-    },
-    genderCard: (selected) => ({
-      flex: 1,
-      padding: '20px 12px',
-      borderRadius: 'var(--radius)',
-      border: `2px solid ${selected ? 'var(--primary)' : 'var(--outline-variant)'}`,
-      backgroundColor: selected ? 'var(--primary-fixed)' : 'var(--surface-container-lowest)',
-      cursor: 'pointer',
-      textAlign: 'center',
-      transition: 'all 0.2s ease',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      gap: '8px',
-    }),
-    genderIcon: (selected) => ({
-      fontSize: '32px',
-      color: selected ? 'var(--primary)' : 'var(--on-surface-variant)',
-    }),
-    genderLabel: (selected) => ({
-      fontSize: '14px',
-      fontWeight: 600,
-      color: selected ? 'var(--primary)' : 'var(--on-surface)',
-    }),
-    input: {
-      width: '100%',
-      padding: '14px 16px',
-      borderRadius: 'var(--radius)',
-      border: '2px solid var(--outline-variant)',
-      fontSize: '16px',
-      outline: 'none',
-      boxSizing: 'border-box',
-      fontFamily: 'var(--font-body)',
-      backgroundColor: 'var(--surface-container-lowest)',
-      color: 'var(--on-surface)',
-      transition: 'border-color 0.2s',
-    },
-    inputWithIcon: {
-      position: 'relative',
-    },
-    inputIcon: {
-      position: 'absolute',
-      left: '14px',
-      top: '50%',
-      transform: 'translateY(-50%)',
-      fontSize: '20px',
-      color: 'var(--on-surface-variant)',
-    },
-    // Step 2 - Avatar
-    uploadArea: (dragActive) => ({
-      width: '200px',
-      height: '200px',
-      borderRadius: '50%',
-      margin: '0 auto 24px',
-      border: `3px dashed ${dragActive ? 'var(--primary)' : 'var(--outline-variant)'}`,
-      backgroundColor: dragActive ? 'var(--primary-fixed)' : 'var(--surface-container-low)',
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      cursor: 'pointer',
-      overflow: 'hidden',
-      transition: 'all 0.2s',
-    }),
-    uploadIcon: {
-      fontSize: '48px',
-      color: 'var(--outline-variant)',
-      marginBottom: '4px',
-    },
-    uploadText: {
-      fontSize: '12px',
-      color: 'var(--on-surface-variant)',
-      textAlign: 'center',
-      padding: '0 16px',
-    },
-    avatarImg: {
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-    },
-    uploadBtn: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '8px',
-      margin: '0 auto',
-      padding: '10px 24px',
-      borderRadius: 'var(--radius-full)',
-      border: '2px solid var(--outline-variant)',
-      backgroundColor: 'var(--surface-container-lowest)',
-      color: 'var(--on-surface)',
-      fontSize: '14px',
-      fontWeight: 600,
-      cursor: 'pointer',
-    },
-    // Step 3 - Bio
-    textarea: {
-      width: '100%',
-      minHeight: '120px',
-      padding: '14px 16px',
-      borderRadius: 'var(--radius)',
-      border: '2px solid var(--outline-variant)',
-      fontSize: '15px',
-      resize: 'vertical',
-      outline: 'none',
-      boxSizing: 'border-box',
-      fontFamily: 'var(--font-body)',
-      backgroundColor: 'var(--surface-container-lowest)',
-      color: 'var(--on-surface)',
-      lineHeight: 1.6,
-    },
-    charCount: {
-      fontSize: '12px',
-      color: 'var(--on-surface-variant)',
-      textAlign: 'right',
-      marginTop: '4px',
-    },
-    interestGrid: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: '8px',
-      marginTop: '12px',
-    },
-    interestChip: (selected) => ({
-      padding: '8px 16px',
-      borderRadius: 'var(--radius-full)',
-      border: `2px solid ${selected ? 'var(--primary)' : 'var(--outline-variant)'}`,
-      backgroundColor: selected ? 'var(--primary-fixed)' : 'var(--surface-container-lowest)',
-      color: selected ? 'var(--primary)' : 'var(--on-surface-variant)',
-      fontWeight: 600,
-      fontSize: '13px',
-      cursor: 'pointer',
-      transition: 'all 0.15s',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '4px',
-    }),
-    // Step 4 - Success
-    successContainer: {
-      textAlign: 'center',
-      paddingTop: '40px',
-      animation: 'fadeSlideUp 0.5s ease forwards',
-    },
-    checkCircle: {
-      width: '100px',
-      height: '100px',
-      borderRadius: '50%',
-      background: 'var(--primary-gradient)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      margin: '0 auto 24px',
-      animation: 'checkPop 0.6s cubic-bezier(.4,0,.2,1) forwards',
-      boxShadow: '0 8px 32px rgba(174,47,52,0.3)',
-    },
-    successHeading: {
-      fontSize: '28px',
-      fontWeight: 800,
-      color: 'var(--on-surface)',
-      fontFamily: 'var(--font-headline)',
-      marginBottom: '8px',
-    },
-    successSubtext: {
-      color: 'var(--on-surface-variant)',
-      fontSize: '15px',
-      lineHeight: 1.6,
-      marginBottom: '40px',
-    },
-    // Navigation
-    navRow: (isFirst) => ({
-      display: 'flex',
-      justifyContent: isFirst ? 'flex-end' : 'space-between',
-      alignItems: 'center',
-      marginTop: '40px',
-      gap: '12px',
-    }),
-    backBtn: {
-      background: 'none',
-      border: 'none',
-      color: 'var(--on-surface-variant)',
-      fontSize: '15px',
-      fontWeight: 600,
-      cursor: 'pointer',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '4px',
-      padding: '12px 8px',
-    },
-    nextBtn: (disabled) => ({
-      background: disabled ? 'var(--surface-container-highest)' : 'var(--primary-gradient)',
-      color: disabled ? 'var(--on-surface-variant)' : 'var(--on-primary)',
-      border: 'none',
-      padding: '14px 32px',
-      borderRadius: 'var(--radius-full)',
-      fontWeight: 700,
-      fontSize: '15px',
-      cursor: disabled ? 'not-allowed' : 'pointer',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '6px',
-      boxShadow: disabled ? 'none' : '0 4px 16px rgba(174,47,52,0.25)',
-      transition: 'all 0.2s',
-    }),
-    skipLink: {
-      background: 'none',
-      border: 'none',
-      color: 'var(--on-surface-variant)',
-      fontSize: '13px',
-      cursor: 'pointer',
-      textDecoration: 'underline',
-      textUnderlineOffset: '3px',
-      padding: '8px 0',
-    },
-    confettiPiece: (piece) => ({
-      position: 'fixed',
-      top: '-20px',
-      left: piece.left,
-      width: `${piece.size}px`,
-      height: `${piece.size}px`,
-      borderRadius: piece.id % 2 === 0 ? '50%' : '2px',
-      backgroundColor: piece.color,
-      animation: `confettiFall ${piece.duration} ${piece.delay} ease-in forwards`,
-      pointerEvents: 'none',
-      zIndex: 10,
-    }),
-  };
-
   return (
-    <div style={s.page}>
+    <div style={{
+      minHeight: '100vh', backgroundColor: '#000000',
+      display: 'flex', flexDirection: 'column',
+      fontFamily: "'Inter', sans-serif",
+      position: 'relative', overflow: 'hidden',
+    }}>
       {/* Confetti */}
       {showConfetti && confettiPieces.map(piece => (
-        <div key={piece.id} style={s.confettiPiece(piece)} />
+        <div key={piece.id} style={{
+          position: 'fixed', top: '-20px', left: piece.left,
+          width: `${piece.size}px`, height: `${piece.size}px`,
+          borderRadius: piece.id % 2 === 0 ? '50%' : '2px',
+          backgroundColor: piece.color,
+          animation: `confettiFall ${piece.duration} ${piece.delay} ease-in forwards`,
+          pointerEvents: 'none', zIndex: 10,
+        }} />
       ))}
 
       {/* Progress bar */}
-      <div style={s.progressTrack}>
-        <div style={s.progressFill} />
+      <div style={{ height: '4px', backgroundColor: '#1C1B1B', position: 'relative' }}>
+        <div style={{
+          height: '100%',
+          width: `${progressPercent}%`,
+          background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+          borderRadius: '0 4px 4px 0',
+          transition: 'width 0.4s cubic-bezier(.4,0,.2,1)',
+        }} />
       </div>
 
-      <div style={s.content}>
-        {/* Step indicator dots */}
-        <p style={s.stepLabel}>Buoc {step}/{totalSteps}</p>
-        <div style={s.stepDots}>
+      <div style={{
+        flex: 1, padding: '32px 24px',
+        maxWidth: '480px', margin: '0 auto',
+        width: '100%', boxSizing: 'border-box',
+      }}>
+        {/* Step indicator */}
+        <p style={{
+          textAlign: 'center', fontSize: '13px', color: '#E6BEB2',
+          marginBottom: '4px', fontWeight: 600,
+        }}>
+          Buoc {step}/{totalSteps}
+        </p>
+        <div style={{
+          display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '24px',
+        }}>
           {[1, 2, 3, 4].map(n => (
-            <div key={n} style={s.dot(n === step, n < step)} />
+            <div key={n} style={{
+              width: n === step ? '24px' : '8px', height: '8px',
+              borderRadius: '9999px',
+              background: n === step
+                ? 'linear-gradient(135deg, #FFB59E, #FF571A)'
+                : n < step ? '#FFB59E' : '#353535',
+              transition: 'all 0.3s ease',
+            }} />
           ))}
         </div>
 
         {/* ====== Step 1: Gender & Age ====== */}
         {step === 1 && (
           <div>
-            <h1 style={s.heading}>Gioi tinh & Tuoi</h1>
-            <p style={s.subtitle}>Giup moi nguoi hieu hon ve ban</p>
+            <h1 style={{
+              fontSize: '2.25rem', fontWeight: 900, fontStyle: 'italic',
+              color: '#FDF9F3', textAlign: 'center', marginBottom: '8px',
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+            }}>
+              Gioi tinh & <span style={{ color: '#FFB59E' }}>Tuoi</span>
+            </h1>
+            <p style={{
+              textAlign: 'center', color: '#E6BEB2', fontSize: '14px', marginBottom: '32px',
+            }}>
+              Giup moi nguoi hieu hon ve ban
+            </p>
 
-            <label style={s.label}>Gioi tinh</label>
-            <div style={s.genderGrid}>
-              {GENDERS.map(g => (
-                <div
-                  key={g.value}
-                  style={s.genderCard(gender === g.value)}
-                  onClick={() => setGender(g.value)}
-                >
-                  <span className="material-symbols-outlined" style={s.genderIcon(gender === g.value)}>
-                    {g.icon}
-                  </span>
-                  <span style={s.genderLabel(gender === g.value)}>{g.label}</span>
-                </div>
-              ))}
+            <label style={{
+              fontSize: '11px', fontWeight: 700, textTransform: 'uppercase',
+              letterSpacing: '0.15em', color: '#E6BEB2', marginBottom: '12px',
+              display: 'block', fontFamily: "'Inter', sans-serif",
+            }}>Gioi tinh</label>
+
+            <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
+              {GENDERS.map(g => {
+                const selected = gender === g.value;
+                return (
+                  <div
+                    key={g.value}
+                    onClick={() => setGender(g.value)}
+                    style={{
+                      flex: 1, padding: '20px 12px',
+                      borderRadius: '1.5rem',
+                      backgroundColor: selected ? 'rgba(255,87,26,0.15)' : '#2A2A2A',
+                      boxShadow: selected ? '0 0 0 2px #FFB59E' : 'none',
+                      cursor: 'pointer', textAlign: 'center',
+                      transition: 'all 0.2s ease',
+                      display: 'flex', flexDirection: 'column',
+                      alignItems: 'center', gap: '8px',
+                    }}
+                  >
+                    <span className="material-symbols-outlined" style={{
+                      fontSize: '32px', color: selected ? '#FFB59E' : '#E6BEB2',
+                    }}>{g.icon}</span>
+                    <span style={{
+                      fontSize: '14px', fontWeight: 600,
+                      color: selected ? '#FFB59E' : '#FDF9F3',
+                    }}>{g.label}</span>
+                  </div>
+                );
+              })}
             </div>
 
             <div style={{ marginBottom: '20px' }}>
-              <label style={s.label}>Tuoi</label>
+              <label style={{
+                fontSize: '11px', fontWeight: 700, textTransform: 'uppercase',
+                letterSpacing: '0.15em', color: '#E6BEB2', marginBottom: '10px',
+                display: 'block',
+              }}>Tuoi</label>
               <input
-                type="number"
-                min="18"
-                max="99"
-                placeholder="VD: 25"
-                value={age}
-                onChange={(e) => setAge(e.target.value)}
-                style={s.input}
-                onFocus={(e) => { e.target.style.borderColor = 'var(--primary)'; }}
-                onBlur={(e) => { e.target.style.borderColor = 'var(--outline-variant)'; }}
+                type="number" min="18" max="99" placeholder="VD: 25"
+                value={age} onChange={(e) => setAge(e.target.value)}
+                style={{
+                  width: '100%', height: '56px', padding: '0 16px',
+                  borderRadius: '1rem', border: 'none',
+                  fontSize: '16px', outline: 'none', boxSizing: 'border-box',
+                  fontFamily: "'Inter', sans-serif",
+                  backgroundColor: '#2A2A2A', color: '#FDF9F3',
+                }}
+                onFocus={e => { e.target.style.boxShadow = '0 0 0 2px rgba(255,181,158,0.5)'; }}
+                onBlur={e => { e.target.style.boxShadow = 'none'; }}
               />
             </div>
 
             <div>
-              <label style={s.label}>Vi tri</label>
-              <div style={s.inputWithIcon}>
-                <span className="material-symbols-outlined" style={s.inputIcon}>location_on</span>
+              <label style={{
+                fontSize: '11px', fontWeight: 700, textTransform: 'uppercase',
+                letterSpacing: '0.15em', color: '#E6BEB2', marginBottom: '10px',
+                display: 'block',
+              }}>Vi tri</label>
+              <div style={{ position: 'relative' }}>
+                <span className="material-symbols-outlined" style={{
+                  position: 'absolute', left: '14px', top: '50%',
+                  transform: 'translateY(-50%)', fontSize: '20px', color: '#E6BEB2',
+                }}>location_on</span>
                 <input
-                  type="text"
-                  placeholder="VD: Ha Noi"
-                  value={location}
-                  onChange={(e) => setLocation(e.target.value)}
-                  style={{ ...s.input, paddingLeft: '42px' }}
-                  onFocus={(e) => { e.target.style.borderColor = 'var(--primary)'; }}
-                  onBlur={(e) => { e.target.style.borderColor = 'var(--outline-variant)'; }}
+                  type="text" placeholder="VD: Ha Noi"
+                  value={location} onChange={(e) => setLocation(e.target.value)}
+                  style={{
+                    width: '100%', height: '56px', paddingLeft: '42px', paddingRight: '16px',
+                    borderRadius: '1rem', border: 'none',
+                    fontSize: '16px', outline: 'none', boxSizing: 'border-box',
+                    fontFamily: "'Inter', sans-serif",
+                    backgroundColor: '#2A2A2A', color: '#FDF9F3',
+                  }}
+                  onFocus={e => { e.target.style.boxShadow = '0 0 0 2px rgba(255,181,158,0.5)'; }}
+                  onBlur={e => { e.target.style.boxShadow = 'none'; }}
                 />
               </div>
             </div>
@@ -523,46 +302,83 @@ const OnboardingPage = () => {
         {/* ====== Step 2: Avatar Upload ====== */}
         {step === 2 && (
           <div>
-            <h1 style={s.heading}>Anh dai dien</h1>
-            <p style={s.subtitle}>Chon anh dep nhat cua ban</p>
+            <h1 style={{
+              fontSize: '2.25rem', fontWeight: 900, fontStyle: 'italic',
+              color: '#FDF9F3', textAlign: 'center', marginBottom: '8px',
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+            }}>
+              Anh <span style={{ color: '#FFB59E' }}>dai dien</span>
+            </h1>
+            <p style={{
+              textAlign: 'center', color: '#E6BEB2', fontSize: '14px', marginBottom: '32px',
+            }}>
+              Chon anh dep nhat cua ban
+            </p>
 
             <div
               onClick={() => fileInputRef.current?.click()}
               onDrop={handleDrop}
               onDragOver={(e) => { e.preventDefault(); setDragOver(true); }}
               onDragLeave={() => setDragOver(false)}
-              style={s.uploadArea(dragOver)}
+              style={{
+                width: '200px', height: '200px', borderRadius: '50%',
+                margin: '0 auto 24px',
+                border: `3px dashed ${dragOver ? '#FFB59E' : '#353535'}`,
+                backgroundColor: dragOver ? 'rgba(255,87,26,0.1)' : '#1C1B1B',
+                display: 'flex', flexDirection: 'column',
+                alignItems: 'center', justifyContent: 'center',
+                cursor: 'pointer', overflow: 'hidden',
+                transition: 'all 0.2s',
+              }}
             >
               {avatarPreview ? (
-                <img src={avatarPreview} alt="Preview" style={s.avatarImg} />
+                <img src={avatarPreview} alt="Preview" style={{
+                  width: '100%', height: '100%', objectFit: 'cover',
+                }} />
               ) : (
                 <>
-                  <span className="material-symbols-outlined" style={s.uploadIcon}>photo_camera</span>
-                  <span style={s.uploadText}>Keo tha hoac nhan de chon</span>
+                  <span className="material-symbols-outlined" style={{
+                    fontSize: '48px', color: '#353535', marginBottom: '4px',
+                  }}>photo_camera</span>
+                  <span style={{
+                    fontSize: '12px', color: '#E6BEB2', textAlign: 'center', padding: '0 16px',
+                  }}>Keo tha hoac nhan de chon</span>
                 </>
               )}
             </div>
 
             <input
-              ref={fileInputRef}
-              type="file"
-              accept="image/*"
+              ref={fileInputRef} type="file" accept="image/*"
               style={{ display: 'none' }}
               onChange={(e) => handleFileSelect(e.target.files[0])}
             />
 
             {!avatarPreview ? (
               <button
-                style={s.uploadBtn}
                 onClick={() => fileInputRef.current?.click()}
+                style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  gap: '8px', margin: '0 auto', padding: '10px 24px',
+                  borderRadius: '9999px', border: 'none',
+                  backgroundColor: '#2A2A2A', color: '#FDF9F3',
+                  fontSize: '14px', fontWeight: 600, cursor: 'pointer',
+                  fontFamily: "'Inter', sans-serif",
+                }}
               >
                 <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>cloud_upload</span>
                 Tai anh len
               </button>
             ) : (
               <button
-                style={{ ...s.uploadBtn, color: 'var(--error)', borderColor: 'var(--error)' }}
                 onClick={() => { setAvatarFile(null); setAvatarPreview(''); }}
+                style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  gap: '8px', margin: '0 auto', padding: '10px 24px',
+                  borderRadius: '9999px', border: 'none',
+                  backgroundColor: 'rgba(255,68,68,0.15)', color: '#FF6B6B',
+                  fontSize: '14px', fontWeight: 600, cursor: 'pointer',
+                  fontFamily: "'Inter', sans-serif",
+                }}
               >
                 <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>delete</span>
                 Xoa anh
@@ -574,38 +390,70 @@ const OnboardingPage = () => {
         {/* ====== Step 3: Bio & Interests ====== */}
         {step === 3 && (
           <div>
-            <h1 style={s.heading}>Gioi thieu ban than</h1>
-            <p style={s.subtitle}>Chia se them ve minh nhe</p>
+            <h1 style={{
+              fontSize: '2.25rem', fontWeight: 900, fontStyle: 'italic',
+              color: '#FDF9F3', textAlign: 'center', marginBottom: '8px',
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+            }}>
+              Gioi thieu <span style={{ color: '#FFB59E' }}>ban than</span>
+            </h1>
+            <p style={{
+              textAlign: 'center', color: '#E6BEB2', fontSize: '14px', marginBottom: '32px',
+            }}>
+              Chia se them ve minh nhe
+            </p>
 
             <div style={{ marginBottom: '28px' }}>
-              <label style={s.label}>Bio</label>
+              <label style={{
+                fontSize: '11px', fontWeight: 700, textTransform: 'uppercase',
+                letterSpacing: '0.15em', color: '#E6BEB2', marginBottom: '10px',
+                display: 'block',
+              }}>Bio</label>
               <textarea
                 placeholder="Viet vai dong ve ban than ban..."
-                value={bio}
-                onChange={(e) => setBio(e.target.value)}
+                value={bio} onChange={(e) => setBio(e.target.value)}
                 maxLength={300}
-                style={s.textarea}
-                onFocus={(e) => { e.target.style.borderColor = 'var(--primary)'; }}
-                onBlur={(e) => { e.target.style.borderColor = 'var(--outline-variant)'; }}
+                style={{
+                  width: '100%', minHeight: '120px', padding: '14px 16px',
+                  borderRadius: '1rem', border: 'none',
+                  fontSize: '15px', resize: 'vertical', outline: 'none',
+                  boxSizing: 'border-box', fontFamily: "'Inter', sans-serif",
+                  backgroundColor: '#2A2A2A', color: '#FDF9F3', lineHeight: 1.6,
+                }}
+                onFocus={e => { e.target.style.boxShadow = '0 0 0 2px rgba(255,181,158,0.5)'; }}
+                onBlur={e => { e.target.style.boxShadow = 'none'; }}
               />
               <p style={{
-                ...s.charCount,
-                color: bio.length >= 280 ? 'var(--error)' : 'var(--on-surface-variant)',
+                fontSize: '12px', textAlign: 'right', marginTop: '4px',
+                color: bio.length >= 280 ? '#FF4444' : '#E6BEB2',
               }}>
                 {bio.length}/300
               </p>
             </div>
 
             <div>
-              <label style={s.label}>So thich</label>
-              <div style={s.interestGrid}>
+              <label style={{
+                fontSize: '11px', fontWeight: 700, textTransform: 'uppercase',
+                letterSpacing: '0.15em', color: '#E6BEB2', marginBottom: '12px',
+                display: 'block',
+              }}>So thich</label>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '4px' }}>
                 {INTERESTS.map(interest => {
                   const selected = interests.includes(interest);
                   return (
                     <button
                       key={interest}
                       onClick={() => toggleInterest(interest)}
-                      style={s.interestChip(selected)}
+                      style={{
+                        padding: '8px 16px', borderRadius: '9999px',
+                        border: 'none',
+                        backgroundColor: selected ? '#FF571A' : '#353535',
+                        color: selected ? '#3A0B00' : '#E6BEB2',
+                        fontWeight: 600, fontSize: '13px', cursor: 'pointer',
+                        transition: 'all 0.15s',
+                        display: 'flex', alignItems: 'center', gap: '4px',
+                        fontFamily: "'Inter', sans-serif",
+                      }}
                     >
                       {selected && (
                         <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>check</span>
@@ -621,12 +469,30 @@ const OnboardingPage = () => {
 
         {/* ====== Step 4: Success ====== */}
         {step === 4 && (
-          <div style={s.successContainer}>
-            <div style={s.checkCircle}>
-              <span className="material-symbols-outlined" style={{ fontSize: '48px', color: 'var(--on-primary)' }}>check</span>
+          <div style={{
+            textAlign: 'center', paddingTop: '40px',
+            animation: 'fadeSlideUp 0.5s ease forwards',
+          }}>
+            <div style={{
+              width: '100px', height: '100px', borderRadius: '50%',
+              background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              margin: '0 auto 24px',
+              animation: 'checkPop 0.6s cubic-bezier(.4,0,.2,1) forwards',
+              boxShadow: '0 8px 32px rgba(255,87,26,0.3)',
+            }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '48px', color: '#3A0B00' }}>check</span>
             </div>
-            <h1 style={s.successHeading}>Chao mung den voi GOMET!</h1>
-            <p style={s.successSubtext}>
+            <h1 style={{
+              fontSize: '28px', fontWeight: 900, fontStyle: 'italic',
+              color: '#FDF9F3', fontFamily: "'Plus Jakarta Sans', sans-serif",
+              marginBottom: '8px',
+            }}>
+              Chao mung den voi <span style={{ color: '#FFB59E' }}>GOMET!</span>
+            </h1>
+            <p style={{
+              color: '#E6BEB2', fontSize: '15px', lineHeight: 1.6, marginBottom: '40px',
+            }}>
               Ho so cua ban da san sang.<br />
               Hay bat dau kham pha va tim kiem nguoi phu hop!
             </p>
@@ -634,42 +500,69 @@ const OnboardingPage = () => {
         )}
 
         {/* ====== Navigation ====== */}
-        <div style={s.navRow(step === 1)}>
-          {/* Back button (steps 2-3) */}
+        <div style={{
+          display: 'flex',
+          justifyContent: step === 1 ? 'flex-end' : 'space-between',
+          alignItems: 'center', marginTop: '40px', gap: '12px',
+        }}>
           {step > 1 && step < 4 && (
-            <button style={s.backBtn} onClick={prevStep}>
+            <button onClick={prevStep} style={{
+              background: 'none', border: 'none', color: '#E6BEB2',
+              fontSize: '15px', fontWeight: 600, cursor: 'pointer',
+              display: 'flex', alignItems: 'center', gap: '4px', padding: '12px 8px',
+              fontFamily: "'Inter', sans-serif",
+            }}>
               <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_back</span>
               Quay lai
             </button>
           )}
 
-          {/* Right side group */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginLeft: 'auto' }}>
-            {/* Skip link (steps 2-3) */}
             {(step === 2 || step === 3) && (
-              <button style={s.skipLink} onClick={nextStep}>
+              <button onClick={nextStep} style={{
+                background: 'none', border: 'none', color: '#E6BEB2',
+                fontSize: '13px', cursor: 'pointer', textDecoration: 'underline',
+                textUnderlineOffset: '3px', padding: '8px 0',
+                fontFamily: "'Inter', sans-serif",
+              }}>
                 Bo qua
               </button>
             )}
 
-            {/* Continue button (steps 1-3) */}
             {step < 4 && (
               <button
-                style={s.nextBtn(!canNext())}
-                onClick={nextStep}
-                disabled={!canNext()}
+                onClick={nextStep} disabled={!canNext()}
+                style={{
+                  background: !canNext() ? '#353535' : 'linear-gradient(135deg, #FFB59E, #FF571A)',
+                  color: !canNext() ? '#E6BEB2' : '#3A0B00',
+                  border: 'none', padding: '14px 32px',
+                  borderRadius: '9999px', fontWeight: 700, fontSize: '15px',
+                  cursor: !canNext() ? 'not-allowed' : 'pointer',
+                  display: 'flex', alignItems: 'center', gap: '6px',
+                  boxShadow: !canNext() ? 'none' : '0px 20px 40px rgba(0,0,0,0.4)',
+                  transition: 'all 0.2s',
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                }}
               >
                 Tiep tuc
                 <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
               </button>
             )}
 
-            {/* Final button (step 4) */}
             {step === 4 && (
               <button
-                style={s.nextBtn(saving)}
-                onClick={handleComplete}
-                disabled={saving}
+                onClick={handleComplete} disabled={saving}
+                style={{
+                  background: saving ? '#353535' : 'linear-gradient(135deg, #FFB59E, #FF571A)',
+                  color: saving ? '#E6BEB2' : '#3A0B00',
+                  border: 'none', padding: '14px 32px',
+                  borderRadius: '9999px', fontWeight: 700, fontSize: '15px',
+                  cursor: saving ? 'not-allowed' : 'pointer',
+                  display: 'flex', alignItems: 'center', gap: '6px',
+                  boxShadow: saving ? 'none' : '0px 20px 40px rgba(0,0,0,0.4)',
+                  transition: 'all 0.2s',
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                }}
               >
                 {saving ? 'Dang luu...' : 'Bat dau kham pha'}
                 <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>
@@ -680,6 +573,13 @@ const OnboardingPage = () => {
           </div>
         </div>
       </div>
+
+      <style>{`
+        input::placeholder, textarea::placeholder {
+          color: #E6BEB2;
+          opacity: 0.4;
+        }
+      `}</style>
     </div>
   );
 };

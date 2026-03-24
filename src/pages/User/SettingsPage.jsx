@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../../components/ToastNotification';
 import { useAppContext } from '../../AppContext';
-import { LogOut, Trash2, Shield, MapPin, Users, ChevronRight } from 'lucide-react';
 
 const SettingsPage = () => {
   const navigate = useNavigate();
@@ -20,103 +19,270 @@ const SettingsPage = () => {
     navigate('/login');
   };
 
+  // Toggle component
+  const Toggle = ({ checked, onChange }) => (
+    <div
+      onClick={() => onChange(!checked)}
+      style={{
+        width: '52px', height: '28px',
+        borderRadius: '9999px',
+        backgroundColor: checked ? '#FF571A' : '#353535',
+        position: 'relative', cursor: 'pointer',
+        transition: 'background-color 0.25s ease',
+        flexShrink: 0,
+      }}
+    >
+      <div style={{
+        width: '22px', height: '22px', borderRadius: '50%',
+        backgroundColor: '#FDF9F3',
+        position: 'absolute', top: '3px',
+        left: checked ? '27px' : '3px',
+        transition: 'left 0.25s ease',
+        boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
+      }} />
+    </div>
+  );
+
+  const sectionHeader = {
+    fontSize: '11px', fontWeight: 700,
+    textTransform: 'uppercase', letterSpacing: '0.15em',
+    color: '#E6BEB2', marginBottom: '12px', marginTop: '8px',
+    fontFamily: "'Inter', sans-serif",
+    display: 'flex', alignItems: 'center', gap: '8px',
+  };
+
+  const card = {
+    backgroundColor: '#1C1B1B', borderRadius: '1.5rem',
+    padding: '0', overflow: 'hidden',
+    boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
+  };
+
+  const row = {
+    padding: '18px 24px',
+    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+    fontSize: '15px', fontFamily: "'Inter', sans-serif",
+    color: '#FDF9F3',
+  };
+
+  const divider = {
+    height: '1px', backgroundColor: '#2A2A2A', margin: '0 24px',
+  };
+
   return (
-    <div style={{ flex: 1, backgroundColor: '#f0f2f5', overflowY: 'auto', padding: '32px' }}>
-      <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '24px' }}>Cài đặt</h1>
+    <div style={{
+      flex: 1, backgroundColor: '#131313', overflowY: 'auto',
+      padding: '40px 32px 80px',
+      fontFamily: "'Inter', sans-serif",
+    }}>
+      <h1 style={{
+        fontSize: '28px', fontWeight: 800, marginBottom: '32px',
+        color: '#FDF9F3', fontFamily: "'Plus Jakarta Sans', sans-serif",
+      }}>
+        Cai dat
+      </h1>
 
       <div style={{ maxWidth: '600px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
-        {/* Discovery Settings */}
-        <h2 style={{ fontSize: '18px', fontWeight: 700, margin: 0, color: '#111418', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <MapPin size={20} color="#fd5068" /> Discovery
-        </h2>
-        <div style={{ backgroundColor: 'white', borderRadius: '12px', padding: '24px', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-            <span style={{ fontSize: '15px', fontWeight: 600 }}>Khoảng cách</span>
-            <span style={{ fontWeight: 600, color: '#fd5068' }}>Lên tới {distance}km</span>
+
+        {/* ── Discovery ── */}
+        <div style={sectionHeader}>
+          <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>explore</span>
+          DISCOVERY
+        </div>
+
+        <div style={card}>
+          {/* Distance */}
+          <div style={{ ...row, flexDirection: 'column', alignItems: 'stretch', gap: '12px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontWeight: 600 }}>Khoang cach</span>
+              <span style={{ fontWeight: 700, color: '#FFB59E' }}>Len toi {distance}km</span>
+            </div>
+            <input
+              type="range" min="1" max="100" value={distance}
+              onChange={e => setDistance(+e.target.value)}
+              style={{ width: '100%', accentColor: '#FF571A' }}
+            />
           </div>
-          <input type="range" min="1" max="100" value={distance} onChange={e => setDistance(+e.target.value)} style={{ width: '100%', accentColor: '#fd5068' }} />
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '16px' }}>
-            <span style={{ fontSize: '14px', color: '#505965' }}>Chỉ hiển thị người trong phạm vi</span>
-            <input type="checkbox" checked={showInRange} onChange={e => setShowInRange(e.target.checked)} style={{ width: '20px', height: '20px', accentColor: '#fd5068' }} />
+
+          <div style={divider} />
+
+          {/* Show in range toggle */}
+          <div style={row}>
+            <span style={{ fontSize: '14px', color: '#E6BEB2' }}>Chi hien thi nguoi trong pham vi</span>
+            <Toggle checked={showInRange} onChange={setShowInRange} />
           </div>
         </div>
 
-        <div style={{ backgroundColor: 'white', borderRadius: '12px', padding: '24px', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-            <span style={{ fontSize: '15px', fontWeight: 600 }}>Độ tuổi</span>
-            <span style={{ fontWeight: 600, color: '#fd5068' }}>{ageMin} - {ageMax}</span>
-          </div>
-          <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-            <span style={{ fontSize: '13px', color: '#505965' }}>{ageMin}</span>
-            <input type="range" min="18" max="60" value={ageMax} onChange={e => setAgeMax(Math.max(+e.target.value, ageMin))} style={{ flex: 1, accentColor: '#fd5068' }} />
-            <span style={{ fontSize: '13px', color: '#505965' }}>{ageMax}</span>
+        {/* Age range */}
+        <div style={card}>
+          <div style={{ ...row, flexDirection: 'column', alignItems: 'stretch', gap: '12px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <span style={{ fontWeight: 600 }}>Do tuoi</span>
+              <span style={{ fontWeight: 700, color: '#FFB59E' }}>{ageMin} - {ageMax}</span>
+            </div>
+            <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
+              <span style={{ fontSize: '13px', color: '#E6BEB2' }}>{ageMin}</span>
+              <input
+                type="range" min="18" max="60" value={ageMax}
+                onChange={e => setAgeMax(Math.max(+e.target.value, ageMin))}
+                style={{ flex: 1, accentColor: '#FF571A' }}
+              />
+              <span style={{ fontSize: '13px', color: '#E6BEB2' }}>{ageMax}</span>
+            </div>
           </div>
         </div>
 
-        {/* Account Security */}
-        <h2 style={{ fontSize: '18px', fontWeight: 700, margin: '8px 0 0 0', color: '#111418', display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <Shield size={20} color="#fd5068" /> Tài khoản
-        </h2>
-        <div style={{ backgroundColor: 'white', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
-          <div style={{ padding: '16px 24px', borderBottom: '1px solid #f0f0f0', fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        {/* ── Account ── */}
+        <div style={sectionHeader}>
+          <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>shield</span>
+          TAI KHOAN
+        </div>
+
+        <div style={card}>
+          <div style={row}>
             <span style={{ fontWeight: 500 }}>Email</span>
-            <span style={{ color: '#505965', fontSize: '14px' }}>{currentUser?.email}</span>
+            <span style={{ color: '#E6BEB2', fontSize: '14px' }}>{currentUser?.email}</span>
           </div>
-          <div onClick={() => navigate('/app/wallet')} style={{ padding: '16px 24px', borderBottom: '1px solid #f0f0f0', fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}>
-            <span style={{ fontWeight: 500 }}>Ví Gomet</span>
-            <span style={{ color: '#fd5068', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}>
-              {(currentUser?.walletBalance || 0).toLocaleString('vi-VN')}đ <ChevronRight size={16} />
+          <div style={divider} />
+          <div
+            onClick={() => navigate('/app/wallet')}
+            style={{ ...row, cursor: 'pointer' }}
+          >
+            <span style={{ fontWeight: 500 }}>Vi Gomet</span>
+            <span style={{ color: '#FFB59E', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
+              {(currentUser?.walletBalance || 0).toLocaleString('vi-VN')}d
+              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
             </span>
           </div>
         </div>
 
-        {/* Actions */}
-        <div style={{ backgroundColor: 'white', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
+        {/* ── Actions ── */}
+        <div style={card}>
           <div
             onClick={handleLogout}
-            style={{ padding: '16px 24px', borderBottom: '1px solid #f0f0f0', fontSize: '15px', fontWeight: 500, color: '#ff6b6b', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}
+            style={{
+              ...row, cursor: 'pointer', color: '#FF6B6B',
+              fontWeight: 600, gap: '10px', justifyContent: 'flex-start',
+            }}
           >
-            <LogOut size={18} /> Đăng xuất
+            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>logout</span>
+            Dang xuat
           </div>
+          <div style={divider} />
           <div
             onClick={() => setShowDeleteConfirm(true)}
-            style={{ padding: '16px 24px', fontSize: '15px', fontWeight: 500, color: '#dc2626', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '10px' }}
+            style={{
+              ...row, cursor: 'pointer', color: '#FF4444',
+              fontWeight: 600, gap: '10px', justifyContent: 'flex-start',
+            }}
           >
-            <Trash2 size={18} /> Xóa tài khoản
+            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>delete_forever</span>
+            Xoa tai khoan
           </div>
         </div>
 
-        {/* Legal Links */}
-        <div style={{ backgroundColor: 'white', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
+        {/* ── Legal ── */}
+        <div style={sectionHeader}>
+          <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>gavel</span>
+          PHAP LY
+        </div>
+
+        <div style={card}>
           {[
-            { label: 'Điều khoản sử dụng', path: '/terms' },
-            { label: 'Chính sách quyền riêng tư', path: '/privacy' },
-            { label: 'Câu hỏi thường gặp', path: '/faq' },
-            { label: 'Trung tâm an toàn', path: '/safety' },
+            { label: 'Dieu khoan su dung', path: '/terms' },
+            { label: 'Chinh sach quyen rieng tu', path: '/privacy' },
+            { label: 'Cau hoi thuong gap', path: '/faq' },
+            { label: 'Trung tam an toan', path: '/safety' },
           ].map((item, i) => (
-            <div key={i} onClick={() => navigate(item.path)} style={{ padding: '14px 24px', borderBottom: i < 3 ? '1px solid #f0f0f0' : 'none', fontSize: '14px', color: '#505965', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span>{item.label}</span>
-              <ChevronRight size={16} color="#ccc" />
-            </div>
+            <React.Fragment key={i}>
+              <div
+                onClick={() => navigate(item.path)}
+                style={{ ...row, cursor: 'pointer', color: '#E6BEB2', fontSize: '14px' }}
+              >
+                <span>{item.label}</span>
+                <span className="material-symbols-outlined" style={{ fontSize: '18px', color: '#353535' }}>chevron_right</span>
+              </div>
+              {i < 3 && <div style={divider} />}
+            </React.Fragment>
           ))}
         </div>
 
-        <p style={{ textAlign: 'center', fontSize: '13px', color: '#aaa', marginTop: '8px' }}>Gomet v1.0.0</p>
+        <p style={{ textAlign: 'center', fontSize: '13px', color: '#353535', marginTop: '8px' }}>
+          Gomet v1.0.0
+        </p>
       </div>
 
-      {/* Delete Account Confirmation Modal */}
+      {/* ── Delete Account Modal ── */}
       {showDeleteConfirm && (
-        <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000 }}>
-          <div style={{ backgroundColor: 'white', borderRadius: '16px', padding: '32px', maxWidth: '400px', width: '90%', textAlign: 'center' }}>
-            <h3 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '12px' }}>Xóa tài khoản?</h3>
-            <p style={{ color: '#505965', fontSize: '14px', marginBottom: '24px' }}>Hành động này không thể hoàn tác. Tất cả dữ liệu, matches và tin nhắn sẽ bị xóa vĩnh viễn.</p>
+        <div style={{
+          position: 'fixed', inset: 0,
+          backgroundColor: 'rgba(0,0,0,0.7)',
+          backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          zIndex: 1000,
+        }}>
+          <div style={{
+            backgroundColor: '#1C1B1B', borderRadius: '1.5rem',
+            padding: '32px', maxWidth: '400px', width: '90%',
+            textAlign: 'center',
+            boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
+          }}>
+            <div style={{
+              width: '56px', height: '56px', borderRadius: '50%',
+              backgroundColor: 'rgba(255,68,68,0.15)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              margin: '0 auto 16px',
+            }}>
+              <span className="material-symbols-outlined" style={{ fontSize: '28px', color: '#FF4444' }}>warning</span>
+            </div>
+            <h3 style={{
+              fontSize: '20px', fontWeight: 800, marginBottom: '12px',
+              color: '#FDF9F3', fontFamily: "'Plus Jakarta Sans', sans-serif",
+            }}>
+              Xoa tai khoan?
+            </h3>
+            <p style={{ color: '#E6BEB2', fontSize: '14px', marginBottom: '24px', lineHeight: 1.6 }}>
+              Hanh dong nay khong the hoan tac. Tat ca du lieu, matches va tin nhan se bi xoa vinh vien.
+            </p>
             <div style={{ display: 'flex', gap: '12px' }}>
-              <button onClick={() => setShowDeleteConfirm(false)} style={{ flex: 1, padding: '12px', borderRadius: '30px', border: '2px solid #e5e7eb', backgroundColor: 'white', fontWeight: 600, cursor: 'pointer' }}>Hủy</button>
-              <button onClick={() => { addToast('Tính năng đang phát triển', 'info'); setShowDeleteConfirm(false); }} style={{ flex: 1, padding: '12px', borderRadius: '30px', border: 'none', backgroundColor: '#dc2626', color: 'white', fontWeight: 600, cursor: 'pointer' }}>Xóa</button>
+              <button
+                onClick={() => setShowDeleteConfirm(false)}
+                style={{
+                  flex: 1, padding: '14px', borderRadius: '9999px',
+                  backgroundColor: '#2A2A2A', border: 'none',
+                  color: '#FDF9F3', fontWeight: 700, fontSize: '15px',
+                  cursor: 'pointer', fontFamily: "'Inter', sans-serif",
+                }}
+              >
+                Huy
+              </button>
+              <button
+                onClick={() => { addToast('Tinh nang dang phat trien', 'info'); setShowDeleteConfirm(false); }}
+                style={{
+                  flex: 1, padding: '14px', borderRadius: '9999px',
+                  backgroundColor: '#FF4444', border: 'none',
+                  color: '#FDF9F3', fontWeight: 700, fontSize: '15px',
+                  cursor: 'pointer', fontFamily: "'Inter', sans-serif",
+                }}
+              >
+                Xoa
+              </button>
             </div>
           </div>
         </div>
       )}
+
+      <style>{`
+        input[type="range"] {
+          -webkit-appearance: none; appearance: none;
+          height: 4px; background: #2A2A2A; border-radius: 4px; outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+          -webkit-appearance: none; appearance: none;
+          width: 20px; height: 20px; border-radius: 50%;
+          background: linear-gradient(135deg, #FFB59E, #FF571A);
+          cursor: pointer; box-shadow: 0 2px 8px rgba(255,87,26,0.4);
+        }
+      `}</style>
     </div>
   );
 };

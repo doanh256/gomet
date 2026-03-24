@@ -23,9 +23,8 @@ const VerifyIdentityPage = () => {
   const styles = {
     page: {
       minHeight: '100vh',
-      background: 'var(--surface)',
-      fontFamily: 'var(--font-body)',
-      color: 'var(--on-surface)',
+      background: '#000000',
+      color: '#FDF9F3',
       display: 'flex',
       flexDirection: 'column',
     },
@@ -34,39 +33,39 @@ const VerifyIdentityPage = () => {
       alignItems: 'center',
       gap: 12,
       padding: '16px 20px',
-      borderBottom: '1px solid var(--outline-variant)',
+      borderBottom: '1px solid rgba(255,255,255,0.06)',
     },
     backBtn: {
       width: 40,
       height: 40,
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--surface-container-high)',
+      borderRadius: '9999px',
+      background: '#2A2A2A',
       border: 'none',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       cursor: 'pointer',
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     headerTitle: {
-      fontFamily: 'var(--font-headline)',
       fontSize: 18,
       fontWeight: 700,
       flex: 1,
+      color: '#FDF9F3',
     },
     stepLabel: {
       fontSize: 13,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       fontWeight: 600,
     },
     progressBar: {
       height: 4,
-      background: 'var(--surface-container-high)',
+      background: '#2A2A2A',
       overflow: 'hidden',
     },
     progressFill: {
       height: '100%',
-      background: 'var(--primary-gradient)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
       borderRadius: '0 4px 4px 0',
       transition: 'width 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
       width: `${progress * 100}%`,
@@ -79,16 +78,15 @@ const VerifyIdentityPage = () => {
       padding: '40px 24px 24px',
     },
     stepTitle: {
-      fontFamily: 'var(--font-headline)',
       fontSize: 24,
       fontWeight: 800,
       textAlign: 'center',
       marginBottom: 12,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     stepDescription: {
       fontSize: 15,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       textAlign: 'center',
       lineHeight: 1.6,
       marginBottom: 32,
@@ -97,9 +95,9 @@ const VerifyIdentityPage = () => {
     cameraCircle: {
       width: 200,
       height: 200,
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--surface-container-low)',
-      border: '3px dashed var(--outline-variant)',
+      borderRadius: '9999px',
+      background: '#2A2A2A',
+      border: '3px dashed #353535',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -112,18 +110,18 @@ const VerifyIdentityPage = () => {
     },
     cameraIcon: {
       fontSize: 48,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     cameraText: {
       fontSize: 13,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       fontWeight: 500,
     },
     previewImage: {
       width: '100%',
       height: '100%',
       objectFit: 'cover',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
     },
     uploadArea: {
       display: 'flex',
@@ -135,9 +133,9 @@ const VerifyIdentityPage = () => {
     uploadCard: {
       flex: 1,
       aspectRatio: '3/2',
-      borderRadius: 'var(--radius)',
-      background: 'var(--surface-container-low)',
-      border: '2px dashed var(--outline-variant)',
+      borderRadius: '1.5rem',
+      background: '#2A2A2A',
+      border: '2px dashed #353535',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -149,12 +147,12 @@ const VerifyIdentityPage = () => {
     },
     uploadIcon: {
       fontSize: 32,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     uploadLabel: {
       fontSize: 12,
       fontWeight: 600,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     uploadedIndicator: {
       position: 'absolute',
@@ -162,8 +160,8 @@ const VerifyIdentityPage = () => {
       right: 8,
       width: 24,
       height: 24,
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary)',
+      borderRadius: '9999px',
+      background: '#FFB59E',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -171,8 +169,8 @@ const VerifyIdentityPage = () => {
     successCircle: {
       width: 120,
       height: 120,
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary-gradient)',
+      borderRadius: '9999px',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -181,31 +179,30 @@ const VerifyIdentityPage = () => {
     },
     successIcon: {
       fontSize: 56,
-      color: 'var(--on-primary)',
+      color: '#3A0B00',
     },
     verifiedBadge: {
       display: 'inline-flex',
       alignItems: 'center',
       gap: 6,
-      background: 'var(--primary-fixed)',
-      color: 'var(--on-primary-container)',
+      background: 'rgba(255,181,158,0.15)',
+      color: '#FFB59E',
       padding: '8px 20px',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       fontSize: 14,
       fontWeight: 700,
       marginBottom: 20,
     },
     successHeading: {
-      fontFamily: 'var(--font-headline)',
       fontSize: 22,
       fontWeight: 800,
       textAlign: 'center',
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 8,
     },
     successSub: {
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       textAlign: 'center',
       marginBottom: 32,
     },
@@ -218,25 +215,25 @@ const VerifyIdentityPage = () => {
     },
     nextBtn: {
       flex: 1,
-      background: 'var(--primary-gradient)',
-      color: 'var(--on-primary)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
       border: 'none',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       padding: '16px 24px',
       fontSize: 16,
       fontWeight: 700,
-      fontFamily: 'var(--font-headline)',
       cursor: 'pointer',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       gap: 8,
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
     },
     backNavBtn: {
-      background: 'var(--surface-container-high)',
-      color: 'var(--on-surface)',
+      background: '#2A2A2A',
+      color: '#FDF9F3',
       border: 'none',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       padding: '16px 20px',
       fontSize: 15,
       fontWeight: 600,
@@ -244,7 +241,6 @@ const VerifyIdentityPage = () => {
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      fontFamily: 'var(--font-body)',
     },
     privacyNote: {
       display: 'flex',
@@ -253,7 +249,7 @@ const VerifyIdentityPage = () => {
       gap: 6,
       marginTop: 16,
       fontSize: 12,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       textAlign: 'center',
     },
     instructionsList: {
@@ -267,13 +263,13 @@ const VerifyIdentityPage = () => {
       gap: 10,
       padding: '10px 0',
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     instructionIcon: {
       width: 28,
       height: 28,
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary-fixed)',
+      borderRadius: '9999px',
+      background: 'rgba(255,181,158,0.15)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -291,11 +287,11 @@ const VerifyIdentityPage = () => {
         {selfiePreview ? (
           <div style={{
             width: '100%', height: '100%',
-            background: 'var(--primary-gradient)',
+            background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
-            borderRadius: 'var(--radius-full)',
+            borderRadius: '9999px',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 64, color: 'var(--on-primary)' }}>person</span>
+            <span className="material-symbols-outlined" style={{ fontSize: 64, color: '#3A0B00' }}>person</span>
           </div>
         ) : (
           <>
@@ -312,7 +308,7 @@ const VerifyIdentityPage = () => {
         ].map((item, i) => (
           <div key={i} style={styles.instructionItem}>
             <div style={styles.instructionIcon}>
-              <span className="material-symbols-outlined" style={{ fontSize: 16, color: 'var(--primary)' }}>{item.icon}</span>
+              <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#FFB59E' }}>{item.icon}</span>
             </div>
             {item.text}
           </div>
@@ -333,13 +329,13 @@ const VerifyIdentityPage = () => {
             <>
               <div style={{
                 width: '100%', height: '100%', position: 'absolute',
-                background: 'var(--surface-container-high)',
+                background: '#353535',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--primary)' }}>badge</span>
+                <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#FFB59E' }}>badge</span>
               </div>
               <div style={styles.uploadedIndicator}>
-                <span className="material-symbols-outlined" style={{ fontSize: 16, color: 'var(--on-primary)' }}>check</span>
+                <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#3A0B00' }}>check</span>
               </div>
             </>
           ) : (
@@ -354,13 +350,13 @@ const VerifyIdentityPage = () => {
             <>
               <div style={{
                 width: '100%', height: '100%', position: 'absolute',
-                background: 'var(--surface-container-high)',
+                background: '#353535',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 40, color: 'var(--primary)' }}>badge</span>
+                <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#FFB59E' }}>badge</span>
               </div>
               <div style={styles.uploadedIndicator}>
-                <span className="material-symbols-outlined" style={{ fontSize: 16, color: 'var(--on-primary)' }}>check</span>
+                <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#3A0B00' }}>check</span>
               </div>
             </>
           ) : (
@@ -379,7 +375,7 @@ const VerifyIdentityPage = () => {
         ].map((item, i) => (
           <div key={i} style={styles.instructionItem}>
             <div style={styles.instructionIcon}>
-              <span className="material-symbols-outlined" style={{ fontSize: 16, color: 'var(--primary)' }}>{item.icon}</span>
+              <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#FFB59E' }}>{item.icon}</span>
             </div>
             {item.text}
           </div>

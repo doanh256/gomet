@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, User, Mail, Lock } from 'lucide-react';
 
-// Sanitize input: loại bỏ HTML tags trước khi sử dụng (Basic XSS Protection)
 const sanitize = (str) => str.replace(/</g, '&lt;').replace(/>/g, '&gt;').trim();
 
 import { useAppContext } from '../../AppContext';
@@ -40,65 +38,214 @@ const Register = () => {
     }
   };
 
+  const inputBase = {
+    width: '100%', height: '56px', backgroundColor: '#2A2A2A',
+    border: 'none', borderRadius: '1rem', fontSize: '15px',
+    outline: 'none', fontFamily: "'Inter', sans-serif",
+    boxSizing: 'border-box', color: '#FDF9F3', paddingLeft: '48px',
+    paddingRight: '16px', transition: 'box-shadow 0.2s',
+  };
+
+  const labelStyle = {
+    display: 'block', fontSize: '11px', fontWeight: 700,
+    textTransform: 'uppercase', letterSpacing: '0.15em',
+    color: '#E6BEB2', marginBottom: '10px',
+    fontFamily: "'Inter', sans-serif",
+  };
+
+  const iconStyle = {
+    position: 'absolute', left: '16px', top: '50%',
+    transform: 'translateY(-50%)', fontSize: '20px', color: '#E6BEB2',
+  };
+
   return (
-    <div style={{ padding: '40px 32px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '8px' }}>
-        <button onClick={() => navigate('/')} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: '#505965', display: 'flex', alignItems: 'center' }}>
-          <ArrowLeft size={24} />
-        </button>
-        <h2 style={{ flex: 1, margin: 0, fontSize: '24px', fontWeight: 700, textAlign: 'center', color: '#111418' }}>Tạo tài khoản mới</h2>
-        <div style={{ width: '24px' }}></div>
-      </div>
-      <p style={{ textAlign: 'center', color: '#505965', marginBottom: '32px', fontSize: '14px' }}>Khám phá hoạt động và tìm kiếm cạ cứng</p>
-      
-      {error && (
-        <div style={{ background: 'rgba(255,107,107,0.1)', border: '1px solid rgba(255,107,107,0.3)', borderRadius: '10px', padding: '10px 14px', fontSize: '13px', color: '#e03c3c', marginBottom: '8px' }}>{error}</div>
-      )}
-      <form onSubmit={handleRegister} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-        <input 
-          type="text" 
-          placeholder="Tên của bạn" 
-          value={name}
-          onChange={e => setName(e.target.value)}
-          style={{ padding: '14px', borderRadius: '8px', border: '2px solid #e8e8e8', fontSize: '16px', outline: 'none' }} 
-        />
-        <input 
-          type="email" 
-          placeholder="Email của bạn" 
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          style={{ padding: '14px', borderRadius: '8px', border: '2px solid #e8e8e8', fontSize: '16px', outline: 'none' }} 
-        />
-        <input 
-          type="password" 
-          placeholder="Mật khẩu" 
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          style={{ padding: '14px', borderRadius: '8px', border: '2px solid #e8e8e8', fontSize: '16px', outline: 'none' }} 
-        />
-        
-        <button type="submit" style={{ 
-          background: 'linear-gradient(260deg, #fd5068 0%, #ff7854 100%)',
-          color: 'white',
-          border: 'none',
-          padding: '14px',
-          borderRadius: '30px',
-          textAlign: 'center',
-          fontWeight: 700,
-          fontSize: '16px',
-          marginTop: '8px',
-          display: 'block',
-          width: '100%',
-          boxShadow: '0 4px 16px rgba(253, 80, 104, 0.3)',
-          cursor: 'pointer'
-        }}>
-          {isLoading ? 'Đang đăng ký...' : 'Tìm Cạ Cứng Ngay →'}
-        </button>
-        
-        <div style={{ textAlign: 'center', marginTop: '16px', fontSize: '14px', color: '#505965' }}>
-          Đã có tài khoản? <Link to="/login" style={{ color: '#fd5068', fontWeight: 600 }}>Đăng nhập</Link>
+    <div style={{
+      display: 'flex', minHeight: '100vh', backgroundColor: '#131313',
+      fontFamily: "'Inter', sans-serif",
+    }}>
+      {/* ══ LEFT PANEL (desktop only) ══ */}
+      <div className="register-left-panel" style={{
+        flex: 1, position: 'relative',
+        display: 'flex', flexDirection: 'column',
+        justifyContent: 'center', alignItems: 'center',
+        overflow: 'hidden', backgroundColor: '#131313',
+      }}>
+        {/* Blurred primary circle */}
+        <div style={{
+          position: 'absolute', top: '50%', left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '360px', height: '360px', borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(255,87,26,0.25) 0%, transparent 70%)',
+          filter: 'blur(40px)', pointerEvents: 'none',
+        }} />
+
+        <div style={{ position: 'relative', zIndex: 10, textAlign: 'center' }}>
+          <h1 style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontSize: '72px', fontWeight: 900, fontStyle: 'italic',
+            color: '#FFFFFF', letterSpacing: '-0.04em', lineHeight: 1,
+            marginBottom: '16px',
+          }}>
+            GOMET
+          </h1>
+          <p style={{
+            fontSize: '16px', color: '#E6BEB2', opacity: 0.7, lineHeight: 1.6,
+            maxWidth: '320px',
+          }}>
+            Noi nhung cuoc gap go tro thanh ky niem.
+            Ket noi chan thuc, trai nghiem co muc dich.
+          </p>
         </div>
-      </form>
+      </div>
+
+      {/* ══ RIGHT PANEL (form) ══ */}
+      <div style={{
+        flex: 1, backgroundColor: '#1C1B1B',
+        display: 'flex', flexDirection: 'column',
+        justifyContent: 'center', padding: '0 80px',
+        position: 'relative', minHeight: '100vh',
+      }}>
+        {/* Back button */}
+        <button
+          onClick={() => navigate('/')}
+          style={{
+            position: 'absolute', top: '32px', left: '32px',
+            background: 'none', border: 'none', cursor: 'pointer',
+            color: '#E6BEB2', display: 'flex', alignItems: 'center',
+            gap: '4px', fontSize: '14px', fontWeight: 500,
+            fontFamily: "'Inter', sans-serif",
+          }}
+        >
+          <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>arrow_back</span>
+          Quay lai
+        </button>
+
+        <div style={{ maxWidth: '400px', width: '100%', margin: '0 auto' }}>
+          {/* Logo + subtitle */}
+          <div style={{
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            fontSize: '40px', fontWeight: 900, fontStyle: 'italic',
+            color: '#FFB59E', letterSpacing: '-0.04em', marginBottom: '4px',
+          }}>
+            GOMET
+          </div>
+          <p style={{
+            fontSize: '14px', color: '#E6BEB2', marginBottom: '40px',
+            fontWeight: 500, opacity: 0.7,
+          }}>
+            Tao tai khoan moi
+          </p>
+
+          {/* Error */}
+          {error && (
+            <div style={{
+              backgroundColor: 'rgba(255,87,26,0.15)', color: '#FFB59E',
+              fontSize: '14px', padding: '14px 18px', borderRadius: '1rem',
+              marginBottom: '20px', fontWeight: 500,
+            }}>
+              {error}
+            </div>
+          )}
+
+          {/* Form */}
+          <form onSubmit={handleRegister} style={{
+            display: 'flex', flexDirection: 'column', gap: '24px',
+          }}>
+            {/* Name */}
+            <div>
+              <label style={labelStyle}>Ho ten</label>
+              <div style={{ position: 'relative' }}>
+                <span className="material-symbols-outlined" style={iconStyle}>person</span>
+                <input
+                  type="text" placeholder="Ten cua ban"
+                  value={name} onChange={e => setName(e.target.value)}
+                  style={inputBase}
+                  onFocus={e => { e.target.style.boxShadow = '0 0 0 2px rgba(255,181,158,0.5)'; }}
+                  onBlur={e => { e.target.style.boxShadow = 'none'; }}
+                />
+              </div>
+            </div>
+
+            {/* Email */}
+            <div>
+              <label style={labelStyle}>Email</label>
+              <div style={{ position: 'relative' }}>
+                <span className="material-symbols-outlined" style={iconStyle}>mail</span>
+                <input
+                  type="email" placeholder="email@example.com"
+                  value={email} onChange={e => setEmail(e.target.value)}
+                  style={inputBase}
+                  onFocus={e => { e.target.style.boxShadow = '0 0 0 2px rgba(255,181,158,0.5)'; }}
+                  onBlur={e => { e.target.style.boxShadow = 'none'; }}
+                />
+              </div>
+            </div>
+
+            {/* Password */}
+            <div>
+              <label style={labelStyle}>Mat khau</label>
+              <div style={{ position: 'relative' }}>
+                <span className="material-symbols-outlined" style={iconStyle}>lock</span>
+                <input
+                  type="password" placeholder="It nhat 6 ky tu"
+                  value={password} onChange={e => setPassword(e.target.value)}
+                  style={inputBase}
+                  onFocus={e => { e.target.style.boxShadow = '0 0 0 2px rgba(255,181,158,0.5)'; }}
+                  onBlur={e => { e.target.style.boxShadow = 'none'; }}
+                />
+              </div>
+            </div>
+
+            {/* Register button */}
+            <button
+              type="submit" disabled={isLoading}
+              style={{
+                width: '100%', height: '64px', border: 'none',
+                borderRadius: '1.5rem', fontSize: '17px', fontWeight: 700,
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                cursor: isLoading ? 'not-allowed' : 'pointer',
+                background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+                color: '#3A0B00',
+                boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
+                opacity: isLoading ? 0.7 : 1,
+                transition: 'all 0.2s',
+              }}
+              onMouseEnter={e => { if (!isLoading) e.currentTarget.style.transform = 'translateY(-2px)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
+            >
+              {isLoading ? 'Dang dang ky...' : 'Tao Tai Khoan'}
+            </button>
+
+            {/* Login link */}
+            <div style={{
+              textAlign: 'center', marginTop: '12px',
+              fontSize: '14px', color: '#E6BEB2',
+            }}>
+              Da co tai khoan?{' '}
+              <span
+                onClick={() => navigate('/login')}
+                style={{ color: '#FFB59E', fontWeight: 700, cursor: 'pointer' }}
+              >
+                Dang nhap
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {/* Mobile: hide left panel */}
+      <style>{`
+        @media (max-width: 900px) {
+          .register-left-panel { display: none !important; }
+          div[style*="padding: 0 80px"] {
+            padding: 0 24px !important;
+          }
+        }
+        input::placeholder {
+          color: #E6BEB2;
+          opacity: 0.4;
+        }
+      `}</style>
     </div>
   );
 };

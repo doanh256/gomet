@@ -7,9 +7,8 @@ const PremiumPage = () => {
   const s = {
     page: {
       minHeight: '100vh',
-      background: 'var(--surface)',
-      color: 'var(--on-surface)',
-      fontFamily: 'var(--font-body)',
+      background: '#131313',
+      color: '#FDF9F3',
     },
     container: {
       maxWidth: '1152px',
@@ -27,30 +26,31 @@ const PremiumPage = () => {
       display: 'inline-flex',
       alignItems: 'center',
       gap: '8px',
-      background: 'var(--primary-fixed)',
-      color: 'var(--on-primary-container)',
-      borderRadius: 'var(--radius-full)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
+      borderRadius: '9999px',
       padding: '8px 20px',
       fontSize: '13px',
       fontWeight: 600,
-      fontFamily: 'var(--font-headline)',
       marginBottom: '24px',
     },
     heading: {
-      fontFamily: 'var(--font-headline)',
       fontSize: 'clamp(2.5rem, 5vw, 4rem)',
       fontWeight: 800,
       lineHeight: 1.08,
       marginBottom: '20px',
+      color: '#FDF9F3',
     },
     accent: {
-      color: 'var(--primary)',
+      background: 'linear-gradient(135deg, #FFD54F, #FF571A)',
+      WebkitBackgroundClip: 'text',
+      WebkitTextFillColor: 'transparent',
       fontStyle: 'italic',
     },
     desc: {
       fontSize: '16px',
       lineHeight: 1.7,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       marginBottom: '32px',
       maxWidth: '560px',
     },
@@ -64,30 +64,28 @@ const PremiumPage = () => {
       display: 'inline-flex',
       alignItems: 'center',
       gap: '8px',
-      background: 'var(--primary-gradient)',
-      color: 'var(--on-primary)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
       border: 'none',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       padding: '14px 28px',
       fontSize: '15px',
       fontWeight: 700,
-      fontFamily: 'var(--font-headline)',
       cursor: 'pointer',
-      boxShadow: 'var(--editorial-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
       transition: 'transform 0.2s',
     },
     btnSurface: {
       display: 'inline-flex',
       alignItems: 'center',
       gap: '8px',
-      background: 'var(--surface-container-highest)',
-      color: 'var(--on-surface)',
+      background: '#353535',
+      color: '#FDF9F3',
       border: 'none',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       padding: '14px 28px',
       fontSize: '15px',
       fontWeight: 600,
-      fontFamily: 'var(--font-headline)',
       cursor: 'pointer',
       transition: 'transform 0.2s',
     },
@@ -95,11 +93,11 @@ const PremiumPage = () => {
       padding: '48px 0',
     },
     sectionTitle: {
-      fontFamily: 'var(--font-headline)',
       fontSize: '28px',
       fontWeight: 800,
       textAlign: 'center',
       marginBottom: '32px',
+      color: '#FDF9F3',
     },
     bento: {
       display: 'grid',
@@ -107,33 +105,32 @@ const PremiumPage = () => {
       gap: '16px',
     },
     bentoCard: {
-      background: 'var(--surface-container-low)',
-      borderRadius: 'var(--radius-lg)',
+      background: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '28px 24px',
       display: 'flex',
       flexDirection: 'column',
       gap: '12px',
-      border: '1px solid var(--outline-variant)',
       transition: 'transform 0.2s, box-shadow 0.2s',
     },
     cardIcon: {
       width: '48px',
       height: '48px',
-      borderRadius: 'var(--radius)',
+      borderRadius: '12px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      background: 'var(--primary-fixed)',
-      color: 'var(--primary)',
+      background: 'rgba(255,181,158,0.15)',
+      color: '#FFB59E',
     },
     cardTitle: {
-      fontFamily: 'var(--font-headline)',
       fontSize: '17px',
       fontWeight: 700,
+      color: '#FDF9F3',
     },
     cardDesc: {
       fontSize: '13px',
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       lineHeight: 1.6,
     },
     avatarStack: {
@@ -143,15 +140,15 @@ const PremiumPage = () => {
     avatar: {
       width: '32px',
       height: '32px',
-      borderRadius: 'var(--radius-full)',
-      border: '2px solid var(--surface-container-low)',
-      background: 'var(--surface-container-highest)',
+      borderRadius: '9999px',
+      border: '2px solid #1C1B1B',
+      background: '#353535',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       fontSize: '12px',
       fontWeight: 700,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     pricingGrid: {
       display: 'grid',
@@ -162,19 +159,18 @@ const PremiumPage = () => {
       alignItems: 'start',
     },
     pricingCard: {
-      background: 'var(--surface-container-lowest)',
-      borderRadius: 'var(--radius-lg)',
+      background: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '36px 28px',
-      border: '1px solid var(--outline-variant)',
       display: 'flex',
       flexDirection: 'column',
       gap: '16px',
       transition: 'transform 0.2s',
     },
     pricingFeatured: {
-      border: '2px solid var(--primary)',
+      border: '2px solid #FFB59E',
       transform: 'scale(1.05)',
-      boxShadow: 'var(--editorial-shadow)',
+      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
       position: 'relative',
     },
     pricingBadge: {
@@ -182,34 +178,33 @@ const PremiumPage = () => {
       top: '-12px',
       left: '50%',
       transform: 'translateX(-50%)',
-      background: 'var(--primary-gradient)',
-      color: 'var(--on-primary)',
-      borderRadius: 'var(--radius-full)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      color: '#3A0B00',
+      borderRadius: '9999px',
       padding: '4px 16px',
       fontSize: '12px',
       fontWeight: 700,
-      fontFamily: 'var(--font-headline)',
       whiteSpace: 'nowrap',
     },
     pricingName: {
-      fontFamily: 'var(--font-headline)',
       fontSize: '20px',
       fontWeight: 700,
+      color: '#FDF9F3',
     },
     pricingPrice: {
-      fontFamily: 'var(--font-headline)',
       fontSize: '40px',
       fontWeight: 800,
       lineHeight: 1,
+      color: '#FDF9F3',
     },
     pricingUnit: {
       fontSize: '16px',
       fontWeight: 500,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     pricingSub: {
       fontSize: '13px',
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     featureList: {
       listStyle: 'none',
@@ -223,11 +218,11 @@ const PremiumPage = () => {
       alignItems: 'center',
       gap: '8px',
       fontSize: '14px',
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     checkIcon: {
       fontSize: '18px',
-      color: 'var(--primary)',
+      color: '#FFB59E',
     },
     testGrid: {
       display: 'grid',
@@ -235,24 +230,23 @@ const PremiumPage = () => {
       gap: '20px',
     },
     testCard: {
-      background: 'var(--surface-container-low)',
-      borderRadius: 'var(--radius-lg)',
+      background: '#1C1B1B',
+      borderRadius: '1.5rem',
       padding: '28px 24px',
-      border: '1px solid var(--outline-variant)',
       display: 'flex',
       flexDirection: 'column',
       gap: '16px',
     },
     quoteIcon: {
       fontSize: '28px',
-      color: 'var(--primary)',
+      color: '#FFB59E',
       opacity: 0.5,
     },
     quoteText: {
       fontSize: '14px',
       lineHeight: 1.7,
       fontStyle: 'italic',
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
     },
     testUser: {
       display: 'flex',
@@ -263,28 +257,27 @@ const PremiumPage = () => {
     testAvatar: {
       width: '40px',
       height: '40px',
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary-fixed)',
+      borderRadius: '9999px',
+      background: 'rgba(255,181,158,0.15)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       fontWeight: 700,
       fontSize: '15px',
-      color: 'var(--primary)',
-      fontFamily: 'var(--font-headline)',
+      color: '#FFB59E',
     },
     testName: {
-      fontFamily: 'var(--font-headline)',
       fontWeight: 700,
       fontSize: '14px',
+      color: '#FDF9F3',
     },
     testTitle: {
       fontSize: '12px',
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     ctaBanner: {
-      background: 'var(--primary-gradient)',
-      borderRadius: 'var(--radius-lg)',
+      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+      borderRadius: '1.5rem',
       padding: '48px 36px',
       display: 'flex',
       alignItems: 'center',
@@ -294,28 +287,26 @@ const PremiumPage = () => {
       marginBottom: '48px',
     },
     ctaHeading: {
-      fontFamily: 'var(--font-headline)',
       fontSize: '24px',
       fontWeight: 800,
-      color: 'var(--on-primary)',
+      color: '#3A0B00',
     },
     ctaDesc: {
       fontSize: '14px',
-      color: 'rgba(255,255,255,0.85)',
+      color: 'rgba(58,11,0,0.75)',
       marginTop: '8px',
     },
     ctaBtn: {
       display: 'inline-flex',
       alignItems: 'center',
       gap: '8px',
-      background: 'var(--on-primary)',
-      color: 'var(--primary)',
+      background: '#3A0B00',
+      color: '#FFB59E',
       border: 'none',
-      borderRadius: 'var(--radius-full)',
+      borderRadius: '9999px',
       padding: '14px 28px',
       fontSize: '15px',
       fontWeight: 700,
-      fontFamily: 'var(--font-headline)',
       cursor: 'pointer',
       transition: 'transform 0.2s',
     },
@@ -402,22 +393,21 @@ const PremiumPage = () => {
                 style={{
                   ...s.bentoCard,
                   gridColumn: `span ${f.colSpan}`,
-                  background: f.primary ? 'var(--primary)' : 'var(--surface-container-low)',
-                  color: f.primary ? 'var(--on-primary)' : 'var(--on-surface)',
-                  borderColor: f.primary ? 'var(--primary)' : undefined,
+                  background: f.primary ? 'linear-gradient(135deg, #FFB59E, #FF571A)' : '#1C1B1B',
+                  color: f.primary ? '#3A0B00' : '#FDF9F3',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = 'var(--editorial-shadow)'; }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0px 20px 40px rgba(0,0,0,0.4)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
               >
                 <div style={{
                   ...s.cardIcon,
-                  background: f.primary ? 'rgba(255,255,255,0.2)' : 'var(--primary-fixed)',
-                  color: f.primary ? 'var(--on-primary)' : 'var(--primary)',
+                  background: f.primary ? 'rgba(58,11,0,0.2)' : 'rgba(255,181,158,0.15)',
+                  color: f.primary ? '#3A0B00' : '#FFB59E',
                 }}>
                   <span className="material-symbols-outlined">{f.icon}</span>
                 </div>
-                <div style={s.cardTitle}>{f.title}</div>
-                <div style={{ ...s.cardDesc, color: f.primary ? 'rgba(255,255,255,0.85)' : 'var(--on-surface-variant)' }}>
+                <div style={{ ...s.cardTitle, color: f.primary ? '#3A0B00' : '#FDF9F3' }}>{f.title}</div>
+                <div style={{ ...s.cardDesc, color: f.primary ? 'rgba(58,11,0,0.75)' : '#E6BEB2' }}>
                   {f.desc}
                 </div>
                 {i === 0 && (
@@ -425,7 +415,7 @@ const PremiumPage = () => {
                     {avatarNames.map((name, j) => (
                       <div key={j} style={{ ...s.avatar, marginLeft: j === 0 ? 0 : '-8px', zIndex: 5 - j }}>{name}</div>
                     ))}
-                    <div style={{ ...s.avatar, marginLeft: '-8px', background: 'var(--primary-fixed)', color: 'var(--primary)', fontSize: '11px', zIndex: 0 }}>+99</div>
+                    <div style={{ ...s.avatar, marginLeft: '-8px', background: 'rgba(255,181,158,0.15)', color: '#FFB59E', fontSize: '11px', zIndex: 0 }}>+99</div>
                   </div>
                 )}
               </div>
@@ -460,9 +450,9 @@ const PremiumPage = () => {
                     width: '100%',
                     justifyContent: 'center',
                     marginTop: '8px',
-                    background: plan.featured ? 'var(--primary-gradient)' : 'var(--surface-container-highest)',
-                    color: plan.featured ? 'var(--on-primary)' : 'var(--on-surface)',
-                    boxShadow: plan.featured ? 'var(--editorial-shadow)' : 'none',
+                    background: plan.featured ? 'linear-gradient(135deg, #FFB59E, #FF571A)' : '#353535',
+                    color: plan.featured ? '#3A0B00' : '#FDF9F3',
+                    boxShadow: plan.featured ? '0px 20px 40px rgba(0,0,0,0.4)' : 'none',
                   }}
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
                   onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
