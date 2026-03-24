@@ -5,12 +5,12 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   const tasteDimensions = [
-    { icon: 'local_fire_department', title: 'Do Chiu Cay', subtitle: 'Spice Tolerance', desc: 'Do nhay cam voi cac loai ot va gia vi cay nong tu khap Viet Nam.' },
-    { icon: 'public', title: 'Vung Mien', subtitle: 'Regional Focus', desc: 'Kham pha am thuc dac trung cua 8 vung mien tu Tay Bac den Dong bang song Cuu Long.' },
-    { icon: 'texture', title: 'Ket Cau', subtitle: 'Texture Preference', desc: 'Tu gion rum den mem min -- phan tich so thich ket cau mon an cua ban.' },
-    { icon: 'opacity', title: 'Do Umami', subtitle: 'Umami Depth', desc: 'Kham pha do sau cua vi umami trong khau vi cua ban qua tung mon an.' },
-    { icon: 'thermostat', title: 'Nhiet Do', subtitle: 'Temperature Pref', desc: 'Mon nong hay mon lanh? Phan tich xu huong nhiet do mon an ban yeu thich.' },
-    { icon: 'eco', title: 'Thanh Phan', subtitle: 'Ingredient Affinity', desc: 'Nguyen lieu nao lam ban say me? He thong theo doi va goi y thong minh.' },
+    { icon: 'local_fire_department', title: 'Độ Chịu Cay', subtitle: 'Spice Tolerance', desc: 'Độ nhạy cảm với các loại ớt và gia vị cay nóng từ khắp Việt Nam.' },
+    { icon: 'public', title: 'Vùng Miền', subtitle: 'Regional Focus', desc: 'Khám phá ẩm thực đặc trưng của 8 vùng miền từ Tây Bắc đến Đồng bằng sông Cửu Long.' },
+    { icon: 'texture', title: 'Kết Cấu', subtitle: 'Texture Preference', desc: 'Từ giòn rụm đến mềm mịn — phân tích sở thích kết cấu món ăn của bạn.' },
+    { icon: 'opacity', title: 'Độ Umami', subtitle: 'Umami Depth', desc: 'Khám phá độ sâu của vị umami trong khẩu vị của bạn qua từng món ăn.' },
+    { icon: 'thermostat', title: 'Nhiệt Độ', subtitle: 'Temperature Pref', desc: 'Món nóng hay món lạnh? Phân tích xu hướng nhiệt độ món ăn bạn yêu thích.' },
+    { icon: 'eco', title: 'Thành Phần', subtitle: 'Ingredient Affinity', desc: 'Nguyên liệu nào làm bạn say mê? Hệ thống theo dõi và gợi ý thông minh.' },
   ];
 
   const communityCards = [
@@ -18,22 +18,22 @@ const LandingPage = () => {
       img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDAB1DZU13HzbegFZpF5pzwNut-MoFPdBaFDoPkq2ZFTWeb8fLRwNdZhxYeB7g1v78HClmpPQXnUN9NpKWDaXTr2BvUXwuAk-eUgoGxdwYgS01sja8SRP3n30TtNjuG2_7aZozAp2Q2UlfM-2Bv8lAnwfWtCR-FyL5PNVQFZoyPibNOtBl4hj65zLKQqjmqrIRZwrjW81ptj9VqMJBeGP2xfjvXs5iG4wutVMWKzGBt0DdBzDXPvjINoeVWBjcRJeuAxgGTNydhdCE',
       avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuChJ0bbHW-Ya11G2I8RJSa564x8vE3L_X9d7C9hLk3xVEjZTgt2siMK8K4CTxaFDvJaqtOKsAcUlIX6A5ANGqPiu9Al5flRgDyNKbBJEpNl-HsM-92ne-9Q9opcnLev6u1iMZZ7OOyEUwyKUsVPSlGQ7eFE_-fS6sgdkB60F4A6bK7pfC-Gm_73S63TMkW9r-QHlCdjh4iNttzoehh9A_4EbY2AOoWFM6TgrRbgsD34JHXrAqc4ZaZHUz1LXjG1NWXFwP8n0ENZYng',
       name: 'Marcus Chen',
-      event: 'Su Kien Chef\'s Table',
-      quote: 'Buoi gap mat tren san thuong Sai Gon that tuyet voi. Gap ba nhiep anh gia am thuc va kham pha mot quan banh mi an tuong.',
+      event: 'Sự Kiện Chef\'s Table',
+      quote: 'Buổi gặp mặt trên sân thượng Sài Gòn thật tuyệt vời. Gặp ba nhiếp ảnh gia ẩm thực và khám phá một quán bánh mì ấn tượng.',
     },
     {
       img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCah4O4PEU2JoecG72K4TrcI1nHwywiyrrCjvTKMtTJPKTwW5tJpcWZeAYC69ZNVSvQ_ylph_M4lvEhgUewstHuf-qI32BdiACBMEtCDiWXkjydcXDtZL4cex5_h_Cye1juWHOfXxllYDku0GvTIpJGn1RC6BTPCecQXKvQyiOWbbgcxXSLjegBW7SmCoRfa5479ZEdBAgSz02AwkgUMwORr78bRFvUoU__Bf9schG-khWtDK-nTxjmJ6OKIILJ9BP9d7SqAjyqh7o',
       avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA5rB1flkHEhk2SK5klq_WS3m6gQFN6FlewshkwrKVs0wVPc3hX-_yntdlv-rj2L1PMCgnHpoEWP1kDQnmynuLCgTkzEb0RQShs5leLxwpsXRqknM9NJxXfOMdZ3__zr-ds6ypBH7HHa0nnxbzXGI_JafQEeVJJgGSF2A5r8U9JgoQSyhmIAyiDjzY8A0WJw8xsuDQd6IBpr_CEo3KgWHMQbDozGzvX2r_qqdPJr1-9ZVdzGJg4FCOXETMHfCcBLqG8Ghu_DOVRym4',
       name: 'Eliza Thorne',
-      event: 'Kham Pha Da Lat',
-      quote: 'Cuoi cung dat hang Connoisseur! Diem Vang mo khoa buoi an farm-to-table doc quyen tren cao nguyen. Xung dang tung buoc chan.',
+      event: 'Khám Phá Đà Lạt',
+      quote: 'Cuối cùng đạt hạng Connoisseur! Điểm Vàng mở khóa buổi ăn farm-to-table độc quyền trên cao nguyên. Xứng đáng từng bước chân.',
     },
     {
       img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAOzOouEgrK9iEq569gppoJ7FQQeChfTPQylhDbMJ89NWtCHtN22rb3OckzQIzIgML-oZf6cVoYJzvWPOUcMuUtzPl3rYijKXITsl9328noY728Koshn5659ujhGRREuHtVj9SUsVEys67fcyItzPBJ2j5T_1cZFL7VYCyo2QMlTLH5vjOw3MZ7guwgz75fs1PsGqodNfTup16-UtrQKPEiXJc5ZPvjAY_p-x0Y7Ptn_5CcWayZcOm7-qcjFpA_yksMvbaSy5zqoUM',
       avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAkUq9aQsY6EGFTaqugWZeifRSdb6MwJjTcCt0KMNRtriYZ9RSl9sS7epzD39CRpkSXOuh4ITBr2w7t8Dksav3tornbDkVBkE0-mzScjKougCKxf3huOcJrE-U5b1_lXOlXKkEQUfZbihP93FZ3hvf--NWcDxuNwiRICQbYIMpmlCcz8fRI6456C5pOyfl6qaVkeH0b3JUiglvLVstO4BVKdpooPO2zPc4Nm82QjGpUNNH6KnwK2CgFtzebLtcL6B2StjmyZdw5S_o',
       name: 'Julian Voss',
       event: 'Hotspot Hunter',
-      quote: 'Lap ban do vi cay-umami cua mien Trung Viet Nam la du an 6 thang cua toi. Cong cu cong dong GOMET khong gi sanh bang.',
+      quote: 'Lập bản đồ vị cay-umami của miền Trung Việt Nam là dự án 6 tháng của tôi. Công cụ cộng đồng GOMET không gì sánh bằng.',
     },
   ];
 
@@ -51,16 +51,16 @@ const LandingPage = () => {
         }}>
           <div style={{ fontSize: 24, fontWeight: 900, color: '#b83500', letterSpacing: '-0.05em' }}>GOMET</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
-            <a href="#regions" style={{ color: '#FF4D00', fontWeight: 700, textDecoration: 'none', borderBottom: '2px solid #FF4D00', paddingBottom: 4, fontSize: 14 }}>Kham Pha Vung Mien</a>
+            <a href="#regions" style={{ color: '#FF4D00', fontWeight: 700, textDecoration: 'none', borderBottom: '2px solid #FF4D00', paddingBottom: 4, fontSize: 14 }}>Khám Phá Vùng Miền</a>
             <a href="#taste" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Taste Matches</a>
-            <a href="#community" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Thu Thach</a>
-            <a href="#cta" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Cong Dong</a>
+            <a href="#community" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Thử Thách</a>
+            <a href="#cta" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Cộng Đồng</a>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <button onClick={() => navigate('/login')} style={{
               background: 'none', border: 'none', color: '#393834', fontWeight: 600, fontSize: 14,
               cursor: 'pointer', fontFamily: "'Plus Jakarta Sans', sans-serif",
-            }}>Dang Nhap</button>
+            }}>Đăng Nhập</button>
             <button onClick={() => navigate('/register')} style={{
               backgroundColor: '#b83500', color: '#ffffff', padding: '10px 24px', borderRadius: 8,
               border: 'none', fontWeight: 700, fontSize: 14, cursor: 'pointer',
@@ -97,13 +97,13 @@ const LandingPage = () => {
               fontSize: 'clamp(56px, 8vw, 96px)', fontWeight: 800, letterSpacing: '-0.04em',
               color: '#393834', lineHeight: 0.9, marginBottom: 32, marginTop: 0,
             }}>
-              Kham Pha <br />
-              <span style={{ color: '#b83500', fontStyle: 'italic' }}>Huong Vi</span> Khoa Hoc.
+              Khám Phá <br />
+              <span style={{ color: '#b83500', fontStyle: 'italic' }}>Hương Vị</span> Khoa Học.
             </h1>
             <p style={{
               fontSize: 20, color: '#666460', maxWidth: 560, marginBottom: 40, lineHeight: 1.7,
             }}>
-              GOMET ket hop bao chi am thuc cao cap voi khoa hoc ghep noi vi giac. Kham pha vung mien, tich diem Vang va lam chu nghe thuat cua mieng an hoan hao.
+              GOMET kết hợp báo chí ẩm thực cao cấp với khoa học ghép nối vị giác. Khám phá vùng miền, tích điểm Vàng và làm chủ nghệ thuật của miếng ăn hoàn hảo.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
               <button onClick={() => navigate('/register')} style={{
@@ -116,7 +116,7 @@ const LandingPage = () => {
                 onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
                 onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
               >
-                Bat Dau Hanh Trinh
+                Bắt Đầu Hành Trình
               </button>
               <button style={{
                 display: 'flex', alignItems: 'center', gap: 8,
@@ -124,7 +124,7 @@ const LandingPage = () => {
                 fontSize: 16, cursor: 'pointer', fontFamily: "'Plus Jakarta Sans', sans-serif",
               }}>
                 <span className="material-symbols-outlined" style={{ color: '#b83500', fontSize: 24 }}>play_circle</span>
-                <span>Tim Hieu Them</span>
+                <span>Tìm Hiểu Thêm</span>
               </button>
             </div>
           </div>
@@ -135,9 +135,9 @@ const LandingPage = () => {
           <div style={{ maxWidth: 1920, margin: '0 auto' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64 }}>
               <div style={{ maxWidth: 640 }}>
-                <h2 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.04em', marginBottom: 16, marginTop: 0 }}>The Gioi Micro-Meals</h2>
+                <h2 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.04em', marginBottom: 16, marginTop: 0 }}>Thế Giới Micro-Meals</h2>
                 <p style={{ fontSize: 18, color: '#666460', lineHeight: 1.7, margin: 0 }}>
-                  Hanh trinh duoc tuyen chon qua 8 vung am thuc dac trung cua Viet Nam, tu cao nguyen hung vi den nhip song Mekong.
+                  Hành trình được tuyển chọn qua 8 vùng ẩm thực đặc trưng của Việt Nam, từ cao nguyên hùng vĩ đến nhịp sống Mekong.
                 </p>
               </div>
               <button style={{
@@ -145,7 +145,7 @@ const LandingPage = () => {
                 color: '#b83500', fontWeight: 700, fontSize: 14, cursor: 'pointer',
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
               }}>
-                <span>Kham Pha Ban Do</span>
+                <span>Khám Phá Bản Đồ</span>
                 <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_forward</span>
               </button>
             </div>
@@ -164,10 +164,10 @@ const LandingPage = () => {
                   <span style={{
                     backgroundColor: '#815f00', color: '#ffffff', padding: '4px 12px', borderRadius: 4,
                     fontSize: 12, fontWeight: 700, textTransform: 'uppercase', marginBottom: 16, display: 'inline-block',
-                  }}>Cao Nguyen Phia Bac</span>
-                  <h3 style={{ fontSize: 36, fontWeight: 700, color: '#ffffff', margin: '0 0 8px' }}>Gia Vi An Giau Cua Sapa</h3>
+                  }}>Cao Nguyên Phía Bắc</span>
+                  <h3 style={{ fontSize: 36, fontWeight: 700, color: '#ffffff', margin: '0 0 8px' }}>Gia Vị Ẩn Giấu Của Sapa</h3>
                   <p style={{ color: 'rgba(255,255,255,0.8)', maxWidth: 400, margin: 0, fontSize: 16 }}>
-                    Kham pha huong vi khoi va dat cua am thuc nui truyen thong cua cac dan toc vung cao.
+                    Khám phá hương vị khói và đất của ẩm thực núi truyền thống của các dân tộc vùng cao.
                   </p>
                 </div>
               </div>
@@ -179,7 +179,7 @@ const LandingPage = () => {
                 }}>
                   <div>
                     <span className="material-symbols-outlined" style={{ fontSize: 36, color: '#b83500', marginBottom: 16, display: 'block' }}>water_drop</span>
-                    <h3 style={{ fontSize: 24, fontWeight: 700, marginBottom: 8, marginTop: 0 }}>Duyen Hai Mien Trung</h3>
+                    <h3 style={{ fontSize: 24, fontWeight: 700, marginBottom: 8, marginTop: 0 }}>Duyên Hải Miền Trung</h3>
                     <p style={{ color: '#666460', margin: 0, fontSize: 15 }}>Nghe thuat uop muoi va vi cay nong cua di san cung dinh Hue.</p>
                   </div>
                   <img
@@ -193,7 +193,7 @@ const LandingPage = () => {
                   position: 'relative', overflow: 'hidden',
                 }}>
                   <div style={{ position: 'relative', zIndex: 10 }}>
-                    <h3 style={{ fontSize: 28, fontWeight: 700, marginBottom: 16, marginTop: 0 }}>Dong Bang Song Cuu Long</h3>
+                    <h3 style={{ fontSize: 28, fontWeight: 700, marginBottom: 16, marginTop: 0 }}>Đồng Bằng Sông Cửu Long</h3>
                     <p style={{ color: 'rgba(255,251,255,0.7)', margin: 0, fontSize: 15 }}>
                       'Vua Lua' cua dat nuoc. Huong vi len men ngot ngao va su tru phu nhiet doi.
                     </p>
@@ -212,10 +212,10 @@ const LandingPage = () => {
           <div style={{ maxWidth: 1200, margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 64 }}>
               <h2 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.04em', marginTop: 0, marginBottom: 16 }}>
-                Khau Vi Cua Ban, <br />Duoc Luong Hoa.
+                Khẩu Vị Của Bạn, <br />Được Lượng Hóa.
               </h2>
               <p style={{ fontSize: 18, color: '#666460', maxWidth: 600, margin: '0 auto', lineHeight: 1.7 }}>
-                Thuat toan cua chung toi phan tich 42 chi so huong vi de du doan mon an yeu thich tiep theo cua ban trong mang luoi GOMET.
+                Thuật toán của chúng tôi phân tích 42 chỉ số hương vị để dự đoán món ăn yêu thích tiếp theo của bạn trong mạng lưới GOMET.
               </p>
             </div>
             <div style={{
@@ -250,9 +250,9 @@ const LandingPage = () => {
         <section id="community" style={{ padding: '128px 48px', backgroundColor: '#f7f3ec', overflow: 'hidden' }}>
           <div style={{ maxWidth: 1920, margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 80 }}>
-              <h2 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.04em', marginTop: 0, marginBottom: 16 }}>Ky Niem Chung</h2>
+              <h2 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.04em', marginTop: 0, marginBottom: 16 }}>Kỷ Niệm Chung</h2>
               <p style={{ fontSize: 18, color: '#666460', maxWidth: 560, margin: '0 auto', lineHeight: 1.7 }}>
-                Bep la cong dong. Tham gia cung hang ngan nguoi sieu am thuc chia se dia diem moi nhat va nhung dot pha am thuc.
+                Bếp là cộng đồng. Tham gia cùng hàng ngàn người siêu ẩm thực chia sẻ địa điểm mới nhất và những đột phá ẩm thực.
               </p>
             </div>
             <div style={{ display: 'flex', gap: 32, overflowX: 'auto', paddingBottom: 48 }}>
@@ -308,10 +308,10 @@ const LandingPage = () => {
               fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 900, color: '#fffbff',
               letterSpacing: '-0.04em', marginBottom: 32, marginTop: 0, lineHeight: 1,
             }}>
-              San Sang Tham Gia Kitchen?
+              Sẵn Sàng Tham Gia Kitchen?
             </h2>
             <p style={{ fontSize: 22, color: 'rgba(255,251,255,0.7)', marginBottom: 48 }}>
-              Tro thanh Kinetic Connoisseur ngay hom nay va bat dau hanh trinh qua nhung huong vi song dong nhat the gioi.
+              Trở thành Kinetic Connoisseur ngay hôm nay và bắt đầu hành trình qua những hương vị sống động nhất thế giới.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
               <button onClick={() => navigate('/register')} style={{
@@ -324,7 +324,7 @@ const LandingPage = () => {
                 onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
                 onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
               >
-                Bat Dau Hanh Trinh Am Thuc
+                Bắt Đầu Hành Trình Ẩm Thực
               </button>
               <button onClick={() => navigate('/login')} style={{
                 backgroundColor: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(12px)',
@@ -334,7 +334,7 @@ const LandingPage = () => {
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 transition: 'background-color 0.2s',
               }}>
-                Kham Pha Voi Tu Cach Khach
+                Khám Phá Với Tư Cách Khách
               </button>
             </div>
           </div>
