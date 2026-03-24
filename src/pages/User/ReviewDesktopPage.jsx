@@ -21,13 +21,13 @@ const ReviewDesktopPage = () => {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0D0D1A', color: '#fff' }}>
+    <div style={{ minHeight: '100vh', background: '#FDF9F3', color: '#393834' }}>
       <style>{rdKeyframes}</style>
 
       {/* Header */}
-      <div style={{ padding: '20px 32px', display: 'flex', alignItems: 'center', gap: 12, borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
+      <div style={{ padding: '20px 32px', display: 'flex', alignItems: 'center', gap: 12, borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
+          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#393834' }}>arrow_back</span>
         </button>
         <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700 }}>Danh Gia Trai Nghiem</h1>
         <div style={{
@@ -48,8 +48,8 @@ const ReviewDesktopPage = () => {
               style={{ width: '100%', height: 400, objectFit: 'cover' }} />
           </div>
           <div style={{
-            background: 'rgba(255,255,255,0.04)', borderRadius: 20, padding: 20,
-            border: '1px solid rgba(255,255,255,0.06)'
+            background: '#ffffff', borderRadius: 20, padding: 20,
+            border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)'
           }}>
             <h3 style={{ margin: '0 0 8px', fontSize: 20, fontWeight: 800 }}>Pho Bo Ha Noi</h3>
             <div style={{ fontSize: 14, color: '#888', marginBottom: 4 }}>Pho Thin - 13 Lo Duc</div>
@@ -74,7 +74,7 @@ const ReviewDesktopPage = () => {
               {[1, 2, 3, 4, 5].map(level => (
                 <button key={level} onClick={() => setHeatRating(level)} style={{
                   width: 48, height: 48, borderRadius: 14, border: 'none', cursor: 'pointer',
-                  background: level <= heatRating ? `rgba(255,107,53,${0.2 + level * 0.16})` : 'rgba(255,255,255,0.06)',
+                  background: level <= heatRating ? `rgba(255,107,53,${0.2 + level * 0.16})` : '#EBE8E0',
                   display: 'flex', alignItems: 'center', justifyContent: 'center'
                 }}>
                   <span className="material-symbols-outlined" style={{
@@ -95,8 +95,8 @@ const ReviewDesktopPage = () => {
               {vibeTags.map((v, i) => (
                 <button key={i} onClick={() => toggleVibe(i)} style={{
                   padding: '8px 18px', borderRadius: 20, border: 'none', cursor: 'pointer',
-                  background: selectedVibes.includes(i) ? 'linear-gradient(135deg, #6C63FF, #8B5CF6)' : 'rgba(255,255,255,0.06)',
-                  color: selectedVibes.includes(i) ? '#fff' : '#888', fontSize: 13, fontWeight: 600
+                  background: selectedVibes.includes(i) ? 'linear-gradient(135deg, #6C63FF, #8B5CF6)' : '#EBE8E0',
+                  color: selectedVibes.includes(i) ? '#fff' : '#666460', fontSize: 13, fontWeight: 600
                 }}>{v}</button>
               ))}
             </div>
@@ -109,8 +109,8 @@ const ReviewDesktopPage = () => {
               Anh Cua Ban
             </h3>
             <div style={{
-              border: '2px dashed rgba(255,255,255,0.1)', borderRadius: 16, padding: 32,
-              textAlign: 'center', cursor: 'pointer', background: 'rgba(255,255,255,0.02)'
+              border: '2px dashed rgba(0,0,0,0.1)', borderRadius: 16, padding: 32,
+              textAlign: 'center', cursor: 'pointer', background: '#F7F3EC'
             }}>
               <span className="material-symbols-outlined" style={{ fontSize: 36, color: '#555', marginBottom: 8, display: 'block' }}>add_photo_alternate</span>
               <div style={{ fontSize: 13, color: '#666' }}>Keo tha hoac nhan de tai anh len</div>
@@ -125,8 +125,8 @@ const ReviewDesktopPage = () => {
             </h3>
             <textarea value={review} onChange={e => setReview(e.target.value)} placeholder="Chia se trai nghiem cua ban..."
               style={{
-                width: '100%', minHeight: 120, borderRadius: 16, border: '1px solid rgba(255,255,255,0.1)',
-                background: 'rgba(255,255,255,0.04)', color: '#fff', padding: 16, fontSize: 14,
+                width: '100%', minHeight: 120, borderRadius: 16, border: '1px solid rgba(0,0,0,0.1)',
+                background: '#ffffff', color: '#393834', padding: 16, fontSize: 14,
                 resize: 'vertical', outline: 'none', boxSizing: 'border-box', lineHeight: 1.6
               }} />
           </div>

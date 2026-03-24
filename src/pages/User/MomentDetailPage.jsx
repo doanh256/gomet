@@ -27,13 +27,13 @@ const MomentDetailPage = () => {
   const [liked, setLiked] = useState(false);
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0D0D1A', color: '#fff', paddingBottom: 80 }}>
+    <div style={{ minHeight: '100vh', background: '#FDF9F3', color: '#393834', paddingBottom: 80 }}>
       <style>{mdKeyframes}</style>
 
       {/* Header */}
       <div style={{ padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
+          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#393834' }}>arrow_back</span>
         </button>
         <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700 }}>Moment</h1>
       </div>
@@ -83,15 +83,15 @@ const MomentDetailPage = () => {
 
       {/* Caption */}
       <div style={{ padding: '0 16px', marginBottom: 16 }}>
-        <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: '#ddd' }}>
+        <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: '#666460' }}>
           Bun cha ngon nhat Ha Noi day roi! Thit nuong than hoa, nuoc cham vua ngot vua chua. Nem ran gion tan. 10/10 se quay lai!
         </p>
       </div>
 
       {/* Action Bar */}
       <div style={{
-        padding: '12px 16px', display: 'flex', gap: 20, borderTop: '1px solid rgba(255,255,255,0.06)',
-        borderBottom: '1px solid rgba(255,255,255,0.06)', marginBottom: 16
+        padding: '12px 16px', display: 'flex', gap: 20, borderTop: '1px solid rgba(0,0,0,0.06)',
+        borderBottom: '1px solid rgba(0,0,0,0.06)', marginBottom: 16
       }}>
         <button onClick={() => setLiked(!liked)} style={{
           background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, padding: 0
@@ -127,7 +127,7 @@ const MomentDetailPage = () => {
                 <span style={{ fontSize: 13, fontWeight: 700 }}>{c.name}</span>
                 <span style={{ fontSize: 11, color: '#555' }}>{c.time}</span>
               </div>
-              <div style={{ fontSize: 13, color: '#aaa', marginTop: 2, lineHeight: 1.4 }}>{c.text}</div>
+              <div style={{ fontSize: 13, color: '#666460', marginTop: 2, lineHeight: 1.4 }}>{c.text}</div>
             </div>
           </div>
         ))}

@@ -198,14 +198,14 @@ const PublicProfilePage = () => {
         <div style={s.radarWrap}>
           <svg viewBox="0 0 200 200" width="220" height="220">
             {gridLines.map((pts, i) => (
-              <polygon key={i} points={pts} fill="none" stroke="#E6BEB2" strokeWidth="0.5" opacity={0.4} />
+              <polygon key={i} points={pts} fill="none" stroke="#999" strokeWidth="0.5" opacity={0.4} />
             ))}
             {tasteAxes.map((_, i) => {
               const angle = i * angleStep - Math.PI / 2;
               return (
                 <line key={i} x1={100} y1={100}
                   x2={100 + 70 * Math.cos(angle)} y2={100 + 70 * Math.sin(angle)}
-                  stroke="#E6BEB2" strokeWidth="0.5" opacity={0.3} />
+                  stroke="#999" strokeWidth="0.5" opacity={0.3} />
               );
             })}
             <polygon points={dataPath} fill="rgba(255,87,26,0.2)" stroke="#FF571A" strokeWidth="2" />
