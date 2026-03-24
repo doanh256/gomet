@@ -104,6 +104,20 @@ const PersonalInsightsPage = lazy(() => import('./pages/User/PersonalInsightsPag
 const ConciergePage = lazy(() => import('./pages/User/ConciergePage'));
 const FoodPreferencePage = lazy(() => import('./pages/User/FoodPreferencePage'));
 
+// Phase 9 - GOMET Master pages
+const VangDashboardPage = lazy(() => import('./pages/User/VangDashboardPage'));
+const RelationshipTimelinePage = lazy(() => import('./pages/User/RelationshipTimelinePage'));
+const PublicProfilePage = lazy(() => import('./pages/User/PublicProfilePage'));
+const DishDetailPage = lazy(() => import('./pages/User/DishDetailPage'));
+const RegionDetailPage = lazy(() => import('./pages/User/RegionDetailPage'));
+const BadgeCollectionPage = lazy(() => import('./pages/User/BadgeCollectionPage'));
+const MissionDetailPage = lazy(() => import('./pages/User/MissionDetailPage'));
+const MissionCompletePage = lazy(() => import('./pages/User/MissionCompletePage'));
+const GroupChatPage = lazy(() => import('./pages/User/GroupChatPage'));
+const SecretTableSelectionPage = lazy(() => import('./pages/User/SecretTableSelectionPage'));
+const SecretTableBookingPage = lazy(() => import('./pages/User/SecretTableBookingPage'));
+const EliteLandingPage = lazy(() => import('./pages/User/EliteLandingPage'));
+
 // Partner portal
 const PartnerDashboard = lazy(() => import('./pages/Partner/PartnerDashboard'));
 const ManageEvents = lazy(() => import('./pages/Partner/ManageEvents'));
@@ -216,6 +230,18 @@ function App() {
               <Route path="refund/:id" element={<RefundStatusPage />} />
               <Route path="activity-heatmap" element={<ActivityHeatmapPage />} />
               <Route path="secret-event/:id" element={<SecretEventPage />} />
+              <Route path="vang-dashboard" element={<VangDashboardPage />} />
+              <Route path="relationship-timeline/:id" element={<RelationshipTimelinePage />} />
+              <Route path="public-profile/:id" element={<PublicProfilePage />} />
+              <Route path="dish/:id" element={<DishDetailPage />} />
+              <Route path="region/:id" element={<RegionDetailPage />} />
+              <Route path="badges" element={<BadgeCollectionPage />} />
+              <Route path="mission/:id" element={<MissionDetailPage />} />
+              <Route path="mission-complete/:id" element={<MissionCompletePage />} />
+              <Route path="group-chat/:id" element={<GroupChatPage />} />
+              <Route path="secret-tables" element={<SecretTableSelectionPage />} />
+              <Route path="secret-table-booking/:id" element={<SecretTableBookingPage />} />
+              <Route path="elite-landing" element={<EliteLandingPage />} />
             </Route>
 
             {/* Admin */}

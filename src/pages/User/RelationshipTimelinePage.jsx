@@ -1,0 +1,219 @@
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const timelineKeyframes = `
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(255,87,26,0.3); }
+  50% { box-shadow: 0 0 24px rgba(255,87,26,0.6); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+`;
+
+const milestones = [
+  {
+    date: '15/01/2026', restaurant: 'Pho Thin', dish: 'Pho bo tai lan',
+    vang: 30, badge: 'First Meal', badgeIcon: 'restaurant', badgeColor: '#FF571A',
+    note: 'Bua an dau tien cung nhau',
+  },
+  {
+    date: '28/01/2026', restaurant: 'Bun Cha Dac Kim', dish: 'Bun cha Ha Noi',
+    vang: 25, badge: null, badgeIcon: null, badgeColor: null,
+    note: 'Khám phá ẩm thực Hà Nội',
+  },
+  {
+    date: '14/02/2026', restaurant: 'La Maison 1888', dish: 'Set menu Valentine',
+    vang: 100, badge: '10 Dishes Together', badgeIcon: 'favorite', badgeColor: '#E91E63',
+    note: 'Valentine dac biet',
+  },
+  {
+    date: '02/03/2026', restaurant: 'Quan Bui', dish: 'Lau thai',
+    vang: 30, badge: null, badgeIcon: null, badgeColor: null,
+    note: 'Kham pha mon moi',
+  },
+  {
+    date: '18/03/2026', restaurant: 'Com Tam Ba Ghien', dish: 'Com tam suon bi cha',
+    vang: 20, badge: 'Same Favorite', badgeIcon: 'thumb_up', badgeColor: '#FFD54F',
+    note: 'Phat hien mon yeu thich chung!',
+  },
+];
+
+const RelationshipTimelinePage = () => {
+  const navigate = useNavigate();
+
+  const s = {
+    page: {
+      flex: 1, backgroundColor: '#131313', overflowY: 'auto',
+      padding: '40px 24px 100px', maxWidth: 600, margin: '0 auto',
+      fontFamily: 'var(--font-body, "Inter", sans-serif)', color: '#FDF9F3',
+    },
+    backBtn: {
+      background: 'none', border: 'none', cursor: 'pointer', color: '#E6BEB2',
+      display: 'flex', alignItems: 'center', gap: 4, fontSize: 14, marginBottom: 28, padding: 0,
+    },
+    avatarRow: {
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+      gap: 20, marginBottom: 32,
+    },
+    avatarWrap: {
+      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8,
+    },
+    avatar: {
+      width: 72, height: 72, borderRadius: '50%',
+      background: 'linear-gradient(135deg, #FF571A, #FFB59E)',
+      display: 'flex', alignItems: 'center', justifyContent: 'center',
+    },
+    avatarIcon: { fontSize: 36, color: '#FDF9F3' },
+    avatarName: {
+      fontFamily: 'var(--font-headline)', fontSize: 14, fontWeight: 700, color: '#FDF9F3',
+    },
+    heartIcon: { fontSize: 28, color: '#FF571A', animation: 'pulseGlow 2s ease-in-out infinite' },
+    chemBadge: {
+      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
+      padding: '16px 24px', borderRadius: '1.5rem',
+      background: 'linear-gradient(135deg, rgba(255,87,26,0.15), rgba(255,181,158,0.08))',
+      marginBottom: 36,
+    },
+    chemIcon: { fontSize: 28, color: '#FFB59E' },
+    chemLabel: { fontSize: 13, color: '#E6BEB2', marginBottom: 2 },
+    chemValue: {
+      fontFamily: 'var(--font-headline)', fontSize: 28, fontWeight: 800, color: '#FF571A',
+    },
+    chemTitle: {
+      fontFamily: 'var(--font-headline)', fontSize: 13, fontWeight: 700,
+      color: '#FFD54F', letterSpacing: '0.06em',
+    },
+    sectionTitle: {
+      fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 700,
+      color: '#FDF9F3', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 8,
+    },
+    sectionIcon: { fontSize: 22, color: '#FFB59E' },
+    timeline: { position: 'relative', paddingLeft: 28, marginBottom: 36 },
+    timelineLine: {
+      position: 'absolute', left: 10, top: 0, bottom: 0, width: 2,
+      background: 'linear-gradient(180deg, #FF571A, #FFB59E, rgba(255,181,158,0.2))',
+    },
+    milestone: {
+      position: 'relative', marginBottom: 28, animation: 'fadeInUp 0.5s ease-out',
+    },
+    dot: (hasBadge) => ({
+      position: 'absolute', left: -23, top: 8, width: 16, height: 16,
+      borderRadius: '50%', border: '3px solid #131313',
+      background: hasBadge
+        ? 'linear-gradient(135deg, #FF571A, #FFD54F)'
+        : '#FFB59E',
+    }),
+    msDate: { fontSize: 11, color: '#E6BEB2', fontWeight: 600, marginBottom: 6 },
+    msCard: {
+      padding: '16px', borderRadius: '1rem',
+      backgroundColor: '#1C1B1B',
+      boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
+    },
+    msRestaurant: {
+      fontFamily: 'var(--font-headline)', fontSize: 15, fontWeight: 700,
+      color: '#FDF9F3', marginBottom: 4,
+    },
+    msDish: { fontSize: 13, color: '#E6BEB2', marginBottom: 8 },
+    msNote: { fontSize: 12, color: '#FFB59E', fontStyle: 'italic', marginBottom: 8 },
+    msFooter: {
+      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+    },
+    msVang: {
+      display: 'inline-flex', alignItems: 'center', gap: 4,
+      padding: '4px 10px', borderRadius: '9999px',
+      background: 'rgba(255,213,79,0.15)', fontSize: 12, fontWeight: 700, color: '#FFD54F',
+    },
+    msBadge: (color) => ({
+      display: 'inline-flex', alignItems: 'center', gap: 4,
+      padding: '4px 10px', borderRadius: '9999px',
+      background: `${color}25`, fontSize: 11, fontWeight: 700, color,
+    }),
+    shareCta: {
+      width: '100%', padding: '16px', borderRadius: '9999px', border: 'none',
+      background: 'linear-gradient(135deg, #FF571A, #FFB59E)',
+      color: '#FDF9F3', fontSize: 16, fontWeight: 700,
+      fontFamily: 'var(--font-headline)', cursor: 'pointer',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+    },
+  };
+
+  return (
+    <div style={s.page}>
+      <style>{timelineKeyframes}</style>
+
+      <button style={s.backBtn} onClick={() => navigate(-1)}>
+        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        Quay lai
+      </button>
+
+      {/* Avatars */}
+      <div style={s.avatarRow}>
+        <div style={s.avatarWrap}>
+          <div style={s.avatar}>
+            <span className="material-symbols-outlined" style={s.avatarIcon}>person</span>
+          </div>
+          <div style={s.avatarName}>Minh Anh</div>
+        </div>
+        <span className="material-symbols-outlined" style={s.heartIcon}>favorite</span>
+        <div style={s.avatarWrap}>
+          <div style={s.avatar}>
+            <span className="material-symbols-outlined" style={s.avatarIcon}>person</span>
+          </div>
+          <div style={s.avatarName}>Thanh Tung</div>
+        </div>
+      </div>
+
+      {/* Chemistry Badge */}
+      <div style={s.chemBadge}>
+        <span className="material-symbols-outlined" style={s.chemIcon}>science</span>
+        <div>
+          <div style={s.chemTitle}>Culinary Alchemist</div>
+          <div style={s.chemLabel}>Hoa hoc am thuc</div>
+        </div>
+        <div style={s.chemValue}>87%</div>
+      </div>
+
+      {/* Timeline */}
+      <div style={s.sectionTitle}>
+        <span className="material-symbols-outlined" style={s.sectionIcon}>timeline</span>
+        Hanh trinh cung nhau
+      </div>
+      <div style={s.timeline}>
+        <div style={s.timelineLine} />
+        {milestones.map((ms, idx) => (
+          <div key={idx} style={{ ...s.milestone, animationDelay: `${idx * 0.1}s` }}>
+            <div style={s.dot(!!ms.badge)} />
+            <div style={s.msDate}>{ms.date}</div>
+            <div style={s.msCard}>
+              <div style={s.msRestaurant}>{ms.restaurant}</div>
+              <div style={s.msDish}>{ms.dish}</div>
+              <div style={s.msNote}>{ms.note}</div>
+              <div style={s.msFooter}>
+                <div style={s.msVang}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
+                  +{ms.vang} Vang
+                </div>
+                {ms.badge && (
+                  <div style={s.msBadge(ms.badgeColor)}>
+                    <span className="material-symbols-outlined" style={{ fontSize: 14 }}>{ms.badgeIcon}</span>
+                    {ms.badge}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Share CTA */}
+      <button style={s.shareCta}>
+        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
+        Chia se hanh trinh
+      </button>
+    </div>
+  );
+};
+
+export default RelationshipTimelinePage;

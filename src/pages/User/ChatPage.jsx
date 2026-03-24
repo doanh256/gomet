@@ -105,6 +105,17 @@ const ChatPage = () => {
   }, []);
 
   // ==================== CONVERSATION LIST PANEL ====================
+  const [activeTab, setActiveTab] = useState('ALL');
+  const chatTabs = ['ALL', 'MATCHES', 'SQUADS'];
+
+  const getTierBadge = (user) => {
+    const tier = user?.tier || (user?.name?.length > 5 ? 'Elite' : user?.name?.length > 3 ? 'Pro' : 'Legend');
+    const colors = { Elite: '#FFD54F', Pro: '#FFB59E', Legend: '#FF571A', vang: '#FFD54F' };
+    return { label: typeof tier === 'string' ? (tier === 'vang' ? 'Vang' : tier.charAt(0).toUpperCase() + tier.slice(1)) : 'Pro', color: colors[tier] || '#FFB59E' };
+  };
+
+  const getMatchPercent = (user) => Math.floor(70 + (user?.name?.length || 5) * 3);
+
   const ConversationListPanel = () => (
     <div style={{
       width: '320px',
@@ -114,85 +125,83 @@ const ChatPage = () => {
       flexDirection: 'column',
       overflow: 'hidden',
     }}>
-      {/* Header */}
-      <div style={{ padding: '24px 20px 16px' }}>
+      {/* Header - CONVERSATIONS italic uppercase */}
+      <div style={{ padding: '24px 20px 0' }}>
         <h2 style={{
           fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-          fontSize: '1.5rem',
+          fontSize: '2.25rem',
           fontWeight: 800,
-          color: '#FDF9F3',
-          margin: '0 0 16px',
+          fontStyle: 'italic',
+          color: '#FF4D00',
+          margin: '0 0 20px',
+          textTransform: 'uppercase',
+          letterSpacing: '-0.02em',
         }}>
-          Tin Nhan
+          Conversations
         </h2>
+
+        {/* Segmented tabs: ALL / MATCHES / SQUADS */}
+        <div style={{
+          display: 'flex', gap: '4px', padding: '4px',
+          backgroundColor: '#2A2A2A', borderRadius: '9999px', marginBottom: '16px',
+        }}>
+          {chatTabs.map(tab => (
+            <button key={tab} onClick={() => setActiveTab(tab)} style={{
+              flex: 1, padding: '10px 0', borderRadius: '9999px', border: 'none',
+              background: activeTab === tab ? 'linear-gradient(135deg, #FFB59E, #FF571A)' : 'transparent',
+              color: activeTab === tab ? '#3A0B00' : '#E6BEB2',
+              fontFamily: 'Inter, var(--font-body)', fontSize: '0.75rem',
+              fontWeight: 700, cursor: 'pointer', transition: 'all 0.2s ease',
+              letterSpacing: '0.05em',
+            }}>{tab}</button>
+          ))}
+        </div>
 
         {/* Search */}
         <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          backgroundColor: '#2A2A2A',
-          borderRadius: '9999px',
-          padding: '10px 16px',
-          border: 'none',
+          display: 'flex', alignItems: 'center', gap: '8px',
+          backgroundColor: '#2A2A2A', borderRadius: '9999px',
+          padding: '10px 16px', border: 'none',
         }}>
           <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>search</span>
           <input
-            type="text"
-            placeholder="Tim kiem..."
-            value={searchText}
-            onChange={e => setSearchText(e.target.value)}
-            style={{
-              border: 'none',
-              background: 'transparent',
-              outline: 'none',
-              fontSize: '0.875rem',
-              fontFamily: 'Inter, var(--font-body)',
-              color: '#FDF9F3',
-              flex: 1,
-            }}
+            type="text" placeholder="Tim kiem..."
+            value={searchText} onChange={e => setSearchText(e.target.value)}
+            style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: '0.875rem', fontFamily: 'Inter, var(--font-body)', color: '#FDF9F3', flex: 1 }}
           />
         </div>
       </div>
 
       {/* Conversation list */}
-      <div style={{ flex: 1, overflowY: 'auto' }}>
+      <div style={{ flex: 1, overflowY: 'auto', marginTop: '8px' }}>
         {filteredConversations.length === 0 ? (
-          <div style={{
-            textAlign: 'center',
-            padding: '40px 20px',
-            color: '#E6BEB2',
-          }}>
+          <div style={{ textAlign: 'center', padding: '40px 20px', color: '#E6BEB2' }}>
             <span className="material-symbols-outlined" style={{ fontSize: '48px', opacity: 0.3, display: 'block', marginBottom: '8px' }}>chat_bubble</span>
             <p style={{ fontFamily: 'Inter, var(--font-body)', fontSize: '0.875rem' }}>Chua co tin nhan</p>
           </div>
         ) : (
-          filteredConversations.map(conv => {
+          <>
+          {filteredConversations.map(conv => {
             const isActive = conv.id === activeConvId;
             const unread = conv.unreadCount || 0;
+            const tier = getTierBadge(conv.otherUser);
+            const matchPct = getMatchPercent(conv.otherUser);
             return (
               <div
                 key={conv.id}
                 onClick={() => selectConv(conv)}
                 style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  padding: '14px 20px',
-                  cursor: 'pointer',
-                  backgroundColor: isActive ? 'rgba(255,181,158,0.1)' : 'transparent',
-                  borderLeft: isActive ? '4px solid #FF571A' : '4px solid transparent',
+                  display: 'flex', alignItems: 'center', gap: '12px',
+                  padding: '14px 20px', cursor: 'pointer',
+                  backgroundColor: isActive ? 'rgba(255,77,0,0.1)' : 'transparent',
+                  borderLeft: isActive ? '4px solid #FF4D00' : '4px solid transparent',
                   transition: 'all 0.15s ease',
                 }}
               >
                 {/* Avatar with tier badge */}
                 <div style={{
-                  position: 'relative',
-                  width: '48px',
-                  height: '48px',
-                  borderRadius: '9999px',
-                  overflow: 'hidden',
-                  flexShrink: 0,
+                  position: 'relative', width: '48px', height: '48px',
+                  borderRadius: '9999px', overflow: 'hidden', flexShrink: 0,
                   backgroundColor: '#2A2A2A',
                 }}>
                   {getAvatarUrl(conv.otherUser) ? (
@@ -208,52 +217,44 @@ const ChatPage = () => {
                       {(conv.otherUser?.name || '?')[0].toUpperCase()}
                     </div>
                   )}
-                  {/* Vang tier badge */}
-                  {conv.otherUser?.tier === 'vang' && (
-                    <div style={{
-                      position: 'absolute',
-                      bottom: '-2px',
-                      right: '-2px',
-                      width: '18px',
-                      height: '18px',
-                      borderRadius: '9999px',
-                      backgroundColor: '#FFD54F',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      border: '2px solid #1C1B1B',
-                    }}>
-                      <span className="material-symbols-outlined" style={{ fontSize: '10px', color: '#3A0B00' }}>star</span>
-                    </div>
-                  )}
+                  {/* Tier badge on avatar */}
+                  <div style={{
+                    position: 'absolute', bottom: '-2px', right: '-2px',
+                    padding: '1px 6px', borderRadius: '9999px',
+                    backgroundColor: tier.color, border: '2px solid #1C1B1B',
+                    fontSize: '8px', fontWeight: 800, color: '#3A0B00',
+                    fontFamily: 'Inter, var(--font-body)', lineHeight: '14px',
+                  }}>
+                    {tier.label}
+                  </div>
                   {/* Online indicator */}
-                  {conv.otherUser?.isOnline && !conv.otherUser?.tier && (
+                  {conv.otherUser?.isOnline && (
                     <div style={{
-                      position: 'absolute',
-                      bottom: '1px',
-                      right: '1px',
-                      width: '12px',
-                      height: '12px',
-                      borderRadius: '9999px',
-                      backgroundColor: '#117500',
-                      border: '2px solid #1C1B1B',
+                      position: 'absolute', top: '1px', right: '1px',
+                      width: '10px', height: '10px', borderRadius: '9999px',
+                      backgroundColor: '#117500', border: '2px solid #1C1B1B',
                     }} />
                   )}
                 </div>
 
                 <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <h4 style={{
-                      margin: 0,
-                      fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-                      fontSize: '0.9375rem',
-                      fontWeight: unread > 0 ? 700 : 600,
-                      color: '#FDF9F3',
-                    }}>
-                      {conv.otherUser?.name || 'Unknown'}
-                    </h4>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                      <h4 style={{
+                        margin: 0, fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
+                        fontSize: '0.9375rem', fontWeight: unread > 0 ? 700 : 600, color: '#FDF9F3',
+                      }}>
+                        {conv.otherUser?.name || 'Unknown'}
+                      </h4>
+                      {/* Match % pill */}
+                      <span style={{
+                        padding: '1px 8px', borderRadius: '9999px',
+                        backgroundColor: 'rgba(255,87,26,0.15)', color: '#FFB59E',
+                        fontSize: '0.625rem', fontWeight: 700,
+                      }}>{matchPct}%</span>
+                    </div>
                     <span style={{
-                      fontSize: '0.6875rem',
-                      color: '#E6BEB2',
-                      flexShrink: 0,
+                      fontSize: '0.6875rem', color: '#E6BEB2', flexShrink: 0,
                       fontFamily: 'Inter, var(--font-body)',
                     }}>
                       {conv.lastMessage?.createdAt
@@ -263,33 +264,18 @@ const ChatPage = () => {
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                     <p style={{
-                      margin: '2px 0 0',
-                      fontSize: '0.8125rem',
-                      fontFamily: 'Inter, var(--font-body)',
-                      color: unread > 0 ? '#FDF9F3' : '#E6BEB2',
-                      fontWeight: unread > 0 ? 600 : 400,
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      whiteSpace: 'nowrap',
-                      flex: 1,
+                      margin: '2px 0 0', fontSize: '0.8125rem', fontFamily: 'Inter, var(--font-body)',
+                      color: unread > 0 ? '#FDF9F3' : '#E6BEB2', fontWeight: unread > 0 ? 600 : 400,
+                      overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1,
                     }}>
                       {conv.lastMessage?.text || 'Nhan de mo doan chat'}
                     </p>
                     {unread > 0 && (
                       <span style={{
-                        position: 'relative',
-                        backgroundColor: '#FF571A',
-                        color: '#3A0B00',
-                        fontSize: '0.6875rem',
-                        fontWeight: 700,
-                        minWidth: '20px',
-                        height: '20px',
-                        borderRadius: '9999px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        padding: '0 6px',
-                        flexShrink: 0,
+                        position: 'relative', backgroundColor: '#FF571A', color: '#3A0B00',
+                        fontSize: '0.6875rem', fontWeight: 700, minWidth: '20px', height: '20px',
+                        borderRadius: '9999px', display: 'flex', alignItems: 'center',
+                        justifyContent: 'center', padding: '0 6px', flexShrink: 0,
                         animation: 'chatPulse 2s ease-in-out infinite',
                       }}>
                         {unread}
@@ -299,7 +285,28 @@ const ChatPage = () => {
                 </div>
               </div>
             );
-          })
+          })}
+          {/* Grow your Squad CTA */}
+          <div style={{
+            margin: '16px 16px', padding: '20px',
+            borderRadius: '1.5rem', background: 'linear-gradient(135deg, rgba(255,181,158,0.1), rgba(255,87,26,0.1))',
+            textAlign: 'center',
+          }}>
+            <span className="material-symbols-outlined" style={{ fontSize: '32px', color: '#FFB59E', marginBottom: '8px', display: 'block' }}>group_add</span>
+            <h4 style={{
+              fontFamily: 'Plus Jakarta Sans, var(--font-headline)', fontSize: '0.9375rem',
+              fontWeight: 700, color: '#FDF9F3', margin: '0 0 4px',
+            }}>Grow your Squad</h4>
+            <p style={{ fontSize: '0.75rem', color: '#E6BEB2', margin: '0 0 12px' }}>
+              Invite friends to cook and dine together
+            </p>
+            <button style={{
+              padding: '8px 20px', borderRadius: '9999px', border: 'none',
+              background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
+              color: '#3A0B00', fontSize: '0.8125rem', fontWeight: 700, cursor: 'pointer',
+            }}>Invite Friends</button>
+          </div>
+          </>
         )}
       </div>
     </div>
@@ -855,37 +862,45 @@ const ChatPage = () => {
           flexDirection: 'column',
           overflow: 'hidden',
         }}>
-          {/* Header */}
+          {/* Header - CONVERSATIONS italic */}
           <div style={{ padding: '24px 20px 16px' }}>
             <h2 style={{
               fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-              fontSize: '1.75rem',
+              fontSize: '2rem',
               fontWeight: 800,
-              color: '#FDF9F3',
+              fontStyle: 'italic',
+              textTransform: 'uppercase',
+              color: '#FF4D00',
               margin: '0 0 16px',
+              letterSpacing: '-0.02em',
             }}>
-              Tin Nhan
+              Conversations
             </h2>
+            {/* Segmented tabs */}
             <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              backgroundColor: '#2A2A2A',
-              borderRadius: '9999px',
-              padding: '10px 16px',
-              border: 'none',
+              display: 'flex', gap: '4px', padding: '4px',
+              backgroundColor: '#2A2A2A', borderRadius: '9999px', marginBottom: '12px',
+            }}>
+              {['ALL', 'MATCHES', 'SQUADS'].map(tab => (
+                <button key={tab} onClick={() => setActiveTab(tab)} style={{
+                  flex: 1, padding: '10px 0', borderRadius: '9999px', border: 'none',
+                  background: activeTab === tab ? 'linear-gradient(135deg, #FFB59E, #FF571A)' : 'transparent',
+                  color: activeTab === tab ? '#3A0B00' : '#E6BEB2',
+                  fontFamily: 'Inter, var(--font-body)', fontSize: '0.75rem',
+                  fontWeight: 700, cursor: 'pointer', letterSpacing: '0.05em',
+                }}>{tab}</button>
+              ))}
+            </div>
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: '8px',
+              backgroundColor: '#2A2A2A', borderRadius: '9999px',
+              padding: '10px 16px', border: 'none',
             }}>
               <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>search</span>
               <input
-                type="text"
-                placeholder="Tim kiem..."
-                value={searchText}
-                onChange={e => setSearchText(e.target.value)}
-                style={{
-                  border: 'none', background: 'transparent', outline: 'none',
-                  fontSize: '0.875rem', fontFamily: 'Inter, var(--font-body)',
-                  color: '#FDF9F3', flex: 1,
-                }}
+                type="text" placeholder="Tim kiem..."
+                value={searchText} onChange={e => setSearchText(e.target.value)}
+                style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: '0.875rem', fontFamily: 'Inter, var(--font-body)', color: '#FDF9F3', flex: 1 }}
               />
             </div>
           </div>

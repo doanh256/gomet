@@ -279,9 +279,9 @@ const ProfilePage = () => {
     tierSection: {
       background: 'var(--surface-container)',
       borderRadius: '1.5rem',
-      padding: '20px',
+      padding: '24px',
       marginBottom: '24px',
-      boxShadow: '0px 8px 24px rgba(0,0,0,0.15)',
+      boxShadow: '0px 8px 24px rgba(0,0,0,0.15), 0 0 0 2px rgba(255,213,79,0.2)',
     },
     tierHeader: {
       display: 'flex',
@@ -302,16 +302,18 @@ const ProfilePage = () => {
     },
     progressOuter: {
       width: '100%',
-      height: '8px',
-      borderRadius: '4px',
+      height: '12px',
+      borderRadius: '6px',
       background: 'var(--surface-container-high)',
       marginBottom: '8px',
+      overflow: 'hidden',
     },
     progressInner: {
-      height: '8px',
-      borderRadius: '4px',
+      height: '12px',
+      borderRadius: '6px',
       background: 'linear-gradient(135deg, #FFD54F, #FF571A)',
       transition: 'width 0.6s ease',
+      boxShadow: '0 2px 8px rgba(255,87,26,0.3)',
     },
     tierHint: {
       fontSize: '12px',
@@ -329,41 +331,6 @@ const ProfilePage = () => {
       fontWeight: 700,
       color: 'var(--on-surface)',
       margin: '0 0 14px',
-    },
-
-    // Taste Radar bars
-    tasteBarRow: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '10px',
-      marginBottom: '10px',
-    },
-    tasteBarLabel: {
-      fontSize: '13px',
-      fontWeight: 600,
-      color: 'var(--on-surface-variant)',
-      width: '55px',
-      flexShrink: 0,
-    },
-    tasteBarOuter: {
-      flex: 1,
-      height: '8px',
-      borderRadius: '4px',
-      background: 'var(--surface-container-high)',
-    },
-    tasteBarInner: (width, color) => ({
-      height: '8px',
-      borderRadius: '4px',
-      background: color,
-      width: `${width}%`,
-      transition: 'width 0.5s ease',
-    }),
-    tasteBarValue: {
-      fontSize: '12px',
-      fontWeight: 700,
-      color: 'var(--on-surface)',
-      width: '30px',
-      textAlign: 'right',
     },
 
     // Recent dishes horizontal scroll
@@ -702,30 +669,83 @@ const ProfilePage = () => {
           <p style={s.tierHint}>Con {pointsToNext > 0 ? pointsToNext.toLocaleString('vi-VN') : 0} diem nua</p>
         </div>
 
-        {/* ===== TASTE RADAR ===== */}
+        {/* ===== TASTE RADAR - SVG SPIDER CHART ===== */}
         <div style={s.section}>
           <h2 style={s.sectionTitle}>Taste Radar</h2>
-          <div style={{ background: 'var(--surface-container)', borderRadius: '1.5rem', padding: '20px', boxShadow: '0px 8px 24px rgba(0,0,0,0.15)' }}>
-            {TASTE_AXES.map(axis => (
-              <div key={axis.key} style={s.tasteBarRow}>
-                <span style={s.tasteBarLabel}>{axis.label}</span>
-                <div style={s.tasteBarOuter}>
-                  <div style={s.tasteBarInner(axis.value, axis.color)} />
-                </div>
-                <span style={s.tasteBarValue}>{axis.value}%</span>
-              </div>
-            ))}
+          <div style={{ background: 'var(--surface-container)', borderRadius: '1.5rem', padding: '20px', boxShadow: '0px 8px 24px rgba(0,0,0,0.15)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            {(() => {
+              const size = 280;
+              const cx = size / 2;
+              const cy = size / 2;
+              const maxR = 100;
+              const levels = [0.25, 0.5, 0.75, 1.0];
+              const axes = TASTE_AXES;
+              const getPoint = (index, radius) => {
+                const angle = (Math.PI * 2 * index) / axes.length - Math.PI / 2;
+                return { x: cx + radius * Math.cos(angle), y: cy + radius * Math.sin(angle) };
+              };
+              return (
+                <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
+                  {/* Radial guidelines as dotted circles */}
+                  {levels.map((level, li) => (
+                    <circle key={li} cx={cx} cy={cy} r={maxR * level}
+                      fill="none" stroke="var(--outline-variant)" strokeWidth={1}
+                      strokeDasharray={li < 3 ? '4,4' : 'none'} opacity={0.5} />
+                  ))}
+                  {/* Axis lines */}
+                  {axes.map((_, i) => {
+                    const p = getPoint(i, maxR);
+                    return <line key={i} x1={cx} y1={cy} x2={p.x} y2={p.y} stroke="var(--outline-variant)" strokeWidth={1} opacity={0.3} />;
+                  })}
+                  {/* Data polygon filled with primary/20, stroked with primary */}
+                  <polygon
+                    points={axes.map((a, i) => { const p = getPoint(i, maxR * a.value / 100); return `${p.x},${p.y}`; }).join(' ')}
+                    fill="rgba(255,87,26,0.2)" stroke="var(--primary)" strokeWidth={2}
+                  />
+                  {/* Data points */}
+                  {axes.map((a, i) => {
+                    const p = getPoint(i, maxR * a.value / 100);
+                    return <circle key={i} cx={p.x} cy={p.y} r={5} fill="var(--primary)" stroke="var(--surface-container)" strokeWidth={2} />;
+                  })}
+                  {/* Labels */}
+                  {axes.map((a, i) => {
+                    const p = getPoint(i, maxR + 28);
+                    return (
+                      <text key={i} x={p.x} y={p.y} textAnchor="middle" dominantBaseline="middle"
+                        fill="var(--on-surface-variant)" fontSize={12} fontFamily="Inter, var(--font-body)" fontWeight={600}>
+                        {a.label}
+                      </text>
+                    );
+                  })}
+                  {/* Value labels */}
+                  {axes.map((a, i) => {
+                    const p = getPoint(i, maxR * a.value / 100 + 16);
+                    return (
+                      <text key={`v${i}`} x={p.x} y={p.y} textAnchor="middle" dominantBaseline="middle"
+                        fill="var(--primary)" fontSize={10} fontFamily="Inter, var(--font-body)" fontWeight={700}>
+                        {a.value}%
+                      </text>
+                    );
+                  })}
+                </svg>
+              );
+            })()}
           </div>
         </div>
 
-        {/* ===== MON GAN DAY ===== */}
+        {/* ===== RECENT CONQUESTS ===== */}
         <div style={s.section}>
-          <h2 style={s.sectionTitle}>Mon Gan Day</h2>
+          <h2 style={s.sectionTitle}>Recent Conquests</h2>
           <div className="gomet-hscroll-profile" style={s.hScroll}>
             {RECENT_DISHES.map(dish => (
-              <div key={dish.id} style={s.dishCard}>
-                <div style={s.dishImg}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '32px', color: 'var(--on-surface-variant)', opacity: 0.3 }}>lunch_dining</span>
+              <div key={dish.id} style={{ ...s.dishCard, width: '100px' }}>
+                <div style={{
+                  width: '80px', height: '80px', borderRadius: '1rem',
+                  background: 'linear-gradient(135deg, var(--surface-container-high), var(--surface-container-highest))',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  margin: '0 auto 8px', overflow: 'hidden',
+                }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--primary)', opacity: 0.5 }}>lunch_dining</span>
                 </div>
                 <p style={s.dishName}>{dish.name}</p>
                 <p style={s.dishRestaurant}>{dish.restaurant}</p>
