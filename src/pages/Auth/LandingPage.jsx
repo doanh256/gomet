@@ -4,59 +4,101 @@ import { useNavigate } from 'react-router-dom';
 const LandingPage = () => {
   const navigate = useNavigate();
 
-  const tasteDimensions = [
-    { icon: 'favorite', title: 'Ghép Đôi Khẩu Vị', subtitle: 'Taste Matching', desc: 'Tìm người hẹn hò có cùng sở thích ăn uống — từ street food đến fine dining.' },
-    { icon: 'local_fire_department', title: 'Độ Chịu Cay', subtitle: 'Spice Chemistry', desc: 'Bạn thích cay mấy? Ghép đôi với người có cùng "nhiệt huyết" ẩm thực.' },
-    { icon: 'public', title: 'Vùng Miền', subtitle: 'Regional Match', desc: 'Cùng quê hay cùng gu? Kết nối qua ẩm thực 8 vùng miền Việt Nam.' },
-    { icon: 'restaurant', title: 'Phong Cách Date', subtitle: 'Date Style', desc: 'Cà phê sáng hay dinner date? Tìm người hợp phong cách hẹn hò của bạn.' },
-    { icon: 'groups', title: 'Group Date', subtitle: 'Social Dining', desc: 'Hẹn hò nhóm, double date, hay ăn uống cùng bạn bè mới quen.' },
-    { icon: 'auto_awesome', title: 'Chemistry Score', subtitle: 'AI Compatibility', desc: 'AI phân tích độ tương thích qua 42 chỉ số khẩu vị để tìm người phù hợp nhất.' },
+  const steps = [
+    { icon: 'restaurant_menu', title: 'Tạo Hồ Sơ Ẩm Thực', desc: 'Cho chúng tôi biết bạn thích ăn gì, uống gì, và phong cách hẹn hò của bạn.' },
+    { icon: 'favorite', title: 'Ghép Đôi Theo Khẩu Vị', desc: 'AI phân tích 42 chỉ số để tìm người phù hợp nhất. Cùng gu ăn = cùng nhịp sống.' },
+    { icon: 'local_dining', title: 'Hẹn Hò Tại Nhà Hàng', desc: 'Gặp nhau tại quán yêu thích. GOMET gợi ý địa điểm hoàn hảo cho buổi hẹn đầu tiên.' },
   ];
 
-  const communityCards = [
+  const stats = [
+    { value: '50,000+', label: 'Thành viên' },
+    { value: '1,200+', label: 'Cặp đôi thành công' },
+    { value: '30+', label: 'Địa điểm đối tác' },
+    { value: '92%', label: 'Hài lòng' },
+  ];
+
+  const featuredDates = [
     {
-      img: 'https://images.unsplash.com/photo-1529543544282-ea57407bc2f7?w=600&h=400&fit=crop',
+      img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&h=350&fit=crop',
+      title: 'Dinner Date Lãng Mạn',
+      desc: 'Bữa tối ánh nến với người ấy tại nhà hàng sang trọng. Để GOMET chọn nơi hoàn hảo cho bạn.',
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&h=350&fit=crop',
+      title: 'Brunch Date Cuối Tuần',
+      desc: 'Sáng cuối tuần thong thả bên ly cà phê và bánh ngọt. Khởi đầu ngày mới cùng người hợp gu.',
+    },
+    {
+      img: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=500&h=350&fit=crop',
+      title: 'Street Food Adventure',
+      desc: 'Cùng nhau khám phá ẩm thực đường phố. Từ hẻm nhỏ Sài Gòn đến phố cổ Hà Nội.',
+    },
+  ];
+
+  const matchCriteria = [
+    { icon: 'local_fire_department', title: 'Độ Cay', desc: 'Mức độ chịu cay tương đồng', color: '#FF4D00' },
+    { icon: 'public', title: 'Vùng Miền', desc: 'Ẩm thực vùng miền yêu thích', color: '#2E7D32' },
+    { icon: 'restaurant', title: 'Phong Cách', desc: 'Fine dining hay street food', color: '#1565C0' },
+    { icon: 'payments', title: 'Budget', desc: 'Ngân sách phù hợp cho buổi hẹn', color: '#6A1B9A' },
+    { icon: 'schedule', title: 'Thời Gian', desc: 'Lịch trình ăn uống hàng ngày', color: '#E65100' },
+    { icon: 'interests', title: 'Sở Thích', desc: 'Đồ uống, tráng miệng, healthy', color: '#00838F' },
+  ];
+
+  const testimonials = [
+    {
       avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face',
       name: 'Minh Anh',
-      event: 'Date Cà Phê Sài Gòn',
-      quote: 'Lần đầu hẹn hò qua GOMET, hai đứa cùng ghiền phở và cà phê sữa đá. Bây giờ mỗi sáng đều cùng nhau ăn phở rồi đi làm.',
+      age: 26,
+      quote: 'Gặp anh ấy qua buổi group date lẩu Thái. Ai ngờ cùng ghiền phở và cà phê sữa đá. Bây giờ mỗi sáng đều cùng nhau ăn phở rồi đi làm.',
     },
     {
-      img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
       name: 'Hoàng Nam',
-      event: 'Khám Phá Ẩm Thực Đà Lạt',
-      quote: 'Nhờ GOMET mà tìm được bạn gái cùng đam mê ẩm thực vùng miền. Chúng mình đã cùng nhau khám phá hết 8 vùng Việt Nam!',
+      age: 29,
+      quote: 'Cùng cô ấy khám phá hết quán ăn Sài Gòn. Từ hẻm nhỏ đến nhà hàng, đâu cũng vui vì có người đồng hành cùng gu.',
     },
     {
-      img: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&h=400&fit=crop',
       avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face',
       name: 'Thanh Hà',
-      event: 'Group Date Lẩu Thái',
-      quote: 'Đi group date lẩu Thái, quen được nhóm bạn mới siêu vui. Giờ cuối tuần nào cũng hẹn nhau thử quán mới trên GOMET.',
+      age: 24,
+      quote: 'Từ bữa phở đầu tiên đến đám cưới. GOMET không chỉ ghép đôi theo khẩu vị mà còn ghép đôi trái tim.',
     },
   ];
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#FDF9F3', color: '#393834', fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-      {/* ===== TOP NAV ===== */}
+    <div style={{ minHeight: '100vh', backgroundColor: '#FDF9F3', color: '#393834', fontFamily: "'Inter', sans-serif" }}>
+
+      {/* ===== NAV ===== */}
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 50,
-        backgroundColor: 'rgba(253,249,243,0.7)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
-        boxShadow: '0 16px 40px rgba(57,56,52,0.06)',
+        backgroundColor: 'rgba(253,249,243,0.85)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)',
+        boxShadow: '0 1px 0 rgba(57,56,52,0.06)',
       }}>
         <div style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          height: 80, padding: '0 48px', maxWidth: 1920, margin: '0 auto',
+          height: 72, padding: '0 48px', maxWidth: 1280, margin: '0 auto',
         }}>
-          <div style={{ fontSize: 24, fontWeight: 900, color: '#b83500', letterSpacing: '-0.05em' }}>GOMET</div>
+          <div style={{
+            fontSize: 26, fontWeight: 900, fontStyle: 'italic', color: '#b83500',
+            letterSpacing: '-0.03em', fontFamily: "'Plus Jakarta Sans', sans-serif",
+            cursor: 'pointer',
+          }}>GOMET</div>
+
           <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
-            <a href="#regions" style={{ color: '#FF4D00', fontWeight: 700, textDecoration: 'none', borderBottom: '2px solid #FF4D00', paddingBottom: 4, fontSize: 14 }}>Ẩm Thực</a>
-            <a href="#taste" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Ghép Đôi</a>
-            <a href="#community" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Câu Chuyện</a>
-            <a href="#cta" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Tham Gia</a>
+            {[
+              { label: 'Ẩm Thực', href: '#how' },
+              { label: 'Ghép Đôi', href: '#taste-match' },
+              { label: 'Câu Chuyện', href: '#stories' },
+              { label: 'Tham Gia', href: '#cta' },
+            ].map(link => (
+              <a key={link.label} href={link.href} style={{
+                color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14,
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+              }}>{link.label}</a>
+            ))}
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
             <button onClick={() => navigate('/login')} style={{
               background: 'none', border: 'none', color: '#393834', fontWeight: 600, fontSize: 14,
               cursor: 'pointer', fontFamily: "'Plus Jakarta Sans', sans-serif",
@@ -65,224 +107,267 @@ const LandingPage = () => {
               backgroundColor: '#b83500', color: '#ffffff', padding: '10px 24px', borderRadius: 8,
               border: 'none', fontWeight: 700, fontSize: 14, cursor: 'pointer',
               fontFamily: "'Plus Jakarta Sans', sans-serif",
-              transition: 'background-color 0.2s',
-            }}>Tham Gia Kitchen</button>
+            }}>Bắt Đầu Miễn Phí</button>
           </div>
         </div>
       </nav>
 
-      <main style={{ paddingTop: 80 }}>
-        {/* ===== HERO SECTION ===== */}
+      <main style={{ paddingTop: 72 }}>
+
+        {/* ===== HERO ===== */}
         <section style={{
-          position: 'relative', height: 921, display: 'flex', alignItems: 'center',
-          overflow: 'hidden', padding: '0 48px',
+          position: 'relative', minHeight: 600, display: 'flex', alignItems: 'center',
+          overflow: 'hidden', padding: '80px 48px',
         }}>
           <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
             <img
-              src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=1200&h=800&fit=crop"
-              alt="Couple dining together"
+              src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=1400&h=900&fit=crop"
+              alt="Bàn ăn lãng mạn tại nhà hàng"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
             <div style={{
               position: 'absolute', inset: 0,
-              background: 'linear-gradient(to right, #fffbff 30%, rgba(255,251,255,0.4) 55%, transparent 80%)',
+              background: 'linear-gradient(to right, #FDF9F3 35%, rgba(253,249,243,0.85) 55%, rgba(253,249,243,0.3) 80%, transparent 100%)',
             }} />
           </div>
-          <div style={{ position: 'relative', zIndex: 10, maxWidth: 800 }}>
-            <span style={{
-              color: '#b83500', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
-              fontSize: 14, marginBottom: 16, display: 'block',
-            }}>Đi Để Gặp · Ăn Để Yêu</span>
-            <h1 style={{
-              fontSize: 'clamp(56px, 8vw, 96px)', fontWeight: 800, letterSpacing: '-0.04em',
-              color: '#393834', lineHeight: 0.9, marginBottom: 32, marginTop: 0,
-            }}>
-              Hẹn Hò Qua <br />
-              <span style={{ color: '#b83500', fontStyle: 'italic' }}>Ẩm Thực</span> Việt Nam.
-            </h1>
+
+          <div style={{ position: 'relative', zIndex: 10, maxWidth: 640 }}>
             <p style={{
-              fontSize: 20, color: '#666460', maxWidth: 560, marginBottom: 40, lineHeight: 1.7,
+              color: '#b83500', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase',
+              fontSize: 14, marginBottom: 16, marginTop: 0,
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+            }}>Đi Để Gặp &middot; Ăn Để Yêu</p>
+
+            <h1 style={{
+              fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 800, letterSpacing: '-0.03em',
+              color: '#393834', lineHeight: 1.05, marginBottom: 24, marginTop: 0,
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
             }}>
-              GOMET là nền tảng hẹn hò độc đáo — nơi bạn tìm người đồng hành qua những bữa ăn. Ghép đôi theo khẩu vị, hẹn hò tại nhà hàng yêu thích, và tạo nên những kỷ niệm đáng nhớ cùng nhau.
+              Tìm Người Hẹn Hò<br />Qua <span style={{ color: '#b83500' }}>Ẩm Thực</span>
+            </h1>
+
+            <p style={{
+              fontSize: 18, color: '#666460', maxWidth: 520, marginBottom: 40, lineHeight: 1.7,
+            }}>
+              GOMET ghép đôi bạn với người có cùng khẩu vị. Từ phở sáng đến dinner date — mỗi bữa ăn là một cơ hội gặp gỡ.
             </p>
+
             <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
               <button onClick={() => navigate('/register')} style={{
-                backgroundColor: '#b83500', color: '#ffffff', padding: '20px 40px', borderRadius: 8,
-                border: 'none', fontSize: 18, fontWeight: 800, cursor: 'pointer',
+                backgroundColor: '#b83500', color: '#ffffff', padding: '16px 36px', borderRadius: 8,
+                border: 'none', fontSize: 16, fontWeight: 700, cursor: 'pointer',
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
-                boxShadow: '0 20px 40px rgba(184,53,0,0.2)',
+                boxShadow: '0 16px 40px rgba(184,53,0,0.2)',
                 transition: 'transform 0.2s',
               }}
                 onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
                 onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
-              >
-                Tìm Người Hẹn Hò
-              </button>
-              <button style={{
-                display: 'flex', alignItems: 'center', gap: 8,
-                background: 'none', border: 'none', color: '#393834', fontWeight: 700,
-                fontSize: 16, cursor: 'pointer', fontFamily: "'Plus Jakarta Sans', sans-serif",
-              }}>
-                <span className="material-symbols-outlined" style={{ color: '#b83500', fontSize: 24 }}>play_circle</span>
-                <span>Tìm Hiểu Thêm</span>
-              </button>
-            </div>
-          </div>
-        </section>
+              >Tìm Người Hẹn Hò</button>
 
-        {/* ===== WORLD OF REGIONS (Micro-Meals) ===== */}
-        <section id="regions" style={{ padding: '128px 48px', backgroundColor: '#FDF9F3' }}>
-          <div style={{ maxWidth: 1920, margin: '0 auto' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64 }}>
-              <div style={{ maxWidth: 640 }}>
-                <h2 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.04em', marginBottom: 16, marginTop: 0 }}>Hẹn Hò Theo Vùng Miền</h2>
-                <p style={{ fontSize: 18, color: '#666460', lineHeight: 1.7, margin: 0 }}>
-                  Ghép đôi theo khẩu vị — tìm người hợp gu ăn uống qua 8 vùng ẩm thực Việt Nam. Cùng nhau khám phá từ phở Hà Nội đến hủ tiếu Sài Gòn.
-                </p>
-              </div>
-              <button style={{
-                display: 'flex', alignItems: 'center', gap: 8, background: 'none', border: 'none',
-                color: '#b83500', fontWeight: 700, fontSize: 14, cursor: 'pointer',
+              <a href="#how" style={{
+                color: '#b83500', fontWeight: 700, fontSize: 15, textDecoration: 'none',
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
+                display: 'flex', alignItems: 'center', gap: 6,
               }}>
-                <span>Khám Phá Bản Đồ</span>
+                <span>Khám Phá</span>
                 <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_forward</span>
-              </button>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '7fr 5fr', gap: 32, height: 800 }}>
-              {/* Large Feature */}
-              <div style={{ position: 'relative', borderRadius: 16, overflow: 'hidden' }}>
-                <img
-                  src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=500&fit=crop"
-                  alt="Vietnamese feast"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-                <div style={{
-                  position: 'absolute', bottom: 0, left: 0, right: 0, padding: 48,
-                  background: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
-                }}>
-                  <span style={{
-                    backgroundColor: '#815f00', color: '#ffffff', padding: '4px 12px', borderRadius: 4,
-                    fontSize: 12, fontWeight: 700, textTransform: 'uppercase', marginBottom: 16, display: 'inline-block',
-                  }}>Cao Nguyên Phía Bắc</span>
-                  <h3 style={{ fontSize: 36, fontWeight: 700, color: '#ffffff', margin: '0 0 8px' }}>Gia Vị Ẩn Giấu Của Sapa</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.8)', maxWidth: 400, margin: 0, fontSize: 16 }}>
-                    Khám phá hương vị khói và đất của ẩm thực núi truyền thống của các dân tộc vùng cao.
-                  </p>
-                </div>
-              </div>
-              {/* Right Column */}
-              <div style={{ display: 'grid', gridTemplateRows: '1fr 1fr', gap: 32 }}>
-                <div style={{
-                  backgroundColor: '#ffffff', borderRadius: 16, padding: 32,
-                  display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-                }}>
-                  <div>
-                    <span className="material-symbols-outlined" style={{ fontSize: 36, color: '#b83500', marginBottom: 16, display: 'block' }}>water_drop</span>
-                    <h3 style={{ fontSize: 24, fontWeight: 700, marginBottom: 8, marginTop: 0 }}>Duyên Hải Miền Trung</h3>
-                    <p style={{ color: '#666460', margin: 0, fontSize: 15 }}>Nghe thuat uop muoi va vi cay nong cua di san cung dinh Hue.</p>
-                  </div>
-                  <img
-                    src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=500&h=300&fit=crop"
-                    alt="Spring rolls"
-                    style={{ width: '100%', height: 128, objectFit: 'cover', borderRadius: 8, marginTop: 16 }}
-                  />
-                </div>
-                <div style={{
-                  backgroundColor: '#393834', color: '#fffbff', borderRadius: 16, padding: 32,
-                  position: 'relative', overflow: 'hidden',
-                }}>
-                  <div style={{ position: 'relative', zIndex: 10 }}>
-                    <h3 style={{ fontSize: 28, fontWeight: 700, marginBottom: 16, marginTop: 0 }}>Đồng Bằng Sông Cửu Long</h3>
-                    <p style={{ color: 'rgba(255,251,255,0.7)', margin: 0, fontSize: 15 }}>
-                      'Vua Lua' cua dat nuoc. Huong vi len men ngot ngao va su tru phu nhiet doi.
-                    </p>
-                  </div>
-                  <span className="material-symbols-outlined" style={{
-                    position: 'absolute', bottom: -16, right: -16, fontSize: 192, opacity: 0.1, color: '#fffbff',
-                  }}>eco</span>
-                </div>
-              </div>
+              </a>
             </div>
           </div>
         </section>
 
-        {/* ===== YOUR PALATE, QUANTIFIED ===== */}
-        <section id="taste" style={{ padding: '128px 48px', backgroundColor: '#fffbff' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        {/* ===== HOW IT WORKS ===== */}
+        <section id="how" style={{ padding: '100px 48px', backgroundColor: '#FDF9F3' }}>
+          <div style={{ maxWidth: 1080, margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 64 }}>
-              <h2 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.04em', marginTop: 0, marginBottom: 16 }}>
-                Ghép Đôi Theo <br />Khẩu Vị.
-              </h2>
-              <p style={{ fontSize: 18, color: '#666460', maxWidth: 600, margin: '0 auto', lineHeight: 1.7 }}>
-                Thuật toán ghép đôi phân tích 42 chỉ số khẩu vị để tìm người hẹn hò hoàn hảo cho bạn. Cùng sở thích ăn uống = cùng nhịp sống.
+              <h2 style={{
+                fontSize: 40, fontWeight: 800, letterSpacing: '-0.03em', marginTop: 0, marginBottom: 12,
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+              }}>Cách GOMET Hoạt Động</h2>
+              <p style={{ fontSize: 17, color: '#666460', maxWidth: 500, margin: '0 auto', lineHeight: 1.7 }}>
+                Ba bước đơn giản để tìm người hẹn hò qua ẩm thực
               </p>
             </div>
-            <div style={{
-              display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24,
-            }}>
-              {tasteDimensions.map((item, i) => (
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32 }}>
+              {steps.map((step, i) => (
                 <div key={i} style={{
-                  backgroundColor: '#f7f3ec', borderRadius: 16, padding: 32,
+                  backgroundColor: '#ffffff', borderRadius: 16, padding: 36, textAlign: 'center',
+                  boxShadow: '0px 16px 40px rgba(0,0,0,0.06)',
+                }}>
+                  <div style={{
+                    width: 64, height: 64, borderRadius: 16,
+                    backgroundColor: 'rgba(184,53,0,0.08)', display: 'flex',
+                    alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px',
+                  }}>
+                    <span className="material-symbols-outlined" style={{ color: '#b83500', fontSize: 28 }}>{step.icon}</span>
+                  </div>
+                  <div style={{
+                    width: 28, height: 28, borderRadius: 9999, backgroundColor: '#b83500',
+                    color: '#fff', fontSize: 13, fontWeight: 800, display: 'flex',
+                    alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  }}>{i + 1}</div>
+                  <h3 style={{
+                    fontSize: 18, fontWeight: 700, margin: '0 0 10px',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  }}>{step.title}</h3>
+                  <p style={{ fontSize: 14, color: '#666460', lineHeight: 1.7, margin: 0 }}>{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===== STATS BAR ===== */}
+        <section style={{ padding: '48px', backgroundColor: '#393834' }}>
+          <div style={{
+            maxWidth: 1080, margin: '0 auto',
+            display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexWrap: 'wrap', gap: 32,
+          }}>
+            {stats.map((s, i) => (
+              <div key={i} style={{ textAlign: 'center' }}>
+                <div style={{
+                  fontSize: 32, fontWeight: 800, color: '#FF4D00',
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                }}>{s.value}</div>
+                <div style={{ fontSize: 14, color: 'rgba(255,255,255,0.7)', marginTop: 4 }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ===== FEATURED DATES ===== */}
+        <section style={{ padding: '100px 48px', backgroundColor: '#FDF9F3' }}>
+          <div style={{ maxWidth: 1080, margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 64 }}>
+              <h2 style={{
+                fontSize: 40, fontWeight: 800, letterSpacing: '-0.03em', marginTop: 0, marginBottom: 12,
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+              }}>Buổi Hẹn Được Yêu Thích</h2>
+              <p style={{ fontSize: 17, color: '#666460', maxWidth: 500, margin: '0 auto', lineHeight: 1.7 }}>
+                Những trải nghiệm hẹn hò ẩm thực phổ biến nhất trên GOMET
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28 }}>
+              {featuredDates.map((date, i) => (
+                <div key={i} style={{
+                  backgroundColor: '#ffffff', borderRadius: 16, overflow: 'hidden',
+                  boxShadow: '0px 16px 40px rgba(0,0,0,0.06)',
+                  transition: 'transform 0.2s',
+                  cursor: 'pointer',
+                }}
+                  onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
+                  onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
+                >
+                  <div style={{ height: 220, overflow: 'hidden' }}>
+                    <img src={date.img} alt={date.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  </div>
+                  <div style={{ padding: 28 }}>
+                    <h3 style={{
+                      fontSize: 18, fontWeight: 700, margin: '0 0 10px',
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    }}>{date.title}</h3>
+                    <p style={{ fontSize: 14, color: '#666460', lineHeight: 1.7, margin: '0 0 20px' }}>{date.desc}</p>
+                    <button onClick={() => navigate('/register')} style={{
+                      backgroundColor: 'rgba(184,53,0,0.08)', color: '#b83500',
+                      padding: '10px 20px', borderRadius: 8, border: 'none',
+                      fontWeight: 700, fontSize: 13, cursor: 'pointer',
+                      fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      display: 'flex', alignItems: 'center', gap: 6,
+                    }}>
+                      <span>Tìm Người Đi Cùng</span>
+                      <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ===== TASTE MATCH ===== */}
+        <section id="taste-match" style={{ padding: '100px 48px', backgroundColor: '#ffffff' }}>
+          <div style={{ maxWidth: 1080, margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 64 }}>
+              <h2 style={{
+                fontSize: 40, fontWeight: 800, letterSpacing: '-0.03em', marginTop: 0, marginBottom: 12,
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+              }}>Ghép Đôi Thông Minh Theo Khẩu Vị</h2>
+              <p style={{ fontSize: 17, color: '#666460', maxWidth: 540, margin: '0 auto', lineHeight: 1.7 }}>
+                AI phân tích 6 chiều khẩu vị để tìm người tương thích hoàn hảo cho bạn
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+              {matchCriteria.map((item, i) => (
+                <div key={i} style={{
+                  backgroundColor: '#FDF9F3', borderRadius: 16, padding: 28,
                   transition: 'box-shadow 0.2s, transform 0.2s',
                   cursor: 'default',
                 }}
-                  onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 12px 32px rgba(57,56,52,0.1)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                  onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 12px 32px rgba(57,56,52,0.08)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
                   onMouseLeave={e => { e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.transform = 'translateY(0)'; }}
                 >
                   <div style={{
-                    width: 48, height: 48, borderRadius: 12,
-                    backgroundColor: 'rgba(184,53,0,0.1)', display: 'flex',
-                    alignItems: 'center', justifyContent: 'center', marginBottom: 20,
+                    width: 48, height: 48, borderRadius: 9999,
+                    backgroundColor: `${item.color}14`, display: 'flex',
+                    alignItems: 'center', justifyContent: 'center', marginBottom: 16,
                   }}>
-                    <span className="material-symbols-outlined" style={{ color: '#b83500', fontSize: 24 }}>{item.icon}</span>
+                    <span className="material-symbols-outlined" style={{ color: item.color, fontSize: 24 }}>{item.icon}</span>
                   </div>
-                  <h4 style={{ fontSize: 18, fontWeight: 700, margin: '0 0 4px' }}>{item.title}</h4>
-                  <p style={{ fontSize: 13, color: '#82807b', margin: '0 0 12px', fontWeight: 600 }}>{item.subtitle}</p>
-                  <p style={{ fontSize: 14, color: '#666460', lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
+                  <h4 style={{
+                    fontSize: 16, fontWeight: 700, margin: '0 0 6px',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  }}>{item.title}</h4>
+                  <p style={{ fontSize: 14, color: '#666460', lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ===== SHARED MEMORIES ===== */}
-        <section id="community" style={{ padding: '128px 48px', backgroundColor: '#f7f3ec', overflow: 'hidden' }}>
-          <div style={{ maxWidth: 1920, margin: '0 auto' }}>
-            <div style={{ textAlign: 'center', marginBottom: 80 }}>
-              <h2 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.04em', marginTop: 0, marginBottom: 16 }}>Câu Chuyện Hẹn Hò</h2>
-              <p style={{ fontSize: 18, color: '#666460', maxWidth: 560, margin: '0 auto', lineHeight: 1.7 }}>
-                Hàng ngàn cặp đôi đã gặp nhau qua GOMET. Từ bữa cà phê đầu tiên đến những chuyến phiêu lưu ẩm thực cùng nhau.
+        {/* ===== COMMUNITY STORIES ===== */}
+        <section id="stories" style={{ padding: '100px 48px', backgroundColor: '#FDF9F3' }}>
+          <div style={{ maxWidth: 1080, margin: '0 auto' }}>
+            <div style={{ textAlign: 'center', marginBottom: 64 }}>
+              <h2 style={{
+                fontSize: 40, fontWeight: 800, letterSpacing: '-0.03em', marginTop: 0, marginBottom: 12,
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+              }}>Câu Chuyện Tình Yêu Từ Bữa Ăn</h2>
+              <p style={{ fontSize: 17, color: '#666460', maxWidth: 500, margin: '0 auto', lineHeight: 1.7 }}>
+                Hàng ngàn cặp đôi đã tìm thấy nhau qua GOMET
               </p>
             </div>
-            <div style={{ display: 'flex', gap: 32, overflowX: 'auto', paddingBottom: 48 }}>
-              {communityCards.map((card, i) => (
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 28 }}>
+              {testimonials.map((t, i) => (
                 <div key={i} style={{
-                  minWidth: 400, backgroundColor: '#ffffff', borderRadius: 16, overflow: 'hidden',
-                  flexShrink: 0,
+                  backgroundColor: '#ffffff', borderRadius: 16, padding: 32,
+                  boxShadow: '0px 16px 40px rgba(0,0,0,0.06)',
                 }}>
-                  <div style={{ height: 256, overflow: 'hidden' }}>
-                    <img src={card.img} alt={card.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                  </div>
-                  <div style={{ padding: 32 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 16 }}>
-                      <div style={{
-                        width: 40, height: 40, borderRadius: '50%', border: '2px solid #b83500',
-                        overflow: 'hidden',
-                      }}>
-                        <img src={card.avatar} alt={card.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                      </div>
-                      <div>
-                        <div style={{ fontWeight: 700, fontSize: 14 }}>{card.name}</div>
-                        <div style={{ fontSize: 12, opacity: 0.6 }}>{card.event}</div>
-                      </div>
+                  <div style={{
+                    fontSize: 40, color: '#b83500', fontFamily: 'Georgia, serif',
+                    lineHeight: 1, marginBottom: 16, opacity: 0.3,
+                  }}>&ldquo;</div>
+                  <p style={{
+                    fontSize: 15, lineHeight: 1.8, color: '#393834', margin: '0 0 24px',
+                    fontStyle: 'italic',
+                  }}>{t.quote}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                    <div style={{
+                      width: 44, height: 44, borderRadius: 9999, overflow: 'hidden',
+                      backgroundColor: '#f0ece4',
+                    }}>
+                      <img src={t.avatar} alt={t.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
-                    <p style={{ fontStyle: 'italic', fontSize: 15, lineHeight: 1.7, color: '#393834', margin: '0 0 16px' }}>
-                      "{card.quote}"
-                    </p>
-                    <div style={{ display: 'flex', alignItems: 'center', color: '#b83500', fontWeight: 700, fontSize: 14, gap: 4 }}>
-                      <span>Doc Cau Chuyen</span>
-                      <span className="material-symbols-outlined" style={{ fontSize: 16 }}>open_in_new</span>
+                    <div>
+                      <div style={{
+                        fontWeight: 700, fontSize: 14,
+                        fontFamily: "'Plus Jakarta Sans', sans-serif",
+                      }}>{t.name}</div>
+                      <div style={{ fontSize: 13, color: '#999' }}>{t.age} tuổi</div>
                     </div>
                   </div>
                 </div>
@@ -291,77 +376,72 @@ const LandingPage = () => {
           </div>
         </section>
 
-        {/* ===== FINAL CTA ===== */}
+        {/* ===== CTA ===== */}
         <section id="cta" style={{
-          padding: '160px 48px', position: 'relative', overflow: 'hidden',
-          backgroundColor: '#393834',
+          padding: '120px 48px', position: 'relative', overflow: 'hidden',
         }}>
-          <div style={{ position: 'absolute', inset: 0, opacity: 0.2 }}>
+          <div style={{ position: 'absolute', inset: 0 }}>
             <img
-              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&h=600&fit=crop"
-              alt="Abstract food preparation"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(1)' }}
+              src="https://images.unsplash.com/photo-1529543544282-ea57407bc2f7?w=1200&h=600&fit=crop"
+              alt="Nền hẹn hò"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
+            <div style={{ position: 'absolute', inset: 0, backgroundColor: 'rgba(30,28,25,0.75)' }} />
           </div>
-          <div style={{ position: 'relative', zIndex: 10, maxWidth: 800, margin: '0 auto', textAlign: 'center' }}>
+
+          <div style={{ position: 'relative', zIndex: 10, maxWidth: 640, margin: '0 auto', textAlign: 'center' }}>
             <h2 style={{
-              fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 900, color: '#fffbff',
-              letterSpacing: '-0.04em', marginBottom: 32, marginTop: 0, lineHeight: 1,
-            }}>
-              Sẵn Sàng Hẹn Hò?
-            </h2>
-            <p style={{ fontSize: 22, color: 'rgba(255,251,255,0.7)', marginBottom: 48 }}>
-              Tìm người hẹn hò cùng gu ẩm thực ngay hôm nay. Đi để gặp, ăn để yêu — cùng GOMET.
+              fontSize: 'clamp(32px, 5vw, 56px)', fontWeight: 800, color: '#ffffff',
+              letterSpacing: '-0.03em', marginBottom: 20, marginTop: 0, lineHeight: 1.1,
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+            }}>Sẵn Sàng Cho Buổi Hẹn Đầu Tiên?</h2>
+            <p style={{ fontSize: 18, color: 'rgba(255,255,255,0.7)', marginBottom: 40, lineHeight: 1.7 }}>
+              Tìm người hẹn hò cùng gu ẩm thực ngay hôm nay. Đi để gặp, ăn để yêu.
             </p>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 20 }}>
               <button onClick={() => navigate('/register')} style={{
-                backgroundColor: '#b83500', color: '#ffffff', padding: '24px 48px', borderRadius: 8,
-                border: 'none', fontSize: 20, fontWeight: 800, cursor: 'pointer',
+                backgroundColor: '#b83500', color: '#ffffff', padding: '16px 40px', borderRadius: 8,
+                border: 'none', fontSize: 17, fontWeight: 800, cursor: 'pointer',
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
-                boxShadow: '0 20px 50px rgba(184,53,0,0.4)',
+                boxShadow: '0 16px 40px rgba(184,53,0,0.35)',
                 transition: 'transform 0.2s',
               }}
-                onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
+                onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.03)'}
                 onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-              >
-                Tìm Người Hẹn Hò Ngay
-              </button>
+              >Tham Gia GOMET Miễn Phí</button>
               <button onClick={() => navigate('/login')} style={{
-                backgroundColor: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(12px)',
-                WebkitBackdropFilter: 'blur(12px)', color: '#fffbff',
-                border: '1px solid rgba(255,255,255,0.2)', padding: '24px 48px',
-                borderRadius: 8, fontSize: 20, fontWeight: 700, cursor: 'pointer',
+                background: 'none', border: 'none', color: 'rgba(255,255,255,0.8)',
+                fontWeight: 600, fontSize: 15, cursor: 'pointer',
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
-                transition: 'background-color 0.2s',
-              }}>
-                Xem Trước Không Cần Đăng Ký
-              </button>
+                textDecoration: 'underline', textUnderlineOffset: 4,
+              }}>Đăng Nhập</button>
             </div>
           </div>
         </section>
+
       </main>
 
       {/* ===== FOOTER ===== */}
-      <footer style={{
-        backgroundColor: '#FDF9F3', padding: '48px 48px', borderTop: '1px solid rgba(57,56,52,0.05)',
-      }}>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
-          <div style={{ fontSize: 18, fontWeight: 700, color: '#b83500' }}>GOMET</div>
-          <div style={{ display: 'flex', gap: 32 }}>
-            {['Chinh Sach', 'Dieu Khoan', 'Tieu Chuan', 'Lien He'].map(link => (
+      <footer style={{ backgroundColor: '#FDF9F3', padding: '48px' }}>
+        <div style={{ maxWidth: 1080, margin: '0 auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>
+          <div style={{
+            fontSize: 22, fontWeight: 900, fontStyle: 'italic', color: '#b83500',
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+          }}>GOMET</div>
+          <p style={{ fontSize: 13, color: '#999', margin: 0 }}>Đi để gặp &middot; Ăn để yêu</p>
+          <div style={{ display: 'flex', gap: 24, marginTop: 8 }}>
+            {['Về chúng tôi', 'Điều khoản', 'Quyền riêng tư', 'An toàn', 'Liên hệ'].map(link => (
               <a key={link} href="#" style={{
-                color: 'rgba(57,56,52,0.6)', fontSize: 12, fontWeight: 500, textDecoration: 'none',
+                color: '#666460', fontSize: 13, fontWeight: 500, textDecoration: 'none',
               }}>{link}</a>
             ))}
           </div>
           <p style={{
-            color: 'rgba(57,56,52,0.4)', fontSize: 10, textTransform: 'uppercase',
-            letterSpacing: '0.2em', marginTop: 32,
-          }}>
-            &copy; 2024 GOMET Editorial. The Kinetic Connoisseur.
-          </p>
+            color: 'rgba(57,56,52,0.4)', fontSize: 11, marginTop: 24, margin: '24px 0 0',
+          }}>&copy; 2024 GOMET. Đi để gặp, Ăn để yêu.</p>
         </div>
       </footer>
+
     </div>
   );
 };
