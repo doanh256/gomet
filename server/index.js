@@ -128,4 +128,13 @@ if (indexExists) {
 const PORT = process.env.PORT || 3001;
 httpServer.listen(PORT, () => {
   console.log(`🚀 Gomet API server running on http://localhost:${PORT}`);
+
+  // Start Bot Engine in production
+  if (process.env.NODE_ENV === 'production') {
+    import('./botEngine.js').then(() => {
+      console.log('🤖 Bot Engine started in background');
+    }).catch(e => {
+      console.log('Bot Engine skipped:', e.message);
+    });
+  }
 });
