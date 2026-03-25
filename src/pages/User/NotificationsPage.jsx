@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Bell, Heart, MessageCircle, CalendarCheck, Check } from 'lucide-react';
+import { api } from '../../api/client';
 
 const demoNotifications = [
   {
     id: 1,
     type: 'match',
-    icon: <Heart size={20} color="#3A0B00" />,
+    icon: 'favorite',
     iconBg: 'linear-gradient(135deg, #FFB59E, #FF571A)',
     text: 'Bạn có match mới!',
     detail: 'Hãy bắt đầu trò chuyện ngay',
@@ -17,7 +17,7 @@ const demoNotifications = [
   {
     id: 2,
     type: 'vang',
-    icon: <Heart size={20} color="#3A0B00" />,
+    icon: 'toll',
     iconBg: 'linear-gradient(135deg, #FFD54F, #F57C00)',
     text: 'Bạn nhận được +50 Vàng!',
     detail: 'Thưởng tuần cho hoạt động ẩm thực',
@@ -28,7 +28,7 @@ const demoNotifications = [
   {
     id: 3,
     type: 'message',
-    icon: <MessageCircle size={20} color="#FDF9F3" />,
+    icon: 'chat_bubble',
     iconBg: '#2A2A2A',
     text: 'Minh Anh gửi tin nhắn mới',
     detail: '"Chào bạn! Rảnh cuối tuần không?"',
@@ -39,7 +39,7 @@ const demoNotifications = [
   {
     id: 4,
     type: 'date',
-    icon: <CalendarCheck size={20} color="#FDF9F3" />,
+    icon: 'event_available',
     iconBg: '#353535',
     text: 'Kỳ Duyên đã ứng tuyển kèo của bạn',
     detail: 'Kèo: Cà phê chiều Chủ nhật',
@@ -50,7 +50,7 @@ const demoNotifications = [
   {
     id: 5,
     type: 'vang',
-    icon: <Heart size={20} color="#3A0B00" />,
+    icon: 'toll',
     iconBg: 'linear-gradient(135deg, #FFD54F, #F57C00)',
     text: '+30 Vàng từ Phở Bò Hà Nội',
     detail: 'Đánh dấu đã thử thành công',
@@ -61,7 +61,7 @@ const demoNotifications = [
   {
     id: 6,
     type: 'match',
-    icon: <Heart size={20} color="#3A0B00" />,
+    icon: 'favorite',
     iconBg: 'linear-gradient(135deg, #FFB59E, #FF571A)',
     text: 'Thanh Hằng đã match với bạn',
     detail: 'Gửi lời chào đầu tiên đi!',
@@ -74,6 +74,18 @@ const demoNotifications = [
 const NotificationsPage = () => {
   const navigate = useNavigate();
   const [notifications, setNotifications] = useState(demoNotifications);
+
+  const handleClaimVang = async (id) => {
+    try {
+      await api.post('/algorithms/vang/earn', { action: 'weekly_reward', amount: 50 });
+    } catch (e) { /* ok */ }
+    setNotifications(prev => prev.map(n => n.id === id ? { ...n, claimed: true, read: true } : n));
+  };
+
+  const handleAcceptInvite = async (id) => {
+    setNotifications(prev => prev.map(n => n.id === id ? { ...n, accepted: true, read: true } : n));
+    navigate('/app/my-dates');
+  };
 
   const markAsRead = (id) => {
     setNotifications((prev) =>
@@ -99,13 +111,13 @@ const NotificationsPage = () => {
           alignItems: 'center',
         }}>
           <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: '#E6BEB2', display: 'flex', alignItems: 'center' }}>
-            <ArrowLeft size={24} />
+            <span className="material-symbols-outlined" style={{ fontSize: 24 }}>arrow_back</span>
           </button>
           <h1 style={{ flex: 1, margin: 0, fontSize: '18px', fontWeight: 700, textAlign: 'center', color: '#FDF9F3' }}>Thông báo</h1>
           <div style={{ width: '24px' }} />
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '80px 24px', textAlign: 'center' }}>
-          <Bell size={56} color="#353535" />
+          <span className="material-symbols-outlined" style={{ fontSize: 56, color: '#353535' }}>notifications</span>
           <p style={{ fontSize: '16px', color: '#E6BEB2', marginTop: '16px' }}>Chưa có thông báo nào</p>
         </div>
       </div>
@@ -127,7 +139,7 @@ const NotificationsPage = () => {
         zIndex: 10,
       }}>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: '#E6BEB2', display: 'flex', alignItems: 'center' }}>
-          <ArrowLeft size={24} />
+          <span className="material-symbols-outlined" style={{ fontSize: 24 }}>arrow_back</span>
         </button>
         <h1 style={{ flex: 1, margin: 0, fontSize: '18px', fontWeight: 700, textAlign: 'center', color: '#FDF9F3' }}>
           Thông báo
@@ -139,7 +151,7 @@ const NotificationsPage = () => {
         </h1>
         {unreadCount > 0 ? (
           <button onClick={markAllRead} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: '#FFB59E', fontSize: '13px', fontWeight: 600 }}>
-            <Check size={20} />
+            <span className="material-symbols-outlined" style={{ fontSize: 20 }}>done_all</span>
           </button>
         ) : (
           <div style={{ width: '24px' }} />
@@ -175,7 +187,7 @@ const NotificationsPage = () => {
                 flexShrink: 0,
               }}
             >
-              {n.icon}
+              <span className="material-symbols-outlined" style={{ fontSize: 20, color: n.iconBg.includes('gradient') ? '#3A0B00' : '#FDF9F3' }}>{n.icon}</span>
             </div>
 
             {/* Content */}
@@ -188,23 +200,35 @@ const NotificationsPage = () => {
               </p>
               <p style={{ fontSize: '12px', color: '#666', margin: 0 }}>{n.time}</p>
               {/* Action buttons */}
-              {n.action === 'claim_vang' && (
-                <button onClick={(e) => { e.stopPropagation(); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFD54F, #F57C00)', color: '#3A0B00', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
+              {n.action === 'claim_vang' && !n.claimed && (
+                <button onClick={(e) => { e.stopPropagation(); handleClaimVang(n.id); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFD54F, #F57C00)', color: '#3A0B00', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
                   Nhận Vàng
                 </button>
               )}
+              {n.action === 'claim_vang' && n.claimed && (
+                <span style={{ marginTop: 8, display: 'inline-flex', alignItems: 'center', gap: 4, color: '#117500', fontSize: 12, fontWeight: 700 }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>check_circle</span>
+                  Đã nhận!
+                </span>
+              )}
               {n.action === 'view_match' && (
-                <button onClick={(e) => { e.stopPropagation(); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#FDF9F3', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>visibility</span>
+                <button onClick={(e) => { e.stopPropagation(); navigate('/app/matches'); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#FDF9F3', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>visibility</span>
                   Xem ghép đôi
                 </button>
               )}
-              {n.action === 'accept_invite' && (
-                <button onClick={(e) => { e.stopPropagation(); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: '1px solid #FFB59E', background: '#1C1B1B', color: '#FFB59E', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>check_circle</span>
+              {n.action === 'accept_invite' && !n.accepted && (
+                <button onClick={(e) => { e.stopPropagation(); handleAcceptInvite(n.id); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#3A0B00', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>check_circle</span>
                   Chấp nhận lời mời
                 </button>
+              )}
+              {n.action === 'accept_invite' && n.accepted && (
+                <span style={{ marginTop: 8, display: 'inline-flex', alignItems: 'center', gap: 4, color: '#117500', fontSize: 12, fontWeight: 700 }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>check_circle</span>
+                  Đã chấp nhận!
+                </span>
               )}
             </div>
 
