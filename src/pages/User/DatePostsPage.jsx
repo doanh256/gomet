@@ -5,16 +5,16 @@ import { useAppContext } from '../../AppContext';
 import { useToast } from '../../components/ToastNotification';
 
 const CATEGORIES = {
-  all: { label: 'Tat Ca', icon: 'grid_view', color: '#FFB59E', desc: 'Tat ca cac loi moi hen ho' },
-  tim_yeu: { label: 'Tim Yeu', icon: 'favorite', color: '#FFB59E', desc: 'Tim chan ai cuoc doi' },
-  tim_ban: { label: 'Tim Ban', icon: 'group', color: '#117500', desc: 'An uong, chup hinh, di choi nhom' },
-  tra_phi: { label: 'Tra Phi', icon: 'paid', color: '#FFD54F', desc: 'Cuoc hen dac thu, co chi phi kem theo' },
+  all: { label: 'Tất Cả', icon: 'grid_view', color: '#FFB59E', desc: 'Tất cả các lời mời hẹn hò' },
+  tim_yeu: { label: 'Tìm Yêu', icon: 'favorite', color: '#FFB59E', desc: 'Tìm chân ái cuộc đời' },
+  tim_ban: { label: 'Tìm Bạn', icon: 'group', color: '#117500', desc: 'Ăn uống, chụp hình, đi chơi nhóm' },
+  tra_phi: { label: 'Trả Phí', icon: 'paid', color: '#FFD54F', desc: 'Cuộc hẹn đặc thù, có chi phí kèm theo' },
 };
 
 const CATEGORY_BADGE = {
-  tim_yeu: { bg: '#FF571A', label: 'Tim Yeu' },
-  tim_ban: { bg: 'rgba(17,117,0,0.8)', label: 'Tim Ban' },
-  tra_phi: { bg: 'rgba(255,213,79,0.85)', textColor: '#3A0B00', label: 'Tra Phi' },
+  tim_yeu: { bg: '#FF571A', label: 'Tìm Yêu' },
+  tim_ban: { bg: 'rgba(17,117,0,0.8)', label: 'Tìm Bạn' },
+  tra_phi: { bg: 'rgba(255,213,79,0.85)', textColor: '#3A0B00', label: 'Trả Phí' },
 };
 
 const DatePostsPage = () => {
@@ -24,6 +24,7 @@ const DatePostsPage = () => {
   const { addToast } = useToast();
 
   const [activeTab, setActiveTab] = useState(paramCategory || 'all');
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -37,6 +38,12 @@ const DatePostsPage = () => {
   }, [paramCategory]);
 
   useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+
+  useEffect(() => {
     setLoading(true);
     const query = activeTab === 'all' ? '' : `?category=${activeTab}`;
     api.get(`/date-posts${query}`).then(data => {
@@ -47,7 +54,7 @@ const DatePostsPage = () => {
   const handleApply = async (postId) => {
     try {
       await api.post(`/date-posts/${postId}/apply`, { message: applyMessage });
-      addToast('Ung tuyen thanh cong!', 'success');
+      addToast('Ứng tuyển thành công!', 'success');
       setApplying(null);
       setApplyMessage('');
       const query = activeTab === 'all' ? '' : `?category=${activeTab}`;
@@ -60,8 +67,8 @@ const DatePostsPage = () => {
 
   const handleCreatePost = async (formData) => {
     try {
-      await api.post('/date-posts', { ...formData, category: activeTab === 'all' ? 'tim_yeu' : activeTab });
-      addToast('Dang keo thanh cong!', 'success');
+      await api.post('/date-posts', { ...formData });
+      addToast('Đăng kèo thành công!', 'success');
       setShowCreateModal(false);
       const query = activeTab === 'all' ? '' : `?category=${activeTab}`;
       const data = await api.get(`/date-posts${query}`);
@@ -97,8 +104,8 @@ const DatePostsPage = () => {
           margin: 0,
           lineHeight: 1.1,
         }}>
-          Tim mot{' '}
-          <span style={{ fontStyle: 'italic', color: '#FFB59E' }}>Buoi Hen</span>
+          Tìm một{' '}
+          <span style={{ fontStyle: 'italic', color: '#FFB59E' }}>Buổi Hẹn</span>
         </h1>
         <p style={{
           fontFamily: 'Inter, var(--font-body)',
@@ -108,7 +115,7 @@ const DatePostsPage = () => {
           maxWidth: '540px',
           lineHeight: 1.6,
         }}>
-          Duyet cac loi moi duoc tuyen chon hoac dang yeu cau hen ho cua rieng ban.
+          Duyệt các lời mời được tuyển chọn hoặc đăng yêu cầu hẹn hò của riêng bạn.
         </p>
       </div>
 
@@ -149,7 +156,7 @@ const DatePostsPage = () => {
                   transition: 'all 0.2s ease',
                 }}
               >
-                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>{cat.icon}</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>{cat.icon}</span>
                 {cat.label}
               </button>
             );
@@ -170,8 +177,8 @@ const DatePostsPage = () => {
             color: '#E6BEB2',
             fontFamily: 'Inter, var(--font-body)',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '48px', marginBottom: '12px', display: 'block', opacity: 0.4 }}>hourglass_empty</span>
-            Dang tai...
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '48px', marginBottom: '12px', display: 'block', opacity: 0.4 }}>hourglass_empty</span>
+            Đang tải...
           </div>
         ) : posts.length === 0 ? (
           <div style={{
@@ -180,16 +187,16 @@ const DatePostsPage = () => {
             backgroundColor: '#1C1B1B',
             borderRadius: '1.5rem',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '64px', color: '#353535', marginBottom: '16px', display: 'block' }}>mail</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '64px', color: '#353535', marginBottom: '16px', display: 'block' }}>mail</span>
             <h3 style={{
               fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
               color: '#FDF9F3',
               fontWeight: 700,
               fontSize: '1.25rem',
               margin: '0 0 8px',
-            }}>Chua co keo nao</h3>
+            }}>Chưa có kèo nào</h3>
             <p style={{ color: '#E6BEB2', fontFamily: 'Inter, var(--font-body)' }}>
-              Hay la nguoi dau tien dang keo!
+              Hãy là người đầu tiên đăng kèo!
             </p>
           </div>
         ) : (
@@ -360,19 +367,19 @@ const DatePostsPage = () => {
                     }}>
                       {post.time && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                          <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>schedule</span>
+                          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>schedule</span>
                           {post.time}
                         </div>
                       )}
                       {post.place && (
                         <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                          <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>location_on</span>
+                          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>location_on</span>
                           {post.place}
                         </div>
                       )}
                       <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>group</span>
-                        {post._count?.applications || 0} ung tuyen
+                        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>group</span>
+                        {post._count?.applications || 0} ứng tuyển
                       </div>
                     </div>
 
@@ -421,15 +428,15 @@ const DatePostsPage = () => {
                           gap: '6px',
                         }}
                       >
-                        <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>settings</span>
-                        Quan ly keo nay
+                        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>settings</span>
+                        Quản lý kèo này
                       </button>
                     ) : applying === post.id ? (
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         <input
                           value={applyMessage}
                           onChange={e => setApplyMessage(e.target.value)}
-                          placeholder="Loi nhan cho nguoi dang (tuy chon)..."
+                          placeholder="Lời nhắn cho người đăng (tùy chọn)..."
                           style={{
                             padding: '12px 16px',
                             borderRadius: '1.5rem',
@@ -457,7 +464,7 @@ const DatePostsPage = () => {
                               cursor: 'pointer',
                             }}
                           >
-                            Huy
+                            Hủy
                           </button>
                           <button
                             onClick={() => handleApply(post.id)}
@@ -474,7 +481,7 @@ const DatePostsPage = () => {
                               cursor: 'pointer',
                             }}
                           >
-                            Gui
+                            Gửi
                           </button>
                         </div>
                       </div>
@@ -501,12 +508,12 @@ const DatePostsPage = () => {
                             transition: 'transform 0.2s ease',
                           }}
                         >
-                          <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>send</span>
-                          Ung Tuyen
+                          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>send</span>
+                          Ứng Tuyển
                         </button>
                         {post.isGroup && (
                           <button
-                            onClick={() => navigate(`/app/dates/${post.id}/group`)}
+                            onClick={() => addToast('Tính năng hẹn nhóm sắp ra mắt!', 'info')}
                             style={{
                               padding: '12px 20px',
                               borderRadius: '9999px',
@@ -522,7 +529,7 @@ const DatePostsPage = () => {
                               gap: '6px',
                             }}
                           >
-                            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>groups</span>
+                            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>groups</span>
                             Tham Gia
                           </button>
                         )}
@@ -538,10 +545,11 @@ const DatePostsPage = () => {
 
       {/* FAB - New Date Request */}
       <button
+        aria-label="Tạo bài đăng mới"
         onClick={() => setShowCreateModal(true)}
         style={{
           position: 'fixed',
-          bottom: '32px',
+          bottom: isMobile ? '80px' : '32px',
           right: '32px',
           width: '60px',
           height: '60px',
@@ -558,7 +566,7 @@ const DatePostsPage = () => {
           transition: 'transform 0.2s ease',
         }}
       >
-        <span className="material-symbols-outlined" style={{ fontSize: '28px' }}>add</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '28px' }}>add</span>
       </button>
 
       {/* Create Post Modal */}
@@ -566,17 +574,18 @@ const DatePostsPage = () => {
         <CreatePostModal
           category={activeTab === 'all' ? 'tim_yeu' : activeTab}
           onClose={() => setShowCreateModal(false)}
-          onSubmit={handleCreatePost}
+          onSubmit={(data) => { handleCreatePost(data); }}
         />
       )}
     </div>
   );
 };
 
-const CreatePostModal = ({ category, onClose, onSubmit }) => {
+const CreatePostModal = ({ category: initialCategory, onClose, onSubmit }) => {
+  const [category, setCategory] = useState(initialCategory || 'tim_yeu');
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [icon, setIcon] = useState('');
+  const [imageUrl, setImageUrl] = useState('');
   const [time, setTime] = useState('');
   const [place, setPlace] = useState('');
   const [price, setPrice] = useState('');
@@ -585,7 +594,7 @@ const CreatePostModal = ({ category, onClose, onSubmit }) => {
     e.preventDefault();
     if (!title) return;
     onSubmit({
-      title, description, icon: icon || 'coffee', time, place,
+      title, description, image: imageUrl || undefined, time, place, category,
       price: category === 'tra_phi' ? parseInt(price) || 0 : undefined,
     });
   };
@@ -646,7 +655,7 @@ const CreatePostModal = ({ category, onClose, onSubmit }) => {
           color: '#FDF9F3',
           margin: '0 0 6px',
         }}>
-          Dang Keo Moi
+          Đăng Kèo Mới
         </h2>
         <p style={{
           margin: '0 0 28px',
@@ -654,41 +663,72 @@ const CreatePostModal = ({ category, onClose, onSubmit }) => {
           fontSize: '0.875rem',
           fontFamily: 'Inter, var(--font-body)',
         }}>
-          {CATEGORIES[category]?.label || 'Tim Yeu'} - {CATEGORIES[category]?.desc || ''}
+          {CATEGORIES[category]?.desc || ''}
         </p>
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+          {/* Category selector */}
           <div>
-            <label style={labelStyle}>Tieu de keo *</label>
-            <input value={title} onChange={e => setTitle(e.target.value)} placeholder="VD: Tim nguoi di xem phim toi nay" style={inputStyle} required />
+            <label style={labelStyle}>Loại kèo *</label>
+            <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+              {Object.entries(CATEGORIES).filter(([k]) => k !== 'all').map(([key, cat]) => (
+                <button
+                  key={key}
+                  type="button"
+                  onClick={() => setCategory(key)}
+                  style={{
+                    padding: '8px 16px',
+                    borderRadius: '9999px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    fontSize: '0.8125rem',
+                    fontWeight: 600,
+                    fontFamily: 'Inter, var(--font-body)',
+                    background: category === key ? '#FF571A' : '#353535',
+                    color: category === key ? '#3A0B00' : '#E6BEB2',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                  }}
+                >
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>{cat.icon}</span>
+                  {cat.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <label style={labelStyle}>Tiêu đề kèo *</label>
+            <input value={title} onChange={e => setTitle(e.target.value)} placeholder="VD: Tìm người đi xem phim tối nay" style={inputStyle} required />
           </div>
           <div>
-            <label style={labelStyle}>Mo ta</label>
+            <label style={labelStyle}>Mô tả</label>
             <textarea
               value={description}
               onChange={e => setDescription(e.target.value)}
-              placeholder="Mo ta chi tiet hon..."
+              placeholder="Mô tả chi tiết hơn..."
               rows={3}
               style={{ ...inputStyle, resize: 'vertical' }}
             />
           </div>
           <div>
-            <label style={labelStyle}>Icon (emoji)</label>
-            <input value={icon} onChange={e => setIcon(e.target.value)} placeholder="VD: coffee, heart, star" style={inputStyle} />
+            <label style={labelStyle}>Ảnh (URL)</label>
+            <input value={imageUrl} onChange={e => setImageUrl(e.target.value)} placeholder="VD: https://..." style={inputStyle} />
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             <div>
-              <label style={labelStyle}>Thoi gian</label>
-              <input value={time} onChange={e => setTime(e.target.value)} placeholder="VD: Toi nay 20:00" style={inputStyle} />
+              <label style={labelStyle}>Thời gian</label>
+              <input value={time} onChange={e => setTime(e.target.value)} placeholder="VD: Tối nay 20:00" style={inputStyle} />
             </div>
             <div>
-              <label style={labelStyle}>Dia diem</label>
+              <label style={labelStyle}>Địa điểm</label>
               <input value={place} onChange={e => setPlace(e.target.value)} placeholder="VD: Cafe 123, Q1" style={inputStyle} />
             </div>
           </div>
           {category === 'tra_phi' && (
             <div>
-              <label style={labelStyle}>Chi phi (VND) *</label>
+              <label style={labelStyle}>Chi phí (VND) *</label>
               <input value={price} onChange={e => setPrice(e.target.value)} type="number" placeholder="VD: 200000" style={inputStyle} />
             </div>
           )}
@@ -710,7 +750,7 @@ const CreatePostModal = ({ category, onClose, onSubmit }) => {
                 cursor: 'pointer',
               }}
             >
-              Huy
+              Hủy
             </button>
             <button
               type="submit"
@@ -728,7 +768,7 @@ const CreatePostModal = ({ category, onClose, onSubmit }) => {
                 boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
               }}
             >
-              Dang Keo
+              Đăng Kèo
             </button>
           </div>
         </form>

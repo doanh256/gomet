@@ -237,12 +237,12 @@ const IceBreakerPage = () => {
   return (
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         Quay lai
       </button>
 
       <div style={s.headerRow}>
-        <span className="material-symbols-outlined" style={s.headerIcon}>ac_unit</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>ac_unit</span>
         <h1 style={s.heading}>Ice Breakers</h1>
       </div>
       <p style={s.subtitle}>Goi y cau mo dau hoan hao</p>
@@ -262,25 +262,25 @@ const IceBreakerPage = () => {
 
       {/* AI Suggestions */}
       <h2 style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={s.sectionIcon}>auto_awesome</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>auto_awesome</span>
         Goi y tu AI
       </h2>
       {suggestions.map((item, i) => (
         <div key={i} style={s.suggestionCard}>
           <div style={s.suggestionTop}>
-            <span className="material-symbols-outlined" style={s.lightbulbIcon}>tips_and_updates</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.lightbulbIcon}>tips_and_updates</span>
             <div style={s.suggestionText}>{item.text}</div>
           </div>
           <div style={s.suggestionBottom}>
             <span style={s.categoryChip(item.categoryColor)}>{item.category}</span>
             {sentIdx === i ? (
               <span style={s.sentBtn}>
-                <span className="material-symbols-outlined" style={{ fontSize: 16 }}>check</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>check</span>
                 Da gui
               </span>
             ) : (
               <button style={s.sendBtn} onClick={() => handleSend(i)}>
-                <span className="material-symbols-outlined" style={{ fontSize: 16 }}>send</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>send</span>
                 Gui ngay
               </button>
             )}
@@ -291,7 +291,7 @@ const IceBreakerPage = () => {
       {/* Custom message */}
       <div style={s.customSection}>
         <h2 style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>edit</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>edit</span>
           Tu viet
         </h2>
         <div style={s.textareaWrap}>
@@ -302,20 +302,20 @@ const IceBreakerPage = () => {
             onChange={(e) => setCustomMsg(e.target.value)}
           />
           <button style={s.sendCustomBtn}>
-            <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#3A0B00' }}>send</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: '#3A0B00' }}>send</span>
           </button>
         </div>
       </div>
 
       {/* Tips */}
       <h2 style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={s.sectionIcon}>lightbulb</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>lightbulb</span>
         Meo nho
       </h2>
       <div style={s.tipsSection}>
         {tips.map((tip, i) => (
           <div key={i} style={s.tipItem}>
-            <span className="material-symbols-outlined" style={s.tipIcon}>info</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.tipIcon}>info</span>
             <span style={s.tipText}>{tip}</span>
           </div>
         ))}

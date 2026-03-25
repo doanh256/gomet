@@ -184,7 +184,7 @@ const MissionCompletePage = () => {
         {/* Badge */}
         <div style={s.badgeSection}>
           <div style={s.badgeCircle}>
-            <span className="material-symbols-outlined" style={s.badgeIconEl}>workspace_premium</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.badgeIconEl}>workspace_premium</span>
           </div>
           <div style={s.badgeName}>Mekong Master</div>
           <div style={s.badgeDesc}>Ban da nhan duoc huy hieu moi!</div>
@@ -193,12 +193,12 @@ const MissionCompletePage = () => {
         {/* Summary */}
         <div style={s.summaryCard}>
           <div style={s.summaryTitle}>
-            <span className="material-symbols-outlined" style={s.summaryIcon}>checklist</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.summaryIcon}>checklist</span>
             The Pho Trinity - 3/3 hoan thanh
           </div>
           {dishes.map((d, i) => (
             <div key={i} style={s.dishItem}>
-              <span className="material-symbols-outlined" style={s.dishCheck}>check_circle</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.dishCheck}>check_circle</span>
               <div style={s.dishInfo}>
                 <div style={s.dishName}>{d.name}</div>
                 <div style={s.dishRestaurant}>{d.restaurant}</div>
@@ -222,11 +222,11 @@ const MissionCompletePage = () => {
         {/* Buttons */}
         <div style={s.btnRow}>
           <button style={s.shareCta}>
-            <span className="material-symbols-outlined" style={{ fontSize: 18 }}>share</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>share</span>
             Chia se
           </button>
           <button style={s.nextCta} onClick={() => navigate('/app/quests')}>
-            <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_forward</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_forward</span>
             Nhiem vu tiep
           </button>
         </div>

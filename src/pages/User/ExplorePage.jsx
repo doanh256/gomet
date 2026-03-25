@@ -10,11 +10,11 @@ const regions = [
 ];
 
 const bentoItems = [
-  { id: 1, title: 'Pho', subtitle: 'Soul of Hanoi', gradient: 'linear-gradient(135deg, #FFB59E, #FF571A)', emoji: '🍜', span: 2 },
-  { id: 2, title: 'Banh Mi', subtitle: 'Street Legend', gradient: 'linear-gradient(135deg, #FFD54F, #FF8F00)', emoji: '🥖', span: 1 },
-  { id: 3, title: 'Ca Phe', subtitle: 'Drip Culture', gradient: 'linear-gradient(135deg, #8D6E63, #4E342E)', emoji: '☕', span: 1 },
-  { id: 4, title: 'Bun Bo Hue', subtitle: 'Spice Capital', gradient: 'linear-gradient(135deg, #EF5350, #B71C1C)', emoji: '🌶️', span: 1 },
-  { id: 5, title: 'Com Tam', subtitle: 'Broken Rice', gradient: 'linear-gradient(135deg, #FFA726, #E65100)', emoji: '🍚', span: 1 },
+  { id: 1, title: 'Phở', subtitle: 'Linh hồn Hà Nội', gradient: 'linear-gradient(135deg, #FFB59E, #FF571A)', emoji: '🍜', span: 2 },
+  { id: 2, title: 'Bánh Mì', subtitle: 'Huyền thoại vỉa hè', gradient: 'linear-gradient(135deg, #FFD54F, #FF8F00)', emoji: '🥖', span: 1 },
+  { id: 3, title: 'Cà Phê', subtitle: 'Văn hoá nhỏ giọt', gradient: 'linear-gradient(135deg, #8D6E63, #4E342E)', emoji: '☕', span: 1 },
+  { id: 4, title: 'Bún Bò Huế', subtitle: 'Thủ phủ gia vị', gradient: 'linear-gradient(135deg, #EF5350, #B71C1C)', emoji: '🌶️', span: 1 },
+  { id: 5, title: 'Cơm Tấm', subtitle: 'Gạo tấm huyền thoại', gradient: 'linear-gradient(135deg, #FFA726, #E65100)', emoji: '🍚', span: 1 },
 ];
 
 const trendingItems = [
@@ -43,7 +43,7 @@ const ExplorePage = () => {
             fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 14, fontWeight: 700,
             color: '#666460', textTransform: 'uppercase', letterSpacing: '0.1em',
             margin: '0 0 24px',
-          }}>Explore Regions</h2>
+          }}>Khám phá Vùng miền</h2>
 
           {regions.map(region => (
             <button key={region.id} onClick={() => setActiveRegion(region.id)} style={{
@@ -56,7 +56,7 @@ const ExplorePage = () => {
               cursor: 'pointer', marginBottom: 4, width: '100%', textAlign: 'left',
               transition: 'all 0.15s ease',
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20 }}>{region.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>{region.icon}</span>
               {region.label}
             </button>
           ))}
@@ -78,15 +78,15 @@ const ExplorePage = () => {
             <h3 style={{
               fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 15, fontWeight: 700,
               color: '#393834', margin: '0 0 4px',
-            }}>Chef Spotlight</h3>
+            }}>Tiêu điểm Đầu bếp</h3>
             <p style={{ fontSize: 12, color: '#666460', margin: '0 0 12px', lineHeight: 1.5 }}>
-              Chef Nguyen Van Toan: Reinventing Pho for the modern palate
+              Chef Nguyễn Văn Toàn: Tái định nghĩa Phở cho khẩu vị hiện đại
             </p>
             <button style={{
               padding: '8px 16px', borderRadius: 9999, border: 'none',
               backgroundColor: 'rgba(255,87,26,0.1)', color: '#FF571A',
               fontSize: 12, fontWeight: 700, cursor: 'pointer',
-            }}>Read Story</button>
+            }}>Đọc thêm</button>
           </div>
         </div>
 
@@ -141,7 +141,7 @@ const ExplorePage = () => {
           <h2 style={{
             fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 24, fontWeight: 800,
             color: '#393834', margin: '0 0 20px',
-          }}>Vietnam's Heartbeat</h2>
+          }}>Nhịp đập Việt Nam</h2>
 
           <div style={{
             display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
@@ -181,7 +181,7 @@ const ExplorePage = () => {
           <h2 style={{
             fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 24, fontWeight: 800,
             color: '#393834', margin: '0 0 20px',
-          }}>Trending Today</h2>
+          }}>Xu hướng hôm nay</h2>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             {trendingItems.map(item => (
@@ -199,7 +199,7 @@ const ExplorePage = () => {
                   background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                 }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 28, color: '#FDF9F3' }}>article</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 28, color: '#FDF9F3' }}>article</span>
                 </div>
                 <div style={{ flex: 1 }}>
                   <h3 style={{

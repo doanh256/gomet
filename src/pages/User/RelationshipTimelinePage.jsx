@@ -148,7 +148,7 @@ const RelationshipTimelinePage = () => {
       <style>{timelineKeyframes}</style>
 
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         Quay lai
       </button>
 
@@ -156,14 +156,14 @@ const RelationshipTimelinePage = () => {
       <div style={s.avatarRow}>
         <div style={s.avatarWrap}>
           <div style={s.avatar}>
-            <span className="material-symbols-outlined" style={s.avatarIcon}>person</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.avatarIcon}>person</span>
           </div>
           <div style={s.avatarName}>Minh Anh</div>
         </div>
-        <span className="material-symbols-outlined" style={s.heartIcon}>favorite</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.heartIcon}>favorite</span>
         <div style={s.avatarWrap}>
           <div style={s.avatar}>
-            <span className="material-symbols-outlined" style={s.avatarIcon}>person</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.avatarIcon}>person</span>
           </div>
           <div style={s.avatarName}>Thanh Tung</div>
         </div>
@@ -171,7 +171,7 @@ const RelationshipTimelinePage = () => {
 
       {/* Chemistry Badge */}
       <div style={s.chemBadge}>
-        <span className="material-symbols-outlined" style={s.chemIcon}>science</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.chemIcon}>science</span>
         <div>
           <div style={s.chemTitle}>Culinary Alchemist</div>
           <div style={s.chemLabel}>Hoa hoc am thuc</div>
@@ -181,7 +181,7 @@ const RelationshipTimelinePage = () => {
 
       {/* Timeline */}
       <div style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={s.sectionIcon}>timeline</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>timeline</span>
         Hanh trinh cung nhau
       </div>
       <div style={s.timeline}>
@@ -193,19 +193,19 @@ const RelationshipTimelinePage = () => {
             <div style={s.msCard}>
               {/* Food photo placeholder */}
               <div style={{ width: '100%', height: 100, borderRadius: '0.75rem', background: 'linear-gradient(135deg, rgba(255,87,26,0.2), rgba(255,181,158,0.1))', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 36, color: '#FFB59E', opacity: 0.5 }}>lunch_dining</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 36, color: '#FFB59E', opacity: 0.5 }}>lunch_dining</span>
               </div>
               <div style={s.msRestaurant}>{ms.restaurant}</div>
               <div style={s.msDish}>{ms.dish}</div>
               <div style={s.msNote}>{ms.note}</div>
               <div style={s.msFooter}>
                 <div style={s.msVang}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
                   +{ms.vang} Vang
                 </div>
                 {ms.badge && (
                   <div style={s.msBadge(ms.badgeColor)}>
-                    <span className="material-symbols-outlined" style={{ fontSize: 14 }}>{ms.badgeIcon}</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>{ms.badgeIcon}</span>
                     {ms.badge}
                   </div>
                 )}
@@ -217,7 +217,7 @@ const RelationshipTimelinePage = () => {
 
       {/* Share CTA */}
       <button style={s.shareCta}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
         Chia se hanh trinh
       </button>
     </div>

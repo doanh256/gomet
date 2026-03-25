@@ -72,9 +72,9 @@ const RefundStatusPage = () => {
       <style>{pulseKeyframes}</style>
       <div style={s.header}>
         <button style={s.backBtn} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined">arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
-        <span className="material-symbols-outlined" style={s.headerIcon}>account_balance_wallet</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>account_balance_wallet</span>
         <h1 style={s.headerTitle}>Trang thai hoan tien</h1>
       </div>
 
@@ -88,7 +88,7 @@ const RefundStatusPage = () => {
         {steps.map((step, i) => (
           <div key={i} style={{ ...s.timelineStep, ...(i === steps.length - 1 ? s.timelineStepLast : {}) }}>
             {i < steps.length - 1 && <div style={s.timelineLine} />}
-            <span className="material-symbols-outlined" style={s.stepIcon(step.color, step.status === 'current')}>{step.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.stepIcon(step.color, step.status === 'current')}>{step.icon}</span>
             <div style={s.stepContent}>
               <div style={s.stepLabel(step.status !== 'pending')}>{step.label}</div>
               {step.detail && <div style={s.stepDetail}>{step.detail}</div>}
@@ -99,7 +99,7 @@ const RefundStatusPage = () => {
 
       <div style={s.card}>
         <div style={s.cardTitle}>
-          <span className="material-symbols-outlined" style={s.cardTitleIcon}>receipt_long</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.cardTitleIcon}>receipt_long</span>
           Chi tiet giao dich
         </div>
         {[
@@ -116,7 +116,7 @@ const RefundStatusPage = () => {
       </div>
 
       <div style={s.supportCard}>
-        <span className="material-symbols-outlined" style={s.supportIcon}>support_agent</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.supportIcon}>support_agent</span>
         <div style={s.supportText}>
           <div style={s.supportTitle}>Can tro giup?</div>
           <div style={s.supportSub}>Lien he ho tro 24/7</div>
@@ -126,14 +126,14 @@ const RefundStatusPage = () => {
 
       <div style={s.card}>
         <div style={s.cardTitle}>
-          <span className="material-symbols-outlined" style={s.cardTitleIcon}>help</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.cardTitleIcon}>help</span>
           Cau hoi thuong gap
         </div>
         {faqs.map((faq, i) => (
           <div key={i} style={{ ...s.faqItem, ...(i === faqs.length - 1 ? s.faqItemLast : {}) }}>
             <button style={s.faqQ} onClick={() => setExpandedFaq(expandedFaq === i ? null : i)}>
               <span style={s.faqQText}>{faq.q}</span>
-              <span className="material-symbols-outlined" style={{ ...s.faqIcon, transform: expandedFaq === i ? 'rotate(180deg)' : 'rotate(0deg)' }}>expand_more</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ ...s.faqIcon, transform: expandedFaq === i ? 'rotate(180deg)' : 'rotate(0deg)' }}>expand_more</span>
             </button>
             {expandedFaq === i && <div style={s.faqA}>{faq.a}</div>}
           </div>

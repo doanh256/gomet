@@ -151,9 +151,9 @@ const RegionDetailPage = () => {
       {/* Hero */}
       <div style={s.hero}>
         <button style={s.backBtnFloat} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined">arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
-        <span className="material-symbols-outlined" style={s.heroIcon}>landscape</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>landscape</span>
         <div style={s.heroTitle}>Tay Bac</div>
         <div style={s.heroSub}>Vung dat am thuc nguyen so</div>
         <div style={s.heroOverlay} />
@@ -171,14 +171,14 @@ const RegionDetailPage = () => {
 
         {/* Tribal Hearts - Signature Dishes */}
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>local_dining</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>local_dining</span>
           Tribal Hearts
         </div>
         <div style={s.dishList}>
           {signatureDishes.map(d => (
             <div key={d.id} style={s.dishItem(d.tried)}>
               <div style={s.dishIconWrap(d.color, d.tried)}>
-                <span className="material-symbols-outlined" style={s.dishIconEl(d.color, d.tried)}>
+                <span aria-hidden="true" className="material-symbols-outlined" style={s.dishIconEl(d.color, d.tried)}>
                   restaurant
                 </span>
               </div>
@@ -186,7 +186,7 @@ const RegionDetailPage = () => {
                 <div style={s.dishName}>{d.name}</div>
                 <div style={s.dishVang}>+{d.vang} Vang</div>
               </div>
-              <span className="material-symbols-outlined" style={s.dishCheck(d.tried)}>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.dishCheck(d.tried)}>
                 {d.tried ? 'check_circle' : 'radio_button_unchecked'}
               </span>
             </div>
@@ -195,14 +195,14 @@ const RegionDetailPage = () => {
 
         {/* Signature Cuisines - dish photos */}
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>photo_library</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>photo_library</span>
           Signature Cuisines
         </div>
         <div style={{ display: 'flex', gap: 12, overflowX: 'auto', paddingBottom: 8, marginBottom: 28, scrollbarWidth: 'none' }}>
           {signatureDishes.filter(d => d.tried).map(d => (
             <div key={d.id} style={{ flexShrink: 0, width: 140 }}>
               <div style={{ width: 140, height: 100, borderRadius: '1rem', background: `linear-gradient(135deg, ${d.color}40, ${d.color}20)`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 8 }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 36, color: d.color, opacity: 0.6 }}>lunch_dining</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 36, color: d.color, opacity: 0.6 }}>lunch_dining</span>
               </div>
               <div style={{ fontFamily: 'var(--font-headline)', fontSize: 13, fontWeight: 700, color: '#393834' }}>{d.name}</div>
               <div style={{ fontSize: 11, color: '#b83500', fontWeight: 600 }}>+{d.vang} Vang</div>
@@ -212,13 +212,13 @@ const RegionDetailPage = () => {
 
         {/* Book a Chef's Table */}
         <button style={s.chefCta}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>table_restaurant</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>table_restaurant</span>
           Book a Chef's Table
         </button>
 
         {/* Local Stories */}
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>auto_stories</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>auto_stories</span>
           Cau chuyen dia phuong
         </div>
         {localStories.map(story => (
@@ -233,12 +233,12 @@ const RegionDetailPage = () => {
 
         {/* Map Section */}
         <div style={{ ...s.sectionTitle, marginTop: 28 }}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>map</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>map</span>
           Nha hang trong vung
         </div>
         <div style={s.mapSection}>
           <div style={s.mapPlaceholder}>
-            <span className="material-symbols-outlined" style={s.mapIcon}>map</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.mapIcon}>map</span>
           </div>
           <div style={s.restList}>
             {localRestaurants.map(r => (
@@ -248,7 +248,7 @@ const RegionDetailPage = () => {
                   <div style={s.restAddr}>{r.addr}</div>
                 </div>
                 <div style={s.restRating}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>star</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>star</span>
                   {r.rating}
                 </div>
               </div>

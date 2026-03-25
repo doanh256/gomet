@@ -55,13 +55,13 @@ const MemoriesPage = () => {
           background: 'none', border: 'none', color: '#FFB59E', cursor: 'pointer',
           padding: 0, marginBottom: 24, display: 'flex', alignItems: 'center', gap: 6,
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
           <span style={{ fontSize: 14, fontWeight: 600 }}>Back</span>
         </button>
 
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: 32 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 48, color: '#FFB59E', marginBottom: 8, display: 'block' }}>auto_awesome</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 48, color: '#FFB59E', marginBottom: 8, display: 'block' }}>auto_awesome</span>
           <h1 style={{
             fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 28, fontWeight: 800,
             color: '#FDF9F3', margin: '0 0 8px',
@@ -81,7 +81,7 @@ const MemoriesPage = () => {
             height: 220, background: featuredMemory.gradient, position: 'relative',
             display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 80, color: 'rgba(255,255,255,0.15)' }}>restaurant</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 80, color: 'rgba(255,255,255,0.15)' }}>restaurant</span>
             {/* Bottom gradient overlay */}
             <div style={{
               position: 'absolute', bottom: 0, left: 0, right: 0, height: '60%',
@@ -93,7 +93,7 @@ const MemoriesPage = () => {
               borderRadius: 9999, background: 'rgba(57,57,57,0.6)', backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)', display: 'flex', alignItems: 'center', gap: 6,
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#FFD54F' }}>emoji_events</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, color: '#FFD54F' }}>emoji_events</span>
               <span style={{ fontSize: 12, fontWeight: 700, color: '#FFD54F' }}>{featuredMemory.milestone}</span>
             </div>
             {/* Partner info overlay */}
@@ -121,7 +121,7 @@ const MemoriesPage = () => {
           <div style={{ padding: '20px 24px' }}>
             {/* Restaurant & Date */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#E6BEB2' }}>location_on</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#E6BEB2' }}>location_on</span>
               <span style={{ fontSize: 14, color: '#FDF9F3', fontWeight: 600 }}>{featuredMemory.restaurant}</span>
               <span style={{ fontSize: 13, color: '#E6BEB2' }}>&middot; {featuredMemory.date}</span>
             </div>
@@ -157,12 +157,12 @@ const MemoriesPage = () => {
               backgroundColor: 'rgba(255,213,79,0.1)', marginBottom: 16,
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFD54F' }}>toll</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFD54F' }}>toll</span>
                 <span style={{ fontSize: 14, fontWeight: 700, color: '#FFD54F' }}>
                   +{featuredMemory.vangEarned} Vang earned
                 </span>
               </div>
-              <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#E6BEB2' }}>chevron_right</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#E6BEB2' }}>chevron_right</span>
             </div>
 
             {/* Share button */}
@@ -173,7 +173,7 @@ const MemoriesPage = () => {
               fontSize: 15, fontWeight: 700, cursor: 'pointer',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
               Share to Journey
             </button>
           </div>

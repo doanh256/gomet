@@ -35,11 +35,11 @@ const NotFound = () => {
   };
 
   const bentoCards = [
-    { icon: 'favorite', title: 'Find a Date', desc: 'Kham pha nhung ket noi moi me va thu vi danh cho ban.', colSpan: 2, bg: '#1C1B1B' },
-    { icon: 'restaurant', title: 'Explore Venues', desc: 'Tim dia diem hen ho tuyet voi.', colSpan: 1, bg: '#1C1B1B' },
-    { icon: 'auto_awesome', title: 'Taste Insights', desc: 'Phan tich so thich cua ban.', colSpan: 1, bg: '#1C1B1B' },
-    { icon: 'calendar_today', title: 'Planner', desc: 'Len lich hen hoan hao.', colSpan: 2, bg: '#353535', centered: true },
-    { icon: 'chat', title: 'Personal Concierge', desc: 'Tro ly hen ho ca nhan, san sang giup ban bat cu luc nao.', colSpan: 3, bg: '#2A2A2A', hasChat: true },
+    { icon: 'favorite', title: 'Tìm Hẹn Hò', desc: 'Khám phá những kết nối mới mẻ và thú vị dành cho bạn.', colSpan: 2, bg: '#1C1B1B' },
+    { icon: 'restaurant', title: 'Khám Phá Địa Điểm', desc: 'Tìm địa điểm hẹn hò tuyệt vời.', colSpan: 1, bg: '#1C1B1B' },
+    { icon: 'auto_awesome', title: 'Hồ Sơ Ẩm Thực', desc: 'Phân tích sở thích của bạn.', colSpan: 1, bg: '#1C1B1B' },
+    { icon: 'calendar_today', title: 'Lên Kế Hoạch', desc: 'Lên lịch hẹn hoàn hảo.', colSpan: 2, bg: '#353535', centered: true },
+    { icon: 'chat', title: 'Trợ Lý Cá Nhân', desc: 'Trợ lý hẹn hò cá nhân, sẵn sàng giúp bạn bất cứ lúc nào.', colSpan: 3, bg: '#2A2A2A', hasChat: true },
   ];
 
   return (
@@ -47,28 +47,28 @@ const NotFound = () => {
       <div style={styles.container}>
         <div style={styles.heroRow}>
           <div style={styles.heroLeft}>
-            <div style={styles.pill}><span className="material-symbols-outlined" style={{ fontSize: '16px' }}>error</span>Error 404</div>
-            <h1 style={styles.heading}>Oi! Ban da{' '}<span style={styles.headingAccent}>lac duong</span>{' '}roi.</h1>
-            <p style={styles.description}>Trang ban dang tim khong ton tai hoac da bi di chuyen. Dung lo, chung toi se giup ban tim duong ve nha.</p>
+            <div style={styles.pill}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>error</span>Error 404</div>
+            <h1 style={styles.heading}>Ôi! Bạn đã{' '}<span style={styles.headingAccent}>lạc đường</span>{' '}rồi.</h1>
+            <p style={styles.description}>Trang bạn đang tìm không tồn tại hoặc đã bị di chuyển. Đừng lo, chúng tôi sẽ giúp bạn tìm đường về nhà.</p>
             <div style={styles.buttonRow}>
-              <button style={styles.btnPrimary} onClick={() => navigate('/')} onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }} onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}><span className="material-symbols-outlined" style={{ fontSize: '20px' }}>home</span>Quay ve Trang chu</button>
-              <button style={styles.btnSecondary} onClick={() => navigate('/faq')} onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }} onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}><span className="material-symbols-outlined" style={{ fontSize: '20px' }}>support_agent</span>Lien he Ho tro</button>
+              <button style={styles.btnPrimary} onClick={() => navigate('/')} onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }} onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>home</span>Quay về Trang chủ</button>
+              <button style={styles.btnSecondary} onClick={() => navigate('/faq')} onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }} onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>support_agent</span>Liên hệ Hỗ trợ</button>
             </div>
           </div>
           <div style={styles.heroRight} className="not-found-deco">
             <div style={{ ...styles.decoBase, ...styles.decoShape2 }} />
             <div style={{ ...styles.decoBase, ...styles.decoShape1 }} />
-            <div style={{ ...styles.decoBase, ...styles.decoShape3 }}><span className="material-symbols-outlined" style={styles.decoIcon}>explore_off</span></div>
+            <div style={{ ...styles.decoBase, ...styles.decoShape3 }}><span aria-hidden="true" className="material-symbols-outlined" style={styles.decoIcon}>explore_off</span></div>
           </div>
         </div>
-        <h2 style={styles.sectionTitle}>Popular Destinations</h2>
+        <h2 style={styles.sectionTitle}>Điểm Đến Phổ Biến</h2>
         <div style={styles.bentoGrid}>
           {bentoCards.map((card, i) => (
             <div key={i} style={{ ...styles.bentoCard, gridColumn: `span ${card.colSpan}`, background: card.bg, alignItems: card.centered ? 'center' : undefined, textAlign: card.centered ? 'center' : undefined }} onClick={() => navigate('/')} onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; }} onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}>
-              <div style={{ ...styles.bentoCardIcon, background: card.bg === '#2A2A2A' ? 'rgba(255,255,255,0.08)' : '#2A2A2A', color: card.bg === '#2A2A2A' ? '#FDF9F3' : '#FFB59E' }}><span className="material-symbols-outlined">{card.icon}</span></div>
+              <div style={{ ...styles.bentoCardIcon, background: card.bg === '#2A2A2A' ? 'rgba(255,255,255,0.08)' : '#2A2A2A', color: card.bg === '#2A2A2A' ? '#FDF9F3' : '#FFB59E' }}><span aria-hidden="true" className="material-symbols-outlined">{card.icon}</span></div>
               <div style={{ ...styles.bentoCardTitle, color: '#FDF9F3' }}>{card.title}</div>
               <div style={{ ...styles.bentoCardDesc }}>{card.desc}</div>
-              {card.hasChat && (<button style={{ marginTop: '8px', display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(255,255,255,0.08)', color: '#FDF9F3', border: 'none', borderRadius: '9999px', padding: '10px 20px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', fontFamily: 'var(--font-headline)' }}><span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chat</span>Chat voi Concierge</button>)}
+              {card.hasChat && (<button style={{ marginTop: '8px', display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(255,255,255,0.08)', color: '#FDF9F3', border: 'none', borderRadius: '9999px', padding: '10px 20px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', fontFamily: 'var(--font-headline)' }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>chat</span>Chat với Concierge</button>)}
             </div>
           ))}
         </div>

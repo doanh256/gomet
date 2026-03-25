@@ -62,8 +62,8 @@ const DisputeResolutionPage = () => {
 
   return (
     <div style={s.page}>
-      <button style={s.backBtn} onClick={() => navigate(-1)}><span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>Quay lai</button>
-      <div style={s.header}><span className="material-symbols-outlined" style={s.headerIcon}>gavel</span><h1 style={s.heading}>Giai quyet khieu nai</h1></div>
+      <button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>Quay lai</button>
+      <div style={s.header}><span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>gavel</span><h1 style={s.heading}>Giai quyet khieu nai</h1></div>
       <h2 style={s.sectionTitle}>Tao khieu nai moi</h2>
       <div style={s.formCard}>
         <label style={s.label}>Chon giao dich</label>
@@ -74,7 +74,7 @@ const DisputeResolutionPage = () => {
         <textarea style={s.textarea} placeholder="Mo ta van de cua ban..." value={description} onChange={(e) => setDescription(e.target.value.slice(0, 1000))} />
         <div style={s.charCount}>{description.length}/1000</div>
         <label style={s.label}>Tai bang chung</label>
-        <div style={s.uploadArea}><span className="material-symbols-outlined" style={s.uploadIcon}>add_photo_alternate</span><span style={s.uploadText}>Nhan de tai anh hoac video</span></div>
+        <div style={s.uploadArea}><span aria-hidden="true" className="material-symbols-outlined" style={s.uploadIcon}>add_photo_alternate</span><span style={s.uploadText}>Nhan de tai anh hoac video</span></div>
         <button style={s.submitBtn}>Gui khieu nai</button>
       </div>
       <h2 style={s.sectionTitle}>Khieu nai cua ban</h2>
@@ -90,7 +90,7 @@ const DisputeResolutionPage = () => {
       ))}
       <div style={{ marginTop: 14 }}>
         <h2 style={{ ...s.sectionTitle, marginBottom: 12 }}>Chinh sach hoan tien</h2>
-        <div style={s.infoCard}><span className="material-symbols-outlined" style={s.infoIcon}>info</span><div style={s.infoText}>GOMET cam ket xu ly khieu nai trong vong 48 gio. Hoan tien se duoc chuyen ve vi GOMET trong 3-5 ngay lam viec sau khi duoc phe duyet. Vui long cung cap day du bang chung de duoc xu ly nhanh nhat.</div></div>
+        <div style={s.infoCard}><span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>info</span><div style={s.infoText}>GOMET cam ket xu ly khieu nai trong vong 48 gio. Hoan tien se duoc chuyen ve vi GOMET trong 3-5 ngay lam viec sau khi duoc phe duyet. Vui long cung cap day du bang chung de duoc xu ly nhanh nhat.</div></div>
       </div>
     </div>
   );

@@ -15,22 +15,22 @@ const UserLayout = () => {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  const userName = currentUser?.name || currentUser?.displayName || 'Nguoi dung';
+  const userName = currentUser?.name || currentUser?.displayName || 'Người dùng';
   const userAvatar = currentUser?.avatar || currentUser?.photoURL || null;
   const avatarLetter = userName.charAt(0).toUpperCase();
 
   const sidebarNav = [
-    { label: 'Dashboard', icon: 'home', path: '/app' },
-    { label: 'Hotspots', icon: 'explore', path: '/app/hotspots' },
-    { label: "Chef's Table", icon: 'restaurant', path: '/app/chefs-table' },
-    { label: 'My Vang', icon: 'toll', path: '/app/my-vang' },
-    { label: 'Cai dat', icon: 'settings', path: '/app/settings' },
+    { label: 'Trang chủ', icon: 'home', path: '/app' },
+    { label: 'Khám phá', icon: 'explore', path: '/app/map-explore' },
+    { label: 'Ẩm thực', icon: 'restaurant', path: '/app/explore' },
+    { label: 'Ví Vàng', icon: 'toll', path: '/app/wallet' },
+    { label: 'Cài đặt', icon: 'settings', path: '/app/settings' },
   ];
 
   const mobileNav = [
     { label: 'GO', icon: 'home', path: '/app' },
-    { label: 'QUIZ', icon: 'quiz', path: '/app/quiz' },
-    { label: 'MEET', icon: 'groups', path: '/app/meet' },
+    { label: 'QUIZ', icon: 'quiz', path: '/app/food-preferences' },
+    { label: 'MEET', icon: 'groups', path: '/app/dates' },
     { label: 'CHAT', icon: 'chat', path: '/app/chat' },
     { label: 'ME', icon: 'person', path: '/app/profile' },
   ];
@@ -90,8 +90,8 @@ const UserLayout = () => {
             fontWeight: 700, color: '#FFB59E', fontFamily: "'Inter', sans-serif",
             textTransform: 'uppercase', letterSpacing: '0.08em',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>stars</span>
-            Vang
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '13px' }}>stars</span>
+            Vàng
           </div>
         </div>
       </div>
@@ -101,31 +101,33 @@ const UserLayout = () => {
         {sidebarNav.map((item) => {
           const active = isActive(item.path);
           return (
-            <div
+            <button
               key={item.path}
               onClick={() => navigate(item.path)}
+              aria-current={active ? 'page' : undefined}
               style={{
                 display: 'flex', alignItems: 'center', gap: '14px',
                 padding: '14px 16px', borderRadius: '1rem', cursor: 'pointer',
                 backgroundColor: active ? '#FF571A' : 'transparent',
                 color: active ? '#FFFFFF' : '#E6BEB2',
-                transition: 'all 0.2s ease',
+                transition: 'all 0.2s ease', border: 'none', width: '100%',
+                fontFamily: 'inherit',
                 boxShadow: active ? '0px 8px 24px rgba(255,87,26,0.35)' : 'none',
               }}
             >
-              <span className="material-symbols-outlined" style={{ fontSize: '22px' }}>{item.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px' }}>{item.icon}</span>
               <span style={{
                 fontFamily: "'Inter', sans-serif", fontSize: '14px',
                 fontWeight: active ? 700 : 500,
               }}>{item.label}</span>
-            </div>
+            </button>
           );
         })}
       </nav>
 
       {/* New Challenge button */}
       <button
-        onClick={() => navigate('/app/challenges')}
+        onClick={() => navigate('/app/quests')}
         style={{
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
           width: '100%', padding: '16px 0', borderRadius: '9999px', border: 'none',
@@ -138,8 +140,8 @@ const UserLayout = () => {
         onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
         onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
       >
-        <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>bolt</span>
-        Thach thuc moi
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>bolt</span>
+        Thử thách mới
       </button>
     </aside>
   );
@@ -161,9 +163,9 @@ const UserLayout = () => {
         backgroundColor: '#2A2A2A', borderRadius: '9999px',
         display: 'flex', alignItems: 'center', padding: '0 20px', gap: '10px',
       }}>
-        <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>search</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>search</span>
         <input
-          type="text" placeholder="Tim kiem..."
+          type="text" placeholder="Tìm kiếm..."
           style={{
             flex: 1, background: 'none', border: 'none', outline: 'none',
             color: '#FDF9F3', fontSize: '14px', fontFamily: "'Inter', sans-serif",
@@ -173,22 +175,25 @@ const UserLayout = () => {
 
       {/* Right actions */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-        <div style={{
-          width: '44px', height: '44px', borderRadius: '50%',
-          backgroundColor: '#2A2A2A', display: 'flex',
-          alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
-          position: 'relative',
-        }}>
-          <span className="material-symbols-outlined" style={{ fontSize: '22px', color: '#E6BEB2' }}>notifications</span>
+        <button
+          aria-label="Thông báo"
+          onClick={() => navigate('/app/notifications')}
+          style={{
+            width: '44px', height: '44px', borderRadius: '50%',
+            backgroundColor: '#2A2A2A', display: 'flex',
+            alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+            position: 'relative', border: 'none',
+          }}>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px', color: '#E6BEB2' }}>notifications</span>
           <div style={{
             position: 'absolute', top: '10px', right: '10px',
             width: '8px', height: '8px', borderRadius: '50%',
             backgroundColor: '#FF571A',
           }} />
-        </div>
-        <div style={{ cursor: 'pointer' }} onClick={() => navigate('/app/profile')}>
+        </button>
+        <button aria-label="Hồ sơ cá nhân" style={{ cursor: 'pointer', background: 'none', border: 'none', padding: 0 }} onClick={() => navigate('/app/profile')}>
           {renderAvatar(40, '15px')}
-        </div>
+        </button>
       </div>
     </header>
   );
@@ -205,16 +210,19 @@ const UserLayout = () => {
       padding: '0 16px', zIndex: 50,
     }}>
       {/* Hamburger */}
-      <div
+      <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
+        aria-label={sidebarOpen ? 'Đóng menu' : 'Mở menu'}
+        aria-expanded={sidebarOpen}
         style={{
           width: '40px', height: '40px', borderRadius: '50%',
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           cursor: 'pointer', backgroundColor: '#2A2A2A',
+          border: 'none',
         }}
       >
-        <span className="material-symbols-outlined" style={{ fontSize: '24px', color: '#FDF9F3' }}>menu</span>
-      </div>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '24px', color: '#FDF9F3' }}>menu</span>
+      </button>
 
       {/* Brand */}
       <div style={{
@@ -226,14 +234,14 @@ const UserLayout = () => {
       </div>
 
       {/* Avatar with online dot */}
-      <div style={{ position: 'relative', cursor: 'pointer' }} onClick={() => navigate('/app/profile')}>
+      <button aria-label="Hồ sơ cá nhân" style={{ position: 'relative', cursor: 'pointer', background: 'none', border: 'none', padding: 0 }} onClick={() => navigate('/app/profile')}>
         {renderAvatar(36, '14px')}
         <div style={{
           position: 'absolute', bottom: '0px', right: '0px',
           width: '10px', height: '10px', borderRadius: '50%',
           backgroundColor: '#4CAF50', border: '2px solid #131313',
         }} />
-      </div>
+      </button>
     </header>
   );
 
@@ -250,9 +258,11 @@ const UserLayout = () => {
       {mobileNav.map((item) => {
         const active = isActive(item.path);
         return (
-          <div
+          <button
             key={item.path}
             onClick={() => navigate(item.path)}
+            aria-current={active ? 'page' : undefined}
+            aria-label={item.label}
             style={{
               display: 'flex', flexDirection: 'column', alignItems: 'center',
               justifyContent: 'center', gap: '2px', padding: '8px 14px',
@@ -261,17 +271,17 @@ const UserLayout = () => {
               color: active ? '#3A0B00' : '#E6BEB2',
               transform: active ? 'scale(1.1)' : 'scale(1)',
               transition: 'all 0.25s ease',
-              cursor: 'pointer',
+              cursor: 'pointer', border: 'none',
               boxShadow: active ? '0px 8px 20px rgba(255,87,26,0.3)' : 'none',
             }}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>{item.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '24px' }}>{item.icon}</span>
             <span style={{
               fontSize: '10px', fontWeight: 700,
               fontFamily: "'Inter', sans-serif",
               letterSpacing: '0.06em',
             }}>{item.label}</span>
-          </div>
+          </button>
         );
       })}
     </nav>
@@ -309,16 +319,18 @@ const UserLayout = () => {
               fontWeight: 900, fontStyle: 'italic', color: '#FF4D00',
               letterSpacing: '-0.04em',
             }}>GOMET</div>
-            <div
+            <button
               onClick={() => setSidebarOpen(false)}
+              aria-label="Đóng menu"
               style={{
                 width: '36px', height: '36px', borderRadius: '50%',
                 backgroundColor: '#2A2A2A', display: 'flex',
                 alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
+                border: 'none',
               }}
             >
-              <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FDF9F3' }}>close</span>
-            </div>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FDF9F3' }}>close</span>
+            </button>
           </div>
 
           {/* Profile */}
@@ -339,8 +351,8 @@ const UserLayout = () => {
                 fontWeight: 700, color: '#FFB59E', fontFamily: "'Inter', sans-serif",
                 textTransform: 'uppercase', letterSpacing: '0.08em',
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '13px' }}>stars</span>
-                Vang
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '13px' }}>stars</span>
+                Vàng
               </div>
             </div>
           </div>
@@ -361,7 +373,7 @@ const UserLayout = () => {
                     boxShadow: active ? '0px 8px 24px rgba(255,87,26,0.35)' : 'none',
                   }}
                 >
-                  <span className="material-symbols-outlined" style={{ fontSize: '22px' }}>{item.icon}</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px' }}>{item.icon}</span>
                   <span style={{
                     fontFamily: "'Inter', sans-serif", fontSize: '14px',
                     fontWeight: active ? 700 : 500,
@@ -373,7 +385,7 @@ const UserLayout = () => {
 
           {/* Challenge button */}
           <button
-            onClick={() => { navigate('/app/challenges'); setSidebarOpen(false); }}
+            onClick={() => { navigate('/app/quests'); setSidebarOpen(false); }}
             style={{
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
               width: '100%', padding: '16px 0', borderRadius: '9999px', border: 'none',
@@ -383,8 +395,8 @@ const UserLayout = () => {
               boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
             }}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>bolt</span>
-            Thach thuc moi
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>bolt</span>
+            Thử thách mới
           </button>
         </aside>
       </>
@@ -396,6 +408,19 @@ const UserLayout = () => {
   // ══════════════════════════════════════
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#131313', color: '#FDF9F3' }}>
+      {/* Skip to main content — visible only on keyboard focus */}
+      <a href="#main-content" style={{
+        position: 'absolute', top: '-40px', left: '8px', zIndex: 9999,
+        background: '#FF571A', color: '#fff', padding: '8px 16px',
+        borderRadius: '4px', fontSize: '14px', fontWeight: 700,
+        textDecoration: 'none', transition: 'top 0.2s',
+      }}
+        onFocus={e => { e.currentTarget.style.top = '8px'; }}
+        onBlur={e => { e.currentTarget.style.top = '-40px'; }}
+      >
+        Bỏ qua điều hướng
+      </a>
+
       {!isMobile && renderSidebar()}
       {!isMobile && renderDesktopTopBar()}
 
@@ -403,7 +428,7 @@ const UserLayout = () => {
       {isMobile && renderMobileSidebarOverlay()}
 
       {/* Main content */}
-      <main style={{
+      <main id="main-content" style={{
         marginLeft: isMobile ? 0 : '288px',
         paddingTop: isMobile ? '64px' : '72px',
         paddingBottom: isMobile ? '96px' : '24px',

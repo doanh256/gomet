@@ -273,12 +273,12 @@ const RegionalExplorePage = () => {
       `}</style>
 
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
         Quay lai
       </button>
 
       <div style={s.headerPill}>
-        <span className="material-symbols-outlined" style={{ fontSize: 16 }}>explore</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>explore</span>
         KHAM PHA
       </div>
 
@@ -296,7 +296,7 @@ const RegionalExplorePage = () => {
             <div style={{ height: '100%', width: `${(masteredCount / 8) * 100}%`, borderRadius: 4, background: 'linear-gradient(90deg, #b83500, #FF4D00)', transition: 'width 0.5s ease' }} />
           </div>
         </div>
-        <span className="material-symbols-outlined" style={{ fontSize: 28, color: '#b83500' }}>emoji_events</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 28, color: '#b83500' }}>emoji_events</span>
       </div>
 
       {/* Map area */}
@@ -317,7 +317,7 @@ const RegionalExplorePage = () => {
 
       {/* Region cards */}
       <div style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--primary)' }}>pin_drop</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--primary)' }}>pin_drop</span>
         Cac vung am thuc
       </div>
       <div style={s.grid}>
@@ -340,7 +340,7 @@ const RegionalExplorePage = () => {
                 </div>
                 <button style={s.exploreBtn} onClick={() => navigate(`/app/regional/${r.id}`)}>
                   Kham pha
-                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>arrow_forward</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>arrow_forward</span>
                 </button>
               </div>
             </div>
@@ -351,14 +351,14 @@ const RegionalExplorePage = () => {
       {/* Badge section */}
       <div style={s.badgeSection}>
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--tertiary-container)' }}>military_tech</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--tertiary-container)' }}>military_tech</span>
           Huy hieu da mo
         </div>
         <div className="badge-scroll" style={s.badgeScroll}>
           {badges.map(b => (
             <div key={b.id} style={s.badge(b.unlocked, b.color)}>
               <div style={s.badgeCircle(b.unlocked, b.color)}>
-                <span className="material-symbols-outlined" style={{ fontSize: 22, color: b.unlocked ? '#fff' : 'var(--on-surface-variant)' }}>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: b.unlocked ? '#fff' : 'var(--on-surface-variant)' }}>
                   {b.unlocked ? 'emoji_events' : 'lock'}
                 </span>
               </div>

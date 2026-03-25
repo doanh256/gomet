@@ -222,7 +222,7 @@ const ConciergePage = () => {
       {/* Header */}
       <div style={s.headerSection}>
         <div style={s.headerRow}>
-          <span className="material-symbols-outlined" style={s.headerIcon}>support_agent</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>support_agent</span>
           <h1 style={s.heading}>Tro ly ghep doi</h1>
         </div>
         <div style={s.subtitle}>GOMET Concierge</div>
@@ -231,7 +231,7 @@ const ConciergePage = () => {
         <div style={s.chipsRow}>
           {suggestedChips.map((chip, i) => (
             <div key={i} style={s.chip}>
-              <span className="material-symbols-outlined" style={s.chipIcon}>{chip.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.chipIcon}>{chip.icon}</span>
               {chip.label}
             </div>
           ))}
@@ -244,7 +244,7 @@ const ConciergePage = () => {
           msg.from === 'bot' ? (
             <div key={msg.id} style={s.botRow}>
               <div style={s.botAvatar}>
-                <span className="material-symbols-outlined" style={s.botAvatarIcon}>smart_toy</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={s.botAvatarIcon}>smart_toy</span>
               </div>
               <div style={s.botBubble}>{msg.text}</div>
             </div>
@@ -262,7 +262,7 @@ const ConciergePage = () => {
         <div style={s.specialRow}>
           {specialServices.map((svc, i) => (
             <div key={i} style={s.specialCard}>
-              <span className="material-symbols-outlined" style={s.specialIcon}>{svc.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.specialIcon}>{svc.icon}</span>
               <div style={s.specialCardTitle}>{svc.title}</div>
               <div style={s.specialCardDesc}>{svc.desc}</div>
             </div>
@@ -279,7 +279,7 @@ const ConciergePage = () => {
           onChange={e => setInputText(e.target.value)}
         />
         <button style={s.sendBtn}>
-          <span className="material-symbols-outlined" style={s.sendIcon}>send</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sendIcon}>send</span>
         </button>
       </div>
     </div>

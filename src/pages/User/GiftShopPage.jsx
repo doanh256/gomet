@@ -272,7 +272,7 @@ const GiftShopPage = () => {
   return (
     <div style={s.page}>
       <div style={s.header}>
-        <span className="material-symbols-outlined" style={s.headerIcon}>redeem</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>redeem</span>
         <h1 style={s.heading}>Qua tang tinh te</h1>
         <p style={s.subtitle}>Gui yeu thuong den nguoi dac biet</p>
       </div>

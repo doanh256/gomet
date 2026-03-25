@@ -172,7 +172,7 @@ const SecretTableBookingPage = () => {
         <style>{bookingKeyframes}</style>
         <div style={s.confirmedSection}>
           <div style={s.qrPlaceholder}>
-            <span className="material-symbols-outlined" style={s.qrIcon}>qr_code_2</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.qrIcon}>qr_code_2</span>
           </div>
           <div style={s.confirmedText}>Dat cho thanh cong!</div>
           <div style={s.confirmedDesc}>
@@ -191,7 +191,7 @@ const SecretTableBookingPage = () => {
       <style>{bookingKeyframes}</style>
 
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         Quay lai
       </button>
 
@@ -203,28 +203,28 @@ const SecretTableBookingPage = () => {
         <div style={s.eventRestaurant}>Pho Thin Secret Kitchen</div>
         <div style={s.detailGrid}>
           <div style={s.detailItem}>
-            <span className="material-symbols-outlined" style={s.detailIcon}>calendar_today</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>calendar_today</span>
             <div>
               <div style={s.detailText}>Ngay</div>
               <div style={s.detailValue}>28/03/2026</div>
             </div>
           </div>
           <div style={s.detailItem}>
-            <span className="material-symbols-outlined" style={s.detailIcon}>schedule</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>schedule</span>
             <div>
               <div style={s.detailText}>Gio</div>
               <div style={s.detailValue}>20:00</div>
             </div>
           </div>
           <div style={s.detailItem}>
-            <span className="material-symbols-outlined" style={s.detailIcon}>payments</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>payments</span>
             <div>
               <div style={s.detailText}>Gia</div>
               <div style={s.detailValue}>500.000 VND</div>
             </div>
           </div>
           <div style={s.detailItem}>
-            <span className="material-symbols-outlined" style={s.detailIcon}>event_seat</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>event_seat</span>
             <div>
               <div style={s.detailText}>Cho ngoi</div>
               <div style={s.detailValue}>3 con lai</div>
@@ -235,7 +235,7 @@ const SecretTableBookingPage = () => {
 
       {/* Synergy Profile */}
       <div style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={s.sectionIcon}>psychology</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>psychology</span>
         Synergy Profile
       </div>
       <div style={s.synergyCard}>
@@ -254,7 +254,7 @@ const SecretTableBookingPage = () => {
 
       {/* Payment */}
       <div style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={s.sectionIcon}>payment</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>payment</span>
         Phuong thuc thanh toan
       </div>
       <div style={s.paymentList}>
@@ -264,7 +264,7 @@ const SecretTableBookingPage = () => {
             style={s.paymentItem(selectedPayment === pm.id)}
             onClick={() => setSelectedPayment(pm.id)}
           >
-            <span className="material-symbols-outlined" style={s.paymentIcon(selectedPayment === pm.id)}>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.paymentIcon(selectedPayment === pm.id)}>
               {pm.icon}
             </span>
             <div style={s.paymentInfo}>
@@ -287,7 +287,7 @@ const SecretTableBookingPage = () => {
       {/* Terms */}
       <div style={s.termsRow}>
         <div style={s.checkbox(agreedTerms)} onClick={() => setAgreedTerms(!agreedTerms)}>
-          {agreedTerms && <span className="material-symbols-outlined" style={s.checkIcon}>check</span>}
+          {agreedTerms && <span aria-hidden="true" className="material-symbols-outlined" style={s.checkIcon}>check</span>}
         </div>
         <div style={s.termsText}>
           Toi dong y voi dieu khoan su dung va chinh sach huy. Huy truoc 24h duoc hoan 80%.
@@ -301,7 +301,7 @@ const SecretTableBookingPage = () => {
         onClick={() => agreedTerms && setConfirmed(true)}
         disabled={!agreedTerms}
       >
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>lock</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>lock</span>
         Xac nhan dat cho
       </button>
     </div>

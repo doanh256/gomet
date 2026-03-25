@@ -55,7 +55,7 @@ const GroupSynergyPage = () => {
       {/* Header */}
       <div style={{ padding: '20px 16px 0', display: 'flex', alignItems: 'center', gap: 12 }}>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
         </button>
         <div style={{ flex: 1 }}>
           <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>Group Synergy</h1>
@@ -142,7 +142,7 @@ const GroupSynergyPage = () => {
           borderRadius: 20, padding: 20, border: '1px solid rgba(108,99,255,0.2)'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#6C63FF' }}>smart_toy</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: '#6C63FF' }}>smart_toy</span>
             <span style={{ fontSize: 14, fontWeight: 700 }}>AI Goi Y Dia Diem</span>
           </div>
           <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 4 }}>Nha Hang Secret Garden</div>
@@ -162,7 +162,7 @@ const GroupSynergyPage = () => {
           background: 'linear-gradient(135deg, #6C63FF, #00C9A7)', color: '#fff',
           fontSize: 16, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>calendar_month</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>calendar_month</span>
           Len Lich Nhom
         </button>
       </div>

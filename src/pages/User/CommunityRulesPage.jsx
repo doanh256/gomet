@@ -199,7 +199,7 @@ const CommunityRulesPage = () => {
   return (
     <div style={s.page}>
       <div style={s.header}>
-        <span className="material-symbols-outlined" style={s.headerIcon}>gavel</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>gavel</span>
         <h1 style={s.heading}>Quy tac cong dong</h1>
         <p style={s.subtitle}>Xay dung mot cong dong an toan va ton trong</p>
       </div>
@@ -212,7 +212,7 @@ const CommunityRulesPage = () => {
             <div style={s.ruleNum}>{r.num}</div>
             <div style={s.ruleContent}>
               <div style={s.ruleHeader}>
-                <span className="material-symbols-outlined" style={s.ruleIcon}>{r.icon}</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={s.ruleIcon}>{r.icon}</span>
                 <span style={s.ruleTitle}>{r.title}</span>
               </div>
               <p style={s.ruleDesc}>{r.desc}</p>
@@ -227,7 +227,7 @@ const CommunityRulesPage = () => {
         {violations.map((v, i) => (
           <div key={i} style={s.violationCard(v.bg)}>
             <div style={s.violationIconWrap(v.color)}>
-              <span className="material-symbols-outlined" style={s.violationIcon(v.color)}>{v.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.violationIcon(v.color)}>{v.icon}</span>
             </div>
             <div style={s.violationContent}>
               <div style={s.violationTitle}>{v.title}</div>
@@ -239,11 +239,11 @@ const CommunityRulesPage = () => {
 
       {/* Report CTA */}
       <div style={s.reportCta}>
-        <span className="material-symbols-outlined" style={s.reportIcon}>flag</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.reportIcon}>flag</span>
         <div style={s.reportTitle}>Bao cao vi pham</div>
         <p style={s.reportDesc}>Neu ban gap van de, hay bao cao ngay de chung toi xu ly</p>
         <button style={s.reportBtn}>
-          <span className="material-symbols-outlined" style={{ fontSize: 18 }}>flag</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>flag</span>
           Bao cao ngay
         </button>
       </div>

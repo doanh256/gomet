@@ -204,13 +204,13 @@ const HelpCenterPage = () => {
   return (
     <div style={s.page}>
       <div style={s.header}>
-        <span className="material-symbols-outlined" style={s.headerIcon}>support_agent</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>support_agent</span>
         <h1 style={s.heading}>Trung tam tro giup</h1>
       </div>
 
       {/* Search */}
       <div style={s.searchWrapper}>
-        <span className="material-symbols-outlined" style={s.searchIcon}>search</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.searchIcon}>search</span>
         <input
           style={s.searchInput}
           placeholder="Tim kiem cau hoi..."
@@ -224,7 +224,7 @@ const HelpCenterPage = () => {
       <div style={s.topicsGrid}>
         {topics.map((t, i) => (
           <div key={i} style={s.topicCard}>
-            <span className="material-symbols-outlined" style={s.topicIcon}>{t.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.topicIcon}>{t.icon}</span>
             <span style={s.topicTitle}>{t.title}</span>
           </div>
         ))}
@@ -237,7 +237,7 @@ const HelpCenterPage = () => {
           <div key={i} style={s.faqItem}>
             <button style={s.faqQuestion} onClick={() => toggleFaq(i)}>
               {f.q}
-              <span className="material-symbols-outlined" style={s.faqArrow(openFaq === i)}>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.faqArrow(openFaq === i)}>
                 expand_more
               </span>
             </button>
@@ -254,15 +254,15 @@ const HelpCenterPage = () => {
         <p style={s.supportSubtitle}>Chon cach lien he phu hop voi ban</p>
         <div style={s.supportActions}>
           <div style={s.supportBtn}>
-            <span className="material-symbols-outlined" style={s.supportBtnIcon}>chat</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.supportBtnIcon}>chat</span>
             <span style={s.supportBtnLabel}>Lien he truc tiep</span>
           </div>
           <div style={s.supportBtn}>
-            <span className="material-symbols-outlined" style={s.supportBtnIcon}>mail</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.supportBtnIcon}>mail</span>
             <span style={s.supportBtnLabel}>Gui email</span>
           </div>
           <div style={s.supportBtn}>
-            <span className="material-symbols-outlined" style={s.supportBtnIcon}>call</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.supportBtnIcon}>call</span>
             <span style={s.supportBtnLabel}>Goi dien</span>
           </div>
         </div>

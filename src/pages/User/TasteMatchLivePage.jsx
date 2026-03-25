@@ -33,11 +33,11 @@ const TasteMatchLivePage = () => {
       {/* Header */}
       <div style={{ padding: '20px 16px 0', display: 'flex', alignItems: 'center', gap: 12 }}>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
         </button>
         <div style={{ flex: 1 }}>
           <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 22, verticalAlign: 'middle', marginRight: 6, color: '#FFD700' }}>bolt</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, verticalAlign: 'middle', marginRight: 6, color: '#FFD700' }}>bolt</span>
             Tim Taste Twin
           </h1>
         </div>
@@ -77,7 +77,7 @@ const TasteMatchLivePage = () => {
               <div style={{
                 position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center'
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#6C63FF' }}>person_search</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 40, color: '#6C63FF' }}>person_search</span>
               </div>
             </div>
 

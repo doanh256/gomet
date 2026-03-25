@@ -188,22 +188,22 @@ const NotificationSettingsPage = () => {
     <div style={s.page}>
       <div style={s.header}>
         <button style={s.backBtn} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined">arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
-        <span className="material-symbols-outlined" style={s.headerIcon}>notifications</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>notifications</span>
         <h1 style={s.headerTitle}>Cai dat thong bao</h1>
       </div>
 
       {/* Push Notifications */}
       <div style={s.section}>
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>smartphone</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>smartphone</span>
           Thong bao day
         </div>
         <div style={s.card}>
           {pushRows.map((r, i) => (
             <div key={r.key} style={{ ...s.row, ...(i === pushRows.length - 1 ? s.rowLast : {}) }}>
-              <span className="material-symbols-outlined" style={s.rowIcon}>{r.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.rowIcon}>{r.icon}</span>
               <span style={s.rowLabel}>{r.label}</span>
               <Toggle active={pushSettings[r.key]} onToggle={() => togglePush(r.key)} />
             </div>
@@ -214,13 +214,13 @@ const NotificationSettingsPage = () => {
       {/* Email Notifications */}
       <div style={s.section}>
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>email</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>email</span>
           Thong bao email
         </div>
         <div style={s.card}>
           {emailRows.map((r, i) => (
             <div key={r.key} style={{ ...s.row, ...(i === emailRows.length - 1 ? s.rowLast : {}) }}>
-              <span className="material-symbols-outlined" style={s.rowIcon}>{r.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.rowIcon}>{r.icon}</span>
               <span style={s.rowLabel}>{r.label}</span>
               <Toggle active={emailSettings[r.key]} onToggle={() => toggleEmail(r.key)} />
             </div>
@@ -231,7 +231,7 @@ const NotificationSettingsPage = () => {
       {/* Do Not Disturb */}
       <div style={s.section}>
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>do_not_disturb_on</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>do_not_disturb_on</span>
           Khong lam phien
         </div>
         <div style={s.card}>

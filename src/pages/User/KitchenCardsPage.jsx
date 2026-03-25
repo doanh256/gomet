@@ -54,7 +54,7 @@ const KitchenCardsPage = () => {
           background: 'none', border: 'none', color: '#393834', cursor: 'pointer',
           padding: 0, marginBottom: 24, display: 'flex', alignItems: 'center', gap: 6,
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24 }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24 }}>arrow_back</span>
           <span style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 14, fontWeight: 600 }}>Back</span>
         </button>
 
@@ -165,7 +165,7 @@ const KitchenCardsPage = () => {
                 background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 32, color: '#3A0B00' }}>add</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 32, color: '#3A0B00' }}>add</span>
               </div>
               <div style={{ flex: 1 }}>
                 <h3 style={{
@@ -198,7 +198,7 @@ const KitchenCardsPage = () => {
                 color: '#393834', margin: '0 0 20px',
                 display: 'flex', alignItems: 'center', gap: 8,
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FF571A' }}>folder_special</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FF571A' }}>folder_special</span>
                 Your Collection
               </h3>
 
@@ -212,7 +212,7 @@ const KitchenCardsPage = () => {
                     background: cardTemplates.find(t => t.id === card.template)?.gradient || 'linear-gradient(135deg, #FFB59E, #FF571A)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                   }}>
-                    <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FDF9F3' }}>card_giftcard</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FDF9F3' }}>card_giftcard</span>
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <p style={{
@@ -231,7 +231,7 @@ const KitchenCardsPage = () => {
                 marginTop: 20, padding: '16px', borderRadius: '1.5rem',
                 backgroundColor: 'rgba(255,87,26,0.06)', textAlign: 'center',
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 32, color: '#FF571A', marginBottom: 8, display: 'block' }}>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 32, color: '#FF571A', marginBottom: 8, display: 'block' }}>
                   collections_bookmark
                 </span>
                 <p style={{ fontSize: 13, color: '#666460', margin: '0 0 4px' }}>

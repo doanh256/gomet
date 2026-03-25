@@ -163,9 +163,9 @@ const ChatPage = () => {
           backgroundColor: '#2A2A2A', borderRadius: '9999px',
           padding: '10px 16px', border: 'none',
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>search</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>search</span>
           <input
-            type="text" placeholder="Tim kiem..."
+            type="text" placeholder="Tìm kiếm..."
             value={searchText} onChange={e => setSearchText(e.target.value)}
             style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: '0.875rem', fontFamily: 'Inter, var(--font-body)', color: '#FDF9F3', flex: 1 }}
           />
@@ -176,8 +176,8 @@ const ChatPage = () => {
       <div style={{ flex: 1, overflowY: 'auto', marginTop: '8px' }}>
         {filteredConversations.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '40px 20px', color: '#E6BEB2' }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '48px', opacity: 0.3, display: 'block', marginBottom: '8px' }}>chat_bubble</span>
-            <p style={{ fontFamily: 'Inter, var(--font-body)', fontSize: '0.875rem' }}>Chua co tin nhan</p>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '48px', opacity: 0.3, display: 'block', marginBottom: '8px' }}>chat_bubble</span>
+            <p style={{ fontFamily: 'Inter, var(--font-body)', fontSize: '0.875rem' }}>Chưa có tin nhắn</p>
           </div>
         ) : (
           <>
@@ -268,7 +268,7 @@ const ChatPage = () => {
                       color: unread > 0 ? '#FDF9F3' : '#E6BEB2', fontWeight: unread > 0 ? 600 : 400,
                       overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1,
                     }}>
-                      {conv.lastMessage?.text || 'Nhan de mo doan chat'}
+                      {conv.lastMessage?.text || 'Nhấn để mở đoạn chat'}
                     </p>
                     {unread > 0 && (
                       <span style={{
@@ -292,7 +292,7 @@ const ChatPage = () => {
             borderRadius: '1.5rem', background: 'linear-gradient(135deg, rgba(255,181,158,0.1), rgba(255,87,26,0.1))',
             textAlign: 'center',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '32px', color: '#FFB59E', marginBottom: '8px', display: 'block' }}>group_add</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '32px', color: '#FFB59E', marginBottom: '8px', display: 'block' }}>group_add</span>
             <h4 style={{
               fontFamily: 'Plus Jakarta Sans, var(--font-headline)', fontSize: '0.9375rem',
               fontWeight: 700, color: '#FDF9F3', margin: '0 0 4px',
@@ -331,7 +331,7 @@ const ChatPage = () => {
           justifyContent: 'center',
           color: '#E6BEB2',
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: '72px', opacity: 0.2, marginBottom: '16px' }}>forum</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '72px', opacity: 0.2, marginBottom: '16px' }}>forum</span>
           <h3 style={{
             fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
             fontWeight: 700,
@@ -339,10 +339,10 @@ const ChatPage = () => {
             color: '#FDF9F3',
             margin: '0 0 8px',
           }}>
-            Chon mot cuoc tro chuyen
+            Chọn một cuộc trò chuyện
           </h3>
           <p style={{ fontFamily: 'Inter, var(--font-body)', fontSize: '0.875rem' }}>
-            Chon nguoi ban muon nhan tin tu danh sach ben trai
+            Chọn người bạn muốn nhắn tin từ danh sách bên trái
           </p>
         </div>
       ) : (
@@ -371,7 +371,7 @@ const ChatPage = () => {
                 borderRadius: '9999px',
               }}
             >
-              <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>arrow_back</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '24px' }}>arrow_back</span>
             </button>
 
             {/* Avatar */}
@@ -413,7 +413,7 @@ const ChatPage = () => {
                 fontFamily: 'Inter, var(--font-body)',
                 fontWeight: 500,
               }}>
-                {otherUser.isOnline ? 'Dang hoat dong' : 'Ngoai tuyen'}
+                {otherUser.isOnline ? 'Đang hoạt động' : 'Ngoại tuyến'}
               </span>
             </div>
 
@@ -427,7 +427,7 @@ const ChatPage = () => {
                 cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>call</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>call</span>
               </button>
               <button style={{
                 width: '40px', height: '40px',
@@ -438,7 +438,7 @@ const ChatPage = () => {
                 cursor: 'pointer',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>videocam</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>videocam</span>
               </button>
             </div>
           </div>
@@ -537,12 +537,12 @@ const ChatPage = () => {
                 background: 'none', border: 'none', cursor: 'pointer', padding: '4px',
                 color: '#E6BEB2', display: 'flex',
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '22px' }}>mood</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px' }}>mood</span>
               </button>
 
               <input
                 type="text"
-                placeholder="Nhap tin nhan..."
+                placeholder="Nhập tin nhắn..."
                 value={inputText}
                 onChange={e => setInputText(e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter') handleSend(); }}
@@ -563,7 +563,7 @@ const ChatPage = () => {
                 background: 'none', border: 'none', cursor: 'pointer', padding: '4px',
                 color: '#E6BEB2', display: 'flex',
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '22px' }}>image</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px' }}>image</span>
               </button>
 
               <button
@@ -583,7 +583,7 @@ const ChatPage = () => {
                   flexShrink: 0,
                 }}
               >
-                <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>send</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>send</span>
               </button>
             </div>
           </div>
@@ -618,7 +618,7 @@ const ChatPage = () => {
             color: '#FFB59E',
             marginBottom: '12px',
           }}>
-            De Xuat Hien Tai
+            Đề Xuất Hiện Tại
           </div>
           <h3 style={{
             fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
@@ -655,7 +655,7 @@ const ChatPage = () => {
               alignItems: 'center',
               gap: '10px',
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '24px', color: '#FFB59E' }}>account_balance_wallet</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '24px', color: '#FFB59E' }}>account_balance_wallet</span>
               <div>
                 <div style={{
                   fontSize: '0.75rem',
@@ -663,7 +663,7 @@ const ChatPage = () => {
                   fontFamily: 'Inter, var(--font-body)',
                   fontWeight: 500,
                 }}>
-                  Ngan Sach
+                  Ngân Sách
                 </div>
                 <div style={{
                   fontSize: '1.25rem',
@@ -671,7 +671,7 @@ const ChatPage = () => {
                   color: '#FDF9F3',
                   fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                 }}>
-                  {proposal.price.toLocaleString('vi-VN')}d
+                  {proposal.price.toLocaleString('vi-VN')}đ
                 </div>
               </div>
             </div>
@@ -686,14 +686,14 @@ const ChatPage = () => {
             gap: '12px',
             padding: '12px 0',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '22px', color: '#FFD54F' }}>restaurant</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px', color: '#FFD54F' }}>restaurant</span>
             <div>
               <div style={{
                 fontSize: '0.75rem',
                 color: '#E6BEB2',
                 fontFamily: 'Inter, var(--font-body)',
               }}>
-                Dia Diem
+                Địa Điểm
               </div>
               <div style={{
                 fontFamily: 'Inter, var(--font-body)',
@@ -715,14 +715,14 @@ const ChatPage = () => {
             gap: '12px',
             padding: '12px 0',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '22px', color: '#FFD54F' }}>calendar_today</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px', color: '#FFD54F' }}>calendar_today</span>
             <div>
               <div style={{
                 fontSize: '0.75rem',
                 color: '#E6BEB2',
                 fontFamily: 'Inter, var(--font-body)',
               }}>
-                Thoi Gian
+                Thời Gian
               </div>
               <div style={{
                 fontFamily: 'Inter, var(--font-body)',
@@ -746,14 +746,14 @@ const ChatPage = () => {
             alignItems: 'center',
             gap: '10px',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#117500' }}>verified</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#117500' }}>verified</span>
             <span style={{
               fontFamily: 'Inter, var(--font-body)',
               fontWeight: 600,
               fontSize: '0.875rem',
               color: '#117500',
             }}>
-              Thanh toan tam giu (Escrow)
+              Thanh toán tạm giữ (Escrow)
             </span>
           </div>
         )}
@@ -777,8 +777,8 @@ const ChatPage = () => {
             gap: '8px',
             boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>handshake</span>
-            Xac Nhan Thoa Thuan
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>handshake</span>
+            Xác Nhận Thoả Thuận
           </button>
           <button style={{
             width: '100%',
@@ -796,8 +796,8 @@ const ChatPage = () => {
             justifyContent: 'center',
             gap: '8px',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>close</span>
-            Tu Choi De Xuat
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>close</span>
+            Từ Chối Đề Xuất
           </button>
         </div>
 
@@ -814,14 +814,14 @@ const ChatPage = () => {
             gap: '8px',
             marginBottom: '10px',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFD54F' }}>shield</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFD54F' }}>shield</span>
             <span style={{
               fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
               fontWeight: 700,
               fontSize: '0.875rem',
               color: '#FDF9F3',
             }}>
-              An Toan Hen Ho
+              An Toàn Hẹn Hò
             </span>
           </div>
           <ul style={{
@@ -832,10 +832,10 @@ const ChatPage = () => {
             fontFamily: 'Inter, var(--font-body)',
             lineHeight: 1.7,
           }}>
-            <li>Luon gap o noi cong cong</li>
-            <li>Bao ban be/nguoi than biet</li>
-            <li>Tin vao truc giac cua ban</li>
-            <li>Gomet bao ve thong tin ca nhan</li>
+            <li>Luôn gặp ở nơi công cộng</li>
+            <li>Báo bạn bè/người thân biết</li>
+            <li>Tin vào trực giác của bạn</li>
+            <li>Gomet bảo vệ thông tin cá nhân</li>
           </ul>
         </div>
       </div>
@@ -896,9 +896,9 @@ const ChatPage = () => {
               backgroundColor: '#2A2A2A', borderRadius: '9999px',
               padding: '10px 16px', border: 'none',
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>search</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>search</span>
               <input
-                type="text" placeholder="Tim kiem..."
+                type="text" placeholder="Tìm kiếm..."
                 value={searchText} onChange={e => setSearchText(e.target.value)}
                 style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: '0.875rem', fontFamily: 'Inter, var(--font-body)', color: '#FDF9F3', flex: 1 }}
               />
@@ -907,9 +907,9 @@ const ChatPage = () => {
           <div style={{ flex: 1, overflowY: 'auto' }}>
             {filteredConversations.length === 0 ? (
               <div style={{ textAlign: 'center', padding: '60px 20px', color: '#E6BEB2' }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '56px', opacity: 0.2, display: 'block', marginBottom: '12px' }}>chat_bubble</span>
-                <h3 style={{ fontFamily: 'Plus Jakarta Sans, var(--font-headline)', fontWeight: 700, color: '#FDF9F3', marginBottom: '8px' }}>Chua co tin nhan</h3>
-                <p style={{ fontFamily: 'Inter, var(--font-body)', fontSize: '0.875rem' }}>Match voi ai do de bat dau tro chuyen!</p>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '56px', opacity: 0.2, display: 'block', marginBottom: '12px' }}>chat_bubble</span>
+                <h3 style={{ fontFamily: 'Plus Jakarta Sans, var(--font-headline)', fontWeight: 700, color: '#FDF9F3', marginBottom: '8px' }}>Chưa có tin nhắn</h3>
+                <p style={{ fontFamily: 'Inter, var(--font-body)', fontSize: '0.875rem' }}>Match với ai đó để bắt đầu trò chuyện!</p>
               </div>
             ) : (
               filteredConversations.map(conv => {
@@ -957,7 +957,7 @@ const ChatPage = () => {
                           fontWeight: unread > 0 ? 600 : 400,
                           overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1,
                         }}>
-                          {conv.lastMessage?.text || 'Nhan de mo doan chat'}
+                          {conv.lastMessage?.text || 'Nhấn để mở đoạn chat'}
                         </p>
                         {unread > 0 && (
                           <span style={{

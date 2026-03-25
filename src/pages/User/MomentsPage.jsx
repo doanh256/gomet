@@ -58,7 +58,7 @@ const MomentsPage = () => {
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', color: '#FDF9F3', cursor: 'pointer', padding: 0 }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 24 }}>arrow_back</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24 }}>arrow_back</span>
           </button>
           <h1 style={{
             fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 22, fontWeight: 800,
@@ -72,7 +72,7 @@ const MomentsPage = () => {
           color: '#3A0B00', fontFamily: "'Plus Jakarta Sans', sans-serif",
           fontSize: 13, fontWeight: 700, border: 'none', cursor: 'pointer',
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 18 }}>videocam</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>videocam</span>
           Create
         </button>
       </div>
@@ -116,7 +116,7 @@ const MomentsPage = () => {
                   WebkitBackdropFilter: 'blur(20px)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
                 }}>
-                  <span className="material-symbols-outlined" style={{
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{
                     fontSize: 26, color: liked[m.id] ? '#FF571A' : '#FDF9F3',
                   }}>
                     {liked[m.id] ? 'favorite' : 'favorite_border'}
@@ -135,7 +135,7 @@ const MomentsPage = () => {
                   WebkitBackdropFilter: 'blur(20px)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
                 }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 26, color: '#FDF9F3' }}>chat_bubble</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 26, color: '#FDF9F3' }}>chat_bubble</span>
                 </div>
                 <span style={{ fontSize: 12, fontWeight: 700, color: '#FDF9F3' }}>{m.comments}</span>
               </div>
@@ -148,7 +148,7 @@ const MomentsPage = () => {
                   WebkitBackdropFilter: 'blur(20px)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
                 }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 26, color: '#FDF9F3' }}>share</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 26, color: '#FDF9F3' }}>share</span>
                 </div>
                 <span style={{ fontSize: 12, fontWeight: 700, color: '#FDF9F3' }}>{m.shares}</span>
               </div>
@@ -160,7 +160,7 @@ const MomentsPage = () => {
                 WebkitBackdropFilter: 'blur(20px)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 26, color: '#FDF9F3' }}>bookmark_border</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 26, color: '#FDF9F3' }}>bookmark_border</span>
               </div>
             </div>
 
@@ -223,7 +223,7 @@ const MomentsPage = () => {
                   color: '#FDF9F3', fontSize: 14, fontWeight: 700,
                   fontFamily: "'Plus Jakarta Sans', sans-serif", cursor: 'pointer',
                 }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 20 }}>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>
                     {tried[m.id] ? 'check_circle' : 'add_circle'}
                   </span>
                   {tried[m.id] ? 'Tried!' : 'Mark as Tried'}

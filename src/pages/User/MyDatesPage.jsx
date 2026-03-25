@@ -149,7 +149,7 @@ const MyDatesPage = () => {
         backgroundColor: '#131313',
       }}>
         <div style={{ textAlign: 'center', color: '#E6BEB2' }}>
-          <span className="material-symbols-outlined" style={{ fontSize: '48px', opacity: 0.4, display: 'block', marginBottom: '12px' }}>hourglass_empty</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '48px', opacity: 0.4, display: 'block', marginBottom: '12px' }}>hourglass_empty</span>
           Dang tai...
         </div>
       </div>
@@ -221,7 +221,7 @@ const MyDatesPage = () => {
                     transition: 'all 0.2s ease',
                   }}
                 >
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>{tab.icon}</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>{tab.icon}</span>
                   {tab.label}
                 </button>
               );
@@ -295,7 +295,7 @@ const MyDatesPage = () => {
               backgroundColor: '#1C1B1B',
               borderRadius: '1.5rem',
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '56px', color: '#353535', display: 'block', marginBottom: '12px' }}>event_busy</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '56px', color: '#353535', display: 'block', marginBottom: '12px' }}>event_busy</span>
               <h3 style={{
                 fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
                 fontWeight: 700,
@@ -343,13 +343,13 @@ const MyDatesPage = () => {
                       }}>
                         {post.time && (
                           <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>schedule</span>
+                            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>schedule</span>
                             {post.time}
                           </span>
                         )}
                         {post.place && (
                           <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>location_on</span>
+                            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>location_on</span>
                             {post.place}
                           </span>
                         )}
@@ -485,7 +485,7 @@ const MyDatesPage = () => {
                                       gap: '6px',
                                     }}
                                   >
-                                    <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>chat</span>
+                                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>chat</span>
                                     Chap Nhan & Chat
                                   </button>
                                   <button
@@ -505,7 +505,7 @@ const MyDatesPage = () => {
                                       gap: '6px',
                                     }}
                                   >
-                                    <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>person</span>
+                                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>person</span>
                                     Xem Trang Ca
                                   </button>
                                   <button
@@ -525,7 +525,7 @@ const MyDatesPage = () => {
                                       gap: '6px',
                                     }}
                                   >
-                                    <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>close</span>
+                                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>close</span>
                                     Tu Choi
                                   </button>
                                 </div>
@@ -547,7 +547,7 @@ const MyDatesPage = () => {
                                     gap: '6px',
                                   }}
                                 >
-                                  <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>chat</span>
+                                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>chat</span>
                                   Mo Chat
                                 </button>
                               ) : null}
@@ -667,7 +667,7 @@ const MyDatesPage = () => {
                     marginBottom: '8px',
                     opacity: 0.9,
                   }}>
-                    <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>schedule</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>schedule</span>
                     {nextDate.time}
                   </div>
                 )}
@@ -679,7 +679,7 @@ const MyDatesPage = () => {
                     fontSize: '0.875rem',
                     opacity: 0.9,
                   }}>
-                    <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>location_on</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>location_on</span>
                     {nextDate.place}
                   </div>
                 )}
@@ -739,7 +739,7 @@ const MyDatesPage = () => {
                           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         />
                       ) : (
-                        <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#353535' }}>person</span>
+                        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#353535' }}>person</span>
                       )}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>

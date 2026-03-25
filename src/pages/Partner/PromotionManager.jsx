@@ -30,16 +30,16 @@ const PromotionManager = () => {
 
   return (
     <div style={s.page}>
-      <button style={s.backBtn} onClick={() => navigate('/partner')}><span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>Quay lai</button>
+      <button style={s.backBtn} onClick={() => navigate('/partner')}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>Quay lai</button>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8, flexWrap: 'wrap', gap: 12 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}><span className="material-symbols-outlined" style={{ fontSize: 32, background: 'linear-gradient(135deg, #FFB59E, #FF571A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>local_offer</span><h1 style={{ fontFamily: 'var(--font-headline)', fontSize: 28, fontWeight: 800 }}>Quan ly khuyen mai</h1></div>
-        <button style={s.gradientBtn} onClick={() => setShowForm(!showForm)}><span className="material-symbols-outlined" style={{ fontSize: 20 }}>add</span>Tao khuyen mai</button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 32, background: 'linear-gradient(135deg, #FFB59E, #FF571A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>local_offer</span><h1 style={{ fontFamily: 'var(--font-headline)', fontSize: 28, fontWeight: 800 }}>Quan ly khuyen mai</h1></div>
+        <button style={s.gradientBtn} onClick={() => setShowForm(!showForm)}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>add</span>Tao khuyen mai</button>
       </div>
       <p style={{ color: '#E6BEB2', fontSize: 14, marginBottom: 24 }}>Tao va quan ly cac chuong trinh khuyen mai</p>
 
       {showForm && (
         <div style={s.formSection}>
-          <div style={{ fontFamily: 'var(--font-headline)', fontSize: 20, fontWeight: 700, marginBottom: 20, display: 'flex', alignItems: 'center', gap: 8 }}><span className="material-symbols-outlined" style={{ color: '#FFB59E' }}>edit_note</span>Tao khuyen mai moi</div>
+          <div style={{ fontFamily: 'var(--font-headline)', fontSize: 20, fontWeight: 700, marginBottom: 20, display: 'flex', alignItems: 'center', gap: 8 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ color: '#FFB59E' }}>edit_note</span>Tao khuyen mai moi</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: 16, marginBottom: 16 }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}><label style={{ fontSize: 13, fontWeight: 600, color: '#E6BEB2' }}>Ten khuyen mai</label><input style={s.input} placeholder="VD: Giam gia cuoi tuan" /></div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}><label style={{ fontSize: 13, fontWeight: 600, color: '#E6BEB2' }}>Gia tri giam</label><input style={s.input} placeholder="VD: 20" type="number" /></div>
@@ -57,7 +57,7 @@ const PromotionManager = () => {
             <label style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, cursor: 'pointer', color: '#FDF9F3' }}><input type="checkbox" style={{ width: 20, height: 20, accentColor: '#FFB59E', cursor: 'pointer' }} checked={conditions.nhom4} onChange={() => setConditions({ ...conditions, nhom4: !conditions.nhom4 })} />Nhom 4+</label>
             <label style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: 14, cursor: 'pointer', color: '#FDF9F3' }}><input type="checkbox" style={{ width: 20, height: 20, accentColor: '#FFB59E', cursor: 'pointer' }} checked={conditions.ngayThuong} onChange={() => setConditions({ ...conditions, ngayThuong: !conditions.ngayThuong })} />Ngay thuong</label>
           </div>
-          <button style={s.gradientBtn}><span className="material-symbols-outlined" style={{ fontSize: 20 }}>check</span>Tao khuyen mai</button>
+          <button style={s.gradientBtn}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>check</span>Tao khuyen mai</button>
         </div>
       )}
 
@@ -65,23 +65,23 @@ const PromotionManager = () => {
         <div key={promo.id} style={s.promoCard}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12, flexWrap: 'wrap', gap: 8 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}><span style={{ fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 700 }}>{promo.name}</span><span style={s.discountBadge}>{promo.discount}</span></div>
-            <div style={s.statusChip(promo.status)}><span className="material-symbols-outlined" style={{ fontSize: 14 }}>{promo.status === 'active' ? 'check_circle' : 'warning'}</span>{promo.status === 'active' ? 'Dang chay' : 'Sap het'}</div>
+            <div style={s.statusChip(promo.status)}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>{promo.status === 'active' ? 'check_circle' : 'warning'}</span>{promo.status === 'active' ? 'Dang chay' : 'Sap het'}</div>
           </div>
           <div style={{ fontSize: 13, color: '#E6BEB2', marginBottom: 12, display: 'flex', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>calendar_today</span>{promo.startDate} - {promo.endDate}</span>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>group</span>{promo.used}/{promo.maxUses} da su dung</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>calendar_today</span>{promo.startDate} - {promo.endDate}</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>group</span>{promo.used}/{promo.maxUses} da su dung</span>
           </div>
           <div style={s.progressTrack}><div style={s.progressFill(pct)} /></div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 12, flexWrap: 'wrap' }}>
-            <button style={s.actionBtn('edit')}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>edit</span>Sua</button>
-            <button style={s.actionBtn('pause')}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>pause</span>Tam dung</button>
-            <button style={s.actionBtn('delete')}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>delete</span>Xoa</button>
+            <button style={s.actionBtn('edit')}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>edit</span>Sua</button>
+            <button style={s.actionBtn('pause')}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>pause</span>Tam dung</button>
+            <button style={s.actionBtn('delete')}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>delete</span>Xoa</button>
           </div>
         </div>
       ); })}
 
       <div style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '24px' }}>
-        <div style={{ fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 700, marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}><span className="material-symbols-outlined" style={{ color: '#FFB59E' }}>insights</span>Hieu qua khuyen mai</div>
+        <div style={{ fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 700, marginBottom: 16, display: 'flex', alignItems: 'center', gap: 8 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ color: '#FFB59E' }}>insights</span>Hieu qua khuyen mai</div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
           <div style={{ background: '#2A2A2A', borderRadius: '1.5rem', padding: '20px', textAlign: 'center' }}><div style={{ fontFamily: 'var(--font-headline)', fontSize: 24, fontWeight: 800, color: '#FFB59E' }}>{summary.revenue}</div><div style={{ fontSize: 13, color: '#E6BEB2', marginTop: 4 }}>Doanh thu tu khuyen mai</div></div>
           <div style={{ background: '#2A2A2A', borderRadius: '1.5rem', padding: '20px', textAlign: 'center' }}><div style={{ fontFamily: 'var(--font-headline)', fontSize: 24, fontWeight: 800, color: '#FFB59E' }}>{summary.newCustomers}</div><div style={{ fontSize: 13, color: '#E6BEB2', marginTop: 4 }}>Khach hang moi</div></div>

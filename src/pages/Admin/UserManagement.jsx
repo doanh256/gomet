@@ -67,12 +67,12 @@ const UserManagement = () => {
   return (
     <div style={{ fontFamily: 'var(--font-body)', color: '#FDF9F3' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-        <span className="material-symbols-outlined" style={{ fontSize: '32px', color: '#FFB59E' }}>manage_accounts</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '32px', color: '#FFB59E' }}>manage_accounts</span>
         <h1 style={{ margin: 0, fontSize: '28px', fontWeight: 700, fontFamily: 'var(--font-headline)' }}>Quan ly nguoi dung</h1>
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', background: '#1C1B1B', borderRadius: '1.5rem', padding: '12px 20px', marginBottom: '20px' }}>
-        <span className="material-symbols-outlined" style={{ fontSize: '22px', color: '#E6BEB2' }}>search</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px', color: '#E6BEB2' }}>search</span>
         <input type="text" placeholder="Tim kiem theo ten hoac email..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} style={{ border: 'none', outline: 'none', flex: 1, fontSize: '15px', fontFamily: 'var(--font-body)', background: 'transparent', color: '#FDF9F3' }} />
       </div>
 
@@ -85,7 +85,7 @@ const UserManagement = () => {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px', marginBottom: '28px' }}>
         {miniStats.map((s, i) => (
           <div key={i} style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '18px 20px', display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '24px', color: '#FFB59E', background: '#2A2A2A', borderRadius: '10px', padding: '10px' }}>{s.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '24px', color: '#FFB59E', background: '#2A2A2A', borderRadius: '10px', padding: '10px' }}>{s.icon}</span>
             <div>
               <p style={{ margin: 0, fontSize: '24px', fontWeight: 700, fontFamily: 'var(--font-headline)', color: '#FDF9F3' }}>{s.value}</p>
               <p style={{ margin: '2px 0 0 0', fontSize: '12px', color: '#E6BEB2' }}>{s.label}</p>
@@ -112,16 +112,16 @@ const UserManagement = () => {
               <span style={{ fontSize: '14px', color: '#E6BEB2' }}>{user.email}</span>
               <span style={{ fontSize: '13px', color: '#E6BEB2' }}>{user.joinDate}</span>
               <span style={{ display: 'inline-block', padding: '4px 12px', borderRadius: '9999px', fontSize: '12px', fontWeight: 600, background: st.bg, color: st.color, width: 'fit-content' }}>{st.label}</span>
-              <span className="material-symbols-outlined" style={{ fontSize: '20px', color: user.verified ? '#117500' : '#353535' }}>{user.verified ? 'verified' : 'cancel'}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: user.verified ? '#117500' : '#353535' }}>{user.verified ? 'verified' : 'cancel'}</span>
               <div style={{ display: 'flex', gap: '8px', justifyContent: 'center' }}>
                 <button onClick={() => {}} title="Xem" style={{ background: 'none', border: 'none', borderRadius: '8px', padding: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px', color: '#FFB59E' }}>visibility</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px', color: '#FFB59E' }}>visibility</span>
                 </button>
                 <button onClick={() => handleBlock(user.id)} title="Khoa" style={{ background: 'none', border: 'none', borderRadius: '8px', padding: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px', color: user.status === 'locked' ? '#FF571A' : '#E6BEB2' }}>block</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px', color: user.status === 'locked' ? '#FF571A' : '#E6BEB2' }}>block</span>
                 </button>
                 <button onClick={() => handleDelete(user.id)} title="Xoa" style={{ background: 'none', border: 'none', borderRadius: '8px', padding: '6px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '18px', color: '#FF571A' }}>delete_outline</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px', color: '#FF571A' }}>delete_outline</span>
                 </button>
               </div>
             </div>
@@ -129,7 +129,7 @@ const UserManagement = () => {
         })}
         {filteredUsers.length === 0 && (
           <div style={{ padding: '40px', textAlign: 'center', color: '#E6BEB2' }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '40px', display: 'block', marginBottom: '8px', opacity: 0.4 }}>search_off</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '40px', display: 'block', marginBottom: '8px', opacity: 0.4 }}>search_off</span>
             Khong tim thay nguoi dung nao
           </div>
         )}

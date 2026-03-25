@@ -291,11 +291,11 @@ const VerifyIdentityPage = () => {
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             borderRadius: '9999px',
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 64, color: '#3A0B00' }}>person</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 64, color: '#3A0B00' }}>person</span>
           </div>
         ) : (
           <>
-            <span className="material-symbols-outlined" style={styles.cameraIcon}>photo_camera</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={styles.cameraIcon}>photo_camera</span>
             <span style={styles.cameraText}>Nhan de chup</span>
           </>
         )}
@@ -308,7 +308,7 @@ const VerifyIdentityPage = () => {
         ].map((item, i) => (
           <div key={i} style={styles.instructionItem}>
             <div style={styles.instructionIcon}>
-              <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#FFB59E' }}>{item.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, color: '#FFB59E' }}>{item.icon}</span>
             </div>
             {item.text}
           </div>
@@ -332,15 +332,15 @@ const VerifyIdentityPage = () => {
                 background: '#353535',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#FFB59E' }}>badge</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 40, color: '#FFB59E' }}>badge</span>
               </div>
               <div style={styles.uploadedIndicator}>
-                <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#3A0B00' }}>check</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, color: '#3A0B00' }}>check</span>
               </div>
             </>
           ) : (
             <>
-              <span className="material-symbols-outlined" style={styles.uploadIcon}>add_a_photo</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={styles.uploadIcon}>add_a_photo</span>
               <span style={styles.uploadLabel}>Mat truoc</span>
             </>
           )}
@@ -353,15 +353,15 @@ const VerifyIdentityPage = () => {
                 background: '#353535',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 40, color: '#FFB59E' }}>badge</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 40, color: '#FFB59E' }}>badge</span>
               </div>
               <div style={styles.uploadedIndicator}>
-                <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#3A0B00' }}>check</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, color: '#3A0B00' }}>check</span>
               </div>
             </>
           ) : (
             <>
-              <span className="material-symbols-outlined" style={styles.uploadIcon}>add_a_photo</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={styles.uploadIcon}>add_a_photo</span>
               <span style={styles.uploadLabel}>Mat sau</span>
             </>
           )}
@@ -375,7 +375,7 @@ const VerifyIdentityPage = () => {
         ].map((item, i) => (
           <div key={i} style={styles.instructionItem}>
             <div style={styles.instructionIcon}>
-              <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#FFB59E' }}>{item.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, color: '#FFB59E' }}>{item.icon}</span>
             </div>
             {item.text}
           </div>
@@ -387,7 +387,7 @@ const VerifyIdentityPage = () => {
   const renderStep3 = () => (
     <>
       <div style={styles.successCircle}>
-        <span className="material-symbols-outlined" style={styles.successIcon}>check</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={styles.successIcon}>check</span>
       </div>
       <div style={styles.verifiedBadge}>
         <span className="material-symbols-outlined filled" style={{ fontSize: 18 }}>verified</span>
@@ -410,7 +410,7 @@ const VerifyIdentityPage = () => {
             handleNext();
           }}
         >
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>photo_camera</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>photo_camera</span>
           Chup ngay
         </button>
       );
@@ -428,14 +428,14 @@ const VerifyIdentityPage = () => {
             handleNext();
           }}
         >
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>upload</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>upload</span>
           Tai len
         </button>
       );
     }
     return (
       <button style={styles.nextBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>person</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>person</span>
         Quay ve trang ca nhan
       </button>
     );
@@ -446,7 +446,7 @@ const VerifyIdentityPage = () => {
       {/* Header */}
       <div style={styles.header}>
         <button style={styles.backBtn} onClick={handleBack}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         </button>
         <span style={styles.headerTitle}>Xac minh danh tinh</span>
         <span style={styles.stepLabel}>Buoc {step}/{totalSteps}</span>
@@ -469,13 +469,13 @@ const VerifyIdentityPage = () => {
         <div style={styles.navButtons}>
           {step < 3 && (
             <button style={styles.backNavBtn} onClick={handleBack}>
-              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
             </button>
           )}
           {getActionButton()}
         </div>
         <div style={styles.privacyNote}>
-          <span className="material-symbols-outlined" style={{ fontSize: 16 }}>lock</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>lock</span>
           Thong tin cua ban duoc ma hoa va bao mat tuyet doi.
         </div>
       </div>

@@ -46,13 +46,13 @@ const PalateEvolutionPage = () => {
       {/* Header */}
       <div style={{ padding: '20px 16px 0', display: 'flex', alignItems: 'center', gap: 12 }}>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#1A1A2E' }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#1A1A2E' }}>arrow_back</span>
         </button>
         <div style={{ flex: 1 }}>
           <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700, color: '#1A1A2E' }}>Hanh trinh Vi giac cua Minh</h1>
           <p style={{ margin: 0, fontSize: 13, color: '#888', fontWeight: 500 }}>Nam 2026</p>
         </div>
-        <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#E8900C' }}>auto_awesome</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#E8900C' }}>auto_awesome</span>
       </div>
 
       {/* Stats Grid */}
@@ -63,7 +63,7 @@ const PalateEvolutionPage = () => {
             boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
             animation: `fadeInUp 0.5s ease ${i * 0.1}s both`
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 28, color: '#E8900C' }}>{s.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 28, color: '#E8900C' }}>{s.icon}</span>
             <div style={{ fontSize: 26, fontWeight: 800, marginTop: 8, color: '#1A1A2E' }}>{s.value}</div>
             <div style={{ fontSize: 12, color: '#888', marginTop: 2 }}>{s.label}</div>
           </div>
@@ -73,7 +73,7 @@ const PalateEvolutionPage = () => {
       {/* Taste Journey Chart */}
       <div style={{ padding: '0 16px', marginBottom: 24 }}>
         <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 16, color: '#1A1A2E' }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>show_chart</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>show_chart</span>
           Hanh Trinh Vi Giac
         </h2>
         <div style={{
@@ -102,7 +102,7 @@ const PalateEvolutionPage = () => {
       {/* Top 5 Dishes */}
       <div style={{ padding: '0 16px', marginBottom: 24 }}>
         <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12, color: '#1A1A2E' }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>emoji_events</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>emoji_events</span>
           Top 5 Mon An
         </h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -130,9 +130,9 @@ const PalateEvolutionPage = () => {
           background: 'linear-gradient(135deg, #E8900C 0%, #F5C542 100%)', borderRadius: 20, padding: 24,
           color: '#fff', position: 'relative', overflow: 'hidden'
         }}>
-          <span className="material-symbols-outlined" style={{ position: 'absolute', top: -10, right: -10, fontSize: 100, opacity: 0.15 }}>map</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ position: 'absolute', top: -10, right: -10, fontSize: 100, opacity: 0.15 }}>map</span>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 22 }}>location_on</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22 }}>location_on</span>
             <span style={{ fontSize: 13, fontWeight: 600, opacity: 0.9 }}>Vung Kham Pha Nhieu Nhat</span>
           </div>
           <div style={{ fontSize: 24, fontWeight: 800, marginBottom: 4 }}>Quan 1, TP.HCM</div>
@@ -141,7 +141,7 @@ const PalateEvolutionPage = () => {
             marginTop: 12, display: 'inline-flex', alignItems: 'center', gap: 6,
             background: 'rgba(255,255,255,0.25)', borderRadius: 20, padding: '6px 14px'
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 16 }}>military_tech</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>military_tech</span>
             <span style={{ fontSize: 12, fontWeight: 700 }}>Nha Tham Hiem Quan 1</span>
           </div>
         </div>
@@ -154,7 +154,7 @@ const PalateEvolutionPage = () => {
           background: 'linear-gradient(135deg, #E8900C, #F5C542)', color: '#fff',
           fontSize: 16, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
           Chia Se Bao Cao
         </button>
       </div>

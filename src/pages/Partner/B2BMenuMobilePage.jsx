@@ -44,15 +44,15 @@ const B2BMenuMobilePage = () => {
       {/* Header */}
       <div style={{ padding: '20px 16px 0', display: 'flex', alignItems: 'center', gap: 12 }}>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
         </button>
         <div style={{ flex: 1 }}>
           <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 22, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>restaurant_menu</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>restaurant_menu</span>
             Quan Ly Menu
           </h1>
         </div>
-        <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#888' }}>more_vert</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#888' }}>more_vert</span>
       </div>
 
       {/* Category Tabs */}
@@ -95,7 +95,7 @@ const B2BMenuMobilePage = () => {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 10 }}>
                 <div style={{ fontSize: 12, color: '#888' }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 14, verticalAlign: 'middle', marginRight: 4 }}>trending_up</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14, verticalAlign: 'middle', marginRight: 4 }}>trending_up</span>
                   {item.sold} da ban
                 </div>
                 <div style={{ display: 'flex', gap: 8 }}>
@@ -103,13 +103,13 @@ const B2BMenuMobilePage = () => {
                     width: 32, height: 32, borderRadius: 10, border: 'none', cursor: 'pointer',
                     background: 'rgba(108,99,255,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center'
                   }}>
-                    <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#6C63FF' }}>edit</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, color: '#6C63FF' }}>edit</span>
                   </button>
                   <button style={{
                     width: 32, height: 32, borderRadius: 10, border: 'none', cursor: 'pointer',
                     background: 'rgba(255,59,92,0.15)', display: 'flex', alignItems: 'center', justifyContent: 'center'
                   }}>
-                    <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#FF3B5C' }}>delete</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, color: '#FF3B5C' }}>delete</span>
                   </button>
                 </div>
               </div>
@@ -125,7 +125,7 @@ const B2BMenuMobilePage = () => {
           background: 'linear-gradient(135deg, #E8900C, #F5C542)', boxShadow: '0 6px 24px rgba(232,144,12,0.4)',
           display: 'flex', alignItems: 'center', justifyContent: 'center'
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 28, color: '#fff' }}>add</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 28, color: '#fff' }}>add</span>
         </button>
       </div>
     </div>

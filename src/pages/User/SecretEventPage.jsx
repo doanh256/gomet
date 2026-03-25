@@ -77,28 +77,28 @@ const SecretEventPage = () => {
       <style>{secretKeyframes}</style>
       <div style={s.header}>
         <button style={s.backBtn} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined">arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
-        <span className="material-symbols-outlined" style={s.headerIcon}>lock</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>lock</span>
         <h1 style={s.headerTitle}>Su kien bi mat</h1>
       </div>
 
       <div style={s.mysteryCard}>
         <div style={s.mysteryOverlay} />
         <div style={s.mysteryContent}>
-          <span className="material-symbols-outlined" style={s.mysteryIcon}>help</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.mysteryIcon}>help</span>
           <p style={s.mysteryText}>Chi tiet duoc tiet lo truoc 24h</p>
         </div>
       </div>
 
       <div style={s.section}>
-        <div style={s.sectionTitle}><span className="material-symbols-outlined" style={s.sectionIcon}>visibility</span>Thong tin da biet</div>
-        {revealedItems.map((item, i) => (<div key={i} style={s.revealedItem}><span className="material-symbols-outlined" style={s.checkIcon}>check_circle</span><span style={s.revealedText}>{item.text}</span></div>))}
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>visibility</span>Thong tin da biet</div>
+        {revealedItems.map((item, i) => (<div key={i} style={s.revealedItem}><span aria-hidden="true" className="material-symbols-outlined" style={s.checkIcon}>check_circle</span><span style={s.revealedText}>{item.text}</span></div>))}
       </div>
 
       <div style={s.section}>
-        <div style={s.sectionTitle}><span className="material-symbols-outlined" style={s.sectionIcon}>visibility_off</span>Con an</div>
-        {hiddenItems.map((item, i) => (<div key={i} style={s.hiddenItem}><span className="material-symbols-outlined" style={s.lockIcon}>lock</span><span style={s.hiddenText}>{item}</span></div>))}
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>visibility_off</span>Con an</div>
+        {hiddenItems.map((item, i) => (<div key={i} style={s.hiddenItem}><span aria-hidden="true" className="material-symbols-outlined" style={s.lockIcon}>lock</span><span style={s.hiddenText}>{item}</span></div>))}
       </div>
 
       <div style={s.registerSection}>
@@ -107,13 +107,13 @@ const SecretEventPage = () => {
         {!registered ? (
           <button style={s.goldBtn} onClick={() => setRegistered(true)}>Dang ky tham gia</button>
         ) : (
-          <div style={s.registeredBtn}><span className="material-symbols-outlined" style={{ fontSize: '22px' }}>check_circle</span>Da dang ky thanh cong</div>
+          <div style={s.registeredBtn}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px' }}>check_circle</span>Da dang ky thanh cong</div>
         )}
         <div style={s.price}>500.000 VND</div>
       </div>
 
       <div style={s.section}>
-        <div style={s.sectionTitle}><span className="material-symbols-outlined" style={s.sectionIcon}>gavel</span>Quy tac</div>
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>gavel</span>Quy tac</div>
         {rules.map((rule) => (<div key={rule.num} style={s.ruleItem}><div style={s.ruleNum}>{rule.num}</div><span style={s.ruleText}>{rule.text}</span></div>))}
       </div>
     </div>

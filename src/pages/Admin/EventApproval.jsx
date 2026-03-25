@@ -72,26 +72,26 @@ const EventApproval = () => {
 
   return (
     <div style={s.page}>
-      <div style={s.header}><span className="material-symbols-outlined" style={s.headerIcon}>event_available</span><h1 style={s.title}>Duyet su kien</h1>{pendingCount > 0 && <span style={s.badge}>{pendingCount}</span>}</div>
+      <div style={s.header}><span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>event_available</span><h1 style={s.title}>Duyet su kien</h1>{pendingCount > 0 && <span style={s.badge}>{pendingCount}</span>}</div>
       <div style={s.filterRow}>{filters.map((f) => (<button key={f.key} style={s.filterChip(activeFilter === f.key)} onClick={() => setActiveFilter(f.key)}>{f.label}</button>))}</div>
       <div style={s.eventList}>
         {filtered.length === 0 && <div style={s.emptyState}>Khong co su kien nao trong danh sach nay.</div>}
         {filtered.map((ev) => (
           <div key={ev.id} style={s.eventCard}>
-            <div style={s.eventImage(ev.category)}><span className="material-symbols-outlined" style={s.eventImgIcon(ev.category)}>image</span></div>
+            <div style={s.eventImage(ev.category)}><span aria-hidden="true" className="material-symbols-outlined" style={s.eventImgIcon(ev.category)}>image</span></div>
             <div style={s.eventBody}>
               <div style={s.eventName}>{ev.name}</div>
               <div style={s.hostRow}><div style={s.hostAvatar}>{ev.hostAvatar}</div><span style={s.hostName}>{ev.host}</span></div>
               <div style={s.detailRow}>
-                <div style={s.detailItem}><span className="material-symbols-outlined" style={s.detailIcon}>calendar_today</span>{ev.date} - {ev.time}</div>
-                <div style={s.detailItem}><span className="material-symbols-outlined" style={s.detailIcon}>location_on</span>{ev.venue}</div>
-                <div style={s.detailItem}><span className="material-symbols-outlined" style={s.detailIcon}>group</span>{ev.attendees} nguoi</div>
+                <div style={s.detailItem}><span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>calendar_today</span>{ev.date} - {ev.time}</div>
+                <div style={s.detailItem}><span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>location_on</span>{ev.venue}</div>
+                <div style={s.detailItem}><span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>group</span>{ev.attendees} nguoi</div>
               </div>
               <div style={s.chipRow}><span style={s.catChip(ev.category)}>{ev.category}</span><span style={s.priceChip}>{ev.price}</span></div>
-              <div style={s.submittedText}><span className="material-symbols-outlined" style={{ fontSize: '14px', verticalAlign: 'middle', marginRight: '4px' }}>schedule</span>Gui {ev.submitted}</div>
-              {ev.status === 'pending' && (<div style={s.actionRow}><button style={s.approveBtn} onClick={() => handleAction(ev.id, 'approved')}><span className="material-symbols-outlined" style={s.smallIcon}>check</span>Duyet</button><button style={s.rejectBtn} onClick={() => handleAction(ev.id, 'rejected')}><span className="material-symbols-outlined" style={s.smallIcon}>close</span>Tu choi</button><button style={s.viewBtn}>Xem chi tiet</button></div>)}
-              {ev.status === 'approved' && (<div style={{ color: '#117500', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}><span className="material-symbols-outlined" style={{ fontSize: '16px' }}>check_circle</span>Da duyet</div>)}
-              {ev.status === 'rejected' && (<div style={{ color: '#FF571A', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}><span className="material-symbols-outlined" style={{ fontSize: '16px' }}>cancel</span>Da tu choi</div>)}
+              <div style={s.submittedText}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '14px', verticalAlign: 'middle', marginRight: '4px' }}>schedule</span>Gui {ev.submitted}</div>
+              {ev.status === 'pending' && (<div style={s.actionRow}><button style={s.approveBtn} onClick={() => handleAction(ev.id, 'approved')}><span aria-hidden="true" className="material-symbols-outlined" style={s.smallIcon}>check</span>Duyet</button><button style={s.rejectBtn} onClick={() => handleAction(ev.id, 'rejected')}><span aria-hidden="true" className="material-symbols-outlined" style={s.smallIcon}>close</span>Tu choi</button><button style={s.viewBtn}>Xem chi tiet</button></div>)}
+              {ev.status === 'approved' && (<div style={{ color: '#117500', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>check_circle</span>Da duyet</div>)}
+              {ev.status === 'rejected' && (<div style={{ color: '#FF571A', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>cancel</span>Da tu choi</div>)}
             </div>
           </div>
         ))}

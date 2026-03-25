@@ -292,7 +292,7 @@ const PersonalInsightsPage = () => {
     <div style={s.page}>
       {/* Header */}
       <div style={s.header}>
-        <span className="material-symbols-outlined" style={s.headerIcon}>insights</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>insights</span>
         <h1 style={s.heading}>Thau hieu trai nghiem</h1>
       </div>
 
@@ -301,7 +301,7 @@ const PersonalInsightsPage = () => {
       <div style={s.statsGrid}>
         {overviewStats.map((stat, i) => (
           <div key={i} style={s.statCard}>
-            <span className="material-symbols-outlined" style={s.statIcon}>{stat.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.statIcon}>{stat.icon}</span>
             <div style={s.statValue}>{stat.value}</div>
             <div style={s.statLabel}>{stat.label}</div>
           </div>
@@ -329,7 +329,7 @@ const PersonalInsightsPage = () => {
         <div key={i} style={s.traitCard}>
           <div style={s.traitHeader}>
             <div style={s.traitLeft}>
-              <span className="material-symbols-outlined" style={s.traitIcon}>{trait.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.traitIcon}>{trait.icon}</span>
               <span style={s.traitLabel}>{trait.label}</span>
             </div>
             <span style={s.traitPct}>{trait.pct}%</span>
@@ -345,7 +345,7 @@ const PersonalInsightsPage = () => {
       {bestMatches.map((m, i) => (
         <div key={i} style={s.matchCard}>
           <div style={s.matchIcon}>
-            <span className="material-symbols-outlined">{m.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined">{m.icon}</span>
           </div>
           <span style={s.matchLabel}>{m.label}</span>
           <span style={s.matchScore}>{m.score}</span>
@@ -356,7 +356,7 @@ const PersonalInsightsPage = () => {
       <div style={s.sectionTitle}>Goi y cai thien</div>
       {improvementTips.map((tip, i) => (
         <div key={i} style={s.tipCard}>
-          <span className="material-symbols-outlined" style={s.tipIcon}>lightbulb</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.tipIcon}>lightbulb</span>
           <span style={s.tipText}>{tip.text}</span>
         </div>
       ))}
@@ -373,7 +373,7 @@ const PersonalInsightsPage = () => {
             <span style={s.trendCurrent}>{t.current}</span>
             <span style={s.trendPrev}>/ {t.prev}</span>
             <span
-              className="material-symbols-outlined"
+              aria-hidden="true" className="material-symbols-outlined"
               style={{
                 ...s.trendArrow,
                 color: t.up ? '#117500' : '#FF571A',

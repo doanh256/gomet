@@ -53,7 +53,7 @@ const Reports = () => {
   return (
     <div style={{ fontFamily: 'var(--font-body)', color: '#FDF9F3' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
-        <span className="material-symbols-outlined" style={{ fontSize: '32px', color: '#FF571A' }}>flag</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '32px', color: '#FF571A' }}>flag</span>
         <h1 style={{ margin: 0, fontSize: '28px', fontWeight: 700, fontFamily: 'var(--font-headline)' }}>Trung tam bao cao</h1>
       </div>
 
@@ -66,7 +66,7 @@ const Reports = () => {
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '14px', marginBottom: '28px' }}>
         {statCards.map((s, i) => (
           <div key={i} style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '20px 24px', display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '28px', color: s.color, background: '#2A2A2A', borderRadius: '12px', padding: '12px' }}>{s.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '28px', color: s.color, background: '#2A2A2A', borderRadius: '12px', padding: '12px' }}>{s.icon}</span>
             <div>
               <p style={{ margin: 0, fontSize: '28px', fontWeight: 700, fontFamily: 'var(--font-headline)', color: '#FDF9F3' }}>{s.value}</p>
               <p style={{ margin: '2px 0 0 0', fontSize: '13px', color: '#E6BEB2' }}>{s.label}</p>
@@ -113,7 +113,7 @@ const Reports = () => {
         })}
         {filteredReports.length === 0 && (
           <div style={{ padding: '60px', textAlign: 'center', color: '#E6BEB2', background: '#1C1B1B', borderRadius: '1.5rem' }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '48px', display: 'block', marginBottom: '12px', opacity: 0.4 }}>inbox</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '48px', display: 'block', marginBottom: '12px', opacity: 0.4 }}>inbox</span>
             Khong co bao cao nao trong muc nay
           </div>
         )}

@@ -373,12 +373,12 @@ const ChemistryScorePage = () => {
   return (
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
         Quay lai
       </button>
 
       <div style={s.headerPill}>
-        <span className="material-symbols-outlined" style={{ fontSize: 16 }}>science</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>science</span>
         CHEMISTRY SCORE
       </div>
 
@@ -393,7 +393,7 @@ const ChemistryScorePage = () => {
           <span style={s.avatarName}>{matchData.user.name}</span>
         </div>
         <div style={s.heartIcon}>
-          <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#fff' }}>favorite</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: '#fff' }}>favorite</span>
         </div>
         <div style={s.avatarWrap}>
           <img src={matchData.match.avatar} alt={matchData.match.name} style={s.avatar} />
@@ -434,14 +434,14 @@ const ChemistryScorePage = () => {
 
       {/* Breakdown */}
       <div style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--primary)' }}>analytics</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--primary)' }}>analytics</span>
         Chi tiet tuong thich
       </div>
       <div style={s.catList}>
         {matchData.categories.map((cat, i) => (
           <div key={cat.label} style={s.catRow}>
             <div style={s.catIconWrap}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, color: 'var(--primary)' }}>{cat.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: 'var(--primary)' }}>{cat.icon}</span>
             </div>
             <div style={s.catInfo}>
               <div style={s.catLabel}>{cat.label}</div>
@@ -456,35 +456,35 @@ const ChemistryScorePage = () => {
 
       {/* Venue suggestion */}
       <div style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--primary)' }}>place</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--primary)' }}>place</span>
         Dia diem goi y
       </div>
       <div style={s.venueCard}>
         <img src={venue.img} alt={venue.name} style={s.venueImg} />
         <div style={s.venueBody}>
           <div style={s.venuePill}>
-            <span className="material-symbols-outlined" style={{ fontSize: 12 }}>auto_awesome</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 12 }}>auto_awesome</span>
             PHU HOP VOI CA HAI
           </div>
           <div style={s.venueName}>{venue.name}</div>
           <div style={s.venueCuisine}>{venue.cuisine} · {venue.address}</div>
           <button style={s.bookBtn} onClick={() => navigate('/app/booking')}>
             Dat ngay
-            <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
           </button>
         </div>
       </div>
 
       {/* Tips */}
       <div style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--tertiary-container)' }}>tips_and_updates</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--tertiary-container)' }}>tips_and_updates</span>
         Tang Chemistry
       </div>
       <div style={s.tipsGrid}>
         {tips.map((t, i) => (
           <div key={i} style={s.tipCard}>
             <div style={s.tipIconWrap}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, color: 'var(--tertiary-container)' }}>{t.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: 'var(--tertiary-container)' }}>{t.icon}</span>
             </div>
             <div style={s.tipText}>{t.text}</div>
           </div>
@@ -494,11 +494,11 @@ const ChemistryScorePage = () => {
       {/* Action buttons */}
       <div style={s.actions}>
         <button style={s.primaryBtn} onClick={() => navigate('/app/chat')}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>chat</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>chat</span>
           Gui loi chao
         </button>
         <button style={s.secondaryBtn} onClick={() => navigate(`/app/profile/${matchId || 'minh-anh'}`)}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>person</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>person</span>
           Xem ho so
         </button>
       </div>

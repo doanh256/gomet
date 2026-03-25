@@ -246,11 +246,11 @@ const RateExperiencePage = () => {
         <div>
           <div style={s.partnerName}>Minh Anh</div>
           <div style={s.partnerDetail}>
-            <span className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>
             The Coffee House - Nguyen Hue
           </div>
           <div style={{ ...s.partnerDetail, marginTop: 2 }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 16 }}>calendar_today</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>calendar_today</span>
             20/03/2026
           </div>
         </div>
@@ -262,7 +262,7 @@ const RateExperiencePage = () => {
           {[1, 2, 3, 4, 5].map((star) => (
             <span
               key={star}
-              className="material-symbols-outlined"
+              aria-hidden="true" className="material-symbols-outlined"
               style={{
                 ...s.starIcon,
                 ...(star <= overallRating ? s.starActive : s.starInactive),
@@ -288,7 +288,7 @@ const RateExperiencePage = () => {
               {[1, 2, 3, 4, 5].map((star) => (
                 <span
                   key={star}
-                  className="material-symbols-outlined"
+                  aria-hidden="true" className="material-symbols-outlined"
                   style={{
                     ...s.smallStar,
                     ...(star <= categoryRatings[cat.key] ? s.starActive : s.starInactive),
@@ -322,7 +322,7 @@ const RateExperiencePage = () => {
 
       <div style={s.toggleRow}>
         <div style={s.toggleLabel}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#E6BEB2' }}>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#E6BEB2' }}>
             visibility_off
           </span>
           Gui an danh

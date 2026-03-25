@@ -87,13 +87,13 @@ const AIAnalytics = () => {
   return (
     <div style={s.page}>
       <div style={s.header}>
-        <span className="material-symbols-outlined" style={s.headerIcon}>auto_awesome</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>auto_awesome</span>
         <h1 style={s.title}>Phan tich AI</h1>
       </div>
       <div style={s.section}>
         <h2 style={s.sectionTitle}>Xu huong nguoi dung</h2>
         <div style={s.trendGrid}>
-          {trends.map((t, i) => (<div key={i} style={s.trendCard}><div style={s.trendIconWrap(t.color)}><span className="material-symbols-outlined" style={s.trendIcon(t.color)}>{t.icon}</span></div><div><div style={{ fontSize: '13px', color: '#E6BEB2' }}>{t.label}</div><div style={s.trendValue}>{t.value}</div><div style={s.trendSub}>{t.sub}</div></div></div>))}
+          {trends.map((t, i) => (<div key={i} style={s.trendCard}><div style={s.trendIconWrap(t.color)}><span aria-hidden="true" className="material-symbols-outlined" style={s.trendIcon(t.color)}>{t.icon}</span></div><div><div style={{ fontSize: '13px', color: '#E6BEB2' }}>{t.label}</div><div style={s.trendValue}>{t.value}</div><div style={s.trendSub}>{t.sub}</div></div></div>))}
         </div>
       </div>
       <div style={s.section}>
@@ -105,15 +105,15 @@ const AIAnalytics = () => {
       <div style={s.section}>
         <h2 style={s.sectionTitle}>Du doan</h2>
         <div style={s.predGrid}>
-          <div style={s.predCard}><div style={s.predHeader}><span className="material-symbols-outlined" style={s.predIcon}>smart_toy</span><div style={s.predTitle}>Nguoi dung co nguy co roi bo</div></div>{churnUsers.map((u, i) => (<div key={i} style={s.churnRow}><span style={s.churnName}>{u.name}</span><span style={s.churnRisk(u.risk)}>{u.risk}% nguy co</span></div>))}</div>
-          <div style={s.predCard}><div style={s.predHeader}><span className="material-symbols-outlined" style={s.predIcon}>smart_toy</span><div style={s.predTitle}>Su kien hot tuan toi</div></div>{hotEvents.map((ev, i) => (<div key={i} style={s.eventItem}>{ev}</div>))}</div>
-          <div style={s.predCard}><div style={s.predHeader}><span className="material-symbols-outlined" style={s.predIcon}>smart_toy</span><div style={s.predTitle}>Gio cao diem du kien</div></div><div style={s.heatRow}>{peakHours.map((h, i) => (<div key={i} style={s.heatCol(h.level)}><div style={s.heatBar(h.level)} /><span style={s.heatLabel}>{h.hour}</span></div>))}</div></div>
+          <div style={s.predCard}><div style={s.predHeader}><span aria-hidden="true" className="material-symbols-outlined" style={s.predIcon}>smart_toy</span><div style={s.predTitle}>Nguoi dung co nguy co roi bo</div></div>{churnUsers.map((u, i) => (<div key={i} style={s.churnRow}><span style={s.churnName}>{u.name}</span><span style={s.churnRisk(u.risk)}>{u.risk}% nguy co</span></div>))}</div>
+          <div style={s.predCard}><div style={s.predHeader}><span aria-hidden="true" className="material-symbols-outlined" style={s.predIcon}>smart_toy</span><div style={s.predTitle}>Su kien hot tuan toi</div></div>{hotEvents.map((ev, i) => (<div key={i} style={s.eventItem}>{ev}</div>))}</div>
+          <div style={s.predCard}><div style={s.predHeader}><span aria-hidden="true" className="material-symbols-outlined" style={s.predIcon}>smart_toy</span><div style={s.predTitle}>Gio cao diem du kien</div></div><div style={s.heatRow}>{peakHours.map((h, i) => (<div key={i} style={s.heatCol(h.level)}><div style={s.heatBar(h.level)} /><span style={s.heatLabel}>{h.hour}</span></div>))}</div></div>
         </div>
       </div>
       <div style={s.section}>
         <h2 style={s.sectionTitle}>Goi y tu AI</h2>
         <div style={s.insightGrid}>
-          {insights.map((ins) => (<div key={ins.id} style={s.insightCard}><span className="material-symbols-outlined" style={s.insightIcon}>lightbulb</span><div style={s.insightText}>{ins.text}</div><button style={s.applyBtn(appliedInsights.includes(ins.id))} onClick={() => handleApply(ins.id)} disabled={appliedInsights.includes(ins.id)}>{appliedInsights.includes(ins.id) ? 'Da ap dung' : 'Ap dung'}</button></div>))}
+          {insights.map((ins) => (<div key={ins.id} style={s.insightCard}><span aria-hidden="true" className="material-symbols-outlined" style={s.insightIcon}>lightbulb</span><div style={s.insightText}>{ins.text}</div><button style={s.applyBtn(appliedInsights.includes(ins.id))} onClick={() => handleApply(ins.id)} disabled={appliedInsights.includes(ins.id)}>{appliedInsights.includes(ins.id) ? 'Da ap dung' : 'Ap dung'}</button></div>))}
         </div>
       </div>
     </div>

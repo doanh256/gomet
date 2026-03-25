@@ -2,37 +2,37 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const foodItems = [
-  'Pho', 'Bun cha', 'Com tam', 'Sushi', 'Pizza', 'Pasta',
-  'Salad', 'BBQ', 'Dimsum', 'Lau', 'Banh mi', 'Dessert',
+  'Phở', 'Bún chả', 'Cơm tấm', 'Sushi', 'Pizza', 'Pasta',
+  'Salad', 'BBQ', 'Dimsum', 'Lẩu', 'Bánh mì', 'Dessert',
 ];
 
 const dietOptions = [
-  'Khong kieng cu', 'An chay', 'Khong gluten', 'Halal', 'Keto',
+  'Không kiêng cử', 'Ăn chay', 'Không gluten', 'Halal', 'Keto',
 ];
 
 const priceOptions = [
-  { symbol: '$', label: 'Binh dan', range: '<100k' },
-  { symbol: '$$', label: 'Trung cap', range: '100-300k' },
-  { symbol: '$$$', label: 'Cao cap', range: '300k+' },
+  { symbol: '$', label: 'Bình dân', range: '<100k' },
+  { symbol: '$$', label: 'Trung cấp', range: '100-300k' },
+  { symbol: '$$$', label: 'Cao cấp', range: '300k+' },
 ];
 
 const allergyItems = [
-  'Hai san', 'Dau phong', 'Sua', 'Trung', 'Khong co',
+  'Hải sản', 'Đậu phộng', 'Sữa', 'Trứng', 'Không có',
 ];
 
 const experienceOptions = [
-  { icon: 'local_cafe', label: 'Am cung' },
-  { icon: 'dinner_dining', label: 'Sang trong' },
-  { icon: 'celebration', label: 'Vui nhon' },
+  { icon: 'local_cafe', label: 'Ấm cúng' },
+  { icon: 'dinner_dining', label: 'Sang trọng' },
+  { icon: 'celebration', label: 'Vui nhộn' },
 ];
 
 const FoodPreferencePage = () => {
   const navigate = useNavigate();
-  const [selectedFoods, setSelectedFoods] = useState(['Pho', 'Sushi', 'Lau']);
-  const [selectedDiet, setSelectedDiet] = useState('Khong kieng cu');
+  const [selectedFoods, setSelectedFoods] = useState(['Phở', 'Sushi', 'Lẩu']);
+  const [selectedDiet, setSelectedDiet] = useState('Không kiêng cử');
   const [selectedPrice, setSelectedPrice] = useState('$$');
-  const [selectedAllergies, setSelectedAllergies] = useState(['Khong co']);
-  const [selectedExperiences, setSelectedExperiences] = useState(['Am cung']);
+  const [selectedAllergies, setSelectedAllergies] = useState(['Không có']);
+  const [selectedExperiences, setSelectedExperiences] = useState(['Ấm cúng']);
 
   const toggleFood = (item) => {
     setSelectedFoods(prev =>
@@ -41,11 +41,11 @@ const FoodPreferencePage = () => {
   };
 
   const toggleAllergy = (item) => {
-    if (item === 'Khong co') {
-      setSelectedAllergies(['Khong co']);
+    if (item === 'Không có') {
+      setSelectedAllergies(['Không có']);
     } else {
       setSelectedAllergies(prev => {
-        const without = prev.filter(a => a !== 'Khong co');
+        const without = prev.filter(a => a !== 'Không có');
         return without.includes(item) ? without.filter(a => a !== item) : [...without, item];
       });
     }
@@ -254,23 +254,27 @@ const FoodPreferencePage = () => {
     <div style={s.page}>
       {/* Header */}
       <div style={s.header}>
-        <span className="material-symbols-outlined" style={s.headerIcon}>restaurant</span>
-        <h1 style={s.heading}>Ho so am thuc</h1>
-        <div style={s.subtitle}>Cho chung toi biet khau vi cua ban</div>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>restaurant</span>
+        <h1 style={s.heading}>Hồ sơ ẩm thực</h1>
+        <div style={s.subtitle}>Cho chúng tôi biết khẩu vị của bạn</div>
       </div>
 
       {/* Favorite Foods */}
-      <div style={s.sectionTitle}>Mon yeu thich</div>
-      <div style={s.chipsGrid}>
+      <div style={s.sectionTitle}>Món yêu thích</div>
+      <div style={s.chipsGrid} role="group" aria-label="Món yêu thích">
         {foodItems.map(item => {
           const active = selectedFoods.includes(item);
           return (
             <div
               key={item}
+              role="checkbox"
+              aria-checked={active}
+              tabIndex={0}
               style={{ ...s.chip, ...(active ? s.chipActive : {}) }}
               onClick={() => toggleFood(item)}
+              onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), toggleFood(item))}
             >
-              {active && <span className="material-symbols-outlined" style={s.chipCheck}>check</span>}
+              {active && <span aria-hidden="true" className="material-symbols-outlined" style={s.chipCheck}>check</span>}
               {item}
             </div>
           );
@@ -278,15 +282,19 @@ const FoodPreferencePage = () => {
       </div>
 
       {/* Diet */}
-      <div style={s.sectionTitle}>Che do an</div>
-      <div style={s.dietRow}>
+      <div style={s.sectionTitle}>Chế độ ăn</div>
+      <div style={s.dietRow} role="radiogroup" aria-label="Chế độ ăn">
         {dietOptions.map(item => {
           const active = selectedDiet === item;
           return (
             <div
               key={item}
+              role="radio"
+              aria-checked={active}
+              tabIndex={active ? 0 : -1}
               style={{ ...s.dietChip, ...(active ? s.dietActive : {}) }}
               onClick={() => setSelectedDiet(item)}
+              onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), setSelectedDiet(item))}
             >
               {item}
             </div>
@@ -295,15 +303,19 @@ const FoodPreferencePage = () => {
       </div>
 
       {/* Price Preference */}
-      <div style={s.sectionTitle}>Muc gia uu thich</div>
-      <div style={s.priceRow}>
+      <div style={s.sectionTitle}>Mức giá ưa thích</div>
+      <div style={s.priceRow} role="radiogroup" aria-label="Mức giá ưa thích">
         {priceOptions.map(opt => {
           const active = selectedPrice === opt.symbol;
           return (
             <div
               key={opt.symbol}
+              role="radio"
+              aria-checked={active}
+              tabIndex={active ? 0 : -1}
               style={{ ...s.priceCard, ...(active ? s.priceCardActive : {}) }}
               onClick={() => setSelectedPrice(opt.symbol)}
+              onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), setSelectedPrice(opt.symbol))}
             >
               <div style={s.priceSymbol}>{opt.symbol}</div>
               <div style={s.priceLabel}>{opt.label}</div>
@@ -314,15 +326,19 @@ const FoodPreferencePage = () => {
       </div>
 
       {/* Allergies */}
-      <div style={s.sectionTitle}>Di ung thuc pham</div>
-      <div style={s.allergyRow}>
+      <div style={s.sectionTitle}>Dị ứng thực phẩm</div>
+      <div style={s.allergyRow} role="group" aria-label="Dị ứng thực phẩm">
         {allergyItems.map(item => {
           const active = selectedAllergies.includes(item);
           return (
             <div
               key={item}
+              role="checkbox"
+              aria-checked={active}
+              tabIndex={0}
               style={{ ...s.dietChip, ...(active ? s.dietActive : {}) }}
               onClick={() => toggleAllergy(item)}
+              onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), toggleAllergy(item))}
             >
               {item}
             </div>
@@ -331,17 +347,21 @@ const FoodPreferencePage = () => {
       </div>
 
       {/* Experience Preference */}
-      <div style={s.sectionTitle}>Trai nghiem mong muon</div>
-      <div style={s.expRow}>
+      <div style={s.sectionTitle}>Trải nghiệm mong muốn</div>
+      <div style={s.expRow} role="group" aria-label="Trải nghiệm mong muốn">
         {experienceOptions.map(opt => {
           const active = selectedExperiences.includes(opt.label);
           return (
             <div
               key={opt.label}
+              role="checkbox"
+              aria-checked={active}
+              tabIndex={0}
               style={{ ...s.expCard, ...(active ? s.expCardActive : {}) }}
               onClick={() => toggleExperience(opt.label)}
+              onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), toggleExperience(opt.label))}
             >
-              <span className="material-symbols-outlined" style={s.expIcon}>{opt.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.expIcon}>{opt.icon}</span>
               <div style={s.expLabel}>{opt.label}</div>
             </div>
           );
@@ -349,11 +369,11 @@ const FoodPreferencePage = () => {
       </div>
 
       {/* Save Button */}
-      <button style={s.saveBtn}>Luu thay doi</button>
+      <button style={s.saveBtn}>Lưu thay đổi</button>
 
       {/* Progress */}
       <div style={s.progressSection}>
-        <div style={s.progressLabel}>Ho so am thuc cua ban: {progress}% hoan thanh</div>
+        <div style={s.progressLabel}>Hồ sơ ẩm thực của bạn: {progress}% hoàn thành</div>
         <div style={s.progressTrack}>
           <div style={{ ...s.progressFill, width: `${progress}%` }} />
         </div>

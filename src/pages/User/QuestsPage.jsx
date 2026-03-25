@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const dailyQuests = [
-  { id: 1, icon: 'message', color: '#FF571A', title: 'Gui 3 tin nhan', desc: 'Ket noi voi nhung nguoi ban moi', progress: 2, total: 3, reward: 50, done: false },
-  { id: 2, icon: 'favorite', color: '#FFB59E', title: 'Thich 5 ho so', desc: 'Kham pha va the hien su quan tam', progress: 5, total: 5, reward: 50, done: true },
-  { id: 3, icon: 'restaurant', color: '#2A2A2A', title: 'Dat 1 buoi hen', desc: 'Len lich hen ho tai nha hang', progress: 0, total: 1, reward: 50, done: false },
+  { id: 1, icon: 'message', color: '#FF571A', title: 'Gửi 3 tin nhắn', desc: 'Kết nối với những người bạn mới', progress: 2, total: 3, reward: 50, done: false },
+  { id: 2, icon: 'favorite', color: '#FFB59E', title: 'Thích 5 hồ sơ', desc: 'Khám phá và thể hiện sự quan tâm', progress: 5, total: 5, reward: 50, done: true },
+  { id: 3, icon: 'restaurant', color: '#2A2A2A', title: 'Đặt 1 buổi hẹn', desc: 'Lên lịch hẹn hò tại nhà hàng', progress: 0, total: 1, reward: 50, done: false },
 ];
 
 const specialQuests = [
-  { id: 10, icon: 'local_fire_department', title: 'Chuoi 14 ngay hoat dong', desc: 'Dang nhap va tuong tac moi ngay trong 14 ngay lien tiep de nhan thuong dac biet', reward: 500, deadline: '3 ngay con lai' },
-  { id: 11, icon: 'diversity_3', title: 'Gioi thieu 3 ban be', desc: 'Moi ban be tham gia GOMET va cung trai nghiem hen ho tuyet voi', reward: 500, deadline: '5 ngay con lai' },
+  { id: 10, icon: 'local_fire_department', title: 'Chuỗi 14 ngày hoạt động', desc: 'Đăng nhập và tương tác mỗi ngày trong 14 ngày liên tiếp để nhận thưởng đặc biệt', reward: 500, deadline: '3 ngày còn lại' },
+  { id: 11, icon: 'diversity_3', title: 'Giới thiệu 3 bạn bè', desc: 'Mời bạn bè tham gia GOMET và cùng trải nghiệm hẹn hò tuyệt vời', reward: 500, deadline: '5 ngày còn lại' },
 ];
 
 const claimedRewards = [
   { icon: 'monetization_on', name: '100 xu', date: '20/03' },
-  { icon: 'star', name: 'Huy hieu Vang', date: '18/03' },
+  { icon: 'star', name: 'Huy hiệu Vàng', date: '18/03' },
   { icon: 'card_giftcard', name: 'Voucher 50k', date: '15/03' },
-  { icon: 'workspace_premium', name: 'Khung anh VIP', date: '12/03' },
+  { icon: 'workspace_premium', name: 'Khung ảnh VIP', date: '12/03' },
   { icon: 'redeem', name: '200 xu', date: '10/03' },
 ];
 
@@ -266,31 +266,31 @@ const QuestsPage = () => {
   return (
     <div style={s.page}>
       <div style={s.header}>
-        <span className="material-symbols-outlined" style={s.headerIcon}>emoji_events</span>
-        <h1 style={s.heading}>Trung tam thu thach</h1>
-        <p style={s.subtitle}>Hoan thanh nhiem vu, nhan thuong lon!</p>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>emoji_events</span>
+        <h1 style={s.heading}>Trung tâm thử thách</h1>
+        <p style={s.subtitle}>Hoàn thành nhiệm vụ, nhận thưởng lớn!</p>
       </div>
 
       <div style={s.statsRow}>
         <div style={s.statCard}>
           <span className="material-symbols-outlined filled" style={s.statIcon}>star</span>
           <div style={s.statValue}>{level}</div>
-          <div style={s.statLabel}>Cap do</div>
+          <div style={s.statLabel}>Cấp độ</div>
         </div>
         <div style={s.statCard}>
           <span className="material-symbols-outlined filled" style={s.statIcon}>toll</span>
           <div style={s.statValue}>{points.toLocaleString()}</div>
-          <div style={s.statLabel}>Diem tich luy</div>
+          <div style={s.statLabel}>Điểm tích lũy</div>
         </div>
         <div style={s.statCard}>
           <span className="material-symbols-outlined filled" style={{...s.statIcon, color: '#FF571A'}}>local_fire_department</span>
           <div style={s.statValue}>{streak}</div>
-          <div style={s.statLabel}>Chuoi ngay</div>
+          <div style={s.statLabel}>Chuỗi ngày</div>
         </div>
       </div>
 
       <div style={s.section}>
-        <h2 style={s.sectionTitle}>Nhiem vu hang ngay</h2>
+        <h2 style={s.sectionTitle}>Nhiệm vụ hàng ngày</h2>
         {dailyQuests.map(q => (
           <div key={q.id} style={{...s.questCard, ...(q.done ? s.questCardDone : {})}}>
             <div style={{...s.questIconWrap, backgroundColor: q.color}}>
@@ -317,7 +317,7 @@ const QuestsPage = () => {
       </div>
 
       <div style={s.section}>
-        <h2 style={s.sectionTitle}>Thu thach dac biet</h2>
+        <h2 style={s.sectionTitle}>Thử thách đặc biệt</h2>
         {specialQuests.map(q => (
           <div key={q.id} style={s.specialCard}>
             <div style={s.specialTop}>
@@ -328,7 +328,7 @@ const QuestsPage = () => {
             <div style={s.specialBottom}>
               <div style={s.specialReward}>+{q.reward} xu</div>
               <div style={s.specialDeadline}>
-                <span className="material-symbols-outlined" style={{ fontSize: 16 }}>schedule</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>schedule</span>
                 {q.deadline}
               </div>
             </div>
@@ -337,7 +337,7 @@ const QuestsPage = () => {
       </div>
 
       <div style={s.section}>
-        <h2 style={s.sectionTitle}>Phan thuong da nhan</h2>
+        <h2 style={s.sectionTitle}>Phần thưởng đã nhận</h2>
         <div style={s.rewardsScroll}>
           {claimedRewards.map((r, i) => (
             <div key={i} style={s.rewardItem}>

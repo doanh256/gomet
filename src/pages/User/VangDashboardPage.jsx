@@ -188,14 +188,14 @@ const VangDashboardPage = () => {
   return (
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         Quay lai
       </button>
 
       {/* Tier Badge */}
       <div style={s.tierBadge}>
         <div style={s.tierShine} />
-        <span className="material-symbols-outlined" style={s.tierIcon}>diamond</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.tierIcon}>diamond</span>
         <div style={s.tierInfo}>
           <div style={s.tierLabel}>GOLD VANG</div>
           <div style={s.tierPoints}>12,450<span style={s.tierUnit}>VANG</span></div>
@@ -215,13 +215,13 @@ const VangDashboardPage = () => {
         <>
           {/* Culinary Journey */}
           <div style={s.sectionTitle}>
-            <span className="material-symbols-outlined" style={s.sectionIcon}>route</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>route</span>
             Hanh trinh am thuc
           </div>
           <div style={s.catGrid}>
             {categoryData.map(cat => (
               <div key={cat.label} style={s.catCard(cat.color)}>
-                <span className="material-symbols-outlined" style={s.catIcon(cat.color)}>{cat.icon}</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={s.catIcon(cat.color)}>{cat.icon}</span>
                 <div style={s.catLabel}>{cat.label}</div>
                 <div style={s.catPoints}>{cat.points.toLocaleString()}</div>
               </div>
@@ -231,13 +231,13 @@ const VangDashboardPage = () => {
           {/* Regional Footprint */}
           <div style={s.mapSection}>
             <div style={s.sectionTitle}>
-              <span className="material-symbols-outlined" style={s.sectionIcon}>map</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>map</span>
               Dau chan vung mien
             </div>
             <div style={s.badgeGrid}>
               {regionBadges.map(b => (
                 <div key={b.name} style={s.badge(b.earned, b.color)}>
-                  <span className="material-symbols-outlined" style={s.badgeIcon(b.earned, b.color)}>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={s.badgeIcon(b.earned, b.color)}>
                     {b.earned ? 'verified' : 'lock'}
                   </span>
                   <div style={s.badgeName}>{b.name}</div>
@@ -249,7 +249,7 @@ const VangDashboardPage = () => {
           {/* Monthly Velocity */}
           <div style={s.chartSection}>
             <div style={s.sectionTitle}>
-              <span className="material-symbols-outlined" style={s.sectionIcon}>trending_up</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>trending_up</span>
               Toc do hang thang
             </div>
             <div style={s.chartBars}>
@@ -268,17 +268,17 @@ const VangDashboardPage = () => {
       {(activeTab === 'overview' || activeTab === 'rewards') && (
         <div style={s.rewardSection}>
           <div style={s.sectionTitle}>
-            <span className="material-symbols-outlined" style={s.sectionIcon}>redeem</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>redeem</span>
             Doi thuong
           </div>
           <div style={s.rewardScroll}>
             {rewardCards.map(r => (
               <div key={r.id} style={s.rewardCard}>
-                <span className="material-symbols-outlined" style={s.rewardIcon}>{r.icon}</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={s.rewardIcon}>{r.icon}</span>
                 <div style={s.rewardTitle}>{r.title}</div>
                 <div style={s.rewardDesc}>{r.desc}</div>
                 <button style={s.rewardCost}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
                   {r.cost.toLocaleString()} Vang
                 </button>
               </div>
@@ -290,14 +290,14 @@ const VangDashboardPage = () => {
       {(activeTab === 'overview' || activeTab === 'history') && (
         <div>
           <div style={s.sectionTitle}>
-            <span className="material-symbols-outlined" style={s.sectionIcon}>receipt_long</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>receipt_long</span>
             Lich su giao dich
           </div>
           <div style={s.txList}>
             {transactions.map(tx => (
               <div key={tx.id} style={s.txItem}>
                 <div style={s.txIconWrap(tx.type)}>
-                  <span className="material-symbols-outlined" style={s.txIconEl(tx.type)}>{tx.icon}</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={s.txIconEl(tx.type)}>{tx.icon}</span>
                 </div>
                 <div style={s.txInfo}>
                   <div style={s.txLabel}>{tx.label}</div>

@@ -329,9 +329,9 @@ const EliteClubPage = () => {
         <div style={s.heroOrb1} />
         <div style={s.heroOrb2} />
         <button style={s.backBtn} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined">arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
-        <span className="material-symbols-outlined" style={s.diamondIcon}>diamond</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.diamondIcon}>diamond</span>
         <h1 style={s.heroTitle}>GOMET Elite Club</h1>
         <p style={s.heroSub}>Danh cho nhung nguoi tinh hoa</p>
       </div>
@@ -344,7 +344,7 @@ const EliteClubPage = () => {
             {benefits.map((b, i) => (
               <div key={i} style={s.benefitCard}>
                 <div style={s.benefitIcon}>
-                  <span className="material-symbols-outlined">{b.icon}</span>
+                  <span aria-hidden="true" className="material-symbols-outlined">{b.icon}</span>
                 </div>
                 <div style={s.benefitTitle}>{b.title}</div>
                 <div style={s.benefitBadge}>{b.desc}</div>
@@ -389,7 +389,7 @@ const EliteClubPage = () => {
             <div style={s.featureList}>
               {features.map((f, i) => (
                 <div key={i} style={s.featureItem}>
-                  <span className="material-symbols-outlined" style={s.featureCheck}>check_circle</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={s.featureCheck}>check_circle</span>
                   {f}
                 </div>
               ))}
@@ -402,7 +402,7 @@ const EliteClubPage = () => {
         <div style={{ ...s.section, paddingBottom: 32 }}>
           <h2 style={s.sectionTitle}>Cau chuyen thanh cong</h2>
           <div style={s.testimonialCard}>
-            <span className="material-symbols-outlined" style={s.quoteIcon}>format_quote</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.quoteIcon}>format_quote</span>
             <div style={s.quoteText}>
               Tu khi tham gia Elite, toi da gap duoc rat nhieu nguoi thu vi tai cac su kien rieng.
               Dich vu concierge giup toi len ke hoach hen hoan hao, va chi sau 3 thang toi da tim duoc

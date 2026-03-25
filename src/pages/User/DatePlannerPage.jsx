@@ -471,13 +471,13 @@ const DatePlannerPage = () => {
     <div style={s.page}>
       <div style={s.header}>
         <button style={s.backBtn} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined">arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
       </div>
 
       <div style={s.hero}>
         <div style={s.heroRow}>
-          <span className="material-symbols-outlined" style={s.heroIcon}>event_note</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>event_note</span>
           <h1 style={s.heroTitle}>Len ke hoach hen do</h1>
         </div>
         <p style={s.heroSub}>Tao buoi hen hoan hao chi trong vai buoc</p>
@@ -503,7 +503,7 @@ const DatePlannerPage = () => {
           <div style={s.typeGrid}>
             {dateTypes.map(t => (
               <div key={t.id} style={s.typeCard(dateType === t.id)} onClick={() => setDateType(t.id)}>
-                <span className="material-symbols-outlined" style={s.typeIcon(dateType === t.id)}>{t.icon}</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={s.typeIcon(dateType === t.id)}>{t.icon}</span>
                 <div style={s.typeLabel(dateType === t.id)}>{t.label}</div>
               </div>
             ))}
@@ -527,7 +527,7 @@ const DatePlannerPage = () => {
           <div style={s.timeChips}>
             {timeSlots.map(ts => (
               <div key={ts.id} style={s.timeChip(timeSlot === ts.id)} onClick={() => setTimeSlot(ts.id)}>
-                <span className="material-symbols-outlined" style={s.timeChipIcon(timeSlot === ts.id)}>{ts.icon}</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={s.timeChipIcon(timeSlot === ts.id)}>{ts.icon}</span>
                 <div>
                   <div style={{ fontWeight: 600 }}>{ts.label}</div>
                   <div style={{ fontSize: 11, color: '#E6BEB2' }}>{ts.time}</div>
@@ -549,7 +549,7 @@ const DatePlannerPage = () => {
             {currentVenues.map(v => (
               <div key={v.id} style={s.venueCard(venue === v.id)} onClick={() => setVenue(v.id)}>
                 <div style={s.venueIcon}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 20 }}>place</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>place</span>
                 </div>
                 <div>
                   <div style={s.venueName}>{v.name}</div>
@@ -563,7 +563,7 @@ const DatePlannerPage = () => {
             ))}
             <div style={s.venueCard(venue === 'custom')} onClick={() => setVenue('custom')}>
               <div style={s.venueIcon}>
-                <span className="material-symbols-outlined" style={{ fontSize: 20 }}>edit_location</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>edit_location</span>
               </div>
               <div>
                 <div style={s.venueName}>Tu chon dia diem</div>
@@ -621,7 +621,7 @@ const DatePlannerPage = () => {
 
           <div style={s.toggleRow}>
             <div style={s.toggleLabel}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E' }}>notifications_active</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E' }}>notifications_active</span>
               Them nhac nho
             </div>
             <button style={s.toggleSwitch(reminder)} onClick={() => setReminder(!reminder)}>
@@ -632,7 +632,7 @@ const DatePlannerPage = () => {
           {/* Summary */}
           <div style={{ ...s.summaryCard, marginTop: 20 }}>
             <div style={s.summaryTitle}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E' }}>summarize</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E' }}>summarize</span>
               Tong ket ke hoach
             </div>
             <div style={s.summaryRow}>
@@ -656,7 +656,7 @@ const DatePlannerPage = () => {
               <span style={s.summaryValue}>{budgetLabels[budget]}</span>
             </div>
             <button style={s.ctaBtn}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20 }}>send</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>send</span>
               Gui loi moi
             </button>
           </div>
@@ -667,7 +667,7 @@ const DatePlannerPage = () => {
       <div style={s.navBtns}>
         {step > 1 && (
           <button style={s.navBtn(false)} onClick={() => setStep(step - 1)}>
-            <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
             Quay lai
           </button>
         )}
@@ -678,7 +678,7 @@ const DatePlannerPage = () => {
             disabled={step === 1 && !dateType}
           >
             Tiep theo
-            <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_forward</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_forward</span>
           </button>
         )}
       </div>
@@ -686,13 +686,13 @@ const DatePlannerPage = () => {
       {/* Tips */}
       <div style={s.section}>
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E' }}>tips_and_updates</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E' }}>tips_and_updates</span>
           Meo hay
         </div>
         <div style={s.tipCards}>
           {currentTips.map((tip, i) => (
             <div key={i} style={s.tipCard}>
-              <span className="material-symbols-outlined" style={s.tipIcon}>lightbulb</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.tipIcon}>lightbulb</span>
               <div>
                 <div style={s.tipTitle}>{tip.title}</div>
                 <div style={s.tipText}>{tip.text}</div>

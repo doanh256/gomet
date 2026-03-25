@@ -39,7 +39,7 @@ const NotificationsDesktopPage = () => {
       <div style={{ padding: '20px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid rgba(255,255,255,0.06)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
           </button>
           <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700 }}>Thong Bao</h1>
           <span style={{
@@ -50,7 +50,7 @@ const NotificationsDesktopPage = () => {
           background: 'rgba(255,255,255,0.06)', border: 'none', borderRadius: 10, padding: '8px 16px',
           color: '#888', fontSize: 13, fontWeight: 600, cursor: 'pointer'
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 16, verticalAlign: 'middle', marginRight: 4 }}>done_all</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, verticalAlign: 'middle', marginRight: 4 }}>done_all</span>
           Doc tat ca
         </button>
       </div>
@@ -81,7 +81,7 @@ const NotificationsDesktopPage = () => {
                 width: 40, height: 40, borderRadius: '50%', background: `${n.color}20`,
                 display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 20, color: n.color }}>{n.icon}</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: n.color }}>{n.icon}</span>
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -108,7 +108,7 @@ const NotificationsDesktopPage = () => {
                   width: 56, height: 56, borderRadius: '50%', background: `${filtered[selected].color}20`,
                   display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16
                 }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 28, color: filtered[selected].color }}>{filtered[selected].icon}</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 28, color: filtered[selected].color }}>{filtered[selected].icon}</span>
                 </div>
                 <h3 style={{ margin: '0 0 8px', fontSize: 18, fontWeight: 700 }}>{filtered[selected].title}</h3>
                 <p style={{ margin: '0 0 12px', fontSize: 14, color: '#aaa', lineHeight: 1.6 }}>{filtered[selected].desc}</p>

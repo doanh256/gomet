@@ -64,24 +64,24 @@ const LivestreamPage = () => {
     <div style={s.page}>
       <style>{`@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }`}</style>
       <div style={s.header}>
-        <button style={s.backBtn} onClick={() => navigate(-1)}><span className="material-symbols-outlined">arrow_back</span></button>
+        <button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined">arrow_back</span></button>
         <span style={s.headerTitle}>Livestream</span>
       </div>
       <div style={s.mainLayout}>
         <div style={s.videoSection}>
           <div style={s.videoArea}>
-            <span className="material-symbols-outlined" style={s.playIcon}>play_circle</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.playIcon}>play_circle</span>
             <div style={s.liveBadge}>LIVE</div>
-            <div style={s.viewerCount}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>visibility</span>1,234 dang xem</div>
+            <div style={s.viewerCount}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>visibility</span>1,234 dang xem</div>
             <div style={s.videoOverlay}><div style={s.videoTitle}>GOMET Date Night: Nhac song & Ket noi</div><div style={s.videoSubtitle}>Hosted by GOMET Events • Bat dau 30 phut truoc</div></div>
           </div>
         </div>
         <div style={s.chatSidebar}>
-          <div style={s.chatHeader}><span className="material-symbols-outlined" style={{ fontSize: 18 }}>chat</span>Chat truc tiep</div>
+          <div style={s.chatHeader}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>chat</span>Chat truc tiep</div>
           <div style={s.chatMessages}>{chatMessages.map(m => (<div key={m.id} style={s.chatMsg}><div style={s.chatAvatar}>{m.avatar}</div><div><span style={s.chatUser}>{m.user}</span><span>{m.msg}</span></div></div>))}</div>
           <div style={s.chatInputArea}>
             <input style={s.chatField} placeholder="Nhan tin..." value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSendChat()} />
-            <button style={s.sendBtn} onClick={handleSendChat}><span className="material-symbols-outlined" style={{ fontSize: 18 }}>send</span></button>
+            <button style={s.sendBtn} onClick={handleSendChat}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>send</span></button>
           </div>
         </div>
       </div>
@@ -94,24 +94,24 @@ const LivestreamPage = () => {
       </div>
       <div style={s.section}>
         <div style={s.sectionTitle} onClick={() => setShowEventInfo(!showEventInfo)}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>info</span>Thong tin su kien
-          <span className="material-symbols-outlined" style={{ fontSize: 20, marginLeft: 'auto' }}>{showEventInfo ? 'expand_less' : 'expand_more'}</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>info</span>Thong tin su kien
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, marginLeft: 'auto' }}>{showEventInfo ? 'expand_less' : 'expand_more'}</span>
         </div>
         {showEventInfo && (
           <div style={s.eventInfoCard}>
             <div style={s.hostRow}><div style={s.hostAvatar}>G</div><div><div style={{ fontWeight: 700, fontSize: 14 }}>GOMET Events</div><div style={{ fontSize: 12, opacity: 0.6 }}>Ban to chuc chinh thuc</div></div></div>
             <p style={{ fontSize: 13, lineHeight: 1.6, opacity: 0.85, marginBottom: 12 }}>Dem nhac song ket hop giao luu danh cho cac ban doc than tai TP.HCM. Cung tham gia cac hoat dong pha bang, tro choi nhom va tim kiem nua kia cua ban!</p>
             <div style={{ fontSize: 13, opacity: 0.7 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>schedule</span>20:00 - 22:30 • Thu 7, 28/03/2026</div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><span className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>The Myst Dong Khoi, Quan 1, TP.HCM</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>schedule</span>20:00 - 22:30 • Thu 7, 28/03/2026</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>The Myst Dong Khoi, Quan 1, TP.HCM</div>
             </div>
           </div>
         )}
       </div>
       <div style={s.section}>
-        <div style={s.sectionTitle}><span className="material-symbols-outlined" style={{ fontSize: 20 }}>event</span>Su kien lien quan</div>
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>event</span>Su kien lien quan</div>
         <div style={s.relatedCards}>
-          {relatedEvents.map(ev => (<div key={ev.id} style={s.relatedCard}><div style={s.relatedIcon}><span className="material-symbols-outlined">{ev.icon}</span></div><div><div style={s.relatedTitle}>{ev.title}</div><div style={s.relatedMeta}>{ev.date} • {ev.viewers} nguoi quan tam</div></div></div>))}
+          {relatedEvents.map(ev => (<div key={ev.id} style={s.relatedCard}><div style={s.relatedIcon}><span aria-hidden="true" className="material-symbols-outlined">{ev.icon}</span></div><div><div style={s.relatedTitle}>{ev.title}</div><div style={s.relatedMeta}>{ev.date} • {ev.viewers} nguoi quan tam</div></div></div>))}
         </div>
       </div>
     </div>

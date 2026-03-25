@@ -4,14 +4,14 @@ import { api } from '../../api/client';
 import { useAppContext } from '../../AppContext';
 
 const INTERESTS = [
-  'Ca phe', 'Du lich', 'Am nhac', 'The thao', 'Nau an', 'Doc sach',
-  'Phim anh', 'Cong nghe', 'Nghe thuat', 'Thu cung', 'Yoga', 'Gaming',
+  'Cà phê', 'Du lịch', 'Âm nhạc', 'Thể thao', 'Nấu ăn', 'Đọc sách',
+  'Phim ảnh', 'Công nghệ', 'Nghệ thuật', 'Thú cưng', 'Yoga', 'Gaming',
 ];
 
 const GENDERS = [
   { value: 'Nam', icon: 'person', label: 'Nam' },
-  { value: 'Nu', icon: 'person_2', label: 'Nu' },
-  { value: 'Khac', icon: 'diversity_1', label: 'Khac' },
+  { value: 'Nữ', icon: 'person_2', label: 'Nữ' },
+  { value: 'Khác', icon: 'diversity_1', label: 'Khác' },
 ];
 
 const OnboardingPage = () => {
@@ -129,7 +129,6 @@ const OnboardingPage = () => {
 
   const progressPercent = (step / totalSteps) * 100;
 
-  // Confetti with gradient-matching particles
   const confettiColors = ['#FFB59E', '#FF571A', '#FFD54F', '#117500', '#E6BEB2', '#FDF9F3'];
   const confettiPieces = Array.from({ length: 20 }, (_, i) => ({
     id: i,
@@ -180,7 +179,7 @@ const OnboardingPage = () => {
           textAlign: 'center', fontSize: '13px', color: '#E6BEB2',
           marginBottom: '4px', fontWeight: 600,
         }}>
-          Buoc {step}/{totalSteps}
+          Bước {step}/{totalSteps}
         </p>
         <div style={{
           display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '24px',
@@ -205,19 +204,19 @@ const OnboardingPage = () => {
               color: '#FDF9F3', textAlign: 'center', marginBottom: '8px',
               fontFamily: "'Plus Jakarta Sans', sans-serif",
             }}>
-              Gioi tinh & <span style={{ color: '#FFB59E' }}>Tuoi</span>
+              Giới tính & <span style={{ color: '#FFB59E' }}>Tuổi</span>
             </h1>
             <p style={{
               textAlign: 'center', color: '#E6BEB2', fontSize: '14px', marginBottom: '32px',
             }}>
-              Giup moi nguoi hieu hon ve ban
+              Giúp mọi người hiểu hơn về bạn
             </p>
 
             <label style={{
               fontSize: '11px', fontWeight: 700, textTransform: 'uppercase',
               letterSpacing: '0.15em', color: '#E6BEB2', marginBottom: '12px',
               display: 'block', fontFamily: "'Inter', sans-serif",
-            }}>Gioi tinh</label>
+            }}>Giới tính</label>
 
             <div style={{ display: 'flex', gap: '12px', marginBottom: '24px' }}>
               {GENDERS.map(g => {
@@ -237,7 +236,7 @@ const OnboardingPage = () => {
                       alignItems: 'center', gap: '8px',
                     }}
                   >
-                    <span className="material-symbols-outlined" style={{
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{
                       fontSize: '32px', color: selected ? '#FFB59E' : '#E6BEB2',
                     }}>{g.icon}</span>
                     <span style={{
@@ -254,7 +253,7 @@ const OnboardingPage = () => {
                 fontSize: '11px', fontWeight: 700, textTransform: 'uppercase',
                 letterSpacing: '0.15em', color: '#E6BEB2', marginBottom: '10px',
                 display: 'block',
-              }}>Tuoi</label>
+              }}>Tuổi</label>
               <input
                 type="number" min="18" max="99" placeholder="VD: 25"
                 value={age} onChange={(e) => setAge(e.target.value)}
@@ -275,14 +274,14 @@ const OnboardingPage = () => {
                 fontSize: '11px', fontWeight: 700, textTransform: 'uppercase',
                 letterSpacing: '0.15em', color: '#E6BEB2', marginBottom: '10px',
                 display: 'block',
-              }}>Vi tri</label>
+              }}>Vị trí</label>
               <div style={{ position: 'relative' }}>
-                <span className="material-symbols-outlined" style={{
+                <span aria-hidden="true" className="material-symbols-outlined" style={{
                   position: 'absolute', left: '14px', top: '50%',
                   transform: 'translateY(-50%)', fontSize: '20px', color: '#E6BEB2',
                 }}>location_on</span>
                 <input
-                  type="text" placeholder="VD: Ha Noi"
+                  type="text" placeholder="VD: Hà Nội, TP.HCM..."
                   value={location} onChange={(e) => setLocation(e.target.value)}
                   style={{
                     width: '100%', height: '56px', paddingLeft: '42px', paddingRight: '16px',
@@ -307,12 +306,12 @@ const OnboardingPage = () => {
               color: '#FDF9F3', textAlign: 'center', marginBottom: '8px',
               fontFamily: "'Plus Jakarta Sans', sans-serif",
             }}>
-              Anh <span style={{ color: '#FFB59E' }}>dai dien</span>
+              Ảnh <span style={{ color: '#FFB59E' }}>đại diện</span>
             </h1>
             <p style={{
               textAlign: 'center', color: '#E6BEB2', fontSize: '14px', marginBottom: '32px',
             }}>
-              Chon anh dep nhat cua ban
+              Chọn ảnh đẹp nhất của bạn
             </p>
 
             <div
@@ -337,12 +336,12 @@ const OnboardingPage = () => {
                 }} />
               ) : (
                 <>
-                  <span className="material-symbols-outlined" style={{
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{
                     fontSize: '48px', color: '#353535', marginBottom: '4px',
                   }}>photo_camera</span>
                   <span style={{
                     fontSize: '12px', color: '#E6BEB2', textAlign: 'center', padding: '0 16px',
-                  }}>Keo tha hoac nhan de chon</span>
+                  }}>Kéo thả hoặc nhấn để chọn</span>
                 </>
               )}
             </div>
@@ -365,8 +364,8 @@ const OnboardingPage = () => {
                   fontFamily: "'Inter', sans-serif",
                 }}
               >
-                <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>cloud_upload</span>
-                Tai anh len
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>cloud_upload</span>
+                Tải ảnh lên
               </button>
             ) : (
               <button
@@ -380,8 +379,8 @@ const OnboardingPage = () => {
                   fontFamily: "'Inter', sans-serif",
                 }}
               >
-                <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>delete</span>
-                Xoa anh
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>delete</span>
+                Xóa ảnh
               </button>
             )}
           </div>
@@ -395,12 +394,12 @@ const OnboardingPage = () => {
               color: '#FDF9F3', textAlign: 'center', marginBottom: '8px',
               fontFamily: "'Plus Jakarta Sans', sans-serif",
             }}>
-              Gioi thieu <span style={{ color: '#FFB59E' }}>ban than</span>
+              Giới thiệu <span style={{ color: '#FFB59E' }}>bản thân</span>
             </h1>
             <p style={{
               textAlign: 'center', color: '#E6BEB2', fontSize: '14px', marginBottom: '32px',
             }}>
-              Chia se them ve minh nhe
+              Chia sẻ thêm về mình nhé
             </p>
 
             <div style={{ marginBottom: '28px' }}>
@@ -410,7 +409,7 @@ const OnboardingPage = () => {
                 display: 'block',
               }}>Bio</label>
               <textarea
-                placeholder="Viet vai dong ve ban than ban..."
+                placeholder="Viết vài dòng về bản thân bạn..."
                 value={bio} onChange={(e) => setBio(e.target.value)}
                 maxLength={300}
                 style={{
@@ -436,7 +435,7 @@ const OnboardingPage = () => {
                 fontSize: '11px', fontWeight: 700, textTransform: 'uppercase',
                 letterSpacing: '0.15em', color: '#E6BEB2', marginBottom: '12px',
                 display: 'block',
-              }}>So thich</label>
+              }}>Sở thích</label>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '4px' }}>
                 {INTERESTS.map(interest => {
                   const selected = interests.includes(interest);
@@ -456,7 +455,7 @@ const OnboardingPage = () => {
                       }}
                     >
                       {selected && (
-                        <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>check</span>
+                        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>check</span>
                       )}
                       {interest}
                     </button>
@@ -481,20 +480,20 @@ const OnboardingPage = () => {
               animation: 'checkPop 0.6s cubic-bezier(.4,0,.2,1) forwards',
               boxShadow: '0 8px 32px rgba(255,87,26,0.3)',
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '48px', color: '#3A0B00' }}>check</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '48px', color: '#3A0B00' }}>check</span>
             </div>
             <h1 style={{
               fontSize: '28px', fontWeight: 900, fontStyle: 'italic',
               color: '#FDF9F3', fontFamily: "'Plus Jakarta Sans', sans-serif",
               marginBottom: '8px',
             }}>
-              Chao mung den voi <span style={{ color: '#FFB59E' }}>GOMET!</span>
+              Chào mừng đến với <span style={{ color: '#FFB59E' }}>GOMET!</span>
             </h1>
             <p style={{
               color: '#E6BEB2', fontSize: '15px', lineHeight: 1.6, marginBottom: '40px',
             }}>
-              Ho so cua ban da san sang.<br />
-              Hay bat dau kham pha va tim kiem nguoi phu hop!
+              Hồ sơ của bạn đã sẵn sàng.<br />
+              Hãy bắt đầu khám phá và tìm kiếm người phù hợp!
             </p>
           </div>
         )}
@@ -512,8 +511,8 @@ const OnboardingPage = () => {
               display: 'flex', alignItems: 'center', gap: '4px', padding: '12px 8px',
               fontFamily: "'Inter', sans-serif",
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_back</span>
-              Quay lai
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_back</span>
+              Quay lại
             </button>
           )}
 
@@ -525,7 +524,7 @@ const OnboardingPage = () => {
                 textUnderlineOffset: '3px', padding: '8px 0',
                 fontFamily: "'Inter', sans-serif",
               }}>
-                Bo qua
+                Bỏ qua
               </button>
             )}
 
@@ -544,8 +543,8 @@ const OnboardingPage = () => {
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
                 }}
               >
-                Tiep tuc
-                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
+                Tiếp tục
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>arrow_forward</span>
               </button>
             )}
 
@@ -564,8 +563,8 @@ const OnboardingPage = () => {
                   fontFamily: "'Plus Jakarta Sans', sans-serif",
                 }}
               >
-                {saving ? 'Dang luu...' : 'Bat dau kham pha'}
-                <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>
+                {saving ? 'Đang lưu...' : 'Bắt đầu khám phá'}
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>
                   {saving ? 'hourglass_empty' : 'explore'}
                 </span>
               </button>

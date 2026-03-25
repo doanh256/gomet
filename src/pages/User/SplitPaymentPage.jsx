@@ -321,9 +321,9 @@ const SplitPaymentPage = () => {
     <div style={s.page}>
       <div style={s.header}>
         <button style={s.backBtn} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined">arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
-        <span className="material-symbols-outlined" style={s.headerIcon}>receipt_long</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>receipt_long</span>
         <h1 style={s.headerTitle}>Chia hoa don</h1>
       </div>
 
@@ -343,7 +343,7 @@ const SplitPaymentPage = () => {
               style={active ? s.splitCardActive : s.splitCard}
               onClick={() => setSplitMethod(m.id)}
             >
-              <span className="material-symbols-outlined" style={active ? s.splitIconActive : s.splitIcon}>
+              <span aria-hidden="true" className="material-symbols-outlined" style={active ? s.splitIconActive : s.splitIcon}>
                 {m.icon}
               </span>
               <span style={active ? s.splitLabelActive : s.splitLabel}>{m.label}</span>
@@ -361,7 +361,7 @@ const SplitPaymentPage = () => {
             <div style={s.participantAmount}>{formatVND(p.amount)}</div>
           </div>
           <div style={{ ...s.statusBadge, ...(p.status === 'paid' ? s.statusPaid : s.statusPending) }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 16 }}>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>
               {p.status === 'paid' ? 'check_circle' : 'schedule'}
             </span>
             {p.status === 'paid' ? 'Da tra' : 'Cho'}
@@ -386,7 +386,7 @@ const SplitPaymentPage = () => {
       </div>
 
       <button style={s.primaryBtn}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>payments</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>payments</span>
         Thanh toan {formatVND(totalPerPerson)}
       </button>
 
@@ -399,7 +399,7 @@ const SplitPaymentPage = () => {
             style={active ? s.payOptionActive : s.payOption}
             onClick={() => setPayMethod(pm.id)}
           >
-            <span className="material-symbols-outlined" style={active ? s.payIconActive : s.payIcon}>
+            <span aria-hidden="true" className="material-symbols-outlined" style={active ? s.payIconActive : s.payIcon}>
               {pm.icon}
             </span>
             <div style={s.payInfo}>

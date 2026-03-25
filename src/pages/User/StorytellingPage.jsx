@@ -263,7 +263,7 @@ const StorytellingPage = () => {
   return (
     <div style={s.page}>
       <div style={s.header}>
-        <span className="material-symbols-outlined" style={s.headerIcon}>auto_stories</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>auto_stories</span>
         <h1 style={s.heading}>Tap chi cam hung</h1>
         <p style={s.subtitle}>Nhung cau chuyen tinh yeu tu cong dong GOMET</p>
       </div>
@@ -276,11 +276,11 @@ const StorytellingPage = () => {
             <div style={s.featuredTitle}>Tu mot buoi ca phe den hanh phuc</div>
             <div style={s.featuredMeta}>
               <div style={s.avatar}>
-                <span className="material-symbols-outlined" style={s.avatarIcon}>person</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={s.avatarIcon}>person</span>
               </div>
               <span>Hoang Yen</span>
               <div style={s.readTime}>
-                <span className="material-symbols-outlined" style={{ fontSize: 14 }}>schedule</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>schedule</span>
                 5 phut doc
               </div>
             </div>
@@ -294,7 +294,7 @@ const StorytellingPage = () => {
         {stories.map(st => (
           <div key={st.id} style={s.storyCard}>
             <div style={s.storyImage}>
-              <span className="material-symbols-outlined" style={s.storyImageIcon}>image</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.storyImageIcon}>image</span>
             </div>
             <div style={s.storyBody}>
               <span style={s.categoryChip(st.category)}>{st.category}</span>
@@ -303,7 +303,7 @@ const StorytellingPage = () => {
               <div style={s.storyFooter}>
                 <span>{st.author} · {st.date}</span>
                 <button style={s.heartBtn} onClick={() => toggleHeart(st.id)}>
-                  <span className="material-symbols-outlined" style={s.heartIcon(!!likedStories[st.id])}>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={s.heartIcon(!!likedStories[st.id])}>
                     {likedStories[st.id] ? 'favorite' : 'favorite_border'}
                   </span>
                   {st.hearts + (likedStories[st.id] ? 1 : 0)}
@@ -316,11 +316,11 @@ const StorytellingPage = () => {
 
       {/* CTA */}
       <div style={s.ctaSection}>
-        <span className="material-symbols-outlined" style={s.ctaIcon}>edit_note</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.ctaIcon}>edit_note</span>
         <div style={s.ctaTitle}>Viet cau chuyen cua ban</div>
         <p style={s.ctaDesc}>Chia se trai nghiem hen ho cua ban voi cong dong</p>
         <button style={s.ctaBtn}>
-          <span className="material-symbols-outlined" style={{ fontSize: 18 }}>draw</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>draw</span>
           Bat dau viet
         </button>
       </div>

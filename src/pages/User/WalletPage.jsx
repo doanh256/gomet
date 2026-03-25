@@ -35,7 +35,7 @@ const WalletPage = () => {
     try {
       const data = await api.post('/wallet/topup', { amount });
       setBalance(data.balance);
-      addToast(`Nap ${amount.toLocaleString('vi-VN')}d thanh cong!`, 'success');
+      addToast(`Nạp ${amount.toLocaleString('vi-VN')}đ thành công!`, 'success');
       loadWallet();
     } catch (err) {
       addToast(err.message, 'error');
@@ -62,11 +62,11 @@ const WalletPage = () => {
         alignItems: 'center', justifyContent: 'center',
         fontFamily: "'Inter', sans-serif", color: '#E6BEB2',
       }}>
-        <span className="material-symbols-outlined" style={{
+        <span aria-hidden="true" className="material-symbols-outlined" style={{
           fontSize: '24px', marginRight: '8px',
           animation: 'spin 1s linear infinite',
         }}>progress_activity</span>
-        Dang tai vi...
+        Đang tải ví...
       </div>
     );
   }
@@ -81,7 +81,7 @@ const WalletPage = () => {
         fontSize: '28px', fontWeight: 800,
         color: '#FDF9F3', margin: '0 0 32px',
       }}>
-        Vi Gomet
+        Ví Gomet
       </h1>
 
       {/* ── Balance Card ── */}
@@ -93,7 +93,7 @@ const WalletPage = () => {
         position: 'relative', overflow: 'hidden',
       }}>
         {/* Wallet watermark icon */}
-        <span className="material-symbols-outlined" style={{
+        <span aria-hidden="true" className="material-symbols-outlined" style={{
           position: 'absolute', top: '-20px', right: '-10px',
           fontSize: '160px', color: 'rgba(255,255,255,0.08)',
           transform: 'rotate(-15deg)', pointerEvents: 'none',
@@ -116,15 +116,15 @@ const WalletPage = () => {
           fontWeight: 600, opacity: 0.85, margin: 0,
           display: 'flex', alignItems: 'center', gap: '8px',
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>account_balance_wallet</span>
-          So du hien tai
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>account_balance_wallet</span>
+          Số dư hiện tại
         </p>
         <p style={{
           fontFamily: "'Plus Jakarta Sans', sans-serif",
           fontSize: '48px', fontWeight: 800, margin: '12px 0 4px',
           position: 'relative', letterSpacing: '-0.02em',
         }}>
-          {balance.toLocaleString('vi-VN')}d
+          {balance.toLocaleString('vi-VN')}đ
         </p>
         <p style={{
           fontFamily: "'Inter', sans-serif",
@@ -144,7 +144,7 @@ const WalletPage = () => {
             display: 'flex', alignItems: 'center', gap: '6px',
             fontFamily: "'Inter', sans-serif",
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '18px', color: '#FFB59E' }}>{pm.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px', color: '#FFB59E' }}>{pm.icon}</span>
             {pm.label}
           </div>
         ))}
@@ -157,7 +157,7 @@ const WalletPage = () => {
           fontSize: '20px', fontWeight: 700,
           color: '#FDF9F3', margin: '0 0 16px',
         }}>
-          Nap Credits
+          Nạp Credits
         </h2>
 
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
@@ -176,8 +176,8 @@ const WalletPage = () => {
             onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.03)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>add_circle</span>
-            Nap Credits
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>add_circle</span>
+            Nạp Credits
           </button>
         </div>
 
@@ -199,7 +199,7 @@ const WalletPage = () => {
                 transition: 'all 0.2s ease',
               }}
             >
-              {amount >= 1000 ? `${(amount / 1000).toLocaleString()}k` : amount.toLocaleString('vi-VN')}d
+              {amount >= 1000 ? `${(amount / 1000).toLocaleString()}k` : amount.toLocaleString('vi-VN')}đ
             </button>
           ))}
         </div>
@@ -209,7 +209,7 @@ const WalletPage = () => {
           fontSize: '12px', color: '#E6BEB2', marginTop: '12px',
           opacity: 0.6,
         }}>
-          * Day la vi demo. Phien ban chinh thuc se tich hop MoMo/ZaloPay.
+          * Đây là ví demo. Phiên bản chính thức sẽ tích hợp MoMo/ZaloPay.
         </p>
       </div>
 
@@ -220,7 +220,7 @@ const WalletPage = () => {
           fontSize: '20px', fontWeight: 700,
           color: '#FDF9F3', margin: '0 0 16px',
         }}>
-          Lich Su Giao Dich
+          Lịch Sử Giao Dịch
         </h2>
 
         <div style={{
@@ -230,11 +230,11 @@ const WalletPage = () => {
         }}>
           {transactions.length === 0 ? (
             <div style={{ textAlign: 'center', padding: '40px 0', color: '#E6BEB2' }}>
-              <span className="material-symbols-outlined" style={{
+              <span aria-hidden="true" className="material-symbols-outlined" style={{
                 fontSize: '48px', color: '#353535', display: 'block', marginBottom: '12px',
               }}>receipt_long</span>
               <p style={{ fontFamily: "'Inter', sans-serif", fontSize: '14px', margin: 0 }}>
-                Chua co giao dich nao
+                Chưa có giao dịch nào
               </p>
             </div>
           ) : (
@@ -253,7 +253,7 @@ const WalletPage = () => {
                       display: 'flex', alignItems: 'center', justifyContent: 'center',
                       flexShrink: 0,
                     }}>
-                      <span className="material-symbols-outlined" style={{
+                      <span aria-hidden="true" className="material-symbols-outlined" style={{
                         fontSize: '22px', color: txMeta.color,
                       }}>{txMeta.icon}</span>
                     </div>
@@ -272,7 +272,7 @@ const WalletPage = () => {
                       fontFamily: "'Plus Jakarta Sans', sans-serif",
                       color: isPositive ? '#117500' : '#FFB59E',
                     }}>
-                      {isPositive ? '+' : ''}{tx.amount.toLocaleString('vi-VN')}d
+                      {isPositive ? '+' : ''}{tx.amount.toLocaleString('vi-VN')}đ
                     </div>
                   </div>
                   {idx < transactions.length - 1 && (

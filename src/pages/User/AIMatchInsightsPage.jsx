@@ -318,12 +318,12 @@ const AIMatchInsightsPage = () => {
   return (
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         Quay lai
       </button>
 
       <div style={s.pill}>
-        <span className="material-symbols-outlined" style={s.pillIcon}>auto_awesome</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.pillIcon}>auto_awesome</span>
         CULINARY CURATOR AI
       </div>
 
@@ -343,7 +343,7 @@ const AIMatchInsightsPage = () => {
           <div style={s.featuredMeta}>
             <span>{featuredMatch.profession}</span>
             <span>·</span>
-            <span className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>
             <span>{featuredMatch.distance}</span>
           </div>
         </div>
@@ -355,7 +355,7 @@ const AIMatchInsightsPage = () => {
         {insights.map((item, i) => (
           <div key={i} style={s.insightItem}>
             <div style={s.insightIcon}>
-              <span className="material-symbols-outlined" style={{ fontSize: 22 }}>{item.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22 }}>{item.icon}</span>
             </div>
             <div>
               <div style={s.insightText}>{item.text}</div>
@@ -369,7 +369,7 @@ const AIMatchInsightsPage = () => {
       <h2 style={s.sectionTitle}>Dia diem goi y</h2>
       <div style={s.venueCard}>
         <div style={s.venueIconWrap}>
-          <span className="material-symbols-outlined" style={s.venueIconInner}>storefront</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.venueIconInner}>storefront</span>
         </div>
         <div>
           <div style={s.venueName}>{venueTeaser.name}</div>
@@ -381,11 +381,11 @@ const AIMatchInsightsPage = () => {
       {/* Quick actions */}
       <div style={s.actions}>
         <button style={s.btnPrimary}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>waving_hand</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>waving_hand</span>
           Gui loi chao
         </button>
         <button style={s.btnSurface}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>search</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>search</span>
           Tim tuong tu
         </button>
       </div>
