@@ -9,7 +9,7 @@ restartPolicyMaxRetries = 10
 
 [build.env]
 NODE_ENV = "production"
-NIXPACKS_NODE_VERSION = "22"
+NIXPACKS_NODE_VERSION = "22.14"
 
 [deploy.env]
 NODE_ENV = "production"
