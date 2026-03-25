@@ -12,16 +12,18 @@ const demoNotifications = [
     detail: 'Hãy bắt đầu trò chuyện ngay',
     time: '5 phút trước',
     read: false,
+    action: 'view_match',
   },
   {
     id: 2,
-    type: 'like',
+    type: 'vang',
     icon: <Heart size={20} color="#3A0B00" />,
-    iconBg: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-    text: 'Hoài An đã thích bạn',
-    detail: 'Quẹt phải để match ngay!',
+    iconBg: 'linear-gradient(135deg, #FFD54F, #F57C00)',
+    text: 'Bạn nhận được +50 Vang!',
+    detail: 'Thưởng tuần cho hoạt động ẩm thực',
     time: '15 phút trước',
     read: false,
+    action: 'claim_vang',
   },
   {
     id: 3,
@@ -32,6 +34,7 @@ const demoNotifications = [
     detail: '"Chào bạn! Rảnh cuối tuần không?"',
     time: '1 giờ trước',
     read: false,
+    action: null,
   },
   {
     id: 4,
@@ -42,9 +45,21 @@ const demoNotifications = [
     detail: 'Kèo: Cà phê chiều Chủ nhật',
     time: '3 giờ trước',
     read: true,
+    action: 'accept_invite',
   },
   {
     id: 5,
+    type: 'vang',
+    icon: <Heart size={20} color="#3A0B00" />,
+    iconBg: 'linear-gradient(135deg, #FFD54F, #F57C00)',
+    text: '+30 Vang từ Pho Bo Ha Noi',
+    detail: 'Đánh dấu đã thử thành công',
+    time: '1 ngày trước',
+    read: true,
+    action: 'claim_vang',
+  },
+  {
+    id: 6,
     type: 'match',
     icon: <Heart size={20} color="#3A0B00" />,
     iconBg: 'linear-gradient(135deg, #FFB59E, #FF571A)',
@@ -52,16 +67,7 @@ const demoNotifications = [
     detail: 'Gửi lời chào đầu tiên đi!',
     time: '1 ngày trước',
     read: true,
-  },
-  {
-    id: 6,
-    type: 'date',
-    icon: <CalendarCheck size={20} color="#FDF9F3" />,
-    iconBg: '#353535',
-    text: 'Kèo "Xem phim tối thứ 7" sắp diễn ra',
-    detail: 'Còn 2 ngày nữa',
-    time: '1 ngày trước',
-    read: true,
+    action: 'view_match',
   },
 ];
 
@@ -181,6 +187,25 @@ const NotificationsPage = () => {
                 {n.detail}
               </p>
               <p style={{ fontSize: '12px', color: '#666', margin: 0 }}>{n.time}</p>
+              {/* Action buttons */}
+              {n.action === 'claim_vang' && (
+                <button onClick={(e) => { e.stopPropagation(); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFD54F, #F57C00)', color: '#3A0B00', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
+                  Claim Vang
+                </button>
+              )}
+              {n.action === 'view_match' && (
+                <button onClick={(e) => { e.stopPropagation(); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#FDF9F3', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>visibility</span>
+                  View Match
+                </button>
+              )}
+              {n.action === 'accept_invite' && (
+                <button onClick={(e) => { e.stopPropagation(); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: '1px solid #FFB59E', background: '#1C1B1B', color: '#FFB59E', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>check_circle</span>
+                  Accept Invite
+                </button>
+              )}
             </div>
 
             {/* Unread dot */}

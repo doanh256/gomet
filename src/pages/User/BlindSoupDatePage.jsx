@@ -27,7 +27,7 @@ const BlindSoupDatePage = () => {
   const s = {
     page: {
       flex: 1,
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#131313',
       overflowY: 'auto',
       padding: '40px 24px 80px',
       maxWidth: 600,
@@ -36,7 +36,7 @@ const BlindSoupDatePage = () => {
     backBtn: {
       background: 'none',
       border: 'none',
-      color: 'var(--on-surface)',
+      color: '#E6BEB2',
       cursor: 'pointer',
       padding: 0,
       marginBottom: 16,
@@ -47,20 +47,20 @@ const BlindSoupDatePage = () => {
     },
     headerIcon: {
       fontSize: 48,
-      color: 'var(--primary)',
+      color: '#FF571A',
       marginBottom: 8,
     },
     heading: {
       fontFamily: 'var(--font-headline)',
       fontSize: 28,
       fontWeight: 800,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 6,
     },
     subtitle: {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     section: {
       marginBottom: 32,
@@ -69,7 +69,7 @@ const BlindSoupDatePage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 18,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 16,
     },
     stepsRow: {
@@ -81,15 +81,15 @@ const BlindSoupDatePage = () => {
       flex: 1,
       textAlign: 'center',
       padding: '20px 8px',
-      borderRadius: 'var(--radius-lg)',
-      backgroundColor: 'var(--surface-container-low)',
+      borderRadius: '1.5rem',
+      backgroundColor: '#1C1B1B',
     },
     stepNum: {
       width: 36,
       height: 36,
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary-gradient)',
-      color: 'var(--on-primary)',
+      borderRadius: '9999px',
+      background: 'linear-gradient(135deg, #FF571A, #FFB59E)',
+      color: '#FDF9F3',
       fontFamily: 'var(--font-headline)',
       fontSize: 16,
       fontWeight: 800,
@@ -100,7 +100,7 @@ const BlindSoupDatePage = () => {
     },
     stepIcon: {
       fontSize: 28,
-      color: 'var(--primary)',
+      color: '#FFB59E',
       display: 'block',
       marginBottom: 8,
     },
@@ -108,13 +108,13 @@ const BlindSoupDatePage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 14,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 4,
     },
     stepDesc: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       lineHeight: 1.4,
     },
     soupsGrid: {
@@ -123,19 +123,19 @@ const BlindSoupDatePage = () => {
       gap: 14,
     },
     soupCard: (active) => ({
-      borderRadius: 'var(--radius-lg)',
-      backgroundColor: 'var(--surface-container-low)',
+      borderRadius: '1.5rem',
+      backgroundColor: '#1C1B1B',
       padding: 16,
       cursor: 'pointer',
       textAlign: 'center',
-      boxShadow: active ? '0 0 0 2.5px var(--primary)' : 'none',
+      boxShadow: active ? '0 0 0 2.5px #FF571A' : 'none',
       transition: 'box-shadow 0.2s',
     }),
     soupEmoji: {
       width: '100%',
       height: 80,
-      borderRadius: 'var(--radius)',
-      background: 'var(--primary-gradient)',
+      borderRadius: '1rem',
+      background: 'linear-gradient(135deg, rgba(255,87,26,0.2), rgba(255,181,158,0.1))',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -146,21 +146,21 @@ const BlindSoupDatePage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 15,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 2,
     },
     soupOrigin: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       marginBottom: 6,
     },
     soupSelect: (active) => ({
       display: 'inline-block',
       padding: '6px 16px',
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: active ? 'var(--primary-container)' : 'var(--surface-container-high)',
-      color: active ? '#fff' : 'var(--on-surface-variant)',
+      borderRadius: '9999px',
+      backgroundColor: active ? '#FF571A' : '#2A2A2A',
+      color: active ? '#FDF9F3' : '#E6BEB2',
       fontFamily: 'var(--font-body)',
       fontSize: 12,
       fontWeight: 600,
@@ -179,25 +179,25 @@ const BlindSoupDatePage = () => {
     dot: (delay) => ({
       width: 12,
       height: 12,
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: 'var(--primary)',
+      borderRadius: '9999px',
+      backgroundColor: '#FF571A',
       animation: `pulse 1.4s ease-in-out ${delay}s infinite`,
     }),
     waitingText: {
       fontFamily: 'var(--font-headline)',
       fontSize: 18,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#FDF9F3',
       marginBottom: 8,
     },
     waitingCount: {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     sessionCard: {
-      borderRadius: 'var(--radius-lg)',
-      backgroundColor: 'var(--surface-container-low)',
+      borderRadius: '1.5rem',
+      backgroundColor: '#1C1B1B',
       padding: 24,
       marginBottom: 24,
     },
@@ -212,12 +212,12 @@ const BlindSoupDatePage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 36,
       fontWeight: 800,
-      color: 'var(--primary)',
+      color: '#FF571A',
     },
     timerLabel: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     avatarsRow: {
       display: 'flex',
@@ -229,21 +229,21 @@ const BlindSoupDatePage = () => {
     anonAvatar: {
       width: 56,
       height: 56,
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: 'var(--surface-container-high)',
+      borderRadius: '9999px',
+      backgroundColor: '#2A2A2A',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       fontSize: 24,
       fontWeight: 800,
-      color: 'var(--primary)',
+      color: '#FF571A',
       fontFamily: 'var(--font-headline)',
     },
     vsText: {
       fontFamily: 'var(--font-headline)',
       fontSize: 14,
       fontWeight: 700,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
     },
     chatArea: {
       marginBottom: 20,
@@ -255,9 +255,9 @@ const BlindSoupDatePage = () => {
       maxWidth: '80%',
       alignSelf: mine ? 'flex-end' : 'flex-start',
       padding: '12px 16px',
-      borderRadius: 'var(--radius-lg)',
-      backgroundColor: mine ? 'var(--primary-container)' : 'var(--surface-container-high)',
-      color: mine ? '#fff' : 'var(--on-surface)',
+      borderRadius: '1.5rem',
+      backgroundColor: mine ? '#FF571A' : '#2A2A2A',
+      color: mine ? '#FDF9F3' : '#FDF9F3',
       fontFamily: 'var(--font-body)',
       fontSize: 14,
       lineHeight: 1.5,
@@ -269,9 +269,9 @@ const BlindSoupDatePage = () => {
     revealBtn: {
       flex: 1,
       padding: '14px',
-      borderRadius: 'var(--radius-full)',
-      background: 'var(--primary-gradient)',
-      color: 'var(--on-primary)',
+      borderRadius: '9999px',
+      background: 'linear-gradient(135deg, #FF571A, #FFB59E)',
+      color: '#FDF9F3',
       fontFamily: 'var(--font-headline)',
       fontSize: 14,
       fontWeight: 700,
@@ -285,9 +285,9 @@ const BlindSoupDatePage = () => {
     leaveBtn: {
       flex: 1,
       padding: '14px',
-      borderRadius: 'var(--radius-full)',
-      backgroundColor: 'var(--surface-container-high)',
-      color: 'var(--on-surface-variant)',
+      borderRadius: '9999px',
+      backgroundColor: '#2A2A2A',
+      color: '#E6BEB2',
       fontFamily: 'var(--font-headline)',
       fontSize: 14,
       fontWeight: 700,
@@ -295,8 +295,8 @@ const BlindSoupDatePage = () => {
       cursor: 'pointer',
     },
     noteCard: {
-      borderRadius: 'var(--radius-lg)',
-      backgroundColor: 'var(--surface-container-low)',
+      borderRadius: '1.5rem',
+      backgroundColor: '#1C1B1B',
       padding: 20,
       display: 'flex',
       gap: 14,
@@ -304,13 +304,13 @@ const BlindSoupDatePage = () => {
     },
     noteIcon: {
       fontSize: 28,
-      color: 'var(--primary)',
+      color: '#FFB59E',
       flexShrink: 0,
     },
     noteText: {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#E6BEB2',
       lineHeight: 1.6,
     },
     keyframe: `
@@ -393,7 +393,7 @@ const BlindSoupDatePage = () => {
               <div style={s.timerLabel}>Thoi gian con lai</div>
             </div>
             <div style={s.timerRow}>
-              <span className="material-symbols-outlined" style={{ fontSize: 24, color: 'var(--primary)' }}>timer</span>
+              <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#FF571A' }}>timer</span>
               <div style={s.timer}>29:45</div>
             </div>
 
@@ -415,6 +415,43 @@ const BlindSoupDatePage = () => {
                 Tiet lo danh tinh
               </button>
               <button style={s.leaveBtn}>Roi di</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Match Profile Card */}
+      {isMatched && (
+        <div style={{ marginBottom: 24 }}>
+          <div style={s.sectionTitle}>Match Profile</div>
+          <div style={{ borderRadius: '1.5rem', backgroundColor: '#1C1B1B', overflow: 'hidden', marginBottom: 16 }}>
+            {/* Photo placeholder */}
+            <div style={{ width: '100%', height: 180, background: 'linear-gradient(135deg, rgba(255,87,26,0.3), rgba(255,181,158,0.15))', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <span className="material-symbols-outlined" style={{ fontSize: 56, color: '#FFB59E', opacity: 0.4 }}>person</span>
+            </div>
+            <div style={{ padding: '20px' }}>
+              <div style={{ fontFamily: 'var(--font-headline)', fontSize: 20, fontWeight: 800, color: '#FDF9F3', marginBottom: 4 }}>??? (An danh)</div>
+              <div style={{ fontSize: 13, color: '#E6BEB2', marginBottom: 16 }}>Se duoc tiet lo sau khi ket thuc tro chuyen</div>
+
+              {/* Kinetic Connection */}
+              <div style={{ padding: '16px', borderRadius: '1rem', background: 'linear-gradient(135deg, rgba(255,87,26,0.12), rgba(255,181,158,0.06))', border: '1px solid rgba(255,87,26,0.2)' }}>
+                <div style={{ fontFamily: 'var(--font-headline)', fontSize: 14, fontWeight: 700, color: '#FFD54F', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#FFD54F' }}>bolt</span>
+                  Kinetic Connection
+                </div>
+                <div style={{ display: 'flex', gap: 12 }}>
+                  {[
+                    { label: 'Taste Match', value: '87%' },
+                    { label: 'Vibe Score', value: '72%' },
+                    { label: 'Region Sync', value: '5/8' },
+                  ].map(stat => (
+                    <div key={stat.label} style={{ flex: 1, textAlign: 'center' }}>
+                      <div style={{ fontFamily: 'var(--font-headline)', fontSize: 20, fontWeight: 800, color: '#FF571A' }}>{stat.value}</div>
+                      <div style={{ fontSize: 10, color: '#E6BEB2' }}>{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>

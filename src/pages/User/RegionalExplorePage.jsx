@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const regions = [
-  { id: 'tayBac', name: 'Tay Bac', icon: 'landscape', dishes: ['Thit trau gac bep', 'Xoi ngu sac', 'Rau cai meo'], tried: 2, total: 15, color: '#8BC34A', top: '18%', left: '15%' },
-  { id: 'dongBac', name: 'Dong Bac', icon: 'forest', dishes: ['Pho chua', 'Banh cuon', 'Vit quay'], tried: 1, total: 12, color: '#4CAF50', top: '15%', left: '40%' },
-  { id: 'dbSongHong', name: 'Dong bang song Hong', icon: 'rice_bowl', dishes: ['Bun cha', 'Pho Ha Noi', 'Cha ca'], tried: 5, total: 20, color: '#FF9800', top: '28%', left: '38%' },
-  { id: 'bacTrungBo', name: 'Bac Trung Bo', icon: 'phishing', dishes: ['Bun bo Hue', 'Banh bot loc', 'Com hen'], tried: 3, total: 18, color: '#2196F3', top: '42%', left: '42%' },
-  { id: 'namTrungBo', name: 'Nam Trung Bo', icon: 'wb_sunny', dishes: ['Mi Quang', 'Cao lau', 'Banh trang cuon'], tried: 2, total: 14, color: '#FF5722', top: '55%', left: '50%' },
-  { id: 'tayNguyen', name: 'Tay Nguyen', icon: 'coffee', dishes: ['Ca phe', 'Com lam', 'Ga nuong'], tried: 1, total: 10, color: '#795548', top: '58%', left: '38%' },
-  { id: 'dongNamBo', name: 'Dong Nam Bo', icon: 'location_city', dishes: ['Banh mi', 'Com tam', 'Hu tieu'], tried: 7, total: 22, color: '#E91E63', top: '72%', left: '42%' },
-  { id: 'tayNamBo', name: 'Tay Nam Bo', icon: 'water', dishes: ['Lau mam', 'Banh xeo', 'Ca kho to'], tried: 4, total: 16, color: '#00BCD4', top: '80%', left: '30%' },
+  { id: 'tayBac', name: 'Tay Bac', icon: 'landscape', emoji: '\uD83C\uDFD4\uFE0F', dishes: ['Thit trau gac bep', 'Xoi ngu sac', 'Rau cai meo'], tried: 2, total: 15, color: '#8BC34A', top: '18%', left: '15%' },
+  { id: 'dongBac', name: 'Dong Bac', icon: 'forest', emoji: '\uD83C\uDF3F', dishes: ['Pho chua', 'Banh cuon', 'Vit quay'], tried: 1, total: 12, color: '#4CAF50', top: '15%', left: '40%' },
+  { id: 'dbSongHong', name: 'Dong bang song Hong', icon: 'rice_bowl', emoji: '\uD83C\uDF5C', dishes: ['Bun cha', 'Pho Ha Noi', 'Cha ca'], tried: 5, total: 20, color: '#FF9800', top: '28%', left: '38%' },
+  { id: 'bacTrungBo', name: 'Bac Trung Bo', icon: 'phishing', emoji: '\uD83C\uDF36\uFE0F', dishes: ['Bun bo Hue', 'Banh bot loc', 'Com hen'], tried: 3, total: 18, color: '#2196F3', top: '42%', left: '42%' },
+  { id: 'namTrungBo', name: 'Nam Trung Bo', icon: 'wb_sunny', emoji: '\uD83E\uDD5F', dishes: ['Mi Quang', 'Cao lau', 'Banh trang cuon'], tried: 2, total: 14, color: '#FF5722', top: '55%', left: '50%' },
+  { id: 'tayNguyen', name: 'Tay Nguyen', icon: 'coffee', emoji: '\u2615', dishes: ['Ca phe', 'Com lam', 'Ga nuong'], tried: 1, total: 10, color: '#795548', top: '58%', left: '38%' },
+  { id: 'dongNamBo', name: 'Dong Nam Bo', icon: 'location_city', emoji: '\uD83C\uDF5E', dishes: ['Banh mi', 'Com tam', 'Hu tieu'], tried: 7, total: 22, color: '#E91E63', top: '72%', left: '42%' },
+  { id: 'tayNamBo', name: 'Tay Nam Bo', icon: 'water', emoji: '\uD83C\uDF72', dishes: ['Lau mam', 'Banh xeo', 'Ca kho to'], tried: 4, total: 16, color: '#00BCD4', top: '80%', left: '30%' },
 ];
 
 const badges = [
@@ -26,23 +26,24 @@ const badges = [
 const RegionalExplorePage = () => {
   const navigate = useNavigate();
   const [hoveredRegion, setHoveredRegion] = useState(null);
+  const masteredCount = badges.filter(b => b.unlocked).length;
 
   const s = {
     page: {
       flex: 1,
-      backgroundColor: 'var(--surface)',
+      backgroundColor: '#FDF9F3',
       overflowY: 'auto',
       padding: '40px 24px 100px',
       maxWidth: 720,
       margin: '0 auto',
       fontFamily: 'var(--font-body)',
-      color: 'var(--on-surface)',
+      color: '#393834',
     },
     backBtn: {
       background: 'none',
       border: 'none',
       cursor: 'pointer',
-      color: 'var(--on-surface-variant)',
+      color: '#666460',
       display: 'flex',
       alignItems: 'center',
       gap: 4,
@@ -55,8 +56,8 @@ const RegionalExplorePage = () => {
       display: 'inline-flex',
       alignItems: 'center',
       gap: 6,
-      background: 'var(--surface-container-high)',
-      color: 'var(--primary)',
+      background: '#F0EBE3',
+      color: '#b83500',
       padding: '6px 14px',
       borderRadius: 'var(--radius-full)',
       fontSize: 11,
@@ -71,22 +72,22 @@ const RegionalExplorePage = () => {
       fontSize: 28,
       fontWeight: 800,
       fontStyle: 'italic',
-      color: 'var(--on-surface)',
+      color: '#393834',
       lineHeight: 1.2,
       marginBottom: 8,
     },
-    highlight: { color: 'var(--primary)' },
+    highlight: { color: '#b83500' },
     sub: {
       fontSize: 14,
-      color: 'var(--on-surface-variant)',
+      color: '#666460',
       marginBottom: 28,
     },
     mapWrap: {
       position: 'relative',
       width: '100%',
       height: 350,
-      backgroundColor: 'var(--surface-container-high)',
-      borderRadius: 'var(--radius-lg)',
+      backgroundColor: '#F0EBE3',
+      borderRadius: '1.5rem',
       marginBottom: 32,
       overflow: 'hidden',
       display: 'flex',
@@ -97,7 +98,7 @@ const RegionalExplorePage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 14,
       fontWeight: 600,
-      color: 'var(--on-surface-variant)',
+      color: '#666460',
       opacity: 0.5,
       textAlign: 'center',
       zIndex: 1,
@@ -120,20 +121,21 @@ const RegionalExplorePage = () => {
       top: '-32px',
       left: '50%',
       transform: 'translateX(-50%)',
-      backgroundColor: 'var(--surface-container-highest)',
+      backgroundColor: '#ffffff',
       padding: '4px 10px',
       borderRadius: 'var(--radius-full)',
       fontSize: 11,
       fontWeight: 600,
       fontFamily: 'var(--font-headline)',
-      color: 'var(--on-surface)',
+      color: '#393834',
       whiteSpace: 'nowrap',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
     },
     sectionTitle: {
       fontFamily: 'var(--font-headline)',
       fontSize: 18,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#393834',
       marginBottom: 16,
       display: 'flex',
       alignItems: 'center',
@@ -146,8 +148,9 @@ const RegionalExplorePage = () => {
       marginBottom: 36,
     },
     card: {
-      backgroundColor: 'var(--surface-container-low)',
-      borderRadius: 'var(--radius-lg)',
+      backgroundColor: '#ffffff',
+      borderRadius: '1.5rem',
+      boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
       overflow: 'hidden',
       transition: 'transform 0.2s ease',
     },
@@ -172,12 +175,12 @@ const RegionalExplorePage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: 14,
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#393834',
       marginBottom: 6,
     },
     cardDishes: {
       fontSize: 12,
-      color: 'var(--on-surface-variant)',
+      color: '#666460',
       marginBottom: 10,
       lineHeight: 1.5,
     },
@@ -190,8 +193,8 @@ const RegionalExplorePage = () => {
     progressTrack: {
       flex: 1,
       height: 4,
-      backgroundColor: 'var(--surface-container-high)',
-      borderRadius: 'var(--radius-full)',
+      backgroundColor: '#F0EBE3',
+      borderRadius: '9999px',
       overflow: 'hidden',
     },
     progressFill: (pct, color) => ({
@@ -203,14 +206,14 @@ const RegionalExplorePage = () => {
     }),
     progressLabel: {
       fontSize: 11,
-      color: 'var(--on-surface-variant)',
+      color: '#666460',
       fontWeight: 600,
       whiteSpace: 'nowrap',
     },
     exploreBtn: {
       background: 'none',
       border: 'none',
-      color: 'var(--primary)',
+      color: '#b83500',
       fontFamily: 'var(--font-headline)',
       fontSize: 12,
       fontWeight: 700,
@@ -242,7 +245,7 @@ const RegionalExplorePage = () => {
       width: 52,
       height: 52,
       borderRadius: '50%',
-      background: unlocked ? `linear-gradient(135deg, ${color}, ${color}88)` : 'var(--surface-container-high)',
+      background: unlocked ? `linear-gradient(135deg, ${color}, ${color}88)` : '#F0EBE3',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -252,7 +255,7 @@ const RegionalExplorePage = () => {
       fontSize: 10,
       fontWeight: 600,
       fontFamily: 'var(--font-headline)',
-      color: unlocked ? 'var(--on-surface)' : 'var(--on-surface-variant)',
+      color: unlocked ? '#393834' : '#666460',
       textAlign: 'center',
       opacity: unlocked ? 1 : 0.5,
     }),
@@ -284,6 +287,18 @@ const RegionalExplorePage = () => {
       </h1>
       <p style={s.sub}>Hanh trinh am thuc qua tung vung mien dat nuoc.</p>
 
+      {/* Mastered Progress */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '20px 24px', borderRadius: '1.5rem', backgroundColor: '#ffffff', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', marginBottom: 28 }}>
+        <div style={{ fontFamily: 'var(--font-headline)', fontSize: 40, fontWeight: 800, color: '#b83500' }}>{masteredCount}</div>
+        <div style={{ flex: 1 }}>
+          <div style={{ fontFamily: 'var(--font-headline)', fontSize: 16, fontWeight: 700, color: '#393834', marginBottom: 6 }}>{masteredCount}/8 Regions Mastered</div>
+          <div style={{ height: 8, borderRadius: 4, backgroundColor: '#F0EBE3', overflow: 'hidden' }}>
+            <div style={{ height: '100%', width: `${(masteredCount / 8) * 100}%`, borderRadius: 4, background: 'linear-gradient(90deg, #b83500, #FF4D00)', transition: 'width 0.5s ease' }} />
+          </div>
+        </div>
+        <span className="material-symbols-outlined" style={{ fontSize: 28, color: '#b83500' }}>emoji_events</span>
+      </div>
+
       {/* Map area */}
       <div style={s.mapWrap}>
         <span style={s.mapLabel}>Ban do am thuc Viet Nam</span>
@@ -313,7 +328,7 @@ const RegionalExplorePage = () => {
               <div style={s.cardAccent(r.color)} />
               <div style={s.cardBody}>
                 <div style={s.cardIcon(r.color)}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 20, color: r.color }}>{r.icon}</span>
+                  <span style={{ fontSize: 22 }}>{r.emoji}</span>
                 </div>
                 <div style={s.cardName}>{r.name}</div>
                 <div style={s.cardDishes}>{r.dishes.join(', ')}</div>

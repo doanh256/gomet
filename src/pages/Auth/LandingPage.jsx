@@ -5,12 +5,12 @@ const LandingPage = () => {
   const navigate = useNavigate();
 
   const tasteDimensions = [
-    { icon: 'local_fire_department', title: 'Độ Chịu Cay', subtitle: 'Spice Tolerance', desc: 'Độ nhạy cảm với các loại ớt và gia vị cay nóng từ khắp Việt Nam.' },
-    { icon: 'public', title: 'Vùng Miền', subtitle: 'Regional Focus', desc: 'Khám phá ẩm thực đặc trưng của 8 vùng miền từ Tây Bắc đến Đồng bằng sông Cửu Long.' },
-    { icon: 'texture', title: 'Kết Cấu', subtitle: 'Texture Preference', desc: 'Từ giòn rụm đến mềm mịn — phân tích sở thích kết cấu món ăn của bạn.' },
-    { icon: 'opacity', title: 'Độ Umami', subtitle: 'Umami Depth', desc: 'Khám phá độ sâu của vị umami trong khẩu vị của bạn qua từng món ăn.' },
-    { icon: 'thermostat', title: 'Nhiệt Độ', subtitle: 'Temperature Pref', desc: 'Món nóng hay món lạnh? Phân tích xu hướng nhiệt độ món ăn bạn yêu thích.' },
-    { icon: 'eco', title: 'Thành Phần', subtitle: 'Ingredient Affinity', desc: 'Nguyên liệu nào làm bạn say mê? Hệ thống theo dõi và gợi ý thông minh.' },
+    { icon: 'favorite', title: 'Ghép Đôi Khẩu Vị', subtitle: 'Taste Matching', desc: 'Tìm người hẹn hò có cùng sở thích ăn uống — từ street food đến fine dining.' },
+    { icon: 'local_fire_department', title: 'Độ Chịu Cay', subtitle: 'Spice Chemistry', desc: 'Bạn thích cay mấy? Ghép đôi với người có cùng "nhiệt huyết" ẩm thực.' },
+    { icon: 'public', title: 'Vùng Miền', subtitle: 'Regional Match', desc: 'Cùng quê hay cùng gu? Kết nối qua ẩm thực 8 vùng miền Việt Nam.' },
+    { icon: 'restaurant', title: 'Phong Cách Date', subtitle: 'Date Style', desc: 'Cà phê sáng hay dinner date? Tìm người hợp phong cách hẹn hò của bạn.' },
+    { icon: 'groups', title: 'Group Date', subtitle: 'Social Dining', desc: 'Hẹn hò nhóm, double date, hay ăn uống cùng bạn bè mới quen.' },
+    { icon: 'auto_awesome', title: 'Chemistry Score', subtitle: 'AI Compatibility', desc: 'AI phân tích độ tương thích qua 42 chỉ số khẩu vị để tìm người phù hợp nhất.' },
   ];
 
   const communityCards = [
@@ -92,18 +92,18 @@ const LandingPage = () => {
             <span style={{
               color: '#b83500', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
               fontSize: 14, marginBottom: 16, display: 'block',
-            }}>The Kinetic Connoisseur</span>
+            }}>Đi Để Gặp · Ăn Để Yêu</span>
             <h1 style={{
               fontSize: 'clamp(56px, 8vw, 96px)', fontWeight: 800, letterSpacing: '-0.04em',
               color: '#393834', lineHeight: 0.9, marginBottom: 32, marginTop: 0,
             }}>
-              Khám Phá <br />
-              <span style={{ color: '#b83500', fontStyle: 'italic' }}>Hương Vị</span> Khoa Học.
+              Hẹn Hò Qua <br />
+              <span style={{ color: '#b83500', fontStyle: 'italic' }}>Ẩm Thực</span> Việt Nam.
             </h1>
             <p style={{
               fontSize: 20, color: '#666460', maxWidth: 560, marginBottom: 40, lineHeight: 1.7,
             }}>
-              GOMET kết hợp báo chí ẩm thực cao cấp với khoa học ghép nối vị giác. Khám phá vùng miền, tích điểm Vàng và làm chủ nghệ thuật của miếng ăn hoàn hảo.
+              GOMET là nền tảng hẹn hò độc đáo — nơi bạn tìm người đồng hành qua những bữa ăn. Ghép đôi theo khẩu vị, hẹn hò tại nhà hàng yêu thích, và tạo nên những kỷ niệm đáng nhớ cùng nhau.
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
               <button onClick={() => navigate('/register')} style={{
@@ -116,7 +116,7 @@ const LandingPage = () => {
                 onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
                 onMouseLeave={e => e.currentTarget.style.transform = 'translateY(0)'}
               >
-                Bắt Đầu Hành Trình
+                Tìm Người Hẹn Hò
               </button>
               <button style={{
                 display: 'flex', alignItems: 'center', gap: 8,
@@ -135,9 +135,9 @@ const LandingPage = () => {
           <div style={{ maxWidth: 1920, margin: '0 auto' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 64 }}>
               <div style={{ maxWidth: 640 }}>
-                <h2 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.04em', marginBottom: 16, marginTop: 0 }}>Thế Giới Micro-Meals</h2>
+                <h2 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.04em', marginBottom: 16, marginTop: 0 }}>Hẹn Hò Theo Vùng Miền</h2>
                 <p style={{ fontSize: 18, color: '#666460', lineHeight: 1.7, margin: 0 }}>
-                  Hành trình được tuyển chọn qua 8 vùng ẩm thực đặc trưng của Việt Nam, từ cao nguyên hùng vĩ đến nhịp sống Mekong.
+                  Ghép đôi theo khẩu vị — tìm người hợp gu ăn uống qua 8 vùng ẩm thực Việt Nam. Cùng nhau khám phá từ phở Hà Nội đến hủ tiếu Sài Gòn.
                 </p>
               </div>
               <button style={{
@@ -212,10 +212,10 @@ const LandingPage = () => {
           <div style={{ maxWidth: 1200, margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 64 }}>
               <h2 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.04em', marginTop: 0, marginBottom: 16 }}>
-                Khẩu Vị Của Bạn, <br />Được Lượng Hóa.
+                Ghép Đôi Theo <br />Khẩu Vị.
               </h2>
               <p style={{ fontSize: 18, color: '#666460', maxWidth: 600, margin: '0 auto', lineHeight: 1.7 }}>
-                Thuật toán của chúng tôi phân tích 42 chỉ số hương vị để dự đoán món ăn yêu thích tiếp theo của bạn trong mạng lưới GOMET.
+                Thuật toán ghép đôi phân tích 42 chỉ số khẩu vị để tìm người hẹn hò hoàn hảo cho bạn. Cùng sở thích ăn uống = cùng nhịp sống.
               </p>
             </div>
             <div style={{
@@ -250,9 +250,9 @@ const LandingPage = () => {
         <section id="community" style={{ padding: '128px 48px', backgroundColor: '#f7f3ec', overflow: 'hidden' }}>
           <div style={{ maxWidth: 1920, margin: '0 auto' }}>
             <div style={{ textAlign: 'center', marginBottom: 80 }}>
-              <h2 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.04em', marginTop: 0, marginBottom: 16 }}>Kỷ Niệm Chung</h2>
+              <h2 style={{ fontSize: 48, fontWeight: 800, letterSpacing: '-0.04em', marginTop: 0, marginBottom: 16 }}>Câu Chuyện Hẹn Hò</h2>
               <p style={{ fontSize: 18, color: '#666460', maxWidth: 560, margin: '0 auto', lineHeight: 1.7 }}>
-                Bếp là cộng đồng. Tham gia cùng hàng ngàn người siêu ẩm thực chia sẻ địa điểm mới nhất và những đột phá ẩm thực.
+                Hàng ngàn cặp đôi đã gặp nhau qua GOMET. Từ bữa cà phê đầu tiên đến những chuyến phiêu lưu ẩm thực cùng nhau.
               </p>
             </div>
             <div style={{ display: 'flex', gap: 32, overflowX: 'auto', paddingBottom: 48 }}>
@@ -308,10 +308,10 @@ const LandingPage = () => {
               fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 900, color: '#fffbff',
               letterSpacing: '-0.04em', marginBottom: 32, marginTop: 0, lineHeight: 1,
             }}>
-              Sẵn Sàng Tham Gia Kitchen?
+              Sẵn Sàng Hẹn Hò?
             </h2>
             <p style={{ fontSize: 22, color: 'rgba(255,251,255,0.7)', marginBottom: 48 }}>
-              Trở thành Kinetic Connoisseur ngay hôm nay và bắt đầu hành trình qua những hương vị sống động nhất thế giới.
+              Tìm người hẹn hò cùng gu ẩm thực ngay hôm nay. Đi để gặp, ăn để yêu — cùng GOMET.
             </p>
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 24 }}>
               <button onClick={() => navigate('/register')} style={{
@@ -324,7 +324,7 @@ const LandingPage = () => {
                 onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
                 onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
               >
-                Bắt Đầu Hành Trình Ẩm Thực
+                Tìm Người Hẹn Hò Ngay
               </button>
               <button onClick={() => navigate('/login')} style={{
                 backgroundColor: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(12px)',
@@ -334,7 +334,7 @@ const LandingPage = () => {
                 fontFamily: "'Plus Jakarta Sans', sans-serif",
                 transition: 'background-color 0.2s',
               }}>
-                Khám Phá Với Tư Cách Khách
+                Xem Trước Không Cần Đăng Ký
               </button>
             </div>
           </div>

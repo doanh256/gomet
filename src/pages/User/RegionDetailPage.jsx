@@ -32,13 +32,13 @@ const RegionDetailPage = () => {
 
   const s = {
     page: {
-      flex: 1, backgroundColor: 'var(--surface, #FDF9F3)', overflowY: 'auto',
+      flex: 1, backgroundColor: '#FDF9F3', overflowY: 'auto',
       maxWidth: 600, margin: '0 auto',
-      fontFamily: 'var(--font-body, "Inter", sans-serif)', color: 'var(--on-surface, #2A2A2A)',
+      fontFamily: 'var(--font-body, "Inter", sans-serif)', color: '#393834',
     },
     hero: {
-      width: '100%', height: 260, position: 'relative',
-      background: 'linear-gradient(135deg, #8BC34A 0%, #4CAF50 100%)',
+      width: '100%', height: 300, position: 'relative',
+      background: 'linear-gradient(135deg, #8BC34A 0%, #4CAF50 50%, #2E7D32 100%)',
       display: 'flex', flexDirection: 'column', alignItems: 'center',
       justifyContent: 'center', gap: 8,
     },
@@ -49,8 +49,8 @@ const RegionDetailPage = () => {
     },
     heroSub: { fontSize: 14, color: 'rgba(255,255,255,0.8)', zIndex: 1 },
     heroOverlay: {
-      position: 'absolute', bottom: 0, left: 0, right: 0, height: 60,
-      background: 'linear-gradient(transparent, var(--surface, #FDF9F3))',
+      position: 'absolute', bottom: 0, left: 0, right: 0, height: 80,
+      background: 'linear-gradient(transparent, #FDF9F3)',
     },
     backBtnFloat: {
       position: 'absolute', top: 20, left: 16, width: 40, height: 40,
@@ -61,15 +61,15 @@ const RegionDetailPage = () => {
     body: { padding: '0 24px 100px', marginTop: -16, position: 'relative', zIndex: 1 },
     progressCard: {
       padding: '20px', borderRadius: '1.5rem',
-      backgroundColor: 'var(--surface-container-low, #F5F0E8)',
+      backgroundColor: '#ffffff', boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
       marginBottom: 28, textAlign: 'center',
     },
     progressLabel: {
       fontFamily: 'var(--font-headline)', fontSize: 15, fontWeight: 700,
-      color: 'var(--on-surface)', marginBottom: 12,
+      color: '#393834', marginBottom: 12,
     },
     progressBarBg: {
-      height: 12, borderRadius: 6, backgroundColor: 'var(--surface-container, #F0EBE3)',
+      height: 12, borderRadius: 6, backgroundColor: '#F0EBE3',
       overflow: 'hidden', marginBottom: 8,
     },
     progressBarFill: {
@@ -77,10 +77,10 @@ const RegionDetailPage = () => {
       background: 'linear-gradient(90deg, #8BC34A, #4CAF50)',
       transition: 'width 0.5s ease',
     },
-    progressText: { fontSize: 13, color: 'var(--on-surface-variant)', fontWeight: 600 },
+    progressText: { fontSize: 13, color: '#666460', fontWeight: 600 },
     sectionTitle: {
       fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 700,
-      color: 'var(--on-surface)', marginBottom: 16,
+      color: '#393834', marginBottom: 16,
       display: 'flex', alignItems: 'center', gap: 8,
     },
     sectionIcon: { fontSize: 22, color: '#FF571A' },
@@ -88,19 +88,19 @@ const RegionDetailPage = () => {
     dishItem: (tried) => ({
       display: 'flex', alignItems: 'center', gap: 14,
       padding: '14px 16px', borderRadius: '1rem',
-      backgroundColor: 'var(--surface-container-low, #F5F0E8)',
+      backgroundColor: '#ffffff', boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
       opacity: tried ? 1 : 0.7,
     }),
     dishIconWrap: (color, tried) => ({
       width: 44, height: 44, borderRadius: '50%',
-      backgroundColor: tried ? `${color}20` : 'var(--surface-container, #F0EBE3)',
+      backgroundColor: tried ? `${color}20` : '#F0EBE3',
       display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
     }),
     dishIconEl: (color, tried) => ({
       fontSize: 22, color: tried ? color : '#999',
     }),
     dishInfo: { flex: 1 },
-    dishName: { fontSize: 14, fontWeight: 700, color: 'var(--on-surface)' },
+    dishName: { fontSize: 14, fontWeight: 700, color: '#393834' },
     dishVang: { fontSize: 11, color: '#FFD54F', fontWeight: 600 },
     dishCheck: (tried) => ({
       fontSize: 22, color: tried ? '#117500' : '#ccc',
@@ -115,18 +115,18 @@ const RegionDetailPage = () => {
     },
     storyCard: {
       padding: '16px', borderRadius: '1rem',
-      backgroundColor: 'var(--surface-container-low, #F5F0E8)',
+      backgroundColor: '#ffffff', boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
       marginBottom: 10,
     },
     storyHeader: {
       display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8,
     },
-    storyName: { fontSize: 14, fontWeight: 700, color: 'var(--on-surface)' },
-    storyDate: { fontSize: 11, color: 'var(--on-surface-variant)' },
-    storyText: { fontSize: 13, color: 'var(--on-surface-variant)', lineHeight: 1.6 },
+    storyName: { fontSize: 14, fontWeight: 700, color: '#393834' },
+    storyDate: { fontSize: 11, color: '#666460' },
+    storyText: { fontSize: 13, color: '#666460', lineHeight: 1.6 },
     mapSection: {
       marginBottom: 28, borderRadius: '1.5rem', overflow: 'hidden',
-      backgroundColor: 'var(--surface-container-low, #F5F0E8)',
+      backgroundColor: '#ffffff', boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
     },
     mapPlaceholder: {
       height: 180, display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -136,10 +136,10 @@ const RegionDetailPage = () => {
     restList: { padding: '12px 16px' },
     restItem: {
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      padding: '10px 0', borderBottom: '1px solid var(--surface-container, #F0EBE3)',
+      padding: '10px 0', borderBottom: '1px solid #F0EBE3',
     },
-    restName: { fontSize: 14, fontWeight: 600, color: 'var(--on-surface)' },
-    restAddr: { fontSize: 11, color: 'var(--on-surface-variant)' },
+    restName: { fontSize: 14, fontWeight: 600, color: '#393834' },
+    restAddr: { fontSize: 11, color: '#666460' },
     restRating: {
       display: 'flex', alignItems: 'center', gap: 2,
       fontSize: 13, fontWeight: 700, color: '#FF571A',
@@ -193,10 +193,27 @@ const RegionDetailPage = () => {
           ))}
         </div>
 
+        {/* Signature Cuisines - dish photos */}
+        <div style={s.sectionTitle}>
+          <span className="material-symbols-outlined" style={s.sectionIcon}>photo_library</span>
+          Signature Cuisines
+        </div>
+        <div style={{ display: 'flex', gap: 12, overflowX: 'auto', paddingBottom: 8, marginBottom: 28, scrollbarWidth: 'none' }}>
+          {signatureDishes.filter(d => d.tried).map(d => (
+            <div key={d.id} style={{ flexShrink: 0, width: 140 }}>
+              <div style={{ width: 140, height: 100, borderRadius: '1rem', background: `linear-gradient(135deg, ${d.color}40, ${d.color}20)`, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 8 }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 36, color: d.color, opacity: 0.6 }}>lunch_dining</span>
+              </div>
+              <div style={{ fontFamily: 'var(--font-headline)', fontSize: 13, fontWeight: 700, color: '#393834' }}>{d.name}</div>
+              <div style={{ fontSize: 11, color: '#b83500', fontWeight: 600 }}>+{d.vang} Vang</div>
+            </div>
+          ))}
+        </div>
+
         {/* Book a Chef's Table */}
         <button style={s.chefCta}>
           <span className="material-symbols-outlined" style={{ fontSize: 20 }}>table_restaurant</span>
-          Dat Chef's Table
+          Book a Chef's Table
         </button>
 
         {/* Local Stories */}

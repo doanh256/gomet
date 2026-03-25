@@ -27,34 +27,34 @@ const BadgeCollectionPage = () => {
   const totalRegions = regionBadges.length;
   const overallPct = Math.round(regionBadges.reduce((sum, b) => sum + b.pct, 0) / totalRegions);
 
-  const ringSize = 120;
-  const ringStroke = 10;
+  const ringSize = 160;
+  const ringStroke = 12;
   const ringRadius = (ringSize - ringStroke) / 2;
   const ringCircumference = 2 * Math.PI * ringRadius;
   const ringOffset = ringCircumference - (overallPct / 100) * ringCircumference;
 
   const s = {
     page: {
-      flex: 1, backgroundColor: 'var(--surface, #FDF9F3)', overflowY: 'auto',
+      flex: 1, backgroundColor: '#FDF9F3', overflowY: 'auto',
       padding: '40px 24px 100px', maxWidth: 600, margin: '0 auto',
-      fontFamily: 'var(--font-body, "Inter", sans-serif)', color: 'var(--on-surface, #2A2A2A)',
+      fontFamily: 'var(--font-body, "Inter", sans-serif)', color: '#393834',
     },
     backBtn: {
       background: 'none', border: 'none', cursor: 'pointer',
-      color: 'var(--on-surface-variant, #6B6B6B)',
+      color: '#666460',
       display: 'flex', alignItems: 'center', gap: 4, fontSize: 14, marginBottom: 24, padding: 0,
     },
     heading: {
       fontFamily: 'var(--font-headline, "Plus Jakarta Sans")',
       fontSize: 26, fontWeight: 800, fontStyle: 'italic',
-      color: 'var(--on-surface)', marginBottom: 8,
+      color: '#393834', marginBottom: 8,
     },
-    highlight: { color: '#FF571A' },
-    subtitle: { fontSize: 14, color: 'var(--on-surface-variant)', marginBottom: 28 },
+    highlight: { color: '#b83500' },
+    subtitle: { fontSize: 14, color: '#666460', marginBottom: 28 },
     masteryCard: {
-      display: 'flex', alignItems: 'center', gap: 20,
-      padding: '24px', borderRadius: '1.5rem',
-      backgroundColor: 'var(--surface-container-low, #F5F0E8)',
+      display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16,
+      padding: '28px 24px', borderRadius: '1.5rem',
+      backgroundColor: '#ffffff', boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
       marginBottom: 32,
     },
     ringWrap: { position: 'relative', width: ringSize, height: ringSize, flexShrink: 0 },
@@ -63,40 +63,41 @@ const BadgeCollectionPage = () => {
       alignItems: 'center', justifyContent: 'center',
     },
     ringPct: {
-      fontFamily: 'var(--font-headline)', fontSize: 28, fontWeight: 800, color: '#FF571A',
+      fontFamily: 'var(--font-headline)', fontSize: 36, fontWeight: 800, color: '#b83500',
     },
-    ringLabel: { fontSize: 10, color: 'var(--on-surface-variant)' },
-    masteryInfo: { flex: 1 },
+    ringLabel: { fontSize: 11, color: '#666460' },
+    masteryInfo: { textAlign: 'center' },
     masteryTitle: {
-      fontFamily: 'var(--font-headline)', fontSize: 16, fontWeight: 700,
-      color: 'var(--on-surface)', marginBottom: 4,
+      fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 700,
+      color: '#393834', marginBottom: 4,
     },
-    masteryDesc: { fontSize: 13, color: 'var(--on-surface-variant)', lineHeight: 1.5 },
+    masteryDesc: { fontSize: 13, color: '#666460', lineHeight: 1.5 },
     sectionTitle: {
       fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 700,
-      color: 'var(--on-surface)', marginBottom: 16,
+      color: '#393834', marginBottom: 16,
       display: 'flex', alignItems: 'center', gap: 8,
     },
-    sectionIcon: { fontSize: 22, color: '#FF571A' },
+    sectionIcon: { fontSize: 22, color: '#b83500' },
     regionGrid: {
       display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12, marginBottom: 36,
     },
     regionCard: (earned, color) => ({
       padding: '20px 16px', borderRadius: '1.5rem', textAlign: 'center',
-      backgroundColor: earned ? `${color}10` : 'var(--surface-container, #F0EBE3)',
-      border: earned ? `2px solid ${color}` : '2px solid transparent',
+      background: earned ? `linear-gradient(135deg, ${color}15, ${color}08)` : '#ffffff',
+      border: earned ? `2px solid ${color}` : '2px solid #F0EBE3',
       opacity: earned ? 1 : 0.55, position: 'relative', overflow: 'hidden',
+      boxShadow: earned ? `0 4px 16px ${color}20` : '0 2px 8px rgba(0,0,0,0.04)',
     }),
     regionIcon: (earned, color) => ({
       fontSize: 36, color: earned ? color : '#999', marginBottom: 8, display: 'block',
     }),
     regionName: {
       fontFamily: 'var(--font-headline)', fontSize: 14, fontWeight: 700,
-      color: 'var(--on-surface)', marginBottom: 4,
+      color: '#393834', marginBottom: 4,
     },
-    regionCount: { fontSize: 12, color: 'var(--on-surface-variant)', marginBottom: 8 },
+    regionCount: { fontSize: 12, color: '#666460', marginBottom: 8 },
     regionBar: {
-      height: 6, borderRadius: 3, backgroundColor: 'var(--surface-container, #F0EBE3)',
+      height: 6, borderRadius: 3, backgroundColor: '#F0EBE3',
       overflow: 'hidden',
     },
     regionBarFill: (pct, color) => ({
@@ -112,18 +113,19 @@ const BadgeCollectionPage = () => {
     },
     specialCard: (earned, color) => ({
       padding: '18px 10px', borderRadius: '1.5rem', textAlign: 'center',
-      backgroundColor: earned ? `${color}10` : 'var(--surface-container, #F0EBE3)',
-      border: earned ? `2px solid ${color}` : '2px solid transparent',
+      background: earned ? `linear-gradient(135deg, ${color}18, ${color}08)` : '#ffffff',
+      border: earned ? `2px solid ${color}` : '2px solid #F0EBE3',
       opacity: earned ? 1 : 0.45,
+      boxShadow: earned ? `0 4px 12px ${color}20` : '0 2px 8px rgba(0,0,0,0.04)',
     }),
     specialIcon: (earned, color) => ({
       fontSize: 32, color: earned ? color : '#999', marginBottom: 6, display: 'block',
     }),
     specialName: {
       fontFamily: 'var(--font-headline)', fontSize: 11, fontWeight: 700,
-      color: 'var(--on-surface)', marginBottom: 2,
+      color: '#393834', marginBottom: 2,
     },
-    specialDesc: { fontSize: 10, color: 'var(--on-surface-variant)' },
+    specialDesc: { fontSize: 10, color: '#666460' },
   };
 
   return (
@@ -142,10 +144,16 @@ const BadgeCollectionPage = () => {
       <div style={s.masteryCard}>
         <div style={s.ringWrap}>
           <svg width={ringSize} height={ringSize}>
+            <defs>
+              <linearGradient id="masteryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#b83500" />
+                <stop offset="100%" stopColor="#FF4D00" />
+              </linearGradient>
+            </defs>
             <circle cx={ringSize / 2} cy={ringSize / 2} r={ringRadius}
               fill="none" stroke="#F0EBE3" strokeWidth={ringStroke} />
             <circle cx={ringSize / 2} cy={ringSize / 2} r={ringRadius}
-              fill="none" stroke="#FF571A" strokeWidth={ringStroke}
+              fill="none" stroke="url(#masteryGradient)" strokeWidth={ringStroke}
               strokeDasharray={ringCircumference} strokeDashoffset={ringOffset}
               strokeLinecap="round"
               transform={`rotate(-90 ${ringSize / 2} ${ringSize / 2})`}

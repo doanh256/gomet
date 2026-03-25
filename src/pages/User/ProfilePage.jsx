@@ -122,7 +122,7 @@ const ProfilePage = () => {
   const s = {
     page: {
       flex: 1,
-      backgroundColor: 'var(--surface-container-low)',
+      backgroundColor: '#FDF9F3',
       overflowY: 'auto',
       minHeight: '100vh',
       fontFamily: 'var(--font-body)',
@@ -154,7 +154,7 @@ const ProfilePage = () => {
       height: '100%',
       borderRadius: '50%',
       overflow: 'hidden',
-      background: 'var(--surface-container-low)',
+      background: '#FDF9F3',
     },
     avatar: {
       width: '128px',
@@ -223,7 +223,7 @@ const ProfilePage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: '24px',
       fontWeight: 800,
-      color: 'var(--on-surface)',
+      color: '#393834',
       margin: '16px 0 4px',
       textAlign: 'center',
     },
@@ -233,15 +233,15 @@ const ProfilePage = () => {
       gap: '4px',
       fontSize: '12px',
       fontWeight: 700,
-      color: '#FFD54F',
-      background: 'rgba(255,213,79,0.15)',
+      color: '#b83500',
+      background: 'rgba(184,53,0,0.1)',
       padding: '4px 14px',
       borderRadius: '9999px',
       marginBottom: '4px',
     },
     locationText: {
       fontSize: '13px',
-      color: 'var(--on-surface-variant)',
+      color: '#666460',
       display: 'flex',
       alignItems: 'center',
       gap: '4px',
@@ -256,11 +256,11 @@ const ProfilePage = () => {
       marginBottom: '24px',
     },
     statCard: {
-      background: 'var(--surface-container)',
+      background: '#ffffff',
       borderRadius: '1.5rem',
       padding: '20px',
       textAlign: 'center',
-      boxShadow: '0px 8px 24px rgba(0,0,0,0.15)',
+      boxShadow: '0px 4px 16px rgba(0,0,0,0.06)',
     },
     statValue: (color) => ({
       fontFamily: 'var(--font-headline)',
@@ -271,17 +271,17 @@ const ProfilePage = () => {
     }),
     statLabel: {
       fontSize: '13px',
-      color: 'var(--on-surface-variant)',
+      color: '#666460',
       fontWeight: 600,
     },
 
     // Tier progress
     tierSection: {
-      background: 'var(--surface-container)',
+      background: '#ffffff',
       borderRadius: '1.5rem',
       padding: '24px',
       marginBottom: '24px',
-      boxShadow: '0px 8px 24px rgba(0,0,0,0.15), 0 0 0 2px rgba(255,213,79,0.2)',
+      boxShadow: '0px 4px 16px rgba(0,0,0,0.06), 0 0 0 2px rgba(184,53,0,0.1)',
     },
     tierHeader: {
       display: 'flex',
@@ -293,18 +293,18 @@ const ProfilePage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: '16px',
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#393834',
       margin: 0,
     },
     tierTarget: {
       fontSize: '12px',
-      color: 'var(--on-surface-variant)',
+      color: '#666460',
     },
     progressOuter: {
       width: '100%',
       height: '12px',
       borderRadius: '6px',
-      background: 'var(--surface-container-high)',
+      background: '#F0EBE3',
       marginBottom: '8px',
       overflow: 'hidden',
     },
@@ -317,7 +317,7 @@ const ProfilePage = () => {
     },
     tierHint: {
       fontSize: '12px',
-      color: 'var(--on-surface-variant)',
+      color: '#666460',
       textAlign: 'right',
     },
 
@@ -329,7 +329,7 @@ const ProfilePage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: '18px',
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#393834',
       margin: '0 0 14px',
     },
 
@@ -362,18 +362,18 @@ const ProfilePage = () => {
       fontFamily: 'var(--font-headline)',
       fontSize: '13px',
       fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#393834',
       margin: '0 0 2px',
     },
     dishRestaurant: {
       fontSize: '11px',
-      color: 'var(--on-surface-variant)',
+      color: '#666460',
       margin: '0 0 2px',
     },
     dishPoints: {
       fontSize: '11px',
       fontWeight: 700,
-      color: '#FFD54F',
+      color: '#b83500',
     },
 
     // Interest chips
@@ -385,8 +385,8 @@ const ProfilePage = () => {
     chip: {
       padding: '8px 18px',
       borderRadius: '9999px',
-      background: 'var(--surface-variant)',
-      color: 'var(--on-surface)',
+      background: '#F0EBE3',
+      color: '#393834',
       fontSize: '13px',
       fontWeight: 600,
     },
@@ -417,8 +417,8 @@ const ProfilePage = () => {
       padding: '14px',
       borderRadius: '9999px',
       border: 'none',
-      background: 'var(--surface-container)',
-      color: 'var(--on-surface-variant)',
+      background: '#F0EBE3',
+      color: '#666460',
       fontSize: '14px',
       fontWeight: 600,
       cursor: 'pointer',
@@ -442,10 +442,10 @@ const ProfilePage = () => {
 
     // ========== EDIT MODE STYLES ==========
     editCard: {
-      background: 'var(--surface-container)',
+      background: '#ffffff',
       borderRadius: '1.5rem',
       padding: '24px',
-      boxShadow: '0px 8px 24px rgba(0,0,0,0.15)',
+      boxShadow: '0px 4px 16px rgba(0,0,0,0.06)',
       marginBottom: '16px',
     },
     inputLabel: {
@@ -453,17 +453,17 @@ const ProfilePage = () => {
       fontSize: '13px',
       fontWeight: 600,
       marginBottom: '6px',
-      color: 'var(--on-surface-variant)',
+      color: '#666460',
     },
     input: {
       width: '100%',
       padding: '12px 16px',
       borderRadius: '1rem',
       border: 'none',
-      backgroundColor: 'var(--surface-container-high)',
+      backgroundColor: '#F0EBE3',
       fontSize: '15px',
       fontFamily: 'var(--font-body)',
-      color: 'var(--on-surface)',
+      color: '#393834',
       outline: 'none',
       boxSizing: 'border-box',
     },
@@ -473,10 +473,10 @@ const ProfilePage = () => {
       padding: '14px 16px',
       borderRadius: '1rem',
       border: 'none',
-      backgroundColor: 'var(--surface-container-high)',
+      backgroundColor: '#F0EBE3',
       fontSize: '15px',
       fontFamily: 'var(--font-body)',
-      color: 'var(--on-surface)',
+      color: '#393834',
       resize: 'vertical',
       outline: 'none',
       boxSizing: 'border-box',
@@ -484,8 +484,8 @@ const ProfilePage = () => {
     editChip: (selected) => ({
       padding: '8px 18px',
       borderRadius: '9999px',
-      backgroundColor: selected ? 'var(--primary)' : 'var(--surface-container-high)',
-      color: selected ? '#3A0B00' : 'var(--on-surface)',
+      backgroundColor: selected ? '#FF4D00' : '#F0EBE3',
+      color: selected ? '#ffffff' : '#393834',
       fontSize: '13px',
       fontWeight: 600,
       border: 'none',
@@ -499,10 +499,10 @@ const ProfilePage = () => {
       padding: '14px',
       borderRadius: '9999px',
       border: 'none',
-      backgroundColor: 'var(--surface-container-high)',
+      backgroundColor: '#F0EBE3',
       fontWeight: 600,
       fontSize: '15px',
-      color: 'var(--on-surface)',
+      color: '#393834',
       cursor: 'pointer',
     },
     saveBtn: (disabled) => ({
@@ -646,8 +646,8 @@ const ProfilePage = () => {
         {/* ===== STATS GRID ===== */}
         <div style={s.statsGrid}>
           <div style={s.statCard}>
-            <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--primary)' }}>toll</span>
-            <p style={s.statValue('var(--primary)')}>{vangPoints.toLocaleString('vi-VN')}</p>
+            <span className="material-symbols-outlined" style={{ fontSize: '28px', color: '#b83500' }}>toll</span>
+            <p style={s.statValue('#b83500')}>{vangPoints.toLocaleString('vi-VN')}</p>
             <p style={s.statLabel}>Diem Vang</p>
           </div>
           <div style={s.statCard}>
@@ -672,7 +672,7 @@ const ProfilePage = () => {
         {/* ===== TASTE RADAR - SVG SPIDER CHART ===== */}
         <div style={s.section}>
           <h2 style={s.sectionTitle}>Taste Radar</h2>
-          <div style={{ background: 'var(--surface-container)', borderRadius: '1.5rem', padding: '20px', boxShadow: '0px 8px 24px rgba(0,0,0,0.15)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div style={{ background: '#ffffff', borderRadius: '1.5rem', padding: '20px', boxShadow: '0px 4px 16px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             {(() => {
               const size = 280;
               const cx = size / 2;
@@ -700,19 +700,19 @@ const ProfilePage = () => {
                   {/* Data polygon filled with primary/20, stroked with primary */}
                   <polygon
                     points={axes.map((a, i) => { const p = getPoint(i, maxR * a.value / 100); return `${p.x},${p.y}`; }).join(' ')}
-                    fill="rgba(255,87,26,0.2)" stroke="var(--primary)" strokeWidth={2}
+                    fill="rgba(184,53,0,0.15)" stroke="#b83500" strokeWidth={2}
                   />
                   {/* Data points */}
                   {axes.map((a, i) => {
                     const p = getPoint(i, maxR * a.value / 100);
-                    return <circle key={i} cx={p.x} cy={p.y} r={5} fill="var(--primary)" stroke="var(--surface-container)" strokeWidth={2} />;
+                    return <circle key={i} cx={p.x} cy={p.y} r={5} fill="#b83500" stroke="#ffffff" strokeWidth={2} />;
                   })}
                   {/* Labels */}
                   {axes.map((a, i) => {
                     const p = getPoint(i, maxR + 28);
                     return (
                       <text key={i} x={p.x} y={p.y} textAnchor="middle" dominantBaseline="middle"
-                        fill="var(--on-surface-variant)" fontSize={12} fontFamily="Inter, var(--font-body)" fontWeight={600}>
+                        fill="#666460" fontSize={12} fontFamily="Inter, var(--font-body)" fontWeight={600}>
                         {a.label}
                       </text>
                     );
@@ -722,7 +722,7 @@ const ProfilePage = () => {
                     const p = getPoint(i, maxR * a.value / 100 + 16);
                     return (
                       <text key={`v${i}`} x={p.x} y={p.y} textAnchor="middle" dominantBaseline="middle"
-                        fill="var(--primary)" fontSize={10} fontFamily="Inter, var(--font-body)" fontWeight={700}>
+                        fill="#b83500" fontSize={10} fontFamily="Inter, var(--font-body)" fontWeight={700}>
                         {a.value}%
                       </text>
                     );
@@ -741,7 +741,7 @@ const ProfilePage = () => {
               <div key={dish.id} style={{ ...s.dishCard, width: '100px' }}>
                 <div style={{
                   width: '80px', height: '80px', borderRadius: '1rem',
-                  background: 'linear-gradient(135deg, var(--surface-container-high), var(--surface-container-highest))',
+                  background: 'linear-gradient(135deg, #F0EBE3, #E8E3DB)',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   margin: '0 auto 8px', overflow: 'hidden',
                 }}>

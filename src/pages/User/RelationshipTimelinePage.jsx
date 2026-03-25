@@ -71,19 +71,23 @@ const RelationshipTimelinePage = () => {
     },
     heartIcon: { fontSize: 28, color: '#FF571A', animation: 'pulseGlow 2s ease-in-out infinite' },
     chemBadge: {
-      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10,
-      padding: '16px 24px', borderRadius: '1.5rem',
-      background: 'linear-gradient(135deg, rgba(255,87,26,0.15), rgba(255,181,158,0.08))',
+      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 14,
+      padding: '20px 24px', borderRadius: '1.5rem',
+      background: 'linear-gradient(135deg, rgba(255,87,26,0.2), rgba(255,181,158,0.1))',
       marginBottom: 36,
+      boxShadow: '0 0 30px rgba(255,87,26,0.25), 0 0 60px rgba(255,87,26,0.1)',
+      border: '1px solid rgba(255,213,79,0.3)',
     },
-    chemIcon: { fontSize: 28, color: '#FFB59E' },
+    chemIcon: { fontSize: 32, color: '#FFD54F', filter: 'drop-shadow(0 0 8px rgba(255,213,79,0.5))' },
     chemLabel: { fontSize: 13, color: '#E6BEB2', marginBottom: 2 },
     chemValue: {
-      fontFamily: 'var(--font-headline)', fontSize: 28, fontWeight: 800, color: '#FF571A',
+      fontFamily: 'var(--font-headline)', fontSize: 32, fontWeight: 800, color: '#FF571A',
+      textShadow: '0 0 20px rgba(255,87,26,0.4)',
     },
     chemTitle: {
-      fontFamily: 'var(--font-headline)', fontSize: 13, fontWeight: 700,
+      fontFamily: 'var(--font-headline)', fontSize: 15, fontWeight: 700,
       color: '#FFD54F', letterSpacing: '0.06em',
+      textShadow: '0 0 12px rgba(255,213,79,0.4)',
     },
     sectionTitle: {
       fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 700,
@@ -187,6 +191,10 @@ const RelationshipTimelinePage = () => {
             <div style={s.dot(!!ms.badge)} />
             <div style={s.msDate}>{ms.date}</div>
             <div style={s.msCard}>
+              {/* Food photo placeholder */}
+              <div style={{ width: '100%', height: 100, borderRadius: '0.75rem', background: 'linear-gradient(135deg, rgba(255,87,26,0.2), rgba(255,181,158,0.1))', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12 }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 36, color: '#FFB59E', opacity: 0.5 }}>lunch_dining</span>
+              </div>
               <div style={s.msRestaurant}>{ms.restaurant}</div>
               <div style={s.msDish}>{ms.dish}</div>
               <div style={s.msNote}>{ms.note}</div>

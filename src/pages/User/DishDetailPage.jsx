@@ -35,9 +35,9 @@ const DishDetailPage = () => {
 
   const s = {
     page: {
-      flex: 1, backgroundColor: 'var(--surface, #FDF9F3)', overflowY: 'auto',
+      flex: 1, backgroundColor: '#FDF9F3', overflowY: 'auto',
       maxWidth: 600, margin: '0 auto',
-      fontFamily: 'var(--font-body, "Inter", sans-serif)', color: 'var(--on-surface, #2A2A2A)',
+      fontFamily: 'var(--font-body, "Inter", sans-serif)', color: '#393834',
     },
     hero: {
       width: '100%', height: 320, position: 'relative',
@@ -47,7 +47,7 @@ const DishDetailPage = () => {
     heroIcon: { fontSize: 80, color: 'rgba(255,255,255,0.3)' },
     heroOverlay: {
       position: 'absolute', bottom: 0, left: 0, right: 0, height: 80,
-      background: 'linear-gradient(transparent, var(--surface, #FDF9F3))',
+      background: 'linear-gradient(transparent, #FDF9F3)',
     },
     backBtnFloat: {
       position: 'absolute', top: 20, left: 16, width: 40, height: 40,
@@ -58,14 +58,14 @@ const DishDetailPage = () => {
     body: { padding: '0 24px 100px', marginTop: -20, position: 'relative', zIndex: 1 },
     dishName: {
       fontFamily: 'var(--font-headline, "Plus Jakarta Sans")',
-      fontSize: 28, fontWeight: 800, color: 'var(--on-surface)', marginBottom: 8,
+      fontSize: 28, fontWeight: 800, color: '#393834', marginBottom: 8,
     },
     metaRow: {
       display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20,
     },
     metaItem: {
       display: 'flex', alignItems: 'center', gap: 4,
-      fontSize: 13, color: 'var(--on-surface-variant, #6B6B6B)',
+      fontSize: 13, color: '#666460',
     },
     metaIcon: { fontSize: 18 },
     vangBadge: {
@@ -84,15 +84,16 @@ const DishDetailPage = () => {
     }),
     sectionTitle: {
       fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 700,
-      color: 'var(--on-surface)', marginBottom: 16,
+      color: '#393834', marginBottom: 16,
       display: 'flex', alignItems: 'center', gap: 8,
     },
     sectionIcon: { fontSize: 22, color: '#FF571A' },
     restaurantCard: {
       display: 'flex', alignItems: 'center', gap: 14,
       padding: '14px 16px', borderRadius: '1rem',
-      backgroundColor: 'var(--surface-container-low, #F5F0E8)',
+      backgroundColor: '#ffffff',
       marginBottom: 10,
+      boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
     },
     restIcon: {
       width: 48, height: 48, borderRadius: '0.75rem',
@@ -100,34 +101,35 @@ const DishDetailPage = () => {
       display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
     },
     restInfo: { flex: 1 },
-    restName: { fontSize: 15, fontWeight: 700, color: 'var(--on-surface)', marginBottom: 2 },
-    restAddr: { fontSize: 12, color: 'var(--on-surface-variant)' },
+    restName: { fontSize: 15, fontWeight: 700, color: '#393834', marginBottom: 2 },
+    restAddr: { fontSize: 12, color: '#666460' },
     restRight: { textAlign: 'right' },
     restRating: {
       display: 'flex', alignItems: 'center', gap: 2,
       fontSize: 13, fontWeight: 700, color: '#FF571A',
     },
-    restPrice: { fontSize: 12, color: 'var(--on-surface-variant)', marginTop: 2 },
+    restPrice: { fontSize: 12, color: '#666460', marginTop: 2 },
     reviewCard: {
       padding: '16px', borderRadius: '1rem',
-      backgroundColor: 'var(--surface-container-low, #F5F0E8)',
+      backgroundColor: '#ffffff',
       marginBottom: 10,
+      boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
     },
     reviewHeader: {
       display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8,
     },
-    reviewName: { fontSize: 14, fontWeight: 700, color: 'var(--on-surface)' },
-    reviewDate: { fontSize: 11, color: 'var(--on-surface-variant)' },
+    reviewName: { fontSize: 14, fontWeight: 700, color: '#393834' },
+    reviewDate: { fontSize: 11, color: '#666460' },
     reviewStars: { display: 'flex', gap: 2, marginBottom: 6 },
     starIcon: (filled) => ({ fontSize: 16, color: filled ? '#FFD54F' : '#ddd' }),
-    reviewText: { fontSize: 13, color: 'var(--on-surface-variant)', lineHeight: 1.5 },
+    reviewText: { fontSize: 13, color: '#666460', lineHeight: 1.5 },
     nutritionToggle: {
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       padding: '16px', borderRadius: '1rem',
-      backgroundColor: 'var(--surface-container-low, #F5F0E8)',
+      backgroundColor: '#ffffff',
       marginBottom: 10, border: 'none', width: '100%', cursor: 'pointer',
       fontFamily: 'var(--font-headline)', fontSize: 15, fontWeight: 700,
-      color: 'var(--on-surface)',
+      color: '#393834', boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
     },
     nutritionGrid: {
       display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8,
@@ -135,13 +137,13 @@ const DishDetailPage = () => {
     },
     nutriItem: {
       textAlign: 'center', padding: '12px 8px', borderRadius: '0.75rem',
-      backgroundColor: 'var(--surface-container, #F0EBE3)',
+      backgroundColor: '#ffffff',
     },
     nutriValue: {
       fontFamily: 'var(--font-headline)', fontSize: 16, fontWeight: 800,
       color: '#FF571A',
     },
-    nutriLabel: { fontSize: 11, color: 'var(--on-surface-variant)', marginTop: 2 },
+    nutriLabel: { fontSize: 11, color: '#666460', marginTop: 2 },
     relatedScroll: {
       display: 'flex', gap: 12, overflowX: 'auto', paddingBottom: 8,
     },
@@ -151,16 +153,16 @@ const DishDetailPage = () => {
     }),
     relatedName: {
       fontFamily: 'var(--font-headline)', fontSize: 14, fontWeight: 700,
-      color: 'var(--on-surface)', marginBottom: 4,
+      color: '#393834', marginBottom: 4,
     },
-    relatedRegion: { fontSize: 11, color: 'var(--on-surface-variant)' },
+    relatedRegion: { fontSize: 11, color: '#666460' },
     mapSection: {
       padding: '24px', borderRadius: '1.5rem',
       background: 'linear-gradient(135deg, #FFB59E20, #FF571A10)',
       marginBottom: 28, textAlign: 'center',
     },
     mapIcon: { fontSize: 48, color: '#FF571A', marginBottom: 8, display: 'block' },
-    mapLabel: { fontSize: 14, color: 'var(--on-surface)', fontWeight: 600 },
+    mapLabel: { fontSize: 14, color: '#393834', fontWeight: 600 },
     mapRegion: {
       fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 800,
       color: '#FF571A', marginTop: 4,
@@ -199,6 +201,42 @@ const DishDetailPage = () => {
           </span>
           {tried ? 'Da thu!' : 'Danh dau da thu'}
         </button>
+
+        {/* Vang Credibility Badge */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px', borderRadius: '1rem', backgroundColor: '#ffffff', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', marginBottom: 24 }}>
+          <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'linear-gradient(135deg, #FFD54F, #F57C00)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#3A0B00' }}>verified</span>
+          </div>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontFamily: 'var(--font-headline)', fontSize: 14, fontWeight: 700, color: '#393834', marginBottom: 2 }}>Vang Credibility</div>
+            <div style={{ fontSize: 12, color: '#666460' }}>Xac nhan boi cong dong GOMET</div>
+          </div>
+          <div style={{ fontFamily: 'var(--font-headline)', fontSize: 24, fontWeight: 800, color: '#b83500' }}>+30</div>
+        </div>
+
+        {/* Flavor Profile */}
+        <div style={s.sectionTitle}>
+          <span className="material-symbols-outlined" style={s.sectionIcon}>equalizer</span>
+          Flavor Profile
+        </div>
+        <div style={{ backgroundColor: '#ffffff', borderRadius: '1rem', padding: '20px', marginBottom: 28, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
+          {[
+            { name: 'Sweet', pct: 85 },
+            { name: 'Salty', pct: 42 },
+            { name: 'Umami', pct: 78 },
+            { name: 'Sour', pct: 35 },
+          ].map(f => (
+            <div key={f.name} style={{ marginBottom: 14 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
+                <span style={{ fontSize: 13, fontWeight: 600, color: '#393834' }}>{f.name}</span>
+                <span style={{ fontSize: 12, fontWeight: 700, color: '#b83500' }}>{f.pct}%</span>
+              </div>
+              <div style={{ height: 8, borderRadius: 4, backgroundColor: '#F0EBE3', overflow: 'hidden' }}>
+                <div style={{ height: '100%', width: `${f.pct}%`, borderRadius: 4, backgroundColor: '#b83500', transition: 'width 0.5s ease' }} />
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Restaurant Recommendations */}
         <div style={s.sectionTitle}>
