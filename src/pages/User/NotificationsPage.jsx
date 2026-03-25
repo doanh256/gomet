@@ -52,7 +52,7 @@ const demoNotifications = [
     type: 'vang',
     icon: <Heart size={20} color="#3A0B00" />,
     iconBg: 'linear-gradient(135deg, #FFD54F, #F57C00)',
-    text: '+30 Vang từ Pho Bo Ha Noi',
+    text: '+30 Vàng từ Phở Bò Hà Nội',
     detail: 'Đánh dấu đã thử thành công',
     time: '1 ngày trước',
     read: true,
@@ -191,19 +191,19 @@ const NotificationsPage = () => {
               {n.action === 'claim_vang' && (
                 <button onClick={(e) => { e.stopPropagation(); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFD54F, #F57C00)', color: '#3A0B00', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                   <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
-                  Claim Vang
+                  Nhận Vàng
                 </button>
               )}
               {n.action === 'view_match' && (
                 <button onClick={(e) => { e.stopPropagation(); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#FDF9F3', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                   <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>visibility</span>
-                  View Match
+                  Xem ghép đôi
                 </button>
               )}
               {n.action === 'accept_invite' && (
                 <button onClick={(e) => { e.stopPropagation(); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: '1px solid #FFB59E', background: '#1C1B1B', color: '#FFB59E', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
                   <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>check_circle</span>
-                  Accept Invite
+                  Chấp nhận lời mời
                 </button>
               )}
             </div>

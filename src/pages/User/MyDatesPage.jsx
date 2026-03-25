@@ -4,20 +4,20 @@ import { useToast } from '../../components/ToastNotification';
 import { useNavigate } from 'react-router-dom';
 
 const TABS = [
-  { key: 'all', label: 'Tat Ca', icon: 'grid_view' },
-  { key: 'pending', label: 'Cho Duyet', icon: 'hourglass_top' },
-  { key: 'confirmed', label: 'Da Xac Nhan', icon: 'check_circle' },
-  { key: 'past', label: 'Da Qua', icon: 'history' },
+  { key: 'all', label: 'Tất Cả', icon: 'grid_view' },
+  { key: 'pending', label: 'Chờ Duyệt', icon: 'hourglass_top' },
+  { key: 'confirmed', label: 'Đã Xác Nhận', icon: 'check_circle' },
+  { key: 'past', label: 'Đã Qua', icon: 'history' },
 ];
 
 const STATUS_MAP = {
-  open: { bg: 'rgba(255,181,158,0.1)', color: '#FFB59E', text: 'Dang mo' },
-  filled: { bg: 'rgba(255,213,79,0.15)', color: '#FFD54F', text: 'Da du' },
-  completed: { bg: 'rgba(17,117,0,0.15)', color: '#117500', text: 'Hoan thanh' },
-  cancelled: { bg: 'rgba(255,87,26,0.15)', color: '#FF571A', text: 'Da huy' },
-  pending: { bg: 'rgba(255,213,79,0.15)', color: '#FFD54F', text: 'Cho duyet' },
-  accepted: { bg: 'rgba(17,117,0,0.15)', color: '#117500', text: 'Duoc chon' },
-  rejected: { bg: 'rgba(255,87,26,0.15)', color: '#FF571A', text: 'Bi tu choi' },
+  open: { bg: 'rgba(255,181,158,0.1)', color: '#FFB59E', text: 'Đang mở' },
+  filled: { bg: 'rgba(255,213,79,0.15)', color: '#FFD54F', text: 'Đã đủ' },
+  completed: { bg: 'rgba(17,117,0,0.15)', color: '#117500', text: 'Hoàn thành' },
+  cancelled: { bg: 'rgba(255,87,26,0.15)', color: '#FF571A', text: 'Đã huỷ' },
+  pending: { bg: 'rgba(255,213,79,0.15)', color: '#FFD54F', text: 'Chờ duyệt' },
+  accepted: { bg: 'rgba(17,117,0,0.15)', color: '#117500', text: 'Được chọn' },
+  rejected: { bg: 'rgba(255,87,26,0.15)', color: '#FF571A', text: 'Bị từ chối' },
 };
 
 const MyDatesPage = () => {
@@ -51,7 +51,7 @@ const MyDatesPage = () => {
   const handleAccept = async (applicationId) => {
     try {
       const result = await api.put(`/date-applications/${applicationId}/accept`);
-      addToast('Da chap nhan! Chat da duoc mo.', 'success');
+      addToast('Đã chấp nhận! Chat đã được mở.', 'success');
       if (result?.conversationId) {
         navigate(`/app/chat?cid=${result.conversationId}`);
       }
@@ -64,7 +64,7 @@ const MyDatesPage = () => {
   const handleReject = async (applicationId) => {
     try {
       await api.put(`/date-applications/${applicationId}/reject`);
-      addToast('Da tu choi', 'info');
+      addToast('Đã từ chối', 'info');
       loadData();
     } catch (err) {
       addToast(err.message, 'error');
@@ -100,7 +100,7 @@ const MyDatesPage = () => {
           fontWeight: 700,
           fontFamily: 'Inter, var(--font-body)',
         }}>
-          {post.price.toLocaleString('vi-VN')}d - Tra Phi
+          {post.price.toLocaleString('vi-VN')}đ - Trả Phí
         </span>
       );
     }
@@ -114,7 +114,7 @@ const MyDatesPage = () => {
         fontWeight: 600,
         fontFamily: 'Inter, var(--font-body)',
       }}>
-        Keo Thuong
+        Kèo Thường
       </span>
     );
   };
@@ -150,7 +150,7 @@ const MyDatesPage = () => {
       }}>
         <div style={{ textAlign: 'center', color: '#E6BEB2' }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '48px', opacity: 0.4, display: 'block', marginBottom: '12px' }}>hourglass_empty</span>
-          Dang tai...
+          Đang tải...
         </div>
       </div>
     );
@@ -180,8 +180,8 @@ const MyDatesPage = () => {
             color: '#FDF9F3',
             margin: '0 0 4px',
           }}>
-            Buoi Hen{' '}
-            <span style={{ fontStyle: 'italic', color: '#FFB59E' }}>Cua Toi</span>
+            Buổi Hẹn{' '}
+            <span style={{ fontStyle: 'italic', color: '#FFB59E' }}>Của Tôi</span>
           </h1>
           <p style={{
             color: '#E6BEB2',
@@ -189,7 +189,7 @@ const MyDatesPage = () => {
             fontFamily: 'Inter, var(--font-body)',
             margin: '0 0 28px',
           }}>
-            Quan ly cac keo da dang va ung tuyen cua ban
+            Quản lý các kèo đã đăng và ứng tuyển của bạn
           </p>
 
           {/* Tabs */}
@@ -249,7 +249,7 @@ const MyDatesPage = () => {
                 letterSpacing: '0.05em',
                 marginBottom: '8px',
               }}>
-                Ti Le Match
+                Tỉ Lệ Match
               </div>
               <div style={{
                 fontSize: '2.25rem',
@@ -274,7 +274,7 @@ const MyDatesPage = () => {
                 letterSpacing: '0.05em',
                 marginBottom: '8px',
               }}>
-                Tong So Keo
+                Tổng Số Kèo
               </div>
               <div style={{
                 fontSize: '2.25rem',
@@ -301,9 +301,9 @@ const MyDatesPage = () => {
                 fontWeight: 700,
                 color: '#FDF9F3',
                 margin: '0 0 8px',
-              }}>Chua co keo nao</h3>
+              }}>Chưa có kèo nào</h3>
               <p style={{ color: '#E6BEB2', fontFamily: 'Inter, var(--font-body)' }}>
-                Ban chua dang hoac ung tuyen keo nao trong muc nay
+                Bạn chưa đăng hoặc ứng tuyển kèo nào trong mục này
               </p>
             </div>
           ) : (
@@ -373,7 +373,7 @@ const MyDatesPage = () => {
                         textTransform: 'uppercase',
                         letterSpacing: '0.04em',
                       }}>
-                        Nguoi ung tuyen ({post.applications.length})
+                        Người ứng tuyển ({post.applications.length})
                       </div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                         {post.applications.map(app => (
@@ -422,7 +422,7 @@ const MyDatesPage = () => {
                                 fontFamily: 'Inter, var(--font-body)',
                                 marginBottom: '6px',
                               }}>
-                                Ung tuyen: {post.title}
+                                Ứng tuyển: {post.title}
                               </div>
 
                               {app.message && (
@@ -486,7 +486,7 @@ const MyDatesPage = () => {
                                     }}
                                   >
                                     <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>chat</span>
-                                    Chap Nhan & Chat
+                                    Chấp Nhận & Chat
                                   </button>
                                   <button
                                     onClick={() => navigate(`/app/profile/${app.applicant?.id}`)}
@@ -506,7 +506,7 @@ const MyDatesPage = () => {
                                     }}
                                   >
                                     <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>person</span>
-                                    Xem Trang Ca
+                                    Xem Trang Cá
                                   </button>
                                   <button
                                     onClick={() => handleReject(app.id)}
@@ -526,7 +526,7 @@ const MyDatesPage = () => {
                                     }}
                                   >
                                     <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>close</span>
-                                    Tu Choi
+                                    Từ Chối
                                   </button>
                                 </div>
                               ) : app.status === 'accepted' ? (
@@ -548,7 +548,7 @@ const MyDatesPage = () => {
                                   }}
                                 >
                                   <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>chat</span>
-                                  Mo Chat
+                                  Mở Chat
                                 </button>
                               ) : null}
                             </div>
@@ -563,7 +563,7 @@ const MyDatesPage = () => {
                       margin: 0,
                       fontFamily: 'Inter, var(--font-body)',
                     }}>
-                      Chua co ai ung tuyen
+                      Chưa có ai ứng tuyển
                     </p>
                   )}
                 </div>
@@ -581,7 +581,7 @@ const MyDatesPage = () => {
                 color: '#FDF9F3',
                 margin: '0 0 16px',
               }}>
-                Don Ung Tuyen Cua Toi
+                Đơn Ứng Tuyển Của Tôi
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {myApplications.map(app => (
@@ -608,7 +608,7 @@ const MyDatesPage = () => {
                         color: '#E6BEB2',
                         fontFamily: 'Inter, var(--font-body)',
                       }}>
-                        Nguoi dang: {app.post?.author?.name}
+                        Người đăng: {app.post?.author?.name}
                         {app.post?.time ? ` | ${app.post.time}` : ''}
                         {app.post?.place ? ` | ${app.post.place}` : ''}
                       </div>
@@ -646,7 +646,7 @@ const MyDatesPage = () => {
               marginBottom: '16px',
               opacity: 0.85,
             }}>
-              Buoi Hen Ke Tiep
+              BUỔI HẸN KẾ TIẾP
             </div>
             {nextDate ? (
               <>
@@ -690,8 +690,8 @@ const MyDatesPage = () => {
                 opacity: 0.85,
                 fontFamily: 'Inter, var(--font-body)',
               }}>
-                Chua co buoi hen nao sap toi.
-                <br />Dang keo de bat dau!
+                Chưa có buổi hẹn nào sắp tới.
+                <br />Đăng kèo để bắt đầu!
               </div>
             )}
           </div>
@@ -712,7 +712,7 @@ const MyDatesPage = () => {
                 color: '#E6BEB2',
                 marginBottom: '16px',
               }}>
-                Buoi Hen Da Qua
+                BUỔI HẸN ĐÃ QUA
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {myPosts.filter(p => p.status === 'completed').slice(0, 4).map(post => (
@@ -758,7 +758,7 @@ const MyDatesPage = () => {
                         fontSize: '0.75rem',
                         color: '#E6BEB2',
                       }}>
-                        {post.place || 'Hoan thanh'}
+                        {post.place || 'Hoàn thành'}
                       </div>
                     </div>
                   </div>

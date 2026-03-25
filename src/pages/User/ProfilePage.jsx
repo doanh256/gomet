@@ -622,7 +622,7 @@ const ProfilePage = () => {
             </div>
             <span style={s.tierBadgeAbsolute}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '12px', verticalAlign: 'middle', marginRight: '2px' }}>toll</span>
-              Gold
+              Vàng
             </span>
             <button onClick={() => fileRef.current?.click()} disabled={uploading} style={s.cameraBtn}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>photo_camera</span>
@@ -633,7 +633,7 @@ const ProfilePage = () => {
           <h1 style={s.nameText}>{currentUser?.name}{currentUser?.age ? `, ${currentUser.age}` : ''}</h1>
           <span style={s.goldBadge}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '14px' }}>toll</span>
-            Gold Tier
+            Hạng Vàng
           </span>
           {currentUser?.location && (
             <p style={s.locationText}>
@@ -671,7 +671,7 @@ const ProfilePage = () => {
 
         {/* ===== TASTE RADAR - SVG SPIDER CHART ===== */}
         <div style={s.section}>
-          <h2 style={s.sectionTitle}>Taste Radar</h2>
+          <h2 style={s.sectionTitle}>Radar Khẩu Vị</h2>
           <div style={{ background: '#ffffff', borderRadius: '1.5rem', padding: '20px', boxShadow: '0px 4px 16px rgba(0,0,0,0.06)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             {(() => {
               const size = 280;

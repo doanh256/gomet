@@ -105,8 +105,8 @@ const ChatPage = () => {
   }, []);
 
   // ==================== CONVERSATION LIST PANEL ====================
-  const [activeTab, setActiveTab] = useState('ALL');
-  const chatTabs = ['ALL', 'MATCHES', 'SQUADS'];
+  const [activeTab, setActiveTab] = useState('Tất cả');
+  const chatTabs = ['Tất cả', 'Ghép đôi', 'Nhóm'];
 
   const getTierBadge = (user) => {
     const tier = user?.tier || (user?.name?.length > 5 ? 'Elite' : user?.name?.length > 3 ? 'Pro' : 'Legend');
@@ -137,10 +137,10 @@ const ChatPage = () => {
           textTransform: 'uppercase',
           letterSpacing: '-0.02em',
         }}>
-          Conversations
+          Tin nhắn
         </h2>
 
-        {/* Segmented tabs: ALL / MATCHES / SQUADS */}
+        {/* Segmented tabs: Tất cả / Ghép đôi / Nhóm */}
         <div style={{
           display: 'flex', gap: '4px', padding: '4px',
           backgroundColor: '#2A2A2A', borderRadius: '9999px', marginBottom: '16px',
@@ -296,15 +296,15 @@ const ChatPage = () => {
             <h4 style={{
               fontFamily: 'Plus Jakarta Sans, var(--font-headline)', fontSize: '0.9375rem',
               fontWeight: 700, color: '#FDF9F3', margin: '0 0 4px',
-            }}>Grow your Squad</h4>
+            }}>Mở rộng nhóm của bạn</h4>
             <p style={{ fontSize: '0.75rem', color: '#E6BEB2', margin: '0 0 12px' }}>
-              Invite friends to cook and dine together
+              Mời bạn bè cùng nấu ăn và ăn tối
             </p>
             <button style={{
               padding: '8px 20px', borderRadius: '9999px', border: 'none',
               background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
               color: '#3A0B00', fontSize: '0.8125rem', fontWeight: 700, cursor: 'pointer',
-            }}>Invite Friends</button>
+            }}>Mời bạn bè</button>
           </div>
           </>
         )}
@@ -862,7 +862,7 @@ const ChatPage = () => {
           flexDirection: 'column',
           overflow: 'hidden',
         }}>
-          {/* Header - CONVERSATIONS italic */}
+          {/* Header - TIN NHẮN italic */}
           <div style={{ padding: '24px 20px 16px' }}>
             <h2 style={{
               fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
@@ -874,14 +874,14 @@ const ChatPage = () => {
               margin: '0 0 16px',
               letterSpacing: '-0.02em',
             }}>
-              Conversations
+              Tin nhắn
             </h2>
             {/* Segmented tabs */}
             <div style={{
               display: 'flex', gap: '4px', padding: '4px',
               backgroundColor: '#2A2A2A', borderRadius: '9999px', marginBottom: '12px',
             }}>
-              {['ALL', 'MATCHES', 'SQUADS'].map(tab => (
+              {['Tất cả', 'Ghép đôi', 'Nhóm'].map(tab => (
                 <button key={tab} onClick={() => setActiveTab(tab)} style={{
                   flex: 1, padding: '10px 0', borderRadius: '9999px', border: 'none',
                   background: activeTab === tab ? 'linear-gradient(135deg, #FFB59E, #FF571A)' : 'transparent',

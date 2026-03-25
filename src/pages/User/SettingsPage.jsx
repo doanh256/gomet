@@ -90,7 +90,7 @@ const SettingsPage = () => {
         {/* ── Discovery ── */}
         <div style={sectionHeader}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>explore</span>
-          DISCOVERY
+          KHÁM PHÁ
         </div>
 
         <div style={card}>

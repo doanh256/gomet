@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const categoryData = [
-  { label: 'An uong', icon: 'restaurant', points: 4820, color: '#FF571A' },
-  { label: 'Danh gia', icon: 'rate_review', points: 3200, color: '#FFB59E' },
-  { label: 'Thu thach', icon: 'emoji_events', points: 2680, color: '#FFD54F' },
-  { label: 'Xa hoi', icon: 'groups', points: 1750, color: '#117500' },
+  { label: 'Ăn uống', icon: 'restaurant', points: 4820, color: '#FF571A' },
+  { label: 'Đánh giá', icon: 'rate_review', points: 3200, color: '#FFB59E' },
+  { label: 'Thử thách', icon: 'emoji_events', points: 2680, color: '#FFD54F' },
+  { label: 'Xã hội', icon: 'groups', points: 1750, color: '#117500' },
 ];
 
 const monthlyData = [
@@ -18,29 +18,29 @@ const monthlyData = [
 ];
 
 const regionBadges = [
-  { name: 'Tay Bac', earned: true, color: '#8BC34A' },
-  { name: 'Dong Bac', earned: false, color: '#4CAF50' },
-  { name: 'Song Hong', earned: true, color: '#FF9800' },
-  { name: 'Trung Bo', earned: true, color: '#2196F3' },
+  { name: 'Tây Bắc', earned: true, color: '#8BC34A' },
+  { name: 'Đông Bắc', earned: false, color: '#4CAF50' },
+  { name: 'Sông Hồng', earned: true, color: '#FF9800' },
+  { name: 'Trung Bộ', earned: true, color: '#2196F3' },
   { name: 'Nam Trung', earned: false, color: '#FF5722' },
-  { name: 'Tay Nguyen', earned: false, color: '#795548' },
-  { name: 'Dong Nam Bo', earned: true, color: '#E91E63' },
-  { name: 'Tay Nam Bo', earned: true, color: '#00BCD4' },
+  { name: 'Tây Nguyên', earned: false, color: '#795548' },
+  { name: 'Đông Nam Bộ', earned: true, color: '#E91E63' },
+  { name: 'Tây Nam Bộ', earned: true, color: '#00BCD4' },
 ];
 
 const rewardCards = [
-  { id: 1, icon: 'confirmation_number', title: 'Voucher 100k', cost: 2000, desc: 'Giam gia tai nha hang doi tac' },
-  { id: 2, icon: 'workspace_premium', title: 'Khung VIP 7 ngay', cost: 1500, desc: 'Noi bat ho so cua ban' },
-  { id: 3, icon: 'local_activity', title: 'Ve Secret Table', cost: 5000, desc: 'Tham gia su kien doc quyen' },
+  { id: 1, icon: 'confirmation_number', title: 'Voucher 100k', cost: 2000, desc: 'Giảm giá tại nhà hàng đối tác' },
+  { id: 2, icon: 'workspace_premium', title: 'Khung VIP 7 ngày', cost: 1500, desc: 'Nổi bật hồ sơ của bạn' },
+  { id: 3, icon: 'local_activity', title: 'Vé Secret Table', cost: 5000, desc: 'Tham gia sự kiện độc quyền' },
 ];
 
 const transactions = [
-  { id: 1, icon: 'restaurant', label: 'An tai Pho Thin', points: '+30', date: '24/03', type: 'earn' },
-  { id: 2, icon: 'rate_review', label: 'Danh gia Bun Cha', points: '+15', date: '23/03', type: 'earn' },
-  { id: 3, icon: 'redeem', label: 'Doi Voucher 50k', points: '-1000', date: '22/03', type: 'spend' },
-  { id: 4, icon: 'emoji_events', label: 'Hoan thanh thu thach', points: '+250', date: '21/03', type: 'earn' },
-  { id: 5, icon: 'groups', label: 'Moi ban be', points: '+100', date: '20/03', type: 'earn' },
-  { id: 6, icon: 'restaurant', label: 'An tai Com Tam Ba Ghien', points: '+20', date: '19/03', type: 'earn' },
+  { id: 1, icon: 'restaurant', label: 'Ăn tại Phở Thìn', points: '+30', date: '24/03', type: 'earn' },
+  { id: 2, icon: 'rate_review', label: 'Đánh giá Bún Chả', points: '+15', date: '23/03', type: 'earn' },
+  { id: 3, icon: 'redeem', label: 'Đổi Voucher 50k', points: '-1000', date: '22/03', type: 'spend' },
+  { id: 4, icon: 'emoji_events', label: 'Hoàn thành thử thách', points: '+250', date: '21/03', type: 'earn' },
+  { id: 5, icon: 'groups', label: 'Mời bạn bè', points: '+100', date: '20/03', type: 'earn' },
+  { id: 6, icon: 'restaurant', label: 'Ăn tại Cơm Tấm Bà Ghiền', points: '+20', date: '19/03', type: 'earn' },
 ];
 
 const VangDashboardPage = () => {
@@ -189,7 +189,7 @@ const VangDashboardPage = () => {
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
-        Quay lai
+        Quay lại
       </button>
 
       {/* Tier Badge */}
@@ -197,7 +197,7 @@ const VangDashboardPage = () => {
         <div style={s.tierShine} />
         <span aria-hidden="true" className="material-symbols-outlined" style={s.tierIcon}>diamond</span>
         <div style={s.tierInfo}>
-          <div style={s.tierLabel}>GOLD VANG</div>
+          <div style={s.tierLabel}>VÀNG</div>
           <div style={s.tierPoints}>12,450<span style={s.tierUnit}>VANG</span></div>
         </div>
       </div>
@@ -206,7 +206,7 @@ const VangDashboardPage = () => {
       <div style={s.tabs}>
         {['overview', 'rewards', 'history'].map(tab => (
           <button key={tab} style={s.tab(activeTab === tab)} onClick={() => setActiveTab(tab)}>
-            {tab === 'overview' ? 'Tong quan' : tab === 'rewards' ? 'Doi thuong' : 'Lich su'}
+            {tab === 'overview' ? 'Tổng quan' : tab === 'rewards' ? 'Đổi thưởng' : 'Lịch sử'}
           </button>
         ))}
       </div>
@@ -216,7 +216,7 @@ const VangDashboardPage = () => {
           {/* Culinary Journey */}
           <div style={s.sectionTitle}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>route</span>
-            Hanh trinh am thuc
+            Hành trình ẩm thực
           </div>
           <div style={s.catGrid}>
             {categoryData.map(cat => (
@@ -232,7 +232,7 @@ const VangDashboardPage = () => {
           <div style={s.mapSection}>
             <div style={s.sectionTitle}>
               <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>map</span>
-              Dau chan vung mien
+              Dấu chân vùng miền
             </div>
             <div style={s.badgeGrid}>
               {regionBadges.map(b => (
@@ -250,7 +250,7 @@ const VangDashboardPage = () => {
           <div style={s.chartSection}>
             <div style={s.sectionTitle}>
               <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>trending_up</span>
-              Toc do hang thang
+              Tốc độ hàng tháng
             </div>
             <div style={s.chartBars}>
               {monthlyData.map(d => (
@@ -269,7 +269,7 @@ const VangDashboardPage = () => {
         <div style={s.rewardSection}>
           <div style={s.sectionTitle}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>redeem</span>
-            Doi thuong
+            Đổi thưởng
           </div>
           <div style={s.rewardScroll}>
             {rewardCards.map(r => (
@@ -279,7 +279,7 @@ const VangDashboardPage = () => {
                 <div style={s.rewardDesc}>{r.desc}</div>
                 <button style={s.rewardCost}>
                   <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
-                  {r.cost.toLocaleString()} Vang
+                  {r.cost.toLocaleString()} Vàng
                 </button>
               </div>
             ))}
@@ -291,7 +291,7 @@ const VangDashboardPage = () => {
         <div>
           <div style={s.sectionTitle}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>receipt_long</span>
-            Lich su giao dich
+            Lịch sử giao dịch
           </div>
           <div style={s.txList}>
             {transactions.map(tx => (
