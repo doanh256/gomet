@@ -7,19 +7,19 @@ const LivestreamPage = () => {
   const [reactions, setReactions] = useState({ '❤️': 0, '🔥': 0, '😍': 0, '👏': 0, '🎉': 0 });
   const [showEventInfo, setShowEventInfo] = useState(false);
   const [chatMessages, setChatMessages] = useState([
-    { id: 1, user: 'Minh Anh', avatar: '🧑', msg: 'Wow su kien tuyet voi qua!' },
-    { id: 2, user: 'Hoang Nam', avatar: '👨', msg: 'Ai o Sai Gon khong, gap nhau di' },
-    { id: 3, user: 'Thu Huong', avatar: '👩', msg: 'Nhac hay qua moi nguoi oi ❤️' },
-    { id: 4, user: 'Duc Thinh', avatar: '🧔', msg: 'Lan dau tham gia, vui that' },
-    { id: 5, user: 'Linh Chi', avatar: '👧', msg: 'Co ai muon lam ban khong 😊' },
+    { id: 1, user: 'Minh Anh', avatar: '🧑', msg: 'Wow sự kiện tuyệt vời quá!' },
+    { id: 2, user: 'Hoang Nam', avatar: '👨', msg: 'Ai ở Sài Gòn không, gặp nhau đi' },
+    { id: 3, user: 'Thu Huong', avatar: '👩', msg: 'Nhạc hay quá mọi người ơi ❤️' },
+    { id: 4, user: 'Duc Thinh', avatar: '🧔', msg: 'Lần đầu tham gia, vui thật' },
+    { id: 5, user: 'Linh Chi', avatar: '👧', msg: 'Có ai muốn làm bạn không 😊' },
   ]);
 
   const handleReaction = (emoji) => { setReactions(prev => ({ ...prev, [emoji]: prev[emoji] + 1 })); };
-  const handleSendChat = () => { if (!chatInput.trim()) return; setChatMessages(prev => [...prev, { id: Date.now(), user: 'Ban', avatar: '😎', msg: chatInput }]); setChatInput(''); };
+  const handleSendChat = () => { if (!chatInput.trim()) return; setChatMessages(prev => [...prev, { id: Date.now(), user: 'Bạn', avatar: '😎', msg: chatInput }]); setChatInput(''); };
 
   const relatedEvents = [
-    { id: 1, title: 'Speed Dating Sai Gon', date: '28/03', viewers: 856, icon: 'groups' },
-    { id: 2, title: 'Nhac song & Ket noi', date: '02/04', viewers: 1102, icon: 'music_note' },
+    { id: 1, title: 'Speed Dating Sài Gòn', date: '28/03', viewers: 856, icon: 'groups' },
+    { id: 2, title: 'Nhạc sống & Kết nối', date: '02/04', viewers: 1102, icon: 'music_note' },
   ];
 
   const s = {
@@ -72,15 +72,15 @@ const LivestreamPage = () => {
           <div style={s.videoArea}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.playIcon}>play_circle</span>
             <div style={s.liveBadge}>LIVE</div>
-            <div style={s.viewerCount}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>visibility</span>1,234 dang xem</div>
-            <div style={s.videoOverlay}><div style={s.videoTitle}>GOMET Date Night: Nhac song & Ket noi</div><div style={s.videoSubtitle}>Hosted by GOMET Events • Bat dau 30 phut truoc</div></div>
+            <div style={s.viewerCount}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>visibility</span>1,234 đang xem</div>
+            <div style={s.videoOverlay}><div style={s.videoTitle}>GOMET Date Night: Nhạc sống & Kết nối</div><div style={s.videoSubtitle}>Hosted by GOMET Events • Bắt đầu 30 phút trước</div></div>
           </div>
         </div>
         <div style={s.chatSidebar}>
-          <div style={s.chatHeader}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>chat</span>Chat truc tiep</div>
+          <div style={s.chatHeader}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>chat</span>Chat trực tiếp</div>
           <div style={s.chatMessages}>{chatMessages.map(m => (<div key={m.id} style={s.chatMsg}><div style={s.chatAvatar}>{m.avatar}</div><div><span style={s.chatUser}>{m.user}</span><span>{m.msg}</span></div></div>))}</div>
           <div style={s.chatInputArea}>
-            <input style={s.chatField} placeholder="Nhan tin..." value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSendChat()} />
+            <input style={s.chatField} placeholder="Nhắn tin..." value={chatInput} onChange={e => setChatInput(e.target.value)} onKeyDown={e => e.key === 'Enter' && handleSendChat()} />
             <button style={s.sendBtn} onClick={handleSendChat}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>send</span></button>
           </div>
         </div>
@@ -94,24 +94,24 @@ const LivestreamPage = () => {
       </div>
       <div style={s.section}>
         <div style={s.sectionTitle} onClick={() => setShowEventInfo(!showEventInfo)}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>info</span>Thong tin su kien
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>info</span>Thông tin sự kiện
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, marginLeft: 'auto' }}>{showEventInfo ? 'expand_less' : 'expand_more'}</span>
         </div>
         {showEventInfo && (
           <div style={s.eventInfoCard}>
-            <div style={s.hostRow}><div style={s.hostAvatar}>G</div><div><div style={{ fontWeight: 700, fontSize: 14 }}>GOMET Events</div><div style={{ fontSize: 12, opacity: 0.6 }}>Ban to chuc chinh thuc</div></div></div>
-            <p style={{ fontSize: 13, lineHeight: 1.6, opacity: 0.85, marginBottom: 12 }}>Dem nhac song ket hop giao luu danh cho cac ban doc than tai TP.HCM. Cung tham gia cac hoat dong pha bang, tro choi nhom va tim kiem nua kia cua ban!</p>
+            <div style={s.hostRow}><div style={s.hostAvatar}>G</div><div><div style={{ fontWeight: 700, fontSize: 14 }}>GOMET Events</div><div style={{ fontSize: 12, opacity: 0.6 }}>Ban tổ chức chính thức</div></div></div>
+            <p style={{ fontSize: 13, lineHeight: 1.6, opacity: 0.85, marginBottom: 12 }}>Đêm nhạc sống kết hợp giao lưu dành cho các bạn độc thân tại TP.HCM. Cùng tham gia các hoạt động phá băng, trò chơi nhóm và tìm kiếm nửa kia của bạn!</p>
             <div style={{ fontSize: 13, opacity: 0.7 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>schedule</span>20:00 - 22:30 • Thu 7, 28/03/2026</div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>The Myst Dong Khoi, Quan 1, TP.HCM</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>schedule</span>20:00 - 22:30 • Thứ 7, 28/03/2026</div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>The Myst Dong Khoi, Quận 1, TP.HCM</div>
             </div>
           </div>
         )}
       </div>
       <div style={s.section}>
-        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>event</span>Su kien lien quan</div>
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>event</span>Sự kiện liên quan</div>
         <div style={s.relatedCards}>
-          {relatedEvents.map(ev => (<div key={ev.id} style={s.relatedCard}><div style={s.relatedIcon}><span aria-hidden="true" className="material-symbols-outlined">{ev.icon}</span></div><div><div style={s.relatedTitle}>{ev.title}</div><div style={s.relatedMeta}>{ev.date} • {ev.viewers} nguoi quan tam</div></div></div>))}
+          {relatedEvents.map(ev => (<div key={ev.id} style={s.relatedCard}><div style={s.relatedIcon}><span aria-hidden="true" className="material-symbols-outlined">{ev.icon}</span></div><div><div style={s.relatedTitle}>{ev.title}</div><div style={s.relatedMeta}>{ev.date} • {ev.viewers} người quan tâm</div></div></div>))}
         </div>
       </div>
     </div>

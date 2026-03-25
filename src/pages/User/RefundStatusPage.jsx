@@ -17,15 +17,15 @@ const RefundStatusPage = () => {
   const [expandedFaq, setExpandedFaq] = useState(null);
 
   const steps = [
-    { label: 'Yeu cau da gui', icon: 'check_circle', color: '#117500', status: 'completed', detail: '20/03/2026 - 14:30' },
-    { label: 'Dang xem xet', icon: 'hourglass_top', color: '#FFD54F', status: 'current', detail: '1-3 ngay lam viec' },
-    { label: 'Phe duyet', icon: 'radio_button_unchecked', color: '#E6BEB2', status: 'pending', detail: '' },
-    { label: 'Hoan tien', icon: 'radio_button_unchecked', color: '#E6BEB2', status: 'pending', detail: 'Ve vi GOMET trong 24h' },
+    { label: 'Yêu cầu đã gửi', icon: 'check_circle', color: '#117500', status: 'completed', detail: '20/03/2026 - 14:30' },
+    { label: 'Đang xem xét', icon: 'hourglass_top', color: '#FFD54F', status: 'current', detail: '1-3 ngày làm việc' },
+    { label: 'Phê duyệt', icon: 'radio_button_unchecked', color: '#E6BEB2', status: 'pending', detail: '' },
+    { label: 'Hoàn tiền', icon: 'radio_button_unchecked', color: '#E6BEB2', status: 'pending', detail: 'Về ví GOMET trong 24h' },
   ];
 
   const faqs = [
-    { q: 'Mat bao lau de nhan duoc tien hoan?', a: 'Sau khi yeu cau duoc phe duyet, tien se duoc hoan ve vi GOMET trong vong 24 gio. Neu ban chon hoan ve tai khoan ngan hang, thoi gian co the mat 3-5 ngay lam viec.' },
-    { q: 'Toi co the huy yeu cau hoan tien khong?', a: 'Ban co the huy yeu cau hoan tien khi trang thai con la "Dang xem xet". Sau khi da phe duyet, yeu cau khong the huy.' },
+    { q: 'Mất bao lâu để nhận được tiền hoàn?', a: 'Sau khi yêu cầu được phê duyệt, tiền sẽ được hoàn về ví GOMET trong vòng 24 giờ. Nếu bạn chọn hoàn về tài khoản ngân hàng, thời gian có thể mất 3-5 ngày làm việc.' },
+    { q: 'Tôi có thể hủy yêu cầu hoàn tiền không?', a: 'Bạn có thể hủy yêu cầu hoàn tiền khi trạng thái còn là "Đang xem xét". Sau khi đã phê duyệt, yêu cầu không thể hủy.' },
   ];
 
   const s = {
@@ -75,13 +75,13 @@ const RefundStatusPage = () => {
           <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>account_balance_wallet</span>
-        <h1 style={s.headerTitle}>Trang thai hoan tien</h1>
+        <h1 style={s.headerTitle}>Trạng thái hoàn tiền</h1>
       </div>
 
       <div style={s.refundCard}>
         <div style={s.refundAmount}>150.000 VND</div>
-        <div style={s.refundReason}>Buoi hen bi huy</div>
-        <div style={s.refundDate}>Yeu cau: 20/03/2026</div>
+        <div style={s.refundReason}>Buổi hẹn bị hủy</div>
+        <div style={s.refundDate}>Yêu cầu: 20/03/2026</div>
       </div>
 
       <div style={s.timeline}>
@@ -100,13 +100,13 @@ const RefundStatusPage = () => {
       <div style={s.card}>
         <div style={s.cardTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.cardTitleIcon}>receipt_long</span>
-          Chi tiet giao dich
+          Chi tiết giao dịch
         </div>
         {[
-          { label: 'Ma giao dich', value: 'TXN-20260320-0847' },
-          { label: 'So tien goc', value: '150.000 VND' },
-          { label: 'Hoan tien', value: '150.000 VND' },
-          { label: 'Phuong thuc', value: 'Vi GOMET' },
+          { label: 'Mã giao dịch', value: 'TXN-20260320-0847' },
+          { label: 'Số tiền gốc', value: '150.000 VND' },
+          { label: 'Hoàn tiền', value: '150.000 VND' },
+          { label: 'Phương thức', value: 'Ví GOMET' },
         ].map((item, i, arr) => (
           <div key={i} style={{ ...s.detailRow, ...(i === arr.length - 1 ? s.detailRowLast : {}) }}>
             <span style={s.detailLabel}>{item.label}</span>
@@ -118,16 +118,16 @@ const RefundStatusPage = () => {
       <div style={s.supportCard}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.supportIcon}>support_agent</span>
         <div style={s.supportText}>
-          <div style={s.supportTitle}>Can tro giup?</div>
-          <div style={s.supportSub}>Lien he ho tro 24/7</div>
+          <div style={s.supportTitle}>Cần trợ giúp?</div>
+          <div style={s.supportSub}>Liên hệ hỗ trợ 24/7</div>
         </div>
-        <button style={s.supportBtn} onClick={() => navigate('/help')}>Lien he</button>
+        <button style={s.supportBtn} onClick={() => navigate('/help')}>Liên hệ</button>
       </div>
 
       <div style={s.card}>
         <div style={s.cardTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.cardTitleIcon}>help</span>
-          Cau hoi thuong gap
+          Câu hỏi thường gặp
         </div>
         {faqs.map((faq, i) => (
           <div key={i} style={{ ...s.faqItem, ...(i === faqs.length - 1 ? s.faqItemLast : {}) }}>

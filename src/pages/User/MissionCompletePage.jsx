@@ -53,9 +53,9 @@ const confettiPieces = [
 ];
 
 const dishes = [
-  { name: 'Pho bo tai lan', restaurant: 'Pho Thin' },
-  { name: 'Pho bo nam gau', restaurant: 'Pho Gia Truyen' },
-  { name: 'Pho bo dac biet', restaurant: 'Pho 10 Ly Quoc Su' },
+  { name: 'Phở bò tái lăn', restaurant: 'Phở Thìn' },
+  { name: 'Phở bò nạm gầu', restaurant: 'Phở Gia Truyền' },
+  { name: 'Phở bò đặc biệt', restaurant: 'Phở 10 Lý Quốc Sư' },
 ];
 
 const MissionCompletePage = () => {
@@ -177,8 +177,8 @@ const MissionCompletePage = () => {
       <div style={s.content}>
         {/* Vang Amount */}
         <div style={s.vangHero}>
-          <div style={s.vangAmount}>+250 VANG</div>
-          <div style={s.vangLabel}>THUONG NHIEM VU</div>
+          <div style={s.vangAmount}>+250 VÀNG</div>
+          <div style={s.vangLabel}>THƯỞNG NHIỆM VỤ</div>
         </div>
 
         {/* Badge */}
@@ -187,14 +187,14 @@ const MissionCompletePage = () => {
             <span aria-hidden="true" className="material-symbols-outlined" style={s.badgeIconEl}>workspace_premium</span>
           </div>
           <div style={s.badgeName}>Mekong Master</div>
-          <div style={s.badgeDesc}>Ban da nhan duoc huy hieu moi!</div>
+          <div style={s.badgeDesc}>Bạn đã nhận được huy hiệu mới!</div>
         </div>
 
         {/* Summary */}
         <div style={s.summaryCard}>
           <div style={s.summaryTitle}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.summaryIcon}>checklist</span>
-            The Pho Trinity - 3/3 hoan thanh
+            The Pho Trinity - 3/3 hoàn thành
           </div>
           {dishes.map((d, i) => (
             <div key={i} style={s.dishItem}>
@@ -211,11 +211,11 @@ const MissionCompletePage = () => {
         <div style={s.statsRow}>
           <div style={s.statCard}>
             <div style={s.statValue}>12</div>
-            <div style={s.statLabel}>Nhiem vu hoan thanh</div>
+            <div style={s.statLabel}>Nhiệm vụ hoàn thành</div>
           </div>
           <div style={s.statCard}>
             <div style={s.statValue}>Top 5%</div>
-            <div style={s.statLabel}>Xep hang</div>
+            <div style={s.statLabel}>Xếp hạng</div>
           </div>
         </div>
 
@@ -223,11 +223,11 @@ const MissionCompletePage = () => {
         <div style={s.btnRow}>
           <button style={s.shareCta}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>share</span>
-            Chia se
+            Chia sẻ
           </button>
           <button style={s.nextCta} onClick={() => navigate('/app/quests')}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_forward</span>
-            Nhiem vu tiep
+            Nhiệm vụ tiếp
           </button>
         </div>
       </div>

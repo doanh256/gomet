@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const stories = [
-  { id: 1, category: 'Tinh yeu', title: 'Khi trai tim len tieng', excerpt: 'Mot cau chuyen tinh bat ngo tu ung dung hen ho, khi hai tam hon dong dieu gap nhau...', author: 'Mai Anh', date: '15/03/2026', hearts: 234 },
-  { id: 2, category: 'Phieu luu', title: 'Chuyen di Da Lat cua doi', excerpt: 'Chung toi gap nhau tren GOMET va quyet dinh cung kham pha thanh pho suong mu...', author: 'Quang Huy', date: '12/03/2026', hearts: 189 },
-  { id: 3, category: 'Am thuc', title: 'Bun bo va tinh yeu', excerpt: 'Buoi hen dau tien tai quan bun bo goc pho nho, noi bat dau cua mot chuyen tinh dep...', author: 'Thuy Linh', date: '10/03/2026', hearts: 156 },
-  { id: 4, category: 'Ky niem', title: 'Mot nam ben nhau', excerpt: 'Nhin lai hanh trinh mot nam tu lan match dau tien den nhung ky niem khong quen...', author: 'Duc Minh', date: '08/03/2026', hearts: 312 },
+  { id: 1, category: 'Tình yêu', title: 'Khi trái tim lên tiếng', excerpt: 'Một câu chuyện tình bất ngờ từ ứng dụng hẹn hò, khi hai tâm hồn đồng điệu gặp nhau...', author: 'Mai Anh', date: '15/03/2026', hearts: 234 },
+  { id: 2, category: 'Phiêu lưu', title: 'Chuyến đi Đà Lạt của đôi', excerpt: 'Chúng tôi gặp nhau trên GOMET và quyết định cùng khám phá thành phố sương mù...', author: 'Quang Huy', date: '12/03/2026', hearts: 189 },
+  { id: 3, category: 'Ẩm thực', title: 'Bún bò và tình yêu', excerpt: 'Buổi hẹn đầu tiên tại quán bún bò góc phố nhỏ, nơi bắt đầu của một chuyện tình đẹp...', author: 'Thủy Linh', date: '10/03/2026', hearts: 156 },
+  { id: 4, category: 'Kỷ niệm', title: 'Một năm bên nhau', excerpt: 'Nhìn lại hành trình một năm từ lần match đầu tiên đến những kỷ niệm không quên...', author: 'Đức Minh', date: '08/03/2026', hearts: 312 },
 ];
 
 const trendingTags = ['#CaPheHenHo', '#LanDauGap', '#AmThucTinhYeu', '#PhieuLuuCungBan', '#GOMETLove', '#HenHoSaigon'];
 
 const categoryColors = {
-  'Tinh yeu': { bg: 'rgba(255, 87, 26, 0.15)', color: '#FFB59E' },
-  'Phieu luu': { bg: 'rgba(255, 213, 79, 0.15)', color: '#FFD54F' },
-  'Am thuc': { bg: 'rgba(17, 117, 0, 0.15)', color: '#117500' },
-  'Ky niem': { bg: '#353535', color: '#FDF9F3' },
+  'Tình yêu': { bg: 'rgba(255, 87, 26, 0.15)', color: '#FFB59E' },
+  'Phiêu lưu': { bg: 'rgba(255, 213, 79, 0.15)', color: '#FFD54F' },
+  'Ẩm thực': { bg: 'rgba(17, 117, 0, 0.15)', color: '#117500' },
+  'Kỷ niệm': { bg: '#353535', color: '#FDF9F3' },
 };
 
 const StorytellingPage = () => {
@@ -159,8 +159,8 @@ const StorytellingPage = () => {
       fontWeight: 600,
       padding: '3px 8px',
       borderRadius: 9999,
-      backgroundColor: (categoryColors[cat] || categoryColors['Ky niem']).bg,
-      color: (categoryColors[cat] || categoryColors['Ky niem']).color,
+      backgroundColor: (categoryColors[cat] || categoryColors['Kỷ niệm']).bg,
+      color: (categoryColors[cat] || categoryColors['Kỷ niệm']).color,
       marginBottom: 6,
     }),
     storyTitle: {
@@ -264,16 +264,16 @@ const StorytellingPage = () => {
     <div style={s.page}>
       <div style={s.header}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>auto_stories</span>
-        <h1 style={s.heading}>Tap chi cam hung</h1>
-        <p style={s.subtitle}>Nhung cau chuyen tinh yeu tu cong dong GOMET</p>
+        <h1 style={s.heading}>Tạp chí cảm hứng</h1>
+        <p style={s.subtitle}>Những câu chuyện tình yêu từ cộng đồng GOMET</p>
       </div>
 
       {/* Featured story */}
       <div style={s.featuredCard}>
         <div style={s.featuredImage}>
-          <div style={s.featuredBadge}>CAU CHUYEN NOI BAT</div>
+          <div style={s.featuredBadge}>CÂU CHUYỆN NỔI BẬT</div>
           <div style={s.featuredOverlay}>
-            <div style={s.featuredTitle}>Tu mot buoi ca phe den hanh phuc</div>
+            <div style={s.featuredTitle}>Từ một buổi cà phê đến hạnh phúc</div>
             <div style={s.featuredMeta}>
               <div style={s.avatar}>
                 <span aria-hidden="true" className="material-symbols-outlined" style={s.avatarIcon}>person</span>
@@ -281,7 +281,7 @@ const StorytellingPage = () => {
               <span>Hoang Yen</span>
               <div style={s.readTime}>
                 <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>schedule</span>
-                5 phut doc
+                5 phút đọc
               </div>
             </div>
           </div>
@@ -289,7 +289,7 @@ const StorytellingPage = () => {
       </div>
 
       {/* Story grid */}
-      <h2 style={s.sectionTitle}>Cau chuyen moi nhat</h2>
+      <h2 style={s.sectionTitle}>Câu chuyện mới nhất</h2>
       <div style={s.storyGrid}>
         {stories.map(st => (
           <div key={st.id} style={s.storyCard}>
@@ -317,16 +317,16 @@ const StorytellingPage = () => {
       {/* CTA */}
       <div style={s.ctaSection}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.ctaIcon}>edit_note</span>
-        <div style={s.ctaTitle}>Viet cau chuyen cua ban</div>
-        <p style={s.ctaDesc}>Chia se trai nghiem hen ho cua ban voi cong dong</p>
+        <div style={s.ctaTitle}>Viết câu chuyện của bạn</div>
+        <p style={s.ctaDesc}>Chia sẻ trải nghiệm hẹn hò của bạn với cộng đồng</p>
         <button style={s.ctaBtn}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>draw</span>
-          Bat dau viet
+          Bắt đầu viết
         </button>
       </div>
 
       {/* Trending tags */}
-      <h2 style={s.sectionTitle}>Chu de thinh hanh</h2>
+      <h2 style={s.sectionTitle}>Chủ đề thịnh hành</h2>
       <div style={s.tagsSection}>
         <div style={s.tagsScroll}>
           {trendingTags.map((tag, i) => (

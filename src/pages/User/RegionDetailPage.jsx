@@ -2,26 +2,26 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const signatureDishes = [
-  { id: 1, name: 'Thit trau gac bep', tried: true, vang: 30, color: '#FF571A' },
-  { id: 2, name: 'Xoi ngu sac', tried: true, vang: 25, color: '#FFD54F' },
-  { id: 3, name: 'Rau cai meo xao', tried: true, vang: 20, color: '#117500' },
-  { id: 4, name: 'Cha com', tried: false, vang: 25, color: '#FFB59E' },
-  { id: 5, name: 'Pa pinh top', tried: false, vang: 35, color: '#E91E63' },
-  { id: 6, name: 'Nau nhoi com', tried: false, vang: 30, color: '#2196F3' },
-  { id: 7, name: 'Canh bon', tried: false, vang: 20, color: '#795548' },
-  { id: 8, name: 'Thang co', tried: false, vang: 40, color: '#FF5722' },
+  { id: 1, name: 'Thịt trâu gác bếp', tried: true, vang: 30, color: '#FF571A' },
+  { id: 2, name: 'Xôi ngũ sắc', tried: true, vang: 25, color: '#FFD54F' },
+  { id: 3, name: 'Rau cải mèo xào', tried: true, vang: 20, color: '#117500' },
+  { id: 4, name: 'Chả cốm', tried: false, vang: 25, color: '#FFB59E' },
+  { id: 5, name: 'Pa pỉnh tộp', tried: false, vang: 35, color: '#E91E63' },
+  { id: 6, name: 'Nậu nhồi cơm', tried: false, vang: 30, color: '#2196F3' },
+  { id: 7, name: 'Canh bón', tried: false, vang: 20, color: '#795548' },
+  { id: 8, name: 'Thắng cố', tried: false, vang: 40, color: '#FF5722' },
 ];
 
 const localStories = [
-  { id: 1, name: 'Lan Anh', text: 'Tay Bac la vung dat cua nhung mon an moc mac nhung day dam da. Thit trau gac bep an voi xoi ngu sac la su ket hop tuyet voi!', date: '22/03' },
-  { id: 2, name: 'Van Hieu', text: 'Toi da den Sa Pa va thu mon pa pinh top. Huong vi ca nuong trong la chuoi that dac biet, khong noi nao co duoc.', date: '19/03' },
-  { id: 3, name: 'Thu Trang', text: 'Moi lan len Tay Bac toi deu phai an thang co. Mon nay can phai thu it nhat mot lan trong doi!', date: '15/03' },
+  { id: 1, name: 'Lan Anh', text: 'Tây Bắc là vùng đất của những món ăn mộc mạc nhưng đậm đà. Thịt trâu gác bếp ăn với xôi ngũ sắc là sự kết hợp tuyệt vời!', date: '22/03' },
+  { id: 2, name: 'Văn Hiếu', text: 'Tôi đã đến Sa Pa và thử món pa pỉnh tộp. Hương vị cá nướng trong lá chuối thật đặc biệt, không nơi nào có được.', date: '19/03' },
+  { id: 3, name: 'Thu Trang', text: 'Mỗi lần lên Tây Bắc tôi đều phải ăn thắng cố. Món này cần phải thử ít nhất một lần trong đời!', date: '15/03' },
 ];
 
 const localRestaurants = [
-  { id: 1, name: 'Nha hang Fansipan', addr: 'Sa Pa, Lao Cai', rating: 4.7 },
-  { id: 2, name: 'Quan Tay Bac', addr: 'Mu Cang Chai', rating: 4.5 },
-  { id: 3, name: 'Lang Nuong Da', addr: 'Mai Chau, Hoa Binh', rating: 4.6 },
+  { id: 1, name: 'Nhà hàng Fansipan', addr: 'Sa Pa, Lào Cai', rating: 4.7 },
+  { id: 2, name: 'Quán Tây Bắc', addr: 'Mù Cang Chải', rating: 4.5 },
+  { id: 3, name: 'Làng Nướng Đá', addr: 'Mai Châu, Hòa Bình', rating: 4.6 },
 ];
 
 const RegionDetailPage = () => {
@@ -155,18 +155,18 @@ const RegionDetailPage = () => {
         </button>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>landscape</span>
         <div style={s.heroTitle}>Tay Bac</div>
-        <div style={s.heroSub}>Vung dat am thuc nguyen so</div>
+        <div style={s.heroSub}>Vùng đất ẩm thực nguyên sơ</div>
         <div style={s.heroOverlay} />
       </div>
 
       <div style={s.body}>
         {/* Badge Progress */}
         <div style={s.progressCard}>
-          <div style={s.progressLabel}>Tien trinh huy hieu vung mien</div>
+          <div style={s.progressLabel}>Tiến trình huy hiệu vùng miền</div>
           <div style={s.progressBarBg}>
             <div style={{ ...s.progressBarFill, width: `${progress}%` }} />
           </div>
-          <div style={s.progressText}>{triedCount}/{total} mon da thu - {progress}%</div>
+          <div style={s.progressText}>{triedCount}/{total} món đã thử - {progress}%</div>
         </div>
 
         {/* Tribal Hearts - Signature Dishes */}
@@ -219,7 +219,7 @@ const RegionDetailPage = () => {
         {/* Local Stories */}
         <div style={s.sectionTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>auto_stories</span>
-          Cau chuyen dia phuong
+          Câu chuyện địa phương
         </div>
         {localStories.map(story => (
           <div key={story.id} style={s.storyCard}>
@@ -234,7 +234,7 @@ const RegionDetailPage = () => {
         {/* Map Section */}
         <div style={{ ...s.sectionTitle, marginTop: 28 }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>map</span>
-          Nha hang trong vung
+          Nhà hàng trong vùng
         </div>
         <div style={s.mapSection}>
           <div style={s.mapPlaceholder}>

@@ -8,14 +8,14 @@ const members = [
 ];
 
 const messages = [
-  { id: 1, senderId: 1, text: 'Chao moi nguoi! Toi ngay gap mat nhe 🍜', time: '10:30' },
-  { id: 2, senderId: 2, text: 'Ok, minh den som! Quan nao nhi?', time: '10:32' },
-  { id: 3, senderId: 0, type: 'venue', venueName: 'Nha hang Pho Thin', venueAddr: '13 Lo Duc, Ha Noi', venueRating: 4.8, venueMatch: '94% hoa hop', time: '10:33' },
-  { id: 4, senderId: 3, text: 'O tuyet voi! Minh thich Pho Thin lam', time: '10:35' },
-  { id: 5, senderId: 1, text: 'Minh cung vay! Nuoc dung o day rat ngon', time: '10:36' },
+  { id: 1, senderId: 1, text: 'Chào mọi người! Tối nay gặp mặt nhé 🍜', time: '10:30' },
+  { id: 2, senderId: 2, text: 'Ok, mình đến sớm! Quán nào nhỉ?', time: '10:32' },
+  { id: 3, senderId: 0, type: 'venue', venueName: 'Nhà hàng Phở Thìn', venueAddr: '13 Lò Đúc, Hà Nội', venueRating: 4.8, venueMatch: '94% hòa hợp', time: '10:33' },
+  { id: 4, senderId: 3, text: 'Ồ tuyệt vời! Mình thích Phở Thìn lắm', time: '10:35' },
+  { id: 5, senderId: 1, text: 'Mình cũng vậy! Nước dùng ở đây rất ngon', time: '10:36' },
   { id: 6, senderId: 2, type: 'photo', time: '10:38' },
-  { id: 7, senderId: 2, text: 'Day la lan truoc minh an o day, ngon phai biet!', time: '10:38' },
-  { id: 8, senderId: 3, text: 'Hen 7h toi nhe moi nguoi!', time: '10:40' },
+  { id: 7, senderId: 2, text: 'Đây là lần trước mình ăn ở đây, ngon phải biết!', time: '10:38' },
+  { id: 8, senderId: 3, text: 'Hẹn 7h tối nhé mọi người!', time: '10:40' },
 ];
 
 const GroupChatPage = () => {
@@ -176,7 +176,7 @@ const GroupChatPage = () => {
           <div style={s.groupName}>The Pho Trinity</div>
           <div style={s.groupMeta}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>group</span>
-            {members.length} thanh vien
+            {members.length} thành viên
           </div>
         </div>
         <div style={s.avatarStack}>
@@ -207,7 +207,7 @@ const GroupChatPage = () => {
                 <div style={s.venueCard}>
                   <div style={s.venueLabel}>
                     <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 12, verticalAlign: 'middle', marginRight: 4 }}>smart_toy</span>
-                    Goi y tu AI
+                    Gợi ý từ AI
                   </div>
                   <div style={s.venueName}>{msg.venueName}</div>
                   <div style={s.venueAddr}>{msg.venueAddr}</div>
@@ -251,14 +251,14 @@ const GroupChatPage = () => {
       {/* Plan Group Date CTA */}
       <button style={s.planCta}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>calendar_month</span>
-        Len ke hoach nhom
+        Lên kế hoạch nhóm
       </button>
 
       {/* Input Bar */}
       <div style={s.inputBar}>
         <input
           style={s.input}
-          placeholder="Nhan tin..."
+          placeholder="Nhắn tin..."
           value={inputText}
           onChange={e => setInputText(e.target.value)}
         />
@@ -270,7 +270,7 @@ const GroupChatPage = () => {
       {/* Info Sidebar */}
       {showInfo && (
         <div style={s.infoPanel}>
-          <div style={s.infoPanelTitle}>Thong tin nhom</div>
+          <div style={s.infoPanelTitle}>Thông tin nhóm</div>
           {members.map(m => (
             <div key={m.id} style={s.memberItem}>
               <div style={s.memberAvatar(m.color)}>

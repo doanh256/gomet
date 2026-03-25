@@ -4,23 +4,23 @@ import { useNavigate } from 'react-router-dom';
 const bookingData = {
   venue: 'The Loft Saigon',
   address: '26 Ly Tu Trong, Q.1, TP.HCM',
-  date: 'Thu 7, 28/03/2026',
+  date: 'Thứ 7, 28/03/2026',
   time: '19:00',
   partySize: 2,
   bookingId: '#GOM-2024-0842',
 };
 
 const notices = [
-  { icon: 'schedule', text: 'Den truoc 15 phut de dam bao cho ngoi' },
-  { icon: 'cancel', text: 'Huy mien phi truoc 2 gio so voi gio dat' },
+  { icon: 'schedule', text: 'Đến trước 15 phút để đảm bảo chỗ ngồi' },
+  { icon: 'cancel', text: 'Huỷ miễn phí trước 2 giờ so với giờ đặt' },
   { icon: 'checkroom', text: 'Dress code: Smart casual' },
 ];
 
 const cancelPolicies = [
-  'Huy truoc 2 gio: Mien phi hoan toan',
-  'Huy truoc 1 gio: Phi 50% gia tri dat cho',
-  'Huy duoi 1 gio hoac khong den: Mat toan bo tien coc',
-  'Thay doi thoi gian: Mien phi 1 lan, lien he truoc 3 gio',
+  'Huỷ trước 2 giờ: Miễn phí hoàn toàn',
+  'Huỷ trước 1 giờ: Phí 50% giá trị đặt chỗ',
+  'Huỷ dưới 1 giờ hoặc không đến: Mất toàn bộ tiền cọc',
+  'Thay đổi thời gian: Miễn phí 1 lần, liên hệ trước 3 giờ',
 ];
 
 const BookingConfirmPage = () => {
@@ -288,22 +288,22 @@ const BookingConfirmPage = () => {
           <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>check_circle</span>
-        <h1 style={s.headerTitle}>Xac nhan dat cho</h1>
+        <h1 style={s.headerTitle}>Xác nhận đặt chỗ</h1>
       </div>
 
       <div style={s.successSection}>
         <div style={s.checkCircle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.checkIcon}>check_circle</span>
         </div>
-        <div style={s.successText}>Da xac nhan!</div>
-        <div style={s.successSub}>Dat cho cua ban da duoc xac nhan thanh cong</div>
+        <div style={s.successText}>Đã xác nhận!</div>
+        <div style={s.successSub}>Đặt chỗ của bạn đã được xác nhận thành công</div>
       </div>
 
       <div style={s.card}>
         <div style={s.detailRow}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>location_on</span>
           <div>
-            <div style={s.detailLabel}>Dia diem</div>
+            <div style={s.detailLabel}>Địa điểm</div>
             <div style={s.detailValue}>{bookingData.venue}</div>
             <div style={{ ...s.detailLabel, marginTop: 2 }}>{bookingData.address}</div>
           </div>
@@ -311,28 +311,28 @@ const BookingConfirmPage = () => {
         <div style={s.detailRow}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>calendar_today</span>
           <div>
-            <div style={s.detailLabel}>Ngay</div>
+            <div style={s.detailLabel}>Ngày</div>
             <div style={s.detailValue}>{bookingData.date}</div>
           </div>
         </div>
         <div style={s.detailRow}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>schedule</span>
           <div>
-            <div style={s.detailLabel}>Gio</div>
+            <div style={s.detailLabel}>Giờ</div>
             <div style={s.detailValue}>{bookingData.time}</div>
           </div>
         </div>
         <div style={s.detailRow}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>group</span>
           <div>
-            <div style={s.detailLabel}>So nguoi</div>
-            <div style={s.detailValue}>{bookingData.partySize} nguoi</div>
+            <div style={s.detailLabel}>Số người</div>
+            <div style={s.detailValue}>{bookingData.partySize} người</div>
           </div>
         </div>
         <div style={s.detailRowLast}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>confirmation_number</span>
           <div>
-            <div style={s.detailLabel}>Ma dat cho</div>
+            <div style={s.detailLabel}>Mã đặt chỗ</div>
             <div style={s.detailValue}>{bookingData.bookingId}</div>
           </div>
         </div>
@@ -340,14 +340,14 @@ const BookingConfirmPage = () => {
           <div style={s.qrBox}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.qrIcon}>qr_code_2</span>
           </div>
-          <div style={s.qrLabel}>Xuat trinh ma QR khi den nha hang</div>
+          <div style={s.qrLabel}>Xuất trình mã QR khi đến nhà hàng</div>
         </div>
       </div>
 
       <div style={s.card}>
         <div style={s.noticeTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.noticeTitleIcon}>info</span>
-          Luu y quan trong
+          Lưu ý quan trọng
         </div>
         {notices.map((n, i) => (
           <div style={s.noticeItem} key={i}>
@@ -360,18 +360,18 @@ const BookingConfirmPage = () => {
       <div style={s.actions}>
         <button style={s.primaryBtn}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>calendar_add_on</span>
-          Them vao lich
+          Thêm vào lịch
         </button>
         <button style={s.outlineBtn}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
-          Chia se
+          Chia sẻ
         </button>
-        <button style={s.textLink}>Chinh sua dat cho</button>
+        <button style={s.textLink}>Chỉnh sửa đặt chỗ</button>
       </div>
 
       <div style={s.collapsible}>
         <button style={s.collapsibleHeader} onClick={() => setShowCancel(!showCancel)}>
-          <span>Chinh sach huy</span>
+          <span>Chính sách huỷ</span>
           <span
             aria-hidden="true" className="material-symbols-outlined"
             style={{ ...s.chevron, transform: showCancel ? 'rotate(180deg)' : 'rotate(0deg)' }}

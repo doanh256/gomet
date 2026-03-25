@@ -2,25 +2,25 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const regions = [
-  { id: 'tayBac', name: 'Tay Bac', icon: 'landscape', emoji: '\uD83C\uDFD4\uFE0F', dishes: ['Thit trau gac bep', 'Xoi ngu sac', 'Rau cai meo'], tried: 2, total: 15, color: '#8BC34A', top: '18%', left: '15%' },
-  { id: 'dongBac', name: 'Dong Bac', icon: 'forest', emoji: '\uD83C\uDF3F', dishes: ['Pho chua', 'Banh cuon', 'Vit quay'], tried: 1, total: 12, color: '#4CAF50', top: '15%', left: '40%' },
-  { id: 'dbSongHong', name: 'Dong bang song Hong', icon: 'rice_bowl', emoji: '\uD83C\uDF5C', dishes: ['Bun cha', 'Pho Ha Noi', 'Cha ca'], tried: 5, total: 20, color: '#FF9800', top: '28%', left: '38%' },
-  { id: 'bacTrungBo', name: 'Bac Trung Bo', icon: 'phishing', emoji: '\uD83C\uDF36\uFE0F', dishes: ['Bun bo Hue', 'Banh bot loc', 'Com hen'], tried: 3, total: 18, color: '#2196F3', top: '42%', left: '42%' },
-  { id: 'namTrungBo', name: 'Nam Trung Bo', icon: 'wb_sunny', emoji: '\uD83E\uDD5F', dishes: ['Mi Quang', 'Cao lau', 'Banh trang cuon'], tried: 2, total: 14, color: '#FF5722', top: '55%', left: '50%' },
-  { id: 'tayNguyen', name: 'Tay Nguyen', icon: 'coffee', emoji: '\u2615', dishes: ['Ca phe', 'Com lam', 'Ga nuong'], tried: 1, total: 10, color: '#795548', top: '58%', left: '38%' },
-  { id: 'dongNamBo', name: 'Dong Nam Bo', icon: 'location_city', emoji: '\uD83C\uDF5E', dishes: ['Banh mi', 'Com tam', 'Hu tieu'], tried: 7, total: 22, color: '#E91E63', top: '72%', left: '42%' },
-  { id: 'tayNamBo', name: 'Tay Nam Bo', icon: 'water', emoji: '\uD83C\uDF72', dishes: ['Lau mam', 'Banh xeo', 'Ca kho to'], tried: 4, total: 16, color: '#00BCD4', top: '80%', left: '30%' },
+  { id: 'tayBac', name: 'Tây Bắc', icon: 'landscape', emoji: '\uD83C\uDFD4\uFE0F', dishes: ['Thịt trâu gác bếp', 'Xôi ngũ sắc', 'Rau cải mèo'], tried: 2, total: 15, color: '#8BC34A', top: '18%', left: '15%' },
+  { id: 'dongBac', name: 'Đông Bắc', icon: 'forest', emoji: '\uD83C\uDF3F', dishes: ['Phở chua', 'Bánh cuốn', 'Vịt quay'], tried: 1, total: 12, color: '#4CAF50', top: '15%', left: '40%' },
+  { id: 'dbSongHong', name: 'Đồng bằng sông Hồng', icon: 'rice_bowl', emoji: '\uD83C\uDF5C', dishes: ['Bún chả', 'Phở Hà Nội', 'Chả cá'], tried: 5, total: 20, color: '#FF9800', top: '28%', left: '38%' },
+  { id: 'bacTrungBo', name: 'Bắc Trung Bộ', icon: 'phishing', emoji: '\uD83C\uDF36\uFE0F', dishes: ['Bún bò Huế', 'Bánh bột lọc', 'Cơm hến'], tried: 3, total: 18, color: '#2196F3', top: '42%', left: '42%' },
+  { id: 'namTrungBo', name: 'Nam Trung Bộ', icon: 'wb_sunny', emoji: '\uD83E\uDD5F', dishes: ['Mì Quảng', 'Cao lầu', 'Bánh tráng cuốn'], tried: 2, total: 14, color: '#FF5722', top: '55%', left: '50%' },
+  { id: 'tayNguyen', name: 'Tây Nguyên', icon: 'coffee', emoji: '\u2615', dishes: ['Cà phê', 'Cơm lam', 'Gà nướng'], tried: 1, total: 10, color: '#795548', top: '58%', left: '38%' },
+  { id: 'dongNamBo', name: 'Đông Nam Bộ', icon: 'location_city', emoji: '\uD83C\uDF5E', dishes: ['Bánh mì', 'Cơm tấm', 'Hủ tiếu'], tried: 7, total: 22, color: '#E91E63', top: '72%', left: '42%' },
+  { id: 'tayNamBo', name: 'Tây Nam Bộ', icon: 'water', emoji: '\uD83C\uDF72', dishes: ['Lẩu mắm', 'Bánh xèo', 'Cá kho tộ'], tried: 4, total: 16, color: '#00BCD4', top: '80%', left: '30%' },
 ];
 
 const badges = [
-  { id: 'tayBac', name: 'Tay Bac', unlocked: false, color: '#8BC34A' },
-  { id: 'dongBac', name: 'Dong Bac', unlocked: false, color: '#4CAF50' },
-  { id: 'dbSongHong', name: 'Song Hong', unlocked: true, color: '#FF9800' },
-  { id: 'bacTrungBo', name: 'Trung Bo', unlocked: true, color: '#2196F3' },
+  { id: 'tayBac', name: 'Tây Bắc', unlocked: false, color: '#8BC34A' },
+  { id: 'dongBac', name: 'Đông Bắc', unlocked: false, color: '#4CAF50' },
+  { id: 'dbSongHong', name: 'Sông Hồng', unlocked: true, color: '#FF9800' },
+  { id: 'bacTrungBo', name: 'Trung Bộ', unlocked: true, color: '#2196F3' },
   { id: 'namTrungBo', name: 'Nam Trung', unlocked: false, color: '#FF5722' },
-  { id: 'tayNguyen', name: 'Tay Nguyen', unlocked: false, color: '#795548' },
-  { id: 'dongNamBo', name: 'Dong Nam Bo', unlocked: true, color: '#E91E63' },
-  { id: 'tayNamBo', name: 'Tay Nam Bo', unlocked: false, color: '#00BCD4' },
+  { id: 'tayNguyen', name: 'Tây Nguyên', unlocked: false, color: '#795548' },
+  { id: 'dongNamBo', name: 'Đông Nam Bộ', unlocked: true, color: '#E91E63' },
+  { id: 'tayNamBo', name: 'Tây Nam Bộ', unlocked: false, color: '#00BCD4' },
 ];
 
 const RegionalExplorePage = () => {
@@ -279,13 +279,13 @@ const RegionalExplorePage = () => {
 
       <div style={s.headerPill}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>explore</span>
-        KHAM PHA
+        KHÁM PHÁ
       </div>
 
       <h1 style={s.heading}>
-        Kham pha <span style={s.highlight}>8 vung</span><br />am thuc Viet Nam
+        Khám phá <span style={s.highlight}>8 vùng</span><br />ẩm thực Việt Nam
       </h1>
-      <p style={s.sub}>Hanh trinh am thuc qua tung vung mien dat nuoc.</p>
+      <p style={s.sub}>Hành trình ẩm thực qua từng vùng miền đất nước.</p>
 
       {/* Mastered Progress */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '20px 24px', borderRadius: '1.5rem', backgroundColor: '#ffffff', boxShadow: '0 2px 12px rgba(0,0,0,0.06)', marginBottom: 28 }}>
@@ -301,7 +301,7 @@ const RegionalExplorePage = () => {
 
       {/* Map area */}
       <div style={s.mapWrap}>
-        <span style={s.mapLabel}>Ban do am thuc Viet Nam</span>
+        <span style={s.mapLabel}>Bản đồ ẩm thực Việt Nam</span>
         {regions.map(r => (
           <div
             key={r.id}
@@ -318,7 +318,7 @@ const RegionalExplorePage = () => {
       {/* Region cards */}
       <div style={s.sectionTitle}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--primary)' }}>pin_drop</span>
-        Cac vung am thuc
+        Các vùng ẩm thực
       </div>
       <div style={s.grid}>
         {regions.map(r => {
@@ -339,7 +339,7 @@ const RegionalExplorePage = () => {
                   <span style={s.progressLabel}>{r.tried}/{r.total} mon</span>
                 </div>
                 <button style={s.exploreBtn} onClick={() => navigate(`/app/regional/${r.id}`)}>
-                  Kham pha
+                  Khám phá
                   <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>arrow_forward</span>
                 </button>
               </div>
@@ -352,7 +352,7 @@ const RegionalExplorePage = () => {
       <div style={s.badgeSection}>
         <div style={s.sectionTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--tertiary-container)' }}>military_tech</span>
-          Huy hieu da mo
+          Huy hiệu đã mở
         </div>
         <div className="badge-scroll" style={s.badgeScroll}>
           {badges.map(b => (

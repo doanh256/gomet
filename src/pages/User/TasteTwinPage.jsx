@@ -46,7 +46,7 @@ const TasteTwinPage = () => {
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#1A1A2E' }}>arrow_back</span>
         </button>
         <div style={{ flex: 1 }}>
-          <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>Ket Noi Toan Cau</h1>
+          <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>Kết Nối Toàn Cầu</h1>
         </div>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#6C63FF' }}>public</span>
       </div>
@@ -71,7 +71,7 @@ const TasteTwinPage = () => {
             </div>
           ))}
           <div style={{ position: 'absolute', bottom: 12, left: 16, fontSize: 12, color: '#5C6BC0', fontWeight: 600 }}>
-            8 ket noi vi giac tren the gioi
+            8 kết nối vị giác trên thế giới
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@ const TasteTwinPage = () => {
       <div style={{ padding: '0 16px', marginBottom: 24 }}>
         <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12, color: '#1A1A2E' }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#6C63FF' }}>favorite</span>
-          Taste Twin Cua Ban
+          Taste Twin Của Bạn
         </h2>
         <div style={{
           background: '#fff', borderRadius: 20, padding: 20, boxShadow: '0 4px 24px rgba(108,99,255,0.12)',
@@ -90,7 +90,7 @@ const TasteTwinPage = () => {
             <img src="https://i.pravatar.cc/80?img=32" alt="twin" style={{ width: 64, height: 64, borderRadius: '50%', border: '3px solid #6C63FF' }} />
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: 18, fontWeight: 700 }}>Yuki Tanaka</div>
-              <div style={{ fontSize: 13, color: '#888' }}>Tokyo, Nhat Ban</div>
+              <div style={{ fontSize: 13, color: '#888' }}>Tokyo, Nhật Bản</div>
             </div>
             <div style={{
               background: 'linear-gradient(135deg, #6C63FF, #8B5CF6)', borderRadius: 12, padding: '6px 14px',
@@ -106,7 +106,7 @@ const TasteTwinPage = () => {
             ))}
           </div>
           <div style={{ marginTop: 14, fontSize: 13, color: '#666', lineHeight: 1.5 }}>
-            Cung yeu thich mon nuoc dung dam da va banh mi gion. Ca hai deu thich kham pha am thuc duong pho.
+            Cùng yêu thích món nước dùng đậm đà và bánh mì giòn. Cả hai đều thích khám phá ẩm thực đường phố.
           </div>
         </div>
       </div>
@@ -115,7 +115,7 @@ const TasteTwinPage = () => {
       <div style={{ padding: '0 16px', marginBottom: 24 }}>
         <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12, color: '#1A1A2E' }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#6C63FF' }}>group</span>
-          Ket Noi Khac
+          Kết Nối Khác
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
           {secondaryMatches.map((m, i) => (
@@ -140,7 +140,7 @@ const TasteTwinPage = () => {
       <div style={{ padding: '0 16px' }}>
         <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12, color: '#1A1A2E' }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>near_me</span>
-          An Nhanh Gan Day
+          Ăn Nhanh Gần Đây
         </h2>
         {nearbyBites.map((b, i) => (
           <div key={i} style={{

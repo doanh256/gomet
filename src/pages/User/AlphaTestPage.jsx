@@ -9,16 +9,16 @@ const AlphaTestPage = () => {
   const [isBug, setIsBug] = useState(false);
 
   const features = [
-    { id: 'ai-match', name: 'AI Goi y thong minh', desc: 'Thuat toan AI moi giup goi y nguoi phu hop hon dua tren hanh vi', version: 'v0.3', status: 'testing', feedbackCount: 12, tested: false },
-    { id: 'voice-date', name: 'Hen ho bang giong noi', desc: 'Goi dien thoai ngau nhien voi nguoi match de lam quen', version: 'v0.2', status: 'testing', feedbackCount: 8, tested: true },
-    { id: 'ar-venue', name: 'AR Xem truoc dia diem', desc: 'Dung AR de xem truoc nha hang va quan cafe truoc khi den', version: 'v0.1', status: 'completed', feedbackCount: 23, tested: true },
+    { id: 'ai-match', name: 'AI Gợi ý thông minh', desc: 'Thuật toán AI mới giúp gợi ý người phù hợp hơn dựa trên hành vi', version: 'v0.3', status: 'testing', feedbackCount: 12, tested: false },
+    { id: 'voice-date', name: 'Hẹn hò bằng giọng nói', desc: 'Gọi điện thoại ngẫu nhiên với người match để làm quen', version: 'v0.2', status: 'testing', feedbackCount: 8, tested: true },
+    { id: 'ar-venue', name: 'AR Xem trước địa điểm', desc: 'Dùng AR để xem trước nhà hàng và quán cafe trước khi đến', version: 'v0.1', status: 'completed', feedbackCount: 23, tested: true },
   ];
   const pastFeedback = [
-    { date: '19/03/2026', feature: 'Hen ho bang giong noi', status: 'Da doc' },
-    { date: '15/03/2026', feature: 'AI Goi y thong minh', status: 'Dang xu ly' },
-    { date: '10/03/2026', feature: 'AR Xem truoc dia diem', status: 'Da sua' },
+    { date: '19/03/2026', feature: 'Hẹn hò bằng giọng nói', status: 'Đã đọc' },
+    { date: '15/03/2026', feature: 'AI Gợi ý thông minh', status: 'Đang xử lý' },
+    { date: '10/03/2026', feature: 'AR Xem trước địa điểm', status: 'Đã sửa' },
   ];
-  const statusStyles = { 'Da doc': { bg: '#2A2A2A', color: '#E6BEB2' }, 'Dang xu ly': { bg: '#FF571A30', color: '#FF571A' }, 'Da sua': { bg: '#11750030', color: '#117500' } };
+  const statusStyles = { 'Đã đọc': { bg: '#2A2A2A', color: '#E6BEB2' }, 'Đang xử lý': { bg: '#FF571A30', color: '#FF571A' }, 'Đã sửa': { bg: '#11750030', color: '#117500' } };
 
   const s = {
     page: { flex: 1, backgroundColor: '#131313', overflowY: 'auto', padding: '40px 32px 80px' },
@@ -66,20 +66,20 @@ const AlphaTestPage = () => {
     <div style={s.page}>
       <style>{`@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.8; } }`}</style>
       <div style={s.header}><button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined">arrow_back</span></button><h1 style={s.pageTitle}>GOMET Alpha</h1><span aria-hidden="true" className="material-symbols-outlined" style={s.scienceIcon}>science</span></div>
-      <div style={s.subtitleRow}><span style={s.subtitle}>Trai nghiem tinh nang moi truoc tat ca</span><span style={s.alphaBadge}>ALPHA</span></div>
-      <h2 style={s.sectionTitle}>Tinh nang dang thu nghiem</h2>
-      {features.map(f => (<div key={f.id} style={s.featureCard}><div style={s.featureHeader}><span style={s.featureName}>{f.name}</span><span style={s.versionBadge}>{f.version}</span></div><p style={s.featureDesc}>{f.desc}</p><div style={s.featureFooter}><div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}><div style={s.statusBadge(f.status)}><div style={s.statusDot(f.status)} />{f.status === 'testing' ? 'Dang test' : 'Hoan thanh'}</div><span style={s.feedbackCount}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>chat_bubble</span>{f.feedbackCount} phan hoi</span></div>{f.tested ? (<button style={s.triedBtn} disabled>Da thu</button>) : (<button style={s.tryBtn}>Thu ngay</button>)}</div></div>))}
-      <h2 style={{ ...s.sectionTitle, marginTop: '32px' }}>Gui phan hoi</h2>
+      <div style={s.subtitleRow}><span style={s.subtitle}>Trải nghiệm tính năng mới trước tất cả</span><span style={s.alphaBadge}>ALPHA</span></div>
+      <h2 style={s.sectionTitle}>Tính năng đang thử nghiệm</h2>
+      {features.map(f => (<div key={f.id} style={s.featureCard}><div style={s.featureHeader}><span style={s.featureName}>{f.name}</span><span style={s.versionBadge}>{f.version}</span></div><p style={s.featureDesc}>{f.desc}</p><div style={s.featureFooter}><div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}><div style={s.statusBadge(f.status)}><div style={s.statusDot(f.status)} />{f.status === 'testing' ? 'Đang test' : 'Hoàn thành'}</div><span style={s.feedbackCount}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>chat_bubble</span>{f.feedbackCount} phản hồi</span></div>{f.tested ? (<button style={s.triedBtn} disabled>Đã thử</button>) : (<button style={s.tryBtn}>Thử ngay</button>)}</div></div>))}
+      <h2 style={{ ...s.sectionTitle, marginTop: '32px' }}>Gửi phản hồi</h2>
       <div style={s.feedbackSection}>
-        <select style={s.selectWrap} value={selectedFeature} onChange={e => setSelectedFeature(e.target.value)}><option value="">Chon tinh nang...</option>{features.map(f => (<option key={f.id} value={f.id}>{f.name}</option>))}</select>
+        <select style={s.selectWrap} value={selectedFeature} onChange={e => setSelectedFeature(e.target.value)}><option value="">Chọn tính năng...</option>{features.map(f => (<option key={f.id} value={f.id}>{f.name}</option>))}</select>
         <div style={s.starsRow}>{[1, 2, 3, 4, 5].map(i => (<button key={i} style={s.starBtn(i <= feedbackRating)} onClick={() => setFeedbackRating(i)}><span className="material-symbols-outlined filled">star</span></button>))}</div>
-        <textarea style={s.textarea} placeholder="Mo ta trai nghiem..." value={feedbackText} onChange={e => setFeedbackText(e.target.value)} />
-        <div style={s.bugToggle}><div style={s.toggleTrack(isBug)} onClick={() => setIsBug(!isBug)}><div style={s.toggleThumb(isBug)} /></div><span style={s.bugLabel}>Day la loi?</span>{isBug && (<span aria-hidden="true" className="material-symbols-outlined" style={{ color: '#FF571A', fontSize: '20px' }}>bug_report</span>)}</div>
-        <button style={s.submitBtn}>Gui phan hoi</button>
+        <textarea style={s.textarea} placeholder="Mô tả trải nghiệm..." value={feedbackText} onChange={e => setFeedbackText(e.target.value)} />
+        <div style={s.bugToggle}><div style={s.toggleTrack(isBug)} onClick={() => setIsBug(!isBug)}><div style={s.toggleThumb(isBug)} /></div><span style={s.bugLabel}>Đây là lỗi?</span>{isBug && (<span aria-hidden="true" className="material-symbols-outlined" style={{ color: '#FF571A', fontSize: '20px' }}>bug_report</span>)}</div>
+        <button style={s.submitBtn}>Gửi phản hồi</button>
       </div>
-      <h2 style={s.sectionTitle}>Phan hoi cua ban</h2>
+      <h2 style={s.sectionTitle}>Phản hồi của bạn</h2>
       {pastFeedback.map((fb, i) => (<div key={i} style={s.pastFeedbackItem}><div style={s.pastInfo}><div style={s.pastFeature}>{fb.feature}</div><div style={s.pastDate}>{fb.date}</div></div><span style={s.pastStatus(fb.status)}>{fb.status}</span></div>))}
-      <div style={s.rewardCard}><div style={s.rewardTitle}>Diem Alpha</div><div style={s.rewardScore}>350</div><div style={s.rewardText}>Ban da kiem 350 diem Alpha. Doi diem de nhan qua tang doc quyen!</div></div>
+      <div style={s.rewardCard}><div style={s.rewardTitle}>Điểm Alpha</div><div style={s.rewardScore}>350</div><div style={s.rewardText}>Bạn đã kiếm 350 điểm Alpha. Đổi điểm để nhận quà tặng độc quyền!</div></div>
     </div>
   );
 };

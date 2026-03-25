@@ -2,17 +2,17 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const rules = [
-  { num: 1, icon: 'verified_user', title: 'Trung thuc', desc: 'Luon su dung thong tin that ve ban than. Ho so gia mao se bi go bo va tai khoan co the bi khoa vinh vien.' },
-  { num: 2, icon: 'favorite', title: 'Ton trong', desc: 'Doi xu voi moi nguoi bang su ton trong va lich su. Moi nguoi deu xung dang duoc doi xu tot dep.' },
-  { num: 3, icon: 'shield', title: 'An toan', desc: 'Khong chia se thong tin ca nhan qua som nhu dia chi, so tai khoan. Hen ho o noi cong cong cho den khi cam thay an tam.' },
-  { num: 4, icon: 'block', title: 'Khong quay roi', desc: 'Moi hinh thuc quay roi deu bi cam. Bao gom tin nhan khong mong muon, ngon ngu tho tuc, de doa hoac theo doi.' },
-  { num: 5, icon: 'photo_camera', title: 'Anh that', desc: 'Chi su dung anh cua chinh ban. Anh phai ro mat, khong chinh sua qua muc va khong chua noi dung khong phu hop.' },
+  { num: 1, icon: 'verified_user', title: 'Trung thực', desc: 'Luôn sử dụng thông tin thật về bản thân. Hồ sơ giả mạo sẽ bị gỡ bỏ và tài khoản có thể bị khóa vĩnh viễn.' },
+  { num: 2, icon: 'favorite', title: 'Tôn trọng', desc: 'Đối xử với mọi người bằng sự tôn trọng và lịch sự. Mọi người đều xứng đáng được đối xử tốt đẹp.' },
+  { num: 3, icon: 'shield', title: 'An toàn', desc: 'Không chia sẻ thông tin cá nhân quá sớm như địa chỉ, số tài khoản. Hẹn hò ở nơi công cộng cho đến khi cảm thấy an tâm.' },
+  { num: 4, icon: 'block', title: 'Không quấy rối', desc: 'Mọi hình thức quấy rối đều bị cấm. Bao gồm tin nhắn không mong muốn, ngôn ngữ thô tục, đe dọa hoặc theo dõi.' },
+  { num: 5, icon: 'photo_camera', title: 'Ảnh thật', desc: 'Chỉ sử dụng ảnh của chính bạn. Ảnh phải rõ mặt, không chỉnh sửa quá mức và không chứa nội dung không phù hợp.' },
 ];
 
 const violations = [
-  { icon: 'warning', color: '#FFD54F', bg: 'rgba(255, 213, 79, 0.12)', title: 'Canh cao', desc: 'Vi pham lan dau se nhan duoc canh cao va nhac nho tu he thong.' },
-  { icon: 'lock', color: '#FF571A', bg: 'rgba(255, 87, 26, 0.12)', title: 'Tam khoa', desc: 'Vi pham nghiem trong hoac lap lai se bi tam khoa 7-30 ngay.' },
-  { icon: 'block', color: '#FDF9F3', bg: '#353535', title: 'Khoa vinh vien', desc: 'Cac hanh vi nghiem trong nhu lua dao, quay roi tinh duc se bi khoa vinh vien.' },
+  { icon: 'warning', color: '#FFD54F', bg: 'rgba(255, 213, 79, 0.12)', title: 'Cảnh cáo', desc: 'Vi phạm lần đầu sẽ nhận được cảnh cáo và nhắc nhở từ hệ thống.' },
+  { icon: 'lock', color: '#FF571A', bg: 'rgba(255, 87, 26, 0.12)', title: 'Tạm khóa', desc: 'Vi phạm nghiêm trọng hoặc lặp lại sẽ bị tạm khóa 7-30 ngày.' },
+  { icon: 'block', color: '#FDF9F3', bg: '#353535', title: 'Khóa vĩnh viễn', desc: 'Các hành vi nghiêm trọng như lừa đảo, quấy rối tình dục sẽ bị khóa vĩnh viễn.' },
 ];
 
 const CommunityRulesPage = () => {
@@ -200,12 +200,12 @@ const CommunityRulesPage = () => {
     <div style={s.page}>
       <div style={s.header}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>gavel</span>
-        <h1 style={s.heading}>Quy tac cong dong</h1>
-        <p style={s.subtitle}>Xay dung mot cong dong an toan va ton trong</p>
+        <h1 style={s.heading}>Quy tắc cộng đồng</h1>
+        <p style={s.subtitle}>Xây dựng một cộng đồng an toàn và tôn trọng</p>
       </div>
 
       {/* Core rules */}
-      <h2 style={s.sectionTitle}>Nguyen tac cot loi</h2>
+      <h2 style={s.sectionTitle}>Nguyên tắc cốt lõi</h2>
       <div style={s.rulesList}>
         {rules.map(r => (
           <div key={r.num} style={s.ruleCard}>
@@ -222,7 +222,7 @@ const CommunityRulesPage = () => {
       </div>
 
       {/* Violations */}
-      <h2 style={s.sectionTitle}>Vi pham se bi</h2>
+      <h2 style={s.sectionTitle}>Vi phạm sẽ bị</h2>
       <div style={s.violationsList}>
         {violations.map((v, i) => (
           <div key={i} style={s.violationCard(v.bg)}>
@@ -240,16 +240,16 @@ const CommunityRulesPage = () => {
       {/* Report CTA */}
       <div style={s.reportCta}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.reportIcon}>flag</span>
-        <div style={s.reportTitle}>Bao cao vi pham</div>
-        <p style={s.reportDesc}>Neu ban gap van de, hay bao cao ngay de chung toi xu ly</p>
+        <div style={s.reportTitle}>Báo cáo vi phạm</div>
+        <p style={s.reportDesc}>Nếu bạn gặp vấn đề, hãy báo cáo ngay để chúng tôi xử lý</p>
         <button style={s.reportBtn}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>flag</span>
-          Bao cao ngay
+          Báo cáo ngay
         </button>
       </div>
 
       {/* Footer */}
-      <div style={s.footer}>Cap nhat lan cuoi: Thang 3, 2026</div>
+      <div style={s.footer}>Cập nhật lần cuối: Tháng 3, 2026</div>
     </div>
   );
 };

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const dishes = [
-  { id: 1, name: 'Pho Bo Tai Lan', price: 65000, cal: 480, rating: 4.8, color: '#FF571A' },
-  { id: 2, name: 'Bun Cha Ha Noi', price: 55000, cal: 520, rating: 4.6, color: '#FFB59E' },
-  { id: 3, name: 'Com Tam Suon Bi', price: 50000, cal: 610, rating: 4.7, color: '#E6BEB2' },
+  { id: 1, name: 'Phở Bò Tái Lăn', price: 65000, cal: 480, rating: 4.8, color: '#FF571A' },
+  { id: 2, name: 'Bún Chả Hà Nội', price: 55000, cal: 520, rating: 4.6, color: '#FFB59E' },
+  { id: 3, name: 'Cơm Tấm Sườn Bì', price: 50000, cal: 610, rating: 4.7, color: '#E6BEB2' },
 ];
 
 const nutritionData = {
@@ -74,10 +74,10 @@ const ARMenuPage = () => {
 
   return (
     <div style={s.page}>
-      <button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>Quay lai</button>
-      <div style={s.header}><span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>view_in_ar</span><h1 style={s.heading}>Thuc don tuong tac</h1><p style={s.subtitle}>Trai nghiem mon an bang AR</p></div>
-      <div style={s.viewfinder}><div style={s.cornerTL} /><div style={s.cornerTR} /><div style={s.cornerBL} /><div style={s.cornerBR} /><span aria-hidden="true" className="material-symbols-outlined" style={s.crosshair}>center_focus_strong</span><p style={s.viewfinderText}>Huong camera vao menu</p></div>
-      <h2 style={s.sectionTitle}>Mon an noi bat</h2>
+      <button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>Quay lại</button>
+      <div style={s.header}><span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>view_in_ar</span><h1 style={s.heading}>Thực đơn tương tác</h1><p style={s.subtitle}>Trải nghiệm món ăn bằng AR</p></div>
+      <div style={s.viewfinder}><div style={s.cornerTL} /><div style={s.cornerTR} /><div style={s.cornerBL} /><div style={s.cornerBR} /><span aria-hidden="true" className="material-symbols-outlined" style={s.crosshair}>center_focus_strong</span><p style={s.viewfinderText}>Hướng camera vào menu</p></div>
+      <h2 style={s.sectionTitle}>Món ăn nổi bật</h2>
       <div style={s.dishGrid}>
         {dishes.map((dish) => (
           <div key={dish.id} style={s.dishCard}>
@@ -86,19 +86,19 @@ const ARMenuPage = () => {
             </div>
             <div style={s.dishBody}>
               <div style={s.dishName}>{dish.name}</div>
-              <div style={s.dishMeta}><span style={s.dishPrice}>{dish.price.toLocaleString()}d</span><span style={s.dishCal}><span aria-hidden="true" className="material-symbols-outlined" style={s.calIcon}>local_fire_department</span>{dish.cal} kcal</span></div>
+              <div style={s.dishMeta}><span style={s.dishPrice}>{dish.price.toLocaleString()}đ</span><span style={s.dishCal}><span aria-hidden="true" className="material-symbols-outlined" style={s.calIcon}>local_fire_department</span>{dish.cal} kcal</span></div>
               <div style={s.stars}>{renderStars(dish.rating)}</div>
-              <div style={s.btnRow}><button style={s.btn3D}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>view_in_ar</span>Xem 3D</button><button style={s.btnOrder}>Dat mon</button></div>
+              <div style={s.btnRow}><button style={s.btn3D}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>view_in_ar</span>Xem 3D</button><button style={s.btnOrder}>Đặt món</button></div>
             </div>
           </div>
         ))}
       </div>
       <div style={s.nutritionCard} onClick={() => setNutritionOpen(!nutritionOpen)}>
-        <div style={s.nutritionHeader}><div style={s.nutritionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={s.nutritionIcon}>monitoring</span>Thong tin dinh duong</div><span aria-hidden="true" className="material-symbols-outlined" style={{ ...s.expandIcon, transform: nutritionOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>expand_more</span></div>
+        <div style={s.nutritionHeader}><div style={s.nutritionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={s.nutritionIcon}>monitoring</span>Thông tin dinh dưỡng</div><span aria-hidden="true" className="material-symbols-outlined" style={{ ...s.expandIcon, transform: nutritionOpen ? 'rotate(180deg)' : 'rotate(0deg)' }}>expand_more</span></div>
         {nutritionOpen && (<div style={s.nutritionBody}>{Object.values(nutritionData).map((n) => (<div key={n.label} style={s.barRow}><div style={s.barLabel}><span>{n.label}</span><span>{n.value}{n.unit}</span></div><div style={s.barTrack}><div style={s.barFill((n.value / n.max) * 100)} /></div></div>))}</div>)}
       </div>
-      <h2 style={{ ...s.sectionTitle, marginBottom: 12 }}>Chia se trai nghiem</h2>
-      <div style={s.shareCard}><span aria-hidden="true" className="material-symbols-outlined" style={s.shareIcon}>photo_camera</span><p style={s.shareText}>Chup & chia se tren GOMET</p><button style={s.shareBtn}>Chup anh</button></div>
+      <h2 style={{ ...s.sectionTitle, marginBottom: 12 }}>Chia sẻ trải nghiệm</h2>
+      <div style={s.shareCard}><span aria-hidden="true" className="material-symbols-outlined" style={s.shareIcon}>photo_camera</span><p style={s.shareText}>Chụp & chia sẻ trên GOMET</p><button style={s.shareBtn}>Chụp ảnh</button></div>
     </div>
   );
 };

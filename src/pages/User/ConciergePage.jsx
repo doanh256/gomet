@@ -2,23 +2,23 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const suggestedChips = [
-  { icon: 'restaurant', label: 'Tim nha hang' },
-  { icon: 'favorite', label: 'Goi y hen ho' },
-  { icon: 'help', label: 'Ho tro' },
+  { icon: 'restaurant', label: 'Tìm nhà hàng' },
+  { icon: 'favorite', label: 'Gợi ý hẹn hò' },
+  { icon: 'help', label: 'Hỗ trợ' },
 ];
 
 const initialMessages = [
-  { id: 1, from: 'bot', text: 'Xin chao! Toi la GOMET Concierge. Toi co the giup ban tim nha hang, len ke hoach hen ho, hoac bat cu dieu gi ban can.' },
-  { id: 2, from: 'user', text: 'Toi muon tim nha hang lang man cho toi nay.' },
-  { id: 3, from: 'bot', text: 'Tuyet voi! Toi goi y nha hang La Maison o Quan 1 - khong gian lang man, thuc don Phap, gia trung binh 500k/nguoi. Ban muon toi dat cho khong?' },
-  { id: 4, from: 'user', text: 'Nghe hay do! Dat cho 2 nguoi luc 7h toi nhe.' },
-  { id: 5, from: 'bot', text: 'Da dat cho thanh cong! Ban 2 nguoi luc 19:00 tai La Maison. Toi da gui xac nhan qua tin nhan. Chuc ban co buoi toi tuyet voi!' },
-  { id: 6, from: 'user', text: 'Cam on ban nhieu!' },
+  { id: 1, from: 'bot', text: 'Xin chào! Tôi là GOMET Concierge. Tôi có thể giúp bạn tìm nhà hàng, lên kế hoạch hẹn hò, hoặc bất cứ điều gì bạn cần.' },
+  { id: 2, from: 'user', text: 'Tôi muốn tìm nhà hàng lãng mạn cho tối nay.' },
+  { id: 3, from: 'bot', text: 'Tuyệt vời! Tôi gợi ý nhà hàng La Maison ở Quận 1 - không gian lãng mạn, thực đơn Pháp, giá trung bình 500k/người. Bạn muốn tôi đặt chỗ không?' },
+  { id: 4, from: 'user', text: 'Nghe hay đó! Đặt chỗ 2 người lúc 7h tối nhé.' },
+  { id: 5, from: 'bot', text: 'Đã đặt chỗ thành công! Bàn 2 người lúc 19:00 tại La Maison. Tôi đã gửi xác nhận qua tin nhắn. Chúc bạn có buổi tối tuyệt vời!' },
+  { id: 6, from: 'user', text: 'Cảm ơn bạn nhiều!' },
 ];
 
 const specialServices = [
-  { icon: 'star', title: 'Dat cho VIP', desc: 'De GOMET lo toan moi thu' },
-  { icon: 'event', title: 'Len ke hoach hen do', desc: 'Tu dia diem den menu' },
+  { icon: 'star', title: 'Đặt chỗ VIP', desc: 'Để GOMET lo toàn mọi thứ' },
+  { icon: 'event', title: 'Lên kế hoạch hẹn đó', desc: 'Từ địa điểm đến menu' },
 ];
 
 const ConciergePage = () => {
@@ -223,7 +223,7 @@ const ConciergePage = () => {
       <div style={s.headerSection}>
         <div style={s.headerRow}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>support_agent</span>
-          <h1 style={s.heading}>Tro ly ghep doi</h1>
+          <h1 style={s.heading}>Trợ lý ghép đôi</h1>
         </div>
         <div style={s.subtitle}>GOMET Concierge</div>
 
@@ -258,7 +258,7 @@ const ConciergePage = () => {
 
       {/* Special Services */}
       <div style={s.specialSection}>
-        <div style={s.specialTitle}>Yeu cau dac biet</div>
+        <div style={s.specialTitle}>Yêu cầu đặc biệt</div>
         <div style={s.specialRow}>
           {specialServices.map((svc, i) => (
             <div key={i} style={s.specialCard}>
@@ -274,7 +274,7 @@ const ConciergePage = () => {
       <div style={s.inputBar}>
         <input
           style={s.textInput}
-          placeholder="Nhap tin nhan..."
+          placeholder="Nhập tin nhắn..."
           value={inputText}
           onChange={e => setInputText(e.target.value)}
         />

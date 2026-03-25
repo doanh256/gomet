@@ -10,16 +10,16 @@ const MOCK_VENUE = {
   priceRange: '$$',
   location: '45 Le Loi, Quan 1, TP.HCM',
   description:
-    'Nha hang phong cach hien dai ket hop am thuc Au - Viet, khong gian am cung thich hop cho nhung buoi hen ho lang man. Menu duoc thiet ke boi dau bep tu Paris voi nguyen lieu dia phuong tuoi ngon. Khong gian ngoai troi voi tam nhin thanh pho tuyet dep.',
+    'Nhà hàng phong cách hiện đại kết hợp ẩm thực Âu - Việt, không gian ấm cúng thích hợp cho những buổi hẹn hò lãng mạn. Menu được thiết kế bởi đầu bếp từ Paris với nguyên liệu địa phương tươi ngon. Không gian ngoài trời với tầm nhìn thành phố tuyệt đẹp.',
   menu: [
     { id: 1, name: 'Bo Wagyu Sot Truffle', price: '680.000', image: null },
     { id: 2, name: 'Risotto Nam Rung', price: '320.000', image: null },
     { id: 3, name: 'Banh Creme Brulee Matcha', price: '180.000', image: null },
   ],
   reviews: [
-    { id: 1, name: 'Linh Chi', rating: 5, text: 'Khong gian rat dep, do an ngon, nhan vien nhiet tinh. Se quay lai!' },
-    { id: 2, name: 'Minh Duc', rating: 4, text: 'Mon Wagyu tuyet voi, gia hop ly cho chat luong nhu vay. Nen dat truoc.' },
-    { id: 3, name: 'Thao Nhi', rating: 5, text: 'Buoi hen ho hoan hao! Anh sang dep, nhac nhe nhang, mon trang mieng sieu ngon.' },
+    { id: 1, name: 'Linh Chi', rating: 5, text: 'Không gian rất đẹp, đồ ăn ngon, nhân viên nhiệt tình. Sẽ quay lại!' },
+    { id: 2, name: 'Minh Đức', rating: 4, text: 'Món Wagyu tuyệt vời, giá hợp lý cho chất lượng như vậy. Nên đặt trước.' },
+    { id: 3, name: 'Thảo Nhi', rating: 5, text: 'Buổi hẹn hò hoàn hảo! Ánh sáng đẹp, nhạc nhẹ nhàng, món tráng miệng siêu ngon.' },
   ],
   hours: [
     { day: 'Thu 2 - Thu 5', time: '11:00 - 22:00' },
@@ -337,7 +337,7 @@ const VenueProfilePage = () => {
             {venue.verified && (
               <span style={styles.verifiedBadge}>
                 <span className="material-symbols-outlined filled" style={{ fontSize: 14 }}>verified</span>
-                Da xac minh
+                Đã xác minh
               </span>
             )}
           </div>
@@ -358,13 +358,13 @@ const VenueProfilePage = () => {
       <div style={styles.body}>
         {/* About */}
         <div style={styles.section}>
-          <div style={styles.sectionTitle}>Gioi thieu</div>
+          <div style={styles.sectionTitle}>Giới thiệu</div>
           <p style={styles.description}>{venue.description}</p>
         </div>
 
         {/* Menu */}
         <div style={styles.section}>
-          <div style={styles.sectionTitle}>Menu noi bat</div>
+          <div style={styles.sectionTitle}>Menu nổi bật</div>
           <div style={styles.menuGrid}>
             {venue.menu.map((item) => (
               <div key={item.id} style={styles.menuCard}>
@@ -380,7 +380,7 @@ const VenueProfilePage = () => {
 
         {/* Reviews */}
         <div style={styles.section}>
-          <div style={styles.sectionTitle}>Danh gia</div>
+          <div style={styles.sectionTitle}>Đánh giá</div>
           {venue.reviews.map((r) => (
             <div key={r.id} style={styles.reviewCard}>
               <div style={styles.reviewHeader}>
@@ -397,7 +397,7 @@ const VenueProfilePage = () => {
 
         {/* Location */}
         <div style={styles.section}>
-          <div style={styles.sectionTitle}>Vi tri</div>
+          <div style={styles.sectionTitle}>Vị trí</div>
           <div style={styles.locationSection}>
             <div style={styles.addressText}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E', marginTop: 2 }}>location_on</span>
@@ -405,14 +405,14 @@ const VenueProfilePage = () => {
             </div>
             <button style={styles.mapsBtn}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>map</span>
-              Mo trong Maps
+              Mở trong Maps
             </button>
           </div>
         </div>
 
         {/* Hours */}
         <div style={styles.section}>
-          <div style={styles.sectionTitle}>Gio mo cua</div>
+          <div style={styles.sectionTitle}>Giờ mở cửa</div>
           <div style={styles.hoursGrid}>
             {venue.hours.map((h, i) => (
               <div key={i} style={styles.hoursRow}>
@@ -428,7 +428,7 @@ const VenueProfilePage = () => {
       <div style={styles.ctaBar}>
         <button style={styles.ctaBtn}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>restaurant</span>
-          Dat cho ngay
+          Đặt chỗ ngay
         </button>
       </div>
     </div>

@@ -2,23 +2,23 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const boostActions = [
-  { icon: 'person_add', label: 'Moi ban be', reward: '+5 bac', desc: 'Chia se link gioi thieu' },
-  { icon: 'share', label: 'Chia se tren MXH', reward: '+3 bac', desc: 'Dang len Facebook, Instagram' },
-  { icon: 'task_alt', label: 'Hoan thanh ho so', reward: '+10 bac', desc: 'Cap nhat thong tin ca nhan' },
+  { icon: 'person_add', label: 'Mời bạn bè', reward: '+5 bậc', desc: 'Chia sẻ link giới thiệu' },
+  { icon: 'share', label: 'Chia sẻ trên MXH', reward: '+3 bậc', desc: 'Đăng lên Facebook, Instagram' },
+  { icon: 'task_alt', label: 'Hoàn thành hồ sơ', reward: '+10 bậc', desc: 'Cập nhật thông tin cá nhân' },
 ];
 
 const faqs = [
   {
-    q: 'Waitlist hoat dong nhu the nao?',
-    a: 'Ban se duoc xep theo thu tu dang ky. Vi tri cua ban co the tang len khi ban hoan thanh cac nhiem vu tang thu hang.',
+    q: 'Waitlist hoạt động như thế nào?',
+    a: 'Bạn sẽ được xếp theo thứ tự đăng ký. Vị trí của bạn có thể tăng lên khi bạn hoàn thành các nhiệm vụ tăng thứ hạng.',
   },
   {
-    q: 'Lam sao de tang thu hang nhanh hon?',
-    a: 'Moi ban be, chia se tren mang xa hoi va hoan thanh ho so se giup ban leo len vi tri cao hon trong danh sach cho.',
+    q: 'Làm sao để tăng thứ hạng nhanh hơn?',
+    a: 'Mời bạn bè, chia sẻ trên mạng xã hội và hoàn thành hồ sơ sẽ giúp bạn leo lên vị trí cao hơn trong danh sách chờ.',
   },
   {
-    q: 'Khi nao toi se duoc truy cap?',
-    a: 'Thoi gian du kien phu thuoc vao vi tri cua ban. Chung toi se gui thong bao khi den luot ban.',
+    q: 'Khi nào tôi sẽ được truy cập?',
+    a: 'Thời gian dự kiến phụ thuộc vào vị trí của bạn. Chúng tôi sẽ gửi thông báo khi đến lượt bạn.',
   },
 ];
 
@@ -296,14 +296,14 @@ const WaitlistPage = () => {
 
       <div style={s.hero}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>hourglass_top</span>
-        <h1 style={s.heroTitle}>Ban da dang ky thanh cong!</h1>
-        <p style={s.heroSub}>Chung toi se thong bao khi den luot ban</p>
+        <h1 style={s.heroTitle}>Bạn đã đăng ký thành công!</h1>
+        <p style={s.heroSub}>Chúng tôi sẽ thông báo khi đến lượt bạn</p>
       </div>
 
       <div style={s.posCard}>
-        <div style={s.posLabel}>Vi tri cua ban</div>
+        <div style={s.posLabel}>Vị trí của bạn</div>
         <div style={s.posNumber}>#{position}</div>
-        <div style={s.posSub}>trong {total.toLocaleString('vi-VN')} nguoi</div>
+        <div style={s.posSub}>trong {total.toLocaleString('vi-VN')} người</div>
         <div style={s.progressBar}>
           <div style={s.progressFill} />
         </div>
@@ -311,11 +311,11 @@ const WaitlistPage = () => {
 
       <div style={s.estimateRow}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.estimateIcon}>schedule</span>
-        <span style={s.estimateLabel}>Du kien:</span>
-        <span style={s.estimateValue}>Khoang 2-3 ngay</span>
+        <span style={s.estimateLabel}>Dự kiến:</span>
+        <span style={s.estimateValue}>Khoảng 2-3 ngày</span>
       </div>
 
-      <div style={s.sectionTitle}>Tang thu hang</div>
+      <div style={s.sectionTitle}>Tăng thứ hạng</div>
       {boostActions.map((a, i) => (
         <button style={s.boostCard} key={i}>
           <div style={s.boostIconWrap}>
@@ -330,7 +330,7 @@ const WaitlistPage = () => {
       ))}
 
       <div style={s.notifSection}>
-        <div style={s.sectionTitle}>Thong bao cho toi</div>
+        <div style={s.sectionTitle}>Thông báo cho tôi</div>
         <div style={s.notifRow}>
           <div style={s.notifLeft}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.notifIcon}>email</span>
@@ -358,7 +358,7 @@ const WaitlistPage = () => {
       </div>
 
       <div style={s.faqSection}>
-        <div style={s.sectionTitle}>Cau hoi thuong gap</div>
+        <div style={s.sectionTitle}>Câu hỏi thường gặp</div>
         {faqs.map((f, i) => (
           <div style={s.faqItem} key={i}>
             <button style={s.faqHeader} onClick={() => setOpenFaq(openFaq === i ? null : i)}>

@@ -2,36 +2,36 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const matchData = {
-  user: { name: 'Ban', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face' },
+  user: { name: 'Bạn', avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face' },
   match: { name: 'Minh Anh', avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=200&h=200&fit=crop&crop=face' },
   totalScore: 87,
   categories: [
-    { label: 'Khau vi am thuc', score: 92, icon: 'restaurant' },
-    { label: 'Phong cach an', score: 85, icon: 'dining' },
-    { label: 'Do cay', score: 78, icon: 'local_fire_department' },
-    { label: 'Vung mien', score: 90, icon: 'map' },
-    { label: 'So thich chung', score: 80, icon: 'favorite' },
+    { label: 'Khẩu vị ẩm thực', score: 92, icon: 'restaurant' },
+    { label: 'Phong cách ăn', score: 85, icon: 'dining' },
+    { label: 'Độ cay', score: 78, icon: 'local_fire_department' },
+    { label: 'Vùng miền', score: 90, icon: 'map' },
+    { label: 'Sở thích chung', score: 80, icon: 'favorite' },
   ],
 };
 
 const venue = {
   name: 'The Lissome Cafe & Bistro',
-  cuisine: 'Fusion Viet - Y',
-  address: 'Q1, Ho Chi Minh',
+  cuisine: 'Fusion Việt - Ý',
+  address: 'Q1, Hồ Chí Minh',
   img: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=600&h=300&fit=crop',
 };
 
 const tips = [
-  { text: 'Cung thu mot nha hang moi de tang chemistry am thuc.', icon: 'lightbulb' },
-  { text: 'Chia se cong thuc nau an yeu thich cua ban.', icon: 'lightbulb' },
-  { text: 'Dat lich an thu mon moi moi tuan cung nhau.', icon: 'lightbulb' },
+  { text: 'Cùng thử một nhà hàng mới để tăng chemistry ẩm thực.', icon: 'lightbulb' },
+  { text: 'Chia sẻ công thức nấu ăn yêu thích của bạn.', icon: 'lightbulb' },
+  { text: 'Đặt lịch ăn thử món mới mỗi tuần cùng nhau.', icon: 'lightbulb' },
 ];
 
 const getLabel = (score) => {
-  if (score >= 90) return 'Tuyet voi!';
-  if (score >= 70) return 'Tuong thich cao!';
-  if (score >= 50) return 'Tiem nang';
-  return 'Can kham pha them';
+  if (score >= 90) return 'Tuyệt vời!';
+  if (score >= 70) return 'Tương thích cao!';
+  if (score >= 50) return 'Tiềm năng';
+  return 'Cần khám phá thêm';
 };
 
 const getLabelColor = (score) => {
@@ -374,7 +374,7 @@ const ChemistryScorePage = () => {
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
-        Quay lai
+        Quay lại
       </button>
 
       <div style={s.headerPill}>
@@ -435,7 +435,7 @@ const ChemistryScorePage = () => {
       {/* Breakdown */}
       <div style={s.sectionTitle}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--primary)' }}>analytics</span>
-        Chi tiet tuong thich
+        Chi tiết tương thích
       </div>
       <div style={s.catList}>
         {matchData.categories.map((cat, i) => (
@@ -457,19 +457,19 @@ const ChemistryScorePage = () => {
       {/* Venue suggestion */}
       <div style={s.sectionTitle}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--primary)' }}>place</span>
-        Dia diem goi y
+        Địa điểm gợi ý
       </div>
       <div style={s.venueCard}>
         <img src={venue.img} alt={venue.name} style={s.venueImg} />
         <div style={s.venueBody}>
           <div style={s.venuePill}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 12 }}>auto_awesome</span>
-            PHU HOP VOI CA HAI
+            PHÙ HỢP VỚI CẢ HAI
           </div>
           <div style={s.venueName}>{venue.name}</div>
           <div style={s.venueCuisine}>{venue.cuisine} · {venue.address}</div>
           <button style={s.bookBtn} onClick={() => navigate('/app/booking')}>
-            Dat ngay
+            Đặt ngay
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
           </button>
         </div>
@@ -478,7 +478,7 @@ const ChemistryScorePage = () => {
       {/* Tips */}
       <div style={s.sectionTitle}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: 'var(--tertiary-container)' }}>tips_and_updates</span>
-        Tang Chemistry
+        Tăng Chemistry
       </div>
       <div style={s.tipsGrid}>
         {tips.map((t, i) => (
@@ -495,11 +495,11 @@ const ChemistryScorePage = () => {
       <div style={s.actions}>
         <button style={s.primaryBtn} onClick={() => navigate('/app/chat')}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>chat</span>
-          Gui loi chao
+          Gửi lời chào
         </button>
         <button style={s.secondaryBtn} onClick={() => navigate(`/app/profile/${matchId || 'minh-anh'}`)}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>person</span>
-          Xem ho so
+          Xem hồ sơ
         </button>
       </div>
     </div>

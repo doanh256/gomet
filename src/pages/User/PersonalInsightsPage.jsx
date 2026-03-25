@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const overviewStats = [
-  { icon: 'calendar_today', label: 'Buoi hen', value: '12' },
+  { icon: 'calendar_today', label: 'Buổi hẹn', value: '12' },
   { icon: 'favorite', label: 'Match', value: '45' },
-  { icon: 'reply', label: 'Ty le phan hoi', value: '82%' },
-  { icon: 'toll', label: 'Diem karma', value: '850' },
+  { icon: 'reply', label: 'Tỷ lệ phản hồi', value: '82%' },
+  { icon: 'toll', label: 'Điểm karma', value: '850' },
 ];
 
 const weeklyData = [
@@ -19,27 +19,27 @@ const weeklyData = [
 ];
 
 const datingTraits = [
-  { label: 'Am thuc', pct: 75, icon: 'restaurant' },
-  { label: 'Nghe thuat', pct: 45, icon: 'palette' },
-  { label: 'Phieu luu', pct: 60, icon: 'hiking' },
+  { label: 'Ẩm thực', pct: 75, icon: 'restaurant' },
+  { label: 'Nghệ thuật', pct: 45, icon: 'palette' },
+  { label: 'Phiêu lưu', pct: 60, icon: 'hiking' },
 ];
 
 const bestMatches = [
-  { icon: 'restaurant', label: 'Am thuc & nha hang', score: '92%' },
-  { icon: 'music_note', label: 'Am nhac & giai tri', score: '87%' },
-  { icon: 'local_cafe', label: 'Ca phe & tro chuyen', score: '81%' },
+  { icon: 'restaurant', label: 'Ẩm thực & nhà hàng', score: '92%' },
+  { icon: 'music_note', label: 'Âm nhạc & giải trí', score: '87%' },
+  { icon: 'local_cafe', label: 'Cà phê & trò chuyện', score: '81%' },
 ];
 
 const improvementTips = [
-  { text: 'Them anh hoat dong ngoai troi de tang 30% luot xem ho so.' },
-  { text: 'Tra loi tin nhan trong 2 gio de tang diem karma.' },
-  { text: 'Cap nhat so thich moi de GOMET goi y chinh xac hon.' },
+  { text: 'Thêm ảnh hoạt động ngoài trời để tăng 30% lượt xem hồ sơ.' },
+  { text: 'Trả lời tin nhắn trong 2 giờ để tăng điểm karma.' },
+  { text: 'Cập nhật sở thích mới để GOMET gợi ý chính xác hơn.' },
 ];
 
 const monthlyTrends = [
-  { label: 'Buoi hen', current: 12, prev: 8, up: true },
-  { label: 'Match moi', current: 45, prev: 52, up: false },
-  { label: 'Tin nhan', current: 128, prev: 95, up: true },
+  { label: 'Buổi hẹn', current: 12, prev: 8, up: true },
+  { label: 'Match mới', current: 45, prev: 52, up: false },
+  { label: 'Tin nhắn', current: 128, prev: 95, up: true },
 ];
 
 const PersonalInsightsPage = () => {
@@ -293,11 +293,11 @@ const PersonalInsightsPage = () => {
       {/* Header */}
       <div style={s.header}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>insights</span>
-        <h1 style={s.heading}>Thau hieu trai nghiem</h1>
+        <h1 style={s.heading}>Thấu hiểu trải nghiệm</h1>
       </div>
 
       {/* Overview Stats */}
-      <div style={s.sectionTitle}>Tong quan</div>
+      <div style={s.sectionTitle}>Tổng quan</div>
       <div style={s.statsGrid}>
         {overviewStats.map((stat, i) => (
           <div key={i} style={s.statCard}>
@@ -309,7 +309,7 @@ const PersonalInsightsPage = () => {
       </div>
 
       {/* Weekly Activity Chart */}
-      <div style={s.sectionTitle}>Hoat dong hang tuan</div>
+      <div style={s.sectionTitle}>Hoạt động hàng tuần</div>
       <div style={s.chartContainer}>
         <div style={s.chartRow}>
           {weeklyData.map((d, i) => (
@@ -324,7 +324,7 @@ const PersonalInsightsPage = () => {
       </div>
 
       {/* Dating Traits */}
-      <div style={s.sectionTitle}>Kieu hen do cua ban</div>
+      <div style={s.sectionTitle}>Kiểu hẹn đò của bạn</div>
       {datingTraits.map((trait, i) => (
         <div key={i} style={s.traitCard}>
           <div style={s.traitHeader}>
@@ -341,7 +341,7 @@ const PersonalInsightsPage = () => {
       ))}
 
       {/* Best Compatibility */}
-      <div style={s.sectionTitle}>Tuong thich tot nhat</div>
+      <div style={s.sectionTitle}>Tương thích tốt nhất</div>
       {bestMatches.map((m, i) => (
         <div key={i} style={s.matchCard}>
           <div style={s.matchIcon}>
@@ -353,7 +353,7 @@ const PersonalInsightsPage = () => {
       ))}
 
       {/* Improvement Tips */}
-      <div style={s.sectionTitle}>Goi y cai thien</div>
+      <div style={s.sectionTitle}>Gợi ý cải thiện</div>
       {improvementTips.map((tip, i) => (
         <div key={i} style={s.tipCard}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.tipIcon}>lightbulb</span>
@@ -362,9 +362,9 @@ const PersonalInsightsPage = () => {
       ))}
 
       {/* Monthly Trends */}
-      <div style={s.sectionTitle}>Xu huong cua ban</div>
+      <div style={s.sectionTitle}>Xu hướng của bạn</div>
       <div style={{ fontSize: 13, color: '#E6BEB2', fontFamily: 'var(--font-body)', marginBottom: 12 }}>
-        Thang nay vs thang truoc
+        Tháng này vs tháng trước
       </div>
       {monthlyTrends.map((t, i) => (
         <div key={i} style={s.trendCard}>

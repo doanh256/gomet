@@ -271,31 +271,31 @@ const ReferralPage = () => {
   };
 
   const steps = [
-    { icon: 'share', num: 'Buoc 1', label: 'Chia se ma' },
-    { icon: 'person_add', num: 'Buoc 2', label: 'Ban dang ky' },
-    { icon: 'redeem', num: 'Buoc 3', label: 'Nhan thuong' },
+    { icon: 'share', num: 'Bước 1', label: 'Chia sẻ mã' },
+    { icon: 'person_add', num: 'Bước 2', label: 'Bạn đăng ký' },
+    { icon: 'redeem', num: 'Bước 3', label: 'Nhận thưởng' },
   ];
 
   return (
     <div style={s.page}>
       <div style={s.hero}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>redeem</span>
-        <h1 style={s.heading}>Moi ban be, nhan thuong</h1>
-        <p style={s.heroSub}>Chia se GOMET voi ban be va cung nhan uu dai hap dan</p>
+        <h1 style={s.heading}>Mời bạn bè, nhận thưởng</h1>
+        <p style={s.heroSub}>Chia sẻ GOMET với bạn bè và cùng nhận ưu đãi hấp dẫn</p>
       </div>
 
       <div style={s.codeCard}>
-        <div style={s.codeLabel}>Ma gioi thieu cua ban</div>
+        <div style={s.codeLabel}>Mã giới thiệu của bạn</div>
         <div style={s.codeText}>{code}</div>
         <button style={s.copyBtn} onClick={handleCopy}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>
             {copied ? 'check' : 'content_copy'}
           </span>
-          {copied ? 'Da sao chep!' : 'Sao chep ma'}
+          {copied ? 'Đã sao chép!' : 'Sao chép mã'}
         </button>
       </div>
 
-      <div style={s.sectionTitle}>Cach thuc hoat dong</div>
+      <div style={s.sectionTitle}>Cách thức hoạt động</div>
       <div style={s.stepsRow}>
         {steps.map((step, i) => (
           <div key={i} style={s.stepCard}>
@@ -308,21 +308,21 @@ const ReferralPage = () => {
         ))}
       </div>
 
-      <div style={s.sectionTitle}>Phan thuong</div>
+      <div style={s.sectionTitle}>Phần thưởng</div>
       <div style={s.rewardsRow}>
         <div style={s.rewardCard(true)}>
-          <div style={s.rewardLabel}>Ban nhan duoc</div>
+          <div style={s.rewardLabel}>Bạn nhận được</div>
           <div style={s.rewardAmount}>50k</div>
           <div style={s.rewardUnit}>credits</div>
         </div>
         <div style={s.rewardCard(false)}>
-          <div style={s.rewardLabel}>Ban be nhan duoc</div>
+          <div style={s.rewardLabel}>Bạn bè nhận được</div>
           <div style={s.rewardAmount}>30k</div>
           <div style={s.rewardUnit}>credits</div>
         </div>
       </div>
 
-      <div style={{ ...s.sectionTitle, textAlign: 'center' }}>Chia se qua</div>
+      <div style={{ ...s.sectionTitle, textAlign: 'center' }}>Chia sẻ qua</div>
       <div style={s.shareRow}>
         <button style={s.shareBtn('#1877f2')} title="Facebook">f</button>
         <button style={s.shareBtn('#0068ff')} title="Zalo">Z</button>
@@ -331,15 +331,15 @@ const ReferralPage = () => {
         </button>
       </div>
 
-      <div style={s.sectionTitle}>Ban da moi</div>
+      <div style={s.sectionTitle}>Bạn đã mời</div>
       <div style={s.statsRow}>
         <div style={s.statCard}>
           <div style={s.statNum}>{invitedFriends.length}</div>
-          <div style={s.statLabel}>ban da moi</div>
+          <div style={s.statLabel}>bạn đã mời</div>
         </div>
         <div style={s.statCard}>
           <div style={s.statNum}>250k</div>
-          <div style={s.statLabel}>da nhan</div>
+          <div style={s.statLabel}>đã nhận</div>
         </div>
       </div>
 
@@ -354,7 +354,7 @@ const ReferralPage = () => {
               </div>
             </div>
             <span style={s.badge(friend.status === 'joined')}>
-              {friend.status === 'joined' ? 'Da tham gia' : 'Cho xac nhan'}
+              {friend.status === 'joined' ? 'Đã tham gia' : 'Chờ xác nhận'}
             </span>
           </div>
         ))}

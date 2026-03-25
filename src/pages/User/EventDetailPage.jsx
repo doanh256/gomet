@@ -3,15 +3,15 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const MOCK_EVENT = {
   id: 1,
-  title: 'Dem nhac Acoustic & Wine Tasting',
-  date: 'Thu 7, 28 Thang 3, 2026',
+  title: 'Đêm nhạc Acoustic & Wine Tasting',
+  date: 'Thứ 7, 28 Tháng 3, 2026',
   time: '19:00 - 22:00',
-  location: 'The Myst Rooftop, Quan 1, TP.HCM',
+  location: 'The Myst Rooftop, Quận 1, TP.HCM',
   price: '350.000 VND',
   attendees: 24,
   maxAttendees: 40,
   description:
-    'Mot buoi toi lang man voi am nhac acoustic song dong va thuong thuc cac loai ruou vang hang dau. Day la co hoi tuyet voi de gap go nhung nguoi cung so thich trong khong gian am cung va sang trong. Chuong trinh bao gom 3 ly ruou vang, do an nhe va bieu dien nhac song.',
+    'Một buổi tối lãng mạn với âm nhạc acoustic sống động và thưởng thức các loại rượu vang hàng đầu. Đây là cơ hội tuyệt vời để gặp gỡ những người cùng sở thích trong không gian ấm cúng và sang trọng. Chương trình bao gồm 3 ly rượu vang, đồ ăn nhẹ và biểu diễn nhạc sống.',
   attendeesList: [
     { id: 1, name: 'Minh Thu', avatar: null },
     { id: 2, name: 'Hoang Nam', avatar: null },
@@ -21,8 +21,8 @@ const MOCK_EVENT = {
     { id: 6, name: 'Quang Huy', avatar: null },
   ],
   similarEvents: [
-    { id: 2, title: 'Speed Dating tai Saigon', date: 'CN, 30 Thang 3', image: null },
-    { id: 3, title: 'Board Game & Coffee Meet', date: 'Thu 5, 3 Thang 4', image: null },
+    { id: 2, title: 'Speed Dating tại Saigon', date: 'CN, 30 Tháng 3', image: null },
+    { id: 3, title: 'Board Game & Coffee Meet', date: 'Thứ 5, 3 Tháng 4', image: null },
   ],
 };
 
@@ -307,7 +307,7 @@ const EventDetailPage = () => {
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>
               {rsvp ? 'check_circle' : 'event_available'}
             </span>
-            {rsvp ? 'Da dang ky' : 'RSVP'}
+            {rsvp ? 'Đã đăng ký' : 'RSVP'}
           </button>
           <div style={styles.heroTitle}>{event.title}</div>
           <div style={styles.heroMeta}>
@@ -324,7 +324,7 @@ const EventDetailPage = () => {
                 {a.name.charAt(0)}
               </div>
             ))}
-            <span style={styles.stackCount}>+{event.attendees} nguoi tham gia</span>
+            <span style={styles.stackCount}>+{event.attendees} người tham gia</span>
           </div>
         </div>
       </div>
@@ -333,19 +333,19 @@ const EventDetailPage = () => {
       <div style={styles.body}>
         {/* Description */}
         <div style={styles.section}>
-          <div style={styles.sectionTitle}>Mo ta su kien</div>
+          <div style={styles.sectionTitle}>Mô tả sự kiện</div>
           <p style={styles.description}>{event.description}</p>
         </div>
 
         {/* Info Grid */}
         <div style={styles.section}>
-          <div style={styles.sectionTitle}>Chi tiet su kien</div>
+          <div style={styles.sectionTitle}>Chi tiết sự kiện</div>
           <div style={styles.infoGrid}>
             {[
-              { icon: 'calendar_today', label: 'Ngay', value: event.date },
-              { icon: 'schedule', label: 'Thoi gian', value: event.time },
-              { icon: 'location_on', label: 'Dia diem', value: 'The Myst Rooftop' },
-              { icon: 'payments', label: 'Gia ve', value: event.price },
+              { icon: 'calendar_today', label: 'Ngày', value: event.date },
+              { icon: 'schedule', label: 'Thời gian', value: event.time },
+              { icon: 'location_on', label: 'Địa điểm', value: 'The Myst Rooftop' },
+              { icon: 'payments', label: 'Giá vé', value: event.price },
             ].map((item) => (
               <div key={item.icon} style={styles.infoCard}>
                 <div style={styles.infoIcon}>
@@ -362,7 +362,7 @@ const EventDetailPage = () => {
 
         {/* Attendees */}
         <div style={styles.section}>
-          <div style={styles.sectionTitle}>Nguoi tham gia ({event.attendees})</div>
+          <div style={styles.sectionTitle}>Người tham gia ({event.attendees})</div>
           <div style={styles.attendeesGrid}>
             {event.attendeesList.map((a) => (
               <div key={a.id} style={styles.attendeeItem}>
@@ -375,7 +375,7 @@ const EventDetailPage = () => {
 
         {/* Similar Events */}
         <div style={styles.section}>
-          <div style={styles.sectionTitle}>Su kien tuong tu</div>
+          <div style={styles.sectionTitle}>Sự kiện tương tự</div>
           <div style={styles.similarScroll}>
             {event.similarEvents.map((se) => (
               <div key={se.id} style={styles.similarCard} onClick={() => navigate(`/events/${se.id}`)}>
@@ -398,7 +398,7 @@ const EventDetailPage = () => {
         </button>
         <button style={styles.outlineBtn}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
-          Chia se
+          Chia sẻ
         </button>
       </div>
     </div>

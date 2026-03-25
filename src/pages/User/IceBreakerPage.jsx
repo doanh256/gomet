@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const suggestions = [
-  { text: 'Ey, minh thay ban cung thich ca phe sua da. Ban hay uong o dau nhat?', category: 'Am thuc', categoryColor: '#2A2A2A' },
-  { text: 'Neu duoc chon mot noi de di ngay bay gio, ban se chon dau?', category: 'Phieu luu', categoryColor: 'rgba(255,181,158,0.15)' },
-  { text: 'Minh vua xem mot video hai huoc, muon nghe khong? 😄', category: 'Hai huoc', categoryColor: 'rgba(255,213,79,0.15)' },
-  { text: 'Minh thay ban tung tham gia su kien am thuc roi, cam nhan cua ban the nao?', category: 'Tu nhien', categoryColor: '#353535' },
-  { text: 'Ban tin vao tinh yeu tu cai nhin dau tien khong?', category: 'Sau sac', categoryColor: 'rgba(255,87,26,0.15)' },
+  { text: 'Ey, mình thấy bạn cũng thích cà phê sữa đá. Bạn hay uống ở đâu nhất?', category: 'Ẩm thực', categoryColor: '#2A2A2A' },
+  { text: 'Nếu được chọn một nơi để đi ngay bây giờ, bạn sẽ chọn đâu?', category: 'Phiêu lưu', categoryColor: 'rgba(255,181,158,0.15)' },
+  { text: 'Mình vừa xem một video hài hước, muốn nghe không? 😄', category: 'Hài hước', categoryColor: 'rgba(255,213,79,0.15)' },
+  { text: 'Mình thấy bạn từng tham gia sự kiện ẩm thực rồi, cảm nhận của bạn thế nào?', category: 'Tự nhiên', categoryColor: '#353535' },
+  { text: 'Bạn tin vào tình yêu từ cái nhìn đầu tiên không?', category: 'Sâu sắc', categoryColor: 'rgba(255,87,26,0.15)' },
 ];
 
 const tips = [
-  'Hoi ve so thich chung',
-  'Chia se mot cau chuyen ngan',
-  'Tranh cau hoi co/khong',
+  'Hỏi về sở thích chung',
+  'Chia sẻ một câu chuyện ngắn',
+  'Tránh câu hỏi có/không',
 ];
 
 const IceBreakerPage = () => {
@@ -238,14 +238,14 @@ const IceBreakerPage = () => {
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
-        Quay lai
+        Quay lại
       </button>
 
       <div style={s.headerRow}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>ac_unit</span>
         <h1 style={s.heading}>Ice Breakers</h1>
       </div>
-      <p style={s.subtitle}>Goi y cau mo dau hoan hao</p>
+      <p style={s.subtitle}>Gợi ý câu mở đầu hoàn hảo</p>
 
       {/* Partner mini card */}
       <div style={s.partnerCard}>
@@ -256,14 +256,14 @@ const IceBreakerPage = () => {
         />
         <div>
           <div style={s.partnerName}>Minh Anh</div>
-          <div style={s.partnerStatus}>Dang cho ban nhan tin...</div>
+          <div style={s.partnerStatus}>Đang chờ bạn nhắn tin...</div>
         </div>
       </div>
 
       {/* AI Suggestions */}
       <h2 style={s.sectionTitle}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>auto_awesome</span>
-        Goi y tu AI
+        Gợi ý từ AI
       </h2>
       {suggestions.map((item, i) => (
         <div key={i} style={s.suggestionCard}>
@@ -276,12 +276,12 @@ const IceBreakerPage = () => {
             {sentIdx === i ? (
               <span style={s.sentBtn}>
                 <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>check</span>
-                Da gui
+                Đã gửi
               </span>
             ) : (
               <button style={s.sendBtn} onClick={() => handleSend(i)}>
                 <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>send</span>
-                Gui ngay
+                Gửi ngay
               </button>
             )}
           </div>
@@ -292,12 +292,12 @@ const IceBreakerPage = () => {
       <div style={s.customSection}>
         <h2 style={s.sectionTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>edit</span>
-          Tu viet
+          Tự viết
         </h2>
         <div style={s.textareaWrap}>
           <textarea
             style={s.textarea}
-            placeholder="Viet cau chao cua ban..."
+            placeholder="Viết câu chào của bạn..."
             value={customMsg}
             onChange={(e) => setCustomMsg(e.target.value)}
           />
@@ -310,7 +310,7 @@ const IceBreakerPage = () => {
       {/* Tips */}
       <h2 style={s.sectionTitle}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>lightbulb</span>
-        Meo nho
+        Mẹo nhỏ
       </h2>
       <div style={s.tipsSection}>
         {tips.map((tip, i) => (

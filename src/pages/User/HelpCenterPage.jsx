@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const topics = [
-  { icon: 'account_circle', title: 'Tai khoan' },
-  { icon: 'favorite', title: 'Hen ho & Match' },
-  { icon: 'payments', title: 'Thanh toan' },
-  { icon: 'verified_user', title: 'Xac minh' },
-  { icon: 'report', title: 'An toan' },
-  { icon: 'event', title: 'Su kien' },
+  { icon: 'account_circle', title: 'Tài khoản' },
+  { icon: 'favorite', title: 'Hẹn hò & Match' },
+  { icon: 'payments', title: 'Thanh toán' },
+  { icon: 'verified_user', title: 'Xác minh' },
+  { icon: 'report', title: 'An toàn' },
+  { icon: 'event', title: 'Sự kiện' },
 ];
 
 const faqs = [
-  { q: 'Lam sao de xac minh tai khoan?', a: 'Ban co the xac minh tai khoan bang cach chup anh selfie va giay to tuy than. Vao Cai dat > Xac minh danh tinh de bat dau quy trinh.' },
-  { q: 'Cach nap tien vao vi GOMET?', a: 'Vao muc Vi GOMET > Nap tien. Ban co the nap qua the ngan hang, MoMo, ZaloPay hoac chuyen khoan truc tiep.' },
-  { q: 'Toi co the huy buoi hen khong?', a: 'Co, ban co the huy buoi hen truoc 2 gio. Vao Buoi hen cua toi > Chon buoi hen > Huy. Luu y huy nhieu lan co the anh huong den danh gia.' },
-  { q: 'Lam sao bao cao nguoi dung?', a: 'Nhan vao ho so nguoi dung > Bieu tuong 3 cham > Bao cao. Chon ly do bao cao va cung cap chi tiet. Doi ngu se xem xet trong 24h.' },
-  { q: 'GOMET Premium co gi dac biet?', a: 'Premium bao gom: Xem ai thich ban, Khong gioi han luot thich, Boost ho so moi ngay, Uu tien hien thi, va nhieu tinh nang doc quyen khac.' },
-  { q: 'Cach lien he ho tro?', a: 'Ban co the lien he qua chat truc tiep trong ung dung, gui email hotro@gomet.vn, hoac goi 1900-xxxx tu 8h-22h hang ngay.' },
+  { q: 'Làm sao để xác minh tài khoản?', a: 'Bạn có thể xác minh tài khoản bằng cách chụp ảnh selfie và giấy tờ tùy thân. Vào Cài đặt > Xác minh danh tính để bắt đầu quy trình.' },
+  { q: 'Cách nạp tiền vào ví GOMET?', a: 'Vào mục Ví GOMET > Nạp tiền. Bạn có thể nạp qua thẻ ngân hàng, MoMo, ZaloPay hoặc chuyển khoản trực tiếp.' },
+  { q: 'Tôi có thể hủy buổi hẹn không?', a: 'Có, bạn có thể hủy buổi hẹn trước 2 giờ. Vào Buổi hẹn của tôi > Chọn buổi hẹn > Hủy. Lưu ý hủy nhiều lần có thể ảnh hưởng đến đánh giá.' },
+  { q: 'Làm sao báo cáo người dùng?', a: 'Nhấn vào hồ sơ người dùng > Biểu tượng 3 chấm > Báo cáo. Chọn lý do báo cáo và cung cấp chi tiết. Đội ngũ sẽ xem xét trong 24h.' },
+  { q: 'GOMET Premium có gì đặc biệt?', a: 'Premium bao gồm: Xem ai thích bạn, Không giới hạn lượt thích, Boost hồ sơ mỗi ngày, Ưu tiên hiển thị, và nhiều tính năng độc quyền khác.' },
+  { q: 'Cách liên hệ hỗ trợ?', a: 'Bạn có thể liên hệ qua chat trực tiếp trong ứng dụng, gửi email hotro@gomet.vn, hoặc gọi 1900-xxxx từ 8h-22h hàng ngày.' },
 ];
 
 const HelpCenterPage = () => {
@@ -205,7 +205,7 @@ const HelpCenterPage = () => {
     <div style={s.page}>
       <div style={s.header}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>support_agent</span>
-        <h1 style={s.heading}>Trung tam tro giup</h1>
+        <h1 style={s.heading}>Trung tâm trợ giúp</h1>
       </div>
 
       {/* Search */}
@@ -213,14 +213,14 @@ const HelpCenterPage = () => {
         <span aria-hidden="true" className="material-symbols-outlined" style={s.searchIcon}>search</span>
         <input
           style={s.searchInput}
-          placeholder="Tim kiem cau hoi..."
+          placeholder="Tìm kiếm câu hỏi..."
           value={search}
           onChange={e => setSearch(e.target.value)}
         />
       </div>
 
       {/* Topics */}
-      <h2 style={s.sectionTitle}>Chu de pho bien</h2>
+      <h2 style={s.sectionTitle}>Chủ đề phổ biến</h2>
       <div style={s.topicsGrid}>
         {topics.map((t, i) => (
           <div key={i} style={s.topicCard}>
@@ -231,7 +231,7 @@ const HelpCenterPage = () => {
       </div>
 
       {/* FAQs */}
-      <h2 style={s.sectionTitle}>Cau hoi thuong gap</h2>
+      <h2 style={s.sectionTitle}>Câu hỏi thường gặp</h2>
       <div style={s.faqList}>
         {filteredFaqs.map((f, i) => (
           <div key={i} style={s.faqItem}>
@@ -250,20 +250,20 @@ const HelpCenterPage = () => {
 
       {/* Support contact */}
       <div style={s.supportCard}>
-        <div style={s.supportTitle}>Van can ho tro?</div>
-        <p style={s.supportSubtitle}>Chon cach lien he phu hop voi ban</p>
+        <div style={s.supportTitle}>Vẫn cần hỗ trợ?</div>
+        <p style={s.supportSubtitle}>Chọn cách liên hệ phù hợp với bạn</p>
         <div style={s.supportActions}>
           <div style={s.supportBtn}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.supportBtnIcon}>chat</span>
-            <span style={s.supportBtnLabel}>Lien he truc tiep</span>
+            <span style={s.supportBtnLabel}>Liên hệ trực tiếp</span>
           </div>
           <div style={s.supportBtn}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.supportBtnIcon}>mail</span>
-            <span style={s.supportBtnLabel}>Gui email</span>
+            <span style={s.supportBtnLabel}>Gửi email</span>
           </div>
           <div style={s.supportBtn}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.supportBtnIcon}>call</span>
-            <span style={s.supportBtnLabel}>Goi dien</span>
+            <span style={s.supportBtnLabel}>Gọi điện</span>
           </div>
         </div>
       </div>

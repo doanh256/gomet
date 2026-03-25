@@ -229,16 +229,16 @@ const RateExperiencePage = () => {
   };
 
   const categories = [
-    { key: 'conversation', label: 'Cuoc tro chuyen' },
-    { key: 'punctuality', label: 'Su dung gio' },
-    { key: 'meetAgain', label: 'Muon gap lai?' },
+    { key: 'conversation', label: 'Cuộc trò chuyện' },
+    { key: 'punctuality', label: 'Sử dụng giờ' },
+    { key: 'meetAgain', label: 'Muốn gặp lại?' },
   ];
 
   return (
     <div style={s.page}>
       <div style={s.header}>
-        <h1 style={s.heading}>Danh gia trai nghiem</h1>
-        <p style={s.subtitle}>Chia se cam nhan cua ban ve buoi hen</p>
+        <h1 style={s.heading}>Đánh giá trải nghiệm</h1>
+        <p style={s.subtitle}>Chia sẻ cảm nhận của bạn về buổi hẹn</p>
       </div>
 
       <div style={s.partnerCard}>
@@ -257,7 +257,7 @@ const RateExperiencePage = () => {
       </div>
 
       <div style={s.section}>
-        <div style={s.sectionTitle}>Danh gia tong the</div>
+        <div style={s.sectionTitle}>Đánh giá tổng thể</div>
         <div style={s.overallStars}>
           {[1, 2, 3, 4, 5].map((star) => (
             <span
@@ -275,12 +275,12 @@ const RateExperiencePage = () => {
           ))}
         </div>
         <div style={s.ratingCount}>
-          {overallRating > 0 ? `${overallRating}/5 sao` : 'Cham de danh gia'}
+          {overallRating > 0 ? `${overallRating}/5 sao` : 'Chạm để đánh giá'}
         </div>
       </div>
 
       <div style={s.section}>
-        <div style={s.sectionTitle}>Danh gia chi tiet</div>
+        <div style={s.sectionTitle}>Đánh giá chi tiết</div>
         {categories.map((cat) => (
           <div key={cat.key} style={s.categoryRow}>
             <span style={s.categoryLabel}>{cat.label}</span>
@@ -304,11 +304,11 @@ const RateExperiencePage = () => {
       </div>
 
       <div style={s.section}>
-        <div style={s.sectionTitle}>Nhan xet</div>
+        <div style={s.sectionTitle}>Nhận xét</div>
         <div style={s.textareaWrap}>
           <textarea
             style={s.textarea}
-            placeholder="Chia se cam nhan cua ban..."
+            placeholder="Chia sẻ cảm nhận của bạn..."
             value={comment}
             onChange={(e) => {
               if (e.target.value.length <= 500) setComment(e.target.value);
@@ -325,7 +325,7 @@ const RateExperiencePage = () => {
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#E6BEB2' }}>
             visibility_off
           </span>
-          Gui an danh
+          Gửi ẩn danh
         </div>
         <div style={s.toggleTrack} onClick={() => setAnonymous(!anonymous)}>
           <div style={s.toggleThumb} />
@@ -333,10 +333,10 @@ const RateExperiencePage = () => {
       </div>
 
       <button style={s.submitBtn} onClick={handleSubmit}>
-        Gui danh gia
+        Gửi đánh giá
       </button>
       <button style={s.skipLink} onClick={() => navigate(-1)}>
-        Bo qua
+        Bỏ qua
       </button>
     </div>
   );

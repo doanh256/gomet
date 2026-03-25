@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-const ticketData = { eventLabel: 'GOMET EVENT', eventName: 'Dem Nhac Acoustic & Wine Tasting', date: 'Thu 7, 28/03/2026', time: '19:00 - 22:00', venue: 'The Loft Saigon', address: '26 Ly Tu Trong, Q.1, TP.HCM', ticketId: 'GOM-TK-2026-0842', seat: 'Ban VIP 03', guestName: 'Nguyen Minh Anh', ticketType: 'VIP' };
+const ticketData = { eventLabel: 'GOMET EVENT', eventName: 'Đêm Nhạc Acoustic & Wine Tasting', date: 'Thứ 7, 28/03/2026', time: '19:00 - 22:00', venue: 'The Loft Saigon', address: '26 Lý Tự Trọng, Q.1, TP.HCM', ticketId: 'GOM-TK-2026-0842', seat: 'Bàn VIP 03', guestName: 'Nguyen Minh Anh', ticketType: 'VIP' };
 
 const EventTicketPage = () => {
   const navigate = useNavigate();
@@ -40,15 +40,15 @@ const EventTicketPage = () => {
 
   return (
     <div style={s.page}>
-      <div style={s.topBar}><button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined">arrow_back</span></button><span style={s.topTitle}>Ve su kien</span><div style={s.placeholder} /></div>
+      <div style={s.topBar}><button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined">arrow_back</span></button><span style={s.topTitle}>Vé sự kiện</span><div style={s.placeholder} /></div>
       <div style={s.ticket}>
         <div style={s.ticketTop}><div style={s.eventLabel}>{ticketData.eventLabel}</div><div style={s.eventName}>{ticketData.eventName}</div></div>
-        <div style={s.ticketBody}><div style={s.infoRow}><span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>calendar_today</span><span style={s.infoText}>{ticketData.date}</span></div><div style={s.infoRow}><span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>schedule</span><span style={s.infoText}>{ticketData.time}</span></div><div style={s.infoRow}><span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>location_on</span><span style={s.infoText}>{ticketData.venue}</span></div><div style={s.infoSub}>{ticketData.address}</div><div style={s.qrBox}><span aria-hidden="true" className="material-symbols-outlined" style={s.qrIcon}>qr_code_2</span></div><div style={s.scanLabel}>Quet ma de check-in</div></div>
+        <div style={s.ticketBody}><div style={s.infoRow}><span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>calendar_today</span><span style={s.infoText}>{ticketData.date}</span></div><div style={s.infoRow}><span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>schedule</span><span style={s.infoText}>{ticketData.time}</span></div><div style={s.infoRow}><span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>location_on</span><span style={s.infoText}>{ticketData.venue}</span></div><div style={s.infoSub}>{ticketData.address}</div><div style={s.qrBox}><span aria-hidden="true" className="material-symbols-outlined" style={s.qrIcon}>qr_code_2</span></div><div style={s.scanLabel}>Quét mã để check-in</div></div>
         <div style={s.divider}><div style={{ ...s.dividerNotch, left: -12 }} /><div style={{ ...s.dividerNotch, right: -12 }} /></div>
-        <div style={s.ticketDetails}><div style={s.detailGrid}><div style={s.detailItem}><div style={s.detailLabel}>Ma ve</div><div style={s.detailValue}>{ticketData.ticketId}</div></div><div style={s.detailItem}><div style={s.detailLabel}>Ban / Cho ngoi</div><div style={s.detailValue}>{ticketData.seat}</div></div><div style={s.detailItem}><div style={s.detailLabel}>Khach</div><div style={s.detailValue}>{ticketData.guestName}</div></div><div style={s.detailItem}><div style={s.detailLabel}>Loai ve</div><div><span style={s.typeBadge}>{ticketData.ticketType}</span></div></div></div></div>
+        <div style={s.ticketDetails}><div style={s.detailGrid}><div style={s.detailItem}><div style={s.detailLabel}>Mã vé</div><div style={s.detailValue}>{ticketData.ticketId}</div></div><div style={s.detailItem}><div style={s.detailLabel}>Bàn / Chỗ ngồi</div><div style={s.detailValue}>{ticketData.seat}</div></div><div style={s.detailItem}><div style={s.detailLabel}>Khách</div><div style={s.detailValue}>{ticketData.guestName}</div></div><div style={s.detailItem}><div style={s.detailLabel}>Loại vé</div><div><span style={s.typeBadge}>{ticketData.ticketType}</span></div></div></div></div>
       </div>
-      <div style={s.actions}><button style={s.actionBtn}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>download</span>Luu ve</button><button style={s.actionBtn}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>Chia se ve</button></div>
-      <div style={s.brightnessHint}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>brightness_high</span>Tang do sang man hinh de quet ma</div>
+      <div style={s.actions}><button style={s.actionBtn}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>download</span>Lưu vé</button><button style={s.actionBtn}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>Chia sẻ vé</button></div>
+      <div style={s.brightnessHint}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>brightness_high</span>Tăng độ sáng màn hình để quét mã</div>
     </div>
   );
 };

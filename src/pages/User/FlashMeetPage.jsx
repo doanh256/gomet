@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const recentSparks = [
-  { id: 1, name: 'Linh', verified: true, time: '2 phut truoc', gradient: 'linear-gradient(180deg, #FF571A 0%, #3A0B00 100%)' },
-  { id: 2, name: 'Minh', verified: true, time: '5 phut truoc', gradient: 'linear-gradient(180deg, #FFB59E 0%, #FF571A 100%)' },
-  { id: 3, name: 'Trang', verified: false, time: '12 phut truoc', gradient: 'linear-gradient(180deg, #3A0B00 0%, #FF571A 100%)' },
-  { id: 4, name: 'Duc', verified: true, time: '18 phut truoc', gradient: 'linear-gradient(180deg, #FF571A 0%, #FFB59E 100%)' },
+  { id: 1, name: 'Linh', verified: true, time: '2 phút trước', gradient: 'linear-gradient(180deg, #FF571A 0%, #3A0B00 100%)' },
+  { id: 2, name: 'Minh', verified: true, time: '5 phút trước', gradient: 'linear-gradient(180deg, #FFB59E 0%, #FF571A 100%)' },
+  { id: 3, name: 'Trang', verified: false, time: '12 phút trước', gradient: 'linear-gradient(180deg, #3A0B00 0%, #FF571A 100%)' },
+  { id: 4, name: 'Duc', verified: true, time: '18 phút trước', gradient: 'linear-gradient(180deg, #FF571A 0%, #FFB59E 100%)' },
 ];
 
 const steps = [
-  { num: 1, icon: 'queue', label: 'Vao hang doi' },
-  { num: 2, icon: 'videocam', label: '5 phut hen do' },
-  { num: 3, icon: 'handshake', label: 'Quyet dinh ket noi' },
+  { num: 1, icon: 'queue', label: 'Vào hàng đợi' },
+  { num: 2, icon: 'videocam', label: '5 phút hẹn đó' },
+  { num: 3, icon: 'handshake', label: 'Quyết định kết nối' },
 ];
 
 const FlashMeetPage = () => {
@@ -342,7 +342,7 @@ const FlashMeetPage = () => {
 
       {/* Countdown Timer */}
       <div style={s.timerSection}>
-        <div style={s.timerLabel}>Vong tiep theo bat dau sau</div>
+        <div style={s.timerLabel}>Vòng tiếp theo bắt đầu sau</div>
         <div style={s.timerRow}>
           <div style={s.digitCard}>{digits[0]}</div>
           <div style={s.digitCard}>{digits[1]}</div>
@@ -356,11 +356,11 @@ const FlashMeetPage = () => {
       <div style={s.statsRow}>
         <div style={s.statChip}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.statIcon}>group</span>
-          <span style={s.statText}>1,248 Trong hang doi</span>
+          <span style={s.statText}>1.248 Trong hàng đợi</span>
         </div>
         <div style={s.statChip}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.statIcon}>timer</span>
-          <span style={s.statText}>5 phut / vong</span>
+          <span style={s.statText}>5 phút / vòng</span>
         </div>
       </div>
 
@@ -373,11 +373,11 @@ const FlashMeetPage = () => {
       {/* Privacy Note */}
       <div style={s.privacy}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.privacyIcon}>lock</span>
-        Video & chat duoc ma hoa. Danh tinh an toan.
+        Video & chat được mã hóa. Danh tính an toàn.
       </div>
 
       {/* How It Works */}
-      <div style={s.sectionTitle}>Cach thuc hoat dong</div>
+      <div style={s.sectionTitle}>Cách thức hoạt động</div>
       <div style={s.stepsRow}>
         {steps.map(step => (
           <div key={step.num} style={s.stepCard}>
@@ -391,11 +391,11 @@ const FlashMeetPage = () => {
       {/* Chef's Special Theme Card */}
       <div style={s.sectionTitle}>Chef's Special</div>
       <div style={s.themeCard}>
-        <div style={s.themeLabel}>Chu de toi nay</div>
+        <div style={s.themeLabel}>Chủ đề tối nay</div>
         <div style={s.themeName}>Date Night: Italian Cuisine</div>
         <div style={s.themeDetail}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>restaurant</span>
-          Nha hang La Pasta, Quan 1
+          Nhà hàng La Pasta, Quận 1
         </div>
         <div style={s.avatarStack}>
           {['L', 'M', 'T', 'D', 'H'].map((letter, i) => (
@@ -406,7 +406,7 @@ const FlashMeetPage = () => {
       </div>
 
       {/* Recent Sparks */}
-      <div style={s.sectionTitle}>Sparks gan day</div>
+      <div style={s.sectionTitle}>Sparks gần đây</div>
       <div style={s.sparksGrid}>
         {recentSparks.map(spark => (
           <div key={spark.id} style={{ ...s.sparkCard, background: spark.gradient }}>

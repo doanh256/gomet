@@ -17,17 +17,17 @@ const states = [
     icon: 'heart_broken',
     iconColor: '#FF6B9D',
     bgColor: 'rgba(255,107,157,0.1)',
-    title: 'Chua co match nao',
-    description: 'Hay tiep tuc kham pha va tuong tac de tim nguoi phu hop voi vi giac cua ban.',
-    actionLabel: 'Bat dau kham pha',
+    title: 'Chưa có match nào',
+    description: 'Hãy tiếp tục khám phá và tương tác để tìm người phù hợp với vị giác của bạn.',
+    actionLabel: 'Bắt đầu khám phá',
     actionIcon: 'explore',
   },
   {
     icon: 'mail',
     iconColor: '#6C63FF',
     bgColor: 'rgba(108,99,255,0.1)',
-    title: 'Hop thu trong',
-    description: 'Ban chua co tin nhan nao. Gui loi chao den nhung nguoi match de bat dau tro chuyen.',
+    title: 'Hộp thư trống',
+    description: 'Bạn chưa có tin nhắn nào. Gửi lời chào đến những người match để bắt đầu trò chuyện.',
     actionLabel: 'Xem matches',
     actionIcon: 'favorite',
   },
@@ -35,9 +35,9 @@ const states = [
     icon: 'wifi_off',
     iconColor: '#FF9800',
     bgColor: 'rgba(255,152,0,0.1)',
-    title: 'Mat ket noi',
-    description: 'Khong the ket noi den may chu. Vui long kiem tra ket noi mang va thu lai.',
-    actionLabel: 'Thu lai',
+    title: 'Mất kết nối',
+    description: 'Không thể kết nối đến máy chủ. Vui lòng kiểm tra kết nối mạng và thử lại.',
+    actionLabel: 'Thử lại',
     actionIcon: 'refresh',
   },
 ];
@@ -54,7 +54,7 @@ const EmptyStatesPage = () => {
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
         </button>
-        <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>Trang Thai Trong</h1>
+        <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>Trạng Thái Trống</h1>
         <span style={{ fontSize: 12, color: '#888', background: 'rgba(255,255,255,0.06)', borderRadius: 8, padding: '3px 10px', marginLeft: 8 }}>Demo</span>
       </div>
 

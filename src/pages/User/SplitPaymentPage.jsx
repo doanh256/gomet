@@ -2,20 +2,20 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const splitMethods = [
-  { id: 'equal', label: 'Chia deu', icon: 'vertical_split' },
-  { id: 'byItem', label: 'Chia theo mon', icon: 'list_alt' },
-  { id: 'custom', label: 'Tu nhap', icon: 'edit' },
+  { id: 'equal', label: 'Chia đều', icon: 'vertical_split' },
+  { id: 'byItem', label: 'Chia theo món', icon: 'list_alt' },
+  { id: 'custom', label: 'Tự nhập', icon: 'edit' },
 ];
 
 const participants = [
-  { id: 1, name: 'Ban (Minh Anh)', avatar: 'MA', amount: 425000, status: 'paid' },
+  { id: 1, name: 'Bạn (Minh Anh)', avatar: 'MA', amount: 425000, status: 'paid' },
   { id: 2, name: 'Thanh Tung', avatar: 'TT', amount: 425000, status: 'pending' },
 ];
 
 const paymentMethods = [
-  { id: 'gomet', label: 'Vi GOMET', icon: 'account_balance_wallet', sub: 'So du: 1.200.000 VND' },
+  { id: 'gomet', label: 'Ví GOMET', icon: 'account_balance_wallet', sub: 'Số dư: 1.200.000 VND' },
   { id: 'momo', label: 'MoMo', icon: 'phone_android', sub: '***456' },
-  { id: 'bank', label: 'The ngan hang', icon: 'credit_card', sub: 'Vietcombank ***789' },
+  { id: 'bank', label: 'Thẻ ngân hàng', icon: 'credit_card', sub: 'Vietcombank ***789' },
 ];
 
 const formatVND = (n) => n.toLocaleString('vi-VN') + ' VND';
@@ -324,16 +324,16 @@ const SplitPaymentPage = () => {
           <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>receipt_long</span>
-        <h1 style={s.headerTitle}>Chia hoa don</h1>
+        <h1 style={s.headerTitle}>Chia hóa đơn</h1>
       </div>
 
       <div style={s.totalCard}>
-        <div style={s.totalLabel}>Tong hoa don</div>
+        <div style={s.totalLabel}>Tổng hóa đơn</div>
         <div style={s.totalAmount}>850.000 VND</div>
         <div style={s.totalVenue}>The Loft Saigon</div>
       </div>
 
-      <div style={s.sectionLabel}>Phuong thuc chia</div>
+      <div style={s.sectionLabel}>Phương thức chia</div>
       <div style={s.splitRow}>
         {splitMethods.map((m) => {
           const active = splitMethod === m.id;
@@ -352,7 +352,7 @@ const SplitPaymentPage = () => {
         })}
       </div>
 
-      <div style={s.sectionLabel}>Thanh vien ({participants.length})</div>
+      <div style={s.sectionLabel}>Thành viên ({participants.length})</div>
       {participants.map((p) => (
         <div style={s.participantCard} key={p.id}>
           <div style={s.avatar}>{p.avatar}</div>
@@ -364,33 +364,33 @@ const SplitPaymentPage = () => {
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>
               {p.status === 'paid' ? 'check_circle' : 'schedule'}
             </span>
-            {p.status === 'paid' ? 'Da tra' : 'Cho'}
+            {p.status === 'paid' ? 'Đã trả' : 'Chờ'}
           </div>
         </div>
       ))}
 
       <div style={s.summaryCard}>
-        <div style={s.sectionLabel}>Chi tiet thanh toan</div>
+        <div style={s.sectionLabel}>Chi tiết thanh toán</div>
         <div style={s.summaryRow}>
-          <span>Phan cua ban</span>
+          <span>Phần của bạn</span>
           <span>{formatVND(subtotal)}</span>
         </div>
         <div style={s.summaryRow}>
-          <span>Phi dich vu (5%)</span>
+          <span>Phí dịch vụ (5%)</span>
           <span>{formatVND(serviceFee)}</span>
         </div>
         <div style={s.summaryTotal}>
-          <span>Tong cong</span>
+          <span>Tổng cộng</span>
           <span>{formatVND(totalPerPerson)}</span>
         </div>
       </div>
 
       <button style={s.primaryBtn}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>payments</span>
-        Thanh toan {formatVND(totalPerPerson)}
+        Thanh toán {formatVND(totalPerPerson)}
       </button>
 
-      <div style={s.sectionLabel}>Phuong thuc thanh toan</div>
+      <div style={s.sectionLabel}>Phương thức thanh toán</div>
       {paymentMethods.map((pm) => {
         const active = payMethod === pm.id;
         return (

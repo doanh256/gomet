@@ -9,9 +9,9 @@ const mdKeyframes = `
 `;
 
 const comments = [
-  { name: 'Tuan Anh', avatar: 'https://i.pravatar.cc/40?img=12', text: 'Tro nhin qua ngon! Phai thu ngay', time: '2h' },
-  { name: 'Mai Linh', avatar: 'https://i.pravatar.cc/40?img=5', text: 'Minh cung moi an o day tuan truoc, tuyet voi lam', time: '4h' },
-  { name: 'Duc Minh', avatar: 'https://i.pravatar.cc/40?img=15', text: 'Rating bao nhieu sao vay ban?', time: '5h' },
+  { name: 'Tuan Anh', avatar: 'https://i.pravatar.cc/40?img=12', text: 'Trông ngon quá! Phải thử ngay', time: '2h' },
+  { name: 'Mai Linh', avatar: 'https://i.pravatar.cc/40?img=5', text: 'Mình cũng mới ăn ở đây tuần trước, tuyệt vời lắm', time: '4h' },
+  { name: 'Duc Minh', avatar: 'https://i.pravatar.cc/40?img=15', text: 'Rating bao nhiêu sao vậy bạn?', time: '5h' },
 ];
 
 const relatedMoments = [
@@ -58,13 +58,13 @@ const MomentDetailPage = () => {
               <span style={{ fontSize: 10, fontWeight: 800, color: '#fff' }}>2.4k</span>
             </div>
           </div>
-          <div style={{ fontSize: 12, color: '#888' }}>12 gio truoc</div>
+          <div style={{ fontSize: 12, color: '#888' }}>12 giờ trước</div>
         </div>
         <button style={{
           padding: '6px 18px', borderRadius: 20, border: 'none', cursor: 'pointer',
           background: 'linear-gradient(135deg, #6C63FF, #8B5CF6)', color: '#fff',
           fontSize: 13, fontWeight: 700
-        }}>Theo doi</button>
+        }}>Theo dõi</button>
       </div>
 
       {/* Dish Tag */}
@@ -75,8 +75,8 @@ const MomentDetailPage = () => {
         }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#E8900C' }}>restaurant</span>
           <div>
-            <div style={{ fontSize: 13, fontWeight: 700, color: '#E8900C' }}>Bun Cha Dac Kim</div>
-            <div style={{ fontSize: 11, color: '#888' }}>Bun Cha 34 - Hang Than, Ba Dinh</div>
+            <div style={{ fontSize: 13, fontWeight: 700, color: '#E8900C' }}>Bún Chả Đắc Kim</div>
+            <div style={{ fontSize: 11, color: '#888' }}>Bún Chả 34 - Hàng Than, Ba Đình</div>
           </div>
         </div>
       </div>
@@ -84,7 +84,7 @@ const MomentDetailPage = () => {
       {/* Caption */}
       <div style={{ padding: '0 16px', marginBottom: 16 }}>
         <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: '#666460' }}>
-          Bun cha ngon nhat Ha Noi day roi! Thit nuong than hoa, nuoc cham vua ngot vua chua. Nem ran gion tan. 10/10 se quay lai!
+          Bún chả ngon nhất Hà Nội đây rồi! Thịt nướng than hoa, nước chấm vừa ngọt vừa chua. Nem rán giòn tan. 10/10 sẽ quay lại!
         </p>
       </div>
 
@@ -115,7 +115,7 @@ const MomentDetailPage = () => {
 
       {/* Comments */}
       <div style={{ padding: '0 16px', marginBottom: 24 }}>
-        <h3 style={{ margin: '0 0 14px', fontSize: 15, fontWeight: 700 }}>Binh luan</h3>
+        <h3 style={{ margin: '0 0 14px', fontSize: 15, fontWeight: 700 }}>Bình luận</h3>
         {comments.map((c, i) => (
           <div key={i} style={{
             display: 'flex', gap: 10, marginBottom: 16,
@@ -135,7 +135,7 @@ const MomentDetailPage = () => {
 
       {/* Related Moments */}
       <div style={{ padding: '0 16px' }}>
-        <h3 style={{ margin: '0 0 14px', fontSize: 15, fontWeight: 700 }}>Moments Lien Quan</h3>
+        <h3 style={{ margin: '0 0 14px', fontSize: 15, fontWeight: 700 }}>Moments Liên Quan</h3>
         <div style={{ display: 'flex', gap: 8, overflowX: 'auto', paddingBottom: 8 }}>
           {relatedMoments.map((m, i) => (
             <div key={i} style={{ flexShrink: 0 }}>
