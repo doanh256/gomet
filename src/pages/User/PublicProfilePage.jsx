@@ -177,7 +177,7 @@ const PublicProfilePage = () => {
       <div style={s.statsRow}>
         <div style={s.statCard}>
           <div style={s.statValue}>12,450</div>
-          <div style={s.statLabel}>Vang Points</div>
+          <div style={s.statLabel}>Điểm Vàng</div>
         </div>
         <div style={s.statCard}>
           <div style={s.statValue}>87</div>

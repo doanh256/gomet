@@ -203,29 +203,29 @@ const AdvancedSettingsPage = () => {
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
-        Quay lai
+        Quay lại
       </button>
 
-      <h1 style={s.heading}>Cai dat nang cao</h1>
+      <h1 style={s.heading}>Cài đặt nâng cao</h1>
 
       {/* Section 1 - Dating */}
       <div style={s.card}>
         <div style={s.sectionHeader}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>favorite</span>
-          <span style={s.sectionTitle}>Cai dat hen ho</span>
+          <span style={s.sectionTitle}>Cài đặt hẹn hò</span>
         </div>
 
         <div style={s.row}>
-          <span style={s.rowLabel}>Gioi tinh quan tam</span>
+          <span style={s.rowLabel}>Giới tính quan tâm</span>
           <div style={s.chipGroup}>
             <button style={s.chip(gender === 'male')} onClick={() => setGender('male')}>Nam</button>
-            <button style={s.chip(gender === 'female')} onClick={() => setGender('female')}>Nu</button>
-            <button style={s.chip(gender === 'all')} onClick={() => setGender('all')}>Tat ca</button>
+            <button style={s.chip(gender === 'female')} onClick={() => setGender('female')}>Nữ</button>
+            <button style={s.chip(gender === 'all')} onClick={() => setGender('all')}>Tất cả</button>
           </div>
         </div>
 
         <div style={s.row}>
-          <span style={s.rowLabel}>Do tuoi</span>
+          <span style={s.rowLabel}>Độ tuổi</span>
           <div style={s.rangeRow}>
             <input
               type="number"
@@ -248,7 +248,7 @@ const AdvancedSettingsPage = () => {
         </div>
 
         <div style={s.row}>
-          <span style={s.rowLabel}>Khoang cach</span>
+          <span style={s.rowLabel}>Khoảng cách</span>
           <div style={s.sliderDisplay}>
             <input
               type="range"
@@ -263,7 +263,7 @@ const AdvancedSettingsPage = () => {
         </div>
 
         <div style={s.rowLast}>
-          <span style={s.rowLabel}>Chi hien thi da xac minh</span>
+          <span style={s.rowLabel}>Chỉ hiển thị đã xác minh</span>
           <Toggle value={verifiedOnly} onChange={setVerifiedOnly} />
         </div>
       </div>
@@ -272,33 +272,33 @@ const AdvancedSettingsPage = () => {
       <div style={s.card}>
         <div style={s.sectionHeader}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>shield</span>
-          <span style={s.sectionTitle}>Quyen rieng tu</span>
+          <span style={s.sectionTitle}>Quyền riêng tư</span>
         </div>
 
         <div style={s.row}>
-          <span style={s.rowLabel}>An trang thai hoat dong</span>
+          <span style={s.rowLabel}>Ẩn trạng thái hoạt động</span>
           <Toggle value={hideActivity} onChange={setHideActivity} />
         </div>
 
         <div style={s.row}>
-          <span style={s.rowLabel}>An khoang cach</span>
+          <span style={s.rowLabel}>Ẩn khoảng cách</span>
           <Toggle value={hideDistance} onChange={setHideDistance} />
         </div>
 
         <div style={s.row}>
           <span style={s.rowLabel}>
-            Che do an danh khi xem
+            Chế độ ẩn danh khi xem
             <span style={s.premiumBadge}>Premium</span>
           </span>
           <Toggle value={anonView} onChange={setAnonView} />
         </div>
 
         <div style={s.rowLast}>
-          <span style={s.rowLabel}>Ai co the nhan tin</span>
+          <span style={s.rowLabel}>Ai có thể nhắn tin</span>
           <div style={s.chipGroup}>
-            <button style={s.chip(msgAccess === 'all')} onClick={() => setMsgAccess('all')}>Tat ca</button>
-            <button style={s.chip(msgAccess === 'match')} onClick={() => setMsgAccess('match')}>Chi match</button>
-            <button style={s.chip(msgAccess === 'none')} onClick={() => setMsgAccess('none')}>Khong ai</button>
+            <button style={s.chip(msgAccess === 'all')} onClick={() => setMsgAccess('all')}>Tất cả</button>
+            <button style={s.chip(msgAccess === 'match')} onClick={() => setMsgAccess('match')}>Chỉ match</button>
+            <button style={s.chip(msgAccess === 'none')} onClick={() => setMsgAccess('none')}>Không ai</button>
           </div>
         </div>
       </div>
@@ -307,38 +307,38 @@ const AdvancedSettingsPage = () => {
       <div style={s.card}>
         <div style={s.sectionHeader}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>notifications</span>
-          <span style={s.sectionTitle}>Thong bao</span>
+          <span style={s.sectionTitle}>Thông báo</span>
         </div>
 
         <div style={s.row}>
-          <span style={s.rowLabel}>Match moi</span>
+          <span style={s.rowLabel}>Match mới</span>
           <Toggle value={notifMatch} onChange={setNotifMatch} />
         </div>
 
         <div style={s.row}>
-          <span style={s.rowLabel}>Tin nhan moi</span>
+          <span style={s.rowLabel}>Tin nhắn mới</span>
           <Toggle value={notifMsg} onChange={setNotifMsg} />
         </div>
 
         <div style={s.row}>
-          <span style={s.rowLabel}>Luot thich</span>
+          <span style={s.rowLabel}>Lượt thích</span>
           <Toggle value={notifLike} onChange={setNotifLike} />
         </div>
 
         <div style={s.row}>
-          <span style={s.rowLabel}>Su kien gan ban</span>
+          <span style={s.rowLabel}>Sự kiện gần bạn</span>
           <Toggle value={notifEvent} onChange={setNotifEvent} />
         </div>
 
         <div style={s.rowLast}>
-          <span style={s.rowLabel}>Khuyen mai</span>
+          <span style={s.rowLabel}>Khuyến mãi</span>
           <Toggle value={notifPromo} onChange={setNotifPromo} />
         </div>
       </div>
 
       <button style={s.saveBtn}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>save</span>
-        Luu thay doi
+        Lưu thay đổi
       </button>
     </div>
   );

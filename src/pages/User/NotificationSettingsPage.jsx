@@ -33,19 +33,19 @@ const NotificationSettingsPage = () => {
   };
 
   const pushRows = [
-    { key: 'match', icon: 'favorite', label: 'Match moi' },
-    { key: 'message', icon: 'message', label: 'Tin nhan' },
-    { key: 'event', icon: 'event', label: 'Su kien' },
-    { key: 'promo', icon: 'local_offer', label: 'Khuyen mai' },
-    { key: 'community', icon: 'group', label: 'Cong dong' },
+    { key: 'match', icon: 'favorite', label: 'Match mới' },
+    { key: 'message', icon: 'message', label: 'Tin nhắn' },
+    { key: 'event', icon: 'event', label: 'Sự kiện' },
+    { key: 'promo', icon: 'local_offer', label: 'Khuyến mãi' },
+    { key: 'community', icon: 'group', label: 'Cộng đồng' },
     { key: 'flash', icon: 'bolt', label: 'Flash Meet' },
   ];
 
   const emailRows = [
-    { key: 'weekly', icon: 'mail', label: 'Tom tat hang tuan' },
-    { key: 'news', icon: 'campaign', label: 'Tin tuc & cap nhat' },
-    { key: 'promo', icon: 'redeem', label: 'Khuyen mai' },
-    { key: 'security', icon: 'security', label: 'Bao mat' },
+    { key: 'weekly', icon: 'mail', label: 'Tóm tắt hàng tuần' },
+    { key: 'news', icon: 'campaign', label: 'Tin tức & cập nhật' },
+    { key: 'promo', icon: 'redeem', label: 'Khuyến mãi' },
+    { key: 'security', icon: 'security', label: 'Bảo mật' },
   ];
 
   const s = {
@@ -191,14 +191,14 @@ const NotificationSettingsPage = () => {
           <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>notifications</span>
-        <h1 style={s.headerTitle}>Cai dat thong bao</h1>
+        <h1 style={s.headerTitle}>Cài đặt thông báo</h1>
       </div>
 
       {/* Push Notifications */}
       <div style={s.section}>
         <div style={s.sectionTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>smartphone</span>
-          Thong bao day
+          Thông báo đẩy
         </div>
         <div style={s.card}>
           {pushRows.map((r, i) => (
@@ -215,7 +215,7 @@ const NotificationSettingsPage = () => {
       <div style={s.section}>
         <div style={s.sectionTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>email</span>
-          Thong bao email
+          Thông báo email
         </div>
         <div style={s.card}>
           {emailRows.map((r, i) => (
@@ -232,27 +232,27 @@ const NotificationSettingsPage = () => {
       <div style={s.section}>
         <div style={s.sectionTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>do_not_disturb_on</span>
-          Khong lam phien
+          Không làm phiền
         </div>
         <div style={s.card}>
           <div style={s.quietRow}>
             <div style={s.quietLabel}>
-              <span style={s.rowLabel}>Gio im lang</span>
+              <span style={s.rowLabel}>Giờ im lặng</span>
               {quietHours && <span style={s.quietTime}>22:00 - 07:00</span>}
             </div>
             <Toggle active={quietHours} onToggle={() => setQuietHours(!quietHours)} />
           </div>
           <div style={s.quietRow}>
-            <span style={s.rowLabel}>Ngay nghi</span>
+            <span style={s.rowLabel}>Ngày nghỉ</span>
             <Toggle active={dayOff} onToggle={() => setDayOff(!dayOff)} />
           </div>
         </div>
       </div>
 
       <button style={s.saveBtn} onClick={handleSave}>
-        Luu cai dat
+        Lưu cài đặt
       </button>
-      {saved && <p style={s.savedMsg}>Da luu thanh cong!</p>}
+      {saved && <p style={s.savedMsg}>Đã lưu thành công!</p>}
     </div>
   );
 };

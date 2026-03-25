@@ -6,11 +6,11 @@ const KarmaPage = () => {
   const [score] = useState(850);
   const maxScore = 1000;
   const levels = [
-    { name: 'Bronze', min: 0, max: 200, color: '#cd7f32', emoji: '🥉' },
-    { name: 'Silver', min: 200, max: 400, color: '#c0c0c0', emoji: '🥈' },
-    { name: 'Gold', min: 400, max: 600, color: '#FFD54F', emoji: '🥇' },
-    { name: 'Platinum', min: 600, max: 800, color: '#E6BEB2', emoji: '💎' },
-    { name: 'Diamond', min: 800, max: 1000, color: '#FFB59E', emoji: '👑' },
+    { name: 'Đồng', min: 0, max: 200, color: '#cd7f32', emoji: '🥉' },
+    { name: 'Bạc', min: 200, max: 400, color: '#c0c0c0', emoji: '🥈' },
+    { name: 'Vàng', min: 400, max: 600, color: '#FFD54F', emoji: '🥇' },
+    { name: 'Bạch Kim', min: 600, max: 800, color: '#E6BEB2', emoji: '💎' },
+    { name: 'Kim Cương', min: 800, max: 1000, color: '#FFB59E', emoji: '👑' },
   ];
   const currentLevel = levels.find(l => score >= l.min && score <= l.max) || levels[4];
   const scoringRules = [

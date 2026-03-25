@@ -147,7 +147,7 @@ const HomePage = () => {
             <span aria-hidden="true" className="material-symbols-outlined" style={{ color: '#fcc43e', fontSize: 20, fontVariationSettings: "'FILL' 1" }}>toll</span>
             <div>
               <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', margin: 0 }}>SỐ DƯ HIỆN TẠI</p>
-              <p style={{ fontSize: 18, fontWeight: 900, color: '#ffffff', margin: 0 }}>4,850 Vang</p>
+              <p style={{ fontSize: 18, fontWeight: 900, color: '#ffffff', margin: 0 }}>4,850 Vàng</p>
             </div>
           </div>
 
@@ -192,7 +192,7 @@ const HomePage = () => {
                     </div>
                   </div>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                    <span style={{ fontSize: 11, fontWeight: 800, color: '#117500', background: '#e6f5e0', padding: '4px 8px', borderRadius: 9999 }}>{m.vang} Vang</span>
+                    <span style={{ fontSize: 11, fontWeight: 800, color: '#117500', background: '#e6f5e0', padding: '4px 8px', borderRadius: 9999 }}>{m.vang} Vàng</span>
                     <button onClick={() => navigate('/app/chat')} style={{ width: 36, height: 36, borderRadius: '50%', border: '1px solid #bcb9b3', background: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
                       <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#393834' }}>chat_bubble</span>
                     </button>
@@ -292,7 +292,7 @@ const HomePage = () => {
             <span aria-hidden="true" className="material-symbols-outlined" style={{ color: '#fcc43e', fontSize: 28, fontVariationSettings: "'FILL' 1" }}>toll</span>
             <div>
               <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>SỐ DƯ HIỆN TẠI</p>
-              <p style={{ fontSize: 24, fontWeight: 900, color: '#ffffff', margin: 0 }}>4,850 Vang</p>
+              <p style={{ fontSize: 24, fontWeight: 900, color: '#ffffff', margin: 0 }}>4,850 Vàng</p>
             </div>
           </div>
         </header>
@@ -500,7 +500,7 @@ const HomePage = () => {
                         <span style={{
                           fontSize: 10, fontWeight: 800, color: '#117500', background: '#e6f5e0',
                           padding: '2px 8px', borderRadius: 9999,
-                        }}>{m.vang} Vang</span>
+                        }}>{m.vang} Vàng</span>
                       </div>
                     </div>
                     <button style={{

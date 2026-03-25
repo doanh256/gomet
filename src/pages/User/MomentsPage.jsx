@@ -189,7 +189,7 @@ const MomentsPage = () => {
                     marginLeft: 8, padding: '2px 10px', borderRadius: 9999,
                     background: 'rgba(255,213,79,0.2)', color: '#FFD54F',
                     fontSize: 11, fontWeight: 700,
-                  }}>Vang</span>
+                  }}>Vàng</span>
                 </div>
               </div>
 
