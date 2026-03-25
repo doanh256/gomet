@@ -14,29 +14,29 @@ const timelineKeyframes = `
 
 const milestones = [
   {
-    date: '15/01/2026', restaurant: 'Pho Thin', dish: 'Pho bo tai lan',
+    date: '15/01/2026', restaurant: 'Phở Thìn', dish: 'Phở bò tái lăn',
     vang: 30, badge: 'First Meal', badgeIcon: 'restaurant', badgeColor: '#FF571A',
-    note: 'Bua an dau tien cung nhau',
+    note: 'Bữa ăn đầu tiên cùng nhau',
   },
   {
-    date: '28/01/2026', restaurant: 'Bun Cha Dac Kim', dish: 'Bun cha Ha Noi',
+    date: '28/01/2026', restaurant: 'Bún Chả Đắc Kim', dish: 'Bún chả Hà Nội',
     vang: 25, badge: null, badgeIcon: null, badgeColor: null,
     note: 'Khám phá ẩm thực Hà Nội',
   },
   {
     date: '14/02/2026', restaurant: 'La Maison 1888', dish: 'Set menu Valentine',
     vang: 100, badge: '10 Dishes Together', badgeIcon: 'favorite', badgeColor: '#E91E63',
-    note: 'Valentine dac biet',
+    note: 'Valentine đặc biệt',
   },
   {
-    date: '02/03/2026', restaurant: 'Quan Bui', dish: 'Lau thai',
+    date: '02/03/2026', restaurant: 'Quán Bụi', dish: 'Lẩu Thái',
     vang: 30, badge: null, badgeIcon: null, badgeColor: null,
-    note: 'Kham pha mon moi',
+    note: 'Khám phá món mới',
   },
   {
-    date: '18/03/2026', restaurant: 'Com Tam Ba Ghien', dish: 'Com tam suon bi cha',
+    date: '18/03/2026', restaurant: 'Cơm Tấm Bà Ghiền', dish: 'Cơm tấm sườn bì chả',
     vang: 20, badge: 'Same Favorite', badgeIcon: 'thumb_up', badgeColor: '#FFD54F',
-    note: 'Phat hien mon yeu thich chung!',
+    note: 'Phát hiện món yêu thích chung!',
   },
 ];
 
@@ -174,7 +174,7 @@ const RelationshipTimelinePage = () => {
         <span aria-hidden="true" className="material-symbols-outlined" style={s.chemIcon}>science</span>
         <div>
           <div style={s.chemTitle}>Culinary Alchemist</div>
-          <div style={s.chemLabel}>Hoa hoc am thuc</div>
+          <div style={s.chemLabel}>Hóa học ẩm thực</div>
         </div>
         <div style={s.chemValue}>87%</div>
       </div>
@@ -182,7 +182,7 @@ const RelationshipTimelinePage = () => {
       {/* Timeline */}
       <div style={s.sectionTitle}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>timeline</span>
-        Hanh trinh cung nhau
+        Hành trình cùng nhau
       </div>
       <div style={s.timeline}>
         <div style={s.timelineLine} />
@@ -218,7 +218,7 @@ const RelationshipTimelinePage = () => {
       {/* Share CTA */}
       <button style={s.shareCta}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
-        Chia se hanh trinh
+        Chia sẻ hành trình
       </button>
     </div>
   );

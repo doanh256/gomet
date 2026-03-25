@@ -8,11 +8,11 @@ const srKeyframes = `
 }
 `;
 
-const resultTabs = ['Dia diem', 'Mon an', 'Su kien', 'Nguoi'];
-const sortOpts = ['Phu hop', 'Danh gia', 'Khoang cach'];
+const resultTabs = ['Địa điểm', 'Món ăn', 'Sự kiện', 'Người'];
+const sortOpts = ['Phù hợp', 'Đánh giá', 'Khoảng cách'];
 
 const cuisines = ['Viet Nam', 'Nhat Ban', 'Han Quoc', 'Y', 'Thai', 'Phap'];
-const priceRanges = ['Duoi 100k', '100k - 300k', '300k - 500k', 'Tren 500k'];
+const priceRanges = ['Dưới 100k', '100k - 300k', '300k - 500k', 'Trên 500k'];
 
 const results = [
   { name: 'Pho Thin', type: 'Viet Nam', rating: 4.8, price: '$$', dist: '0.5km', img: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=300&h=200&fit=crop' },
@@ -30,7 +30,7 @@ const SearchResultsPage = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState(0);
   const [activeSort, setActiveSort] = useState(0);
-  const [query, setQuery] = useState('Am thuc Sai Gon');
+  const [query, setQuery] = useState('Ẩm thực Sài Gòn');
   const [checkedCuisines, setCheckedCuisines] = useState([0, 1]);
 
   const toggleCuisine = (i) => {
@@ -56,7 +56,7 @@ const SearchResultsPage = () => {
             <input value={query} onChange={e => setQuery(e.target.value)} style={{
               border: 'none', outline: 'none', flex: 1, fontSize: 15, fontWeight: 500,
               background: 'transparent', color: '#1A1A2E'
-            }} placeholder="Tim kiem mon an, dia diem..." />
+            }} placeholder="Tìm kiếm món ăn, địa điểm..." />
           </div>
         </div>
       </div>
@@ -91,12 +91,12 @@ const SearchResultsPage = () => {
           <div style={{ background: '#fff', borderRadius: 20, padding: 20, boxShadow: '0 2px 12px rgba(0,0,0,0.06)', position: 'sticky', top: 20 }}>
             <h3 style={{ margin: '0 0 16px', fontSize: 15, fontWeight: 700 }}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>tune</span>
-              Bo Loc
+              Bộ Lọc
             </h3>
 
             {/* Cuisine */}
             <div style={{ marginBottom: 20 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 10, color: '#1A1A2E' }}>Loai am thuc</div>
+              <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 10, color: '#1A1A2E' }}>Loại ẩm thực</div>
               {cuisines.map((c, i) => (
                 <label key={i} style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8, cursor: 'pointer', fontSize: 13, color: '#555' }}>
                   <div onClick={() => toggleCuisine(i)} style={{
@@ -113,7 +113,7 @@ const SearchResultsPage = () => {
 
             {/* Price */}
             <div style={{ marginBottom: 20 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 10, color: '#1A1A2E' }}>Khoang gia</div>
+              <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 10, color: '#1A1A2E' }}>Khoảng giá</div>
               {priceRanges.map((p, i) => (
                 <div key={i} style={{
                   padding: '6px 12px', borderRadius: 10, marginBottom: 6, fontSize: 12,
@@ -125,7 +125,7 @@ const SearchResultsPage = () => {
 
             {/* Rating */}
             <div>
-              <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 10, color: '#1A1A2E' }}>Danh gia toi thieu</div>
+              <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 10, color: '#1A1A2E' }}>Đánh giá tối thiểu</div>
               <div style={{ display: 'flex', gap: 4 }}>
                 {[3, 3.5, 4, 4.5].map((r, i) => (
                   <div key={i} style={{
@@ -140,7 +140,7 @@ const SearchResultsPage = () => {
 
         {/* Results Grid */}
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: 13, color: '#888', marginBottom: 16 }}>{results.length} ket qua cho "{query}"</div>
+          <div style={{ fontSize: 13, color: '#888', marginBottom: 16 }}>{results.length} kết quả cho "{query}"</div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
             {results.map((r, i) => (
               <div key={i} style={{

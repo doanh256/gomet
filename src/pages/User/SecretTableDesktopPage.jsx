@@ -8,20 +8,20 @@ const stdKeyframes = `
 }
 `;
 
-const filters = ['Toi nay', 'Tuan nay', 'Thang nay'];
+const filters = ['Tối nay', 'Tuần nay', 'Tháng nay'];
 
 const events = [
-  { title: 'Dem Truffle & Champagne', date: '28 Thang 3', price: '2.500.000', chemistry: 94, img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=300&fit=crop', slots: 3 },
-  { title: 'Omakase Midnight', date: '30 Thang 3', price: '3.200.000', chemistry: 88, img: 'https://images.unsplash.com/photo-1579027989536-b7b1f875659b?w=400&h=300&fit=crop', slots: 2 },
-  { title: 'Wine & Dine Under Stars', date: '1 Thang 4', price: '1.800.000', chemistry: 91, img: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&h=300&fit=crop', slots: 5 },
-  { title: 'Chef\'s Table: Mekong', date: '3 Thang 4', price: '2.800.000', chemistry: 86, img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=300&fit=crop', slots: 1 },
-  { title: 'Saigon Jazz Supper', date: '5 Thang 4', price: '2.100.000', chemistry: 92, img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=300&fit=crop', slots: 4 },
-  { title: 'Blind Tasting Night', date: '8 Thang 4', price: '1.900.000', chemistry: 89, img: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&h=300&fit=crop', slots: 6 },
+  { title: 'Đêm Truffle & Champagne', date: '28 Tháng 3', price: '2.500.000', chemistry: 94, img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=300&fit=crop', slots: 3 },
+  { title: 'Omakase Midnight', date: '30 Tháng 3', price: '3.200.000', chemistry: 88, img: 'https://images.unsplash.com/photo-1579027989536-b7b1f875659b?w=400&h=300&fit=crop', slots: 2 },
+  { title: 'Wine & Dine Under Stars', date: '1 Tháng 4', price: '1.800.000', chemistry: 91, img: 'https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=400&h=300&fit=crop', slots: 5 },
+  { title: 'Chef\'s Table: Mekong', date: '3 Tháng 4', price: '2.800.000', chemistry: 86, img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=300&fit=crop', slots: 1 },
+  { title: 'Saigon Jazz Supper', date: '5 Tháng 4', price: '2.100.000', chemistry: 92, img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=300&fit=crop', slots: 4 },
+  { title: 'Blind Tasting Night', date: '8 Tháng 4', price: '1.900.000', chemistry: 89, img: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&h=300&fit=crop', slots: 6 },
 ];
 
 const upcoming = [
-  { title: 'Dem Wagyu A5', date: '26 Thang 3', time: '19:30' },
-  { title: 'Cocktail Pairing', date: '27 Thang 3', time: '20:00' },
+  { title: 'Đêm Wagyu A5', date: '26 Tháng 3', time: '19:30' },
+  { title: 'Cocktail Pairing', date: '27 Tháng 3', time: '20:00' },
 ];
 
 const SecretTableDesktopPage = () => {
@@ -43,7 +43,7 @@ const SecretTableDesktopPage = () => {
         </button>
         <h1 style={{ margin: 0, fontSize: 32, fontWeight: 800, marginBottom: 8 }}>The Nocturnal Experience</h1>
         <p style={{ margin: 0, fontSize: 15, color: '#888', maxWidth: 500 }}>
-          Nhung bua toi bi mat chi danh cho thanh vien duoc moi. Kham pha the gioi am thuc dem.
+          Những bữa tối bí mật chỉ dành cho thành viên được mời. Khám phá thế giới ẩm thực đêm.
         </p>
       </div>
 
@@ -90,11 +90,11 @@ const SecretTableDesktopPage = () => {
                     <span style={{ fontSize: 13, fontWeight: 700, color: '#FFD700' }}>{ev.price}d</span>
                   </div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontSize: 11, color: '#666' }}>{ev.slots} cho trong</span>
+                    <span style={{ fontSize: 11, color: '#666' }}>{ev.slots} chỗ trống</span>
                     <button style={{
                       background: 'linear-gradient(135deg, #6C63FF, #8B5CF6)', border: 'none',
                       borderRadius: 10, padding: '6px 16px', color: '#fff', fontSize: 12, fontWeight: 700, cursor: 'pointer'
-                    }}>Dat cho</button>
+                    }}>Đặt chỗ</button>
                   </div>
                 </div>
               </div>
@@ -110,10 +110,10 @@ const SecretTableDesktopPage = () => {
           }}>
             <h3 style={{ margin: '0 0 16px', fontSize: 15, fontWeight: 700 }}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, verticalAlign: 'middle', marginRight: 6, color: '#FFD700' }}>event</span>
-              Ban Da Dat
+              Bạn Đã Đặt
             </h3>
             {upcoming.length === 0 ? (
-              <div style={{ fontSize: 13, color: '#666', textAlign: 'center', padding: 20 }}>Chua co dat cho nao</div>
+              <div style={{ fontSize: 13, color: '#666', textAlign: 'center', padding: 20 }}>Chưa có đặt chỗ nào</div>
             ) : (
               upcoming.map((u, i) => (
                 <div key={i} style={{

@@ -13,15 +13,15 @@ const bookingKeyframes = `
 `;
 
 const tasteMatch = [
-  { label: 'Vi giong nhau', value: 92, color: '#FF571A' },
-  { label: 'Do cay', value: 85, color: '#E91E63' },
-  { label: 'Phong cach', value: 88, color: '#FFD54F' },
-  { label: 'Ngan sach', value: 95, color: '#117500' },
+  { label: 'Vị giống nhau', value: 92, color: '#FF571A' },
+  { label: 'Độ cay', value: 85, color: '#E91E63' },
+  { label: 'Phong cách', value: 88, color: '#FFD54F' },
+  { label: 'Ngân sách', value: 95, color: '#117500' },
 ];
 
 const paymentMethods = [
-  { id: 'gomet', icon: 'account_balance_wallet', label: 'Vi GOMET', desc: 'So du: 1.200.000d' },
-  { id: 'momo', icon: 'account_balance', label: 'MoMo', desc: 'Lien ket tai khoan' },
+  { id: 'gomet', icon: 'account_balance_wallet', label: 'Ví GOMET', desc: 'Số dư: 1.200.000đ' },
+  { id: 'momo', icon: 'account_balance', label: 'MoMo', desc: 'Liên kết tài khoản' },
   { id: 'card', icon: 'credit_card', label: 'Credit Card', desc: 'Visa/Mastercard' },
 ];
 
@@ -174,12 +174,12 @@ const SecretTableBookingPage = () => {
           <div style={s.qrPlaceholder}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.qrIcon}>qr_code_2</span>
           </div>
-          <div style={s.confirmedText}>Dat cho thanh cong!</div>
+          <div style={s.confirmedText}>Đặt chỗ thành công!</div>
           <div style={s.confirmedDesc}>
-            Trinh ma QR nay tai quay le tan. Hen gap ban tai The Midnight Pho!
+            Trình mã QR này tại quầy lễ tân. Hẹn gặp bạn tại The Midnight Pho!
           </div>
           <button style={s.doneBtn} onClick={() => navigate('/app/home')}>
-            Ve trang chu
+            Về trang chủ
           </button>
         </div>
       </div>
@@ -192,10 +192,10 @@ const SecretTableBookingPage = () => {
 
       <button style={s.backBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
-        Quay lai
+        Quay lại
       </button>
 
-      <div style={s.heading}>Xac nhan dat cho</div>
+      <div style={s.heading}>Xác nhận đặt chỗ</div>
 
       {/* Event Details */}
       <div style={s.eventCard}>
@@ -205,29 +205,29 @@ const SecretTableBookingPage = () => {
           <div style={s.detailItem}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>calendar_today</span>
             <div>
-              <div style={s.detailText}>Ngay</div>
+              <div style={s.detailText}>Ngày</div>
               <div style={s.detailValue}>28/03/2026</div>
             </div>
           </div>
           <div style={s.detailItem}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>schedule</span>
             <div>
-              <div style={s.detailText}>Gio</div>
+              <div style={s.detailText}>Giờ</div>
               <div style={s.detailValue}>20:00</div>
             </div>
           </div>
           <div style={s.detailItem}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>payments</span>
             <div>
-              <div style={s.detailText}>Gia</div>
+              <div style={s.detailText}>Giá</div>
               <div style={s.detailValue}>500.000 VND</div>
             </div>
           </div>
           <div style={s.detailItem}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>event_seat</span>
             <div>
-              <div style={s.detailText}>Cho ngoi</div>
-              <div style={s.detailValue}>3 con lai</div>
+              <div style={s.detailText}>Chỗ ngồi</div>
+              <div style={s.detailValue}>3 còn lại</div>
             </div>
           </div>
         </div>
@@ -255,7 +255,7 @@ const SecretTableBookingPage = () => {
       {/* Payment */}
       <div style={s.sectionTitle}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>payment</span>
-        Phuong thuc thanh toan
+        Phương thức thanh toán
       </div>
       <div style={s.paymentList}>
         {paymentMethods.map(pm => (
@@ -280,7 +280,7 @@ const SecretTableBookingPage = () => {
 
       {/* Price */}
       <div style={s.priceRow}>
-        <div style={s.priceLabel}>Tong thanh toan</div>
+        <div style={s.priceLabel}>Tổng thanh toán</div>
         <div style={s.priceValue}>500.000 VND</div>
       </div>
 
@@ -290,8 +290,8 @@ const SecretTableBookingPage = () => {
           {agreedTerms && <span aria-hidden="true" className="material-symbols-outlined" style={s.checkIcon}>check</span>}
         </div>
         <div style={s.termsText}>
-          Toi dong y voi dieu khoan su dung va chinh sach huy. Huy truoc 24h duoc hoan 80%.
-          Huy trong vong 24h truoc su kien se khong duoc hoan tien.
+          Tôi đồng ý với điều khoản sử dụng và chính sách hủy. Hủy trước 24h được hoàn 80%.
+          Hủy trong vòng 24h trước sự kiện sẽ không được hoàn tiền.
         </div>
       </div>
 
@@ -302,7 +302,7 @@ const SecretTableBookingPage = () => {
         disabled={!agreedTerms}
       >
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>lock</span>
-        Xac nhan dat cho
+        Xác nhận đặt chỗ
       </button>
     </div>
   );

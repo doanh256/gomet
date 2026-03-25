@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const profiles = [
-  { id: 1, name: 'Linh', age: 24, location: 'Quan 1, HCM', interests: ['Ca phe', 'Du lich'] },
-  { id: 2, name: 'Minh', age: 27, location: 'Quan 3, HCM', interests: ['Am nhac', 'Nau an'] },
-  { id: 3, name: 'Thao', age: 23, location: 'Thu Duc, HCM', interests: ['Yoga', 'Doc sach'] },
-  { id: 4, name: 'Huy', age: 26, location: 'Quan 7, HCM', interests: ['The thao', 'Phim'] },
-  { id: 5, name: 'Ngoc', age: 25, location: 'Binh Thanh, HCM', interests: ['Nhiep anh', 'Am thuc'] },
-  { id: 6, name: 'Duc', age: 28, location: 'Quan 2, HCM', interests: ['Gym', 'Cong nghe'] },
+  { id: 1, name: 'Linh', age: 24, location: 'Quận 1, HCM', interests: ['Cà phê', 'Du lịch'] },
+  { id: 2, name: 'Minh', age: 27, location: 'Quận 3, HCM', interests: ['Âm nhạc', 'Nấu ăn'] },
+  { id: 3, name: 'Thảo', age: 23, location: 'Thủ Đức, HCM', interests: ['Yoga', 'Đọc sách'] },
+  { id: 4, name: 'Huy', age: 26, location: 'Quận 7, HCM', interests: ['Thể thao', 'Phim'] },
+  { id: 5, name: 'Ngọc', age: 25, location: 'Bình Thạnh, HCM', interests: ['Nhiếp ảnh', 'Ẩm thực'] },
+  { id: 6, name: 'Đức', age: 28, location: 'Quận 2, HCM', interests: ['Gym', 'Công nghệ'] },
 ];
 
-const filters = ['Gan ban', 'Moi tham gia', 'Hoat dong'];
+const filters = ['Gần bạn', 'Mới tham gia', 'Hoạt động'];
 
 const SpotlightPage = () => {
   const navigate = useNavigate();
@@ -261,27 +261,27 @@ const SpotlightPage = () => {
     <div style={s.page}>
       <div style={s.header}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>person_search</span>
-        <h1 style={s.heading}>Kham pha guong mat</h1>
-        <p style={s.subtitle}>Nhung nguoi noi bat hom nay</p>
+        <h1 style={s.heading}>Khám phá gương mặt</h1>
+        <p style={s.subtitle}>Những người nổi bật hôm nay</p>
       </div>
 
-      {/* Spotlight cua ngay */}
-      <h2 style={s.sectionTitle}>Spotlight cua ngay</h2>
+      {/* Spotlight của ngày */}
+      <h2 style={s.sectionTitle}>Spotlight của ngày</h2>
       <div style={s.featuredCard}>
         <div style={s.featuredImage}>
           <div style={s.featuredOverlay}>
             <div style={s.featuredBadge}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>star</span>
-              98% tuong thich
+              98% tương thích
             </div>
             <div style={s.featuredName}>
               Thanh Huyen, 25
               <span aria-hidden="true" className="material-symbols-outlined" style={s.verifiedIcon}>verified</span>
             </div>
-            <p style={s.featuredBio}>Yeu thich ca phe sang va nhung chuyen di bat ngo. Tim mot nguoi dong hanh chan thanh.</p>
+            <p style={s.featuredBio}>Yêu thích cà phê sáng và những chuyến đi bất ngờ. Tìm một người đồng hành chân thành.</p>
             <button style={s.viewProfileBtn} onClick={() => navigate('/profile')}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>person</span>
-              Xem ho so
+              Xem hồ sơ
             </button>
           </div>
         </div>
@@ -296,8 +296,8 @@ const SpotlightPage = () => {
         ))}
       </div>
 
-      {/* Dang duoc chu y grid */}
-      <h2 style={s.sectionTitle}>Dang duoc chu y</h2>
+      {/* Đang được chú ý grid */}
+      <h2 style={s.sectionTitle}>Đang được chú ý</h2>
       <div style={s.grid}>
         {profiles.map(p => (
           <div key={p.id} style={s.card}>
@@ -328,11 +328,11 @@ const SpotlightPage = () => {
       {/* Premium upsell */}
       <div style={s.premiumCard}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.premiumIcon}>diamond</span>
-        <div style={s.premiumTitle}>Nang cap de xem them</div>
-        <p style={s.premiumDesc}>Mo khoa tat ca guong mat noi bat va tinh nang doc quyen voi GOMET Premium</p>
+        <div style={s.premiumTitle}>Nâng cấp để xem thêm</div>
+        <p style={s.premiumDesc}>Mở khóa tất cả gương mặt nổi bật và tính năng độc quyền với GOMET Premium</p>
         <button style={s.premiumBtn} onClick={() => navigate('/premium')}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>workspace_premium</span>
-          Nang cap ngay
+          Nâng cấp ngay
         </button>
       </div>
     </div>

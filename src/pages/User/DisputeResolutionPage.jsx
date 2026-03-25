@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const categoryOptions = ['Khong hai long', 'Khong dung mo ta', 'Tinh phi sai', 'Khac'];
+const categoryOptions = ['Không hài lòng', 'Không đúng mô tả', 'Tính phí sai', 'Khác'];
 const recentTransactions = [
-  { id: 'TX-2024-001', label: 'Bua toi tai Pasta House - 350.000d' },
-  { id: 'TX-2024-002', label: 'Coffee date tai The Coffee - 120.000d' },
-  { id: 'TX-2024-003', label: 'Lau Thai nhom - 580.000d' },
+  { id: 'TX-2024-001', label: 'Bữa tối tại Pasta House - 350.000đ' },
+  { id: 'TX-2024-002', label: 'Coffee date tại The Coffee - 120.000đ' },
+  { id: 'TX-2024-003', label: 'Lẩu Thái nhóm - 580.000đ' },
 ];
 const existingDisputes = [
-  { id: 'KN-001', date: '15/03/2026', transaction: 'Bua toi tai Pasta House', status: 'processing', statusLabel: 'Dang xu ly', step: 1, resolution: null },
-  { id: 'KN-002', date: '10/03/2026', transaction: 'Coffee date tai The Coffee', status: 'resolved', statusLabel: 'Da giai quyet', step: 2, resolution: 'Hoan 50% gia tri don hang. Tien da duoc chuyen ve vi GOMET.' },
-  { id: 'KN-003', date: '05/03/2026', transaction: 'Dat cho nha hang ABC', status: 'rejected', statusLabel: 'Tu choi', step: 2, resolution: 'Khieu nai khong du bang chung. Vui long lien he hotline de biet them.' },
+  { id: 'KN-001', date: '15/03/2026', transaction: 'Bữa tối tại Pasta House', status: 'processing', statusLabel: 'Đang xử lý', step: 1, resolution: null },
+  { id: 'KN-002', date: '10/03/2026', transaction: 'Coffee date tại The Coffee', status: 'resolved', statusLabel: 'Đã giải quyết', step: 2, resolution: 'Hoàn 50% giá trị đơn hàng. Tiền đã được chuyển về ví GOMET.' },
+  { id: 'KN-003', date: '05/03/2026', transaction: 'Đặt chỗ nhà hàng ABC', status: 'rejected', statusLabel: 'Từ chối', step: 2, resolution: 'Khiếu nại không đủ bằng chứng. Vui lòng liên hệ hotline để biết thêm.' },
 ];
-const timelineSteps = ['Tiep nhan', 'Dang xem xet', 'Giai quyet'];
+const timelineSteps = ['Tiếp nhận', 'Đang xem xét', 'Giải quyết'];
 
 const DisputeResolutionPage = () => {
   const navigate = useNavigate();
@@ -62,22 +62,22 @@ const DisputeResolutionPage = () => {
 
   return (
     <div style={s.page}>
-      <button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>Quay lai</button>
-      <div style={s.header}><span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>gavel</span><h1 style={s.heading}>Giai quyet khieu nai</h1></div>
-      <h2 style={s.sectionTitle}>Tao khieu nai moi</h2>
+      <button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>Quay lại</button>
+      <div style={s.header}><span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>gavel</span><h1 style={s.heading}>Giải quyết khiếu nại</h1></div>
+      <h2 style={s.sectionTitle}>Tạo khiếu nại mới</h2>
       <div style={s.formCard}>
-        <label style={s.label}>Chon giao dich</label>
-        <select style={s.select} value={selectedTx} onChange={(e) => setSelectedTx(e.target.value)}><option value="">-- Chon giao dich --</option>{recentTransactions.map((tx) => (<option key={tx.id} value={tx.id}>{tx.label}</option>))}</select>
-        <label style={s.label}>Loai khieu nai</label>
+        <label style={s.label}>Chọn giao dịch</label>
+        <select style={s.select} value={selectedTx} onChange={(e) => setSelectedTx(e.target.value)}><option value="">-- Chọn giao dịch --</option>{recentTransactions.map((tx) => (<option key={tx.id} value={tx.id}>{tx.label}</option>))}</select>
+        <label style={s.label}>Loại khiếu nại</label>
         <div style={s.chipRow}>{categoryOptions.map((cat, i) => (<button key={i} style={s.chip(selectedCat === i)} onClick={() => setSelectedCat(i)}>{cat}</button>))}</div>
-        <label style={s.label}>Mo ta chi tiet</label>
-        <textarea style={s.textarea} placeholder="Mo ta van de cua ban..." value={description} onChange={(e) => setDescription(e.target.value.slice(0, 1000))} />
+        <label style={s.label}>Mô tả chi tiết</label>
+        <textarea style={s.textarea} placeholder="Mô tả vấn đề của bạn..." value={description} onChange={(e) => setDescription(e.target.value.slice(0, 1000))} />
         <div style={s.charCount}>{description.length}/1000</div>
-        <label style={s.label}>Tai bang chung</label>
-        <div style={s.uploadArea}><span aria-hidden="true" className="material-symbols-outlined" style={s.uploadIcon}>add_photo_alternate</span><span style={s.uploadText}>Nhan de tai anh hoac video</span></div>
-        <button style={s.submitBtn}>Gui khieu nai</button>
+        <label style={s.label}>Tải bằng chứng</label>
+        <div style={s.uploadArea}><span aria-hidden="true" className="material-symbols-outlined" style={s.uploadIcon}>add_photo_alternate</span><span style={s.uploadText}>Nhấn để tải ảnh hoặc video</span></div>
+        <button style={s.submitBtn}>Gửi khiếu nại</button>
       </div>
-      <h2 style={s.sectionTitle}>Khieu nai cua ban</h2>
+      <h2 style={s.sectionTitle}>Khiếu nại của bạn</h2>
       {existingDisputes.map((d) => (
         <div key={d.id} style={s.disputeCard}>
           <div style={s.disputeTop}><span style={s.disputeId}>#{d.id}</span><span style={s.disputeDate}>{d.date}</span></div>
@@ -85,12 +85,12 @@ const DisputeResolutionPage = () => {
           <div style={s.timeline}><div style={s.timelineLine} />{timelineSteps.map((step, i) => { const completed = i < d.step; const active = i === d.step; return (<div key={i} style={s.timelineStep(active, completed)}><div style={s.dot(active, completed)} /><span style={s.stepLabel(active || completed)}>{step}</span></div>); })}</div>
           <span style={s.badge(d.status)}>{d.statusLabel}</span>
           {d.resolution && <div style={s.resolution}>{d.resolution}</div>}
-          <button style={s.detailLink}>Xem chi tiet</button>
+          <button style={s.detailLink}>Xem chi tiết</button>
         </div>
       ))}
       <div style={{ marginTop: 14 }}>
-        <h2 style={{ ...s.sectionTitle, marginBottom: 12 }}>Chinh sach hoan tien</h2>
-        <div style={s.infoCard}><span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>info</span><div style={s.infoText}>GOMET cam ket xu ly khieu nai trong vong 48 gio. Hoan tien se duoc chuyen ve vi GOMET trong 3-5 ngay lam viec sau khi duoc phe duyet. Vui long cung cap day du bang chung de duoc xu ly nhanh nhat.</div></div>
+        <h2 style={{ ...s.sectionTitle, marginBottom: 12 }}>Chính sách hoàn tiền</h2>
+        <div style={s.infoCard}><span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>info</span><div style={s.infoText}>GOMET cam kết xử lý khiếu nại trong vòng 48 giờ. Hoàn tiền sẽ được chuyển về ví GOMET trong 3-5 ngày làm việc sau khi được phê duyệt. Vui lòng cung cấp đầy đủ bằng chứng để được xử lý nhanh nhất.</div></div>
       </div>
     </div>
   );

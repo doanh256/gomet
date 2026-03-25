@@ -27,7 +27,7 @@ const rankings = [
   { rank: 20, name: 'Yen Nhi', points: 2650, avatar: 'YN', trend: 'up' },
 ];
 
-const filters = ['Tuan nay', 'Thang nay', 'Tat ca'];
+const filters = ['Tuần này', 'Tháng này', 'Tất cả'];
 
 const rankColors = { 1: '#FFD54F', 2: '#9ca3af', 3: '#FF571A' };
 
@@ -264,7 +264,7 @@ const LeaderboardPage = () => {
     <div style={s.page}>
       <div style={s.header}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>leaderboard</span>
-        <h1 style={s.heading}>Bang xep hang</h1>
+        <h1 style={s.heading}>Bảng xếp hạng</h1>
       </div>
 
       <div style={s.chips}>
@@ -327,10 +327,10 @@ const LeaderboardPage = () => {
         <div style={s.stickyRank}>#42</div>
         <div style={s.stickyAvatar}>BD</div>
         <div style={s.stickyInfo}>
-          <div style={s.stickyName}>Ban (Doanh)</div>
+          <div style={s.stickyName}>Bạn (Doanh)</div>
           <div style={s.stickyTrend}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, color: '#117500' }}>trending_up</span>
-            Tang 5 bac so voi tuan truoc
+            Tăng 5 bậc so với tuần trước
           </div>
         </div>
         <div style={s.stickyPts}>1,250</div>

@@ -6,27 +6,27 @@ const EliteClubPage = () => {
   const [billingCycle, setBillingCycle] = useState('monthly');
 
   const benefits = [
-    { icon: 'lock', title: 'Su kien rieng tu', desc: 'Chi danh cho Elite', detail: 'Tham gia cac su kien doc quyen voi so luong gioi han, khong gian sang trong.' },
-    { icon: 'bolt', title: 'Uu tien ghep doi', desc: 'Top 1% hien thi', detail: 'Ho so cua ban se duoc uu tien hien thi tren tat ca nguoi dung.' },
-    { icon: 'support_agent', title: 'Concierge 24/7', desc: 'Ho tro ca nhan', detail: 'Doi ngu ho tro rieng san sang tu van va giup do ban bat ky luc nao.' },
-    { icon: 'redeem', title: 'Qua tang dac biet', desc: 'Moi thang', detail: 'Nhan qua tang sang trong tu cac thuong hieu doi tac moi thang.' },
+    { icon: 'lock', title: 'Sự kiện riêng tư', desc: 'Chỉ dành cho Elite', detail: 'Tham gia các sự kiện độc quyền với số lượng giới hạn, không gian sang trọng.' },
+    { icon: 'bolt', title: 'Ưu tiên ghép đôi', desc: 'Top 1% hiển thị', detail: 'Hồ sơ của bạn sẽ được ưu tiên hiển thị trên tất cả người dùng.' },
+    { icon: 'support_agent', title: 'Concierge 24/7', desc: 'Hỗ trợ cá nhân', detail: 'Đội ngũ hỗ trợ riêng sẵn sàng tư vấn và giúp đỡ bạn bất kỳ lúc nào.' },
+    { icon: 'redeem', title: 'Quà tặng đặc biệt', desc: 'Mỗi tháng', detail: 'Nhận quà tặng sang trọng từ các thương hiệu đối tác mỗi tháng.' },
   ];
 
   const members = [
-    { id: 1, name: 'Thanh Tung', initial: 'T', since: 2024, quote: 'Elite giup toi gap duoc nguoi phu hop nhat chi trong 2 tuan.' },
-    { id: 2, name: 'Ngoc Anh', initial: 'N', since: 2024, quote: 'Cac su kien rieng tu la trai nghiem tuyet voi, rat khac biet.' },
-    { id: 3, name: 'Minh Duc', initial: 'M', since: 2025, quote: 'Dich vu concierge la dieu toi khong ngo, cuc ky chuyen nghiep.' },
+    { id: 1, name: 'Thanh Tùng', initial: 'T', since: 2024, quote: 'Elite giúp tôi gặp được người phù hợp nhất chỉ trong 2 tuần.' },
+    { id: 2, name: 'Ngọc Anh', initial: 'N', since: 2024, quote: 'Các sự kiện riêng tư là trải nghiệm tuyệt vời, rất khác biệt.' },
+    { id: 3, name: 'Minh Đức', initial: 'M', since: 2025, quote: 'Dịch vụ concierge là điều tôi không ngờ, cực kỳ chuyên nghiệp.' },
   ];
 
   const features = [
-    'Su kien doc quyen moi thang',
-    'Ho so hien thi uu tien #1',
-    'Concierge ca nhan 24/7',
-    'Qua tang thuong hieu hang thang',
-    'Huy badge Elite xac thuc',
-    'Xem ai da thich ban',
-    'Bo loc nang cao khong gioi han',
-    'Uu dai doi tac nha hang & cafe',
+    'Sự kiện độc quyền mỗi tháng',
+    'Hồ sơ hiển thị ưu tiên #1',
+    'Concierge cá nhân 24/7',
+    'Quà tặng thương hiệu hàng tháng',
+    'Huy badge Elite xác thực',
+    'Xem ai đã thích bạn',
+    'Bộ lọc nâng cao không giới hạn',
+    'Ưu đãi đối tác nhà hàng & cafe',
   ];
 
   const s = {
@@ -333,13 +333,13 @@ const EliteClubPage = () => {
         </button>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.diamondIcon}>diamond</span>
         <h1 style={s.heroTitle}>GOMET Elite Club</h1>
-        <p style={s.heroSub}>Danh cho nhung nguoi tinh hoa</p>
+        <p style={s.heroSub}>Dành cho những người tinh hoa</p>
       </div>
 
       <div style={s.body}>
         {/* Benefits */}
         <div style={s.section}>
-          <h2 style={s.sectionTitle}>Dac quyen thanh vien</h2>
+          <h2 style={s.sectionTitle}>Đặc quyền thành viên</h2>
           <div style={s.benefitGrid}>
             {benefits.map((b, i) => (
               <div key={i} style={s.benefitCard}>
@@ -356,7 +356,7 @@ const EliteClubPage = () => {
 
         {/* Members */}
         <div style={s.section}>
-          <h2 style={s.sectionTitle}>Thanh vien noi bat</h2>
+          <h2 style={s.sectionTitle}>Thành viên nổi bật</h2>
           <div style={s.memberCards}>
             {members.map(m => (
               <div key={m.id} style={s.memberCard}>
@@ -364,7 +364,7 @@ const EliteClubPage = () => {
                   <div style={s.memberAvatar}>{m.initial}</div>
                   <div>
                     <div style={s.memberName}>{m.name}</div>
-                    <div style={s.memberBadge}>Elite tu {m.since}</div>
+                    <div style={s.memberBadge}>Elite từ {m.since}</div>
                   </div>
                 </div>
                 <div style={s.memberQuote}>"{m.quote}"</div>
@@ -378,14 +378,14 @@ const EliteClubPage = () => {
           <h2 style={s.sectionTitle}>Tham gia Elite</h2>
           <div style={s.pricingCard}>
             <div style={s.toggleRow}>
-              <button style={s.toggleBtn(billingCycle === 'monthly')} onClick={() => setBillingCycle('monthly')}>Hang thang</button>
-              <button style={s.toggleBtn(billingCycle === 'yearly')} onClick={() => setBillingCycle('yearly')}>Hang nam</button>
+              <button style={s.toggleBtn(billingCycle === 'monthly')} onClick={() => setBillingCycle('monthly')}>Hàng tháng</button>
+              <button style={s.toggleBtn(billingCycle === 'yearly')} onClick={() => setBillingCycle('yearly')}>Hàng năm</button>
             </div>
             <div style={s.priceMain}>
               {billingCycle === 'monthly' ? '1.999.000' : '15.990.000'} <span style={{ fontSize: 16, fontWeight: 400 }}>VND</span>
             </div>
-            <div style={s.pricePer}>{billingCycle === 'monthly' ? '/thang' : '/nam'}</div>
-            {billingCycle === 'yearly' && <div style={s.saveBadge}>Tiet kiem 33%</div>}
+            <div style={s.pricePer}>{billingCycle === 'monthly' ? '/tháng' : '/năm'}</div>
+            {billingCycle === 'yearly' && <div style={s.saveBadge}>Tiết kiệm 33%</div>}
             <div style={s.featureList}>
               {features.map((f, i) => (
                 <div key={i} style={s.featureItem}>
@@ -400,19 +400,19 @@ const EliteClubPage = () => {
 
         {/* Testimonial */}
         <div style={{ ...s.section, paddingBottom: 32 }}>
-          <h2 style={s.sectionTitle}>Cau chuyen thanh cong</h2>
+          <h2 style={s.sectionTitle}>Câu chuyện thành công</h2>
           <div style={s.testimonialCard}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.quoteIcon}>format_quote</span>
             <div style={s.quoteText}>
-              Tu khi tham gia Elite, toi da gap duoc rat nhieu nguoi thu vi tai cac su kien rieng.
-              Dich vu concierge giup toi len ke hoach hen hoan hao, va chi sau 3 thang toi da tim duoc
-              nguoi ban doi ly tuong. GOMET Elite thuc su thay doi cuoc song cua toi.
+              Từ khi tham gia Elite, tôi đã gặp được rất nhiều người thú vị tại các sự kiện riêng.
+              Dịch vụ concierge giúp tôi lên kế hoạch hẹn hoàn hảo, và chỉ sau 3 tháng tôi đã tìm được
+              người bạn đời lý tưởng. GOMET Elite thực sự thay đổi cuộc sống của tôi.
             </div>
             <div style={s.quoteAuthor}>
               <div style={s.quoteAvatar}>H</div>
               <div>
-                <div style={s.quoteName}>Ha Phuong</div>
-                <div style={s.quoteRole}>Thanh vien Elite tu 2024</div>
+                <div style={s.quoteName}>Hà Phương</div>
+                <div style={s.quoteRole}>Thành viên Elite từ 2024</div>
               </div>
             </div>
           </div>

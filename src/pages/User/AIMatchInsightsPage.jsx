@@ -11,22 +11,22 @@ const featuredMatch = {
 };
 
 const insights = [
-  { icon: 'group', text: '3 ban chung', label: 'Ban chung' },
-  { icon: 'event', text: 'Da tham gia 2 su kien', label: 'Su kien' },
-  { icon: 'restaurant', text: 'Cung thich cafe', label: 'Am thuc' },
-  { icon: 'favorite', text: '87% so thich trung', label: 'So thich' },
+  { icon: 'group', text: '3 bạn chung', label: 'Bạn chung' },
+  { icon: 'event', text: 'Đã tham gia 2 sự kiện', label: 'Sự kiện' },
+  { icon: 'restaurant', text: 'Cùng thích cafe', label: 'Ẩm thực' },
+  { icon: 'favorite', text: '87% sở thích trùng', label: 'Sở thích' },
 ];
 
 const venueTeaser = {
   name: 'The Lissome Cafe',
   cuisine: 'Cafe & Brunch',
-  label: 'Dia diem chung cua ban',
+  label: 'Địa điểm chung của bạn',
 };
 
 const secondaryMatches = [
-  { name: 'Thao Vy', age: 24, matchPercent: 91, interest: '"Cung me phim Nhat"', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&h=400&fit=crop' },
-  { name: 'Bao Ngoc', age: 27, matchPercent: 88, interest: '"Thich chay bo buoi sang"', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=400&fit=crop' },
-  { name: 'Ha My', age: 25, matchPercent: 85, interest: '"Fan cua ca phe sua da"', avatar: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=300&h=400&fit=crop' },
+  { name: 'Thao Vy', age: 24, matchPercent: 91, interest: '"Cùng mê phim Nhật"', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&h=400&fit=crop' },
+  { name: 'Bao Ngoc', age: 27, matchPercent: 88, interest: '"Thích chạy bộ buổi sáng"', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=400&fit=crop' },
+  { name: 'Ha My', age: 25, matchPercent: 85, interest: '"Fan của cà phê sữa đá"', avatar: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=300&h=400&fit=crop' },
 ];
 
 const AIMatchInsightsPage = () => {
@@ -319,7 +319,7 @@ const AIMatchInsightsPage = () => {
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
-        Quay lai
+        Quay lại
       </button>
 
       <div style={s.pill}>
@@ -366,7 +366,7 @@ const AIMatchInsightsPage = () => {
       </div>
 
       {/* Venue teaser */}
-      <h2 style={s.sectionTitle}>Dia diem goi y</h2>
+      <h2 style={s.sectionTitle}>Địa điểm gợi ý</h2>
       <div style={s.venueCard}>
         <div style={s.venueIconWrap}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.venueIconInner}>storefront</span>
@@ -382,16 +382,16 @@ const AIMatchInsightsPage = () => {
       <div style={s.actions}>
         <button style={s.btnPrimary}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>waving_hand</span>
-          Gui loi chao
+          Gửi lời chào
         </button>
         <button style={s.btnSurface}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>search</span>
-          Tim tuong tu
+          Tìm tương tự
         </button>
       </div>
 
       {/* Secondary matches */}
-      <h2 style={s.sectionTitle}>Goi y khac</h2>
+      <h2 style={s.sectionTitle}>Gợi ý khác</h2>
       <div style={s.secondaryGrid}>
         {secondaryMatches.map((m, i) => (
           <div key={i} style={s.secondaryCard}>

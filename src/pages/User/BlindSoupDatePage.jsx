@@ -2,21 +2,21 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const soups = [
-  { id: 'pho', name: 'Pho', origin: '🇻🇳', emoji: '🍜', desc: 'Nuoc dung trong, banh pho mem' },
-  { id: 'bunbo', name: 'Bun Bo Hue', origin: '🇻🇳', emoji: '🌶️', desc: 'Cay nong, dam da huong vi Hue' },
-  { id: 'lauthai', name: 'Lau Thai', origin: '🇹🇭', emoji: '🍲', desc: 'Chua cay, tom va nam' },
-  { id: 'ramen', name: 'Ramen', origin: '🇯🇵', emoji: '🍥', desc: 'Nhat Ban chinh thong, nuoc dung ton kotsu' },
+  { id: 'pho', name: 'Pho', origin: '🇻🇳', emoji: '🍜', desc: 'Nước dùng trong, bánh phở mềm' },
+  { id: 'bunbo', name: 'Bun Bo Hue', origin: '🇻🇳', emoji: '🌶️', desc: 'Cay nóng, đậm đà hương vị Huế' },
+  { id: 'lauthai', name: 'Lau Thai', origin: '🇹🇭', emoji: '🍲', desc: 'Chua cay, tôm và nấm' },
+  { id: 'ramen', name: 'Ramen', origin: '🇯🇵', emoji: '🍥', desc: 'Nhật Bản chính thống, nước dùng tonkotsu' },
 ];
 
 const steps = [
-  { num: 1, icon: 'restaurant_menu', title: 'Chon mon', desc: 'Chon mon sup yeu thich' },
-  { num: 2, icon: 'chat', title: 'Giao luu', desc: 'Tro chuyen an danh 30 phut' },
-  { num: 3, icon: 'visibility', title: 'Tiet lo', desc: 'Quyet dinh lo dien hay khong' },
+  { num: 1, icon: 'restaurant_menu', title: 'Chọn món', desc: 'Chọn món súp yêu thích' },
+  { num: 2, icon: 'chat', title: 'Giao lưu', desc: 'Trò chuyện ẩn danh 30 phút' },
+  { num: 3, icon: 'visibility', title: 'Tiết lộ', desc: 'Quyết định lộ diện hay không' },
 ];
 
 const chatMessages = [
-  { from: 'other', text: 'Toi thich Pho nhat! Ban hay den Ha Noi thu pho Bat Dan nhe 😄' },
-  { from: 'me', text: 'Toi cung vay! Toi thuong an pho vao buoi sang, con ban?' },
+  { from: 'other', text: 'Tôi thích Phở nhất! Bạn hãy đến Hà Nội thử phở Bát Đàn nhé 😄' },
+  { from: 'me', text: 'Tôi cũng vậy! Tôi thường ăn phở vào buổi sáng, còn bạn?' },
 ];
 
 const BlindSoupDatePage = () => {
@@ -332,12 +332,12 @@ const BlindSoupDatePage = () => {
       <div style={s.header}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>visibility_off</span>
         <div style={s.heading}>Blind Soup Date</div>
-        <div style={s.subtitle}>Hen ho an danh qua am thuc</div>
+        <div style={s.subtitle}>Hẹn hò ẩn danh qua ẩm thực</div>
       </div>
 
       {/* How it works */}
       <div style={s.section}>
-        <div style={s.sectionTitle}>Cach thuc hoat dong</div>
+        <div style={s.sectionTitle}>Cách thức hoạt động</div>
         <div style={s.stepsRow}>
           {steps.map(step => (
             <div key={step.num} style={s.stepCard}>
@@ -352,7 +352,7 @@ const BlindSoupDatePage = () => {
 
       {/* Soup selection */}
       <div style={s.section}>
-        <div style={s.sectionTitle}>Chon mon sup</div>
+        <div style={s.sectionTitle}>Chọn món súp</div>
         <div style={s.soupsGrid}>
           {soups.map(soup => (
             <div
@@ -364,7 +364,7 @@ const BlindSoupDatePage = () => {
               <div style={s.soupName}>{soup.name} {soup.origin}</div>
               <div style={s.soupOrigin}>{soup.desc}</div>
               <div style={s.soupSelect(selectedSoup === soup.id)}>
-                {selectedSoup === soup.id ? 'Da chon' : 'Chon'}
+                {selectedSoup === soup.id ? 'Đã chọn' : 'Chọn'}
               </div>
             </div>
           ))}
@@ -379,18 +379,18 @@ const BlindSoupDatePage = () => {
             <div style={s.dot(0.2)} />
             <div style={s.dot(0.4)} />
           </div>
-          <div style={s.waitingText}>Dang tim doi...</div>
-          <div style={s.waitingCount}>2 nguoi dang cho</div>
+          <div style={s.waitingText}>Đang tìm đối...</div>
+          <div style={s.waitingCount}>2 người đang chờ</div>
         </div>
       )}
 
       {/* Active session */}
       {isMatched && (
         <div style={s.section}>
-          <div style={s.sectionTitle}>Phien tro chuyen</div>
+          <div style={s.sectionTitle}>Phiên trò chuyện</div>
           <div style={s.sessionCard}>
             <div style={{ textAlign: 'center', marginBottom: 4 }}>
-              <div style={s.timerLabel}>Thoi gian con lai</div>
+              <div style={s.timerLabel}>Thời gian còn lại</div>
             </div>
             <div style={s.timerRow}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#FF571A' }}>timer</span>
@@ -412,9 +412,9 @@ const BlindSoupDatePage = () => {
             <div style={s.sessionActions}>
               <button style={s.revealBtn}>
                 <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>visibility</span>
-                Tiet lo danh tinh
+                Tiết lộ danh tính
               </button>
-              <button style={s.leaveBtn}>Roi di</button>
+              <button style={s.leaveBtn}>Rời đi</button>
             </div>
           </div>
         </div>
@@ -430,8 +430,8 @@ const BlindSoupDatePage = () => {
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 56, color: '#FFB59E', opacity: 0.4 }}>person</span>
             </div>
             <div style={{ padding: '20px' }}>
-              <div style={{ fontFamily: 'var(--font-headline)', fontSize: 20, fontWeight: 800, color: '#FDF9F3', marginBottom: 4 }}>??? (An danh)</div>
-              <div style={{ fontSize: 13, color: '#E6BEB2', marginBottom: 16 }}>Se duoc tiet lo sau khi ket thuc tro chuyen</div>
+              <div style={{ fontFamily: 'var(--font-headline)', fontSize: 20, fontWeight: 800, color: '#FDF9F3', marginBottom: 4 }}>??? (Ẩn danh)</div>
+              <div style={{ fontSize: 13, color: '#E6BEB2', marginBottom: 16 }}>Sẽ được tiết lộ sau khi kết thúc trò chuyện</div>
 
               {/* Kinetic Connection */}
               <div style={{ padding: '16px', borderRadius: '1rem', background: 'linear-gradient(135deg, rgba(255,87,26,0.12), rgba(255,181,158,0.06))', border: '1px solid rgba(255,87,26,0.2)' }}>
@@ -461,7 +461,7 @@ const BlindSoupDatePage = () => {
       <div style={s.noteCard}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.noteIcon}>shield</span>
         <div style={s.noteText}>
-          Danh tinh cua ban duoc bao mat tuyet doi cho den khi ban quyet dinh tiet lo. Moi cuoc tro chuyen deu duoc giam sat de dam bao an toan.
+          Danh tính của bạn được bảo mật tuyệt đối cho đến khi bạn quyết định tiết lộ. Mọi cuộc trò chuyện đều được giám sát để đảm bảo an toàn.
         </div>
       </div>
     </div>

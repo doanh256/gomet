@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const categories = ['Tat ca', 'Hoa', 'Socola', 'Thu bong', 'Voucher'];
+const categories = ['Tất cả', 'Hoa', 'Socola', 'Thú bông', 'Voucher'];
 
 const gifts = [
-  { id: 1, name: 'Bo hoa hong', desc: 'Hong nhung tuoi that dep', price: 150, cat: 'Hoa', emoji: '\uD83C\uDF39' },
-  { id: 2, name: 'Hop socola Godiva', desc: 'Socola cao cap Bi', price: 200, cat: 'Socola', emoji: '\uD83C\uDF6B' },
-  { id: 3, name: 'Gau bong tim', desc: 'Gau bong mem mai dang yeu', price: 120, cat: 'Thu bong', emoji: '\uD83E\uDDF8' },
-  { id: 4, name: 'Voucher Spa', desc: 'Thu gian cho 2 nguoi', price: 300, cat: 'Voucher', emoji: '\uD83D\uDC86' },
-  { id: 5, name: 'Hoa huong duong', desc: 'Tuoi sang nhu nang mai', price: 100, cat: 'Hoa', emoji: '\uD83C\uDF3B' },
-  { id: 6, name: 'Socola handmade', desc: 'Lam thu cong tu cacao', price: 180, cat: 'Socola', emoji: '\uD83C\uDF75' },
-  { id: 7, name: 'Thu bong tho', desc: 'Tho bong dang yeu co no', price: 90, cat: 'Thu bong', emoji: '\uD83D\uDC30' },
-  { id: 8, name: 'Voucher Dinner', desc: 'Bua toi lang man cho doi', price: 350, cat: 'Voucher', emoji: '\uD83C\uDF7D\uFE0F' },
+  { id: 1, name: 'Bó hoa hồng', desc: 'Hồng nhung tươi thật đẹp', price: 150, cat: 'Hoa', emoji: '\uD83C\uDF39' },
+  { id: 2, name: 'Hộp socola Godiva', desc: 'Socola cao cấp Bỉ', price: 200, cat: 'Socola', emoji: '\uD83C\uDF6B' },
+  { id: 3, name: 'Gấu bông tim', desc: 'Gấu bông mềm mại đáng yêu', price: 120, cat: 'Thú bông', emoji: '\uD83E\uDDF8' },
+  { id: 4, name: 'Voucher Spa', desc: 'Thư giãn cho 2 người', price: 300, cat: 'Voucher', emoji: '\uD83D\uDC86' },
+  { id: 5, name: 'Hoa hướng dương', desc: 'Tươi sáng như nắng mai', price: 100, cat: 'Hoa', emoji: '\uD83C\uDF3B' },
+  { id: 6, name: 'Socola handmade', desc: 'Làm thủ công từ cacao', price: 180, cat: 'Socola', emoji: '\uD83C\uDF75' },
+  { id: 7, name: 'Thú bông thỏ', desc: 'Thỏ bông đáng yêu có nơ', price: 90, cat: 'Thú bông', emoji: '\uD83D\uDC30' },
+  { id: 8, name: 'Voucher Dinner', desc: 'Bữa tối lãng mạn cho đôi', price: 350, cat: 'Voucher', emoji: '\uD83C\uDF7D\uFE0F' },
 ];
 
 const popularGifts = [
-  { id: 20, name: 'Trai tim pha le', price: 250, emoji: '\uD83D\uDC8E' },
-  { id: 21, name: 'Nen thom', price: 80, emoji: '\uD83D\uDD6F\uFE0F' },
-  { id: 22, name: 'Thiep viet tay', price: 50, emoji: '\u2709\uFE0F' },
+  { id: 20, name: 'Trái tim pha lê', price: 250, emoji: '\uD83D\uDC8E' },
+  { id: 21, name: 'Nến thơm', price: 80, emoji: '\uD83D\uDD6F\uFE0F' },
+  { id: 22, name: 'Thiệp viết tay', price: 50, emoji: '\u2709\uFE0F' },
   { id: 23, name: 'Hoa lavender', price: 130, emoji: '\uD83D\uDC9C' },
-  { id: 24, name: 'Banh macaron', price: 160, emoji: '\uD83C\uDF70' },
+  { id: 24, name: 'Bánh macaron', price: 160, emoji: '\uD83C\uDF70' },
 ];
 
 const GiftShopPage = () => {
@@ -273,8 +273,8 @@ const GiftShopPage = () => {
     <div style={s.page}>
       <div style={s.header}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>redeem</span>
-        <h1 style={s.heading}>Qua tang tinh te</h1>
-        <p style={s.subtitle}>Gui yeu thuong den nguoi dac biet</p>
+        <h1 style={s.heading}>Quà tặng tinh tế</h1>
+        <p style={s.subtitle}>Gửi yêu thương đến người đặc biệt</p>
       </div>
 
       <div style={s.catScroll}>
@@ -292,9 +292,9 @@ const GiftShopPage = () => {
       <div style={s.featured}>
         <div style={s.featuredEmoji}>{'\uD83D\uDC9D'}</div>
         <div style={s.featuredInfo}>
-          <div style={s.featuredBadge}>Dac biet</div>
-          <div style={s.featuredName}>Set qua Valentine</div>
-          <div style={s.featuredDesc}>Hoa hong, socola va thiep viet tay - combo hoan hao cho ngay le tinh nhan</div>
+          <div style={s.featuredBadge}>Đặc biệt</div>
+          <div style={s.featuredName}>Set quà Valentine</div>
+          <div style={s.featuredDesc}>Hoa hồng, socola và thiệp viết tay - combo hoàn hảo cho ngày lễ tình nhân</div>
           <div style={s.featuredPrice}>450 xu</div>
         </div>
       </div>
@@ -308,7 +308,7 @@ const GiftShopPage = () => {
               <div style={s.giftDesc}>{g.desc}</div>
               <div style={s.giftBottom}>
                 <div style={s.giftPrice}>{g.price} xu</div>
-                <button style={s.sendBtn}>Gui tang</button>
+                <button style={s.sendBtn}>Gửi tặng</button>
               </div>
             </div>
           </div>
@@ -318,14 +318,14 @@ const GiftShopPage = () => {
       <div style={s.balanceCard}>
         <span className="material-symbols-outlined filled" style={s.walletIcon}>account_balance_wallet</span>
         <div style={s.balanceInfo}>
-          <div style={s.balanceLabel}>So du cua ban</div>
-          <div style={s.balanceValue}>2,450 xu</div>
+          <div style={s.balanceLabel}>Số dư của bạn</div>
+          <div style={s.balanceValue}>2.450 xu</div>
         </div>
-        <span style={s.topUpLink} onClick={() => navigate('/wallet')}>Nap them</span>
+        <span style={s.topUpLink} onClick={() => navigate('/wallet')}>Nạp thêm</span>
       </div>
 
       <div style={s.section}>
-        <h2 style={s.sectionTitle}>Qua tang pho bien</h2>
+        <h2 style={s.sectionTitle}>Quà tặng phổ biến</h2>
         <div style={s.popularScroll}>
           {popularGifts.map(g => (
             <div key={g.id} style={s.popularCard}>

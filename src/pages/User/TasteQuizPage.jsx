@@ -2,95 +2,95 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const cuisines = [
-  { id: 'vn', name: 'Viet Nam', img: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=400&h=300&fit=crop' },
-  { id: 'jp', name: 'Nhat Ban', img: 'https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=400&h=300&fit=crop' },
-  { id: 'kr', name: 'Han Quoc', img: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=400&h=300&fit=crop' },
-  { id: 'th', name: 'Thai Lan', img: 'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=400&h=300&fit=crop' },
-  { id: 'it', name: 'Y', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop' },
-  { id: 'fr', name: 'Phap', img: 'https://images.unsplash.com/photo-1608855238293-a8853e7f7c98?w=400&h=300&fit=crop' },
-  { id: 'in', name: 'An Do', img: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop' },
+  { id: 'vn', name: 'Việt Nam', img: 'https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=400&h=300&fit=crop' },
+  { id: 'jp', name: 'Nhật Bản', img: 'https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?w=400&h=300&fit=crop' },
+  { id: 'kr', name: 'Hàn Quốc', img: 'https://images.unsplash.com/photo-1590301157890-4810ed352733?w=400&h=300&fit=crop' },
+  { id: 'th', name: 'Thái Lan', img: 'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=400&h=300&fit=crop' },
+  { id: 'it', name: 'Ý', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop' },
+  { id: 'fr', name: 'Pháp', img: 'https://images.unsplash.com/photo-1608855238293-a8853e7f7c98?w=400&h=300&fit=crop' },
+  { id: 'in', name: 'Ấn Độ', img: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop' },
   { id: 'mx', name: 'Mexico', img: 'https://images.unsplash.com/photo-1613514785940-daed07799d9b?w=400&h=300&fit=crop' },
   { id: 'cn', name: 'Trung Hoa', img: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=400&h=300&fit=crop' },
-  { id: 'us', name: 'My', img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=300&fit=crop' },
+  { id: 'us', name: 'Mỹ', img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=400&h=300&fit=crop' },
 ];
 
 const spiceLevels = [
-  { id: 0, label: 'Khong cay', emoji: '🫑', desc: 'Khong chiu duoc cay' },
-  { id: 1, label: 'It cay', emoji: '🌶️', desc: 'Cay nhe thoi' },
-  { id: 2, label: 'Vua', emoji: '🌶️🌶️', desc: 'Cay vua phai' },
-  { id: 3, label: 'Cay', emoji: '🌶️🌶️🌶️', desc: 'Thich cay' },
-  { id: 4, label: 'Sieu cay', emoji: '🌶️🌶️🌶️🌶️🌶️', desc: 'Cang cay cang thich' },
+  { id: 0, label: 'Không cay', emoji: '🫑', desc: 'Không chịu được cay' },
+  { id: 1, label: 'Ít cay', emoji: '🌶️', desc: 'Cay nhẹ thôi' },
+  { id: 2, label: 'Vừa', emoji: '🌶️🌶️', desc: 'Cay vừa phải' },
+  { id: 3, label: 'Cay', emoji: '🌶️🌶️🌶️', desc: 'Thích cay' },
+  { id: 4, label: 'Siêu cay', emoji: '🌶️🌶️🌶️🌶️🌶️', desc: 'Càng cay càng thích' },
 ];
 
 const diningStyles = [
-  { id: 'street', label: 'Street food', icon: 'storefront', desc: 'An via he, quan binh dan' },
-  { id: 'fine', label: 'Fine dining', icon: 'restaurant', desc: 'Nha hang sang trong' },
-  { id: 'family', label: 'Gia dinh', icon: 'family_restroom', desc: 'Am cung, phan nhieu' },
-  { id: 'buffet', label: 'Buffet', icon: 'brunch_dining', desc: 'An tha ga, da dang' },
+  { id: 'street', label: 'Street food', icon: 'storefront', desc: 'Ăn vỉa hè, quán bình dân' },
+  { id: 'fine', label: 'Fine dining', icon: 'restaurant', desc: 'Nhà hàng sang trọng' },
+  { id: 'family', label: 'Gia đình', icon: 'family_restroom', desc: 'Ấm cúng, phần nhiều' },
+  { id: 'buffet', label: 'Buffet', icon: 'brunch_dining', desc: 'Ăn thả ga, đa dạng' },
 ];
 
 const budgetOptions = [
-  { id: 'low', label: 'Tiet kiem', icon: 'savings', desc: 'Duoi 100K/nguoi' },
-  { id: 'mid', label: 'Trung binh', icon: 'account_balance_wallet', desc: '100K - 300K/nguoi' },
-  { id: 'high', label: 'Thoai mai', icon: 'diamond', desc: '300K - 500K/nguoi' },
-  { id: 'premium', label: 'Khong gioi han', icon: 'workspace_premium', desc: 'Tren 500K/nguoi' },
+  { id: 'low', label: 'Tiết kiệm', icon: 'savings', desc: 'Dưới 100K/người' },
+  { id: 'mid', label: 'Trung bình', icon: 'account_balance_wallet', desc: '100K - 300K/người' },
+  { id: 'high', label: 'Thoải mái', icon: 'diamond', desc: '300K - 500K/người' },
+  { id: 'premium', label: 'Không giới hạn', icon: 'workspace_premium', desc: 'Trên 500K/người' },
 ];
 
 const diningTimes = [
-  { id: 'breakfast', label: 'An sang', icon: 'egg_alt', desc: '6:00 - 9:00' },
-  { id: 'lunch', label: 'An trua', icon: 'lunch_dining', desc: '11:00 - 13:00' },
-  { id: 'dinner', label: 'An toi', icon: 'dinner_dining', desc: '18:00 - 21:00' },
-  { id: 'late', label: 'An khuya', icon: 'nightlife', desc: '21:00+' },
+  { id: 'breakfast', label: 'Ăn sáng', icon: 'egg_alt', desc: '6:00 - 9:00' },
+  { id: 'lunch', label: 'Ăn trưa', icon: 'lunch_dining', desc: '11:00 - 13:00' },
+  { id: 'dinner', label: 'Ăn tối', icon: 'dinner_dining', desc: '18:00 - 21:00' },
+  { id: 'late', label: 'Ăn khuya', icon: 'nightlife', desc: '21:00+' },
 ];
 
 const drinkOptions = [
-  { id: 'coffee', label: 'Ca phe', icon: 'coffee', desc: 'Khong the thieu' },
-  { id: 'tea', label: 'Tra', icon: 'emoji_food_beverage', desc: 'Tra dao, tra sua...' },
-  { id: 'beer', label: 'Bia/Ruou', icon: 'sports_bar', desc: 'Lai rai cuoi tuan' },
-  { id: 'juice', label: 'Nuoc ep', icon: 'local_bar', desc: 'Healthy lifestyle' },
-  { id: 'boba', label: 'Tra sua', icon: 'bubble_chart', desc: 'Tran chau fan' },
+  { id: 'coffee', label: 'Cà phê', icon: 'coffee', desc: 'Không thể thiếu' },
+  { id: 'tea', label: 'Trà', icon: 'emoji_food_beverage', desc: 'Trà đào, trà sữa...' },
+  { id: 'beer', label: 'Bia/Rượu', icon: 'sports_bar', desc: 'Lai rai cuối tuần' },
+  { id: 'juice', label: 'Nước ép', icon: 'local_bar', desc: 'Healthy lifestyle' },
+  { id: 'boba', label: 'Trà sữa', icon: 'bubble_chart', desc: 'Trân châu fan' },
 ];
 
 const allergyOptions = [
-  { id: 'none', label: 'Khong co', icon: 'check_circle' },
-  { id: 'seafood', label: 'Hai san', icon: 'set_meal' },
-  { id: 'nuts', label: 'Hat/Dau phong', icon: 'energy_savings_leaf' },
-  { id: 'dairy', label: 'Sua', icon: 'water_drop' },
+  { id: 'none', label: 'Không có', icon: 'check_circle' },
+  { id: 'seafood', label: 'Hải sản', icon: 'set_meal' },
+  { id: 'nuts', label: 'Hạt/Đậu phộng', icon: 'energy_savings_leaf' },
+  { id: 'dairy', label: 'Sữa', icon: 'water_drop' },
   { id: 'gluten', label: 'Gluten', icon: 'bakery_dining' },
-  { id: 'egg', label: 'Trung', icon: 'egg' },
+  { id: 'egg', label: 'Trứng', icon: 'egg' },
 ];
 
 const cookingSkills = [
-  { id: 'none', label: 'Khong nau', icon: 'no_meals', desc: 'Chi an ngoai' },
-  { id: 'basic', label: 'Co ban', icon: 'skillet', desc: 'Nau duoc vai mon' },
-  { id: 'good', label: 'Kha', icon: 'soup_kitchen', desc: 'Nau ngon lam' },
-  { id: 'chef', label: 'Master Chef', icon: 'menu_book', desc: 'Dau bep tai ba' },
+  { id: 'none', label: 'Không nấu', icon: 'no_meals', desc: 'Chỉ ăn ngoài' },
+  { id: 'basic', label: 'Cơ bản', icon: 'skillet', desc: 'Nấu được vài món' },
+  { id: 'good', label: 'Khá', icon: 'soup_kitchen', desc: 'Nấu ngon lắm' },
+  { id: 'chef', label: 'Master Chef', icon: 'menu_book', desc: 'Đầu bếp tài ba' },
 ];
 
 const photoPrefs = [
-  { id: 'always', label: 'Luon chup', icon: 'photo_camera', desc: 'Chup truoc, an sau' },
-  { id: 'sometimes', label: 'Thinh thoang', icon: 'camera_alt', desc: 'Mon dep thi chup' },
-  { id: 'never', label: 'Khong bao gio', icon: 'no_photography', desc: 'An la chinh' },
+  { id: 'always', label: 'Luôn chụp', icon: 'photo_camera', desc: 'Chụp trước, ăn sau' },
+  { id: 'sometimes', label: 'Thỉnh thoảng', icon: 'camera_alt', desc: 'Món đẹp thì chụp' },
+  { id: 'never', label: 'Không bao giờ', icon: 'no_photography', desc: 'Ăn là chính' },
 ];
 
 const regionPrefs = [
-  { id: 'north', label: 'Mien Bac', icon: 'landscape', desc: 'Tinh te, dam da' },
-  { id: 'central', label: 'Mien Trung', icon: 'tsunami', desc: 'Cay nong, dam vi' },
-  { id: 'south', label: 'Mien Nam', icon: 'wb_sunny', desc: 'Ngot ngao, phong phu' },
-  { id: 'all', label: 'Tat ca', icon: 'public', desc: 'Thich het!' },
+  { id: 'north', label: 'Miền Bắc', icon: 'landscape', desc: 'Tinh tế, đậm đà' },
+  { id: 'central', label: 'Miền Trung', icon: 'tsunami', desc: 'Cay nồng, đậm vị' },
+  { id: 'south', label: 'Miền Nam', icon: 'wb_sunny', desc: 'Ngọt ngào, phong phú' },
+  { id: 'all', label: 'Tất cả', icon: 'public', desc: 'Thích hết!' },
 ];
 
 const steps = [
-  { key: 'cuisine', title: 'Dinh nghia', highlight: 'khau vi', titleEnd: 'cua ban.', sub: 'Chon am thuc yeu thich', note: 'Chon it nhat 3', multi: true },
-  { key: 'spice', title: 'Do cay', highlight: 'ly tuong', titleEnd: 'cua ban?', sub: 'Chon muc do cay ban thich', multi: false },
-  { key: 'style', title: 'Phong cach', highlight: 'an uong', titleEnd: 'cua ban?', sub: 'Ban thich an o dau nhat?', multi: true },
-  { key: 'budget', title: 'Ngan sach', highlight: 'am thuc', titleEnd: 'cua ban?', sub: 'Chi phi moi bua an', multi: false },
-  { key: 'time', title: 'Thoi diem', highlight: 'yeu thich', titleEnd: 'nhat?', sub: 'Ban thuong an luc nao?', multi: true },
-  { key: 'drinks', title: 'Thuc uong', highlight: 'khong the thieu', titleEnd: '?', sub: 'Chon thuc uong ban thich', multi: true },
-  { key: 'allergy', title: 'Di ung', highlight: 'thuc pham', titleEnd: '?', sub: 'Chon neu ban bi di ung', multi: true },
-  { key: 'cooking', title: 'Ky nang', highlight: 'nau an', titleEnd: 'cua ban?', sub: 'Ban nau an gioi co nao?', multi: false },
-  { key: 'photo', title: 'Chup anh', highlight: 'do an', titleEnd: '?', sub: 'Ban co thich food photography?', multi: false },
-  { key: 'region', title: 'Vung mien', highlight: 'am thuc', titleEnd: 'yeu thich?', sub: 'Ban thich am thuc vung nao?', multi: false },
+  { key: 'cuisine', title: 'Định nghĩa', highlight: 'khẩu vị', titleEnd: 'của bạn.', sub: 'Chọn ẩm thực yêu thích', note: 'Chọn ít nhất 3', multi: true },
+  { key: 'spice', title: 'Độ cay', highlight: 'lý tưởng', titleEnd: 'của bạn?', sub: 'Chọn mức độ cay bạn thích', multi: false },
+  { key: 'style', title: 'Phong cách', highlight: 'ăn uống', titleEnd: 'của bạn?', sub: 'Bạn thích ăn ở đâu nhất?', multi: true },
+  { key: 'budget', title: 'Ngân sách', highlight: 'ẩm thực', titleEnd: 'của bạn?', sub: 'Chi phí mỗi bữa ăn', multi: false },
+  { key: 'time', title: 'Thời điểm', highlight: 'yêu thích', titleEnd: 'nhất?', sub: 'Bạn thường ăn lúc nào?', multi: true },
+  { key: 'drinks', title: 'Thức uống', highlight: 'không thể thiếu', titleEnd: '?', sub: 'Chọn thức uống bạn thích', multi: true },
+  { key: 'allergy', title: 'Dị ứng', highlight: 'thực phẩm', titleEnd: '?', sub: 'Chọn nếu bạn bị dị ứng', multi: true },
+  { key: 'cooking', title: 'Kỹ năng', highlight: 'nấu ăn', titleEnd: 'của bạn?', sub: 'Bạn nấu ăn giỏi cỡ nào?', multi: false },
+  { key: 'photo', title: 'Chụp ảnh', highlight: 'đồ ăn', titleEnd: '?', sub: 'Bạn có thích food photography?', multi: false },
+  { key: 'region', title: 'Vùng miền', highlight: 'ẩm thực', titleEnd: 'yêu thích?', sub: 'Bạn thích ẩm thực vùng nào?', multi: false },
 ];
 
 const stepData = {
@@ -447,10 +447,10 @@ const TasteQuizPage = () => {
         <div style={s.successIcon}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 48, color: 'var(--on-primary)' }}>check</span>
         </div>
-        <div style={s.successHeading}>Ho so khau vi<br />da <span style={s.highlight}>hoan thanh!</span></div>
-        <div style={s.successSub}>Chung toi se goi y nhung trai nghiem am thuc phu hop nhat cho ban.</div>
+        <div style={s.successHeading}>Hồ sơ khẩu vị<br />đã <span style={s.highlight}>hoàn thành!</span></div>
+        <div style={s.successSub}>Chúng tôi sẽ gợi ý những trải nghiệm ẩm thực phù hợp nhất cho bạn.</div>
         <button style={s.startBtn} onClick={() => navigate('/app')}>
-          Bat dau kham pha
+          Bắt đầu khám phá
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_forward</span>
         </button>
       </div>
@@ -520,7 +520,7 @@ const TasteQuizPage = () => {
     <div style={s.page}>
       <div style={s.progressWrap}>
         <div style={s.progressTrack}><div style={s.progressFill} /></div>
-        <span style={s.stepLabel}>Buoc {String(step + 1).padStart(2, '0')}/10</span>
+        <span style={s.stepLabel}>Bước {String(step + 1).padStart(2, '0')}/10</span>
       </div>
 
       <div style={s.content}>
@@ -535,11 +535,11 @@ const TasteQuizPage = () => {
       <div style={s.nav}>
         <button style={s.backBtn} onClick={back}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
-          Quay lai
+          Quay lại
         </button>
-        <button style={s.skipLink} onClick={skip}>Bo qua</button>
+        <button style={s.skipLink} onClick={skip}>Bỏ qua</button>
         <button style={s.nextBtn(canProceed())} onClick={canProceed() ? next : undefined}>
-          {step === 9 ? 'Hoan thanh' : 'Tiep theo'}
+          {step === 9 ? 'Hoàn thành' : 'Tiếp theo'}
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>
             {step === 9 ? 'check' : 'arrow_forward'}
           </span>

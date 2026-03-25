@@ -17,7 +17,7 @@ const ActivityHeatmapPage = () => {
   const [selectedCell, setSelectedCell] = useState(null);
 
   const days = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN'];
-  const timeSlots = ['Sang', 'Trua', 'Chieu', 'Toi'];
+  const timeSlots = ['Sáng', 'Trưa', 'Chiều', 'Tối'];
 
   const heatData = [
     [0, 0, 1, 0, 1, 2, 1],
@@ -29,14 +29,14 @@ const ActivityHeatmapPage = () => {
   const intensityColors = ['#2A2A2A', '#5a3028', '#FFB59E', '#FF571A'];
   const intensityTextColors = ['#E6BEB2', '#FDF9F3', '#3A0B00', '#3A0B00'];
 
-  const legendLabels = ['It', 'Trung binh', 'Nhieu', 'Rat nhieu'];
+  const legendLabels = ['Ít', 'Trung bình', 'Nhiều', 'Rất nhiều'];
 
   const activities = [
-    { icon: 'favorite', text: 'Ai do da thich ban', time: '5 phut truoc', color: '#FFB59E' },
-    { icon: 'message', text: 'Tin nhan moi tu Minh Anh', time: '12 phut truoc', color: '#FFB59E' },
-    { icon: 'event', text: 'Su kien DineDate sap dien ra', time: '30 phut truoc', color: '#FFD54F' },
-    { icon: 'bolt', text: 'Flash Meet gan ban', time: '1 gio truoc', color: '#FF571A' },
-    { icon: 'visibility', text: 'Ho so duoc xem 24 lan', time: '2 gio truoc', color: '#E6BEB2' },
+    { icon: 'favorite', text: 'Ai đó đã thích bạn', time: '5 phút trước', color: '#FFB59E' },
+    { icon: 'message', text: 'Tin nhắn mới từ Minh Anh', time: '12 phút trước', color: '#FFB59E' },
+    { icon: 'event', text: 'Sự kiện DineDate sắp diễn ra', time: '30 phút trước', color: '#FFD54F' },
+    { icon: 'bolt', text: 'Flash Meet gần bạn', time: '1 giờ trước', color: '#FF571A' },
+    { icon: 'visibility', text: 'Hồ sơ được xem 24 lần', time: '2 giờ trước', color: '#E6BEB2' },
   ];
 
   const s = {
@@ -95,12 +95,12 @@ const ActivityHeatmapPage = () => {
           <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>local_fire_department</span>
-        <h1 style={s.headerTitle}>Ban nhiet hoat dong</h1>
+        <h1 style={s.headerTitle}>Bản nhiệt hoạt động</h1>
       </div>
 
       <div style={s.liveCounter}>
         <div style={s.pulseDot} />
-        <span style={s.liveText}><span style={s.liveCount}>1,248</span> nguoi dang hoat dong</span>
+        <span style={s.liveText}><span style={s.liveCount}>1,248</span> người đang hoạt động</span>
       </div>
 
       <div style={s.heatmapCard}>
@@ -124,15 +124,15 @@ const ActivityHeatmapPage = () => {
       </div>
 
       <div style={s.peakCard}>
-        <div style={s.peakTitle}>Gio vang cua ban</div>
-        <div style={s.peakText}>Ban nhan duoc nhieu tuong tac nhat vao</div>
-        <span style={s.peakHighlight}>Thu 6 - Toi (19:00 - 22:00)</span>
+        <div style={s.peakTitle}>Giờ vàng của bạn</div>
+        <div style={s.peakText}>Bạn nhận được nhiều tương tác nhất vào</div>
+        <span style={s.peakHighlight}>Thứ 6 - Tối (19:00 - 22:00)</span>
       </div>
 
       <div style={s.activitySection}>
         <div style={s.sectionTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>history</span>
-          Hoat dong gan day
+          Hoạt động gần đây
         </div>
         {activities.map((a, i) => (
           <div key={i} style={s.activityItem}>
@@ -147,7 +147,7 @@ const ActivityHeatmapPage = () => {
 
       <div style={s.tipCard}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.tipIcon}>tips_and_updates</span>
-        <span style={s.tipText}>Hay hoat dong vao <strong>Thu 6 buoi toi</strong> de tang co hoi ghep doi!</span>
+        <span style={s.tipText}>Hãy hoạt động vào <strong>Thứ 6 buổi tối</strong> để tăng cơ hội ghép đôi!</span>
       </div>
     </div>
   );

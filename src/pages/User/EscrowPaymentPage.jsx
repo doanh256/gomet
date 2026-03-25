@@ -2,24 +2,24 @@ import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 const timelineSteps = [
-  { label: 'Dat coc', time: '15/03/2026 - 10:00', status: 'completed', icon: 'check_circle', color: '#117500' },
-  { label: 'Xac nhan hen', time: '16/03/2026 - 14:30', status: 'completed', icon: 'check_circle', color: '#117500' },
-  { label: 'Buoi hen dien ra', time: '20/03/2026 - 18:00', status: 'current', icon: 'radio_button_checked', color: '#FFB59E' },
-  { label: 'Giai ngan', time: 'Dang cho', status: 'pending', icon: 'radio_button_unchecked', color: '#E6BEB2' },
+  { label: 'Đặt cọc', time: '15/03/2026 - 10:00', status: 'completed', icon: 'check_circle', color: '#117500' },
+  { label: 'Xác nhận hẹn', time: '16/03/2026 - 14:30', status: 'completed', icon: 'check_circle', color: '#117500' },
+  { label: 'Buổi hẹn diễn ra', time: '20/03/2026 - 18:00', status: 'current', icon: 'radio_button_checked', color: '#FFB59E' },
+  { label: 'Giải ngân', time: 'Đang chờ', status: 'pending', icon: 'radio_button_unchecked', color: '#E6BEB2' },
 ];
 
 const faqItems = [
   {
-    q: 'Escrow la gi?',
-    a: 'Escrow la dich vu giu tien trung gian. GOMET se giu tien dat coc cua ban cho den khi buoi hen hoan thanh.',
+    q: 'Escrow là gì?',
+    a: 'Escrow là dịch vụ giữ tiền trung gian. GOMET sẽ giữ tiền đặt cọc của bạn cho đến khi buổi hẹn hoàn thành.',
   },
   {
-    q: 'Khi nao tien duoc giai ngan?',
-    a: 'Tien se duoc giai ngan sau khi ca hai ben xac nhan buoi hen da dien ra thanh cong.',
+    q: 'Khi nào tiền được giải ngân?',
+    a: 'Tiền sẽ được giải ngân sau khi cả hai bên xác nhận buổi hẹn đã diễn ra thành công.',
   },
   {
-    q: 'Lam sao de yeu cau hoan tien?',
-    a: 'Ban co the yeu cau hoan tien trong vong 24h sau thoi gian hen neu buoi hen khong dien ra. GOMET se xem xet va xu ly trong 3-5 ngay lam viec.',
+    q: 'Làm sao để yêu cầu hoàn tiền?',
+    a: 'Bạn có thể yêu cầu hoàn tiền trong vòng 24h sau thời gian hẹn nếu buổi hẹn không diễn ra. GOMET sẽ xem xét và xử lý trong 3-5 ngày làm việc.',
   },
 ];
 
@@ -308,30 +308,30 @@ const EscrowPaymentPage = () => {
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
-        Quay lai
+        Quay lại
       </button>
 
       <div style={s.headerRow}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>lock</span>
-        <h1 style={s.heading}>Chi tiet giao dich</h1>
+        <h1 style={s.heading}>Chi tiết giao dịch</h1>
       </div>
 
       {/* Status card */}
       <div style={s.statusCard}>
         <div style={s.statusBadge(escrowStatus)}>
-          {escrowStatus === 'holding' ? 'DANG GIU' : 'DA GIAI NGAN'}
+          {escrowStatus === 'holding' ? 'ĐANG GIỮ' : 'ĐÃ GIẢI NGÂN'}
         </div>
-        <div style={s.txIdText}>Ma giao dich: {txId}</div>
+        <div style={s.txIdText}>Mã giao dịch: {txId}</div>
       </div>
 
       {/* Amount */}
       <div style={s.amountSection}>
         <div style={s.amountValue}>150.000 VND</div>
-        <div style={s.amountLabel}>Escrow boi GOMET</div>
+        <div style={s.amountLabel}>Escrow bởi GOMET</div>
       </div>
 
       {/* Timeline */}
-      <h2 style={s.sectionTitle}>Tien trinh</h2>
+      <h2 style={s.sectionTitle}>Tiến trình</h2>
       <div style={s.timeline}>
         <div style={s.timelineLine} />
         {timelineSteps.map((step, i) => (
@@ -348,7 +348,7 @@ const EscrowPaymentPage = () => {
       </div>
 
       {/* Date info card */}
-      <h2 style={s.sectionTitle}>Thong tin buoi hen</h2>
+      <h2 style={s.sectionTitle}>Thông tin buổi hẹn</h2>
       <div style={s.infoCard}>
         <div style={s.partnerRow}>
           <img
@@ -360,22 +360,22 @@ const EscrowPaymentPage = () => {
         </div>
         <div style={s.infoRow}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>calendar_today</span>
-          <span style={s.infoLabel}>Ngay hen</span>
+          <span style={s.infoLabel}>Ngày hẹn</span>
           <span style={s.infoValue}>20/03/2026</span>
         </div>
         <div style={s.infoRow}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>schedule</span>
-          <span style={s.infoLabel}>Thoi gian</span>
+          <span style={s.infoLabel}>Thời gian</span>
           <span style={s.infoValue}>18:00</span>
         </div>
         <div style={s.infoRow}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>location_on</span>
-          <span style={s.infoLabel}>Dia diem</span>
+          <span style={s.infoLabel}>Địa điểm</span>
           <span style={s.infoValue}>The Lissome Cafe</span>
         </div>
         <div style={s.infoRowLast}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>payments</span>
-          <span style={s.infoLabel}>So tien</span>
+          <span style={s.infoLabel}>Số tiền</span>
           <span style={s.infoValue}>150.000 VND</span>
         </div>
       </div>
@@ -384,11 +384,11 @@ const EscrowPaymentPage = () => {
       <div style={s.actions}>
         <button style={s.btnPrimary}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>check_circle</span>
-          Xac nhan hoan thanh
+          Xác nhận hoàn thành
         </button>
         <button style={s.btnOutline}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>undo</span>
-          Yeu cau hoan tien
+          Yêu cầu hoàn tiền
         </button>
       </div>
 
@@ -396,7 +396,7 @@ const EscrowPaymentPage = () => {
       <div style={s.faqSection}>
         <div style={s.faqHeader}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#E6BEB2' }}>policy</span>
-          <h2 style={s.sectionTitle}>Chinh sach escrow</h2>
+          <h2 style={s.sectionTitle}>Chính sách escrow</h2>
         </div>
         {faqItems.map((item, i) => (
           <div key={i} style={s.faqItem}>

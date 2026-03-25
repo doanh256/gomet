@@ -25,12 +25,12 @@ const KarmaPage = () => {
     { date: '18/03/2026', reason: 'Nhan danh gia 5 sao', change: '+30', total: 800 },
     { date: '15/03/2026', reason: 'Xac minh CCCD', change: '+100', total: 770 },
     { date: '12/03/2026', reason: 'Hoan thanh hen tai The Coffee House', change: '+50', total: 670 },
-    { date: '10/03/2026', reason: 'Huy hen cuoi tuan', change: '-20', total: 620 },
+    { date: '10/03/2026', reason: 'Huỷ hẹn cuối tuần', change: '-20', total: 620 },
   ];
   const perks = [
-    { icon: 'visibility', title: 'Hien thi uu tien', desc: 'Profile cua ban duoc xep hang cao hon' },
-    { icon: 'verified', title: 'Huy hieu Diamond', desc: 'Badge Diamond doc quyen tren profile' },
-    { icon: 'event_available', title: 'Truy cap su kien VIP', desc: 'Tham gia cac su kien gioi han' },
+    { icon: 'visibility', title: 'Hiển thị ưu tiên', desc: 'Profile của bạn được xếp hạng cao hơn' },
+    { icon: 'verified', title: 'Huy hiệu Kim Cương', desc: 'Huy hiệu Kim Cương độc quyền trên profile' },
+    { icon: 'event_available', title: 'Truy cập sự kiện VIP', desc: 'Tham gia các sự kiện giới hạn' },
   ];
   const circumference = 2 * Math.PI * 68;
   const dashOffset = circumference - (score / maxScore) * circumference;

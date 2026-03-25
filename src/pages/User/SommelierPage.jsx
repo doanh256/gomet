@@ -6,14 +6,14 @@ const SommelierPage = () => {
   const [sweetness, setSweetness] = useState(50);
   const [intensity, setIntensity] = useState(50);
   const [temperature, setTemperature] = useState(50);
-  const [occasion, setOccasion] = useState('Hen do dau tien');
+  const [occasion, setOccasion] = useState('Hẹn hò đầu tiên');
 
-  const occasions = ['Hen do dau tien', 'Ky niem', 'Nhom ban be', 'Thuong thuc rieng'];
+  const occasions = ['Hẹn hò đầu tiên', 'Kỷ niệm', 'Nhóm bạn bè', 'Thưởng thức riêng'];
 
   const recommendations = [
-    { id: 1, name: 'Chateau Dalat Reserve', origin: 'Da Lat, Viet Nam', price: '350.000 - 500.000 VND', match: 94, notes: 'Vi nho chin mem, huong vani nhe nhang, hau vi trai cay nhiet doi.', emoji: '🍷' },
-    { id: 2, name: 'Sake Junmai Daiginjo', origin: 'Niigata, Nhat Ban', price: '600.000 - 900.000 VND', match: 87, notes: 'Trong suot, tinh te, huong hoa nhe, vi ngot tu nhien tu gao.', emoji: '🍶' },
-    { id: 3, name: 'Espresso Martini', origin: 'Cocktail', price: '150.000 - 250.000 VND', match: 82, notes: 'Dang nhe cua ca phe, ngot cua liqueur, nang luong cho buoi toi.', emoji: '🍸' },
+    { id: 1, name: 'Chateau Dalat Reserve', origin: 'Đà Lạt, Việt Nam', price: '350.000 - 500.000 VND', match: 94, notes: 'Vị nho chín mềm, hương vani nhẹ nhàng, hậu vị trái cây nhiệt đới.', emoji: '🍷' },
+    { id: 2, name: 'Sake Junmai Daiginjo', origin: 'Niigata, Nhật Bản', price: '600.000 - 900.000 VND', match: 87, notes: 'Trong suốt, tinh tế, hương hoa nhẹ, vị ngọt tự nhiên từ gạo.', emoji: '🍶' },
+    { id: 3, name: 'Espresso Martini', origin: 'Cocktail', price: '150.000 - 250.000 VND', match: 82, notes: 'Đắng nhẹ của cà phê, ngọt của liqueur, năng lượng cho buổi tối.', emoji: '🍸' },
   ];
 
   const s = {
@@ -79,25 +79,25 @@ const SommelierPage = () => {
       </div>
       <div style={s.hero}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>wine_bar</span>
-        <h1 style={s.heroTitle}>Sommelier thong minh</h1>
-        <p style={s.heroSub}>De AI chon do uong hoan hao cho buoi hen cua ban</p>
+        <h1 style={s.heroTitle}>Sommelier thông minh</h1>
+        <p style={s.heroSub}>Để AI chọn đồ uống hoàn hảo cho buổi hẹn của bạn</p>
       </div>
       <div style={s.section}>
-        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>tune</span> Khau vi cua ban</div>
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>tune</span> Khẩu vị của bạn</div>
         <div style={s.sliderGroup}>
-          <Slider label1="Ngot" label2="Kho" value={sweetness} onChange={setSweetness} />
-          <Slider label1="Nhe" label2="Dam" value={intensity} onChange={setIntensity} />
-          <Slider label1="Lanh" label2="Nong" value={temperature} onChange={setTemperature} />
+          <Slider label1="Ngọt" label2="Khô" value={sweetness} onChange={setSweetness} />
+          <Slider label1="Nhẹ" label2="Đậm" value={intensity} onChange={setIntensity} />
+          <Slider label1="Lạnh" label2="Nóng" value={temperature} onChange={setTemperature} />
         </div>
       </div>
       <div style={s.section}>
-        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>celebration</span> Dip su dung</div>
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>celebration</span> Dịp sử dụng</div>
         <div style={s.chipRow}>
           {occasions.map(o => (<button key={o} style={s.chip(occasion === o)} onClick={() => setOccasion(o)}>{o}</button>))}
         </div>
       </div>
       <div style={s.section}>
-        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>auto_awesome</span> AI goi y</div>
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>auto_awesome</span> AI gợi ý</div>
         <div style={s.recCards}>
           {recommendations.map(rec => (
             <div key={rec.id} style={s.recCard}>
@@ -105,11 +105,11 @@ const SommelierPage = () => {
               <div style={s.recBody}>
                 <div style={s.recTop}>
                   <div><div style={s.recName}>{rec.name}</div><div style={s.recOrigin}>{rec.origin}</div></div>
-                  <span style={s.matchBadge(rec.match)}>Tuong thich {rec.match}%</span>
+                  <span style={s.matchBadge(rec.match)}>Tương thích {rec.match}%</span>
                 </div>
                 <div style={s.recPrice}>{rec.price}</div>
                 <div style={s.recNotes}>{rec.notes}</div>
-                <button style={s.orderBtn}>Dat ngay</button>
+                <button style={s.orderBtn}>Đặt ngay</button>
               </div>
             </div>
           ))}
@@ -118,14 +118,14 @@ const SommelierPage = () => {
       <div style={s.section}>
         <div style={s.paletteCard}>
           <div style={s.paletteAvatars}><div style={s.paletteAvatar(0)}>B</div><div style={s.paletteAvatar(1)}>?</div></div>
-          <div style={s.paletteBody}><div style={s.paletteTitle}>Chia se khau vi voi doi phuong</div><div style={s.paletteSub}>Xem ban va nguoi ay hop nhau bao nhieu</div></div>
-          <button style={s.compareBtn}>So sanh 78%</button>
+          <div style={s.paletteBody}><div style={s.paletteTitle}>Chia sẻ khẩu vị với đối phương</div><div style={s.paletteSub}>Xem bạn và người ấy hợp nhau bao nhiêu</div></div>
+          <button style={s.compareBtn}>So sánh 78%</button>
         </div>
       </div>
       <div style={{ ...s.section, paddingBottom: 32 }}>
         <div style={s.funCard}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.funIcon}>auto_awesome</span>
-          <div><div style={s.funTitle}>Ban co biet?</div><div style={s.funText}>Ruou vang do o nhiet do phong (16-18°C) se toa huong thom tot nhat. Nhung khi o Viet Nam, hay lam lanh nhe 15 phut truoc khi thuong thuc!</div></div>
+          <div><div style={s.funTitle}>Bạn có biết?</div><div style={s.funText}>Rượu vang đỏ ở nhiệt độ phòng (16-18°C) sẽ toả hương thơm tốt nhất. Nhưng khi ở Việt Nam, hãy làm lạnh nhẹ 15 phút trước khi thưởng thức!</div></div>
         </div>
       </div>
     </div>
