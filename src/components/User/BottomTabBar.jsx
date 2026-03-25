@@ -136,7 +136,7 @@ export const DesktopSidebar = () => {
               fontSize: '14px',
               transition: 'all 0.15s',
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>{item.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>{item.icon}</span>
               {item.label}
             </Link>
           );
@@ -173,10 +173,10 @@ export const MobileTopBar = () => (
     }}>GOMET</span>
     <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
       <Link to="/app/notifications" style={{ color: 'var(--on-surface-variant)', display: 'flex' }}>
-        <span className="material-symbols-outlined">notifications</span>
+        <span aria-hidden="true" className="material-symbols-outlined">notifications</span>
       </Link>
       <Link to="/app/profile" style={{ color: 'var(--on-surface-variant)', display: 'flex' }}>
-        <span className="material-symbols-outlined">tune</span>
+        <span aria-hidden="true" className="material-symbols-outlined">tune</span>
       </Link>
     </div>
   </header>

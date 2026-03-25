@@ -216,10 +216,10 @@ const EliteLandingPage = () => {
         <div style={s.heroOrb1} />
         <div style={s.heroOrb2} />
         <button style={s.backBtn} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined">arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
         <div style={s.heroLabel}>
-          <span className="material-symbols-outlined" style={{ fontSize: 14 }}>diamond</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>diamond</span>
           DIAMOND LEVEL
         </div>
         <div style={s.heroHeading}>
@@ -253,7 +253,7 @@ const EliteLandingPage = () => {
         <div style={s.benefitsGrid}>
           {benefits.map(b => (
             <div key={b.title} style={s.benefitCard}>
-              <span className="material-symbols-outlined" style={s.benefitIcon}>{b.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.benefitIcon}>{b.icon}</span>
               <div style={s.benefitTitle}>{b.title}</div>
               <div style={s.benefitDesc}>{b.desc}</div>
             </div>
@@ -262,7 +262,7 @@ const EliteLandingPage = () => {
 
         {/* Comparison Table */}
         <button style={s.compareToggle} onClick={() => setShowCompare(!showCompare)}>
-          <span className="material-symbols-outlined" style={{ fontSize: 18 }}>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>
             {showCompare ? 'expand_less' : 'compare'}
           </span>
           {showCompare ? 'An bang so sanh' : 'So sanh cac goi'}
@@ -284,7 +284,7 @@ const EliteLandingPage = () => {
                   <td style={s.tdFeature}>{label}</td>
                   {tiers.map(t => (
                     <td key={t.name} style={s.td}>
-                      <span className="material-symbols-outlined"
+                      <span aria-hidden="true" className="material-symbols-outlined"
                         style={t.features[i] ? s.checkMark : s.crossMark}>
                         {t.features[i] ? 'check_circle' : 'cancel'}
                       </span>
@@ -309,7 +309,7 @@ const EliteLandingPage = () => {
           <div style={s.priceValue}>1.999.000</div>
           <div style={s.priceUnit}>VND / thang</div>
           <button style={s.ascendBtn}>
-            <span className="material-symbols-outlined" style={{ fontSize: 22 }}>diamond</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22 }}>diamond</span>
             Ascend to Diamond
           </button>
         </div>

@@ -285,15 +285,15 @@ const BookingConfirmPage = () => {
     <div style={s.page}>
       <div style={s.header}>
         <button style={s.backBtn} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined">arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
-        <span className="material-symbols-outlined" style={s.headerIcon}>check_circle</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>check_circle</span>
         <h1 style={s.headerTitle}>Xac nhan dat cho</h1>
       </div>
 
       <div style={s.successSection}>
         <div style={s.checkCircle}>
-          <span className="material-symbols-outlined" style={s.checkIcon}>check_circle</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.checkIcon}>check_circle</span>
         </div>
         <div style={s.successText}>Da xac nhan!</div>
         <div style={s.successSub}>Dat cho cua ban da duoc xac nhan thanh cong</div>
@@ -301,7 +301,7 @@ const BookingConfirmPage = () => {
 
       <div style={s.card}>
         <div style={s.detailRow}>
-          <span className="material-symbols-outlined" style={s.detailIcon}>location_on</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>location_on</span>
           <div>
             <div style={s.detailLabel}>Dia diem</div>
             <div style={s.detailValue}>{bookingData.venue}</div>
@@ -309,28 +309,28 @@ const BookingConfirmPage = () => {
           </div>
         </div>
         <div style={s.detailRow}>
-          <span className="material-symbols-outlined" style={s.detailIcon}>calendar_today</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>calendar_today</span>
           <div>
             <div style={s.detailLabel}>Ngay</div>
             <div style={s.detailValue}>{bookingData.date}</div>
           </div>
         </div>
         <div style={s.detailRow}>
-          <span className="material-symbols-outlined" style={s.detailIcon}>schedule</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>schedule</span>
           <div>
             <div style={s.detailLabel}>Gio</div>
             <div style={s.detailValue}>{bookingData.time}</div>
           </div>
         </div>
         <div style={s.detailRow}>
-          <span className="material-symbols-outlined" style={s.detailIcon}>group</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>group</span>
           <div>
             <div style={s.detailLabel}>So nguoi</div>
             <div style={s.detailValue}>{bookingData.partySize} nguoi</div>
           </div>
         </div>
         <div style={s.detailRowLast}>
-          <span className="material-symbols-outlined" style={s.detailIcon}>confirmation_number</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>confirmation_number</span>
           <div>
             <div style={s.detailLabel}>Ma dat cho</div>
             <div style={s.detailValue}>{bookingData.bookingId}</div>
@@ -338,7 +338,7 @@ const BookingConfirmPage = () => {
         </div>
         <div style={s.qrSection}>
           <div style={s.qrBox}>
-            <span className="material-symbols-outlined" style={s.qrIcon}>qr_code_2</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.qrIcon}>qr_code_2</span>
           </div>
           <div style={s.qrLabel}>Xuat trinh ma QR khi den nha hang</div>
         </div>
@@ -346,12 +346,12 @@ const BookingConfirmPage = () => {
 
       <div style={s.card}>
         <div style={s.noticeTitle}>
-          <span className="material-symbols-outlined" style={s.noticeTitleIcon}>info</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.noticeTitleIcon}>info</span>
           Luu y quan trong
         </div>
         {notices.map((n, i) => (
           <div style={s.noticeItem} key={i}>
-            <span className="material-symbols-outlined" style={s.noticeIcon}>{n.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.noticeIcon}>{n.icon}</span>
             <span style={s.noticeText}>{n.text}</span>
           </div>
         ))}
@@ -359,11 +359,11 @@ const BookingConfirmPage = () => {
 
       <div style={s.actions}>
         <button style={s.primaryBtn}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>calendar_add_on</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>calendar_add_on</span>
           Them vao lich
         </button>
         <button style={s.outlineBtn}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
           Chia se
         </button>
         <button style={s.textLink}>Chinh sua dat cho</button>
@@ -373,7 +373,7 @@ const BookingConfirmPage = () => {
         <button style={s.collapsibleHeader} onClick={() => setShowCancel(!showCancel)}>
           <span>Chinh sach huy</span>
           <span
-            className="material-symbols-outlined"
+            aria-hidden="true" className="material-symbols-outlined"
             style={{ ...s.chevron, transform: showCancel ? 'rotate(180deg)' : 'rotate(0deg)' }}
           >
             expand_more

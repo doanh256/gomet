@@ -58,15 +58,15 @@ const MemoryPlannerPage = () => {
 
   return (
     <div style={s.page}>
-      <button style={s.backBtn} onClick={() => navigate(-1)}><span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>Quay lai</button>
-      <div style={s.header}><span className="material-symbols-outlined" style={s.headerIcon}>cake</span><h1 style={s.heading}>Len ke hoach ky niem</h1><p style={s.subtitle}>Tao nhung khoang khac dang nho</p></div>
+      <button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>Quay lai</button>
+      <div style={s.header}><span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>cake</span><h1 style={s.heading}>Len ke hoach ky niem</h1><p style={s.subtitle}>Tao nhung khoang khac dang nho</p></div>
       <h2 style={s.sectionTitle}>Ngay dac biet sap toi</h2>
-      <div style={s.countdownRow}>{upcomingDates.map((d) => (<div key={d.id} style={s.countdownCard(d.color)}><span className="material-symbols-outlined" style={s.countdownIcon(d.color)}>{d.icon}</span><div style={s.countdownLabel}>{d.label}</div><div style={s.countdownDays}><span style={s.countdownNumber}>{d.daysLeft}</span> ngay nua</div></div>))}</div>
+      <div style={s.countdownRow}>{upcomingDates.map((d) => (<div key={d.id} style={s.countdownCard(d.color)}><span aria-hidden="true" className="material-symbols-outlined" style={s.countdownIcon(d.color)}>{d.icon}</span><div style={s.countdownLabel}>{d.label}</div><div style={s.countdownDays}><span style={s.countdownNumber}>{d.daysLeft}</span> ngay nua</div></div>))}</div>
       <h2 style={s.sectionTitle}>Goi y ke hoach</h2>
-      <div style={s.ideaGrid}>{planIdeas.map((idea) => (<div key={idea.id} style={s.ideaCard}><span className="material-symbols-outlined" style={s.ideaIcon}>{idea.icon}</span><div style={s.ideaTitle}>{idea.title}</div><div style={s.ideaDesc}>{idea.desc}</div><button style={s.ideaBtn}>{idea.btn}</button></div>))}</div>
+      <div style={s.ideaGrid}>{planIdeas.map((idea) => (<div key={idea.id} style={s.ideaCard}><span aria-hidden="true" className="material-symbols-outlined" style={s.ideaIcon}>{idea.icon}</span><div style={s.ideaTitle}>{idea.title}</div><div style={s.ideaDesc}>{idea.desc}</div><button style={s.ideaBtn}>{idea.btn}</button></div>))}</div>
       <h2 style={s.sectionTitle}>Lich su ky niem</h2>
-      <div style={s.timelineSection}>{pastMemories.map((mem, i) => (<div key={mem.id} style={s.memoryItem}>{i < pastMemories.length - 1 && <div style={s.memoryLine} />}<div style={s.memoryDot}><div style={s.memoryDotInner} /></div><div style={s.memoryContent}><div style={s.memoryDate}>{mem.date}</div><div style={s.memoryTitle}>{mem.title}</div><div style={s.memoryPhoto}><span className="material-symbols-outlined" style={s.memoryPhotoIcon}>image</span></div><div style={s.memoryNote}>{mem.note}</div></div></div>))}</div>
-      <button style={s.addBtn}><span className="material-symbols-outlined" style={s.addIcon}>add_circle</span>Them ngay dac biet</button>
+      <div style={s.timelineSection}>{pastMemories.map((mem, i) => (<div key={mem.id} style={s.memoryItem}>{i < pastMemories.length - 1 && <div style={s.memoryLine} />}<div style={s.memoryDot}><div style={s.memoryDotInner} /></div><div style={s.memoryContent}><div style={s.memoryDate}>{mem.date}</div><div style={s.memoryTitle}>{mem.title}</div><div style={s.memoryPhoto}><span aria-hidden="true" className="material-symbols-outlined" style={s.memoryPhotoIcon}>image</span></div><div style={s.memoryNote}>{mem.note}</div></div></div>))}</div>
+      <button style={s.addBtn}><span aria-hidden="true" className="material-symbols-outlined" style={s.addIcon}>add_circle</span>Them ngay dac biet</button>
     </div>
   );
 };

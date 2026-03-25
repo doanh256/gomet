@@ -170,7 +170,7 @@ const LandingPage = () => {
                 display: 'flex', alignItems: 'center', gap: 6,
               }}>
                 <span>Khám Phá</span>
-                <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_forward</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_forward</span>
               </a>
             </div>
           </div>
@@ -200,7 +200,7 @@ const LandingPage = () => {
                     backgroundColor: 'rgba(184,53,0,0.08)', display: 'flex',
                     alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px',
                   }}>
-                    <span className="material-symbols-outlined" style={{ color: '#b83500', fontSize: 28 }}>{step.icon}</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ color: '#b83500', fontSize: 28 }}>{step.icon}</span>
                   </div>
                   <div style={{
                     width: 28, height: 28, borderRadius: 9999, backgroundColor: '#b83500',
@@ -278,7 +278,7 @@ const LandingPage = () => {
                       display: 'flex', alignItems: 'center', gap: 6,
                     }}>
                       <span>Tìm Người Đi Cùng</span>
-                      <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
+                      <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
                     </button>
                   </div>
                 </div>
@@ -315,7 +315,7 @@ const LandingPage = () => {
                     backgroundColor: `${item.color}14`, display: 'flex',
                     alignItems: 'center', justifyContent: 'center', marginBottom: 16,
                   }}>
-                    <span className="material-symbols-outlined" style={{ color: item.color, fontSize: 24 }}>{item.icon}</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ color: item.color, fontSize: 24 }}>{item.icon}</span>
                   </div>
                   <h4 style={{
                     fontSize: 16, fontWeight: 700, margin: '0 0 6px',

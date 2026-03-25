@@ -47,7 +47,7 @@ const CheckInPage = () => {
   return (
     <div style={s.page}>
       <style>{scanLineKeyframes}</style>
-      <div style={s.header}><button style={s.backBtn} onClick={() => navigate(-1)}><span className="material-symbols-outlined">arrow_back</span></button><span className="material-symbols-outlined" style={s.headerIcon}>qr_code_scanner</span><h1 style={s.headerTitle}>Check-in su kien</h1></div>
+      <div style={s.header}><button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined">arrow_back</span></button><span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>qr_code_scanner</span><h1 style={s.headerTitle}>Check-in su kien</h1></div>
       {!checkedIn ? (
         <>
           <div style={s.scannerContainer}><div style={s.scannerBox}><div style={s.corner(0, 0, null, null)} /><div style={s.corner(0, null, 0, null)} /><div style={s.corner(null, 0, null, 0)} /><div style={s.corner(null, null, 0, 0)} /><div style={s.scanLine} /></div><p style={s.scanInstruction}>Quet ma QR de check-in</p></div>
@@ -56,8 +56,8 @@ const CheckInPage = () => {
         </>
       ) : (
         <>
-          <div style={s.successContainer}><div style={s.checkCircle}><span className="material-symbols-outlined" style={s.checkIcon}>check</span></div><h2 style={s.successTitle}>Check-in thanh cong!</h2><p style={s.successDetail}>DineDate: Dinner & Drinks</p><p style={s.successDetail}>Thoi gian: 19:32 - 22/03/2026</p><p style={s.successDetail}>Ban: A5 - Tang 2</p></div>
-          <div style={s.eventCard}><div style={s.eventCardTitle}><span className="material-symbols-outlined" style={{ fontSize: '18px' }}>info</span>Thong tin su kien</div><div style={s.eventRow}><span className="material-symbols-outlined" style={s.eventRowIcon}>event</span><span style={s.eventRowText}>DineDate: Dinner & Drinks</span></div><div style={s.eventRow}><span className="material-symbols-outlined" style={s.eventRowIcon}>location_on</span><span style={s.eventRowText}>Lau Tang 5, 72 Nguyen Hue, Q1</span></div><div style={s.eventRow}><span className="material-symbols-outlined" style={s.eventRowIcon}>schedule</span><span style={s.eventRowText}>19:00 - 22:00, 22/03/2026</span></div><button style={s.viewDetailLink} onClick={() => navigate('/events/1')}>Xem chi tiet →</button></div>
+          <div style={s.successContainer}><div style={s.checkCircle}><span aria-hidden="true" className="material-symbols-outlined" style={s.checkIcon}>check</span></div><h2 style={s.successTitle}>Check-in thanh cong!</h2><p style={s.successDetail}>DineDate: Dinner & Drinks</p><p style={s.successDetail}>Thoi gian: 19:32 - 22/03/2026</p><p style={s.successDetail}>Ban: A5 - Tang 2</p></div>
+          <div style={s.eventCard}><div style={s.eventCardTitle}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>info</span>Thong tin su kien</div><div style={s.eventRow}><span aria-hidden="true" className="material-symbols-outlined" style={s.eventRowIcon}>event</span><span style={s.eventRowText}>DineDate: Dinner & Drinks</span></div><div style={s.eventRow}><span aria-hidden="true" className="material-symbols-outlined" style={s.eventRowIcon}>location_on</span><span style={s.eventRowText}>Lau Tang 5, 72 Nguyen Hue, Q1</span></div><div style={s.eventRow}><span aria-hidden="true" className="material-symbols-outlined" style={s.eventRowIcon}>schedule</span><span style={s.eventRowText}>19:00 - 22:00, 22/03/2026</span></div><button style={s.viewDetailLink} onClick={() => navigate('/events/1')}>Xem chi tiet →</button></div>
         </>
       )}
     </div>

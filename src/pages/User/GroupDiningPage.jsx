@@ -98,7 +98,7 @@ const GroupDiningPage = () => {
         fontFamily: "'Inter', sans-serif", fontSize: 14, fontWeight: 600,
         cursor: 'pointer', marginBottom: 24, padding: 0,
       }}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         Back
       </button>
 
@@ -108,7 +108,7 @@ const GroupDiningPage = () => {
           display: 'inline-flex', alignItems: 'center', gap: 8, padding: '8px 20px',
           borderRadius: 9999, background: 'rgba(255,87,26,0.15)', marginBottom: 16,
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#FF571A' }}>local_fire_department</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#FF571A' }}>local_fire_department</span>
           <span style={{ fontSize: 13, fontWeight: 700, color: '#FF571A' }}>Active Squad</span>
         </div>
         <h1 style={{
@@ -155,7 +155,7 @@ const GroupDiningPage = () => {
         backgroundColor: '#1C1B1B', borderRadius: '1.5rem', padding: 24, marginBottom: 24,
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFD54F' }}>auto_awesome</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFD54F' }}>auto_awesome</span>
           <h2 style={{
             fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 18, fontWeight: 700,
             color: '#FDF9F3', margin: 0,
@@ -197,7 +197,7 @@ const GroupDiningPage = () => {
           fontSize: 16, fontWeight: 700, cursor: 'pointer',
           display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>calendar_today</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>calendar_today</span>
           Propose a Group Date
         </button>
       </div>

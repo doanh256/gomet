@@ -43,12 +43,12 @@ const TasteTwinPage = () => {
       {/* Header */}
       <div style={{ padding: '20px 16px 0', display: 'flex', alignItems: 'center', gap: 12 }}>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#1A1A2E' }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#1A1A2E' }}>arrow_back</span>
         </button>
         <div style={{ flex: 1 }}>
           <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>Ket Noi Toan Cau</h1>
         </div>
-        <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#6C63FF' }}>public</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#6C63FF' }}>public</span>
       </div>
 
       {/* World Map Placeholder */}
@@ -58,7 +58,7 @@ const TasteTwinPage = () => {
           position: 'relative', overflow: 'hidden', boxShadow: '0 4px 20px rgba(108,99,255,0.15)'
         }}>
           <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 80, color: 'rgba(108,99,255,0.15)' }}>public</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 80, color: 'rgba(108,99,255,0.15)' }}>public</span>
           </div>
           {mapDots.map((dot, i) => (
             <div key={i} style={{ position: 'absolute', top: dot.top, left: dot.left }}>
@@ -79,7 +79,7 @@ const TasteTwinPage = () => {
       {/* Primary Taste Twin */}
       <div style={{ padding: '0 16px', marginBottom: 24 }}>
         <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12, color: '#1A1A2E' }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#6C63FF' }}>favorite</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#6C63FF' }}>favorite</span>
           Taste Twin Cua Ban
         </h2>
         <div style={{
@@ -114,7 +114,7 @@ const TasteTwinPage = () => {
       {/* Secondary Connections */}
       <div style={{ padding: '0 16px', marginBottom: 24 }}>
         <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12, color: '#1A1A2E' }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#6C63FF' }}>group</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#6C63FF' }}>group</span>
           Ket Noi Khac
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 10 }}>
@@ -139,7 +139,7 @@ const TasteTwinPage = () => {
       {/* Quick Bites Nearby */}
       <div style={{ padding: '0 16px' }}>
         <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12, color: '#1A1A2E' }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>near_me</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>near_me</span>
           An Nhanh Gan Day
         </h2>
         {nearbyBites.map((b, i) => (
@@ -153,7 +153,7 @@ const TasteTwinPage = () => {
               <div style={{ fontSize: 12, color: '#888' }}>{b.dist}</div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#F5C542' }}>star</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, color: '#F5C542' }}>star</span>
               <span style={{ fontSize: 13, fontWeight: 700 }}>{b.rating}</span>
             </div>
           </div>

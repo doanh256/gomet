@@ -327,7 +327,7 @@ const VenueProfilePage = () => {
       <div style={styles.hero}>
         <div style={styles.heroOverlay} />
         <button style={styles.backBtn} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined" style={{ fontSize: 22 }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22 }}>arrow_back</span>
         </button>
         <div style={styles.heroContent}>
           <div style={styles.venueName}>{venue.name}</div>
@@ -349,7 +349,7 @@ const VenueProfilePage = () => {
         <span style={styles.chip}>{venue.cuisine}</span>
         <span style={styles.priceChip}>{venue.priceRange}</span>
         <span style={styles.locationChip}>
-          <span className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>
           Quan 1, TP.HCM
         </span>
       </div>
@@ -400,11 +400,11 @@ const VenueProfilePage = () => {
           <div style={styles.sectionTitle}>Vi tri</div>
           <div style={styles.locationSection}>
             <div style={styles.addressText}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E', marginTop: 2 }}>location_on</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E', marginTop: 2 }}>location_on</span>
               {venue.location}
             </div>
             <button style={styles.mapsBtn}>
-              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>map</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>map</span>
               Mo trong Maps
             </button>
           </div>
@@ -427,7 +427,7 @@ const VenueProfilePage = () => {
       {/* Fixed CTA */}
       <div style={styles.ctaBar}>
         <button style={styles.ctaBtn}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>restaurant</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>restaurant</span>
           Dat cho ngay
         </button>
       </div>

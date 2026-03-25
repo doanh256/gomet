@@ -76,7 +76,7 @@ const KarmaPage = () => {
 
   return (
     <div style={s.page}>
-      <div style={s.header}><button style={s.backBtn} onClick={() => navigate(-1)}><span className="material-symbols-outlined">arrow_back</span></button><h1 style={s.pageTitle}>Diem uy tin</h1><span className="material-symbols-outlined filled" style={s.verifiedIcon}>verified</span></div>
+      <div style={s.header}><button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined">arrow_back</span></button><h1 style={s.pageTitle}>Diem uy tin</h1><span className="material-symbols-outlined filled" style={s.verifiedIcon}>verified</span></div>
       <div style={s.scoreSection}>
         <div style={s.scoreRing}>
           <svg width="160" height="160" viewBox="0 0 160 160"><circle cx="80" cy="80" r="68" fill="none" stroke="#353535" strokeWidth="10" /><circle cx="80" cy="80" r="68" fill="none" stroke="url(#karmaGrad)" strokeWidth="10" strokeDasharray={circumference} strokeDashoffset={dashOffset} strokeLinecap="round" transform="rotate(-90 80 80)" style={{ transition: 'stroke-dashoffset 1s ease' }} /><defs><linearGradient id="karmaGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stopColor="#FFB59E" /><stop offset="100%" stopColor="#FF571A" /></linearGradient></defs></svg>
@@ -87,9 +87,9 @@ const KarmaPage = () => {
       </div>
       <h2 style={s.sectionTitle}>Cap do</h2>
       <div style={s.levelsRow}>{levels.map(level => (<div key={level.name} style={s.levelBadge(level)}><span style={s.levelEmoji}>{level.emoji}</span><span style={s.levelName}>{level.name}</span><span style={s.levelRange}>{level.min}-{level.max}</span></div>))}</div>
-      <div style={s.scoringSection}><h2 style={s.sectionTitle}>Cach tinh diem</h2>{scoringRules.map((rule, i) => (<div key={i} style={s.scoringRow}><div style={s.scoringIcon(rule.color)}><span className="material-symbols-outlined" style={{ fontSize: '20px' }}>{rule.icon}</span></div><span style={s.scoringActivity}>{rule.activity}</span><span style={s.pointsBadge(rule.points.startsWith('+'))}>{rule.points}</span></div>))}</div>
+      <div style={s.scoringSection}><h2 style={s.sectionTitle}>Cach tinh diem</h2>{scoringRules.map((rule, i) => (<div key={i} style={s.scoringRow}><div style={s.scoringIcon(rule.color)}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>{rule.icon}</span></div><span style={s.scoringActivity}>{rule.activity}</span><span style={s.pointsBadge(rule.points.startsWith('+'))}>{rule.points}</span></div>))}</div>
       <div style={s.historySection}><h2 style={s.sectionTitle}>Lich su diem</h2>{history.map((item, i) => { const positive = item.change.startsWith('+'); return (<div key={i} style={s.historyItem}><div style={s.historyDot(positive)} /><div style={s.historyInfo}><div style={s.historyReason}>{item.reason}</div><div style={s.historyDate}>{item.date}</div></div><span style={s.historyChange(positive)}>{item.change}</span><span style={s.historyTotal}>{item.total}</span></div>); })}</div>
-      <div style={s.perksSection}><h2 style={s.sectionTitle}>Dac quyen cua ban</h2>{perks.map((perk, i) => (<div key={i} style={s.perkCard}><div style={s.perkIconWrap}><span className="material-symbols-outlined">{perk.icon}</span></div><div><div style={s.perkTitle}>{perk.title}</div><div style={s.perkDesc}>{perk.desc}</div></div></div>))}</div>
+      <div style={s.perksSection}><h2 style={s.sectionTitle}>Dac quyen cua ban</h2>{perks.map((perk, i) => (<div key={i} style={s.perkCard}><div style={s.perkIconWrap}><span aria-hidden="true" className="material-symbols-outlined">{perk.icon}</span></div><div><div style={s.perkTitle}>{perk.title}</div><div style={s.perkDesc}>{perk.desc}</div></div></div>))}</div>
     </div>
   );
 };

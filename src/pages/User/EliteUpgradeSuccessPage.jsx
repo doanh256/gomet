@@ -50,7 +50,7 @@ const EliteUpgradeSuccessPage = () => {
       {/* Header */}
       <div style={{ padding: '20px 16px 0', display: 'flex', alignItems: 'center', gap: 12, position: 'relative', zIndex: 1 }}>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#1A1A2E' }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#1A1A2E' }}>arrow_back</span>
         </button>
       </div>
 
@@ -61,7 +61,7 @@ const EliteUpgradeSuccessPage = () => {
           display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 16px',
           boxShadow: '0 8px 32px rgba(108,99,255,0.3)'
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 32, color: '#fff' }}>diamond</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 32, color: '#fff' }}>diamond</span>
         </div>
         <h1 style={{ margin: '0 0 8px', fontSize: 24, fontWeight: 900, color: '#1A1A2E' }}>
           Chao mung den Diamond Circle!
@@ -85,7 +85,7 @@ const EliteUpgradeSuccessPage = () => {
               <div style={{ fontSize: 18, fontWeight: 900, letterSpacing: 2, color: '#fff' }}>GOMET</div>
               <div style={{ fontSize: 10, letterSpacing: 3, color: '#aaa', marginTop: 2 }}>DIAMOND</div>
             </div>
-            <span className="material-symbols-outlined" style={{ fontSize: 28, color: '#FFD700' }}>diamond</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 28, color: '#FFD700' }}>diamond</span>
           </div>
           <div>
             <div style={{ fontSize: 10, color: '#888', letterSpacing: 2, marginBottom: 4 }}>MEMBER</div>
@@ -121,7 +121,7 @@ const EliteUpgradeSuccessPage = () => {
                 width: 44, height: 44, borderRadius: 14, background: `${b.color}15`,
                 display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 12
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 24, color: b.color }}>{b.icon}</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: b.color }}>{b.icon}</span>
               </div>
               <div style={{ fontSize: 14, fontWeight: 700, marginBottom: 4, color: '#1A1A2E' }}>{b.title}</div>
               <div style={{ fontSize: 12, color: '#888', lineHeight: 1.4 }}>{b.desc}</div>
@@ -138,7 +138,7 @@ const EliteUpgradeSuccessPage = () => {
           fontSize: 16, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
           boxShadow: '0 8px 32px rgba(108,99,255,0.3)'
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>auto_awesome</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>auto_awesome</span>
           Kham Pha Dac Quyen
         </button>
       </div>

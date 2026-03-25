@@ -263,7 +263,7 @@ const LeaderboardPage = () => {
   return (
     <div style={s.page}>
       <div style={s.header}>
-        <span className="material-symbols-outlined" style={s.headerIcon}>leaderboard</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>leaderboard</span>
         <h1 style={s.heading}>Bang xep hang</h1>
       </div>
 
@@ -317,7 +317,7 @@ const LeaderboardPage = () => {
               <div style={s.rowAvatar}>{r.avatar}</div>
               <div style={s.rowName}>{r.name}</div>
               <div style={s.rowPts}>{r.points.toLocaleString()}</div>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, color: t.color }}>{t.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: t.color }}>{t.icon}</span>
             </div>
           );
         })}
@@ -329,7 +329,7 @@ const LeaderboardPage = () => {
         <div style={s.stickyInfo}>
           <div style={s.stickyName}>Ban (Doanh)</div>
           <div style={s.stickyTrend}>
-            <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#117500' }}>trending_up</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, color: '#117500' }}>trending_up</span>
             Tang 5 bac so voi tuan truoc
           </div>
         </div>

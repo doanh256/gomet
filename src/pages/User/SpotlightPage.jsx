@@ -260,7 +260,7 @@ const SpotlightPage = () => {
   return (
     <div style={s.page}>
       <div style={s.header}>
-        <span className="material-symbols-outlined" style={s.headerIcon}>person_search</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>person_search</span>
         <h1 style={s.heading}>Kham pha guong mat</h1>
         <p style={s.subtitle}>Nhung nguoi noi bat hom nay</p>
       </div>
@@ -271,16 +271,16 @@ const SpotlightPage = () => {
         <div style={s.featuredImage}>
           <div style={s.featuredOverlay}>
             <div style={s.featuredBadge}>
-              <span className="material-symbols-outlined" style={{ fontSize: 14 }}>star</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>star</span>
               98% tuong thich
             </div>
             <div style={s.featuredName}>
               Thanh Huyen, 25
-              <span className="material-symbols-outlined" style={s.verifiedIcon}>verified</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.verifiedIcon}>verified</span>
             </div>
             <p style={s.featuredBio}>Yeu thich ca phe sang va nhung chuyen di bat ngo. Tim mot nguoi dong hanh chan thanh.</p>
             <button style={s.viewProfileBtn} onClick={() => navigate('/profile')}>
-              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>person</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>person</span>
               Xem ho so
             </button>
           </div>
@@ -302,9 +302,9 @@ const SpotlightPage = () => {
         {profiles.map(p => (
           <div key={p.id} style={s.card}>
             <div style={s.cardImage}>
-              <span className="material-symbols-outlined" style={s.cardImageIcon}>person</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.cardImageIcon}>person</span>
               <button style={s.likeBtn(!!liked[p.id])} onClick={() => toggleLike(p.id)}>
-                <span className="material-symbols-outlined" style={{ fontSize: 18 }}>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>
                   {liked[p.id] ? 'favorite' : 'favorite_border'}
                 </span>
               </button>
@@ -312,7 +312,7 @@ const SpotlightPage = () => {
             <div style={s.cardBody}>
               <div style={s.cardName}>{p.name}, {p.age}</div>
               <div style={s.cardLocation}>
-                <span className="material-symbols-outlined" style={s.locationIcon}>location_on</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={s.locationIcon}>location_on</span>
                 {p.location}
               </div>
               <div style={s.chipsRow}>
@@ -327,11 +327,11 @@ const SpotlightPage = () => {
 
       {/* Premium upsell */}
       <div style={s.premiumCard}>
-        <span className="material-symbols-outlined" style={s.premiumIcon}>diamond</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.premiumIcon}>diamond</span>
         <div style={s.premiumTitle}>Nang cap de xem them</div>
         <p style={s.premiumDesc}>Mo khoa tat ca guong mat noi bat va tinh nang doc quyen voi GOMET Premium</p>
         <button style={s.premiumBtn} onClick={() => navigate('/premium')}>
-          <span className="material-symbols-outlined" style={{ fontSize: 18 }}>workspace_premium</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>workspace_premium</span>
           Nang cap ngay
         </button>
       </div>

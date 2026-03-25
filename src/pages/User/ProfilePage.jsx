@@ -4,70 +4,24 @@ import { useToast } from '../../components/ToastNotification';
 import { useAppContext } from '../../AppContext';
 import { api } from '../../api/client';
 
-const INTEREST_OPTIONS = ['Cong nghe', 'Nau an', 'Coffee', 'Du lich', 'The thao', 'Am nhac', 'Phim anh', 'Doc sach', 'Gaming', 'Nhiep anh', 'Yoga', 'Thu cung', 'An uong', 'Thoi trang', 'Nghe thuat'];
+const INTEREST_OPTIONS = ['Công nghệ', 'Nấu ăn', 'Cà phê', 'Du lịch', 'Thể thao', 'Âm nhạc', 'Phim ảnh', 'Đọc sách', 'Gaming', 'Nhiếp ảnh', 'Yoga', 'Thú cưng', 'Ăn uống', 'Thời trang', 'Nghệ thuật'];
 
-// Fallback hardcoded taste axes - used when user interests are unavailable
-const DEFAULT_TASTE_AXES = [
+const TASTE_AXES = [
   { key: 'cay', label: 'Cay', value: 75, color: '#FF571A' },
   { key: 'umami', label: 'Umami', value: 60, color: '#FFB59E' },
   { key: 'chua', label: 'Chua', value: 45, color: '#FFD54F' },
-  { key: 'ngot', label: 'Ngot', value: 80, color: '#117500' },
-  { key: 'dang', label: 'Dang', value: 30, color: '#E6BEB2' },
-  { key: 'man', label: 'Man', value: 55, color: '#FF571A' },
+  { key: 'ngot', label: 'Ngọt', value: 80, color: '#117500' },
+  { key: 'dang', label: 'Đắng', value: 30, color: '#E6BEB2' },
+  { key: 'man', label: 'Mặn', value: 55, color: '#FF571A' },
 ];
 
-// Fallback hardcoded dish history - used when API call fails
-const DEFAULT_RECENT_DISHES = [
-  { id: 1, name: 'Bun bo Hue', restaurant: 'Quan Hue Xua', points: '+10 Vang' },
-  { id: 2, name: 'Pho bo', restaurant: 'Pho Thin', points: '+10 Vang' },
-  { id: 3, name: 'Com tam', restaurant: 'Com Tam Ba Ghien', points: '+10 Vang' },
-  { id: 4, name: 'Banh mi', restaurant: 'Banh Mi Huynh Hoa', points: '+10 Vang' },
-  { id: 5, name: 'Bun cha', restaurant: 'Bun Cha Dac Kim', points: '+10 Vang' },
+const RECENT_DISHES = [
+  { id: 1, name: 'Bún bò Huế', restaurant: 'Quán Huế Xưa', points: '+10 Vàng' },
+  { id: 2, name: 'Phở bò', restaurant: 'Phở Thìn', points: '+10 Vàng' },
+  { id: 3, name: 'Cơm tấm', restaurant: 'Cơm Tấm Bà Ghiền', points: '+10 Vàng' },
+  { id: 4, name: 'Bánh mì', restaurant: 'Bánh Mì Huỳnh Hoa', points: '+10 Vàng' },
+  { id: 5, name: 'Bún chả', restaurant: 'Bún Chả Đắc Kim', points: '+10 Vàng' },
 ];
-
-// Map user interests to taste category scores
-const deriveTasteAxes = (userInterests) => {
-  if (!userInterests || !userInterests.length) return DEFAULT_TASTE_AXES;
-
-  const interestToTaste = {
-    'Nau an': { cay: 20, umami: 15, ngot: 10, man: 10 },
-    'An uong': { cay: 15, umami: 20, chua: 10, ngot: 15, man: 10 },
-    'Coffee': { dang: 30, umami: 10 },
-    'Ca phe': { dang: 30, umami: 10 },
-    'Du lich': { cay: 10, umami: 10, chua: 10, ngot: 10, dang: 5, man: 10 },
-    'The thao': { man: 15, ngot: 10 },
-    'Yoga': { ngot: 15, chua: 10 },
-    'Doc sach': { dang: 15, umami: 10 },
-    'Gaming': { cay: 15, man: 10, ngot: 10 },
-    'Am nhac': { ngot: 15, umami: 10 },
-    'Phim anh': { ngot: 10, umami: 15 },
-    'Cong nghe': { dang: 10, umami: 10 },
-    'Nghe thuat': { chua: 15, ngot: 10 },
-    'Thu cung': { ngot: 20 },
-    'Nhiep anh': { chua: 10, umami: 10 },
-    'Thoi trang': { ngot: 10, chua: 10 },
-  };
-
-  const scores = { cay: 20, umami: 20, chua: 20, ngot: 20, dang: 20, man: 20 };
-
-  userInterests.forEach(interest => {
-    const mapping = interestToTaste[interest];
-    if (mapping) {
-      Object.entries(mapping).forEach(([key, val]) => {
-        scores[key] = Math.min(100, scores[key] + val);
-      });
-    }
-  });
-
-  return [
-    { key: 'cay', label: 'Cay', value: scores.cay, color: '#FF571A' },
-    { key: 'umami', label: 'Umami', value: scores.umami, color: '#FFB59E' },
-    { key: 'chua', label: 'Chua', value: scores.chua, color: '#FFD54F' },
-    { key: 'ngot', label: 'Ngot', value: scores.ngot, color: '#117500' },
-    { key: 'dang', label: 'Dang', value: scores.dang, color: '#E6BEB2' },
-    { key: 'man', label: 'Man', value: scores.man, color: '#FF571A' },
-  ];
-};
 
 const ProfilePage = () => {
   const { addToast } = useToast();
@@ -92,32 +46,11 @@ const ProfilePage = () => {
   // Wallet
   const [walletBalance, setWalletBalance] = useState(currentUser?.walletBalance || 0);
   const [walletLoading, setWalletLoading] = useState(true);
-  const [recentDishes, setRecentDishes] = useState(DEFAULT_RECENT_DISHES);
-
-  // Derive taste axes from user interests
-  const tasteAxes = deriveTasteAxes(interests);
 
   useEffect(() => {
     api.get('/wallet').then(data => {
       if (data) setWalletBalance(data.balance);
     }).catch(console.error).finally(() => setWalletLoading(false));
-  }, []);
-
-  // Fetch recently visited venues for "Recent Conquests"
-  useEffect(() => {
-    api.get('/venues?limit=3').then(data => {
-      if (data?.venues && data.venues.length > 0) {
-        setRecentDishes(data.venues.map((v, i) => ({
-          id: v.id || i + 1,
-          name: v.name || v.title || 'Unknown',
-          restaurant: v.location || v.address || '',
-          points: '+10 Vang',
-        })));
-      }
-      // If API returns empty or no venues, keep the default fallback
-    }).catch(() => {
-      // API failed - keep hardcoded fallback (DEFAULT_RECENT_DISHES)
-    });
   }, []);
 
   const getAvatarUrl = () => {
@@ -133,9 +66,9 @@ const ProfilePage = () => {
       await api.upload('/upload/avatar', file, 'avatar');
       const data = await api.get('/auth/me');
       if (data?.user) await updateProfile({ avatar: data.user.avatar });
-      addToast('Da cap nhat anh dai dien!', 'success');
+      addToast('Đã cập nhật ảnh đại diện!', 'success');
     } catch (err) {
-      addToast('Upload that bai', 'error');
+      addToast('Tải lên thất bại', 'error');
     } finally {
       setUploading(false);
     }
@@ -155,9 +88,9 @@ const ProfilePage = () => {
         interests: JSON.stringify(interests),
       });
       setEditing(false);
-      addToast('Da luu ho so!', 'success');
+      addToast('Đã lưu hồ sơ!', 'success');
     } catch (err) {
-      addToast(err.message || 'Luu that bai', 'error');
+      addToast(err.message || 'Lưu thất bại', 'error');
     } finally {
       setSaving(false);
     }
@@ -169,13 +102,13 @@ const ProfilePage = () => {
   };
 
   const handleDeleteAccount = async () => {
-    if (!window.confirm('Ban co chac chan muon xoa tai khoan? Hanh dong nay khong the hoan tac.')) return;
+    if (!window.confirm('Bạn có chắc chắn muốn xóa tài khoản? Hành động này không thể hoàn tác.')) return;
     try {
       await api.delete('/auth/account');
       if (logout) logout();
       navigate('/login');
     } catch (err) {
-      addToast('Xoa tai khoan that bai', 'error');
+      addToast('Xóa tài khoản thất bại', 'error');
     }
   };
 
@@ -598,34 +531,34 @@ const ProfilePage = () => {
         <div style={s.inner}>
           <div style={{ marginBottom: '24px', display: 'flex', alignItems: 'center', gap: '12px' }}>
             <button onClick={() => setEditing(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '24px', color: 'var(--on-surface)' }}>arrow_back</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '24px', color: 'var(--on-surface)' }}>arrow_back</span>
             </button>
-            <h1 style={{ fontFamily: 'var(--font-headline)', fontSize: '22px', fontWeight: 800, color: 'var(--on-surface)', margin: 0 }}>Chinh sua ho so</h1>
+            <h1 style={{ fontFamily: 'var(--font-headline)', fontSize: '22px', fontWeight: 800, color: 'var(--on-surface)', margin: 0 }}>Chỉnh sửa hồ sơ</h1>
           </div>
 
           {/* Basic Info */}
           <div style={s.editCard}>
-            <h2 style={{ ...s.sectionTitle, marginBottom: '16px' }}>Thong tin co ban</h2>
+            <h2 style={{ ...s.sectionTitle, marginBottom: '16px' }}>Thông tin cơ bản</h2>
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
               <div>
-                <label style={s.inputLabel}>Ten</label>
+                <label style={s.inputLabel}>Tên</label>
                 <input value={name} onChange={e => setName(e.target.value)} style={s.input} />
               </div>
               <div>
-                <label style={s.inputLabel}>Tuoi</label>
+                <label style={s.inputLabel}>Tuổi</label>
                 <input type="number" value={age} onChange={e => setAge(e.target.value)} min={18} max={99} style={s.input} />
               </div>
               <div>
-                <label style={s.inputLabel}>Gioi tinh</label>
+                <label style={s.inputLabel}>Giới tính</label>
                 <select value={gender} onChange={e => setGender(e.target.value)} style={s.input}>
-                  <option value="">Chon</option>
+                  <option value="">Chọn</option>
                   <option value="male">Nam</option>
-                  <option value="female">Nu</option>
-                  <option value="other">Khac</option>
+                  <option value="female">Nữ</option>
+                  <option value="other">Khác</option>
                 </select>
               </div>
               <div>
-                <label style={s.inputLabel}>Vi tri</label>
+                <label style={s.inputLabel}>Vị trí</label>
                 <input value={location} onChange={e => setLocation(e.target.value)} style={s.input} />
               </div>
             </div>
@@ -633,22 +566,22 @@ const ProfilePage = () => {
 
           {/* Bio */}
           <div style={s.editCard}>
-            <h2 style={{ ...s.sectionTitle, marginBottom: '12px' }}>Gioi thieu ban than</h2>
-            <textarea value={bio} onChange={e => setBio(e.target.value)} maxLength={300} placeholder="Viet vai dong ve ban than ban..." style={s.textarea} />
+            <h2 style={{ ...s.sectionTitle, marginBottom: '12px' }}>Giới thiệu bản thân</h2>
+            <textarea value={bio} onChange={e => setBio(e.target.value)} maxLength={300} placeholder="Viết vài dòng về bản thân bạn..." style={s.textarea} />
             <p style={{ textAlign: 'right', fontSize: '12px', color: 'var(--on-surface-variant)', marginTop: '4px' }}>{bio.length}/300</p>
           </div>
 
           {/* Interests */}
           <div style={s.editCard}>
             <h2 style={{ ...s.sectionTitle, marginBottom: '12px' }}>
-              So thich <span style={{ fontSize: '13px', fontWeight: 400, color: 'var(--on-surface-variant)' }}>({interests.length}/8)</span>
+              Sở thích <span style={{ fontSize: '13px', fontWeight: 400, color: 'var(--on-surface-variant)' }}>({interests.length}/8)</span>
             </h2>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
               {INTEREST_OPTIONS.map(interest => {
                 const selected = interests.includes(interest);
                 return (
                   <button key={interest} onClick={() => toggleInterest(interest)} style={s.editChip(selected)}>
-                    <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>{selected ? 'close' : 'add'}</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>{selected ? 'close' : 'add'}</span>
                     {interest}
                   </button>
                 );
@@ -658,9 +591,9 @@ const ProfilePage = () => {
 
           {/* Actions */}
           <div style={{ display: 'flex', gap: '12px' }}>
-            <button onClick={() => setEditing(false)} style={s.cancelBtn}>Huy</button>
+            <button onClick={() => setEditing(false)} style={s.cancelBtn}>Hủy</button>
             <button onClick={handleSave} disabled={saving} style={s.saveBtn(saving)}>
-              {saving ? 'Dang luu...' : 'Luu thay doi'}
+              {saving ? 'Đang lưu...' : 'Lưu thay đổi'}
             </button>
           </div>
         </div>
@@ -688,23 +621,23 @@ const ProfilePage = () => {
               </div>
             </div>
             <span style={s.tierBadgeAbsolute}>
-              <span className="material-symbols-outlined" style={{ fontSize: '12px', verticalAlign: 'middle', marginRight: '2px' }}>toll</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '12px', verticalAlign: 'middle', marginRight: '2px' }}>toll</span>
               Gold
             </span>
             <button onClick={() => fileRef.current?.click()} disabled={uploading} style={s.cameraBtn}>
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>photo_camera</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>photo_camera</span>
             </button>
             <input ref={fileRef} type="file" accept="image/*" onChange={handleAvatarUpload} style={{ display: 'none' }} />
           </div>
 
           <h1 style={s.nameText}>{currentUser?.name}{currentUser?.age ? `, ${currentUser.age}` : ''}</h1>
           <span style={s.goldBadge}>
-            <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>toll</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '14px' }}>toll</span>
             Gold Tier
           </span>
           {currentUser?.location && (
             <p style={s.locationText}>
-              <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>location_on</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>location_on</span>
               {currentUser.location}
             </p>
           )}
@@ -713,27 +646,27 @@ const ProfilePage = () => {
         {/* ===== STATS GRID ===== */}
         <div style={s.statsGrid}>
           <div style={s.statCard}>
-            <span className="material-symbols-outlined" style={{ fontSize: '28px', color: '#b83500' }}>toll</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '28px', color: '#b83500' }}>toll</span>
             <p style={s.statValue('#b83500')}>{vangPoints.toLocaleString('vi-VN')}</p>
-            <p style={s.statLabel}>Diem Vang</p>
+            <p style={s.statLabel}>Điểm Vàng</p>
           </div>
           <div style={s.statCard}>
-            <span className="material-symbols-outlined" style={{ fontSize: '28px', color: '#117500' }}>restaurant</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '28px', color: '#117500' }}>restaurant</span>
             <p style={s.statValue('#117500')}>{dishCount}</p>
-            <p style={s.statLabel}>Mon Da Thu</p>
+            <p style={s.statLabel}>Món Đã Thử</p>
           </div>
         </div>
 
         {/* ===== TIER PROGRESS ===== */}
         <div style={s.tierSection}>
           <div style={s.tierHeader}>
-            <h3 style={s.tierTitle}>Tien trinh len Diamond</h3>
+            <h3 style={s.tierTitle}>Tiến trình lên Diamond</h3>
             <span style={s.tierTarget}>{vangPoints.toLocaleString('vi-VN')} / {tierTarget.toLocaleString('vi-VN')}</span>
           </div>
           <div style={s.progressOuter}>
             <div style={{ ...s.progressInner, width: `${tierProgress}%` }} />
           </div>
-          <p style={s.tierHint}>Con {pointsToNext > 0 ? pointsToNext.toLocaleString('vi-VN') : 0} diem nua</p>
+          <p style={s.tierHint}>Còn {pointsToNext > 0 ? pointsToNext.toLocaleString('vi-VN') : 0} điểm nữa</p>
         </div>
 
         {/* ===== TASTE RADAR - SVG SPIDER CHART ===== */}
@@ -746,7 +679,7 @@ const ProfilePage = () => {
               const cy = size / 2;
               const maxR = 100;
               const levels = [0.25, 0.5, 0.75, 1.0];
-              const axes = tasteAxes;
+              const axes = TASTE_AXES;
               const getPoint = (index, radius) => {
                 const angle = (Math.PI * 2 * index) / axes.length - Math.PI / 2;
                 return { x: cx + radius * Math.cos(angle), y: cy + radius * Math.sin(angle) };
@@ -802,9 +735,9 @@ const ProfilePage = () => {
 
         {/* ===== RECENT CONQUESTS ===== */}
         <div style={s.section}>
-          <h2 style={s.sectionTitle}>Recent Conquests</h2>
+          <h2 style={s.sectionTitle}>Món Đã Thử</h2>
           <div className="gomet-hscroll-profile" style={s.hScroll}>
-            {recentDishes.map(dish => (
+            {RECENT_DISHES.map(dish => (
               <div key={dish.id} style={{ ...s.dishCard, width: '100px' }}>
                 <div style={{
                   width: '80px', height: '80px', borderRadius: '1rem',
@@ -812,7 +745,7 @@ const ProfilePage = () => {
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   margin: '0 auto 8px', overflow: 'hidden',
                 }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--primary)', opacity: 0.5 }}>lunch_dining</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '28px', color: 'var(--primary)', opacity: 0.5 }}>lunch_dining</span>
                 </div>
                 <p style={s.dishName}>{dish.name}</p>
                 <p style={s.dishRestaurant}>{dish.restaurant}</p>
@@ -825,7 +758,7 @@ const ProfilePage = () => {
         {/* ===== SO THICH ===== */}
         {interests.length > 0 && (
           <div style={s.section}>
-            <h2 style={s.sectionTitle}>So Thich</h2>
+            <h2 style={s.sectionTitle}>Sở Thích</h2>
             <div style={s.chipsWrap}>
               {interests.map((interest, i) => (
                 <span key={i} style={s.chip}>{interest}</span>
@@ -836,17 +769,17 @@ const ProfilePage = () => {
 
         {/* ===== CHINH SUA HO SO BUTTON ===== */}
         <button style={s.editBtn} onClick={() => setEditing(true)}>
-          <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>edit</span>
-          Chinh sua ho so
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>edit</span>
+          Chỉnh sửa hồ sơ
         </button>
 
         {/* ===== LOGOUT & DELETE ===== */}
         <button style={s.logoutBtn} onClick={handleLogout}>
-          <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>logout</span>
-          Dang xuat
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>logout</span>
+          Đăng xuất
         </button>
         <button style={s.deleteBtn} onClick={handleDeleteAccount}>
-          Xoa tai khoan
+          Xóa tài khoản
         </button>
 
       </div>

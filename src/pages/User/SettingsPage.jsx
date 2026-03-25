@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '../../components/ToastNotification';
 import { useAppContext } from '../../AppContext';
@@ -12,6 +12,10 @@ const SettingsPage = () => {
   const [ageMax, setAgeMax] = useState(35);
   const [showInRange, setShowInRange] = useState(true);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const cancelBtnRef = useRef(null);
+  useEffect(() => {
+    if (showDeleteConfirm) cancelBtnRef.current?.focus();
+  }, [showDeleteConfirm]);
 
   const handleLogout = () => {
     logout();
@@ -78,14 +82,14 @@ const SettingsPage = () => {
         fontSize: '28px', fontWeight: 800, marginBottom: '32px',
         color: '#FDF9F3', fontFamily: "'Plus Jakarta Sans', sans-serif",
       }}>
-        Cai dat
+        Cài đặt
       </h1>
 
       <div style={{ maxWidth: '600px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
 
         {/* ── Discovery ── */}
         <div style={sectionHeader}>
-          <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>explore</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>explore</span>
           DISCOVERY
         </div>
 
@@ -93,12 +97,13 @@ const SettingsPage = () => {
           {/* Distance */}
           <div style={{ ...row, flexDirection: 'column', alignItems: 'stretch', gap: '12px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontWeight: 600 }}>Khoang cach</span>
-              <span style={{ fontWeight: 700, color: '#FFB59E' }}>Len toi {distance}km</span>
+              <span style={{ fontWeight: 600 }}>Khoảng cách</span>
+              <span style={{ fontWeight: 700, color: '#FFB59E' }}>Lên tới {distance}km</span>
             </div>
             <input
               type="range" min="1" max="100" value={distance}
               onChange={e => setDistance(+e.target.value)}
+              aria-label={`Khoảng cách tối đa ${distance}km`}
               style={{ width: '100%', accentColor: '#FF571A' }}
             />
           </div>
@@ -107,7 +112,7 @@ const SettingsPage = () => {
 
           {/* Show in range toggle */}
           <div style={row}>
-            <span style={{ fontSize: '14px', color: '#E6BEB2' }}>Chi hien thi nguoi trong pham vi</span>
+            <span style={{ fontSize: '14px', color: '#E6BEB2' }}>Chỉ hiển thị người trong phạm vi</span>
             <Toggle checked={showInRange} onChange={setShowInRange} />
           </div>
         </div>
@@ -116,7 +121,7 @@ const SettingsPage = () => {
         <div style={card}>
           <div style={{ ...row, flexDirection: 'column', alignItems: 'stretch', gap: '12px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontWeight: 600 }}>Do tuoi</span>
+              <span style={{ fontWeight: 600 }}>Độ tuổi</span>
               <span style={{ fontWeight: 700, color: '#FFB59E' }}>{ageMin} - {ageMax}</span>
             </div>
             <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
@@ -124,6 +129,7 @@ const SettingsPage = () => {
               <input
                 type="range" min="18" max="60" value={ageMax}
                 onChange={e => setAgeMax(Math.max(+e.target.value, ageMin))}
+                aria-label={`Độ tuổi tối đa ${ageMax}`}
                 style={{ flex: 1, accentColor: '#FF571A' }}
               />
               <span style={{ fontSize: '13px', color: '#E6BEB2' }}>{ageMax}</span>
@@ -133,8 +139,8 @@ const SettingsPage = () => {
 
         {/* ── Account ── */}
         <div style={sectionHeader}>
-          <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>shield</span>
-          TAI KHOAN
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>shield</span>
+          TÀI KHOẢN
         </div>
 
         <div style={card}>
@@ -147,10 +153,10 @@ const SettingsPage = () => {
             onClick={() => navigate('/app/wallet')}
             style={{ ...row, cursor: 'pointer' }}
           >
-            <span style={{ fontWeight: 500 }}>Vi Gomet</span>
+            <span style={{ fontWeight: 500 }}>Ví Gomet</span>
             <span style={{ color: '#FFB59E', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
-              {(currentUser?.walletBalance || 0).toLocaleString('vi-VN')}d
-              <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
+              {(currentUser?.walletBalance || 0).toLocaleString('vi-VN')}đ
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
             </span>
           </div>
         </div>
@@ -164,8 +170,8 @@ const SettingsPage = () => {
               fontWeight: 600, gap: '10px', justifyContent: 'flex-start',
             }}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>logout</span>
-            Dang xuat
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>logout</span>
+            Đăng xuất
           </div>
           <div style={divider} />
           <div
@@ -175,23 +181,23 @@ const SettingsPage = () => {
               fontWeight: 600, gap: '10px', justifyContent: 'flex-start',
             }}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>delete_forever</span>
-            Xoa tai khoan
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>delete_forever</span>
+            Xóa tài khoản
           </div>
         </div>
 
         {/* ── Legal ── */}
         <div style={sectionHeader}>
-          <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>gavel</span>
-          PHAP LY
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>gavel</span>
+          PHÁP LÝ
         </div>
 
         <div style={card}>
           {[
-            { label: 'Dieu khoan su dung', path: '/terms' },
-            { label: 'Chinh sach quyen rieng tu', path: '/privacy' },
-            { label: 'Cau hoi thuong gap', path: '/faq' },
-            { label: 'Trung tam an toan', path: '/safety' },
+            { label: 'Điều khoản sử dụng', path: '/terms' },
+            { label: 'Chính sách quyền riêng tư', path: '/privacy' },
+            { label: 'Câu hỏi thường gặp', path: '/faq' },
+            { label: 'Trung tâm an toàn', path: '/safety' },
           ].map((item, i) => (
             <React.Fragment key={i}>
               <div
@@ -199,7 +205,7 @@ const SettingsPage = () => {
                 style={{ ...row, cursor: 'pointer', color: '#E6BEB2', fontSize: '14px' }}
               >
                 <span>{item.label}</span>
-                <span className="material-symbols-outlined" style={{ fontSize: '18px', color: '#353535' }}>chevron_right</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px', color: '#353535' }}>chevron_right</span>
               </div>
               {i < 3 && <div style={divider} />}
             </React.Fragment>
@@ -220,31 +226,36 @@ const SettingsPage = () => {
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           zIndex: 1000,
         }}>
-          <div style={{
-            backgroundColor: '#1C1B1B', borderRadius: '1.5rem',
-            padding: '32px', maxWidth: '400px', width: '90%',
-            textAlign: 'center',
-            boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
-          }}>
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="delete-dialog-title"
+            style={{
+              backgroundColor: '#1C1B1B', borderRadius: '1.5rem',
+              padding: '32px', maxWidth: '400px', width: '90%',
+              textAlign: 'center',
+              boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
+            }}>
             <div style={{
               width: '56px', height: '56px', borderRadius: '50%',
               backgroundColor: 'rgba(255,68,68,0.15)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               margin: '0 auto 16px',
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '28px', color: '#FF4444' }}>warning</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '28px', color: '#FF4444' }}>warning</span>
             </div>
-            <h3 style={{
+            <h3 id="delete-dialog-title" style={{
               fontSize: '20px', fontWeight: 800, marginBottom: '12px',
               color: '#FDF9F3', fontFamily: "'Plus Jakarta Sans', sans-serif",
             }}>
-              Xoa tai khoan?
+              Xóa tài khoản?
             </h3>
             <p style={{ color: '#E6BEB2', fontSize: '14px', marginBottom: '24px', lineHeight: 1.6 }}>
-              Hanh dong nay khong the hoan tac. Tat ca du lieu, matches va tin nhan se bi xoa vinh vien.
+              Hành động này không thể hoàn tác. Tất cả dữ liệu, matches và tin nhắn sẽ bị xóa vĩnh viễn.
             </p>
             <div style={{ display: 'flex', gap: '12px' }}>
               <button
+                ref={cancelBtnRef}
                 onClick={() => setShowDeleteConfirm(false)}
                 style={{
                   flex: 1, padding: '14px', borderRadius: '9999px',
@@ -253,10 +264,10 @@ const SettingsPage = () => {
                   cursor: 'pointer', fontFamily: "'Inter', sans-serif",
                 }}
               >
-                Huy
+                Hủy
               </button>
               <button
-                onClick={() => { addToast('Tinh nang dang phat trien', 'info'); setShowDeleteConfirm(false); }}
+                onClick={() => { addToast('Tính năng đang phát triển', 'info'); setShowDeleteConfirm(false); }}
                 style={{
                   flex: 1, padding: '14px', borderRadius: '9999px',
                   backgroundColor: '#FF4444', border: 'none',
@@ -264,7 +275,7 @@ const SettingsPage = () => {
                   cursor: 'pointer', fontFamily: "'Inter', sans-serif",
                 }}
               >
-                Xoa
+                Xóa
               </button>
             </div>
           </div>

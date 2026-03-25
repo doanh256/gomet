@@ -92,8 +92,8 @@ const Register = () => {
             fontSize: '16px', color: '#E6BEB2', opacity: 0.7, lineHeight: 1.6,
             maxWidth: '320px',
           }}>
-            Noi nhung cuoc gap go tro thanh ky niem.
-            Ket noi chan thuc, trai nghiem co muc dich.
+            Nơi những cuộc gặp gỡ trở thành kỷ niệm.
+            Kết nối chân thực, trải nghiệm có mục đích.
           </p>
         </div>
       </div>
@@ -116,8 +116,8 @@ const Register = () => {
             fontFamily: "'Inter', sans-serif",
           }}
         >
-          <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>arrow_back</span>
-          Quay lai
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>arrow_back</span>
+          Quay lại
         </button>
 
         <div style={{ maxWidth: '400px', width: '100%', margin: '0 auto' }}>
@@ -133,7 +133,7 @@ const Register = () => {
             fontSize: '14px', color: '#E6BEB2', marginBottom: '40px',
             fontWeight: 500, opacity: 0.7,
           }}>
-            Tao tai khoan moi
+            Tạo tài khoản mới
           </p>
 
           {/* Error */}
@@ -153,13 +153,15 @@ const Register = () => {
           }}>
             {/* Name */}
             <div>
-              <label style={labelStyle}>Ho ten</label>
+              <label htmlFor="reg-name" style={labelStyle}>Họ tên</label>
               <div style={{ position: 'relative' }}>
-                <span className="material-symbols-outlined" style={iconStyle}>person</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={iconStyle}>person</span>
                 <input
-                  type="text" placeholder="Ten cua ban"
+                  id="reg-name"
+                  type="text" placeholder="Tên của bạn"
                   value={name} onChange={e => setName(e.target.value)}
                   style={inputBase}
+                  autoComplete="name"
                   onFocus={e => { e.target.style.boxShadow = '0 0 0 2px rgba(255,181,158,0.5)'; }}
                   onBlur={e => { e.target.style.boxShadow = 'none'; }}
                 />
@@ -168,13 +170,15 @@ const Register = () => {
 
             {/* Email */}
             <div>
-              <label style={labelStyle}>Email</label>
+              <label htmlFor="reg-email" style={labelStyle}>Email</label>
               <div style={{ position: 'relative' }}>
-                <span className="material-symbols-outlined" style={iconStyle}>mail</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={iconStyle}>mail</span>
                 <input
+                  id="reg-email"
                   type="email" placeholder="email@example.com"
                   value={email} onChange={e => setEmail(e.target.value)}
                   style={inputBase}
+                  autoComplete="email"
                   onFocus={e => { e.target.style.boxShadow = '0 0 0 2px rgba(255,181,158,0.5)'; }}
                   onBlur={e => { e.target.style.boxShadow = 'none'; }}
                 />
@@ -183,13 +187,15 @@ const Register = () => {
 
             {/* Password */}
             <div>
-              <label style={labelStyle}>Mat khau</label>
+              <label htmlFor="reg-password" style={labelStyle}>Mật khẩu</label>
               <div style={{ position: 'relative' }}>
-                <span className="material-symbols-outlined" style={iconStyle}>lock</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={iconStyle}>lock</span>
                 <input
-                  type="password" placeholder="It nhat 6 ky tu"
+                  id="reg-password"
+                  type="password" placeholder="Ít nhất 6 ký tự"
                   value={password} onChange={e => setPassword(e.target.value)}
                   style={inputBase}
+                  autoComplete="new-password"
                   onFocus={e => { e.target.style.boxShadow = '0 0 0 2px rgba(255,181,158,0.5)'; }}
                   onBlur={e => { e.target.style.boxShadow = 'none'; }}
                 />
@@ -213,7 +219,7 @@ const Register = () => {
               onMouseEnter={e => { if (!isLoading) e.currentTarget.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
             >
-              {isLoading ? 'Dang dang ky...' : 'Tao Tai Khoan'}
+              {isLoading ? 'Đang đăng ký...' : 'Tạo Tài Khoản'}
             </button>
 
             {/* Login link */}
@@ -221,12 +227,12 @@ const Register = () => {
               textAlign: 'center', marginTop: '12px',
               fontSize: '14px', color: '#E6BEB2',
             }}>
-              Da co tai khoan?{' '}
+              Đã có tài khoản?{' '}
               <span
                 onClick={() => navigate('/login')}
                 style={{ color: '#FFB59E', fontWeight: 700, cursor: 'pointer' }}
               >
-                Dang nhap
+                Đăng nhập
               </span>
             </div>
           </form>

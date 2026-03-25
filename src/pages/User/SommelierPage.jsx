@@ -74,16 +74,16 @@ const SommelierPage = () => {
     <div style={s.page}>
       <div style={s.header}>
         <button style={s.backBtn} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined">arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
       </div>
       <div style={s.hero}>
-        <span className="material-symbols-outlined" style={s.heroIcon}>wine_bar</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>wine_bar</span>
         <h1 style={s.heroTitle}>Sommelier thong minh</h1>
         <p style={s.heroSub}>De AI chon do uong hoan hao cho buoi hen cua ban</p>
       </div>
       <div style={s.section}>
-        <div style={s.sectionTitle}><span className="material-symbols-outlined" style={{ fontSize: 20 }}>tune</span> Khau vi cua ban</div>
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>tune</span> Khau vi cua ban</div>
         <div style={s.sliderGroup}>
           <Slider label1="Ngot" label2="Kho" value={sweetness} onChange={setSweetness} />
           <Slider label1="Nhe" label2="Dam" value={intensity} onChange={setIntensity} />
@@ -91,13 +91,13 @@ const SommelierPage = () => {
         </div>
       </div>
       <div style={s.section}>
-        <div style={s.sectionTitle}><span className="material-symbols-outlined" style={{ fontSize: 20 }}>celebration</span> Dip su dung</div>
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>celebration</span> Dip su dung</div>
         <div style={s.chipRow}>
           {occasions.map(o => (<button key={o} style={s.chip(occasion === o)} onClick={() => setOccasion(o)}>{o}</button>))}
         </div>
       </div>
       <div style={s.section}>
-        <div style={s.sectionTitle}><span className="material-symbols-outlined" style={{ fontSize: 20 }}>auto_awesome</span> AI goi y</div>
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>auto_awesome</span> AI goi y</div>
         <div style={s.recCards}>
           {recommendations.map(rec => (
             <div key={rec.id} style={s.recCard}>
@@ -124,7 +124,7 @@ const SommelierPage = () => {
       </div>
       <div style={{ ...s.section, paddingBottom: 32 }}>
         <div style={s.funCard}>
-          <span className="material-symbols-outlined" style={s.funIcon}>auto_awesome</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.funIcon}>auto_awesome</span>
           <div><div style={s.funTitle}>Ban co biet?</div><div style={s.funText}>Ruou vang do o nhiet do phong (16-18°C) se toa huong thom tot nhat. Nhung khi o Viet Nam, hay lam lanh nhe 15 phut truoc khi thuong thuc!</div></div>
         </div>
       </div>

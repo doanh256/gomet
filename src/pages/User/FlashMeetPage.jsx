@@ -331,7 +331,7 @@ const FlashMeetPage = () => {
       {/* Header */}
       <div style={s.header}>
         <div style={s.headerLeft}>
-          <span className="material-symbols-outlined" style={s.headerIcon}>bolt</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>bolt</span>
           <h1 style={s.heading}>Flash Meet</h1>
         </div>
         <div style={s.liveBadge}>
@@ -355,24 +355,24 @@ const FlashMeetPage = () => {
       {/* Stats Row */}
       <div style={s.statsRow}>
         <div style={s.statChip}>
-          <span className="material-symbols-outlined" style={s.statIcon}>group</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.statIcon}>group</span>
           <span style={s.statText}>1,248 Trong hang doi</span>
         </div>
         <div style={s.statChip}>
-          <span className="material-symbols-outlined" style={s.statIcon}>timer</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.statIcon}>timer</span>
           <span style={s.statText}>5 phut / vong</span>
         </div>
       </div>
 
       {/* Join Button */}
       <button style={s.joinBtn}>
-        <span className="material-symbols-outlined">bolt</span>
+        <span aria-hidden="true" className="material-symbols-outlined">bolt</span>
         Tham gia Flash Meet
       </button>
 
       {/* Privacy Note */}
       <div style={s.privacy}>
-        <span className="material-symbols-outlined" style={s.privacyIcon}>lock</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.privacyIcon}>lock</span>
         Video & chat duoc ma hoa. Danh tinh an toan.
       </div>
 
@@ -382,7 +382,7 @@ const FlashMeetPage = () => {
         {steps.map(step => (
           <div key={step.num} style={s.stepCard}>
             <div style={s.stepNum}>{step.num}</div>
-            <span className="material-symbols-outlined" style={s.stepIcon}>{step.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.stepIcon}>{step.icon}</span>
             <div style={s.stepLabel}>{step.label}</div>
           </div>
         ))}
@@ -394,7 +394,7 @@ const FlashMeetPage = () => {
         <div style={s.themeLabel}>Chu de toi nay</div>
         <div style={s.themeName}>Date Night: Italian Cuisine</div>
         <div style={s.themeDetail}>
-          <span className="material-symbols-outlined" style={{ fontSize: 18 }}>restaurant</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>restaurant</span>
           Nha hang La Pasta, Quan 1
         </div>
         <div style={s.avatarStack}>

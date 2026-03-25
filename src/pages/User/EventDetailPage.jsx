@@ -297,25 +297,25 @@ const EventDetailPage = () => {
       <div style={styles.hero}>
         <div style={styles.heroOverlay} />
         <button style={styles.backBtn} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined" style={{ fontSize: 22 }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22 }}>arrow_back</span>
         </button>
         <div style={styles.heroContent}>
           <button
             style={styles.rsvpBadge}
             onClick={() => setRsvp(!rsvp)}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: 16 }}>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>
               {rsvp ? 'check_circle' : 'event_available'}
             </span>
             {rsvp ? 'Da dang ky' : 'RSVP'}
           </button>
           <div style={styles.heroTitle}>{event.title}</div>
           <div style={styles.heroMeta}>
-            <span className="material-symbols-outlined" style={{ fontSize: 16 }}>calendar_today</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>calendar_today</span>
             {event.date}
           </div>
           <div style={styles.heroMeta}>
-            <span className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>
             {event.location}
           </div>
           <div style={styles.avatarStack}>
@@ -349,7 +349,7 @@ const EventDetailPage = () => {
             ].map((item) => (
               <div key={item.icon} style={styles.infoCard}>
                 <div style={styles.infoIcon}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 20 }}>{item.icon}</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>{item.icon}</span>
                 </div>
                 <div>
                   <div style={styles.infoLabel}>{item.label}</div>
@@ -393,11 +393,11 @@ const EventDetailPage = () => {
       {/* Fixed Actions */}
       <div style={styles.actions}>
         <button style={styles.primaryBtn} onClick={() => setRsvp(true)}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>event_available</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>event_available</span>
           Tham gia
         </button>
         <button style={styles.outlineBtn}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
           Chia se
         </button>
       </div>

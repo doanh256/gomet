@@ -174,9 +174,9 @@ const DishDetailPage = () => {
       {/* Hero */}
       <div style={s.hero}>
         <button style={s.backBtnFloat} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined">arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
-        <span className="material-symbols-outlined" style={s.heroIcon}>ramen_dining</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>ramen_dining</span>
         <div style={s.heroOverlay} />
       </div>
 
@@ -185,18 +185,18 @@ const DishDetailPage = () => {
 
         <div style={s.metaRow}>
           <div style={s.metaItem}>
-            <span className="material-symbols-outlined" style={s.metaIcon}>location_on</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.metaIcon}>location_on</span>
             Dong bang song Hong
           </div>
           <div style={s.vangBadge}>
-            <span className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
             +30 VANG
           </div>
         </div>
 
         {/* Mark as Tried */}
         <button style={s.tryBtn(tried)} onClick={() => setTried(!tried)}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>
             {tried ? 'check_circle' : 'add_circle'}
           </span>
           {tried ? 'Da thu!' : 'Danh dau da thu'}
@@ -205,7 +205,7 @@ const DishDetailPage = () => {
         {/* Vang Credibility Badge */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px', borderRadius: '1rem', backgroundColor: '#ffffff', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', marginBottom: 24 }}>
           <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'linear-gradient(135deg, #FFD54F, #F57C00)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#3A0B00' }}>verified</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#3A0B00' }}>verified</span>
           </div>
           <div style={{ flex: 1 }}>
             <div style={{ fontFamily: 'var(--font-headline)', fontSize: 14, fontWeight: 700, color: '#393834', marginBottom: 2 }}>Vang Credibility</div>
@@ -216,7 +216,7 @@ const DishDetailPage = () => {
 
         {/* Flavor Profile */}
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>equalizer</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>equalizer</span>
           Flavor Profile
         </div>
         <div style={{ backgroundColor: '#ffffff', borderRadius: '1rem', padding: '20px', marginBottom: 28, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
@@ -240,13 +240,13 @@ const DishDetailPage = () => {
 
         {/* Restaurant Recommendations */}
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>storefront</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>storefront</span>
           Tim o dau
         </div>
         {restaurants.map(r => (
           <div key={r.id} style={s.restaurantCard}>
             <div style={s.restIcon}>
-              <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#FF571A' }}>restaurant</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#FF571A' }}>restaurant</span>
             </div>
             <div style={s.restInfo}>
               <div style={s.restName}>{r.name}</div>
@@ -254,7 +254,7 @@ const DishDetailPage = () => {
             </div>
             <div style={s.restRight}>
               <div style={s.restRating}>
-                <span className="material-symbols-outlined" style={{ fontSize: 14 }}>star</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>star</span>
                 {r.rating}
               </div>
               <div style={s.restPrice}>{r.price}</div>
@@ -264,7 +264,7 @@ const DishDetailPage = () => {
 
         {/* Critics Circle */}
         <div style={{ ...s.sectionTitle, marginTop: 28 }}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>forum</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>forum</span>
           Critics Circle
         </div>
         {reviews.map(rv => (
@@ -275,7 +275,7 @@ const DishDetailPage = () => {
             </div>
             <div style={s.reviewStars}>
               {[1, 2, 3, 4, 5].map(i => (
-                <span key={i} className="material-symbols-outlined" style={s.starIcon(i <= rv.rating)}>star</span>
+                <span key={i} aria-hidden="true" className="material-symbols-outlined" style={s.starIcon(i <= rv.rating)}>star</span>
               ))}
             </div>
             <div style={s.reviewText}>{rv.text}</div>
@@ -286,10 +286,10 @@ const DishDetailPage = () => {
         <div style={{ marginTop: 28, marginBottom: 12 }}>
           <button style={s.nutritionToggle} onClick={() => setNutritionOpen(!nutritionOpen)}>
             <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#FF571A' }}>nutrition</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FF571A' }}>nutrition</span>
               Thong tin dinh duong
             </span>
-            <span className="material-symbols-outlined" style={{ fontSize: 20 }}>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>
               {nutritionOpen ? 'expand_less' : 'expand_more'}
             </span>
           </button>
@@ -307,18 +307,18 @@ const DishDetailPage = () => {
 
         {/* Discovery Map */}
         <div style={{ ...s.sectionTitle, marginTop: 16 }}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>explore</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>explore</span>
           Ban do kham pha
         </div>
         <div style={s.mapSection}>
-          <span className="material-symbols-outlined" style={s.mapIcon}>map</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.mapIcon}>map</span>
           <div style={s.mapLabel}>Xuat xu</div>
           <div style={s.mapRegion}>Dong bang song Hong</div>
         </div>
 
         {/* Related Dishes */}
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>apps</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>apps</span>
           Mon tuong tu
         </div>
         <div style={s.relatedScroll}>

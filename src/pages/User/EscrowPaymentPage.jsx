@@ -307,12 +307,12 @@ const EscrowPaymentPage = () => {
   return (
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         Quay lai
       </button>
 
       <div style={s.headerRow}>
-        <span className="material-symbols-outlined" style={s.headerIcon}>lock</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>lock</span>
         <h1 style={s.heading}>Chi tiet giao dich</h1>
       </div>
 
@@ -359,22 +359,22 @@ const EscrowPaymentPage = () => {
           <span style={s.partnerName}>Minh Anh</span>
         </div>
         <div style={s.infoRow}>
-          <span className="material-symbols-outlined" style={s.infoIcon}>calendar_today</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>calendar_today</span>
           <span style={s.infoLabel}>Ngay hen</span>
           <span style={s.infoValue}>20/03/2026</span>
         </div>
         <div style={s.infoRow}>
-          <span className="material-symbols-outlined" style={s.infoIcon}>schedule</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>schedule</span>
           <span style={s.infoLabel}>Thoi gian</span>
           <span style={s.infoValue}>18:00</span>
         </div>
         <div style={s.infoRow}>
-          <span className="material-symbols-outlined" style={s.infoIcon}>location_on</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>location_on</span>
           <span style={s.infoLabel}>Dia diem</span>
           <span style={s.infoValue}>The Lissome Cafe</span>
         </div>
         <div style={s.infoRowLast}>
-          <span className="material-symbols-outlined" style={s.infoIcon}>payments</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.infoIcon}>payments</span>
           <span style={s.infoLabel}>So tien</span>
           <span style={s.infoValue}>150.000 VND</span>
         </div>
@@ -383,11 +383,11 @@ const EscrowPaymentPage = () => {
       {/* Actions */}
       <div style={s.actions}>
         <button style={s.btnPrimary}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>check_circle</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>check_circle</span>
           Xac nhan hoan thanh
         </button>
         <button style={s.btnOutline}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>undo</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>undo</span>
           Yeu cau hoan tien
         </button>
       </div>
@@ -395,7 +395,7 @@ const EscrowPaymentPage = () => {
       {/* FAQ */}
       <div style={s.faqSection}>
         <div style={s.faqHeader}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#E6BEB2' }}>policy</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#E6BEB2' }}>policy</span>
           <h2 style={s.sectionTitle}>Chinh sach escrow</h2>
         </div>
         {faqItems.map((item, i) => (
@@ -406,7 +406,7 @@ const EscrowPaymentPage = () => {
             >
               {item.q}
               <span
-                className="material-symbols-outlined"
+                aria-hidden="true" className="material-symbols-outlined"
                 style={s.faqExpandIcon(expandedFaq === i)}
               >
                 expand_more

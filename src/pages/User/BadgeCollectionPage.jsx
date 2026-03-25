@@ -131,7 +131,7 @@ const BadgeCollectionPage = () => {
   return (
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         Quay lai
       </button>
 
@@ -174,7 +174,7 @@ const BadgeCollectionPage = () => {
 
       {/* Region Badges */}
       <div style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={s.sectionIcon}>public</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>public</span>
         Huy hieu vung mien
       </div>
       <div style={s.regionGrid}>
@@ -182,10 +182,10 @@ const BadgeCollectionPage = () => {
           <div key={b.id} style={s.regionCard(b.earned, b.color)}>
             {!b.earned && (
               <div style={s.lockOverlay}>
-                <span className="material-symbols-outlined" style={s.lockIcon}>lock</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={s.lockIcon}>lock</span>
               </div>
             )}
-            <span className="material-symbols-outlined" style={s.regionIcon(b.earned, b.color)}>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.regionIcon(b.earned, b.color)}>
               {b.earned ? b.icon : 'lock'}
             </span>
             <div style={s.regionName}>{b.name}</div>
@@ -199,13 +199,13 @@ const BadgeCollectionPage = () => {
 
       {/* Special Badges */}
       <div style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={s.sectionIcon}>military_tech</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>military_tech</span>
         Huy hieu dac biet
       </div>
       <div style={s.specialGrid}>
         {specialBadges.map(b => (
           <div key={b.name} style={s.specialCard(b.earned, b.color)}>
-            <span className="material-symbols-outlined" style={s.specialIcon(b.earned, b.color)}>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.specialIcon(b.earned, b.color)}>
               {b.earned ? b.icon : 'lock'}
             </span>
             <div style={s.specialName}>{b.name}</div>

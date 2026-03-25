@@ -326,11 +326,11 @@ const BlindSoupDatePage = () => {
       <style>{s.keyframe}</style>
 
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 28 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 28 }}>arrow_back</span>
       </button>
 
       <div style={s.header}>
-        <span className="material-symbols-outlined" style={s.headerIcon}>visibility_off</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>visibility_off</span>
         <div style={s.heading}>Blind Soup Date</div>
         <div style={s.subtitle}>Hen ho an danh qua am thuc</div>
       </div>
@@ -342,7 +342,7 @@ const BlindSoupDatePage = () => {
           {steps.map(step => (
             <div key={step.num} style={s.stepCard}>
               <div style={s.stepNum}>{step.num}</div>
-              <span className="material-symbols-outlined" style={s.stepIcon}>{step.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.stepIcon}>{step.icon}</span>
               <div style={s.stepTitle}>{step.title}</div>
               <div style={s.stepDesc}>{step.desc}</div>
             </div>
@@ -393,7 +393,7 @@ const BlindSoupDatePage = () => {
               <div style={s.timerLabel}>Thoi gian con lai</div>
             </div>
             <div style={s.timerRow}>
-              <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#FF571A' }}>timer</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#FF571A' }}>timer</span>
               <div style={s.timer}>29:45</div>
             </div>
 
@@ -411,7 +411,7 @@ const BlindSoupDatePage = () => {
 
             <div style={s.sessionActions}>
               <button style={s.revealBtn}>
-                <span className="material-symbols-outlined" style={{ fontSize: 18 }}>visibility</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>visibility</span>
                 Tiet lo danh tinh
               </button>
               <button style={s.leaveBtn}>Roi di</button>
@@ -427,7 +427,7 @@ const BlindSoupDatePage = () => {
           <div style={{ borderRadius: '1.5rem', backgroundColor: '#1C1B1B', overflow: 'hidden', marginBottom: 16 }}>
             {/* Photo placeholder */}
             <div style={{ width: '100%', height: 180, background: 'linear-gradient(135deg, rgba(255,87,26,0.3), rgba(255,181,158,0.15))', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 56, color: '#FFB59E', opacity: 0.4 }}>person</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 56, color: '#FFB59E', opacity: 0.4 }}>person</span>
             </div>
             <div style={{ padding: '20px' }}>
               <div style={{ fontFamily: 'var(--font-headline)', fontSize: 20, fontWeight: 800, color: '#FDF9F3', marginBottom: 4 }}>??? (An danh)</div>
@@ -436,7 +436,7 @@ const BlindSoupDatePage = () => {
               {/* Kinetic Connection */}
               <div style={{ padding: '16px', borderRadius: '1rem', background: 'linear-gradient(135deg, rgba(255,87,26,0.12), rgba(255,181,158,0.06))', border: '1px solid rgba(255,87,26,0.2)' }}>
                 <div style={{ fontFamily: 'var(--font-headline)', fontSize: 14, fontWeight: 700, color: '#FFD54F', marginBottom: 8, display: 'flex', alignItems: 'center', gap: 6 }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#FFD54F' }}>bolt</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#FFD54F' }}>bolt</span>
                   Kinetic Connection
                 </div>
                 <div style={{ display: 'flex', gap: 12 }}>
@@ -459,7 +459,7 @@ const BlindSoupDatePage = () => {
 
       {/* Note */}
       <div style={s.noteCard}>
-        <span className="material-symbols-outlined" style={s.noteIcon}>shield</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.noteIcon}>shield</span>
         <div style={s.noteText}>
           Danh tinh cua ban duoc bao mat tuyet doi cho den khi ban quyet dinh tiet lo. Moi cuoc tro chuyen deu duoc giam sat de dam bao an toan.
         </div>

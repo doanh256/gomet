@@ -168,7 +168,7 @@ const MoodStatusPage = () => {
             style={s.chip(selectedActivity === i)}
             onClick={() => setSelectedActivity(selectedActivity === i ? null : i)}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: 18 }}>{act.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>{act.icon}</span>
             {act.label}
           </button>
         ))}

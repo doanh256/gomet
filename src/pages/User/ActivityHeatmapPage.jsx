@@ -92,9 +92,9 @@ const ActivityHeatmapPage = () => {
       <style>{heatmapKeyframes}</style>
       <div style={s.header}>
         <button style={s.backBtn} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined">arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
-        <span className="material-symbols-outlined" style={s.headerIcon}>local_fire_department</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>local_fire_department</span>
         <h1 style={s.headerTitle}>Ban nhiet hoat dong</h1>
       </div>
 
@@ -131,13 +131,13 @@ const ActivityHeatmapPage = () => {
 
       <div style={s.activitySection}>
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>history</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>history</span>
           Hoat dong gan day
         </div>
         {activities.map((a, i) => (
           <div key={i} style={s.activityItem}>
             <div style={s.activityIcon(a.color)}>
-              <span className="material-symbols-outlined" style={s.activityIconInner(a.color)}>{a.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.activityIconInner(a.color)}>{a.icon}</span>
             </div>
             <span style={s.activityText}>{a.text}</span>
             <span style={s.activityTime}>{a.time}</span>
@@ -146,7 +146,7 @@ const ActivityHeatmapPage = () => {
       </div>
 
       <div style={s.tipCard}>
-        <span className="material-symbols-outlined" style={s.tipIcon}>tips_and_updates</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.tipIcon}>tips_and_updates</span>
         <span style={s.tipText}>Hay hoat dong vao <strong>Thu 6 buoi toi</strong> de tang co hoi ghep doi!</span>
       </div>
     </div>

@@ -144,19 +144,19 @@ const SecretTableSelectionPage = () => {
       <style>{selectionKeyframes}</style>
 
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         Quay lai
       </button>
 
       <div style={s.headerRow}>
-        <span className="material-symbols-outlined" style={s.lockIcon}>lock</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.lockIcon}>lock</span>
         <div style={s.heading}>Secret Tables</div>
       </div>
       <div style={s.subtitle}>The Nocturnal Experience</div>
 
       {/* Available Events */}
       <div style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={s.sectionIcon}>event_available</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>event_available</span>
         Su kien sap dien ra
       </div>
       <div style={s.eventGrid}>
@@ -169,20 +169,20 @@ const SecretTableSelectionPage = () => {
                 <div style={s.eventRestaurant}>{ev.restaurant}</div>
                 <div style={s.eventMeta}>
                   <div style={s.eventMetaItem}>
-                    <span className="material-symbols-outlined" style={s.eventMetaIcon}>calendar_today</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={s.eventMetaIcon}>calendar_today</span>
                     {ev.date}
                   </div>
                   <div style={s.eventMetaItem}>
-                    <span className="material-symbols-outlined" style={s.eventMetaIcon}>schedule</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={s.eventMetaIcon}>schedule</span>
                     {ev.time}
                   </div>
                   <div style={s.eventMetaItem}>
-                    <span className="material-symbols-outlined" style={s.eventMetaIcon}>event_seat</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={s.eventMetaIcon}>event_seat</span>
                     {ev.seats} cho con
                   </div>
                 </div>
                 <div style={s.chemBadge(ev.chemistry)}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>favorite</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>favorite</span>
                   {ev.chemistry}% hoa hop
                 </div>
               </div>
@@ -201,20 +201,20 @@ const SecretTableSelectionPage = () => {
       {/* Your Reservations */}
       <div style={s.reservationsSection}>
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>confirmation_number</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>confirmation_number</span>
           Dat cho cua ban
         </div>
         {myReservations.map(r => (
           <div key={r.id} style={s.resCard}>
             <div style={s.resIconWrap}>
-              <span className="material-symbols-outlined" style={s.resIcon}>confirmation_number</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.resIcon}>confirmation_number</span>
             </div>
             <div style={s.resInfo}>
               <div style={s.resName}>{r.name}</div>
               <div style={s.resRestaurant}>{r.restaurant} - {r.date}</div>
             </div>
             <div style={s.resStatus}>
-              <span className="material-symbols-outlined" style={{ fontSize: 12 }}>check_circle</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 12 }}>check_circle</span>
               Da xac nhan
             </div>
           </div>

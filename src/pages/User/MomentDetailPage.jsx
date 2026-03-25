@@ -33,7 +33,7 @@ const MomentDetailPage = () => {
       {/* Header */}
       <div style={{ padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#393834' }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#393834' }}>arrow_back</span>
         </button>
         <h1 style={{ margin: 0, fontSize: 18, fontWeight: 700 }}>Moment</h1>
       </div>
@@ -54,7 +54,7 @@ const MomentDetailPage = () => {
               background: 'linear-gradient(135deg, #FFD700, #E8900C)', borderRadius: 8,
               padding: '2px 8px', display: 'flex', alignItems: 'center', gap: 3
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 12, color: '#fff' }}>toll</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 12, color: '#fff' }}>toll</span>
               <span style={{ fontSize: 10, fontWeight: 800, color: '#fff' }}>2.4k</span>
             </div>
           </div>
@@ -73,7 +73,7 @@ const MomentDetailPage = () => {
           display: 'inline-flex', alignItems: 'center', gap: 8,
           background: 'rgba(232,144,12,0.1)', borderRadius: 12, padding: '8px 14px'
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#E8900C' }}>restaurant</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#E8900C' }}>restaurant</span>
           <div>
             <div style={{ fontSize: 13, fontWeight: 700, color: '#E8900C' }}>Bun Cha Dac Kim</div>
             <div style={{ fontSize: 11, color: '#888' }}>Bun Cha 34 - Hang Than, Ba Dinh</div>
@@ -96,20 +96,20 @@ const MomentDetailPage = () => {
         <button onClick={() => setLiked(!liked)} style={{
           background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, padding: 0
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: liked ? '#FF6B9D' : '#888' }}>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: liked ? '#FF6B9D' : '#888' }}>
             {liked ? 'favorite' : 'favorite_border'}
           </span>
           <span style={{ fontSize: 13, color: '#888', fontWeight: 600 }}>{liked ? 248 : 247}</span>
         </button>
         <button style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, padding: 0 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#888' }}>chat_bubble_outline</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#888' }}>chat_bubble_outline</span>
           <span style={{ fontSize: 13, color: '#888', fontWeight: 600 }}>34</span>
         </button>
         <button style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, padding: 0 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#888' }}>share</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#888' }}>share</span>
         </button>
         <button style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, padding: 0, marginLeft: 'auto' }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#888' }}>bookmark_border</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#888' }}>bookmark_border</span>
         </button>
       </div>
 

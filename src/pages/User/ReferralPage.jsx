@@ -279,7 +279,7 @@ const ReferralPage = () => {
   return (
     <div style={s.page}>
       <div style={s.hero}>
-        <span className="material-symbols-outlined" style={s.heroIcon}>redeem</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>redeem</span>
         <h1 style={s.heading}>Moi ban be, nhan thuong</h1>
         <p style={s.heroSub}>Chia se GOMET voi ban be va cung nhan uu dai hap dan</p>
       </div>
@@ -288,7 +288,7 @@ const ReferralPage = () => {
         <div style={s.codeLabel}>Ma gioi thieu cua ban</div>
         <div style={s.codeText}>{code}</div>
         <button style={s.copyBtn} onClick={handleCopy}>
-          <span className="material-symbols-outlined" style={{ fontSize: 18 }}>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>
             {copied ? 'check' : 'content_copy'}
           </span>
           {copied ? 'Da sao chep!' : 'Sao chep ma'}
@@ -300,7 +300,7 @@ const ReferralPage = () => {
         {steps.map((step, i) => (
           <div key={i} style={s.stepCard}>
             <div style={s.stepIconCircle}>
-              <span className="material-symbols-outlined" style={s.stepIcon}>{step.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.stepIcon}>{step.icon}</span>
             </div>
             <div style={s.stepNum}>{step.num}</div>
             <div style={s.stepLabel}>{step.label}</div>
@@ -327,7 +327,7 @@ const ReferralPage = () => {
         <button style={s.shareBtn('#1877f2')} title="Facebook">f</button>
         <button style={s.shareBtn('#0068ff')} title="Zalo">Z</button>
         <button style={s.shareBtn('#FF571A')} title="Copy link" onClick={handleCopy}>
-          <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#fff' }}>link</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: '#fff' }}>link</span>
         </button>
       </div>
 

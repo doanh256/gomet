@@ -352,7 +352,7 @@ const PremiumPage = () => {
         {/* Hero */}
         <div style={s.hero}>
           <div style={s.pill}>
-            <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>diamond</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>diamond</span>
             The Exclusive Club
           </div>
           <h1 style={s.heading}>
@@ -369,7 +369,7 @@ const PremiumPage = () => {
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
             >
-              <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>lock_open</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>lock_open</span>
               Unlock Premium
             </button>
             <button
@@ -377,7 +377,7 @@ const PremiumPage = () => {
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
             >
-              <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>visibility</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>visibility</span>
               View Features
             </button>
           </div>
@@ -404,7 +404,7 @@ const PremiumPage = () => {
                   background: f.primary ? 'rgba(58,11,0,0.2)' : 'rgba(255,181,158,0.15)',
                   color: f.primary ? '#3A0B00' : '#FFB59E',
                 }}>
-                  <span className="material-symbols-outlined">{f.icon}</span>
+                  <span aria-hidden="true" className="material-symbols-outlined">{f.icon}</span>
                 </div>
                 <div style={{ ...s.cardTitle, color: f.primary ? '#3A0B00' : '#FDF9F3' }}>{f.title}</div>
                 <div style={{ ...s.cardDesc, color: f.primary ? 'rgba(58,11,0,0.75)' : '#E6BEB2' }}>
@@ -439,7 +439,7 @@ const PremiumPage = () => {
                 <ul style={s.featureList}>
                   {plan.features.map((feat, j) => (
                     <li key={j} style={s.featureItem}>
-                      <span className="material-symbols-outlined" style={s.checkIcon}>check_circle</span>
+                      <span aria-hidden="true" className="material-symbols-outlined" style={s.checkIcon}>check_circle</span>
                       {feat}
                     </li>
                   ))}
@@ -470,7 +470,7 @@ const PremiumPage = () => {
           <div style={s.testGrid}>
             {testimonials.map((t, i) => (
               <div key={i} style={s.testCard}>
-                <span className="material-symbols-outlined" style={s.quoteIcon}>format_quote</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={s.quoteIcon}>format_quote</span>
                 <p style={s.quoteText}>{t.text}</p>
                 <div style={s.testUser}>
                   <div style={s.testAvatar}>{t.initial}</div>
@@ -495,7 +495,7 @@ const PremiumPage = () => {
             onMouseEnter={e => { e.currentTarget.style.transform = 'scale(1.05)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}
           >
-            <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>diamond</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>diamond</span>
             Bat Dau Ngay
           </button>
         </div>

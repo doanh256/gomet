@@ -62,7 +62,7 @@ const Dashboard = () => {
   if (loading) {
     return (
       <div style={{ padding: '60px', textAlign: 'center', color: '#E6BEB2', fontFamily: 'var(--font-body)' }}>
-        <span className="material-symbols-outlined" style={{ fontSize: '48px', marginBottom: '16px', display: 'block', opacity: 0.5 }}>hourglass_empty</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '48px', marginBottom: '16px', display: 'block', opacity: 0.5 }}>hourglass_empty</span>
         Dang tai du lieu...
       </div>
     );
@@ -72,7 +72,7 @@ const Dashboard = () => {
     <div style={{ fontFamily: 'var(--font-body)', color: '#FDF9F3' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '32px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-          <span className="material-symbols-outlined" style={{ fontSize: '32px', color: '#FFB59E' }}>dashboard</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '32px', color: '#FFB59E' }}>dashboard</span>
           <div>
             <h1 style={{ margin: 0, fontSize: '28px', fontWeight: 700, fontFamily: 'var(--font-headline)', color: '#FDF9F3' }}>Tong quan quan tri</h1>
             <p style={{ margin: '4px 0 0 0', fontSize: '14px', color: '#E6BEB2' }}>{today}</p>
@@ -84,9 +84,9 @@ const Dashboard = () => {
         {statCards.map((card, i) => (
           <div key={i} style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '24px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '28px', color: '#FFB59E', background: '#2A2A2A', borderRadius: '1.5rem', padding: '10px' }}>{card.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '28px', color: '#FFB59E', background: '#2A2A2A', borderRadius: '1.5rem', padding: '10px' }}>{card.icon}</span>
               <span style={{ fontSize: '13px', fontWeight: 600, color: card.up ? '#117500' : '#FF571A', display: 'flex', alignItems: 'center', gap: '2px' }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>{card.up ? 'trending_up' : 'trending_down'}</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>{card.up ? 'trending_up' : 'trending_down'}</span>
                 {card.trend}
               </span>
             </div>
@@ -101,7 +101,7 @@ const Dashboard = () => {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '32px' }}>
         <div style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '24px' }}>
           <h3 style={{ margin: '0 0 24px 0', fontSize: '18px', fontWeight: 600, fontFamily: 'var(--font-headline)', display: 'flex', alignItems: 'center', gap: '8px', color: '#FDF9F3' }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>bar_chart</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>bar_chart</span>
             Bieu do hoat dong
           </h3>
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: '12px', height: '180px', paddingBottom: '28px', position: 'relative' }}>
@@ -117,7 +117,7 @@ const Dashboard = () => {
 
         <div style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '24px' }}>
           <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', fontWeight: 600, fontFamily: 'var(--font-headline)', display: 'flex', alignItems: 'center', gap: '8px', color: '#FDF9F3' }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>person_add</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>person_add</span>
             Nguoi dung moi
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
@@ -141,14 +141,14 @@ const Dashboard = () => {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px' }}>
         <div style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '24px' }}>
           <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', fontWeight: 600, fontFamily: 'var(--font-headline)', display: 'flex', alignItems: 'center', gap: '8px', color: '#FDF9F3' }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FF571A' }}>flag</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FF571A' }}>flag</span>
             Bao cao gan day
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {reports.map((report) => (
               <div key={report.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 16px', borderRadius: '1.5rem', background: '#2A2A2A' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '20px', color: report.status === 'pending' ? '#FFD54F' : '#117500' }}>flag</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: report.status === 'pending' ? '#FFD54F' : '#117500' }}>flag</span>
                   <div>
                     <p style={{ margin: 0, fontWeight: 600, fontSize: '14px', color: '#FDF9F3' }}>{report.reporter}</p>
                     <p style={{ margin: '2px 0 0 0', fontSize: '12px', color: '#E6BEB2' }}>{report.reason}</p>
@@ -167,7 +167,7 @@ const Dashboard = () => {
 
         <div style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '24px' }}>
           <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', fontWeight: 600, fontFamily: 'var(--font-headline)', display: 'flex', alignItems: 'center', gap: '8px', color: '#FDF9F3' }}>
-            <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>bolt</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>bolt</span>
             Hanh dong nhanh
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
@@ -176,7 +176,7 @@ const Dashboard = () => {
                 onMouseEnter={(e) => { e.currentTarget.style.background = '#353535'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.background = '#2A2A2A'; }}
               >
-                <span className="material-symbols-outlined" style={{ fontSize: '32px', color: action.color }}>{action.icon}</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '32px', color: action.color }}>{action.icon}</span>
                 <span style={{ fontSize: '14px', fontWeight: 600, color: '#FDF9F3' }}>{action.label}</span>
               </button>
             ))}

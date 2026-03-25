@@ -37,9 +37,9 @@ const SecretTableDesktopPage = () => {
         padding: '40px 32px 32px', position: 'relative', overflow: 'hidden',
         background: 'linear-gradient(135deg, #0D0D1A 0%, #1a1040 50%, #0D0D1A 100%)'
       }}>
-        <span className="material-symbols-outlined" style={{ position: 'absolute', top: 20, right: 40, fontSize: 120, opacity: 0.04, color: '#FFD700' }}>diamond</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ position: 'absolute', top: 20, right: 40, fontSize: 120, opacity: 0.04, color: '#FFD700' }}>diamond</span>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4, marginBottom: 16 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
         </button>
         <h1 style={{ margin: 0, fontSize: 32, fontWeight: 800, marginBottom: 8 }}>The Nocturnal Experience</h1>
         <p style={{ margin: 0, fontSize: 15, color: '#888', maxWidth: 500 }}>
@@ -77,7 +77,7 @@ const SecretTableDesktopPage = () => {
                     position: 'absolute', top: 10, right: 10, background: 'rgba(108,99,255,0.9)',
                     borderRadius: 10, padding: '3px 8px', fontSize: 11, fontWeight: 700
                   }}>
-                    <span className="material-symbols-outlined" style={{ fontSize: 12, verticalAlign: 'middle', marginRight: 2 }}>favorite</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 12, verticalAlign: 'middle', marginRight: 2 }}>favorite</span>
                     {ev.chemistry}%
                   </div>
                   <div style={{ position: 'absolute', bottom: 10, left: 12, right: 12 }}>
@@ -109,7 +109,7 @@ const SecretTableDesktopPage = () => {
             border: '1px solid rgba(255,255,255,0.06)', position: 'sticky', top: 20
           }}>
             <h3 style={{ margin: '0 0 16px', fontSize: 15, fontWeight: 700 }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 18, verticalAlign: 'middle', marginRight: 6, color: '#FFD700' }}>event</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, verticalAlign: 'middle', marginRight: 6, color: '#FFD700' }}>event</span>
               Ban Da Dat
             </h3>
             {upcoming.length === 0 ? (

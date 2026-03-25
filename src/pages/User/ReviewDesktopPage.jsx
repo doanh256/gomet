@@ -27,14 +27,14 @@ const ReviewDesktopPage = () => {
       {/* Header */}
       <div style={{ padding: '20px 32px', display: 'flex', alignItems: 'center', gap: 12, borderBottom: '1px solid rgba(0,0,0,0.06)' }}>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#393834' }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#393834' }}>arrow_back</span>
         </button>
         <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700 }}>Danh Gia Trai Nghiem</h1>
         <div style={{
           marginLeft: 'auto', background: 'linear-gradient(135deg, #FFD700, #E8900C)', borderRadius: 12,
           padding: '6px 14px', display: 'flex', alignItems: 'center', gap: 6
         }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 16 }}>toll</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>toll</span>
           <span style={{ fontSize: 13, fontWeight: 800 }}>+50 Vang</span>
         </div>
       </div>
@@ -55,7 +55,7 @@ const ReviewDesktopPage = () => {
             <div style={{ fontSize: 14, color: '#888', marginBottom: 4 }}>Pho Thin - 13 Lo Duc</div>
             <div style={{ fontSize: 13, color: '#666' }}>Quan Hai Ba Trung, Ha Noi</div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 12 }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#F5C542' }}>star</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#F5C542' }}>star</span>
               <span style={{ fontSize: 15, fontWeight: 700 }}>4.8</span>
               <span style={{ fontSize: 12, color: '#666' }}>(1.247 danh gia)</span>
             </div>
@@ -67,7 +67,7 @@ const ReviewDesktopPage = () => {
           {/* Heat Rating */}
           <div style={{ marginBottom: 28 }}>
             <h3 style={{ margin: '0 0 12px', fontSize: 16, fontWeight: 700 }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#FF6B35' }}>local_fire_department</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#FF6B35' }}>local_fire_department</span>
               Do Cay
             </h3>
             <div style={{ display: 'flex', gap: 8 }}>
@@ -77,7 +77,7 @@ const ReviewDesktopPage = () => {
                   background: level <= heatRating ? `rgba(255,107,53,${0.2 + level * 0.16})` : '#EBE8E0',
                   display: 'flex', alignItems: 'center', justifyContent: 'center'
                 }}>
-                  <span className="material-symbols-outlined" style={{
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{
                     fontSize: 24, color: level <= heatRating ? '#FF6B35' : '#555'
                   }}>local_fire_department</span>
                 </button>
@@ -88,7 +88,7 @@ const ReviewDesktopPage = () => {
           {/* Vibe Check */}
           <div style={{ marginBottom: 28 }}>
             <h3 style={{ margin: '0 0 12px', fontSize: 16, fontWeight: 700 }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#6C63FF' }}>mood</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#6C63FF' }}>mood</span>
               Vibe Check
             </h3>
             <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
@@ -105,14 +105,14 @@ const ReviewDesktopPage = () => {
           {/* Photo Upload */}
           <div style={{ marginBottom: 28 }}>
             <h3 style={{ margin: '0 0 12px', fontSize: 16, fontWeight: 700 }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#00C9A7' }}>photo_camera</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#00C9A7' }}>photo_camera</span>
               Anh Cua Ban
             </h3>
             <div style={{
               border: '2px dashed rgba(0,0,0,0.1)', borderRadius: 16, padding: 32,
               textAlign: 'center', cursor: 'pointer', background: '#F7F3EC'
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 36, color: '#555', marginBottom: 8, display: 'block' }}>add_photo_alternate</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 36, color: '#555', marginBottom: 8, display: 'block' }}>add_photo_alternate</span>
               <div style={{ fontSize: 13, color: '#666' }}>Keo tha hoac nhan de tai anh len</div>
             </div>
           </div>
@@ -120,7 +120,7 @@ const ReviewDesktopPage = () => {
           {/* Text Review */}
           <div style={{ marginBottom: 28 }}>
             <h3 style={{ margin: '0 0 12px', fontSize: 16, fontWeight: 700 }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#FFD700' }}>edit_note</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#FFD700' }}>edit_note</span>
               Nhan Xet
             </h3>
             <textarea value={review} onChange={e => setReview(e.target.value)} placeholder="Chia se trai nghiem cua ban..."
@@ -137,7 +137,7 @@ const ReviewDesktopPage = () => {
             background: 'linear-gradient(135deg, #6C63FF, #8B5CF6)', color: '#fff',
             fontSize: 16, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 20 }}>publish</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>publish</span>
             Dang Danh Gia
           </button>
         </div>

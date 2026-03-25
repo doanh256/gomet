@@ -291,11 +291,11 @@ const WaitlistPage = () => {
   return (
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined">arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
       </button>
 
       <div style={s.hero}>
-        <span className="material-symbols-outlined" style={s.heroIcon}>hourglass_top</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>hourglass_top</span>
         <h1 style={s.heroTitle}>Ban da dang ky thanh cong!</h1>
         <p style={s.heroSub}>Chung toi se thong bao khi den luot ban</p>
       </div>
@@ -310,7 +310,7 @@ const WaitlistPage = () => {
       </div>
 
       <div style={s.estimateRow}>
-        <span className="material-symbols-outlined" style={s.estimateIcon}>schedule</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.estimateIcon}>schedule</span>
         <span style={s.estimateLabel}>Du kien:</span>
         <span style={s.estimateValue}>Khoang 2-3 ngay</span>
       </div>
@@ -319,7 +319,7 @@ const WaitlistPage = () => {
       {boostActions.map((a, i) => (
         <button style={s.boostCard} key={i}>
           <div style={s.boostIconWrap}>
-            <span className="material-symbols-outlined" style={s.boostIcon}>{a.icon}</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.boostIcon}>{a.icon}</span>
           </div>
           <div style={s.boostInfo}>
             <div style={s.boostLabel}>{a.label}</div>
@@ -333,7 +333,7 @@ const WaitlistPage = () => {
         <div style={s.sectionTitle}>Thong bao cho toi</div>
         <div style={s.notifRow}>
           <div style={s.notifLeft}>
-            <span className="material-symbols-outlined" style={s.notifIcon}>email</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.notifIcon}>email</span>
             <span style={s.notifLabel}>Email</span>
           </div>
           <button
@@ -345,7 +345,7 @@ const WaitlistPage = () => {
         </div>
         <div style={s.notifRow}>
           <div style={s.notifLeft}>
-            <span className="material-symbols-outlined" style={s.notifIcon}>notifications</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.notifIcon}>notifications</span>
             <span style={s.notifLabel}>Push notification</span>
           </div>
           <button
@@ -364,7 +364,7 @@ const WaitlistPage = () => {
             <button style={s.faqHeader} onClick={() => setOpenFaq(openFaq === i ? null : i)}>
               <span>{f.q}</span>
               <span
-                className="material-symbols-outlined"
+                aria-hidden="true" className="material-symbols-outlined"
                 style={{ ...s.faqChevron, transform: openFaq === i ? 'rotate(180deg)' : 'rotate(0deg)' }}
               >
                 expand_more

@@ -52,7 +52,7 @@ const EmptyStatesPage = () => {
       {/* Header */}
       <div style={{ padding: '20px 16px 0', display: 'flex', alignItems: 'center', gap: 12 }}>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
         </button>
         <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>Trang Thai Trong</h1>
         <span style={{ fontSize: 12, color: '#888', background: 'rgba(255,255,255,0.06)', borderRadius: 8, padding: '3px 10px', marginLeft: 8 }}>Demo</span>
@@ -71,7 +71,7 @@ const EmptyStatesPage = () => {
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               margin: '0 auto 20px', animation: 'float 3s ease infinite'
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 40, color: s.iconColor }}>{s.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 40, color: s.iconColor }}>{s.icon}</span>
             </div>
 
             <h3 style={{ margin: '0 0 10px', fontSize: 20, fontWeight: 800, color: '#fff' }}>{s.title}</h3>
@@ -84,7 +84,7 @@ const EmptyStatesPage = () => {
               background: `${s.iconColor}20`, color: s.iconColor,
               fontSize: 14, fontWeight: 700, display: 'inline-flex', alignItems: 'center', gap: 8
             }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>{s.actionIcon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>{s.actionIcon}</span>
               {s.actionLabel}
             </button>
           </div>

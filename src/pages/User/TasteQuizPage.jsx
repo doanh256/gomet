@@ -445,13 +445,13 @@ const TasteQuizPage = () => {
         `}</style>
         {confetti.map(p => <div key={p.id} style={s.confettiPiece(p)} />)}
         <div style={s.successIcon}>
-          <span className="material-symbols-outlined" style={{ fontSize: 48, color: 'var(--on-primary)' }}>check</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 48, color: 'var(--on-primary)' }}>check</span>
         </div>
         <div style={s.successHeading}>Ho so khau vi<br />da <span style={s.highlight}>hoan thanh!</span></div>
         <div style={s.successSub}>Chung toi se goi y nhung trai nghiem am thuc phu hop nhat cho ban.</div>
         <button style={s.startBtn} onClick={() => navigate('/app')}>
           Bat dau kham pha
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_forward</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_forward</span>
         </button>
       </div>
     );
@@ -465,7 +465,7 @@ const TasteQuizPage = () => {
           <div style={s.cuisineOverlay}>
             <span style={s.cuisineName}>{c.name}</span>
             <div style={s.checkCircle(isSelected(c.id))}>
-              {isSelected(c.id) && <span className="material-symbols-outlined" style={{ fontSize: 14, color: '#fff' }}>check</span>}
+              {isSelected(c.id) && <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14, color: '#fff' }}>check</span>}
             </div>
           </div>
         </div>
@@ -490,7 +490,7 @@ const TasteQuizPage = () => {
             <div style={s.optionDesc}>{lv.desc}</div>
           </div>
           <div style={s.checkCircle(isSelected(lv.id))}>
-            {isSelected(lv.id) && <span className="material-symbols-outlined" style={{ fontSize: 14, color: '#fff' }}>check</span>}
+            {isSelected(lv.id) && <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14, color: '#fff' }}>check</span>}
           </div>
         </div>
       ))}
@@ -501,7 +501,7 @@ const TasteQuizPage = () => {
     <div style={s.optionGrid}>
       {items.map(item => (
         <div key={item.id} style={s.optionCard(isSelected(item.id))} onClick={() => toggleSelection(item.id)}>
-          {item.icon && <span className="material-symbols-outlined" style={s.optionIcon}>{item.icon}</span>}
+          {item.icon && <span aria-hidden="true" className="material-symbols-outlined" style={s.optionIcon}>{item.icon}</span>}
           {item.emoji && <span style={s.optionEmoji}>{item.emoji}</span>}
           <div style={s.optionLabel}>{item.label}</div>
           {item.desc && <div style={s.optionDesc}>{item.desc}</div>}
@@ -534,13 +534,13 @@ const TasteQuizPage = () => {
 
       <div style={s.nav}>
         <button style={s.backBtn} onClick={back}>
-          <span className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
           Quay lai
         </button>
         <button style={s.skipLink} onClick={skip}>Bo qua</button>
         <button style={s.nextBtn(canProceed())} onClick={canProceed() ? next : undefined}>
           {step === 9 ? 'Hoan thanh' : 'Tiep theo'}
-          <span className="material-symbols-outlined" style={{ fontSize: 18 }}>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>
             {step === 9 ? 'check' : 'arrow_forward'}
           </span>
         </button>

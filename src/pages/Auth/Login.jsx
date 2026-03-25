@@ -18,7 +18,7 @@ const Login = () => {
     const cleanEmail = role === 'admin' ? 'admin1@gomet.vn' : sanitize(email);
     const cleanPassword = password.trim();
     if (!cleanEmail || !cleanPassword) {
-      setError('Vui long nhap day du thong tin');
+      setError('Vui lòng nhập đầy đủ thông tin');
       return;
     }
     setError('');
@@ -27,7 +27,7 @@ const Login = () => {
       const user = await login(cleanEmail, cleanPassword);
       navigate(user.role === 'admin' ? '/admin' : '/app');
     } catch (err) {
-      setError(err.message || 'Dang nhap that bai');
+      setError(err.message || 'Đăng nhập thất bại');
     } finally {
       setIsLoading(false);
     }
@@ -88,8 +88,8 @@ const Login = () => {
             fontSize: '16px', color: '#E6BEB2', opacity: 0.7, lineHeight: 1.6,
             maxWidth: '320px',
           }}>
-            Noi nhung cuoc gap go tro thanh ky niem.
-            Ket noi chan thuc, trai nghiem co muc dich.
+            Nơi những cuộc gặp gỡ trở thành kỷ niệm.
+            Kết nối chân thực, trải nghiệm có mục đích.
           </p>
         </div>
       </div>
@@ -112,8 +112,8 @@ const Login = () => {
             fontFamily: "'Inter', sans-serif",
           }}
         >
-          <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>arrow_back</span>
-          Quay lai
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>arrow_back</span>
+          Quay lại
         </button>
 
         <div style={{ maxWidth: '400px', width: '100%', margin: '0 auto' }}>
@@ -129,7 +129,7 @@ const Login = () => {
             fontSize: '14px', color: '#E6BEB2', marginBottom: '40px',
             fontWeight: 500, opacity: 0.7,
           }}>
-            The Culinary Editorial
+            Kết nối qua ẩm thực
           </p>
 
           {/* Error */}
@@ -147,15 +147,17 @@ const Login = () => {
           <form style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             {/* Email */}
             <div>
-              <label style={labelStyle}>Email</label>
+              <label htmlFor="login-email" style={labelStyle}>Email</label>
               <div style={{ position: 'relative' }}>
-                <span className="material-symbols-outlined" style={iconStyle}>mail</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={iconStyle}>mail</span>
                 <input
+                  id="login-email"
                   type="email"
                   placeholder="email@example.com"
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   style={inputBase}
+                  autoComplete="email"
                   onFocus={e => { e.target.style.boxShadow = '0 0 0 2px rgba(255,181,158,0.5)'; }}
                   onBlur={e => { e.target.style.boxShadow = 'none'; }}
                 />
@@ -164,20 +166,23 @@ const Login = () => {
 
             {/* Password */}
             <div>
-              <label style={labelStyle}>Mat khau</label>
+              <label htmlFor="login-password" style={labelStyle}>Mật khẩu</label>
               <div style={{ position: 'relative' }}>
-                <span className="material-symbols-outlined" style={iconStyle}>lock</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={iconStyle}>lock</span>
                 <input
+                  id="login-password"
                   type={showPassword ? 'text' : 'password'}
                   placeholder="********"
                   value={password}
                   onChange={e => setPassword(e.target.value)}
                   style={{ ...inputBase, paddingRight: '48px' }}
+                  autoComplete="current-password"
                   onFocus={e => { e.target.style.boxShadow = '0 0 0 2px rgba(255,181,158,0.5)'; }}
                   onBlur={e => { e.target.style.boxShadow = 'none'; }}
                 />
                 <button
                   type="button"
+                  aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
                   onClick={() => setShowPassword(!showPassword)}
                   style={{
                     position: 'absolute', right: '14px', top: '50%',
@@ -186,7 +191,7 @@ const Login = () => {
                     display: 'flex',
                   }}
                 >
-                  <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>
                     {showPassword ? 'visibility_off' : 'visibility'}
                   </span>
                 </button>
@@ -195,15 +200,17 @@ const Login = () => {
 
             {/* Forgot password */}
             <div style={{ textAlign: 'right', marginTop: '-8px' }}>
-              <span
-                onClick={() => navigate('/forgot-password')}
+              <button
+                type="button"
+                onClick={() => setError('Tính năng đang phát triển. Vui lòng liên hệ hỗ trợ.')}
                 style={{
                   fontSize: '13px', color: '#FFB59E', fontWeight: 600,
-                  cursor: 'pointer',
+                  cursor: 'pointer', background: 'none', border: 'none',
+                  padding: 0, fontFamily: "'Inter', sans-serif",
                 }}
               >
-                Quen mat khau?
-              </span>
+                Quên mật khẩu?
+              </button>
             </div>
 
             {/* Login button */}
@@ -224,7 +231,7 @@ const Login = () => {
               onMouseEnter={e => { if (!isLoading) e.currentTarget.style.transform = 'translateY(-2px)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
             >
-              {isLoading ? 'Dang xu ly...' : 'Dang Nhap'}
+              {isLoading ? 'Đang xử lý...' : 'Đăng Nhập'}
             </button>
 
             {/* Divider */}
@@ -240,7 +247,7 @@ const Login = () => {
                 fontSize: '13px', color: '#E6BEB2', position: 'relative',
                 fontWeight: 500,
               }}>
-                hoac
+                hoặc
               </span>
             </div>
 
@@ -257,7 +264,7 @@ const Login = () => {
               onMouseEnter={e => { e.currentTarget.style.backgroundColor = '#353535'; }}
               onMouseLeave={e => { e.currentTarget.style.backgroundColor = '#2A2A2A'; }}
             >
-              Tiep tuc voi Admin
+              Tiếp tục với Admin
             </button>
 
             {/* Register link */}
@@ -265,12 +272,12 @@ const Login = () => {
               textAlign: 'center', marginTop: '12px',
               fontSize: '14px', color: '#E6BEB2',
             }}>
-              Chua co tai khoan?{' '}
+              Chưa có tài khoản?{' '}
               <span
                 onClick={() => navigate('/register')}
                 style={{ color: '#FFB59E', fontWeight: 700, cursor: 'pointer' }}
               >
-                Dang ky ngay
+                Đăng ký ngay
               </span>
             </div>
           </form>

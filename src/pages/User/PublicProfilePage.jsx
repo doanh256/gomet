@@ -151,7 +151,7 @@ const PublicProfilePage = () => {
   return (
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         Quay lai
       </button>
 
@@ -159,16 +159,16 @@ const PublicProfilePage = () => {
       <div style={s.profileHeader}>
         <div style={s.avatarWrap}>
           <div style={s.avatar}>
-            <span className="material-symbols-outlined" style={s.avatarIcon}>person</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.avatarIcon}>person</span>
           </div>
           <div style={s.tierBadge}>
-            <span className="material-symbols-outlined" style={s.tierBadgeIcon}>diamond</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={s.tierBadgeIcon}>diamond</span>
           </div>
         </div>
         <div style={s.name}>Minh Anh</div>
         <div style={s.title}>Culinary Adventurer</div>
         <div style={s.location}>
-          <span className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>
           TP. Ho Chi Minh
         </div>
       </div>
@@ -192,7 +192,7 @@ const PublicProfilePage = () => {
       {/* Taste Radar */}
       <div style={s.radarSection}>
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>radar</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>radar</span>
           Taste Radar
         </div>
         <div style={s.radarWrap}>
@@ -226,7 +226,7 @@ const PublicProfilePage = () => {
 
       {/* Food Moments */}
       <div style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={s.sectionIcon}>photo_library</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>photo_library</span>
         Food Moments
       </div>
       <div style={s.photoGrid}>
@@ -237,7 +237,7 @@ const PublicProfilePage = () => {
 
       {/* Interest Tags */}
       <div style={s.sectionTitle}>
-        <span className="material-symbols-outlined" style={s.sectionIcon}>sell</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>sell</span>
         So thich am thuc
       </div>
       <div style={s.tagsWrap}>
@@ -249,11 +249,11 @@ const PublicProfilePage = () => {
       {/* Action Buttons */}
       <div style={s.btnRow}>
         <button style={s.btnPrimary}>
-          <span className="material-symbols-outlined" style={{ fontSize: 18 }}>mail</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>mail</span>
           Gui Kitchen Card
         </button>
         <button style={s.btnSecondary}>
-          <span className="material-symbols-outlined" style={{ fontSize: 18 }}>restaurant</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>restaurant</span>
           Hen an cung
         </button>
       </div>

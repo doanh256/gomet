@@ -33,13 +33,13 @@ const RestaurantManagerMobilePage = () => {
       {/* Header */}
       <div style={{ padding: '20px 16px 0', display: 'flex', alignItems: 'center', gap: 12 }}>
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#1A1A2E' }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#1A1A2E' }}>arrow_back</span>
         </button>
         <div style={{ flex: 1 }}>
           <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>Nhip Hom Nay</h1>
           <p style={{ margin: 0, fontSize: 12, color: '#888' }}>Nha hang Pho Thin</p>
         </div>
-        <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#E8900C' }}>storefront</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#E8900C' }}>storefront</span>
       </div>
 
       {/* Revenue Card */}
@@ -52,7 +52,7 @@ const RestaurantManagerMobilePage = () => {
           <div style={{ fontSize: 32, fontWeight: 900 }}>4.280.000</div>
           <div style={{ fontSize: 14, opacity: 0.9 }}>VND</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 12 }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 16 }}>trending_up</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>trending_up</span>
             <span style={{ fontSize: 13, fontWeight: 600 }}>+18% so voi hom qua</span>
           </div>
         </div>
@@ -62,7 +62,7 @@ const RestaurantManagerMobilePage = () => {
       <div style={{ padding: '0 16px', marginBottom: 24 }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
           <h2 style={{ margin: 0, fontSize: 17, fontWeight: 700 }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#6C63FF' }}>table_restaurant</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#6C63FF' }}>table_restaurant</span>
             Trang Thai San
           </h2>
           <span style={{ fontSize: 13, color: '#888', fontWeight: 600 }}>12/20 ban</span>
@@ -92,13 +92,13 @@ const RestaurantManagerMobilePage = () => {
             width: 48, height: 48, borderRadius: '50%', background: 'rgba(255,215,0,0.15)',
             display: 'flex', alignItems: 'center', justifyContent: 'center'
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#FFD700' }}>toll</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#FFD700' }}>toll</span>
           </div>
           <div style={{ flex: 1 }}>
             <div style={{ fontSize: 14, fontWeight: 700 }}>Vang Milestone</div>
             <div style={{ fontSize: 12, color: '#888' }}>234 mon da xac thuc thang nay</div>
           </div>
-          <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#ccc' }}>chevron_right</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#ccc' }}>chevron_right</span>
         </div>
       </div>
 
@@ -115,7 +115,7 @@ const RestaurantManagerMobilePage = () => {
                 width: 44, height: 44, borderRadius: 14, background: `${a.color}15`,
                 display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 8px'
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: 22, color: a.color }}>{a.icon}</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: a.color }}>{a.icon}</span>
               </div>
               <div style={{ fontSize: 12, fontWeight: 600, color: '#1A1A2E' }}>{a.label}</div>
             </div>
@@ -126,7 +126,7 @@ const RestaurantManagerMobilePage = () => {
       {/* Recent Orders */}
       <div style={{ padding: '0 16px' }}>
         <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12 }}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>receipt_long</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>receipt_long</span>
           Don Gan Day
         </h2>
         {recentOrders.map((o, i) => (

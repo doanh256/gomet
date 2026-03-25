@@ -202,7 +202,7 @@ const AdvancedSettingsPage = () => {
   return (
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         Quay lai
       </button>
 
@@ -211,7 +211,7 @@ const AdvancedSettingsPage = () => {
       {/* Section 1 - Dating */}
       <div style={s.card}>
         <div style={s.sectionHeader}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>favorite</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>favorite</span>
           <span style={s.sectionTitle}>Cai dat hen ho</span>
         </div>
 
@@ -271,7 +271,7 @@ const AdvancedSettingsPage = () => {
       {/* Section 2 - Privacy */}
       <div style={s.card}>
         <div style={s.sectionHeader}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>shield</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>shield</span>
           <span style={s.sectionTitle}>Quyen rieng tu</span>
         </div>
 
@@ -306,7 +306,7 @@ const AdvancedSettingsPage = () => {
       {/* Section 3 - Notifications */}
       <div style={s.card}>
         <div style={s.sectionHeader}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>notifications</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>notifications</span>
           <span style={s.sectionTitle}>Thong bao</span>
         </div>
 
@@ -337,7 +337,7 @@ const AdvancedSettingsPage = () => {
       </div>
 
       <button style={s.saveBtn}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>save</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>save</span>
         Luu thay doi
       </button>
     </div>

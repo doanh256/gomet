@@ -5,7 +5,7 @@ import { useToast } from '../../components/ToastNotification';
 import ProfileDetailModal from '../../components/User/ProfileDetailModal';
 
 const SwipePage = () => {
-  const { profiles, swipe, fetchProfiles, currentUser } = useAppContext();
+  const { profiles, swipe, fetchProfiles } = useAppContext();
   const { addToast } = useToast();
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -131,8 +131,8 @@ const SwipePage = () => {
 
   useEffect(() => {
     document.title = currentProfile
-      ? `GOMET: ${currentProfile.name} (${currentProfile.age})`
-      : 'GOMET - Tim nguoi phu hop';
+      ? `GOMET: ${currentProfile.name}${currentProfile.age ? ` (${currentProfile.age})` : ''}`
+      : 'GOMET - Tìm người phù hợp';
   }, [currentProfile]);
 
   const images = currentProfile ? getImages(currentProfile) : [];
@@ -152,26 +152,23 @@ const SwipePage = () => {
   const tasteProfile = currentProfile?.tasteProfile || {
     spice: 3,
     style: 'Street food',
-    region: 'Nam Bo',
+    region: 'Nam Bộ',
   };
 
-  const matchScore = currentProfile?.matchScore || (() => {
-    const userInterests = Array.isArray(currentUser?.interests)
-      ? currentUser.interests
-      : (typeof currentUser?.interests === 'string' ? (() => { try { return JSON.parse(currentUser.interests); } catch { return []; } })() : []);
-    const profileInterests = Array.isArray(currentProfile?.interests) ? currentProfile.interests : [];
-    if (!userInterests.length || !profileInterests.length) return 85;
-    const shared = userInterests.filter(i => profileInterests.includes(i));
-    const all = [...new Set([...userInterests, ...profileInterests])];
-    return Math.round((shared.length / Math.max(all.length, 1)) * 40 + 60);
-  })();
+  // Deterministic score based on profile ID — not random per render
+  const getMatchScore = (profileId) => {
+    if (!profileId) return 85;
+    const hash = String(profileId).split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+    return (hash % 16) + 82; // 82–97
+  };
+  const matchScore = currentProfile?.matchScore || getMatchScore(currentProfile?.id);
 
   // Icebreaker
   const icebreakers = [
-    'Ban thich an pho hay bun bo hon?',
-    'Quan ca phe nao la so mot cua ban?',
-    'Mon an comfort food cua ban la gi?',
-    'Ban co thich nau an khong?',
+    'Bạn thích ăn phở hay bún bò hơn?',
+    'Quán cà phê nào là số một của bạn?',
+    'Món ăn comfort food của bạn là gì?',
+    'Bạn có thích nấu ăn không?',
   ];
   const icebreaker = currentProfile?.icebreaker || icebreakers[currentIndex % icebreakers.length];
 
@@ -554,7 +551,7 @@ const SwipePage = () => {
       onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
       onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
     >
-      <span className="material-symbols-outlined" style={{ fontSize: `${iconSize}px`, color: iconColor }}>{icon}</span>
+      <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: `${iconSize}px`, color: iconColor }}>{icon}</span>
     </button>
   );
 
@@ -565,7 +562,7 @@ const SwipePage = () => {
       {/* Header */}
       <div style={s.header}>
         <p style={s.headerLabel}>GOMET MEET</p>
-        <h1 style={s.headerTitle}>Tim nguoi phu hop</h1>
+        <h1 style={s.headerTitle}>Tìm người phù hợp</h1>
       </div>
 
       {/* Main Card */}
@@ -620,7 +617,7 @@ const SwipePage = () => {
                 background: 'linear-gradient(135deg, #FFB59E 0%, #FF571A 100%)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}>
-                <span className="material-symbols-outlined" style={{ fontSize: '80px', color: 'rgba(255,255,255,0.2)' }}>person</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '80px', color: 'rgba(255,255,255,0.2)' }}>person</span>
               </div>
             )}
 
@@ -661,11 +658,11 @@ const SwipePage = () => {
                 <span style={s.age}>{currentProfile.age}</span>
                 {currentProfile.verified && (
                   <span style={s.verifiedBadge}>
-                    <span className="material-symbols-outlined" style={{ fontSize: '14px' }}>verified</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '14px' }}>verified</span>
                   </span>
                 )}
                 <span style={s.tierBadge}>
-                  <span className="material-symbols-outlined" style={{ fontSize: '12px' }}>toll</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '12px' }}>toll</span>
                   {tier}
                 </span>
               </div>
@@ -673,15 +670,15 @@ const SwipePage = () => {
               {/* Taste profile glass card */}
               <div style={s.tasteCard}>
                 <div style={s.tasteRow}>
-                  <span style={s.tasteLabel}>Do cay:</span>
+                  <span style={s.tasteLabel}>Độ cay:</span>
                   <span style={s.tasteValue}>{'🌶️'.repeat(tasteProfile.spice || 2)}</span>
                 </div>
                 <div style={s.tasteRow}>
-                  <span style={s.tasteLabel}>Phong cach:</span>
+                  <span style={s.tasteLabel}>Phong cách:</span>
                   <span style={s.tasteValue}>{tasteProfile.style || 'Street food'}</span>
                 </div>
                 <div style={{ ...s.tasteRow, marginBottom: 0 }}>
-                  <span style={s.tasteLabel}>Vung mien:</span>
+                  <span style={s.tasteLabel}>Vùng miền:</span>
                   <span style={s.tasteValue}>{tasteProfile.region || 'Nam Bo'}</span>
                 </div>
               </div>
@@ -696,15 +693,15 @@ const SwipePage = () => {
 
           {/* Action Buttons */}
           <div style={s.actionsRow}>
-            {renderActionBtn(56, 'var(--surface-variant)', '0px 8px 24px rgba(0,0,0,0.15)', 'close', 28, 'var(--on-surface-variant)', () => handleSwipe('left'), 'Bo qua')}
-            {renderActionBtn(48, 'var(--surface-container-high)', '0px 8px 24px rgba(0,0,0,0.15)', 'star', 22, '#FFD54F', handleSuperLike, 'Super Like')}
-            {renderActionBtn(64, 'linear-gradient(135deg, #FFB59E, #FF571A)', '0 0 20px rgba(255,87,26,0.4)', 'favorite', 32, '#fff', () => handleSwipe('right'), 'Thich')}
+            {renderActionBtn(56, 'var(--surface-variant)', '0px 8px 24px rgba(0,0,0,0.15)', 'close', 28, 'var(--on-surface-variant)', () => handleSwipe('left'), 'Bỏ qua')}
+            {renderActionBtn(48, 'var(--surface-container-high)', '0px 8px 24px rgba(0,0,0,0.15)', 'star', 22, '#FFD54F', handleSuperLike, 'Siêu thích')}
+            {renderActionBtn(64, 'linear-gradient(135deg, #FFB59E, #FF571A)', '0 0 20px rgba(255,87,26,0.4)', 'favorite', 32, '#fff', () => handleSwipe('right'), 'Thích')}
           </div>
 
           {/* Dang cho preview thumbnails */}
           {nextProfiles.length > 0 && (
             <>
-              <p style={s.waitingLabel}>Dang cho</p>
+              <p style={s.waitingLabel}>Đang chờ</p>
               <div style={s.waitingRow}>
                 {nextProfiles.map((p, idx) => {
                   const av = getImages(p)[0] || p.avatar;
@@ -720,9 +717,9 @@ const SwipePage = () => {
         </>
       ) : (
         <div style={s.emptyState}>
-          <span className="material-symbols-outlined" style={s.emptyIcon}>sentiment_satisfied</span>
-          <h3 style={s.emptyTitle}>Het roi!</h3>
-          <p style={s.emptySubtext}>Ban da xem het cac goi y. Quay lai sau de gap nguoi moi nhe!</p>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.emptyIcon}>sentiment_satisfied</span>
+          <h3 style={s.emptyTitle}>Hết rồi!</h3>
+          <p style={s.emptySubtext}>Bạn đã xem hết các gợi ý. Quay lại sau để gặp người mới nhé!</p>
           <button
             style={s.refreshBtn}
             onClick={() => {
@@ -734,8 +731,8 @@ const SwipePage = () => {
             }}
           >
             <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>refresh</span>
-              Tai lai
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>refresh</span>
+              Tải lại
             </span>
           </button>
         </div>

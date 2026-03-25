@@ -153,25 +153,25 @@ const MissionDetailPage = () => {
       <style>{missionKeyframes}</style>
 
       <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         Quay lai
       </button>
 
       {/* Header */}
       <div style={s.header}>
         <div style={s.missionIcon}>
-          <span className="material-symbols-outlined" style={s.missionIconEl}>ramen_dining</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.missionIconEl}>ramen_dining</span>
         </div>
         <div style={s.missionName}>The Pho Trinity</div>
         <div style={s.timer}>
-          <span className="material-symbols-outlined" style={{ fontSize: 16 }}>schedule</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>schedule</span>
           3 ngay con lai
         </div>
       </div>
 
       {/* Reward */}
       <div style={s.rewardBadge}>
-        <span className="material-symbols-outlined" style={s.rewardIcon}>toll</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.rewardIcon}>toll</span>
         <div style={s.rewardText}>+{totalReward} VANG</div>
         <div style={s.rewardLabel}>tong thuong</div>
       </div>
@@ -188,7 +188,7 @@ const MissionDetailPage = () => {
       {/* Mission Map */}
       <div style={s.mapSection}>
         <div style={s.sectionTitle}>
-          <span className="material-symbols-outlined" style={s.sectionIcon}>flag</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>flag</span>
           Ban do nhiem vu
         </div>
         <div style={s.checkpointList}>
@@ -196,7 +196,7 @@ const MissionDetailPage = () => {
           {checkpoints.map(cp => (
             <div key={cp.id} style={s.checkpoint}>
               <div style={s.cpDot(cp.completed)}>
-                <span className="material-symbols-outlined" style={s.cpDotIcon}>
+                <span aria-hidden="true" className="material-symbols-outlined" style={s.cpDotIcon}>
                   {cp.completed ? 'check' : 'lock'}
                 </span>
               </div>
@@ -204,7 +204,7 @@ const MissionDetailPage = () => {
                 <div style={s.cpHeader}>
                   <div style={s.cpName(cp.completed)}>{cp.name}</div>
                   <div style={s.cpStatus(cp.completed)}>
-                    <span className="material-symbols-outlined" style={{ fontSize: 14 }}>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>
                       {cp.completed ? 'check_circle' : 'lock'}
                     </span>
                     {cp.completed ? 'Hoan thanh' : 'Chua mo'}
@@ -212,12 +212,12 @@ const MissionDetailPage = () => {
                 </div>
                 <div style={s.cpDish(cp.completed)}>{cp.dish}</div>
                 <div style={s.cpRestaurant(cp.completed)}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 14 }}>location_on</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>location_on</span>
                   {cp.restaurant}
                 </div>
                 {cp.completed && (
                   <div style={s.cpVang}>
-                    <span className="material-symbols-outlined" style={{ fontSize: 12 }}>toll</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 12 }}>toll</span>
                     +{cp.vang} Vang
                   </div>
                 )}
@@ -229,7 +229,7 @@ const MissionDetailPage = () => {
 
       {/* Continue CTA */}
       <button style={s.continueCta}>
-        <span className="material-symbols-outlined" style={{ fontSize: 20 }}>play_arrow</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>play_arrow</span>
         Tiep tuc nhiem vu
       </button>
     </div>

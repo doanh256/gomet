@@ -170,12 +170,12 @@ const GroupChatPage = () => {
       {/* Header */}
       <div style={s.header}>
         <button style={s.backBtn} onClick={() => navigate(-1)}>
-          <span className="material-symbols-outlined" style={{ fontSize: 22 }}>arrow_back</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22 }}>arrow_back</span>
         </button>
         <div style={s.headerInfo}>
           <div style={s.groupName}>The Pho Trinity</div>
           <div style={s.groupMeta}>
-            <span className="material-symbols-outlined" style={{ fontSize: 14 }}>group</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>group</span>
             {members.length} thanh vien
           </div>
         </div>
@@ -187,13 +187,13 @@ const GroupChatPage = () => {
           ))}
         </div>
         <button style={{ ...s.backBtn, marginLeft: 8 }} onClick={() => setShowInfo(!showInfo)}>
-          <span className="material-symbols-outlined" style={{ fontSize: 22 }}>info</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22 }}>info</span>
         </button>
       </div>
 
       {/* Synergy Badge */}
       <div style={s.synergyBadge}>
-        <span className="material-symbols-outlined" style={s.synergyIcon}>psychology</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.synergyIcon}>psychology</span>
         <div style={s.synergyText}>Group Synergy</div>
         <div style={s.synergyValue}>92%</div>
       </div>
@@ -206,14 +206,14 @@ const GroupChatPage = () => {
               <div key={msg.id} style={s.msgWrap(true)}>
                 <div style={s.venueCard}>
                   <div style={s.venueLabel}>
-                    <span className="material-symbols-outlined" style={{ fontSize: 12, verticalAlign: 'middle', marginRight: 4 }}>smart_toy</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 12, verticalAlign: 'middle', marginRight: 4 }}>smart_toy</span>
                     Goi y tu AI
                   </div>
                   <div style={s.venueName}>{msg.venueName}</div>
                   <div style={s.venueAddr}>{msg.venueAddr}</div>
                   <div style={s.venueFooter}>
                     <div style={s.venueRating}>
-                      <span className="material-symbols-outlined" style={{ fontSize: 14 }}>star</span>
+                      <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>star</span>
                       {msg.venueRating}
                     </div>
                     <div style={s.venueMatch}>{msg.venueMatch}</div>
@@ -235,7 +235,7 @@ const GroupChatPage = () => {
               </div>
               {msg.type === 'photo' ? (
                 <div style={s.photoPlaceholder}>
-                  <span className="material-symbols-outlined" style={s.photoIcon}>image</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={s.photoIcon}>image</span>
                 </div>
               ) : (
                 <div style={s.bubble(member.color)}>
@@ -250,7 +250,7 @@ const GroupChatPage = () => {
 
       {/* Plan Group Date CTA */}
       <button style={s.planCta}>
-        <span className="material-symbols-outlined" style={{ fontSize: 18 }}>calendar_month</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>calendar_month</span>
         Len ke hoach nhom
       </button>
 
@@ -263,7 +263,7 @@ const GroupChatPage = () => {
           onChange={e => setInputText(e.target.value)}
         />
         <button style={s.sendBtn}>
-          <span className="material-symbols-outlined" style={s.sendIcon}>send</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={s.sendIcon}>send</span>
         </button>
       </div>
 
@@ -274,7 +274,7 @@ const GroupChatPage = () => {
           {members.map(m => (
             <div key={m.id} style={s.memberItem}>
               <div style={s.memberAvatar(m.color)}>
-                <span className="material-symbols-outlined" style={s.memberAvatarIcon}>person</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={s.memberAvatarIcon}>person</span>
               </div>
               <div style={s.memberName}>{m.name}</div>
             </div>

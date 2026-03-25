@@ -159,7 +159,7 @@ const FirstDateGuidePage = () => {
   return (
     <div style={s.page}>
       <div style={s.hero}>
-        <span className="material-symbols-outlined" style={s.heroIcon}>handshake</span>
+        <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>handshake</span>
         <h1 style={s.heading}>
           Cam nang <span style={s.headingAccent}>hen ho dau tien</span>
         </h1>
@@ -182,7 +182,7 @@ const FirstDateGuidePage = () => {
           >
             <div style={s.number}>{i + 1}</div>
             <div style={s.iconCircle}>
-              <span className="material-symbols-outlined" style={s.cardIcon}>{tip.icon}</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={s.cardIcon}>{tip.icon}</span>
             </div>
             <div style={s.cardTitle}>{tip.title}</div>
             <div style={s.cardDesc}>{tip.desc}</div>
@@ -193,7 +193,7 @@ const FirstDateGuidePage = () => {
       <div style={s.cta}>
         <div style={s.ctaTitle}>San sang hen ho?</div>
         <button style={s.ctaBtn} onClick={() => navigate('/app')}>
-          <span className="material-symbols-outlined" style={{ fontSize: 20 }}>explore</span>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>explore</span>
           Tim nguoi phu hop
         </button>
       </div>

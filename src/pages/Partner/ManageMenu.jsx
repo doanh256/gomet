@@ -33,8 +33,8 @@ const ManageMenu = () => {
   return (
     <div style={st.page}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}><span className="material-symbols-outlined" style={{ fontSize: 32, color: '#FFB59E' }}>restaurant_menu</span><h1 style={{ fontFamily: 'var(--font-headline)', fontSize: 28, fontWeight: 700 }}>Quan ly thuc don</h1></div>
-        <button style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 24px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#3A0B00', fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 600, cursor: 'pointer' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.03)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}><span className="material-symbols-outlined" style={{ fontSize: 20 }}>add</span>Them mon moi</button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 32, color: '#FFB59E' }}>restaurant_menu</span><h1 style={{ fontFamily: 'var(--font-headline)', fontSize: 28, fontWeight: 700 }}>Quan ly thuc don</h1></div>
+        <button style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 24px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#3A0B00', fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 600, cursor: 'pointer' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.03)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>add</span>Them mon moi</button>
       </div>
       <div style={{ display: 'flex', gap: 10, marginBottom: 28, overflowX: 'auto' }}>{categories.map((c) => (<button key={c.key} style={st.categoryChip(activeCategory === c.key)} onClick={() => setActiveCategory(c.key)}>{c.label}</button>))}</div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 18, marginBottom: 36 }}>
@@ -51,8 +51,8 @@ const ManageMenu = () => {
                   <span style={st.toggleLabel(item.available)}>{item.available ? 'Con hang' : 'Het hang'}</span>
                 </div>
                 <div style={{ display: 'flex', gap: 6 }}>
-                  <button style={st.iconBtn('edit')}><span className="material-symbols-outlined" style={{ fontSize: 18 }}>edit</span></button>
-                  <button style={st.iconBtn('delete')}><span className="material-symbols-outlined" style={{ fontSize: 18 }}>delete_outline</span></button>
+                  <button style={st.iconBtn('edit')}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>edit</span></button>
+                  <button style={st.iconBtn('delete')}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>delete_outline</span></button>
                 </div>
               </div>
             </div>
@@ -60,7 +60,7 @@ const ManageMenu = () => {
         ))}
       </div>
       <div style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}><span className="material-symbols-outlined" style={{ fontSize: 22, color: '#FFB59E' }}>trending_up</span><h2 style={{ fontFamily: 'var(--font-headline)', fontSize: 16, fontWeight: 600 }}>Xu huong - Mon duoc goi nhieu nhat</h2></div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: '#FFB59E' }}>trending_up</span><h2 style={{ fontFamily: 'var(--font-headline)', fontSize: 16, fontWeight: 600 }}>Xu huong - Mon duoc goi nhieu nhat</h2></div>
         {trendingItems.map((item, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14 }}>
             <div style={{ fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 700, color: '#FFB59E', minWidth: 24 }}>#{i + 1}</div>

@@ -45,14 +45,14 @@ const SearchResultsPage = () => {
       <div style={{ padding: '20px 32px 0' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 24, color: '#1A1A2E' }}>arrow_back</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#1A1A2E' }}>arrow_back</span>
           </button>
           <div style={{
             flex: 1, display: 'flex', alignItems: 'center', gap: 10,
             background: '#fff', borderRadius: 999, padding: '12px 20px',
             boxShadow: '0 2px 16px rgba(0,0,0,0.08)', border: '2px solid #E8900C'
           }}>
-            <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#E8900C' }}>search</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: '#E8900C' }}>search</span>
             <input value={query} onChange={e => setQuery(e.target.value)} style={{
               border: 'none', outline: 'none', flex: 1, fontSize: 15, fontWeight: 500,
               background: 'transparent', color: '#1A1A2E'
@@ -90,7 +90,7 @@ const SearchResultsPage = () => {
         <div style={{ width: 220, flexShrink: 0 }}>
           <div style={{ background: '#fff', borderRadius: 20, padding: 20, boxShadow: '0 2px 12px rgba(0,0,0,0.06)', position: 'sticky', top: 20 }}>
             <h3 style={{ margin: '0 0 16px', fontSize: 15, fontWeight: 700 }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 18, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>tune</span>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>tune</span>
               Bo Loc
             </h3>
 
@@ -104,7 +104,7 @@ const SearchResultsPage = () => {
                     background: checkedCuisines.includes(i) ? '#E8900C' : '#fff',
                     display: 'flex', alignItems: 'center', justifyContent: 'center'
                   }}>
-                    {checkedCuisines.includes(i) && <span className="material-symbols-outlined" style={{ fontSize: 14, color: '#fff' }}>check</span>}
+                    {checkedCuisines.includes(i) && <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14, color: '#fff' }}>check</span>}
                   </div>
                   {c}
                 </label>
@@ -154,7 +154,7 @@ const SearchResultsPage = () => {
                   <div style={{ fontSize: 12, color: '#888', marginBottom: 8 }}>{r.type} - {r.dist}</div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                      <span className="material-symbols-outlined" style={{ fontSize: 16, color: '#F5C542' }}>star</span>
+                      <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, color: '#F5C542' }}>star</span>
                       <span style={{ fontSize: 13, fontWeight: 700 }}>{r.rating}</span>
                     </div>
                     <span style={{ fontSize: 13, fontWeight: 600, color: '#E8900C' }}>{r.price}</span>

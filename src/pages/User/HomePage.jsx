@@ -136,7 +136,7 @@ const HomePage = () => {
             Chào mừng trở lại, Chef <span style={{ color: '#FF4D00' }}>{userName}</span>.
           </h1>
           <p style={{ fontSize: 14, color: '#666460', margin: '0 0 24px', lineHeight: 1.6 }}>
-            Hành trình ẩm thực Việt Nam của bạn đang tiếp tục. Bạn đã mở khóa <strong>12 điểm Vàng mới</strong> tuần này qua khám phá vùng miền.
+            Hành trình ẩm thực Việt Nam của bạn đang tiếp tục. Bạn đã mở khoá <strong>12 điểm Vàng mới</strong> tuần này qua khám phá vùng miền.
           </p>
 
           {/* Vang balance */}
@@ -144,7 +144,7 @@ const HomePage = () => {
             background: '#1a3a1a', padding: '16px 20px', borderRadius: 9999, display: 'inline-flex',
             alignItems: 'center', gap: 12, marginBottom: 32,
           }}>
-            <span className="material-symbols-outlined" style={{ color: '#fcc43e', fontSize: 20, fontVariationSettings: "'FILL' 1" }}>toll</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ color: '#fcc43e', fontSize: 20, fontVariationSettings: "'FILL' 1" }}>toll</span>
             <div>
               <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', margin: 0 }}>SỐ DƯ HIỆN TẠI</p>
               <p style={{ fontSize: 18, fontWeight: 900, color: '#ffffff', margin: 0 }}>4,850 Vang</p>
@@ -155,15 +155,15 @@ const HomePage = () => {
           <section style={{ marginBottom: 32 }}>
             <h2 style={{ fontSize: 20, fontWeight: 700, color: '#393834', margin: '0 0 16px' }}>Khám phá Vùng miền</h2>
             <div style={{ position: 'relative', height: 300, borderRadius: '2rem', overflow: 'hidden', background: '#f1ede6' }}>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBayFiPKKopjHL02cHAafHdRkICGkC9bICUqTy0mqPWbhzbQL7WtMMqMlk2wYnLbpMMms0OlbbgHLUrz5TGVRpV4OOngr8CjIsxh9Dr-BWW-9nmmSMLO2q2ItF-etV-IhltTbaCIsLQcSCSGtKKQdiktHandV06LiFedoGSoOdrrY1wab_kE-2z7kR19uO9x8vYtbShoM-kRMMwYDF6603hqbWrA5GwRCShQdyLLeDBP0J4WCRvT3sXlz-wa5KXuALIRczaPnRLGpY" alt="Bản đồ khám phá" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBayFiPKKopjHL02cHAafHdRkICGkC9bICUqTy0mqPWbhzbQL7WtMMqMlk2wYnLbpMMms0OlbbgHLUrz5TGVRpV4OOngr8CjIsxh9Dr-BWW-9nmmSMLO2q2ItF-etV-IhltTbaCIsLQcSCSGtKKQdiktHandV06LiFedoGSoOdrrY1wab_kE-2z7kR19uO9x8vYtbShoM-kRMMwYDF6603hqbWrA5GwRCShQdyLLeDBP0J4WCRvT3sXlz-wa5KXuALIRczaPnRLGpY" alt="Ban do kham pha" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
               <div style={{ position: 'absolute', top: '30%', left: '25%' }}>
                 <div style={{ background: '#b83500', color: '#fff', padding: 8, borderRadius: '50%', boxShadow: '0 4px 12px rgba(184,53,0,0.3)' }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 16, fontVariationSettings: "'FILL' 1" }}>restaurant</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, fontVariationSettings: "'FILL' 1" }}>restaurant</span>
                 </div>
               </div>
               <div style={{ position: 'absolute', bottom: '30%', right: '30%' }}>
                 <div style={{ background: '#117500', color: '#fff', padding: 8, borderRadius: '50%', boxShadow: '0 4px 12px rgba(17,117,0,0.3)' }}>
-                  <span className="material-symbols-outlined" style={{ fontSize: 16, fontVariationSettings: "'FILL' 1" }}>local_bar</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, fontVariationSettings: "'FILL' 1" }}>local_bar</span>
                 </div>
               </div>
             </div>
@@ -194,7 +194,7 @@ const HomePage = () => {
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                     <span style={{ fontSize: 11, fontWeight: 800, color: '#117500', background: '#e6f5e0', padding: '4px 8px', borderRadius: 9999 }}>{m.vang} Vang</span>
                     <button onClick={() => navigate('/app/chat')} style={{ width: 36, height: 36, borderRadius: '50%', border: '1px solid #bcb9b3', background: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
-                      <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#393834' }}>chat_bubble</span>
+                      <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#393834' }}>chat_bubble</span>
                     </button>
                   </div>
                 </div>
@@ -215,7 +215,7 @@ const HomePage = () => {
                   )}
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%)' }} />
                   <div style={{ position: 'absolute', top: 10, right: 10, background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)', padding: 4, borderRadius: '50%' }}>
-                    <span className="material-symbols-outlined" style={{ color: '#fff', fontSize: 14, fontVariationSettings: "'FILL' 1" }}>play_arrow</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ color: '#fff', fontSize: 14, fontVariationSettings: "'FILL' 1" }}>play_arrow</span>
                   </div>
                   <div style={{ position: 'absolute', bottom: 12, left: 12, right: 12 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
@@ -260,7 +260,7 @@ const HomePage = () => {
             padding: '10px 24px', background: '#b83500', color: '#ffffff', border: 'none',
             borderRadius: 9999, fontWeight: 700, fontSize: 14, cursor: 'pointer',
           }}>
-            Join the Kitchen
+            Tham gia Kitchen
           </button>
         </nav>
 
@@ -280,7 +280,7 @@ const HomePage = () => {
               Chào mừng trở lại, Chef <span style={{ color: '#FF4D00' }}>{userName}</span>.
             </h1>
             <p style={{ fontSize: 16, color: '#666460', margin: 0, maxWidth: 560, lineHeight: 1.7 }}>
-              Hành trình ẩm thực Việt Nam của bạn đang tiếp tục. Bạn đã mở khóa <strong style={{ color: '#393834' }}>12 điểm Vàng mới</strong> tuần này qua khám phá vùng miền.
+              Hành trình ẩm thực Việt Nam của bạn đang tiếp tục. Bạn đã mở khoá <strong style={{ color: '#393834' }}>12 điểm Vàng mới</strong> tuần này qua khám phá vùng miền.
             </p>
           </div>
 
@@ -289,7 +289,7 @@ const HomePage = () => {
             background: '#1a3a1a', padding: '20px 28px', borderRadius: 9999,
             display: 'flex', alignItems: 'center', gap: 16, flexShrink: 0,
           }}>
-            <span className="material-symbols-outlined" style={{ color: '#fcc43e', fontSize: 28, fontVariationSettings: "'FILL' 1" }}>toll</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ color: '#fcc43e', fontSize: 28, fontVariationSettings: "'FILL' 1" }}>toll</span>
             <div>
               <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>SỐ DƯ HIỆN TẠI</p>
               <p style={{ fontSize: 24, fontWeight: 900, color: '#ffffff', margin: 0 }}>4,850 Vang</p>
@@ -310,7 +310,7 @@ const HomePage = () => {
                   background: 'none', border: 'none', color: '#b83500', fontWeight: 700, fontSize: 14,
                   cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4,
                 }} onClick={() => navigate('/app/venues')}>
-                  Xem bản đồ đầy đủ <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
+                  Xem bản đồ đầy đủ <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
                 </button>
               </div>
               <div style={{
@@ -319,7 +319,7 @@ const HomePage = () => {
               }}>
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuBayFiPKKopjHL02cHAafHdRkICGkC9bICUqTy0mqPWbhzbQL7WtMMqMlk2wYnLbpMMms0OlbbgHLUrz5TGVRpV4OOngr8CjIsxh9Dr-BWW-9nmmSMLO2q2ItF-etV-IhltTbaCIsLQcSCSGtKKQdiktHandV06LiFedoGSoOdrrY1wab_kE-2z7kR19uO9x8vYtbShoM-kRMMwYDF6603hqbWrA5GwRCShQdyLLeDBP0J4WCRvT3sXlz-wa5KXuALIRczaPnRLGpY"
-                  alt="Bản đồ khám phá Ha Noi"
+                  alt="Ban do kham pha Ha Noi"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8, filter: 'grayscale(0.3)' }}
                 />
 
@@ -329,7 +329,7 @@ const HomePage = () => {
                     background: '#b83500', color: '#fff', padding: 8, borderRadius: '50%',
                     boxShadow: '0 4px 12px rgba(184,53,0,0.4)', cursor: 'pointer',
                   }}>
-                    <span className="material-symbols-outlined" style={{ fontSize: 18, fontVariationSettings: "'FILL' 1" }}>restaurant</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, fontVariationSettings: "'FILL' 1" }}>restaurant</span>
                   </div>
                 </div>
 
@@ -339,7 +339,7 @@ const HomePage = () => {
                     background: '#117500', color: '#fff', padding: 8, borderRadius: '50%',
                     boxShadow: '0 4px 12px rgba(17,117,0,0.4)', cursor: 'pointer',
                   }}>
-                    <span className="material-symbols-outlined" style={{ fontSize: 18, fontVariationSettings: "'FILL' 1" }}>local_bar</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, fontVariationSettings: "'FILL' 1" }}>local_bar</span>
                   </div>
                 </div>
 
@@ -350,7 +350,7 @@ const HomePage = () => {
                 }}>
                   {(venues.length > 0 ? venues.slice(0, 2) : [
                     { id: 'v1', name: 'Bún Chả Đắc Kim', address: 'Hoàn Kiếm', category: 'Truyền thống', badge: 'Đã thử', badgeBg: '#2ff801', badgeColor: '#0b5800' },
-                    { id: 'v2', name: 'El Gaucho Argentinian', address: 'Tây Hồ', category: 'Steakhouse', badge: '850 VP Bonus', badgeBg: '#fcc43e', badgeColor: '#584000' },
+                    { id: 'v2', name: 'El Gaucho Argentinian', address: 'Tay Ho', category: 'Steakhouse', badge: '850 VP Bonus', badgeBg: '#fcc43e', badgeColor: '#584000' },
                   ]).map((v, idx) => {
                     const isFirst = idx === 0;
                     return (
@@ -368,7 +368,7 @@ const HomePage = () => {
                             background: isFirst ? 'linear-gradient(135deg, #FFB59E, #FF571A)' : 'linear-gradient(135deg, #fcc43e, #815f00)',
                             display: 'flex', alignItems: 'center', justifyContent: 'center',
                           }}>
-                            <span className="material-symbols-outlined" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 24 }}>restaurant</span>
+                            <span aria-hidden="true" className="material-symbols-outlined" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 24 }}>restaurant</span>
                           </div>
                         )}
                         <div>
@@ -397,7 +397,7 @@ const HomePage = () => {
                   background: 'none', border: 'none', color: '#b83500', fontWeight: 700, fontSize: 14,
                   cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4,
                 }} onClick={() => navigate('/app/chefs-table')}>
-                  Xem tất cả <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
+                  Xem tất cả <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
                 </button>
               </div>
               <div className="gomet-noscroll" style={{ display: 'flex', gap: 20, overflowX: 'auto', paddingBottom: 16 }}>
@@ -429,7 +429,7 @@ const HomePage = () => {
 
             {/* Vang Point Challenges */}
             <section style={{ marginBottom: 48 }}>
-              <h2 style={{ fontSize: 24, fontWeight: 700, color: '#393834', margin: '0 0 24px', letterSpacing: '-0.01em' }}>Thử thách Điểm Vàng</h2>
+              <h2 style={{ fontSize: 24, fontWeight: 700, color: '#393834', margin: '0 0 24px', letterSpacing: '-0.01em' }}>Thách thức Điểm Vàng</h2>
               <div className="gomet-noscroll" style={{ display: 'flex', gap: 24, overflowX: 'auto', paddingBottom: 16 }}>
                 {fallbackChallenges.map((ch) => (
                   <div key={ch.id} style={{
@@ -441,7 +441,7 @@ const HomePage = () => {
                       width: 96, height: 96, borderRadius: '50%',
                       background: `${ch.color}08`,
                     }} />
-                    <span className="material-symbols-outlined" style={{ color: ch.color, fontSize: 28, display: 'block', marginBottom: 16 }}>{ch.icon}</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ color: ch.color, fontSize: 28, display: 'block', marginBottom: 16 }}>{ch.icon}</span>
                     <h3 style={{ fontSize: 20, fontWeight: 700, color: '#393834', margin: '0 0 8px' }}>{ch.title}</h3>
                     <p style={{ fontSize: 14, color: '#666460', margin: '0 0 24px', lineHeight: 1.5 }}>{ch.desc}</p>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -508,7 +508,7 @@ const HomePage = () => {
                       border: '1px solid rgba(130,128,123,0.2)', background: 'none',
                       display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
                     }} onClick={() => navigate('/app/chat')}>
-                      <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#393834' }}>chat_bubble</span>
+                      <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#393834' }}>chat_bubble</span>
                     </button>
                   </div>
                 ))}
@@ -539,7 +539,7 @@ const HomePage = () => {
                 width: 48, height: 48, borderRadius: '50%', border: '1px solid rgba(130,128,123,0.1)',
                 background: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer',
               }}>
-                <span className="material-symbols-outlined" style={{ color: '#393834' }}>filter_list</span>
+                <span aria-hidden="true" className="material-symbols-outlined" style={{ color: '#393834' }}>filter_list</span>
               </button>
               <button style={{
                 padding: '0 24px', height: 48, background: '#393834', color: '#FDF9F3',
@@ -561,7 +561,7 @@ const HomePage = () => {
                   <img src={m.img} alt={m.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 ) : (
                   <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #b83500, #ff784d)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <span className="material-symbols-outlined" style={{ fontSize: 56, color: 'rgba(255,255,255,0.2)' }}>restaurant</span>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 56, color: 'rgba(255,255,255,0.2)' }}>restaurant</span>
                   </div>
                 )}
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%)', opacity: 0.7 }} />
@@ -571,7 +571,7 @@ const HomePage = () => {
                   background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)',
                   padding: 6, borderRadius: '50%',
                 }}>
-                  <span className="material-symbols-outlined" style={{ color: '#fff', fontSize: 16, fontVariationSettings: "'FILL' 1" }}>play_arrow</span>
+                  <span aria-hidden="true" className="material-symbols-outlined" style={{ color: '#fff', fontSize: 16, fontVariationSettings: "'FILL' 1" }}>play_arrow</span>
                 </div>
                 <div style={{ position: 'absolute', bottom: 24, left: 24, right: 24 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
@@ -603,9 +603,9 @@ const HomePage = () => {
             onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
             onClick={() => navigate('/app/review')}
-            title="Gui danh gia"
+            title="Gửi đánh giá"
           >
-            <span className="material-symbols-outlined" style={{ fontSize: 28 }}>rate_review</span>
+            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 28 }}>rate_review</span>
           </button>
         </div>
 
