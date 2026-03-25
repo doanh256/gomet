@@ -24,6 +24,9 @@ import passwordResetRoutes from './routes/passwordReset.js';
 import venueRoutes from './routes/venues.js';
 import movieRoutes from './routes/movies.js';
 import eventRoutes from './routes/events.js';
+import algorithmRoutes from './routes/algorithms.js';
+import mapRoutes from './routes/map.js';
+import searchRoutes from './routes/search.js';
 import { setupSocket } from './socket.js';
 
 export const prisma = new PrismaClient();
@@ -66,6 +69,9 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/venues', venueRoutes);
 app.use('/api/movies', movieRoutes);
 app.use('/api/events', eventRoutes);
+app.use('/api/algorithms', algorithmRoutes);
+app.use('/api/map', mapRoutes);
+app.use('/api/search', searchRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
