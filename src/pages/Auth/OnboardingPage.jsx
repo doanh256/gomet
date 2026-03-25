@@ -8,6 +8,19 @@ const INTERESTS = [
   'Phim anh', 'Cong nghe', 'Nghe thuat', 'Thu cung', 'Yoga', 'Gaming',
 ];
 
+const CUISINES = [
+  'Pho', 'Bun cha', 'Com tam', 'Sushi', 'Pizza', 'Pasta',
+  'Lau', 'BBQ', 'Dimsum', 'Banh mi', 'Salad', 'Dessert',
+];
+
+const SPICE_LEVELS = [1, 2, 3, 4, 5];
+
+const DINING_STYLES = [
+  { value: 'street_food', icon: 'storefront', label: 'Street Food' },
+  { value: 'casual', icon: 'restaurant', label: 'Casual' },
+  { value: 'fine_dining', icon: 'dining', label: 'Fine Dining' },
+];
+
 const GENDERS = [
   { value: 'Nam', icon: 'person', label: 'Nam' },
   { value: 'Nu', icon: 'person_2', label: 'Nu' },
@@ -27,14 +40,17 @@ const OnboardingPage = () => {
   const [avatarPreview, setAvatarPreview] = useState('');
   const [bio, setBio] = useState('');
   const [interests, setInterests] = useState([]);
+  const [favCuisines, setFavCuisines] = useState([]);
+  const [spiceLevel, setSpiceLevel] = useState(3);
+  const [diningStyle, setDiningStyle] = useState('');
   const [saving, setSaving] = useState(false);
   const [dragOver, setDragOver] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
 
-  const totalSteps = 4;
+  const totalSteps = 5;
 
   useEffect(() => {
-    if (step === 4) {
+    if (step === 5) {
       const timer = setTimeout(() => setShowConfetti(true), 200);
       return () => clearTimeout(timer);
     }
@@ -86,6 +102,12 @@ const OnboardingPage = () => {
     );
   };
 
+  const toggleCuisine = (cuisine) => {
+    setFavCuisines(prev =>
+      prev.includes(cuisine) ? prev.filter(c => c !== cuisine) : [...prev, cuisine]
+    );
+  };
+
   const canNext = () => {
     if (step === 1) return gender && age && location;
     return true;
@@ -100,6 +122,9 @@ const OnboardingPage = () => {
         location,
         bio,
         interests,
+        favCuisines,
+        spiceLevel,
+        diningStyle,
       };
       await api.put('/users/me', data);
 
@@ -185,7 +210,7 @@ const OnboardingPage = () => {
         <div style={{
           display: 'flex', justifyContent: 'center', gap: '8px', marginBottom: '24px',
         }}>
-          {[1, 2, 3, 4].map(n => (
+          {[1, 2, 3, 4, 5].map(n => (
             <div key={n} style={{
               width: n === step ? '24px' : '8px', height: '8px',
               borderRadius: '9999px',
@@ -387,8 +412,131 @@ const OnboardingPage = () => {
           </div>
         )}
 
-        {/* ====== Step 3: Bio & Interests ====== */}
+        {/* ====== Step 3: Food Preferences ====== */}
         {step === 3 && (
+          <div>
+            <h1 style={{
+              fontSize: '2.25rem', fontWeight: 900, fontStyle: 'italic',
+              color: '#FDF9F3', textAlign: 'center', marginBottom: '8px',
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+            }}>
+              Khau vi <span style={{ color: '#FFB59E' }}>am thuc</span>
+            </h1>
+            <p style={{
+              textAlign: 'center', color: '#E6BEB2', fontSize: '14px', marginBottom: '32px',
+            }}>
+              GOMET ghep doi qua am thuc - hay cho chung toi biet ban thich gi!
+            </p>
+
+            {/* Favorite Cuisines */}
+            <label style={{
+              fontSize: '11px', fontWeight: 700, textTransform: 'uppercase',
+              letterSpacing: '0.15em', color: '#E6BEB2', marginBottom: '12px',
+              display: 'block', fontFamily: "'Inter', sans-serif",
+            }}>Mon yeu thich</label>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '28px' }}>
+              {CUISINES.map(cuisine => {
+                const selected = favCuisines.includes(cuisine);
+                return (
+                  <button
+                    key={cuisine}
+                    onClick={() => toggleCuisine(cuisine)}
+                    style={{
+                      padding: '8px 16px', borderRadius: '9999px',
+                      border: 'none',
+                      backgroundColor: selected ? '#FF571A' : '#353535',
+                      color: selected ? '#3A0B00' : '#E6BEB2',
+                      fontWeight: 600, fontSize: '13px', cursor: 'pointer',
+                      transition: 'all 0.15s',
+                      display: 'flex', alignItems: 'center', gap: '4px',
+                      fontFamily: "'Inter', sans-serif",
+                    }}
+                  >
+                    {selected && (
+                      <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>check</span>
+                    )}
+                    {cuisine}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Spice Tolerance */}
+            <label style={{
+              fontSize: '11px', fontWeight: 700, textTransform: 'uppercase',
+              letterSpacing: '0.15em', color: '#E6BEB2', marginBottom: '12px',
+              display: 'block', fontFamily: "'Inter', sans-serif",
+            }}>Do chiu cay</label>
+            <div style={{ display: 'flex', gap: '12px', marginBottom: '28px' }}>
+              {SPICE_LEVELS.map(level => {
+                const selected = spiceLevel === level;
+                return (
+                  <div
+                    key={level}
+                    onClick={() => setSpiceLevel(level)}
+                    style={{
+                      flex: 1, padding: '14px 8px',
+                      borderRadius: '1rem',
+                      backgroundColor: selected ? 'rgba(255,87,26,0.15)' : '#2A2A2A',
+                      boxShadow: selected ? '0 0 0 2px #FFB59E' : 'none',
+                      cursor: 'pointer', textAlign: 'center',
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
+                    <div style={{ fontSize: '20px', marginBottom: '4px' }}>
+                      {'🌶️'.repeat(level)}
+                    </div>
+                    <span style={{
+                      fontSize: '11px', fontWeight: 600,
+                      color: selected ? '#FFB59E' : '#E6BEB2',
+                    }}>
+                      {level === 1 ? 'Nhe' : level === 2 ? 'Vua' : level === 3 ? 'Kha' : level === 4 ? 'Cay' : 'Sieu cay'}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Dining Style */}
+            <label style={{
+              fontSize: '11px', fontWeight: 700, textTransform: 'uppercase',
+              letterSpacing: '0.15em', color: '#E6BEB2', marginBottom: '12px',
+              display: 'block', fontFamily: "'Inter', sans-serif",
+            }}>Phong cach an uong</label>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              {DINING_STYLES.map(ds => {
+                const selected = diningStyle === ds.value;
+                return (
+                  <div
+                    key={ds.value}
+                    onClick={() => setDiningStyle(ds.value)}
+                    style={{
+                      flex: 1, padding: '20px 12px',
+                      borderRadius: '1.5rem',
+                      backgroundColor: selected ? 'rgba(255,87,26,0.15)' : '#2A2A2A',
+                      boxShadow: selected ? '0 0 0 2px #FFB59E' : 'none',
+                      cursor: 'pointer', textAlign: 'center',
+                      transition: 'all 0.2s ease',
+                      display: 'flex', flexDirection: 'column',
+                      alignItems: 'center', gap: '8px',
+                    }}
+                  >
+                    <span className="material-symbols-outlined" style={{
+                      fontSize: '32px', color: selected ? '#FFB59E' : '#E6BEB2',
+                    }}>{ds.icon}</span>
+                    <span style={{
+                      fontSize: '13px', fontWeight: 600,
+                      color: selected ? '#FFB59E' : '#FDF9F3',
+                    }}>{ds.label}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* ====== Step 4: Bio & Interests ====== */}
+        {step === 4 && (
           <div>
             <h1 style={{
               fontSize: '2.25rem', fontWeight: 900, fontStyle: 'italic',
@@ -467,8 +615,8 @@ const OnboardingPage = () => {
           </div>
         )}
 
-        {/* ====== Step 4: Success ====== */}
-        {step === 4 && (
+        {/* ====== Step 5: Success ====== */}
+        {step === 5 && (
           <div style={{
             textAlign: 'center', paddingTop: '40px',
             animation: 'fadeSlideUp 0.5s ease forwards',
@@ -505,7 +653,7 @@ const OnboardingPage = () => {
           justifyContent: step === 1 ? 'flex-end' : 'space-between',
           alignItems: 'center', marginTop: '40px', gap: '12px',
         }}>
-          {step > 1 && step < 4 && (
+          {step > 1 && step < 5 && (
             <button onClick={prevStep} style={{
               background: 'none', border: 'none', color: '#E6BEB2',
               fontSize: '15px', fontWeight: 600, cursor: 'pointer',
@@ -518,7 +666,7 @@ const OnboardingPage = () => {
           )}
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginLeft: 'auto' }}>
-            {(step === 2 || step === 3) && (
+            {(step === 2 || step === 3 || step === 4) && (
               <button onClick={nextStep} style={{
                 background: 'none', border: 'none', color: '#E6BEB2',
                 fontSize: '13px', cursor: 'pointer', textDecoration: 'underline',
@@ -529,7 +677,7 @@ const OnboardingPage = () => {
               </button>
             )}
 
-            {step < 4 && (
+            {step < 5 && (
               <button
                 onClick={nextStep} disabled={!canNext()}
                 style={{
@@ -549,7 +697,7 @@ const OnboardingPage = () => {
               </button>
             )}
 
-            {step === 4 && (
+            {step === 5 && (
               <button
                 onClick={handleComplete} disabled={saving}
                 style={{

@@ -29,6 +29,13 @@ const DatePostsPage = () => {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [applying, setApplying] = useState(null);
   const [applyMessage, setApplyMessage] = useState('');
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
+  useEffect(() => {
+    const onResize = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
 
   useEffect(() => {
     if (paramCategory && CATEGORIES[paramCategory]) {
@@ -60,7 +67,8 @@ const DatePostsPage = () => {
 
   const handleCreatePost = async (formData) => {
     try {
-      await api.post('/date-posts', { ...formData, category: activeTab === 'all' ? 'tim_yeu' : activeTab });
+      const postCategory = formData.category || (activeTab === 'all' ? 'tim_yeu' : activeTab);
+      await api.post('/date-posts', { ...formData, category: postCategory });
       addToast('Dang keo thanh cong!', 'success');
       setShowCreateModal(false);
       const query = activeTab === 'all' ? '' : `?category=${activeTab}`;
@@ -506,7 +514,7 @@ const DatePostsPage = () => {
                         </button>
                         {post.isGroup && (
                           <button
-                            onClick={() => navigate(`/app/dates/${post.id}/group`)}
+                            onClick={() => navigate(`/app/group-dining`)}
                             style={{
                               padding: '12px 20px',
                               borderRadius: '9999px',
@@ -541,7 +549,7 @@ const DatePostsPage = () => {
         onClick={() => setShowCreateModal(true)}
         style={{
           position: 'fixed',
-          bottom: '32px',
+          bottom: isMobile ? '100px' : '32px',
           right: '32px',
           width: '60px',
           height: '60px',
@@ -565,6 +573,7 @@ const DatePostsPage = () => {
       {showCreateModal && (
         <CreatePostModal
           category={activeTab === 'all' ? 'tim_yeu' : activeTab}
+          showCategoryPicker={activeTab === 'all'}
           onClose={() => setShowCreateModal(false)}
           onSubmit={handleCreatePost}
         />
@@ -573,19 +582,21 @@ const DatePostsPage = () => {
   );
 };
 
-const CreatePostModal = ({ category, onClose, onSubmit }) => {
+const CreatePostModal = ({ category: initialCategory, showCategoryPicker, onClose, onSubmit }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [icon, setIcon] = useState('');
   const [time, setTime] = useState('');
   const [place, setPlace] = useState('');
   const [price, setPrice] = useState('');
+  const [category, setCategory] = useState(initialCategory);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title) return;
     onSubmit({
       title, description, icon: icon || 'coffee', time, place,
+      category,
       price: category === 'tra_phi' ? parseInt(price) || 0 : undefined,
     });
   };
@@ -658,6 +669,35 @@ const CreatePostModal = ({ category, onClose, onSubmit }) => {
         </p>
 
         <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
+          {showCategoryPicker && (
+            <div>
+              <label style={labelStyle}>Loai keo *</label>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                {[
+                  { key: 'tim_yeu', label: 'Tim Yeu', color: '#FF571A' },
+                  { key: 'tim_ban', label: 'Tim Ban', color: '#117500' },
+                  { key: 'tra_phi', label: 'Tra Phi', color: '#FFD54F', textColor: '#3A0B00' },
+                ].map(cat => (
+                  <button
+                    key={cat.key}
+                    type="button"
+                    onClick={() => setCategory(cat.key)}
+                    style={{
+                      flex: 1, padding: '10px', borderRadius: '9999px',
+                      border: 'none', cursor: 'pointer',
+                      fontWeight: 600, fontSize: '0.8125rem',
+                      fontFamily: 'Inter, var(--font-body)',
+                      background: category === cat.key ? cat.color : '#353535',
+                      color: category === cat.key ? (cat.textColor || '#FFFFFF') : '#E6BEB2',
+                      transition: 'all 0.2s ease',
+                    }}
+                  >
+                    {cat.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
           <div>
             <label style={labelStyle}>Tieu de keo *</label>
             <input value={title} onChange={e => setTitle(e.target.value)} placeholder="VD: Tim nguoi di xem phim toi nay" style={inputStyle} required />

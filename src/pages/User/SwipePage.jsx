@@ -5,7 +5,7 @@ import { useToast } from '../../components/ToastNotification';
 import ProfileDetailModal from '../../components/User/ProfileDetailModal';
 
 const SwipePage = () => {
-  const { profiles, swipe, fetchProfiles } = useAppContext();
+  const { profiles, swipe, fetchProfiles, currentUser } = useAppContext();
   const { addToast } = useToast();
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -155,7 +155,16 @@ const SwipePage = () => {
     region: 'Nam Bo',
   };
 
-  const matchScore = currentProfile?.matchScore || Math.floor(Math.random() * 15) + 82;
+  const matchScore = currentProfile?.matchScore || (() => {
+    const userInterests = Array.isArray(currentUser?.interests)
+      ? currentUser.interests
+      : (typeof currentUser?.interests === 'string' ? (() => { try { return JSON.parse(currentUser.interests); } catch { return []; } })() : []);
+    const profileInterests = Array.isArray(currentProfile?.interests) ? currentProfile.interests : [];
+    if (!userInterests.length || !profileInterests.length) return 85;
+    const shared = userInterests.filter(i => profileInterests.includes(i));
+    const all = [...new Set([...userInterests, ...profileInterests])];
+    return Math.round((shared.length / Math.max(all.length, 1)) * 40 + 60);
+  })();
 
   // Icebreaker
   const icebreakers = [
@@ -688,7 +697,7 @@ const SwipePage = () => {
           {/* Action Buttons */}
           <div style={s.actionsRow}>
             {renderActionBtn(56, 'var(--surface-variant)', '0px 8px 24px rgba(0,0,0,0.15)', 'close', 28, 'var(--on-surface-variant)', () => handleSwipe('left'), 'Bo qua')}
-            {renderActionBtn(48, 'var(--surface-container-high)', '0px 8px 24px rgba(0,0,0,0.15)', 'chat_bubble', 22, 'var(--on-surface)', handleSuperLike, 'Nhan tin')}
+            {renderActionBtn(48, 'var(--surface-container-high)', '0px 8px 24px rgba(0,0,0,0.15)', 'star', 22, '#FFD54F', handleSuperLike, 'Super Like')}
             {renderActionBtn(64, 'linear-gradient(135deg, #FFB59E, #FF571A)', '0 0 20px rgba(255,87,26,0.4)', 'favorite', 32, '#fff', () => handleSwipe('right'), 'Thich')}
           </div>
 

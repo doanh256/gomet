@@ -15,22 +15,22 @@ const UserLayout = () => {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
-  const userName = currentUser?.name || currentUser?.displayName || 'Nguoi dung';
+  const userName = currentUser?.name || currentUser?.displayName || 'Người dùng';
   const userAvatar = currentUser?.avatar || currentUser?.photoURL || null;
   const avatarLetter = userName.charAt(0).toUpperCase();
 
   const sidebarNav = [
     { label: 'Dashboard', icon: 'home', path: '/app' },
-    { label: 'Hotspots', icon: 'explore', path: '/app/hotspots' },
-    { label: "Chef's Table", icon: 'restaurant', path: '/app/chefs-table' },
-    { label: 'My Vang', icon: 'toll', path: '/app/my-vang' },
-    { label: 'Cai dat', icon: 'settings', path: '/app/settings' },
+    { label: 'Hotspots', icon: 'explore', path: '/app/explore' },
+    { label: "Chef's Table", icon: 'restaurant', path: '/app/dates' },
+    { label: 'My Vang', icon: 'toll', path: '/app/vang-dashboard' },
+    { label: 'Cài đặt', icon: 'settings', path: '/app/settings' },
   ];
 
   const mobileNav = [
     { label: 'GO', icon: 'home', path: '/app' },
-    { label: 'QUIZ', icon: 'quiz', path: '/app/quiz' },
-    { label: 'MEET', icon: 'groups', path: '/app/meet' },
+    { label: 'QUIZ', icon: 'quiz', path: '/app/taste-quiz' },
+    { label: 'MEET', icon: 'groups', path: '/app/swipe' },
     { label: 'CHAT', icon: 'chat', path: '/app/chat' },
     { label: 'ME', icon: 'person', path: '/app/profile' },
   ];
@@ -139,7 +139,7 @@ const UserLayout = () => {
         onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
       >
         <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>bolt</span>
-        Thach thuc moi
+        Thử thách mới
       </button>
     </aside>
   );
@@ -163,7 +163,7 @@ const UserLayout = () => {
       }}>
         <span className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>search</span>
         <input
-          type="text" placeholder="Tim kiem..."
+          type="text" placeholder="Tìm kiếm..."
           style={{
             flex: 1, background: 'none', border: 'none', outline: 'none',
             color: '#FDF9F3', fontSize: '14px', fontFamily: "'Inter', sans-serif",
@@ -384,7 +384,7 @@ const UserLayout = () => {
             }}
           >
             <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>bolt</span>
-            Thach thuc moi
+            Thử thách mới
           </button>
         </aside>
       </>

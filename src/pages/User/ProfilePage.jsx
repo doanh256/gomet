@@ -6,7 +6,8 @@ import { api } from '../../api/client';
 
 const INTEREST_OPTIONS = ['Cong nghe', 'Nau an', 'Coffee', 'Du lich', 'The thao', 'Am nhac', 'Phim anh', 'Doc sach', 'Gaming', 'Nhiep anh', 'Yoga', 'Thu cung', 'An uong', 'Thoi trang', 'Nghe thuat'];
 
-const TASTE_AXES = [
+// Fallback hardcoded taste axes - used when user interests are unavailable
+const DEFAULT_TASTE_AXES = [
   { key: 'cay', label: 'Cay', value: 75, color: '#FF571A' },
   { key: 'umami', label: 'Umami', value: 60, color: '#FFB59E' },
   { key: 'chua', label: 'Chua', value: 45, color: '#FFD54F' },
@@ -15,13 +16,58 @@ const TASTE_AXES = [
   { key: 'man', label: 'Man', value: 55, color: '#FF571A' },
 ];
 
-const RECENT_DISHES = [
+// Fallback hardcoded dish history - used when API call fails
+const DEFAULT_RECENT_DISHES = [
   { id: 1, name: 'Bun bo Hue', restaurant: 'Quan Hue Xua', points: '+10 Vang' },
   { id: 2, name: 'Pho bo', restaurant: 'Pho Thin', points: '+10 Vang' },
   { id: 3, name: 'Com tam', restaurant: 'Com Tam Ba Ghien', points: '+10 Vang' },
   { id: 4, name: 'Banh mi', restaurant: 'Banh Mi Huynh Hoa', points: '+10 Vang' },
   { id: 5, name: 'Bun cha', restaurant: 'Bun Cha Dac Kim', points: '+10 Vang' },
 ];
+
+// Map user interests to taste category scores
+const deriveTasteAxes = (userInterests) => {
+  if (!userInterests || !userInterests.length) return DEFAULT_TASTE_AXES;
+
+  const interestToTaste = {
+    'Nau an': { cay: 20, umami: 15, ngot: 10, man: 10 },
+    'An uong': { cay: 15, umami: 20, chua: 10, ngot: 15, man: 10 },
+    'Coffee': { dang: 30, umami: 10 },
+    'Ca phe': { dang: 30, umami: 10 },
+    'Du lich': { cay: 10, umami: 10, chua: 10, ngot: 10, dang: 5, man: 10 },
+    'The thao': { man: 15, ngot: 10 },
+    'Yoga': { ngot: 15, chua: 10 },
+    'Doc sach': { dang: 15, umami: 10 },
+    'Gaming': { cay: 15, man: 10, ngot: 10 },
+    'Am nhac': { ngot: 15, umami: 10 },
+    'Phim anh': { ngot: 10, umami: 15 },
+    'Cong nghe': { dang: 10, umami: 10 },
+    'Nghe thuat': { chua: 15, ngot: 10 },
+    'Thu cung': { ngot: 20 },
+    'Nhiep anh': { chua: 10, umami: 10 },
+    'Thoi trang': { ngot: 10, chua: 10 },
+  };
+
+  const scores = { cay: 20, umami: 20, chua: 20, ngot: 20, dang: 20, man: 20 };
+
+  userInterests.forEach(interest => {
+    const mapping = interestToTaste[interest];
+    if (mapping) {
+      Object.entries(mapping).forEach(([key, val]) => {
+        scores[key] = Math.min(100, scores[key] + val);
+      });
+    }
+  });
+
+  return [
+    { key: 'cay', label: 'Cay', value: scores.cay, color: '#FF571A' },
+    { key: 'umami', label: 'Umami', value: scores.umami, color: '#FFB59E' },
+    { key: 'chua', label: 'Chua', value: scores.chua, color: '#FFD54F' },
+    { key: 'ngot', label: 'Ngot', value: scores.ngot, color: '#117500' },
+    { key: 'dang', label: 'Dang', value: scores.dang, color: '#E6BEB2' },
+    { key: 'man', label: 'Man', value: scores.man, color: '#FF571A' },
+  ];
+};
 
 const ProfilePage = () => {
   const { addToast } = useToast();
@@ -46,11 +92,32 @@ const ProfilePage = () => {
   // Wallet
   const [walletBalance, setWalletBalance] = useState(currentUser?.walletBalance || 0);
   const [walletLoading, setWalletLoading] = useState(true);
+  const [recentDishes, setRecentDishes] = useState(DEFAULT_RECENT_DISHES);
+
+  // Derive taste axes from user interests
+  const tasteAxes = deriveTasteAxes(interests);
 
   useEffect(() => {
     api.get('/wallet').then(data => {
       if (data) setWalletBalance(data.balance);
     }).catch(console.error).finally(() => setWalletLoading(false));
+  }, []);
+
+  // Fetch recently visited venues for "Recent Conquests"
+  useEffect(() => {
+    api.get('/venues?limit=3').then(data => {
+      if (data?.venues && data.venues.length > 0) {
+        setRecentDishes(data.venues.map((v, i) => ({
+          id: v.id || i + 1,
+          name: v.name || v.title || 'Unknown',
+          restaurant: v.location || v.address || '',
+          points: '+10 Vang',
+        })));
+      }
+      // If API returns empty or no venues, keep the default fallback
+    }).catch(() => {
+      // API failed - keep hardcoded fallback (DEFAULT_RECENT_DISHES)
+    });
   }, []);
 
   const getAvatarUrl = () => {
@@ -679,7 +746,7 @@ const ProfilePage = () => {
               const cy = size / 2;
               const maxR = 100;
               const levels = [0.25, 0.5, 0.75, 1.0];
-              const axes = TASTE_AXES;
+              const axes = tasteAxes;
               const getPoint = (index, radius) => {
                 const angle = (Math.PI * 2 * index) / axes.length - Math.PI / 2;
                 return { x: cx + radius * Math.cos(angle), y: cy + radius * Math.sin(angle) };
@@ -737,7 +804,7 @@ const ProfilePage = () => {
         <div style={s.section}>
           <h2 style={s.sectionTitle}>Recent Conquests</h2>
           <div className="gomet-hscroll-profile" style={s.hScroll}>
-            {RECENT_DISHES.map(dish => (
+            {recentDishes.map(dish => (
               <div key={dish.id} style={{ ...s.dishCard, width: '100px' }}>
                 <div style={{
                   width: '80px', height: '80px', borderRadius: '1rem',

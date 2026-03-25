@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { X, CalendarHeart } from 'lucide-react';
 import { useToast } from '../ToastNotification';
 import { api } from '../../api/client';
@@ -10,7 +10,10 @@ const CreateActivityModal = ({ isOpen, onClose }) => {
   const [time, setTime] = useState('');
   const [place, setPlace] = useState('');
   const [price, setPrice] = useState('');
+  const [image, setImage] = useState(null);
+  const [imagePreview, setImagePreview] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const imageInputRef = useRef(null);
   const { addToast } = useToast();
 
   if (!isOpen) return null;
@@ -107,6 +110,58 @@ const CreateActivityModal = ({ isOpen, onClose }) => {
               <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111418', marginBottom: '8px' }}>Địa điểm</label>
               <input value={place} onChange={e => setPlace(e.target.value)} placeholder="Cafe 123, Q1" style={{ width: '100%', padding: '10px 14px', borderRadius: '12px', border: '1px solid #e1e4e8', fontSize: '14px', boxSizing: 'border-box' }} />
             </div>
+          </div>
+
+          {/* Image Upload */}
+          <div style={{ marginBottom: '16px' }}>
+            <label style={{ display: 'block', fontSize: '13px', fontWeight: 600, color: '#111418', marginBottom: '8px' }}>Hinh anh</label>
+            <input
+              ref={imageInputRef}
+              type="file"
+              accept="image/*"
+              style={{ display: 'none' }}
+              onChange={(e) => {
+                const file = e.target.files?.[0];
+                if (!file) return;
+                setImage(file);
+                const reader = new FileReader();
+                reader.onload = (ev) => setImagePreview(ev.target.result);
+                reader.readAsDataURL(file);
+              }}
+            />
+            {imagePreview ? (
+              <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden' }}>
+                <img src={imagePreview} alt="Preview" style={{ width: '100%', maxHeight: '200px', objectFit: 'cover', borderRadius: '12px', display: 'block' }} />
+                <button
+                  type="button"
+                  onClick={() => { setImage(null); setImagePreview(''); }}
+                  style={{
+                    position: 'absolute', top: '8px', right: '8px',
+                    width: '28px', height: '28px', borderRadius: '50%',
+                    background: 'rgba(0,0,0,0.6)', border: 'none',
+                    color: '#fff', cursor: 'pointer',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}
+                >
+                  <X size={16} />
+                </button>
+              </div>
+            ) : (
+              <div
+                onClick={() => imageInputRef.current?.click()}
+                style={{
+                  width: '100%', height: '120px', borderRadius: '12px',
+                  border: '2px dashed #e1e4e8', backgroundColor: '#f5f7f9',
+                  display: 'flex', flexDirection: 'column',
+                  alignItems: 'center', justifyContent: 'center',
+                  cursor: 'pointer', gap: '8px',
+                  transition: 'border-color 0.2s',
+                }}
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: '32px', color: '#656e7b' }}>add_photo_alternate</span>
+                <span style={{ fontSize: '13px', color: '#656e7b' }}>Nhan de them hinh anh</span>
+              </div>
+            )}
           </div>
 
           {/* Price (only for tra_phi) */}

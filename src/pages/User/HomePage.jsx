@@ -57,22 +57,22 @@ const HomePage = () => {
   ];
 
   const fallbackChallenges = [
-    { id: 'c1', icon: 'explore_nearby', title: 'Thu mon mien Bac moi', desc: 'Kham pha huong vi mien nui. Nhan them diem cho Thang Co.', vp: '+250 VP', color: '#b83500' },
-    { id: 'c2', icon: 'add_a_photo', title: 'Chia se Bun Cha cua ban', desc: 'Chup anh chat luong cao bua Bun Cha tai dia diem da xac minh.', vp: '+150 VP', color: '#815f00' },
-    { id: 'c3', icon: 'groups', title: 'To chuc Chef\'s Table', desc: 'Moi 3 nguoi phu hop den bua toi hop tac tai bep chung nhan Vang.', vp: '+500 VP', color: '#117500' },
+    { id: 'c1', icon: 'explore_nearby', title: 'Thử món miền Bắc mới', desc: 'Khám phá hương vị miền núi. Nhận thêm điểm cho Thắng Cố.', vp: '+250 VP', color: '#b83500' },
+    { id: 'c2', icon: 'add_a_photo', title: 'Chia sẻ Bún Chả của bạn', desc: 'Chụp ảnh chất lượng cao bữa Bún Chả tại địa điểm đã xác minh.', vp: '+150 VP', color: '#815f00' },
+    { id: 'c3', icon: 'groups', title: 'Tổ chức Chef\'s Table', desc: 'Mời 3 người phù hợp đến bữa tối hợp tác tại bếp chung nhận Vàng.', vp: '+500 VP', color: '#117500' },
   ];
 
   const fallbackEvents = [
-    { id: 'e1', name: 'Lien hoan Am thuc Pho co', location: 'Hoan Kiem', vang: '1,200 VANG', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA1cvV6-TKb7Dce6-sx2SeQ3MD9v6bEqd0hq7MNn7j6p25tdXXn7rj3XyAXpFSyjb1Ash2OMZmYX5B9dPcOMmsOWd05Zbz1se207TOYkADm51G6t3GGCcXR0vuN-y72U6PFKszVfNfelL_NIDkNNoiYd0EAY9m1Mk69SKX_P93tnA1eFNsQWthP52LU3YUhNNbBLeABIp0UCYDAVJAVWgdm2KiMf3pawNSPHCdZoOKWK6P4uE190idBMP6ELtouL26xEH9nr80AfAA' },
-    { id: 'e2', name: 'Trai nghiem Steakhouse Tay Ho', location: 'Tay Ho', vang: '800 VANG', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAU_CxTl_gelVSlG9UicQZjUREBFuPG62DJs0shHgGBR2bpgKaMkLxLuGGdfs9koHOliZnK63_Ps0gMmvWZMdEHx2awVxTSLviSr-pLamOpZ_ld4_tolasW316fyS3r4Me7FtM6IKwVWqtJ1xvx4zTMpbhc8ZWYtoexCndyprZqWZKsPlYnoR3HciebwrL1M0_uxOu7b2Z82fBTVazR0CH0w6XwGbLb28v5n09JF_XTbODd2cIs7U53khfxaNoz1chSRhdVY7DcfZ4' },
-    { id: 'e3', name: 'Workshop Ramen Nhat Ban', location: 'Ba Dinh', vang: '600 VANG', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuADPEB0nRmhalfsTxwndKltLXji0ZgXE0-tPO0LpJNCT2xRZhH6HKEouXpCz7CYXrsScvSomWlVuYSt2riPPhq0Vzu99RQdNn1NWLbHWvJGcb6oky56hMt9yJamRNVLgJOsDeozJNEx1ycKZIQIu2Zagncivlr7BEJDMhfw8qMYv42Omzzc6PZp9qJsQ16fKJ6-pUEgqJyQr3cKx5SploDLodrsbJuvUkZtV1uS9EHXH02kBjmAIrsTJkfxzRSTn4ohOa-lnYZay6w' },
+    { id: 'e1', name: 'Liên hoan Ẩm thực Phố cổ', location: 'Hoàn Kiếm', vang: '1,200 VANG', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA1cvV6-TKb7Dce6-sx2SeQ3MD9v6bEqd0hq7MNn7j6p25tdXXn7rj3XyAXpFSyjb1Ash2OMZmYX5B9dPcOMmsOWd05Zbz1se207TOYkADm51G6t3GGCcXR0vuN-y72U6PFKszVfNfelL_NIDkNNoiYd0EAY9m1Mk69SKX_P93tnA1eFNsQWthP52LU3YUhNNbBLeABIp0UCYDAVJAVWgdm2KiMf3pawNSPHCdZoOKWK6P4uE190idBMP6ELtouL26xEH9nr80AfAA' },
+    { id: 'e2', name: 'Trải nghiệm Steakhouse Tây Hồ', location: 'Tây Hồ', vang: '800 VANG', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAU_CxTl_gelVSlG9UicQZjUREBFuPG62DJs0shHgGBR2bpgKaMkLxLuGGdfs9koHOliZnK63_Ps0gMmvWZMdEHx2awVxTSLviSr-pLamOpZ_ld4_tolasW316fyS3r4Me7FtM6IKwVWqtJ1xvx4zTMpbhc8ZWYtoexCndyprZqWZKsPlYnoR3HciebwrL1M0_uxOu7b2Z82fBTVazR0CH0w6XwGbLb28v5n09JF_XTbODd2cIs7U53khfxaNoz1chSRhdVY7DcfZ4' },
+    { id: 'e3', name: 'Workshop Ramen Nhật Bản', location: 'Ba Đình', vang: '600 VANG', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuADPEB0nRmhalfsTxwndKltLXji0ZgXE0-tPO0LpJNCT2xRZhH6HKEouXpCz7CYXrsScvSomWlVuYSt2riPPhq0Vzu99RQdNn1NWLbHWvJGcb6oky56hMt9yJamRNVLgJOsDeozJNEx1ycKZIQIu2Zagncivlr7BEJDMhfw8qMYv42Omzzc6PZp9qJsQ16fKJ6-pUEgqJyQr3cKx5SploDLodrsbJuvUkZtV1uS9EHXH02kBjmAIrsTJkfxzRSTn4ohOa-lnYZay6w' },
   ];
 
   const fallbackMoments = [
-    { id: 'd1', title: 'Ky thuat bi mat cho banh donut phu men hoan hao.', author: 'Chef Julian', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCb6AA7R59IRFZFbS4Tdr8atUmzUE7xhvxstn_Fka9pdGxDzDXdK4eTHAMPeY3FUBP8wIHaJEKKo0gYe_GQC6zIAQoypbRLMHoBDoF5UycCG0gyVl75DE8NOCS3ktY5QywOCWYFv7tf10DgjpTBVgRSCocXE9IF2nkv_6275OWKukXDgUHepnFCSZOmg-hGANSKUY_8fN_AM1qDhzOSmraEjYAVNKQ2xO8vdLXOmxXqfKLG_R6dqO0suD_sqO38JtcvDyL40gwBWuQ', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC8i6voK_VRjUufNc46UrBeew5hgfU5bQcLPSx7AXQ1O9MaIFDtb6T4fEmCm8aO79iUOIMzRssGKfCCjh16Yx0CBQ6Euj9vXsCfMS19pXsoSGSX4MaByJcRFe19u03N1DIcqs50YXRnV4V5DUss5dSjia37BvZj05c0TAeweEzELAG9b3TI-btLIakiVO53i4dIoujMsaoDcJFeG89yEYwqRZ_9GjoeBe2dAn7sO9xLqgxCFlThqrRXQ9E5wbDIdVOkjMX92RKEQ_o' },
-    { id: 'd2', title: 'Tiec Mezze Chu nhat giua long Ha Noi.', author: 'Elena R.', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAiPTjuXjNSVs0C1x-bMpIu_7F8m_NPX7fdk4mMrHTr7rrTNRBpfn8GynzgW9Yu1SCN8aQ7HHpoW8EomEI3JVGyd23HwiUoMJ5ZsvKCjU4bJ6mG6iTItxO4A5aCfE_HPyVxq6bO6-LKs2eYMuLiXvQDj1USQ8AX_luTUNE17b8vgjJN4l1Qw3CPm-ANDtVIErH_45kdNSv3vJh1OgWDTYuN965-zaXodQNUSzk-eLHuPzP6sbk2QIza-LOSu6KuEvEeIzdjvAruL8k', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDnYP0nwXDzom5K5LuBXBSf1ZT5wopuiDSEPvn_THz37QTQ7DyguNsJDpwO5asANhQpADAKWHLovQCuo8CLJlSC2XgzFEt_PQywg534FZoGYWuBOO44qrc7dLsWmtyvVO7G5QhujA2QIka_hFJPgTkgblBnT7q0GYlUsrNeybTb3FLzHau0aNnuVq6D2mTJsHqg6dghCuU88f7Vc-7mECgBaueNGY3b52r2LPvBmldODbt5olCor_9foo--8XDveMC1mNRnZVNa08I' },
-    { id: 'd3', title: 'Tim vo pizza Neapolitan chinh goc tai Tay Ho.', author: 'Tuan A.', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAhJOS9egPh-2EzL7KJxbVTyesVus06QNIua8-QfDSkcgdRMd3ptQs1Yu0ov69KvOI1RRjp1fUykW5Xmo2naaQqVjiURWFutWYzp3Zz14FL4XvIHz905nkwNFbkjgpX1tTJKq9VyYDksZdEHJ5zSThzANxwjQ2T58pDpvPYPmzXEIM26SWWfzkT2ixmk1qHZEzrrJ-lr-t0RbCWbbzPhkTiC_X7ln4GH35N8lArYp40gfT6M9yJSu_cg01ntdX1haO_k8C-_HQtbeM', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAKBusEZuBzSHVbsFDFGu-BMSO6NQmGF76E6PIyHPvGacXvQeaoBSS7m9p353OhcV6PsoqIKBBFYzXSGaHWQCnJAF1NMJSy52krKZ4cvgJdVOU6aoKRikVPWhdIudh-iIRQBcbTsZfU-FQjeoesTA4NlFTdaG8zrUfQpahZPfTRJbEnibC00TaxMRj5pJ7PicBbFd1U9I7hutCoKf6Mkhq-P_Z4rbv8SFsURbGiSppNMVWDrBIER8XRZnmUDrry1s153gCba2Tj2Sw' },
-    { id: 'd4', title: 'Cuoc hanh trinh Umami dem khuya: so sanh 3 quan ramen.', author: 'Mina S.', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjLWtQNveLX7X9-WiIaBhU5vAqQUYVezyXiM0Leywy44lXV_UKapNBjzK1J_iXs-U37lAHEftaKsURLE9Lten5Vy-po3f2SkZeE7d6kiDPIlWQGqax-5SltTQ0t03kqGSOpqxCtgWJ_AMa5dfWNZLcfEsRckklYTEJ4ND87A93kY3kxxSC1I4gvbSV18g1yZ4npO1us3vF6c3uQe8G69veYttP2W0Q-zXf_4f9jjrrBNWlQ6G6K2Jl3EtGKGbx19Z1awNmIU5JFJI', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuADPEB0nRmhalfsTxwndKltLXji0ZgXE0-tPO0LpJNCT2xRZhH6HKEouXpCz7CYXrsScvSomWlVuYSt2riPPhq0Vzu99RQdNn1NWLbHWvJGcb6oky56hMt9yJamRNVLgJOsDeozJNEx1ycKZIQIu2Zagncivlr7BEJDMhfw8qMYv42Omzzc6PZp9qJsQ16fKJ6-pUEgqJyQr3cKx5SploDLodrsbJuvUkZtV1uS9EHXH02kBjmAIrsTJkfxzRSTn4ohOa-lnYZay6w' },
+    { id: 'd1', title: 'Kỹ thuật bí mật cho bánh donut phủ men hoàn hảo.', author: 'Chef Julian', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCb6AA7R59IRFZFbS4Tdr8atUmzUE7xhvxstn_Fka9pdGxDzDXdK4eTHAMPeY3FUBP8wIHaJEKKo0gYe_GQC6zIAQoypbRLMHoBDoF5UycCG0gyVl75DE8NOCS3ktY5QywOCWYFv7tf10DgjpTBVgRSCocXE9IF2nkv_6275OWKukXDgUHepnFCSZOmg-hGANSKUY_8fN_AM1qDhzOSmraEjYAVNKQ2xO8vdLXOmxXqfKLG_R6dqO0suD_sqO38JtcvDyL40gwBWuQ', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC8i6voK_VRjUufNc46UrBeew5hgfU5bQcLPSx7AXQ1O9MaIFDtb6T4fEmCm8aO79iUOIMzRssGKfCCjh16Yx0CBQ6Euj9vXsCfMS19pXsoSGSX4MaByJcRFe19u03N1DIcqs50YXRnV4V5DUss5dSjia37BvZj05c0TAeweEzELAG9b3TI-btLIakiVO53i4dIoujMsaoDcJFeG89yEYwqRZ_9GjoeBe2dAn7sO9xLqgxCFlThqrRXQ9E5wbDIdVOkjMX92RKEQ_o' },
+    { id: 'd2', title: 'Tiệc Mezze Chủ nhật giữa lòng Hà Nội.', author: 'Elena R.', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAiPTjuXjNSVs0C1x-bMpIu_7F8m_NPX7fdk4mMrHTr7rrTNRBpfn8GynzgW9Yu1SCN8aQ7HHpoW8EomEI3JVGyd23HwiUoMJ5ZsvKCjU4bJ6mG6iTItxO4A5aCfE_HPyVxq6bO6-LKs2eYMuLiXvQDj1USQ8AX_luTUNE17b8vgjJN4l1Qw3CPm-ANDtVIErH_45kdNSv3vJh1OgWDTYuN965-zaXodQNUSzk-eLHuPzP6sbk2QIza-LOSu6KuEvEeIzdjvAruL8k', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDnYP0nwXDzom5K5LuBXBSf1ZT5wopuiDSEPvn_THz37QTQ7DyguNsJDpwO5asANhQpADAKWHLovQCuo8CLJlSC2XgzFEt_PQywg534FZoGYWuBOO44qrc7dLsWmtyvVO7G5QhujA2QIka_hFJPgTkgblBnT7q0GYlUsrNeybTb3FLzHau0aNnuVq6D2mTJsHqg6dghCuU88f7Vc-7mECgBaueNGY3b52r2LPvBmldODbt5olCor_9foo--8XDveMC1mNRnZVNa08I' },
+    { id: 'd3', title: 'Tìm vỏ pizza Neapolitan chính gốc tại Tây Hồ.', author: 'Tuan A.', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAhJOS9egPh-2EzL7KJxbVTyesVus06QNIua8-QfDSkcgdRMd3ptQs1Yu0ov69KvOI1RRjp1fUykW5Xmo2naaQqVjiURWFutWYzp3Zz14FL4XvIHz905nkwNFbkjgpX1tTJKq9VyYDksZdEHJ5zSThzANxwjQ2T58pDpvPYPmzXEIM26SWWfzkT2ixmk1qHZEzrrJ-lr-t0RbCWbbzPhkTiC_X7ln4GH35N8lArYp40gfT6M9yJSu_cg01ntdX1haO_k8C-_HQtbeM', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAKBusEZuBzSHVbsFDFGu-BMSO6NQmGF76E6PIyHPvGacXvQeaoBSS7m9p353OhcV6PsoqIKBBFYzXSGaHWQCnJAF1NMJSy52krKZ4cvgJdVOU6aoKRikVPWhdIudh-iIRQBcbTsZfU-FQjeoesTA4NlFTdaG8zrUfQpahZPfTRJbEnibC00TaxMRj5pJ7PicBbFd1U9I7hutCoKf6Mkhq-P_Z4rbv8SFsURbGiSppNMVWDrBIER8XRZnmUDrry1s153gCba2Tj2Sw' },
+    { id: 'd4', title: 'Cuộc hành trình Umami đêm khuya: so sánh 3 quán ramen.', author: 'Mina S.', avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBjLWtQNveLX7X9-WiIaBhU5vAqQUYVezyXiM0Leywy44lXV_UKapNBjzK1J_iXs-U37lAHEftaKsURLE9Lten5Vy-po3f2SkZeE7d6kiDPIlWQGqax-5SltTQ0t03kqGSOpqxCtgWJ_AMa5dfWNZLcfEsRckklYTEJ4ND87A93kY3kxxSC1I4gvbSV18g1yZ4npO1us3vF6c3uQe8G69veYttP2W0Q-zXf_4f9jjrrBNWlQ6G6K2Jl3EtGKGbx19Z1awNmIU5JFJI', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuADPEB0nRmhalfsTxwndKltLXji0ZgXE0-tPO0LpJNCT2xRZhH6HKEouXpCz7CYXrsScvSomWlVuYSt2riPPhq0Vzu99RQdNn1NWLbHWvJGcb6oky56hMt9yJamRNVLgJOsDeozJNEx1ycKZIQIu2Zagncivlr7BEJDMhfw8qMYv42Omzzc6PZp9qJsQ16fKJ6-pUEgqJyQr3cKx5SploDLodrsbJuvUkZtV1uS9EHXH02kBjmAIrsTJkfxzRSTn4ohOa-lnYZay6w' },
   ];
 
   const displayMatches = profiles.length > 0 ? profiles.slice(0, 3).map((p, i) => ({
@@ -86,7 +86,7 @@ const HomePage = () => {
 
   const displayEvents = events.length > 0 ? events.slice(0, 3).map((e, i) => ({
     id: e.id || `ev${i}`,
-    name: e.name || e.title || 'Su kien',
+    name: e.name || e.title || 'Sự kiện',
     location: e.location || e.venue || '',
     vang: [`1,200 VANG`, `800 VANG`, `600 VANG`][i],
     img: e.image || e.images?.[0]?.url || fallbackEvents[i]?.img || '',
@@ -94,7 +94,7 @@ const HomePage = () => {
 
   const displayMoments = posts.length > 0 ? posts.slice(0, 4).map((p, i) => ({
     id: p.id || `mo${i}`,
-    title: p.title || p.content?.slice(0, 60) || 'Khoang khac am thuc',
+    title: p.title || p.content?.slice(0, 60) || 'Khoảnh khắc ẩm thực',
     author: p.author?.name || p.user?.name || 'GOMET User',
     avatar: getAvatarUrl(p.author || p.user) || fallbackMoments[i]?.avatar || '',
     img: getPostImage(p) || fallbackMoments[i]?.img || '',
@@ -102,10 +102,10 @@ const HomePage = () => {
 
   // ── Nav tabs (inside page, not layout) ──
   const navTabs = [
-    { label: 'Kham pha', active: true },
-    { label: 'Am thuc', active: false },
-    { label: 'Trang thai Vang', active: false },
-    { label: 'Ket noi', active: false },
+    { label: 'Khám phá', active: true },
+    { label: 'Ẩm thực', active: false },
+    { label: 'Trạng thái Vàng', active: false },
+    { label: 'Kết nối', active: false },
   ];
 
   // ════════════════════════════════════════════
@@ -133,10 +133,10 @@ const HomePage = () => {
 
           {/* Welcome */}
           <h1 style={{ fontSize: 32, fontWeight: 800, color: '#393834', letterSpacing: '-0.03em', margin: '0 0 8px', lineHeight: 1.1 }}>
-            Chao mung tro lai, Chef <span style={{ color: '#FF4D00' }}>{userName}</span>.
+            Chào mừng trở lại, Chef <span style={{ color: '#FF4D00' }}>{userName}</span>.
           </h1>
           <p style={{ fontSize: 14, color: '#666460', margin: '0 0 24px', lineHeight: 1.6 }}>
-            Hanh trinh am thuc Viet Nam cua ban dang tiep tuc. Ban da mo khoa <strong>12 diem Vang moi</strong> tuan nay qua kham pha vung mien.
+            Hành trình ẩm thực Việt Nam của bạn đang tiếp tục. Bạn đã mở khóa <strong>12 điểm Vàng mới</strong> tuần này qua khám phá vùng miền.
           </p>
 
           {/* Vang balance */}
@@ -146,16 +146,16 @@ const HomePage = () => {
           }}>
             <span className="material-symbols-outlined" style={{ color: '#fcc43e', fontSize: 20, fontVariationSettings: "'FILL' 1" }}>toll</span>
             <div>
-              <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', margin: 0 }}>SO DU HIEN TAI</p>
+              <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', margin: 0 }}>SỐ DƯ HIỆN TẠI</p>
               <p style={{ fontSize: 18, fontWeight: 900, color: '#ffffff', margin: 0 }}>4,850 Vang</p>
             </div>
           </div>
 
           {/* Map section */}
           <section style={{ marginBottom: 32 }}>
-            <h2 style={{ fontSize: 20, fontWeight: 700, color: '#393834', margin: '0 0 16px' }}>Kham pha Vung mien</h2>
+            <h2 style={{ fontSize: 20, fontWeight: 700, color: '#393834', margin: '0 0 16px' }}>Khám phá Vùng miền</h2>
             <div style={{ position: 'relative', height: 300, borderRadius: '2rem', overflow: 'hidden', background: '#f1ede6' }}>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBayFiPKKopjHL02cHAafHdRkICGkC9bICUqTy0mqPWbhzbQL7WtMMqMlk2wYnLbpMMms0OlbbgHLUrz5TGVRpV4OOngr8CjIsxh9Dr-BWW-9nmmSMLO2q2ItF-etV-IhltTbaCIsLQcSCSGtKKQdiktHandV06LiFedoGSoOdrrY1wab_kE-2z7kR19uO9x8vYtbShoM-kRMMwYDF6603hqbWrA5GwRCShQdyLLeDBP0J4WCRvT3sXlz-wa5KXuALIRczaPnRLGpY" alt="Ban do kham pha" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBayFiPKKopjHL02cHAafHdRkICGkC9bICUqTy0mqPWbhzbQL7WtMMqMlk2wYnLbpMMms0OlbbgHLUrz5TGVRpV4OOngr8CjIsxh9Dr-BWW-9nmmSMLO2q2ItF-etV-IhltTbaCIsLQcSCSGtKKQdiktHandV06LiFedoGSoOdrrY1wab_kE-2z7kR19uO9x8vYtbShoM-kRMMwYDF6603hqbWrA5GwRCShQdyLLeDBP0J4WCRvT3sXlz-wa5KXuALIRczaPnRLGpY" alt="Bản đồ khám phá" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
               <div style={{ position: 'absolute', top: '30%', left: '25%' }}>
                 <div style={{ background: '#b83500', color: '#fff', padding: 8, borderRadius: '50%', boxShadow: '0 4px 12px rgba(184,53,0,0.3)' }}>
                   <span className="material-symbols-outlined" style={{ fontSize: 16, fontVariationSettings: "'FILL' 1" }}>restaurant</span>
@@ -171,7 +171,7 @@ const HomePage = () => {
 
           {/* Recent Matches */}
           <section style={{ marginBottom: 32 }}>
-            <h2 style={{ fontSize: 20, fontWeight: 700, color: '#393834', margin: '0 0 16px' }}>Ket qua Phu hop Gan day</h2>
+            <h2 style={{ fontSize: 20, fontWeight: 700, color: '#393834', margin: '0 0 16px' }}>Kết quả Phù hợp Gần đây</h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
               {displayMatches.map((m) => (
                 <div key={m.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#ffffff', padding: 16, borderRadius: '1rem' }}>
@@ -277,10 +277,10 @@ const HomePage = () => {
               fontSize: 48, fontWeight: 800, color: '#393834', letterSpacing: '-0.03em',
               margin: '0 0 12px', lineHeight: 1.05,
             }}>
-              Chao mung tro lai, Chef <span style={{ color: '#FF4D00' }}>{userName}</span>.
+              Chào mừng trở lại, Chef <span style={{ color: '#FF4D00' }}>{userName}</span>.
             </h1>
             <p style={{ fontSize: 16, color: '#666460', margin: 0, maxWidth: 560, lineHeight: 1.7 }}>
-              Hanh trinh am thuc Viet Nam cua ban dang tiep tuc. Ban da mo khoa <strong style={{ color: '#393834' }}>12 diem Vang moi</strong> tuan nay qua kham pha vung mien.
+              Hành trình ẩm thực Việt Nam của bạn đang tiếp tục. Bạn đã mở khóa <strong style={{ color: '#393834' }}>12 điểm Vàng mới</strong> tuần này qua khám phá vùng miền.
             </p>
           </div>
 
@@ -291,7 +291,7 @@ const HomePage = () => {
           }}>
             <span className="material-symbols-outlined" style={{ color: '#fcc43e', fontSize: 28, fontVariationSettings: "'FILL' 1" }}>toll</span>
             <div>
-              <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>SO DU HIEN TAI</p>
+              <p style={{ fontSize: 10, color: 'rgba(255,255,255,0.6)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', margin: '0 0 2px' }}>SỐ DƯ HIỆN TẠI</p>
               <p style={{ fontSize: 24, fontWeight: 900, color: '#ffffff', margin: 0 }}>4,850 Vang</p>
             </div>
           </div>
@@ -305,12 +305,12 @@ const HomePage = () => {
             {/* Regional Discovery Map */}
             <section style={{ marginBottom: 48 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
-                <h2 style={{ fontSize: 24, fontWeight: 700, color: '#393834', margin: 0, letterSpacing: '-0.01em' }}>Kham pha Vung mien</h2>
+                <h2 style={{ fontSize: 24, fontWeight: 700, color: '#393834', margin: 0, letterSpacing: '-0.01em' }}>Khám phá Vùng miền</h2>
                 <button style={{
                   background: 'none', border: 'none', color: '#b83500', fontWeight: 700, fontSize: 14,
                   cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4,
                 }} onClick={() => navigate('/app/venues')}>
-                  Xem ban do day du <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
+                  Xem bản đồ đầy đủ <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
                 </button>
               </div>
               <div style={{
@@ -319,7 +319,7 @@ const HomePage = () => {
               }}>
                 <img
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuBayFiPKKopjHL02cHAafHdRkICGkC9bICUqTy0mqPWbhzbQL7WtMMqMlk2wYnLbpMMms0OlbbgHLUrz5TGVRpV4OOngr8CjIsxh9Dr-BWW-9nmmSMLO2q2ItF-etV-IhltTbaCIsLQcSCSGtKKQdiktHandV06LiFedoGSoOdrrY1wab_kE-2z7kR19uO9x8vYtbShoM-kRMMwYDF6603hqbWrA5GwRCShQdyLLeDBP0J4WCRvT3sXlz-wa5KXuALIRczaPnRLGpY"
-                  alt="Ban do kham pha Ha Noi"
+                  alt="Bản đồ khám phá Ha Noi"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8, filter: 'grayscale(0.3)' }}
                 />
 
@@ -349,8 +349,8 @@ const HomePage = () => {
                   display: 'flex', gap: 16, overflowX: 'auto', paddingBottom: 8,
                 }}>
                   {(venues.length > 0 ? venues.slice(0, 2) : [
-                    { id: 'v1', name: 'Bun Cha Dac Kim', address: 'Hoan Kiem', category: 'Truyen thong', badge: 'Da thu', badgeBg: '#2ff801', badgeColor: '#0b5800' },
-                    { id: 'v2', name: 'El Gaucho Argentinian', address: 'Tay Ho', category: 'Steakhouse', badge: '850 VP Bonus', badgeBg: '#fcc43e', badgeColor: '#584000' },
+                    { id: 'v1', name: 'Bún Chả Đắc Kim', address: 'Hoàn Kiếm', category: 'Truyền thống', badge: 'Đã thử', badgeBg: '#2ff801', badgeColor: '#0b5800' },
+                    { id: 'v2', name: 'El Gaucho Argentinian', address: 'Tây Hồ', category: 'Steakhouse', badge: '850 VP Bonus', badgeBg: '#fcc43e', badgeColor: '#584000' },
                   ]).map((v, idx) => {
                     const isFirst = idx === 0;
                     return (
@@ -380,7 +380,7 @@ const HomePage = () => {
                             display: 'inline-block', padding: '2px 8px', borderRadius: 6, fontSize: 10, fontWeight: 700,
                             background: v.badgeBg || (isFirst ? '#2ff801' : '#fcc43e'),
                             color: v.badgeColor || (isFirst ? '#0b5800' : '#584000'),
-                          }}>{v.badge || (isFirst ? 'Da thu' : '850 VP Bonus')}</span>
+                          }}>{v.badge || (isFirst ? 'Đã thử' : '850 VP Bonus')}</span>
                         </div>
                       </div>
                     );
@@ -392,12 +392,12 @@ const HomePage = () => {
             {/* Chef's Table Events - horizontal scroll */}
             <section style={{ marginBottom: 48 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
-                <h2 style={{ fontSize: 24, fontWeight: 700, color: '#393834', margin: 0, letterSpacing: '-0.01em' }}>Su kien Chef's Table</h2>
+                <h2 style={{ fontSize: 24, fontWeight: 700, color: '#393834', margin: 0, letterSpacing: '-0.01em' }}>Sự kiện Chef's Table</h2>
                 <button style={{
                   background: 'none', border: 'none', color: '#b83500', fontWeight: 700, fontSize: 14,
                   cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4,
                 }} onClick={() => navigate('/app/chefs-table')}>
-                  Xem tat ca <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
+                  Xem tất cả <span className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
                 </button>
               </div>
               <div className="gomet-noscroll" style={{ display: 'flex', gap: 20, overflowX: 'auto', paddingBottom: 16 }}>
@@ -429,7 +429,7 @@ const HomePage = () => {
 
             {/* Vang Point Challenges */}
             <section style={{ marginBottom: 48 }}>
-              <h2 style={{ fontSize: 24, fontWeight: 700, color: '#393834', margin: '0 0 24px', letterSpacing: '-0.01em' }}>Thach thuc Diem Vang</h2>
+              <h2 style={{ fontSize: 24, fontWeight: 700, color: '#393834', margin: '0 0 24px', letterSpacing: '-0.01em' }}>Thử thách Điểm Vàng</h2>
               <div className="gomet-noscroll" style={{ display: 'flex', gap: 24, overflowX: 'auto', paddingBottom: 16 }}>
                 {fallbackChallenges.map((ch) => (
                   <div key={ch.id} style={{
@@ -450,7 +450,7 @@ const HomePage = () => {
                         padding: '8px 20px', background: '#393834', color: '#FDF9F3', border: 'none',
                         borderRadius: 9999, fontSize: 11, fontWeight: 700, textTransform: 'uppercase',
                         letterSpacing: '0.1em', cursor: 'pointer',
-                      }}>Chap nhan</button>
+                      }}>Chấp nhận</button>
                     </div>
                   </div>
                 ))}
@@ -468,7 +468,7 @@ const HomePage = () => {
                 fontSize: 20, fontWeight: 700, color: '#393834', margin: '0 0 32px',
                 letterSpacing: '-0.01em', display: 'flex', alignItems: 'center', gap: 8,
               }}>
-                Phu hop Gan day
+                Phù hợp Gần đây
                 <span style={{ width: 8, height: 8, background: '#b83500', borderRadius: '50%', display: 'inline-block' }} />
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
@@ -517,9 +517,9 @@ const HomePage = () => {
               {/* Pro Tip */}
               <div style={{ marginTop: 40, paddingTop: 28, borderTop: '1px solid rgba(130,128,123,0.1)' }}>
                 <div style={{ background: '#ffffff', padding: 24, borderRadius: '1rem' }}>
-                  <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 700, color: '#666460', margin: '0 0 12px' }}>Meo hay</p>
+                  <p style={{ fontSize: 10, textTransform: 'uppercase', letterSpacing: '0.15em', fontWeight: 700, color: '#666460', margin: '0 0 12px' }}>Mẹo hay</p>
                   <p style={{ fontSize: 14, color: '#393834', lineHeight: 1.6, margin: 0 }}>
-                    Chef tuong tac voi 3+ nguoi phu hop moi tuan se kiem Diem Vang nhanh hon 40%.
+                    Chef tương tác với 3+ người phù hợp mỗi tuần sẽ kiếm Điểm Vàng nhanh hơn 40%.
                   </p>
                 </div>
               </div>
@@ -532,7 +532,7 @@ const HomePage = () => {
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32 }}>
             <div>
               <h2 style={{ fontSize: 30, fontWeight: 900, color: '#393834', margin: '0 0 4px', letterSpacing: '-0.02em' }}>Moments Feed</h2>
-              <p style={{ fontSize: 15, color: '#666460', margin: 0 }}>Nhung cau chuyen am thuc hay nhat tu vong ban be.</p>
+              <p style={{ fontSize: 15, color: '#666460', margin: 0 }}>Những câu chuyện ẩm thực hay nhất từ vòng bạn bè.</p>
             </div>
             <div style={{ display: 'flex', gap: 8 }}>
               <button style={{
@@ -544,7 +544,7 @@ const HomePage = () => {
               <button style={{
                 padding: '0 24px', height: 48, background: '#393834', color: '#FDF9F3',
                 border: 'none', borderRadius: 9999, fontWeight: 700, fontSize: 14, cursor: 'pointer',
-              }} onClick={() => navigate('/app/dates/all')}>Xem tat ca</button>
+              }} onClick={() => navigate('/app/dates/all')}>Xem tất cả</button>
             </div>
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24 }}>
