@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const regions = [
-  { id: 'global', label: 'Global', icon: 'public', active: false },
-  { id: 'mediterranean', label: 'Mediterranean', icon: 'sailing', active: true },
-  { id: 'asian-fusion', label: 'Asian Fusion', icon: 'ramen_dining', active: false },
-  { id: 'nordic', label: 'Nordic', icon: 'ac_unit', active: false },
-  { id: 'latin', label: 'Latin American', icon: 'local_fire_department', active: false },
+  { id: 'global', label: 'Toàn cầu', icon: 'public', active: false },
+  { id: 'mediterranean', label: 'Địa Trung Hải', icon: 'sailing', active: true },
+  { id: 'asian-fusion', label: 'Ẩm thực Á', icon: 'ramen_dining', active: false },
+  { id: 'nordic', label: 'Bắc Âu', icon: 'ac_unit', active: false },
+  { id: 'latin', label: 'Mỹ Latinh', icon: 'local_fire_department', active: false },
 ];
 
 const bentoItems = [
@@ -18,9 +18,9 @@ const bentoItems = [
 ];
 
 const trendingItems = [
-  { id: 1, title: 'The Rise of Fermented Foods in Saigon', author: 'Chef Nguyen', readTime: '5 min', tag: 'Trending' },
-  { id: 2, title: 'Why Gen Z is Obsessed with Street Pho', author: 'Food & Culture', readTime: '3 min', tag: 'Hot' },
-  { id: 3, title: 'Farm-to-Table: Vietnam Edition', author: 'Green Kitchen', readTime: '7 min', tag: 'New' },
+  { id: 1, title: 'Sự trỗi dậy của thực phẩm lên men tại Sài Gòn', author: 'Chef Nguyễn', readTime: '5 phút', tag: 'Nổi bật' },
+  { id: 2, title: 'Vì sao Gen Z mê phở đường phố đến vậy?', author: 'Ẩm thực & Văn hoá', readTime: '3 phút', tag: 'Hot' },
+  { id: 3, title: 'Từ nông trại đến bàn ăn: Phiên bản Việt Nam', author: 'Bếp Xanh', readTime: '7 phút', tag: 'Mới' },
 ];
 
 const ExplorePage = () => {
@@ -121,7 +121,7 @@ const ExplorePage = () => {
               <span style={{
                 marginTop: 4, fontSize: 11, fontWeight: 700, color: '#FFD54F',
                 backgroundColor: 'rgba(0,0,0,0.5)', padding: '2px 8px', borderRadius: 4,
-              }}>Vietnam</span>
+              }}>Việt Nam</span>
             </div>
 
             <div style={{ position: 'absolute', bottom: 32, left: 32, right: 32 }}>
@@ -129,10 +129,10 @@ const ExplorePage = () => {
                 fontFamily: "'Plus Jakarta Sans', sans-serif", fontSize: 36, fontWeight: 800,
                 color: '#FDF9F3', margin: '0 0 8px',
               }}>
-                Explore the Global Kitchen
+                Khám Phá Bếp Ăn Thế Giới
               </h1>
               <p style={{ fontSize: 16, color: 'rgba(253,249,243,0.8)', margin: 0, maxWidth: 500 }}>
-                Discover culinary traditions from every corner of the world, right from your neighborhood.
+                Khám phá những truyền thống ẩm thực từ mọi nơi trên thế giới, ngay tại khu vực của bạn.
               </p>
             </div>
           </div>
@@ -212,8 +212,8 @@ const ExplorePage = () => {
                 </div>
                 <span style={{
                   padding: '4px 12px', borderRadius: 9999, fontSize: 12, fontWeight: 700,
-                  backgroundColor: item.tag === 'Hot' ? 'rgba(255,87,26,0.1)' : item.tag === 'New' ? 'rgba(17,117,0,0.1)' : 'rgba(255,213,79,0.15)',
-                  color: item.tag === 'Hot' ? '#FF571A' : item.tag === 'New' ? '#117500' : '#b83500',
+                  backgroundColor: item.tag === 'Hot' ? 'rgba(255,87,26,0.1)' : item.tag === 'Mới' ? 'rgba(17,117,0,0.1)' : 'rgba(255,213,79,0.15)',
+                  color: item.tag === 'Hot' ? '#FF571A' : item.tag === 'Mới' ? '#117500' : '#b83500',
                 }}>{item.tag}</span>
               </div>
             ))}

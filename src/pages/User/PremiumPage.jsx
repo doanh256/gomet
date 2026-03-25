@@ -313,35 +313,35 @@ const PremiumPage = () => {
   };
 
   const features = [
-    { icon: 'celebration', title: 'Exclusive Events', desc: 'Truy cap vao nhung su kien doc quyen danh rieng cho thanh vien Premium.', colSpan: 2 },
-    { icon: 'bookmark', title: 'Priority Booking', desc: 'Dat cho truoc tai nhung dia diem hot nhat.', colSpan: 1 },
-    { icon: 'bolt', title: 'Daily Boosts', desc: 'Tang gap 3x luot xuat hien moi ngay.', colSpan: 1, primary: true },
-    { icon: 'all_inclusive', title: 'Uninterrupted Discovery', desc: 'Kham pha khong gioi han, khong quang cao, trai nghiem muot ma.', colSpan: 2 },
+    { icon: 'celebration', title: 'Sự kiện Độc quyền', desc: 'Truy cập vào những sự kiện độc quyền dành riêng cho thành viên Premium.', colSpan: 2 },
+    { icon: 'bookmark', title: 'Đặt chỗ Ưu tiên', desc: 'Đặt chỗ trước tại những địa điểm hot nhất.', colSpan: 1 },
+    { icon: 'bolt', title: 'Tăng Hiển thị Hàng ngày', desc: 'Tăng gấp 3x lượt xuất hiện mỗi ngày.', colSpan: 1, primary: true },
+    { icon: 'all_inclusive', title: 'Khám phá Không giới hạn', desc: 'Khám phá không giới hạn, không quảng cáo, trải nghiệm mượt mà.', colSpan: 2 },
   ];
 
   const plans = [
     {
-      name: 'Monthly',
+      name: 'Hàng tháng',
       price: '199k',
-      unit: '/thang',
-      sub: 'Thanh toan hang thang',
-      features: ['Unlimited Swipes', 'Xem ai da thich ban', '5 Super Likes / ngay', 'Khong quang cao'],
+      unit: '/tháng',
+      sub: 'Thanh toán hàng tháng',
+      features: ['Quẹt không giới hạn', 'Xem ai đã thích bạn', '5 Super Likes / ngày', 'Không quảng cáo'],
       featured: false,
     },
     {
-      name: 'Annual',
+      name: 'Hàng năm',
       price: '149k',
-      unit: '/thang',
-      sub: 'Thanh toan 1.788k / nam',
-      features: ['Tat ca tinh nang Monthly', '10 Super Likes / ngay', 'Priority Support', 'Exclusive Events access', 'Profile Boost moi tuan'],
+      unit: '/tháng',
+      sub: 'Thanh toán 1.788k / năm',
+      features: ['Tất cả tính năng Hàng tháng', '10 Super Likes / ngày', 'Hỗ trợ Ưu tiên', 'Truy cập Sự kiện Độc quyền', 'Tăng Profile mỗi tuần'],
       featured: true,
     },
   ];
 
   const testimonials = [
-    { text: 'Premium da thay doi hoan toan cach minh hen ho. Nhung su kien doc quyen thuc su rat dang gia!', name: 'Minh Anh', title: 'Premium Member', initial: 'M' },
-    { text: 'Daily Boosts giup minh nhan duoc nhieu luot match hon gap 5 lan. Dau tu xung dang!', name: 'Thu Trang', title: 'Premium Member', initial: 'T' },
-    { text: 'Tinh nang Priority Booking giup minh luon co cho tai nhung nha hang hot nhat thanh pho.', name: 'Duc Huy', title: 'Premium Member', initial: 'D' },
+    { text: 'Premium đã thay đổi hoàn toàn cách mình hẹn hò. Những sự kiện độc quyền thực sự rất đáng giá!', name: 'Minh Anh', title: 'Thành viên Premium', initial: 'M' },
+    { text: 'Tăng Hiển thị Hàng ngày giúp mình nhận được nhiều lượt match hơn gấp 5 lần. Đầu tư xứng đáng!', name: 'Thu Trang', title: 'Thành viên Premium', initial: 'T' },
+    { text: 'Tính năng Đặt chỗ Ưu tiên giúp mình luôn có chỗ tại những nhà hàng hot nhất thành phố.', name: 'Đức Huy', title: 'Thành viên Premium', initial: 'D' },
   ];
 
   const avatarNames = ['A', 'B', 'C', 'D', 'E'];
@@ -353,15 +353,15 @@ const PremiumPage = () => {
         <div style={s.hero}>
           <div style={s.pill}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>diamond</span>
-            The Exclusive Club
+            Câu lạc bộ Độc quyền
           </div>
           <h1 style={s.heading}>
-            Nang Cap{' '}
-            <span style={s.accent}>Trai Nghiem.</span>
+            Nâng Cấp{' '}
+            <span style={s.accent}>Trải Nghiệm.</span>
           </h1>
           <p style={s.desc}>
-            Mo khoa nhung dac quyen doc nhat chi danh cho thanh vien Premium.
-            Trai nghiem hen ho chua bao gio tuyet voi den the.
+            Mở khoá những đặc quyền độc nhất chỉ dành cho thành viên Premium.
+            Trải nghiệm hẹn hò chưa bao giờ tuyệt vời đến thế.
           </p>
           <div style={s.btnRow}>
             <button
@@ -370,7 +370,7 @@ const PremiumPage = () => {
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
             >
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>lock_open</span>
-              Unlock Premium
+              Mở Khoá Premium
             </button>
             <button
               style={s.btnSurface}
@@ -378,14 +378,14 @@ const PremiumPage = () => {
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
             >
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>visibility</span>
-              View Features
+              Xem Tính Năng
             </button>
           </div>
         </div>
 
         {/* Why Go Premium */}
         <div style={s.section}>
-          <h2 style={s.sectionTitle}>Why Go Premium?</h2>
+          <h2 style={s.sectionTitle}>Tại sao nên dùng Premium?</h2>
           <div style={s.bento}>
             {features.map((f, i) => (
               <div
@@ -425,11 +425,11 @@ const PremiumPage = () => {
 
         {/* Pricing */}
         <div style={s.section}>
-          <h2 style={s.sectionTitle}>Chon Goi Cua Ban</h2>
+          <h2 style={s.sectionTitle}>Chọn Gói Của Bạn</h2>
           <div style={s.pricingGrid}>
             {plans.map((plan, i) => (
               <div key={i} style={{ ...s.pricingCard, ...(plan.featured ? s.pricingFeatured : {}) }}>
-                {plan.featured && <div style={s.pricingBadge}>Most Exclusive</div>}
+                {plan.featured && <div style={s.pricingBadge}>Độc quyền nhất</div>}
                 <div style={s.pricingName}>{plan.name}</div>
                 <div>
                   <span style={s.pricingPrice}>{plan.price}</span>
@@ -457,7 +457,7 @@ const PremiumPage = () => {
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }}
                   onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}
                 >
-                  Chon {plan.name}
+                  Chọn {plan.name}
                 </button>
               </div>
             ))}
@@ -466,7 +466,7 @@ const PremiumPage = () => {
 
         {/* Testimonials */}
         <div style={s.section}>
-          <h2 style={s.sectionTitle}>Thanh Vien Noi Gi?</h2>
+          <h2 style={s.sectionTitle}>Thành Viên Nói Gì?</h2>
           <div style={s.testGrid}>
             {testimonials.map((t, i) => (
               <div key={i} style={s.testCard}>
@@ -487,8 +487,8 @@ const PremiumPage = () => {
         {/* Final CTA */}
         <div style={s.ctaBanner}>
           <div>
-            <div style={s.ctaHeading}>San sang nang cap trai nghiem?</div>
-            <div style={s.ctaDesc}>Tham gia cung hang ngan thanh vien Premium ngay hom nay.</div>
+            <div style={s.ctaHeading}>Sẵn sàng nâng cấp trải nghiệm?</div>
+            <div style={s.ctaDesc}>Tham gia cùng hàng ngàn thành viên Premium ngay hôm nay.</div>
           </div>
           <button
             style={s.ctaBtn}
@@ -496,7 +496,7 @@ const PremiumPage = () => {
             onMouseLeave={e => { e.currentTarget.style.transform = 'scale(1)'; }}
           >
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>diamond</span>
-            Bat Dau Ngay
+            Bắt Đầu Ngay
           </button>
         </div>
       </div>
