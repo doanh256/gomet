@@ -8,19 +8,19 @@ const ndKeyframes = `
 }
 `;
 
-const tabs = ['Tat ca', 'Matches', 'Vang', 'Su kien'];
+const tabs = ['Tất cả', 'Matches', 'Vàng', 'Sự kiện'];
 
 const notifications = [
-  { type: 'match', icon: 'favorite', color: '#FF6B9D', title: 'Ban co match moi!', desc: 'Linh Pham - 94% tuong thich vi giac', time: '2 phut truoc', unread: true },
-  { type: 'vang', icon: 'toll', color: '#FFD700', title: '+50 Vang da nhan', desc: 'Thuong tu danh gia Pho Thin', time: '15 phut truoc', unread: true },
-  { type: 'event', icon: 'event', color: '#6C63FF', title: 'Su kien sap dien ra', desc: 'Dem Truffle & Champagne - 28 Thang 3', time: '1 gio truoc', unread: true },
-  { type: 'message', icon: 'chat', color: '#00C9A7', title: 'Tin nhan moi tu Tuan', desc: 'Hey, toi nay an o dau?', time: '2 gio truoc', unread: false },
-  { type: 'system', icon: 'info', color: '#42A5F5', title: 'Cap nhat he thong', desc: 'Phien ban moi voi tinh nang Taste Twin', time: '3 gio truoc', unread: false },
-  { type: 'match', icon: 'favorite', color: '#FF6B9D', title: 'Hoa da thich ban!', desc: 'Xem ho so va gui loi chao', time: '5 gio truoc', unread: false },
-  { type: 'vang', icon: 'toll', color: '#FFD700', title: '+100 Vang da nhan', desc: 'Hoan thanh nhiem vu "Kham Pha Quan 1"', time: '6 gio truoc', unread: false },
-  { type: 'event', icon: 'event', color: '#6C63FF', title: 'Dat cho thanh cong', desc: 'Omakase Midnight - 30 Thang 3, 20:00', time: '1 ngay truoc', unread: false },
-  { type: 'message', icon: 'chat', color: '#00C9A7', title: 'Nhom "Biet doi Am Thuc"', desc: 'Minh: Thu 7 nay di an khong?', time: '1 ngay truoc', unread: false },
-  { type: 'system', icon: 'info', color: '#42A5F5', title: 'Bao cao hang thang', desc: 'Xem bao cao Palate Evolution thang 3', time: '2 ngay truoc', unread: false },
+  { type: 'match', icon: 'favorite', color: '#FF6B9D', title: 'Bạn có match mới!', desc: 'Linh Phạm - 94% tương thích vị giác', time: '2 phút trước', unread: true },
+  { type: 'vang', icon: 'toll', color: '#FFD700', title: '+50 Vàng đã nhận', desc: 'Thưởng từ đánh giá Phở Thìn', time: '15 phút trước', unread: true },
+  { type: 'event', icon: 'event', color: '#6C63FF', title: 'Sự kiện sắp diễn ra', desc: 'Đêm Truffle & Champagne - 28 Tháng 3', time: '1 giờ trước', unread: true },
+  { type: 'message', icon: 'chat', color: '#00C9A7', title: 'Tin nhắn mới từ Tuấn', desc: 'Hey, tối nay ăn ở đâu?', time: '2 giờ trước', unread: false },
+  { type: 'system', icon: 'info', color: '#42A5F5', title: 'Cập nhật hệ thống', desc: 'Phiên bản mới với tính năng Taste Twin', time: '3 giờ trước', unread: false },
+  { type: 'match', icon: 'favorite', color: '#FF6B9D', title: 'Hoa đã thích bạn!', desc: 'Xem hồ sơ và gửi lời chào', time: '5 giờ trước', unread: false },
+  { type: 'vang', icon: 'toll', color: '#FFD700', title: '+100 Vàng đã nhận', desc: 'Hoàn thành nhiệm vụ "Khám Phá Quận 1"', time: '6 giờ trước', unread: false },
+  { type: 'event', icon: 'event', color: '#6C63FF', title: 'Đặt chỗ thành công', desc: 'Omakase Midnight - 30 Tháng 3, 20:00', time: '1 ngày trước', unread: false },
+  { type: 'message', icon: 'chat', color: '#00C9A7', title: 'Nhóm "Biệt đội Ẩm Thực"', desc: 'Minh: Thứ 7 này đi ăn không?', time: '1 ngày trước', unread: false },
+  { type: 'system', icon: 'info', color: '#42A5F5', title: 'Báo cáo hàng tháng', desc: 'Xem báo cáo Palate Evolution tháng 3', time: '2 ngày trước', unread: false },
 ];
 
 const NotificationsDesktopPage = () => {
@@ -41,17 +41,17 @@ const NotificationsDesktopPage = () => {
           <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#fff' }}>arrow_back</span>
           </button>
-          <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700 }}>Thong Bao</h1>
+          <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700 }}>Thông Báo</h1>
           <span style={{
             background: '#FF3B5C', borderRadius: 10, padding: '2px 8px', fontSize: 11, fontWeight: 700
-          }}>3 moi</span>
+          }}>3 mới</span>
         </div>
         <button style={{
           background: 'rgba(255,255,255,0.06)', border: 'none', borderRadius: 10, padding: '8px 16px',
           color: '#888', fontSize: 13, fontWeight: 600, cursor: 'pointer'
         }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, verticalAlign: 'middle', marginRight: 4 }}>done_all</span>
-          Doc tat ca
+          Đọc tất cả
         </button>
       </div>
 
@@ -117,7 +117,7 @@ const NotificationsDesktopPage = () => {
                   width: '100%', padding: '12px 0', borderRadius: 12, border: 'none',
                   background: 'linear-gradient(135deg, #6C63FF, #8B5CF6)', color: '#fff',
                   fontSize: 14, fontWeight: 700, cursor: 'pointer'
-                }}>Xem chi tiet</button>
+                }}>Xem chi tiết</button>
               </>
             )}
           </div>

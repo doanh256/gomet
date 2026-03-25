@@ -19,7 +19,7 @@ const demoNotifications = [
     type: 'vang',
     icon: <Heart size={20} color="#3A0B00" />,
     iconBg: 'linear-gradient(135deg, #FFD54F, #F57C00)',
-    text: 'Bạn nhận được +50 Vang!',
+    text: 'Bạn nhận được +50 Vàng!',
     detail: 'Thưởng tuần cho hoạt động ẩm thực',
     time: '15 phút trước',
     read: false,

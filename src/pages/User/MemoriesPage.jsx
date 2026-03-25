@@ -159,7 +159,7 @@ const MemoriesPage = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                 <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFD54F' }}>toll</span>
                 <span style={{ fontSize: 14, fontWeight: 700, color: '#FFD54F' }}>
-                  +{featuredMemory.vangEarned} Vang earned
+                  +{featuredMemory.vangEarned} Vàng nhận được
                 </span>
               </div>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#E6BEB2' }}>chevron_right</span>

@@ -111,7 +111,7 @@ const ChatPage = () => {
   const getTierBadge = (user) => {
     const tier = user?.tier || (user?.name?.length > 5 ? 'Elite' : user?.name?.length > 3 ? 'Pro' : 'Legend');
     const colors = { Elite: '#FFD54F', Pro: '#FFB59E', Legend: '#FF571A', vang: '#FFD54F' };
-    return { label: typeof tier === 'string' ? (tier === 'vang' ? 'Vang' : tier.charAt(0).toUpperCase() + tier.slice(1)) : 'Pro', color: colors[tier] || '#FFB59E' };
+    return { label: typeof tier === 'string' ? (tier === 'vang' ? 'Vàng' : tier.charAt(0).toUpperCase() + tier.slice(1)) : 'Pro', color: colors[tier] || '#FFB59E' };
   };
 
   const getMatchPercent = (user) => Math.floor(70 + (user?.name?.length || 5) * 3);

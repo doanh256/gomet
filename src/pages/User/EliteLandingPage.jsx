@@ -21,29 +21,29 @@ const eliteKeyframes = `
 `;
 
 const benefits = [
-  { icon: 'credit_card', title: 'Titanium Card', desc: 'The vat ly cao cap voi thiet ke rieng, khac ten ban' },
-  { icon: 'table_restaurant', title: 'Head Table Access', desc: 'Uu tien dat cho tai cac su kien Secret Tables' },
-  { icon: 'bolt', title: 'Priority Booking', desc: 'Dat nha hang uu tien truoc 48h so voi thanh vien thuong' },
-  { icon: 'support_agent', title: 'Concierge 24/7', desc: 'Doi ngu tu van am thuc ca nhan phuc vu moi luc' },
-  { icon: 'redeem', title: 'Qua tang hang thang', desc: 'Voucher va qua tang tu cac thuong hieu doi tac' },
-  { icon: 'workspace_premium', title: 'Badge Diamond', desc: 'Huy hieu xac thuc cap cao nhat tren ho so' },
+  { icon: 'credit_card', title: 'Titanium Card', desc: 'Thẻ vật lý cao cấp với thiết kế riêng, khắc tên bạn' },
+  { icon: 'table_restaurant', title: 'Head Table Access', desc: 'Ưu tiên đặt chỗ tại các sự kiện Secret Tables' },
+  { icon: 'bolt', title: 'Priority Booking', desc: 'Đặt nhà hàng ưu tiên trước 48h so với thành viên thường' },
+  { icon: 'support_agent', title: 'Concierge 24/7', desc: 'Đội ngũ tư vấn ẩm thực cá nhân phục vụ mọi lúc' },
+  { icon: 'redeem', title: 'Quà tặng hàng tháng', desc: 'Voucher và quà tặng từ các thương hiệu đối tác' },
+  { icon: 'workspace_premium', title: 'Huy hiệu Kim Cương', desc: 'Huy hiệu xác thực cấp cao nhất trên hồ sơ' },
 ];
 
 const tiers = [
-  { name: 'Bronze', price: 'Mien phi', features: [true, false, false, false, false, true] },
-  { name: 'Gold', price: '499.000/thang', features: [true, true, false, true, false, true] },
-  { name: 'Diamond', price: '1.999.000/thang', features: [true, true, true, true, true, true] },
+  { name: 'Đồng', price: 'Miễn phí', features: [true, false, false, false, false, true] },
+  { name: 'Vàng', price: '499.000/tháng', features: [true, true, false, true, false, true] },
+  { name: 'Kim Cương', price: '1.999.000/tháng', features: [true, true, true, true, true, true] },
 ];
 
 const featureLabels = [
-  'Kham pha am thuc', 'Secret Tables', 'Priority Booking',
-  'Concierge 24/7', 'Qua tang hang thang', 'Badge xac thuc',
+  'Khám phá ẩm thực', 'Secret Tables', 'Priority Booking',
+  'Concierge 24/7', 'Quà tặng hàng tháng', 'Huy hiệu xác thực',
 ];
 
 const testimonials = [
-  { name: 'Thanh Tung', title: 'Diamond Member', text: 'Dich vu concierge da giup toi tim duoc nhung nha hang an tuong nhat Sai Gon.' },
-  { name: 'Ngoc Anh', title: 'Diamond Member', text: 'The Titanium Card la diem nhan khi toi dat cho tai bat ky nha hang nao.' },
-  { name: 'Minh Duc', title: 'Diamond Member', text: 'Su kien Secret Tables la trai nghiem am thuc dang cap nhat toi tung co.' },
+  { name: 'Thanh Tùng', title: 'Thành viên Kim Cương', text: 'Dịch vụ concierge đã giúp tôi tìm được những nhà hàng ấn tượng nhất Sài Gòn.' },
+  { name: 'Ngọc Anh', title: 'Thành viên Kim Cương', text: 'Thẻ Titanium Card là điểm nhấn khi tôi đặt chỗ tại bất kỳ nhà hàng nào.' },
+  { name: 'Minh Đức', title: 'Thành viên Kim Cương', text: 'Sự kiện Secret Tables là trải nghiệm ẩm thực đẳng cấp nhất tôi từng có.' },
 ];
 
 const EliteLandingPage = () => {
@@ -226,7 +226,7 @@ const EliteLandingPage = () => {
           <span style={s.heroGold}>Culinary Transcendence</span>
         </div>
         <div style={s.heroSub}>
-          Nang tam trai nghiem am thuc cua ban len dang cap cao nhat voi GOMET Diamond.
+          Nâng tầm trải nghiệm ẩm thực của bạn lên đẳng cấp cao nhất với GOMET Diamond.
         </div>
       </div>
 
@@ -248,7 +248,7 @@ const EliteLandingPage = () => {
       <div style={s.body}>
         {/* Benefits */}
         <div style={{ ...s.sectionTitle, ...s.sectionTitleGold }}>
-          Diamond Level Benefits
+          Đặc quyền cấp Kim Cương
         </div>
         <div style={s.benefitsGrid}>
           {benefits.map(b => (
@@ -265,16 +265,16 @@ const EliteLandingPage = () => {
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>
             {showCompare ? 'expand_less' : 'compare'}
           </span>
-          {showCompare ? 'An bang so sanh' : 'So sanh cac goi'}
+          {showCompare ? 'Ẩn bảng so sánh' : 'So sánh các gói'}
         </button>
 
         {showCompare && (
           <table style={s.table}>
             <thead>
               <tr>
-                <th style={s.th(false)}>Tinh nang</th>
+                <th style={s.th(false)}>Tính năng</th>
                 {tiers.map(t => (
-                  <th key={t.name} style={s.th(t.name === 'Diamond')}>{t.name}</th>
+                  <th key={t.name} style={s.th(t.name === 'Kim Cương')}>{t.name}</th>
                 ))}
               </tr>
             </thead>
@@ -293,9 +293,9 @@ const EliteLandingPage = () => {
                 </tr>
               ))}
               <tr>
-                <td style={s.tdFeature}>Gia</td>
+                <td style={s.tdFeature}>Giá</td>
                 {tiers.map(t => (
-                  <td key={t.name} style={{ ...s.td, fontWeight: 700, color: t.name === 'Diamond' ? '#FFD54F' : '#E6BEB2' }}>
+                  <td key={t.name} style={{ ...s.td, fontWeight: 700, color: t.name === 'Kim Cương' ? '#FFD54F' : '#E6BEB2' }}>
                     {t.price}
                   </td>
                 ))}
@@ -307,15 +307,15 @@ const EliteLandingPage = () => {
         {/* Pricing */}
         <div style={s.pricing}>
           <div style={s.priceValue}>1.999.000</div>
-          <div style={s.priceUnit}>VND / thang</div>
+          <div style={s.priceUnit}>VND / tháng</div>
           <button style={s.ascendBtn}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22 }}>diamond</span>
-            Ascend to Diamond
+            Nâng lên Kim Cương
           </button>
         </div>
 
         {/* Testimonials */}
-        <div style={s.sectionTitle}>Thanh vien chia se</div>
+        <div style={s.sectionTitle}>Thành viên chia sẻ</div>
         <div style={s.testimonials}>
           {testimonials.map((t, i) => (
             <div key={i} style={s.testimonialCard}>

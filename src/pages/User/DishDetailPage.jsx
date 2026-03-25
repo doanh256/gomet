@@ -208,8 +208,8 @@ const DishDetailPage = () => {
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#3A0B00' }}>verified</span>
           </div>
           <div style={{ flex: 1 }}>
-            <div style={{ fontFamily: 'var(--font-headline)', fontSize: 14, fontWeight: 700, color: '#393834', marginBottom: 2 }}>Vang Credibility</div>
-            <div style={{ fontSize: 12, color: '#666460' }}>Xac nhan boi cong dong GOMET</div>
+            <div style={{ fontFamily: 'var(--font-headline)', fontSize: 14, fontWeight: 700, color: '#393834', marginBottom: 2 }}>Độ tin cậy Vàng</div>
+            <div style={{ fontSize: 12, color: '#666460' }}>Xác nhận bởi cộng đồng GOMET</div>
           </div>
           <div style={{ fontFamily: 'var(--font-headline)', fontSize: 24, fontWeight: 800, color: '#b83500' }}>+30</div>
         </div>

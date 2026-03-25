@@ -198,7 +198,7 @@ const VangDashboardPage = () => {
         <span aria-hidden="true" className="material-symbols-outlined" style={s.tierIcon}>diamond</span>
         <div style={s.tierInfo}>
           <div style={s.tierLabel}>VÀNG</div>
-          <div style={s.tierPoints}>12,450<span style={s.tierUnit}>VANG</span></div>
+          <div style={s.tierPoints}>12,450<span style={s.tierUnit}>VÀNG</span></div>
         </div>
       </div>
 

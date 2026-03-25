@@ -21,10 +21,10 @@ const eusKeyframes = `
 `;
 
 const benefits = [
-  { icon: 'table_restaurant', title: 'Head Table', desc: 'Uu tien cho ngoi tai moi su kien Secret Tables', color: '#6C63FF' },
-  { icon: 'bolt', title: 'Priority Booking', desc: 'Dat nha hang truoc 48h so voi thanh vien thuong', color: '#FF6B9D' },
-  { icon: 'support_agent', title: 'Concierge 24/7', desc: 'Doi ngu tu van am thuc ca nhan moi luc', color: '#00C9A7' },
-  { icon: 'redeem', title: 'Qua Tang Thang', desc: 'Voucher va qua tu thuong hieu doi tac hang thang', color: '#FFD700' },
+  { icon: 'table_restaurant', title: 'Head Table', desc: 'Ưu tiên chỗ ngồi tại mọi sự kiện Secret Tables', color: '#6C63FF' },
+  { icon: 'bolt', title: 'Priority Booking', desc: 'Đặt nhà hàng trước 48h so với thành viên thường', color: '#FF6B9D' },
+  { icon: 'support_agent', title: 'Concierge 24/7', desc: 'Đội ngũ tư vấn ẩm thực cá nhân mọi lúc', color: '#00C9A7' },
+  { icon: 'redeem', title: 'Quà Tặng Tháng', desc: 'Voucher và quà từ thương hiệu đối tác hàng tháng', color: '#FFD700' },
 ];
 
 const confettiColors = ['#6C63FF', '#FF6B9D', '#FFD700', '#00C9A7', '#E8900C', '#8B5CF6'];
@@ -64,10 +64,10 @@ const EliteUpgradeSuccessPage = () => {
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 32, color: '#fff' }}>diamond</span>
         </div>
         <h1 style={{ margin: '0 0 8px', fontSize: 24, fontWeight: 900, color: '#1A1A2E' }}>
-          Chao mung den Diamond Circle!
+          Chào mừng đến Diamond Circle!
         </h1>
         <p style={{ margin: 0, fontSize: 14, color: '#888', maxWidth: 340, marginLeft: 'auto', marginRight: 'auto' }}>
-          Ban da chinh thuc tro thanh thanh vien cao cap nhat cua GOMET
+          Bạn đã chính thức trở thành thành viên cao cấp nhất của GOMET
         </p>
       </div>
 
@@ -109,7 +109,7 @@ const EliteUpgradeSuccessPage = () => {
 
       {/* Benefits Grid */}
       <div style={{ padding: '0 16px', marginBottom: 24, position: 'relative', zIndex: 1 }}>
-        <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 14, textAlign: 'center' }}>Dac Quyen Cua Ban</h2>
+        <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 14, textAlign: 'center' }}>Đặc Quyền Của Bạn</h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 12 }}>
           {benefits.map((b, i) => (
             <div key={i} style={{
@@ -139,7 +139,7 @@ const EliteUpgradeSuccessPage = () => {
           boxShadow: '0 8px 32px rgba(108,99,255,0.3)'
         }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>auto_awesome</span>
-          Kham Pha Dac Quyen
+          Khám Phá Đặc Quyền
         </button>
       </div>
     </div>

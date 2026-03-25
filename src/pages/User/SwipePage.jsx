@@ -176,7 +176,7 @@ const SwipePage = () => {
   const nextProfiles = profiles.slice(currentIndex + 1, currentIndex + 4);
 
   // Vang tier
-  const tierLabels = ['Silver', 'Gold', 'Platinum', 'Diamond'];
+  const tierLabels = ['Bạc', 'Vàng', 'Bạch Kim', 'Kim Cương'];
   const tier = currentProfile?.tier || tierLabels[currentIndex % tierLabels.length];
 
   const s = {

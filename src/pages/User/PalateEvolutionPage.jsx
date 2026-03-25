@@ -15,7 +15,7 @@ const palateKeyframes = `
 const stats = [
   { icon: 'restaurant', label: 'Mon da thu', value: '247' },
   { icon: 'public', label: 'Am thuc moi', value: '12' },
-  { icon: 'toll', label: 'Vang kiem duoc', value: '8.430' },
+  { icon: 'toll', label: 'Vàng kiếm được', value: '8.430' },
   { icon: 'explore', label: 'Vung kham pha', value: '9' },
 ];
 

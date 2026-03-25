@@ -35,7 +35,7 @@ const ReviewDesktopPage = () => {
           padding: '6px 14px', display: 'flex', alignItems: 'center', gap: 6
         }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>toll</span>
-          <span style={{ fontSize: 13, fontWeight: 800 }}>+50 Vang</span>
+          <span style={{ fontSize: 13, fontWeight: 800 }}>+50 Vàng</span>
         </div>
       </div>
 
