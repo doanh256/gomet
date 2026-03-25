@@ -324,7 +324,7 @@ const PersonalInsightsPage = () => {
       </div>
 
       {/* Dating Traits */}
-      <div style={s.sectionTitle}>Kiểu hẹn đò của bạn</div>
+      <div style={s.sectionTitle}>Kiểu hẹn hò của bạn</div>
       {datingTraits.map((trait, i) => (
         <div key={i} style={s.traitCard}>
           <div style={s.traitHeader}>

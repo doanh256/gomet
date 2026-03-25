@@ -145,7 +145,7 @@ const SecretTableSelectionPage = () => {
 
       <button style={s.backBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
-        Quay lai
+        Quay lại
       </button>
 
       <div style={s.headerRow}>
@@ -157,7 +157,7 @@ const SecretTableSelectionPage = () => {
       {/* Available Events */}
       <div style={s.sectionTitle}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>event_available</span>
-        Su kien sap dien ra
+        Sự kiện sắp diễn ra
       </div>
       <div style={s.eventGrid}>
         {availableEvents.map((ev, idx) => (
@@ -178,21 +178,21 @@ const SecretTableSelectionPage = () => {
                   </div>
                   <div style={s.eventMetaItem}>
                     <span aria-hidden="true" className="material-symbols-outlined" style={s.eventMetaIcon}>event_seat</span>
-                    {ev.seats} cho con
+                    {ev.seats} chỗ còn
                   </div>
                 </div>
                 <div style={s.chemBadge(ev.chemistry)}>
                   <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>favorite</span>
-                  {ev.chemistry}% hoa hop
+                  {ev.chemistry}% hoà hợp
                 </div>
               </div>
             </div>
             <div style={s.eventFooter}>
               <div>
                 <div style={s.eventPrice}>{ev.price}</div>
-                <div style={s.eventSeats}>{ev.seats} cho con lai</div>
+                <div style={s.eventSeats}>{ev.seats} chỗ còn lại</div>
               </div>
-              <button style={s.reserveBtn}>Dat cho</button>
+              <button style={s.reserveBtn}>Đặt chỗ</button>
             </div>
           </div>
         ))}
@@ -202,7 +202,7 @@ const SecretTableSelectionPage = () => {
       <div style={s.reservationsSection}>
         <div style={s.sectionTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>confirmation_number</span>
-          Dat cho cua ban
+          Đặt chỗ của bạn
         </div>
         {myReservations.map(r => (
           <div key={r.id} style={s.resCard}>
@@ -215,7 +215,7 @@ const SecretTableSelectionPage = () => {
             </div>
             <div style={s.resStatus}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 12 }}>check_circle</span>
-              Da xac nhan
+              Đã xác nhận
             </div>
           </div>
         ))}

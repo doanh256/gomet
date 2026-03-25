@@ -247,7 +247,7 @@ const RateExperiencePage = () => {
           <div style={s.partnerName}>Minh Anh</div>
           <div style={s.partnerDetail}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>
-            The Coffee House - Nguyen Hue
+            The Coffee House - Nguyễn Huệ
           </div>
           <div style={{ ...s.partnerDetail, marginTop: 2 }}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>calendar_today</span>

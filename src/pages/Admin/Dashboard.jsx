@@ -16,9 +16,9 @@ const Dashboard = () => {
   ];
 
   const fallbackReports = [
-    { id: 1, reporter: 'Nguyen Van Tung', reason: 'Noi dung khong phu hop', status: 'pending' },
-    { id: 2, reporter: 'Le Hoang Mai', reason: 'Quay roi nguoi dung khac', status: 'pending' },
-    { id: 3, reporter: 'Tran Bao Ngoc', reason: 'Tai khoan gia mao', status: 'resolved' },
+    { id: 1, reporter: 'Nguyen Van Tung', reason: 'Nội dung không phù hợp', status: 'pending' },
+    { id: 2, reporter: 'Le Hoang Mai', reason: 'Quấy rối người dùng khác', status: 'pending' },
+    { id: 3, reporter: 'Tran Bao Ngoc', reason: 'Tài khoản giả mạo', status: 'resolved' },
   ];
 
   const activityData = [65, 42, 78, 55, 90, 72, 85];
@@ -46,24 +46,24 @@ const Dashboard = () => {
   const today = new Date().toLocaleDateString('vi-VN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
   const statCards = [
-    { label: 'Nguoi dung', value: (displayStats.users || 0).toLocaleString(), icon: 'group', trend: '+12%', up: true },
-    { label: 'Match hom nay', value: (displayStats.matchesToday || 0).toLocaleString(), icon: 'favorite', trend: '+8%', up: true },
-    { label: 'Su kien dang mo', value: (displayStats.activeEvents || 0).toLocaleString(), icon: 'event', trend: '+3', up: true },
-    { label: 'Doanh thu thang', value: `${((displayStats.revenueMonth || 0) / 1000000).toFixed(1)}M`, icon: 'payments', trend: '+15%', up: true },
+    { label: 'Người dùng', value: (displayStats.users || 0).toLocaleString(), icon: 'group', trend: '+12%', up: true },
+    { label: 'Match hôm nay', value: (displayStats.matchesToday || 0).toLocaleString(), icon: 'favorite', trend: '+8%', up: true },
+    { label: 'Sự kiện đang mở', value: (displayStats.activeEvents || 0).toLocaleString(), icon: 'event', trend: '+3', up: true },
+    { label: 'Doanh thu tháng', value: `${((displayStats.revenueMonth || 0) / 1000000).toFixed(1)}M`, icon: 'payments', trend: '+15%', up: true },
   ];
 
   const quickActions = [
-    { label: 'Duyet su kien', icon: 'event_available', color: '#FFD54F' },
-    { label: 'Quan ly nguoi dung', icon: 'manage_accounts', color: '#FFB59E' },
-    { label: 'Xem bao cao', icon: 'assessment', color: '#E6BEB2' },
-    { label: 'Cai dat he thong', icon: 'settings', color: '#E6BEB2' },
+    { label: 'Duyệt sự kiện', icon: 'event_available', color: '#FFD54F' },
+    { label: 'Quản lý người dùng', icon: 'manage_accounts', color: '#FFB59E' },
+    { label: 'Xem báo cáo', icon: 'assessment', color: '#E6BEB2' },
+    { label: 'Cài đặt hệ thống', icon: 'settings', color: '#E6BEB2' },
   ];
 
   if (loading) {
     return (
       <div style={{ padding: '60px', textAlign: 'center', color: '#E6BEB2', fontFamily: 'var(--font-body)' }}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '48px', marginBottom: '16px', display: 'block', opacity: 0.5 }}>hourglass_empty</span>
-        Dang tai du lieu...
+        Đang tải dữ liệu...
       </div>
     );
   }
@@ -74,7 +74,7 @@ const Dashboard = () => {
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '32px', color: '#FFB59E' }}>dashboard</span>
           <div>
-            <h1 style={{ margin: 0, fontSize: '28px', fontWeight: 700, fontFamily: 'var(--font-headline)', color: '#FDF9F3' }}>Tong quan quan tri</h1>
+            <h1 style={{ margin: 0, fontSize: '28px', fontWeight: 700, fontFamily: 'var(--font-headline)', color: '#FDF9F3' }}>Tổng quan quản trị</h1>
             <p style={{ margin: '4px 0 0 0', fontSize: '14px', color: '#E6BEB2' }}>{today}</p>
           </div>
         </div>
@@ -102,7 +102,7 @@ const Dashboard = () => {
         <div style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '24px' }}>
           <h3 style={{ margin: '0 0 24px 0', fontSize: '18px', fontWeight: 600, fontFamily: 'var(--font-headline)', display: 'flex', alignItems: 'center', gap: '8px', color: '#FDF9F3' }}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>bar_chart</span>
-            Bieu do hoat dong
+            Biểu đồ hoạt động
           </h3>
           <div style={{ display: 'flex', alignItems: 'flex-end', gap: '12px', height: '180px', paddingBottom: '28px', position: 'relative' }}>
             {activityData.map((val, i) => (
@@ -118,7 +118,7 @@ const Dashboard = () => {
         <div style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '24px' }}>
           <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', fontWeight: 600, fontFamily: 'var(--font-headline)', display: 'flex', alignItems: 'center', gap: '8px', color: '#FDF9F3' }}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>person_add</span>
-            Nguoi dung moi
+            Người dùng mới
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
             {recentUsers.map((user) => (
@@ -130,7 +130,7 @@ const Dashboard = () => {
                 </div>
                 <span style={{ fontSize: '12px', color: '#E6BEB2', flexShrink: 0 }}>{user.joinDate}</span>
                 <span style={{ fontSize: '11px', fontWeight: 600, padding: '4px 10px', borderRadius: '9999px', background: user.status === 'active' ? 'rgba(17,117,0,0.15)' : 'rgba(255,213,79,0.15)', color: user.status === 'active' ? '#117500' : '#FFD54F', flexShrink: 0 }}>
-                  {user.status === 'active' ? 'Hoat dong' : 'Cho duyet'}
+                  {user.status === 'active' ? 'Hoạt động' : 'Chờ duyệt'}
                 </span>
               </div>
             ))}
@@ -142,7 +142,7 @@ const Dashboard = () => {
         <div style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '24px' }}>
           <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', fontWeight: 600, fontFamily: 'var(--font-headline)', display: 'flex', alignItems: 'center', gap: '8px', color: '#FDF9F3' }}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FF571A' }}>flag</span>
-            Bao cao gan day
+            Báo cáo gần đây
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {reports.map((report) => (
@@ -156,7 +156,7 @@ const Dashboard = () => {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <span style={{ fontSize: '11px', fontWeight: 600, padding: '4px 10px', borderRadius: '9999px', background: report.status === 'pending' ? 'rgba(255,213,79,0.15)' : 'rgba(17,117,0,0.15)', color: report.status === 'pending' ? '#FFD54F' : '#117500' }}>
-                    {report.status === 'pending' ? 'Cho xu ly' : 'Da giai quyet'}
+                    {report.status === 'pending' ? 'Chờ xử lý' : 'Đã giải quyết'}
                   </span>
                   <button style={{ background: 'none', border: 'none', borderRadius: '8px', padding: '6px 12px', fontSize: '12px', fontWeight: 600, cursor: 'pointer', color: '#FFB59E' }}>Xem</button>
                 </div>
@@ -168,7 +168,7 @@ const Dashboard = () => {
         <div style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '24px' }}>
           <h3 style={{ margin: '0 0 20px 0', fontSize: '18px', fontWeight: 600, fontFamily: 'var(--font-headline)', display: 'flex', alignItems: 'center', gap: '8px', color: '#FDF9F3' }}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>bolt</span>
-            Hanh dong nhanh
+            Hành động nhanh
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
             {quickActions.map((action, i) => (

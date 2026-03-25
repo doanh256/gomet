@@ -149,7 +149,7 @@ const RelationshipTimelinePage = () => {
 
       <button style={s.backBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
-        Quay lai
+        Quay lại
       </button>
 
       {/* Avatars */}
@@ -165,7 +165,7 @@ const RelationshipTimelinePage = () => {
           <div style={s.avatar}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.avatarIcon}>person</span>
           </div>
-          <div style={s.avatarName}>Thanh Tung</div>
+          <div style={s.avatarName}>Thanh Tùng</div>
         </div>
       </div>
 

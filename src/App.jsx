@@ -118,6 +118,9 @@ const SecretTableSelectionPage = lazy(() => import('./pages/User/SecretTableSele
 const SecretTableBookingPage = lazy(() => import('./pages/User/SecretTableBookingPage'));
 const EliteLandingPage = lazy(() => import('./pages/User/EliteLandingPage'));
 
+// World Food Map
+const WorldFoodMapPage = lazy(() => import('./pages/User/WorldFoodMapPage'));
+
 // Phase 10 - Final 13 pages (88/88 MASTER coverage)
 const PalateEvolutionPage = lazy(() => import('./pages/User/PalateEvolutionPage'));
 const TasteTwinPage = lazy(() => import('./pages/User/TasteTwinPage'));
@@ -268,6 +271,7 @@ function App() {
               <Route path="empty-states" element={<EmptyStatesPage />} />
               <Route path="moment/:id" element={<MomentDetailPage />} />
               <Route path="elite-upgrade-success" element={<EliteUpgradeSuccessPage />} />
+              <Route path="world-food-map" element={<WorldFoodMapPage />} />
             </Route>
 
             {/* Admin */}

@@ -89,7 +89,7 @@ const EliteUpgradeSuccessPage = () => {
           </div>
           <div>
             <div style={{ fontSize: 10, color: '#888', letterSpacing: 2, marginBottom: 4 }}>MEMBER</div>
-            <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 3, color: '#fff' }}>MINH TRAN</div>
+            <div style={{ fontSize: 16, fontWeight: 700, letterSpacing: 3, color: '#fff' }}>MINH TRẦN</div>
           </div>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
             <div>

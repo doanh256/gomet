@@ -5,9 +5,9 @@ const tasteAxes = [
   { label: 'Cay', value: 85 },
   { label: 'Umami', value: 70 },
   { label: 'Chua', value: 55 },
-  { label: 'Ngot', value: 60 },
-  { label: 'Dang', value: 30 },
-  { label: 'Man', value: 75 },
+  { label: 'Ngọt', value: 60 },
+  { label: 'Đắng', value: 30 },
+  { label: 'Mặn', value: 75 },
 ];
 
 const foodMoments = [
@@ -17,8 +17,8 @@ const foodMoments = [
 ];
 
 const interests = [
-  'Pho', 'Street Food', 'Fine Dining', 'Ca phe', 'Bun bo Hue',
-  'Lau', 'Banh mi', 'Hai san', 'Chay',
+  'Phở', 'Street Food', 'Fine Dining', 'Cà phê', 'Bún bò Huế',
+  'Lẩu', 'Bánh mì', 'Hải sản', 'Chay',
 ];
 
 const PublicProfilePage = () => {
@@ -152,7 +152,7 @@ const PublicProfilePage = () => {
     <div style={s.page}>
       <button style={s.backBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
-        Quay lai
+        Quay lại
       </button>
 
       {/* Profile Header */}
@@ -169,7 +169,7 @@ const PublicProfilePage = () => {
         <div style={s.title}>Culinary Adventurer</div>
         <div style={s.location}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>
-          TP. Ho Chi Minh
+          TP. Hồ Chí Minh
         </div>
       </div>
 
@@ -181,11 +181,11 @@ const PublicProfilePage = () => {
         </div>
         <div style={s.statCard}>
           <div style={s.statValue}>87</div>
-          <div style={s.statLabel}>Mon da thu</div>
+          <div style={s.statLabel}>Món đã thử</div>
         </div>
         <div style={s.statCard}>
           <div style={s.statValue}>6</div>
-          <div style={s.statLabel}>Vung mien</div>
+          <div style={s.statLabel}>Vùng miền</div>
         </div>
       </div>
 
@@ -238,7 +238,7 @@ const PublicProfilePage = () => {
       {/* Interest Tags */}
       <div style={s.sectionTitle}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>sell</span>
-        So thich am thuc
+        Sở thích ẩm thực
       </div>
       <div style={s.tagsWrap}>
         {interests.map(tag => (
@@ -250,11 +250,11 @@ const PublicProfilePage = () => {
       <div style={s.btnRow}>
         <button style={s.btnPrimary}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>mail</span>
-          Gui Kitchen Card
+          Gửi Kitchen Card
         </button>
         <button style={s.btnSecondary}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>restaurant</span>
-          Hen an cung
+          Hẹn ăn cùng
         </button>
       </div>
     </div>

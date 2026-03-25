@@ -4,17 +4,19 @@ import { useNavigate } from 'react-router-dom';
 const AIAnalytics = () => {
   const navigate = useNavigate();
   const [appliedInsights, setAppliedInsights] = useState([]);
+  const [toast, setToast] = useState(null); // { id, timer }
+
 
   const trends = [
-    { label: 'Tang truong', value: '+23%', sub: 'thang nay', icon: 'trending_up', color: '#117500' },
-    { label: 'Ty le giu chan', value: '78%', sub: 'nguoi dung quay lai', icon: 'loyalty', color: '#FFB59E' },
-    { label: 'Thoi gian su dung TB', value: '45 phut', sub: 'moi ngay', icon: 'timer', color: '#FFD54F' },
+    { label: 'Tăng trưởng', value: '+23%', sub: 'tháng này', icon: 'trending_up', color: '#117500' },
+    { label: 'Tỷ lệ giữ chân', value: '78%', sub: 'người dùng quay lại', icon: 'loyalty', color: '#FFB59E' },
+    { label: 'Thời gian sử dụng TB', value: '45 phút', sub: 'mỗi ngày', icon: 'timer', color: '#FFD54F' },
   ];
 
   const sentiments = [
-    { label: 'Tich cuc', pct: 72, color: '#117500' },
-    { label: 'Trung lap', pct: 18, color: '#FFD54F' },
-    { label: 'Tieu cuc', pct: 10, color: '#FF571A' },
+    { label: 'Tích cực', pct: 72, color: '#117500' },
+    { label: 'Trung lập', pct: 18, color: '#FFD54F' },
+    { label: 'Tiêu cực', pct: 10, color: '#FF571A' },
   ];
 
   const churnUsers = [
@@ -26,9 +28,9 @@ const AIAnalytics = () => {
   ];
 
   const hotEvents = [
-    'Lop nau an Italian - Du kien 120 nguoi tham gia',
-    'Wine tasting cuoi tuan - Xu huong tang 45%',
-    'Yoga & Coffee morning - Pho bien voi nu 25-30',
+    'Lớp nấu ăn Italian - Dự kiến 120 người tham gia',
+    'Wine tasting cuối tuần - Xu hướng tăng 45%',
+    'Yoga & Coffee morning - Phổ biến với nữ 25-30',
   ];
 
   const peakHours = [
@@ -37,13 +39,25 @@ const AIAnalytics = () => {
   ];
 
   const insights = [
-    { id: 1, text: 'Tang 20% match bang cach goi y nguoi dung co so thich tuong tu trong ban kinh 5km.' },
-    { id: 2, text: 'Gui thong bao nhac nho vao luc 19h-20h de tang ty le tuong tac 35%.' },
-    { id: 3, text: 'Tao su kien "Thu 5 vui ve" de giam ty le roi bo nhom 25-30 tuoi.' },
-    { id: 4, text: 'Uu tien hien thi ho so co anh xac minh de tang do tin cay 28%.' },
+    { id: 1, text: 'Tăng 20% match bằng cách gợi ý người dùng có sở thích tương tự trong bán kính 5km.' },
+    { id: 2, text: 'Gửi thông báo nhắc nhở vào lúc 19h-20h để tăng tỷ lệ tương tác 35%.' },
+    { id: 3, text: 'Tạo sự kiện "Thứ 5 vui vẻ" để giảm tỷ lệ rời bỏ nhóm 25-30 tuổi.' },
+    { id: 4, text: 'Ưu tiên hiển thị hồ sơ có ảnh xác minh để tăng độ tin cậy 28%.' },
   ];
 
-  const handleApply = (id) => { setAppliedInsights((prev) => [...prev, id]); };
+  const handleApply = (id) => {
+    setAppliedInsights((prev) => [...prev, id]);
+    if (toast?.timer) clearTimeout(toast.timer);
+    const timer = setTimeout(() => setToast(null), 5000);
+    setToast({ id, timer });
+  };
+
+  const handleUndo = () => {
+    if (!toast) return;
+    clearTimeout(toast.timer);
+    setAppliedInsights((prev) => prev.filter((x) => x !== toast.id));
+    setToast(null);
+  };
 
   const s = {
     page: { padding: '24px', maxWidth: '1200px', margin: '0 auto', fontFamily: 'var(--font-body)', color: '#FDF9F3' },
@@ -88,34 +102,52 @@ const AIAnalytics = () => {
     <div style={s.page}>
       <div style={s.header}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>auto_awesome</span>
-        <h1 style={s.title}>Phan tich AI</h1>
+        <h1 style={s.title}>Phân tích AI</h1>
       </div>
       <div style={s.section}>
-        <h2 style={s.sectionTitle}>Xu huong nguoi dung</h2>
+        <h2 style={s.sectionTitle}>Xu hướng người dùng</h2>
         <div style={s.trendGrid}>
           {trends.map((t, i) => (<div key={i} style={s.trendCard}><div style={s.trendIconWrap(t.color)}><span aria-hidden="true" className="material-symbols-outlined" style={s.trendIcon(t.color)}>{t.icon}</span></div><div><div style={{ fontSize: '13px', color: '#E6BEB2' }}>{t.label}</div><div style={s.trendValue}>{t.value}</div><div style={s.trendSub}>{t.sub}</div></div></div>))}
         </div>
       </div>
       <div style={s.section}>
-        <h2 style={s.sectionTitle}>Phan tich cam xuc</h2>
+        <h2 style={s.sectionTitle}>Phân tích cảm xúc</h2>
         <div style={s.sentimentRow}>
           {sentiments.map((st, i) => (<div key={i} style={s.sentimentItem}><div style={s.sentimentLabel}>{st.label}</div><div style={s.sentimentBarBg}><div style={s.sentimentBar(st.pct, st.color)} /></div><div style={s.sentimentPct}>{st.pct}%</div></div>))}
         </div>
       </div>
       <div style={s.section}>
-        <h2 style={s.sectionTitle}>Du doan</h2>
+        <h2 style={s.sectionTitle}>Dự đoán</h2>
         <div style={s.predGrid}>
-          <div style={s.predCard}><div style={s.predHeader}><span aria-hidden="true" className="material-symbols-outlined" style={s.predIcon}>smart_toy</span><div style={s.predTitle}>Nguoi dung co nguy co roi bo</div></div>{churnUsers.map((u, i) => (<div key={i} style={s.churnRow}><span style={s.churnName}>{u.name}</span><span style={s.churnRisk(u.risk)}>{u.risk}% nguy co</span></div>))}</div>
-          <div style={s.predCard}><div style={s.predHeader}><span aria-hidden="true" className="material-symbols-outlined" style={s.predIcon}>smart_toy</span><div style={s.predTitle}>Su kien hot tuan toi</div></div>{hotEvents.map((ev, i) => (<div key={i} style={s.eventItem}>{ev}</div>))}</div>
-          <div style={s.predCard}><div style={s.predHeader}><span aria-hidden="true" className="material-symbols-outlined" style={s.predIcon}>smart_toy</span><div style={s.predTitle}>Gio cao diem du kien</div></div><div style={s.heatRow}>{peakHours.map((h, i) => (<div key={i} style={s.heatCol(h.level)}><div style={s.heatBar(h.level)} /><span style={s.heatLabel}>{h.hour}</span></div>))}</div></div>
+          <div style={s.predCard}><div style={s.predHeader}><span aria-hidden="true" className="material-symbols-outlined" style={s.predIcon}>smart_toy</span><div style={s.predTitle}>Người dùng có nguy cơ rời bỏ</div></div>{churnUsers.map((u, i) => (<div key={i} style={s.churnRow}><span style={s.churnName}>{u.name}</span><span style={s.churnRisk(u.risk)}>{u.risk}% nguy cơ</span></div>))}</div>
+          <div style={s.predCard}><div style={s.predHeader}><span aria-hidden="true" className="material-symbols-outlined" style={s.predIcon}>smart_toy</span><div style={s.predTitle}>Sự kiện hot tuần tới</div></div>{hotEvents.map((ev, i) => (<div key={i} style={s.eventItem}>{ev}</div>))}</div>
+          <div style={s.predCard}><div style={s.predHeader}><span aria-hidden="true" className="material-symbols-outlined" style={s.predIcon}>smart_toy</span><div style={s.predTitle}>Giờ cao điểm dự kiến</div></div><div style={s.heatRow}>{peakHours.map((h, i) => (<div key={i} style={s.heatCol(h.level)}><div style={s.heatBar(h.level)} /><span style={s.heatLabel}>{h.hour}</span></div>))}</div></div>
         </div>
       </div>
       <div style={s.section}>
-        <h2 style={s.sectionTitle}>Goi y tu AI</h2>
+        <h2 style={s.sectionTitle}>Gợi ý từ AI</h2>
         <div style={s.insightGrid}>
-          {insights.map((ins) => (<div key={ins.id} style={s.insightCard}><span aria-hidden="true" className="material-symbols-outlined" style={s.insightIcon}>lightbulb</span><div style={s.insightText}>{ins.text}</div><button style={s.applyBtn(appliedInsights.includes(ins.id))} onClick={() => handleApply(ins.id)} disabled={appliedInsights.includes(ins.id)}>{appliedInsights.includes(ins.id) ? 'Da ap dung' : 'Ap dung'}</button></div>))}
+          {insights.map((ins) => (<div key={ins.id} style={s.insightCard}><span aria-hidden="true" className="material-symbols-outlined" style={s.insightIcon}>lightbulb</span><div style={s.insightText}>{ins.text}</div><button style={s.applyBtn(appliedInsights.includes(ins.id))} onClick={() => handleApply(ins.id)} disabled={appliedInsights.includes(ins.id)}>{appliedInsights.includes(ins.id) ? 'Đã áp dụng' : 'Áp dụng'}</button></div>))}
         </div>
       </div>
+
+      {/* Undo Toast */}
+      {toast && (
+        <div role="status" aria-live="polite" style={{
+          position: 'fixed', bottom: 32, left: '50%', transform: 'translateX(-50%)',
+          background: '#2A2A2A', borderRadius: '9999px', padding: '12px 20px',
+          display: 'flex', alignItems: 'center', gap: 14,
+          boxShadow: '0 8px 32px rgba(0,0,0,0.5)', zIndex: 9999,
+          border: '1px solid rgba(255,181,158,0.2)', whiteSpace: 'nowrap',
+        }}>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#FFB59E' }}>check_circle</span>
+          <span style={{ fontSize: 14, color: '#FDF9F3', fontWeight: 500 }}>Đã áp dụng gợi ý #{toast.id}</span>
+          <button onClick={handleUndo} style={{
+            background: 'none', border: '1px solid rgba(255,181,158,0.5)', borderRadius: '9999px',
+            padding: '4px 14px', color: '#FFB59E', fontSize: 13, fontWeight: 600, cursor: 'pointer',
+          }}>Hoàn tác</button>
+        </div>
+      )}
     </div>
   );
 };

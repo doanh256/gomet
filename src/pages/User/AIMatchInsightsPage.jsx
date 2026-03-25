@@ -24,9 +24,9 @@ const venueTeaser = {
 };
 
 const secondaryMatches = [
-  { name: 'Thao Vy', age: 24, matchPercent: 91, interest: '"Cùng mê phim Nhật"', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&h=400&fit=crop' },
-  { name: 'Bao Ngoc', age: 27, matchPercent: 88, interest: '"Thích chạy bộ buổi sáng"', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=400&fit=crop' },
-  { name: 'Ha My', age: 25, matchPercent: 85, interest: '"Fan của cà phê sữa đá"', avatar: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=300&h=400&fit=crop' },
+  { name: 'Thảo Vy', age: 24, matchPercent: 91, interest: '"Cùng mê phim Nhật"', avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=300&h=400&fit=crop' },
+  { name: 'Bảo Ngọc', age: 27, matchPercent: 88, interest: '"Thích chạy bộ buổi sáng"', avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&h=400&fit=crop' },
+  { name: 'Hà My', age: 25, matchPercent: 85, interest: '"Fan của cà phê sữa đá"', avatar: 'https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=300&h=400&fit=crop' },
 ];
 
 const AIMatchInsightsPage = () => {

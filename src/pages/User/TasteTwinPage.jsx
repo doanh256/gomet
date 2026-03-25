@@ -17,14 +17,14 @@ const secondaryMatches = [
   { name: 'Pierre L.', match: 86, city: 'Paris', avatar: 'https://i.pravatar.cc/80?img=12' },
   { name: 'Sakura M.', match: 83, city: 'Osaka', avatar: 'https://i.pravatar.cc/80?img=9' },
   { name: 'Marco R.', match: 81, city: 'Milan', avatar: 'https://i.pravatar.cc/80?img=15' },
-  { name: 'Linh D.', match: 79, city: 'Da Nang', avatar: 'https://i.pravatar.cc/80?img=25' },
+  { name: 'Linh D.', match: 79, city: 'Đà Nẵng', avatar: 'https://i.pravatar.cc/80?img=25' },
   { name: 'Soo-Jin K.', match: 77, city: 'Seoul', avatar: 'https://i.pravatar.cc/80?img=20' },
 ];
 
 const nearbyBites = [
   { name: 'Pho 2000', dist: '0.3km', rating: 4.5 },
-  { name: 'Banh Mi 362', dist: '0.5km', rating: 4.8 },
-  { name: 'Bun Bo Hue Dong Ba', dist: '0.8km', rating: 4.6 },
+  { name: 'Bánh Mì 362', dist: '0.5km', rating: 4.8 },
+  { name: 'Bún Bò Huế Đông Ba', dist: '0.8km', rating: 4.6 },
 ];
 
 const mapDots = [
@@ -98,7 +98,7 @@ const TasteTwinPage = () => {
             }}>96%</div>
           </div>
           <div style={{ marginTop: 16, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
-            {['Pho', 'Ramen', 'Banh Mi', 'Sushi', 'Bun Cha'].map((d, i) => (
+            {['Phở', 'Ramen', 'Bánh Mì', 'Sushi', 'Bún Chả'].map((d, i) => (
               <span key={i} style={{
                 background: '#F0EDFF', color: '#6C63FF', borderRadius: 20, padding: '4px 12px',
                 fontSize: 12, fontWeight: 600

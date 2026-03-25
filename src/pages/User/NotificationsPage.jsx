@@ -129,10 +129,13 @@ const NotificationsPage = () => {
         <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: '#E6BEB2', display: 'flex', alignItems: 'center' }}>
           <ArrowLeft size={24} />
         </button>
-        <h1 style={{ flex: 1, margin: 0, fontSize: '18px', fontWeight: 700, textAlign: 'center', color: '#FDF9F3' }}>
+        <h1
+          aria-label={unreadCount > 0 ? `Thông báo (${unreadCount} chưa đọc)` : 'Thông báo'}
+          style={{ flex: 1, margin: 0, fontSize: '18px', fontWeight: 700, textAlign: 'center', color: '#FDF9F3' }}
+        >
           Thông báo
           {unreadCount > 0 && (
-            <span style={{ marginLeft: '8px', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#3A0B00', fontSize: '12px', fontWeight: 700, padding: '2px 8px', borderRadius: '9999px', verticalAlign: 'middle' }}>
+            <span aria-hidden="true" style={{ marginLeft: '8px', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#3A0B00', fontSize: '12px', fontWeight: 700, padding: '2px 8px', borderRadius: '9999px', verticalAlign: 'middle' }}>
               {unreadCount}
             </span>
           )}

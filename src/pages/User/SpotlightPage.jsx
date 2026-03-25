@@ -275,7 +275,7 @@ const SpotlightPage = () => {
               98% tương thích
             </div>
             <div style={s.featuredName}>
-              Thanh Huyen, 25
+              Thanh Huyền, 25
               <span aria-hidden="true" className="material-symbols-outlined" style={s.verifiedIcon}>verified</span>
             </div>
             <p style={s.featuredBio}>Yêu thích cà phê sáng và những chuyến đi bất ngờ. Tìm một người đồng hành chân thành.</p>

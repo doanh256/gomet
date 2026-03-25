@@ -9,7 +9,7 @@ const splitMethods = [
 
 const participants = [
   { id: 1, name: 'Bạn (Minh Anh)', avatar: 'MA', amount: 425000, status: 'paid' },
-  { id: 2, name: 'Thanh Tung', avatar: 'TT', amount: 425000, status: 'pending' },
+  { id: 2, name: 'Thanh Tùng', avatar: 'TT', amount: 425000, status: 'pending' },
 ];
 
 const paymentMethods = [

@@ -4,14 +4,14 @@ import { ArrowLeft, MapPin } from 'lucide-react';
 import { api } from '../../api/client';
 
 const CATEGORY_META = {
-  'nguoi-yeu': { title: 'Tim Nguoi Yeu', emoji: '\uD83D\uDC95', desc: 'Nhung nguoi dang tim kiem moi quan he nghiem tuc' },
-  'cafe': { title: 'Hen Ho Cafe Via He', emoji: '\u2615', desc: 'Cung nham nhi cafe va tro chuyen' },
-  'chua-lanh': { title: 'Chua Lanh Tam Hon', emoji: '\uD83C\uDF3F', desc: 'Chia se cau chuyen va ho tro lan nhau' },
-  'thu-cung': { title: 'Tin Do Yeu Meo/Cho', emoji: '\uD83D\uDC3E', desc: 'Nhung nguoi yeu thu cung' },
-  'netflix': { title: 'Netflix & Chill', emoji: '\uD83C\uDF7F', desc: 'Tim ban xem phim cung' },
-  'the-thao': { title: 'Tap Gym / Chay Bo', emoji: '\uD83D\uDCAA', desc: 'Tim ban tap luyen cung' },
-  'deadline': { title: 'Chay Deadline Dem', emoji: '\uD83D\uDCBB', desc: 'Lam viec cung nhau cho bot buon' },
-  'game': { title: 'Ganh Rank Cung Nhau', emoji: '\uD83C\uDFAE', desc: 'Tim dong doi game online' },
+  'nguoi-yeu': { title: 'Tìm Người Yêu', emoji: '\uD83D\uDC95', desc: 'Những người đang tìm kiếm mối quan hệ nghiêm túc' },
+  'cafe': { title: 'Hẹn Hò Cafe Vỉa Hè', emoji: '\u2615', desc: 'Cùng nhâm nhi cafe và trò chuyện' },
+  'chua-lanh': { title: 'Chữa Lành Tâm Hồn', emoji: '\uD83C\uDF3F', desc: 'Chia sẻ câu chuyện và hỗ trợ lẫn nhau' },
+  'thu-cung': { title: 'Tín Đồ Yêu Mèo/Chó', emoji: '\uD83D\uDC3E', desc: 'Những người yêu thú cưng' },
+  'netflix': { title: 'Netflix & Chill', emoji: '\uD83C\uDF7F', desc: 'Tìm bạn xem phim cùng' },
+  'the-thao': { title: 'Tập Gym / Chạy Bộ', emoji: '\uD83D\uDCAA', desc: 'Tìm bạn tập luyện cùng' },
+  'deadline': { title: 'Chạy Deadline Đêm', emoji: '\uD83D\uDCBB', desc: 'Làm việc cùng nhau cho bớt buồn' },
+  'game': { title: 'Gánh Rank Cùng Nhau', emoji: '\uD83C\uDFAE', desc: 'Tìm đồng đội game online' },
 };
 
 const ExploreCategoryPage = () => {
@@ -41,7 +41,7 @@ const ExploreCategoryPage = () => {
     <div style={{ flex: 1, backgroundColor: '#131313', overflowY: 'auto' }}>
       <div style={{ padding: '24px 32px', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#3A0B00' }}>
         <button onClick={() => navigate('/app/explore')} style={{ background: 'rgba(58,11,0,0.2)', border: 'none', color: '#3A0B00', padding: '8px 16px', borderRadius: '9999px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 500, marginBottom: '16px' }}>
-          <ArrowLeft size={16} /> Quay lai
+          <ArrowLeft size={16} /> Quay lại
         </button>
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <span style={{ fontSize: '40px' }}>{meta.emoji}</span>
@@ -54,11 +54,11 @@ const ExploreCategoryPage = () => {
 
       <div style={{ padding: '24px 32px' }}>
         {loading ? (
-          <div style={{ textAlign: 'center', padding: '60px 0', color: '#E6BEB2' }}>Dang tai...</div>
+          <div style={{ textAlign: 'center', padding: '60px 0', color: '#E6BEB2' }}>Đang tải...</div>
         ) : users.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '60px 0', color: '#E6BEB2' }}>
             <p style={{ fontSize: '48px', marginBottom: '12px' }}>\uD83D\uDE22</p>
-            <p style={{ fontSize: '16px', fontWeight: 500 }}>Chua co ai trong muc nay</p>
+            <p style={{ fontSize: '16px', fontWeight: 500 }}>Chưa có ai trong mục này</p>
           </div>
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '16px' }}>
@@ -75,7 +75,7 @@ const ExploreCategoryPage = () => {
                   </div>
                 </div>
                 <div style={{ padding: '12px' }}>
-                  <p style={{ fontSize: '13px', color: '#E6BEB2', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.bio || 'Chua co gioi thieu'}</p>
+                  <p style={{ fontSize: '13px', color: '#E6BEB2', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{user.bio || 'Chưa có giới thiệu'}</p>
                 </div>
               </div>
             ))}

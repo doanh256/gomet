@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 const members = [
   { id: 1, name: 'Minh Anh', color: '#FF571A' },
-  { id: 2, name: 'Thanh Tung', color: '#2196F3' },
-  { id: 3, name: 'Ngoc Anh', color: '#E91E63' },
+  { id: 2, name: 'Thành Tùng', color: '#2196F3' },
+  { id: 3, name: 'Ngọc Anh', color: '#E91E63' },
 ];
 
 const messages = [

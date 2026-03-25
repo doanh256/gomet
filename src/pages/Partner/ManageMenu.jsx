@@ -4,18 +4,18 @@ import { useNavigate } from 'react-router-dom';
 const ManageMenu = () => {
   const navigate = useNavigate();
   const [activeCategory, setActiveCategory] = useState('all');
-  const categories = [{ key: 'all', label: 'Tat ca' }, { key: 'main', label: 'Mon chinh' }, { key: 'drink', label: 'Do uong' }, { key: 'dessert', label: 'Trang mieng' }, { key: 'special', label: 'Dac biet' }];
+  const categories = [{ key: 'all', label: 'Tất cả' }, { key: 'main', label: 'Món chính' }, { key: 'drink', label: 'Đồ uống' }, { key: 'dessert', label: 'Tráng miệng' }, { key: 'special', label: 'Đặc biệt' }];
   const [menuItems, setMenuItems] = useState([
-    { id: 1, name: 'Bo Wagyu nuong da nong', desc: 'Bo Wagyu A5 nuong tren da nui lua, kem sot truffle', price: '450.000', category: 'special', emoji: '\uD83E\uDD69', available: true },
-    { id: 2, name: 'Pasta Carbonara truffle', desc: 'My Y sot kem truffle den, bacon gion, pho mai Pecorino', price: '185.000', category: 'main', emoji: '\uD83C\uDF5D', available: true },
-    { id: 3, name: 'Cocktail Velvet Sunset', desc: 'Gin, cam tuoi, syrup hoa hong, soda y, la bac ha', price: '125.000', category: 'drink', emoji: '\uD83C\uDF79', available: true },
-    { id: 4, name: 'Tiramisu truyen thong', desc: 'Banh Tiramisu theo cong thuc Y, ca phe espresso, mascarpone', price: '95.000', category: 'dessert', emoji: '\uD83C\uDF70', available: true },
-    { id: 5, name: 'Ca hoi Na Uy sot chanh day', desc: 'Ca hoi tuoi nuong, sot chanh day, rau cu theo mua', price: '285.000', category: 'main', emoji: '\uD83E\uDD62', available: false },
-    { id: 6, name: 'Matcha Latte dac biet', desc: 'Matcha Uji Nhat Ban, sua tuoi, kem whip, bot matcha', price: '85.000', category: 'drink', emoji: '\uD83C\uDF75', available: true },
-    { id: 7, name: 'Lava Cake socola Bi', desc: 'Banh socola nong chay, kem vanilla Madagascar, dau tay', price: '115.000', category: 'dessert', emoji: '\uD83C\uDF6B', available: true },
-    { id: 8, name: 'Set han quoc cho 2 nguoi', desc: 'Bo nuong, hai san, banchan, com tron, canh kimchi', price: '650.000', category: 'special', emoji: '\uD83C\uDF72', available: true },
+    { id: 1, name: 'Bò Wagyu nướng đá nóng', desc: 'Bò Wagyu A5 nướng trên đá núi lửa, kèm sốt truffle', price: '450.000', category: 'special', emoji: '\uD83E\uDD69', available: true },
+    { id: 2, name: 'Pasta Carbonara truffle', desc: 'Mỳ Ý sốt kem truffle đen, bacon giòn, phô mai Pecorino', price: '185.000', category: 'main', emoji: '\uD83C\uDF5D', available: true },
+    { id: 3, name: 'Cocktail Velvet Sunset', desc: 'Gin, cam tươi, syrup hoa hồng, soda Ý, lá bạc hà', price: '125.000', category: 'drink', emoji: '\uD83C\uDF79', available: true },
+    { id: 4, name: 'Tiramisu truyền thống', desc: 'Bánh Tiramisu theo công thức Ý, cà phê espresso, mascarpone', price: '95.000', category: 'dessert', emoji: '\uD83C\uDF70', available: true },
+    { id: 5, name: 'Cá hồi Na Uy sốt chanh dây', desc: 'Cá hồi tươi nướng, sốt chanh dây, rau củ theo mùa', price: '285.000', category: 'main', emoji: '\uD83E\uDD62', available: false },
+    { id: 6, name: 'Matcha Latte đặc biệt', desc: 'Matcha Uji Nhật Bản, sữa tươi, kem whip, bột matcha', price: '85.000', category: 'drink', emoji: '\uD83C\uDF75', available: true },
+    { id: 7, name: 'Lava Cake socola Bỉ', desc: 'Bánh socola nóng chảy, kem vanilla Madagascar, dâu tây', price: '115.000', category: 'dessert', emoji: '\uD83C\uDF6B', available: true },
+    { id: 8, name: 'Set Hàn Quốc cho 2 người', desc: 'Bò nướng, hải sản, banchan, cơm trộn, canh kimchi', price: '650.000', category: 'special', emoji: '\uD83C\uDF72', available: true },
   ]);
-  const trendingItems = [{ name: 'Bo Wagyu nuong da nong', percent: 92 }, { name: 'Cocktail Velvet Sunset', percent: 78 }, { name: 'Tiramisu truyen thong', percent: 65 }];
+  const trendingItems = [{ name: 'Bò Wagyu nướng đá nóng', percent: 92 }, { name: 'Cocktail Velvet Sunset', percent: 78 }, { name: 'Tiramisu truyền thống', percent: 65 }];
   const filtered = activeCategory === 'all' ? menuItems : menuItems.filter(item => item.category === activeCategory);
   const toggleAvailability = (id) => { setMenuItems(prev => prev.map(item => item.id === id ? { ...item, available: !item.available } : item)); };
   const gradients = ['linear-gradient(135deg, #FF571A, #FFB59E)', 'linear-gradient(135deg, #5a3028, #FFB59E)', 'linear-gradient(135deg, #353535, #5a3028)', 'linear-gradient(135deg, #FFB59E, #FF571A)'];
@@ -33,8 +33,8 @@ const ManageMenu = () => {
   return (
     <div style={st.page}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 32, color: '#FFB59E' }}>restaurant_menu</span><h1 style={{ fontFamily: 'var(--font-headline)', fontSize: 28, fontWeight: 700 }}>Quan ly thuc don</h1></div>
-        <button style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 24px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#3A0B00', fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 600, cursor: 'pointer' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.03)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>add</span>Them mon moi</button>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 32, color: '#FFB59E' }}>restaurant_menu</span><h1 style={{ fontFamily: 'var(--font-headline)', fontSize: 28, fontWeight: 700 }}>Quản lý thực đơn</h1></div>
+        <button style={{ display: 'flex', alignItems: 'center', gap: 8, padding: '12px 24px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#3A0B00', fontFamily: 'var(--font-body)', fontSize: 14, fontWeight: 600, cursor: 'pointer' }} onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.03)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>add</span>Thêm món mới</button>
       </div>
       <div style={{ display: 'flex', gap: 10, marginBottom: 28, overflowX: 'auto' }}>{categories.map((c) => (<button key={c.key} style={st.categoryChip(activeCategory === c.key)} onClick={() => setActiveCategory(c.key)}>{c.label}</button>))}</div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 18, marginBottom: 36 }}>
@@ -48,7 +48,7 @@ const ManageMenu = () => {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                   <div style={st.toggleTrack(item.available)} onClick={() => toggleAvailability(item.id)}><div style={st.toggleThumb(item.available)} /></div>
-                  <span style={st.toggleLabel(item.available)}>{item.available ? 'Con hang' : 'Het hang'}</span>
+                  <span style={st.toggleLabel(item.available)}>{item.available ? 'Còn hàng' : 'Hết hàng'}</span>
                 </div>
                 <div style={{ display: 'flex', gap: 6 }}>
                   <button style={st.iconBtn('edit')}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>edit</span></button>
@@ -60,7 +60,7 @@ const ManageMenu = () => {
         ))}
       </div>
       <div style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '24px' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: '#FFB59E' }}>trending_up</span><h2 style={{ fontFamily: 'var(--font-headline)', fontSize: 16, fontWeight: 600 }}>Xu huong - Mon duoc goi nhieu nhat</h2></div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 20 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: '#FFB59E' }}>trending_up</span><h2 style={{ fontFamily: 'var(--font-headline)', fontSize: 16, fontWeight: 600 }}>Xu hướng - Món được gọi nhiều nhất</h2></div>
         {trendingItems.map((item, i) => (
           <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 14 }}>
             <div style={{ fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 700, color: '#FFB59E', minWidth: 24 }}>#{i + 1}</div>

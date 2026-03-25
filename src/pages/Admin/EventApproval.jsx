@@ -6,17 +6,17 @@ const EventApproval = () => {
   const [activeFilter, setActiveFilter] = useState('pending');
 
   const initialEvents = [
-    { id: 1, name: 'Lop nau an Italian', host: 'Nguyen Minh Anh', hostAvatar: 'A', date: '28/03/2026', time: '18:00', venue: 'Kitchen Studio Q1', attendees: 20, category: 'Am thuc', price: '200.000 VND/nguoi', submitted: '2 gio truoc', status: 'pending' },
-    { id: 2, name: 'Wine Tasting Thu 7', host: 'Tran Duc Huy', hostAvatar: 'H', date: '29/03/2026', time: '19:30', venue: 'The Wine Bar Q3', attendees: 30, category: 'Am thuc', price: '350.000 VND/nguoi', submitted: '3 gio truoc', status: 'pending' },
-    { id: 3, name: 'Trieu lam tranh cuoi tuan', host: 'Le Bich Ngoc', hostAvatar: 'N', date: '30/03/2026', time: '10:00', venue: 'Gallery 42 Q2', attendees: 50, category: 'Nghe thuat', price: 'Mien phi', submitted: '5 gio truoc', status: 'pending' },
-    { id: 4, name: 'Chay bo sang Landmark', host: 'Pham Hoang Long', hostAvatar: 'L', date: '27/03/2026', time: '06:00', venue: 'Landmark 81', attendees: 40, category: 'The thao', price: 'Mien phi', submitted: '8 gio truoc', status: 'pending' },
-    { id: 5, name: 'Board game & Coffee', host: 'Vo Thanh Tam', hostAvatar: 'T', date: '28/03/2026', time: '14:00', venue: 'Cong Cafe Nguyen Hue', attendees: 16, category: 'Xa hoi', price: '100.000 VND/nguoi', submitted: '1 ngay truoc', status: 'pending' },
+    { id: 1, name: 'Lớp nấu ăn Italian', host: 'Nguyen Minh Anh', hostAvatar: 'A', date: '28/03/2026', time: '18:00', venue: 'Kitchen Studio Q1', attendees: 20, category: 'Ẩm thực', price: '200.000 VND/người', submitted: '2 giờ trước', status: 'pending' },
+    { id: 2, name: 'Wine Tasting Thứ 7', host: 'Tran Duc Huy', hostAvatar: 'H', date: '29/03/2026', time: '19:30', venue: 'The Wine Bar Q3', attendees: 30, category: 'Ẩm thực', price: '350.000 VND/người', submitted: '3 giờ trước', status: 'pending' },
+    { id: 3, name: 'Triển lãm tranh cuối tuần', host: 'Le Bich Ngoc', hostAvatar: 'N', date: '30/03/2026', time: '10:00', venue: 'Gallery 42 Q2', attendees: 50, category: 'Nghệ thuật', price: 'Miễn phí', submitted: '5 giờ trước', status: 'pending' },
+    { id: 4, name: 'Chạy bộ sáng Landmark', host: 'Pham Hoang Long', hostAvatar: 'L', date: '27/03/2026', time: '06:00', venue: 'Landmark 81', attendees: 40, category: 'Thể thao', price: 'Miễn phí', submitted: '8 giờ trước', status: 'pending' },
+    { id: 5, name: 'Board game & Coffee', host: 'Vo Thanh Tam', hostAvatar: 'T', date: '28/03/2026', time: '14:00', venue: 'Cộng Cafe Nguyễn Huệ', attendees: 16, category: 'Xã hội', price: '100.000 VND/người', submitted: '1 ngày trước', status: 'pending' },
   ];
 
   const [events, setEvents] = useState(initialEvents);
   const handleAction = (id, action) => { setEvents((prev) => prev.map((e) => (e.id === id ? { ...e, status: action } : e))); };
 
-  const filters = [{ key: 'pending', label: 'Cho duyet' }, { key: 'approved', label: 'Da duyet' }, { key: 'rejected', label: 'Tu choi' }];
+  const filters = [{ key: 'pending', label: 'Chờ duyệt' }, { key: 'approved', label: 'Đã duyệt' }, { key: 'rejected', label: 'Từ chối' }];
   const filtered = events.filter((e) => e.status === activeFilter);
   const approvedToday = events.filter((e) => e.status === 'approved').length;
   const rejectedToday = events.filter((e) => e.status === 'rejected').length;
@@ -24,10 +24,10 @@ const EventApproval = () => {
 
   const catColor = (cat) => {
     switch (cat) {
-      case 'Am thuc': return { bg: 'rgba(255,87,26,0.15)', text: '#FF571A' };
-      case 'Nghe thuat': return { bg: 'rgba(230,190,178,0.15)', text: '#E6BEB2' };
-      case 'Xa hoi': return { bg: 'rgba(17,117,0,0.15)', text: '#117500' };
-      case 'The thao': return { bg: 'rgba(255,181,158,0.15)', text: '#FFB59E' };
+      case 'Ẩm thực': return { bg: 'rgba(255,87,26,0.15)', text: '#FF571A' };
+      case 'Nghệ thuật': return { bg: 'rgba(230,190,178,0.15)', text: '#E6BEB2' };
+      case 'Xã hội': return { bg: 'rgba(17,117,0,0.15)', text: '#117500' };
+      case 'Thể thao': return { bg: 'rgba(255,181,158,0.15)', text: '#FFB59E' };
       default: return { bg: '#2A2A2A', text: '#E6BEB2' };
     }
   };
@@ -72,10 +72,10 @@ const EventApproval = () => {
 
   return (
     <div style={s.page}>
-      <div style={s.header}><span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>event_available</span><h1 style={s.title}>Duyet su kien</h1>{pendingCount > 0 && <span style={s.badge}>{pendingCount}</span>}</div>
+      <div style={s.header}><span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>event_available</span><h1 style={s.title}>Duyệt sự kiện</h1>{pendingCount > 0 && <span style={s.badge}>{pendingCount}</span>}</div>
       <div style={s.filterRow}>{filters.map((f) => (<button key={f.key} style={s.filterChip(activeFilter === f.key)} onClick={() => setActiveFilter(f.key)}>{f.label}</button>))}</div>
       <div style={s.eventList}>
-        {filtered.length === 0 && <div style={s.emptyState}>Khong co su kien nao trong danh sach nay.</div>}
+        {filtered.length === 0 && <div style={s.emptyState}>Không có sự kiện nào trong danh sách này.</div>}
         {filtered.map((ev) => (
           <div key={ev.id} style={s.eventCard}>
             <div style={s.eventImage(ev.category)}><span aria-hidden="true" className="material-symbols-outlined" style={s.eventImgIcon(ev.category)}>image</span></div>
@@ -85,18 +85,18 @@ const EventApproval = () => {
               <div style={s.detailRow}>
                 <div style={s.detailItem}><span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>calendar_today</span>{ev.date} - {ev.time}</div>
                 <div style={s.detailItem}><span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>location_on</span>{ev.venue}</div>
-                <div style={s.detailItem}><span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>group</span>{ev.attendees} nguoi</div>
+                <div style={s.detailItem}><span aria-hidden="true" className="material-symbols-outlined" style={s.detailIcon}>group</span>{ev.attendees} người</div>
               </div>
               <div style={s.chipRow}><span style={s.catChip(ev.category)}>{ev.category}</span><span style={s.priceChip}>{ev.price}</span></div>
-              <div style={s.submittedText}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '14px', verticalAlign: 'middle', marginRight: '4px' }}>schedule</span>Gui {ev.submitted}</div>
-              {ev.status === 'pending' && (<div style={s.actionRow}><button style={s.approveBtn} onClick={() => handleAction(ev.id, 'approved')}><span aria-hidden="true" className="material-symbols-outlined" style={s.smallIcon}>check</span>Duyet</button><button style={s.rejectBtn} onClick={() => handleAction(ev.id, 'rejected')}><span aria-hidden="true" className="material-symbols-outlined" style={s.smallIcon}>close</span>Tu choi</button><button style={s.viewBtn}>Xem chi tiet</button></div>)}
-              {ev.status === 'approved' && (<div style={{ color: '#117500', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>check_circle</span>Da duyet</div>)}
-              {ev.status === 'rejected' && (<div style={{ color: '#FF571A', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>cancel</span>Da tu choi</div>)}
+              <div style={s.submittedText}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '14px', verticalAlign: 'middle', marginRight: '4px' }}>schedule</span>Gửi {ev.submitted}</div>
+              {ev.status === 'pending' && (<div style={s.actionRow}><button style={s.approveBtn} onClick={() => handleAction(ev.id, 'approved')}><span aria-hidden="true" className="material-symbols-outlined" style={s.smallIcon}>check</span>Duyệt</button><button style={s.rejectBtn} onClick={() => handleAction(ev.id, 'rejected')}><span aria-hidden="true" className="material-symbols-outlined" style={s.smallIcon}>close</span>Từ chối</button><button style={s.viewBtn}>Xem chi tiết</button></div>)}
+              {ev.status === 'approved' && (<div style={{ color: '#117500', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>check_circle</span>Đã duyệt</div>)}
+              {ev.status === 'rejected' && (<div style={{ color: '#FF571A', fontSize: '13px', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '4px' }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>cancel</span>Đã từ chối</div>)}
             </div>
           </div>
         ))}
       </div>
-      <div style={s.section}><h2 style={s.sectionTitle}>Thong ke duyet</h2><div style={s.summaryGrid}><div style={s.summaryCard}><div style={{ ...s.summaryValue, color: '#117500' }}>{approvedToday}</div><div style={s.summaryLabel}>Da duyet hom nay</div></div><div style={s.summaryCard}><div style={{ ...s.summaryValue, color: '#FF571A' }}>{rejectedToday}</div><div style={s.summaryLabel}>Tu choi hom nay</div></div><div style={s.summaryCard}><div style={s.summaryValue}>15 phut</div><div style={s.summaryLabel}>Thoi gian duyet TB</div></div></div></div>
+      <div style={s.section}><h2 style={s.sectionTitle}>Thống kê duyệt</h2><div style={s.summaryGrid}><div style={s.summaryCard}><div style={{ ...s.summaryValue, color: '#117500' }}>{approvedToday}</div><div style={s.summaryLabel}>Đã duyệt hôm nay</div></div><div style={s.summaryCard}><div style={{ ...s.summaryValue, color: '#FF571A' }}>{rejectedToday}</div><div style={s.summaryLabel}>Từ chối hôm nay</div></div><div style={s.summaryCard}><div style={s.summaryValue}>15 phút</div><div style={s.summaryLabel}>Thời gian duyệt TB</div></div></div></div>
     </div>
   );
 };

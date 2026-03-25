@@ -154,7 +154,7 @@ const RegionDetailPage = () => {
           <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>landscape</span>
-        <div style={s.heroTitle}>Tay Bac</div>
+        <div style={s.heroTitle}>Tây Bắc</div>
         <div style={s.heroSub}>Vùng đất ẩm thực nguyên sơ</div>
         <div style={s.heroOverlay} />
       </div>

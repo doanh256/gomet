@@ -3,28 +3,28 @@ import { useNavigate } from 'react-router-dom';
 
 const topThree = [
   { rank: 1, name: 'Minh Anh', points: 8420, avatar: 'MA' },
-  { rank: 2, name: 'Hoang Nam', points: 7150, avatar: 'HN' },
+  { rank: 2, name: 'Hoàng Nam', points: 7150, avatar: 'HN' },
   { rank: 3, name: 'Thu Trang', points: 6830, avatar: 'TT' },
 ];
 
 const rankings = [
-  { rank: 4, name: 'Duc Huy', points: 6200, avatar: 'DH', trend: 'up' },
-  { rank: 5, name: 'Ngoc Lan', points: 5980, avatar: 'NL', trend: 'up' },
+  { rank: 4, name: 'Đức Huy', points: 6200, avatar: 'DH', trend: 'up' },
+  { rank: 5, name: 'Ngọc Lan', points: 5980, avatar: 'NL', trend: 'up' },
   { rank: 6, name: 'Quang Minh', points: 5740, avatar: 'QM', trend: 'down' },
-  { rank: 7, name: 'Phuong Linh', points: 5510, avatar: 'PL', trend: 'flat' },
-  { rank: 8, name: 'Thanh Son', points: 5320, avatar: 'TS', trend: 'up' },
-  { rank: 9, name: 'Ha My', points: 5100, avatar: 'HM', trend: 'down' },
-  { rank: 10, name: 'Tuan Kiet', points: 4880, avatar: 'TK', trend: 'flat' },
-  { rank: 11, name: 'Bao Ngoc', points: 4650, avatar: 'BN', trend: 'up' },
-  { rank: 12, name: 'Anh Tuan', points: 4430, avatar: 'AT', trend: 'down' },
-  { rank: 13, name: 'Kim Ngan', points: 4200, avatar: 'KN', trend: 'up' },
-  { rank: 14, name: 'Van Dat', points: 3980, avatar: 'VD', trend: 'flat' },
-  { rank: 15, name: 'Thuy Linh', points: 3760, avatar: 'TL', trend: 'up' },
-  { rank: 16, name: 'Hong Phuc', points: 3540, avatar: 'HP', trend: 'down' },
+  { rank: 7, name: 'Phương Linh', points: 5510, avatar: 'PL', trend: 'flat' },
+  { rank: 8, name: 'Thành Sơn', points: 5320, avatar: 'TS', trend: 'up' },
+  { rank: 9, name: 'Hà My', points: 5100, avatar: 'HM', trend: 'down' },
+  { rank: 10, name: 'Tuấn Kiệt', points: 4880, avatar: 'TK', trend: 'flat' },
+  { rank: 11, name: 'Bảo Ngọc', points: 4650, avatar: 'BN', trend: 'up' },
+  { rank: 12, name: 'Anh Tuấn', points: 4430, avatar: 'AT', trend: 'down' },
+  { rank: 13, name: 'Kim Ngân', points: 4200, avatar: 'KN', trend: 'up' },
+  { rank: 14, name: 'Văn Đạt', points: 3980, avatar: 'VD', trend: 'flat' },
+  { rank: 15, name: 'Thúy Linh', points: 3760, avatar: 'TL', trend: 'up' },
+  { rank: 16, name: 'Hồng Phúc', points: 3540, avatar: 'HP', trend: 'down' },
   { rank: 17, name: 'Duy Khang', points: 3320, avatar: 'DK', trend: 'flat' },
-  { rank: 18, name: 'Mai Huong', points: 3100, avatar: 'MH', trend: 'up' },
-  { rank: 19, name: 'Xuan Truong', points: 2880, avatar: 'XT', trend: 'down' },
-  { rank: 20, name: 'Yen Nhi', points: 2650, avatar: 'YN', trend: 'up' },
+  { rank: 18, name: 'Mai Hương', points: 3100, avatar: 'MH', trend: 'up' },
+  { rank: 19, name: 'Xuân Trường', points: 2880, avatar: 'XT', trend: 'down' },
+  { rank: 20, name: 'Yến Nhi', points: 2650, avatar: 'YN', trend: 'up' },
 ];
 
 const filters = ['Tuần này', 'Tháng này', 'Tất cả'];

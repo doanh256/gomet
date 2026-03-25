@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const bookingData = {
   venue: 'The Loft Saigon',
-  address: '26 Ly Tu Trong, Q.1, TP.HCM',
+  address: '26 Lý Tự Trọng, Q.1, TP.HCM',
   date: 'Thứ 7, 28/03/2026',
   time: '19:00',
   partySize: 2,

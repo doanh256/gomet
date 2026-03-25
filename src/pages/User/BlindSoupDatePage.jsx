@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const soups = [
-  { id: 'pho', name: 'Pho', origin: '🇻🇳', emoji: '🍜', desc: 'Nước dùng trong, bánh phở mềm' },
-  { id: 'bunbo', name: 'Bun Bo Hue', origin: '🇻🇳', emoji: '🌶️', desc: 'Cay nóng, đậm đà hương vị Huế' },
-  { id: 'lauthai', name: 'Lau Thai', origin: '🇹🇭', emoji: '🍲', desc: 'Chua cay, tôm và nấm' },
+  { id: 'pho', name: 'Phở', origin: '🇻🇳', emoji: '🍜', desc: 'Nước dùng trong, bánh phở mềm' },
+  { id: 'bunbo', name: 'Bún Bò Huế', origin: '🇻🇳', emoji: '🌶️', desc: 'Cay nóng, đậm đà hương vị Huế' },
+  { id: 'lauthai', name: 'Lẩu Thái', origin: '🇹🇭', emoji: '🍲', desc: 'Chua cay, tôm và nấm' },
   { id: 'ramen', name: 'Ramen', origin: '🇯🇵', emoji: '🍥', desc: 'Nhật Bản chính thống, nước dùng tonkotsu' },
 ];
 

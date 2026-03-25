@@ -9,11 +9,11 @@ const generateCode = () => {
 };
 
 const invitedFriends = [
-  { name: 'Nguyen Van A', status: 'joined', date: '15/03/2026' },
-  { name: 'Tran Thi B', status: 'joined', date: '12/03/2026' },
-  { name: 'Le Van C', status: 'pending', date: '18/03/2026' },
-  { name: 'Pham Thi D', status: 'joined', date: '10/03/2026' },
-  { name: 'Hoang Van E', status: 'pending', date: '20/03/2026' },
+  { name: 'Nguyễn Văn A', status: 'joined', date: '15/03/2026' },
+  { name: 'Trần Thị B', status: 'joined', date: '12/03/2026' },
+  { name: 'Lê Văn C', status: 'pending', date: '18/03/2026' },
+  { name: 'Phạm Thị D', status: 'joined', date: '10/03/2026' },
+  { name: 'Hoàng Văn E', status: 'pending', date: '20/03/2026' },
 ];
 
 const ReferralPage = () => {

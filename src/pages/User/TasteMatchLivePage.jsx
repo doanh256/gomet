@@ -20,7 +20,7 @@ const liveKeyframes = `
 }
 `;
 
-const sharedTastes = ['Pho', 'Bun Cha', 'Banh Xeo', 'Ca Phe Sua Da', 'Goi Cuon'];
+const sharedTastes = ['Phở', 'Bún Chả', 'Bánh Xèo', 'Cà Phê Sữa Đá', 'Gỏi Cuốn'];
 
 const TasteMatchLivePage = () => {
   const navigate = useNavigate();
