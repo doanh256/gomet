@@ -51,10 +51,10 @@ const LandingPage = () => {
         }}>
           <div style={{ fontSize: 24, fontWeight: 900, color: '#b83500', letterSpacing: '-0.05em' }}>GOMET</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 32 }}>
-            <a href="#regions" style={{ color: '#FF4D00', fontWeight: 700, textDecoration: 'none', borderBottom: '2px solid #FF4D00', paddingBottom: 4, fontSize: 14 }}>Khám Phá Vùng Miền</a>
-            <a href="#taste" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Taste Matches</a>
-            <a href="#community" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Thử Thách</a>
-            <a href="#cta" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Cộng Đồng</a>
+            <a href="#regions" style={{ color: '#FF4D00', fontWeight: 700, textDecoration: 'none', borderBottom: '2px solid #FF4D00', paddingBottom: 4, fontSize: 14 }}>Ẩm Thực</a>
+            <a href="#taste" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Ghép Đôi</a>
+            <a href="#community" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Câu Chuyện</a>
+            <a href="#cta" style={{ color: '#393834', fontWeight: 600, textDecoration: 'none', fontSize: 14 }}>Tham Gia</a>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
             <button onClick={() => navigate('/login')} style={{
