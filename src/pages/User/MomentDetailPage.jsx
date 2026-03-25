@@ -9,9 +9,9 @@ const mdKeyframes = `
 `;
 
 const comments = [
-  { name: 'Tuan Anh', avatar: 'https://i.pravatar.cc/40?img=12', text: 'Trông ngon quá! Phải thử ngay', time: '2h' },
+  { name: 'Tuấn Anh', avatar: 'https://i.pravatar.cc/40?img=12', text: 'Trông ngon quá! Phải thử ngay', time: '2h' },
   { name: 'Mai Linh', avatar: 'https://i.pravatar.cc/40?img=5', text: 'Mình cũng mới ăn ở đây tuần trước, tuyệt vời lắm', time: '4h' },
-  { name: 'Duc Minh', avatar: 'https://i.pravatar.cc/40?img=15', text: 'Rating bao nhiêu sao vậy bạn?', time: '5h' },
+  { name: 'Đức Minh', avatar: 'https://i.pravatar.cc/40?img=15', text: 'Rating bao nhiêu sao vậy bạn?', time: '5h' },
 ];
 
 const relatedMoments = [
@@ -49,7 +49,7 @@ const MomentDetailPage = () => {
         <img src="https://i.pravatar.cc/48?img=32" alt="user" style={{ width: 44, height: 44, borderRadius: '50%', border: '2px solid #6C63FF' }} />
         <div style={{ flex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-            <span style={{ fontSize: 15, fontWeight: 700 }}>Minh Tran</span>
+            <span style={{ fontSize: 15, fontWeight: 700 }}>Minh Trần</span>
             <div style={{
               background: 'linear-gradient(135deg, #FFD700, #E8900C)', borderRadius: 8,
               padding: '2px 8px', display: 'flex', alignItems: 'center', gap: 3

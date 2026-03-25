@@ -151,20 +151,60 @@ const HomePage = () => {
             </div>
           </div>
 
-          {/* Map section */}
+          {/* World Food Map Hero Banner */}
           <section style={{ marginBottom: 32 }}>
-            <h2 style={{ fontSize: 20, fontWeight: 700, color: '#393834', margin: '0 0 16px' }}>Khám phá Vùng miền</h2>
-            <div style={{ position: 'relative', height: 300, borderRadius: '2rem', overflow: 'hidden', background: '#f1ede6' }}>
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBayFiPKKopjHL02cHAafHdRkICGkC9bICUqTy0mqPWbhzbQL7WtMMqMlk2wYnLbpMMms0OlbbgHLUrz5TGVRpV4OOngr8CjIsxh9Dr-BWW-9nmmSMLO2q2ItF-etV-IhltTbaCIsLQcSCSGtKKQdiktHandV06LiFedoGSoOdrrY1wab_kE-2z7kR19uO9x8vYtbShoM-kRMMwYDF6603hqbWrA5GwRCShQdyLLeDBP0J4WCRvT3sXlz-wa5KXuALIRczaPnRLGpY" alt="Ban do kham pha" style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8 }} />
-              <div style={{ position: 'absolute', top: '30%', left: '25%' }}>
-                <div style={{ background: '#b83500', color: '#fff', padding: 8, borderRadius: '50%', boxShadow: '0 4px 12px rgba(184,53,0,0.3)' }}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, fontVariationSettings: "'FILL' 1" }}>restaurant</span>
+            <h2 style={{ fontSize: 20, fontWeight: 700, color: '#393834', margin: '0 0 16px' }}>Sưu tầm Ẩm thực Thế giới</h2>
+            <div
+              onClick={() => navigate('/app/world-food-map')}
+              style={{
+                position: 'relative', height: 180, borderRadius: '2rem', overflow: 'hidden',
+                background: 'linear-gradient(135deg, #0D0D1A 0%, #1a1040 50%, #0D0D1A 100%)',
+                cursor: 'pointer', display: 'flex', alignItems: 'center', padding: '0 28px', gap: 20,
+              }}
+            >
+              {/* globe SVG mini */}
+              <svg width="100" height="100" viewBox="0 0 200 200" style={{ flexShrink: 0 }}>
+                <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,181,158,0.2)" strokeWidth="1.5" />
+                {[-30, 0, 30].map((y, i) => (
+                  <ellipse key={i} cx="100" cy={100 + y} rx={Math.sqrt(80 * 80 - y * y)} ry="14" fill="none" stroke="rgba(255,181,158,0.1)" strokeWidth="1" />
+                ))}
+                <ellipse cx="115" cy="78" rx="26" ry="16" fill="rgba(232,144,12,0.3)" />
+                <ellipse cx="78" cy="72" rx="14" ry="20" fill="rgba(100,180,255,0.2)" />
+                <ellipse cx="85" cy="108" rx="12" ry="9" fill="rgba(232,144,12,0.2)" />
+                {[[115,70,'#E8900C'],[125,74,'#FFB59E'],[100,70,'#E8900C'],[82,68,'#6C63FF'],[72,80,'#2ED573']].map(([cx,cy,fill],i)=>(
+                  <circle key={i} cx={cx} cy={cy} r="5" fill={fill} opacity="0.9">
+                    <animate attributeName="r" values="4;6;4" dur={`${1.5+i*0.4}s`} repeatCount="indefinite" />
+                  </circle>
+                ))}
+                <circle cx="100" cy="100" r="80" fill="none" stroke="url(#hg)" strokeWidth="3"
+                  strokeDasharray={`${2*Math.PI*80*0.34} ${2*Math.PI*80*0.66}`}
+                  strokeLinecap="round" transform="rotate(-90 100 100)" />
+                <defs>
+                  <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#E8900C" />
+                    <stop offset="100%" stopColor="#FFB59E" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontSize: 12, color: '#E8900C', fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>POKÉDEX ẨM THỰC</div>
+                <div style={{ fontSize: 20, fontWeight: 800, color: '#FDF9F3', lineHeight: 1.2, marginBottom: 8, fontFamily: 'var(--font-headline)' }}>
+                  Bạn đã thử<br />bao nhiêu nền ẩm thực?
+                </div>
+                <div style={{ display: 'flex', gap: 8 }}>
+                  {['🇯🇵','🇮🇹','🇹🇭','🇫🇷','🇲🇽'].map((f,i) => (
+                    <span key={i} style={{ fontSize: 20 }}>{f}</span>
+                  ))}
+                  <span style={{ fontSize: 14, color: '#E6BEB2', alignSelf: 'center' }}>+18 quốc gia</span>
                 </div>
               </div>
-              <div style={{ position: 'absolute', bottom: '30%', right: '30%' }}>
-                <div style={{ background: '#117500', color: '#fff', padding: 8, borderRadius: '50%', boxShadow: '0 4px 12px rgba(17,117,0,0.3)' }}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, fontVariationSettings: "'FILL' 1" }}>local_bar</span>
-                </div>
+              <div style={{
+                position: 'absolute', right: 20, bottom: 20,
+                background: 'linear-gradient(135deg, #E8900C, #FFB59E)',
+                borderRadius: '9999px', padding: '8px 16px',
+                fontSize: 12, fontWeight: 700, color: '#3A0B00',
+              }}>
+                Khám phá →
               </div>
             </div>
           </section>
@@ -280,7 +320,7 @@ const HomePage = () => {
               Chào mừng trở lại, Chef <span style={{ color: '#FF4D00' }}>{userName}</span>.
             </h1>
             <p style={{ fontSize: 16, color: '#666460', margin: 0, maxWidth: 560, lineHeight: 1.7 }}>
-              Hành trình ẩm thực Việt Nam của bạn đang tiếp tục. Bạn đã mở khoá <strong style={{ color: '#393834' }}>12 điểm Vàng mới</strong> tuần này qua khám phá vùng miền.
+              Hành trình ẩm thực thế giới của bạn đang tiếp tục. Bạn đã sưu tầm <strong style={{ color: '#393834' }}>34 món từ 9 quốc gia</strong> — tiếp tục để trở thành chuyên gia ẩm thực!
             </p>
           </div>
 
@@ -302,90 +342,87 @@ const HomePage = () => {
 
           {/* ─── Left Column ─── */}
           <div>
-            {/* Regional Discovery Map */}
+            {/* World Food Map */}
             <section style={{ marginBottom: 48 }}>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24 }}>
-                <h2 style={{ fontSize: 24, fontWeight: 700, color: '#393834', margin: 0, letterSpacing: '-0.01em' }}>Khám phá Vùng miền</h2>
+                <h2 style={{ fontSize: 24, fontWeight: 700, color: '#393834', margin: 0, letterSpacing: '-0.01em' }}>Sưu tầm Ẩm thực Thế giới</h2>
                 <button style={{
                   background: 'none', border: 'none', color: '#b83500', fontWeight: 700, fontSize: 14,
                   cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 4,
-                }} onClick={() => navigate('/app/venues')}>
-                  Xem bản đồ đầy đủ <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
+                }} onClick={() => navigate('/app/world-food-map')}>
+                  Mở bộ sưu tập <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
                 </button>
               </div>
-              <div style={{
-                position: 'relative', height: 480, borderRadius: '2rem', overflow: 'hidden',
-                boxShadow: '0 4px 16px rgba(0,0,0,0.06)',
-              }}>
-                <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBayFiPKKopjHL02cHAafHdRkICGkC9bICUqTy0mqPWbhzbQL7WtMMqMlk2wYnLbpMMms0OlbbgHLUrz5TGVRpV4OOngr8CjIsxh9Dr-BWW-9nmmSMLO2q2ItF-etV-IhltTbaCIsLQcSCSGtKKQdiktHandV06LiFedoGSoOdrrY1wab_kE-2z7kR19uO9x8vYtbShoM-kRMMwYDF6603hqbWrA5GwRCShQdyLLeDBP0J4WCRvT3sXlz-wa5KXuALIRczaPnRLGpY"
-                  alt="Ban do kham pha Ha Noi"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.8, filter: 'grayscale(0.3)' }}
-                />
-
-                {/* Map pin - restaurant */}
-                <div style={{ position: 'absolute', top: '33%', left: '25%' }}>
-                  <div style={{
-                    background: '#b83500', color: '#fff', padding: 8, borderRadius: '50%',
-                    boxShadow: '0 4px 12px rgba(184,53,0,0.4)', cursor: 'pointer',
-                  }}>
-                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, fontVariationSettings: "'FILL' 1" }}>restaurant</span>
-                  </div>
-                </div>
-
-                {/* Map pin - bar */}
-                <div style={{ position: 'absolute', bottom: '25%', right: '33%' }}>
-                  <div style={{
-                    background: '#117500', color: '#fff', padding: 8, borderRadius: '50%',
-                    boxShadow: '0 4px 12px rgba(17,117,0,0.4)', cursor: 'pointer',
-                  }}>
-                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, fontVariationSettings: "'FILL' 1" }}>local_bar</span>
-                  </div>
-                </div>
-
-                {/* Bottom venue overlay cards */}
-                <div className="gomet-noscroll" style={{
-                  position: 'absolute', bottom: 24, left: 24, right: 24,
-                  display: 'flex', gap: 16, overflowX: 'auto', paddingBottom: 8,
+              <div
+                onClick={() => navigate('/app/world-food-map')}
+                style={{
+                  position: 'relative', height: 480, borderRadius: '2rem', overflow: 'hidden',
+                  boxShadow: '0 4px 16px rgba(0,0,0,0.12)', cursor: 'pointer',
+                  background: 'linear-gradient(135deg, #0D0D1A 0%, #1a1040 40%, #0a1a30 100%)',
+                  display: 'flex', alignItems: 'center',
                 }}>
-                  {(venues.length > 0 ? venues.slice(0, 2) : [
-                    { id: 'v1', name: 'Bún Chả Đắc Kim', address: 'Hoàn Kiếm', category: 'Truyền thống', badge: 'Đã thử', badgeBg: '#2ff801', badgeColor: '#0b5800' },
-                    { id: 'v2', name: 'El Gaucho Argentinian', address: 'Tay Ho', category: 'Steakhouse', badge: '850 VP Bonus', badgeBg: '#fcc43e', badgeColor: '#584000' },
-                  ]).map((v, idx) => {
-                    const isFirst = idx === 0;
-                    return (
-                      <div key={v.id || idx} style={{
-                        flexShrink: 0, minWidth: 280,
-                        background: 'rgba(255,255,255,0.9)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
-                        padding: 16, borderRadius: '1rem',
-                        display: 'flex', alignItems: 'center', gap: 16, cursor: 'pointer',
-                      }} onClick={() => navigate('/app/venues')}>
-                        {v.image ? (
-                          <img src={v.image} alt={v.name} style={{ width: 56, height: 56, borderRadius: 12, objectFit: 'cover' }} />
-                        ) : (
-                          <div style={{
-                            width: 56, height: 56, borderRadius: 12, flexShrink: 0,
-                            background: isFirst ? 'linear-gradient(135deg, #FFB59E, #FF571A)' : 'linear-gradient(135deg, #fcc43e, #815f00)',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          }}>
-                            <span aria-hidden="true" className="material-symbols-outlined" style={{ color: 'rgba(255,255,255,0.7)', fontSize: 24 }}>restaurant</span>
-                          </div>
-                        )}
-                        <div>
-                          <p style={{ fontWeight: 700, fontSize: 14, color: '#393834', margin: '0 0 2px' }}>{v.name}</p>
-                          <p style={{ fontSize: 12, color: '#666460', margin: '0 0 4px' }}>
-                            {v.address || v.location || ''} {v.category ? `\u2022 ${v.category}` : ''}
-                          </p>
-                          <span style={{
-                            display: 'inline-block', padding: '2px 8px', borderRadius: 6, fontSize: 10, fontWeight: 700,
-                            background: v.badgeBg || (isFirst ? '#2ff801' : '#fcc43e'),
-                            color: v.badgeColor || (isFirst ? '#0b5800' : '#584000'),
-                          }}>{v.badge || (isFirst ? 'Đã thử' : '850 VP Bonus')}</span>
-                        </div>
-                      </div>
-                    );
-                  })}
+                {/* decorative radial glow */}
+                <div style={{
+                  position: 'absolute', inset: 0, pointerEvents: 'none',
+                  background: 'radial-gradient(ellipse at 65% 45%, rgba(232,144,12,0.2) 0%, transparent 55%), radial-gradient(ellipse at 20% 70%, rgba(108,99,255,0.15) 0%, transparent 45%)',
+                }} />
+
+                {/* globe SVG large */}
+                <div style={{ position: 'absolute', right: -40, top: '50%', transform: 'translateY(-50%)' }}>
+                  <svg width="440" height="440" viewBox="0 0 200 200" style={{ opacity: 0.5 }}>
+                    <circle cx="100" cy="100" r="80" fill="none" stroke="rgba(255,181,158,0.25)" strokeWidth="1" />
+                    <circle cx="100" cy="100" r="60" fill="none" stroke="rgba(255,181,158,0.15)" strokeWidth="1" />
+                    {[-40,-20,0,20,40].map((y,i)=>(
+                      <ellipse key={i} cx="100" cy={100+y} rx={Math.sqrt(Math.max(0,80*80-y*y))} ry="12" fill="none" stroke="rgba(255,181,158,0.1)" strokeWidth="1" />
+                    ))}
+                    <ellipse cx="115" cy="75" rx="28" ry="18" fill="rgba(232,144,12,0.3)" />
+                    <ellipse cx="78" cy="70" rx="16" ry="22" fill="rgba(100,160,255,0.2)" />
+                    <ellipse cx="85" cy="105" rx="14" ry="10" fill="rgba(232,144,12,0.2)" />
+                    {[[115,68,'#E8900C'],[127,73,'#FFB59E'],[108,78,'#E8900C'],[98,67,'#FFB59E'],[88,64,'#6C63FF'],[75,72,'#FF571A'],[70,80,'#2ED573'],[140,90,'#3742FA']].map(([cx,cy,fill],i)=>(
+                      <circle key={i} cx={cx} cy={cy} r="4" fill={fill} opacity="0.9">
+                        <animate attributeName="opacity" values="0.9;0.3;0.9" dur={`${1.5+i*0.25}s`} repeatCount="indefinite" />
+                      </circle>
+                    ))}
+                  </svg>
                 </div>
+
+                {/* text content */}
+                <div style={{ position: 'relative', padding: '48px 48px', maxWidth: 420 }}>
+                  <div style={{ fontSize: 11, color: '#E8900C', fontWeight: 800, letterSpacing: 2, marginBottom: 12, textTransform: 'uppercase' }}>
+                    Pokédex Ẩm thực
+                  </div>
+                  <h3 style={{ fontSize: 36, fontWeight: 800, color: '#FDF9F3', lineHeight: 1.15, margin: '0 0 16px', fontFamily: 'var(--font-headline)' }}>
+                    Bạn đã thử bao nhiêu<br />nền ẩm thực thế giới?
+                  </h3>
+                  <p style={{ fontSize: 15, color: '#E6BEB2', lineHeight: 1.6, margin: '0 0 24px' }}>
+                    Sưu tầm món ăn từ 18+ quốc gia. Trở thành chuyên gia ẩm thực và kết nối với người cùng vị.
+                  </p>
+                  <div style={{ display: 'flex', gap: 10, marginBottom: 28 }}>
+                    {['🇯🇵','🇮🇹','🇹🇭','🇫🇷','🇲🇽','🇮🇳','🇰🇷','🇬🇷'].map((f,i)=>(
+                      <span key={i} style={{ fontSize: 24 }}>{f}</span>
+                    ))}
+                  </div>
+                  <div style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 8,
+                    background: 'linear-gradient(135deg, #E8900C, #FFB59E)',
+                    padding: '12px 28px', borderRadius: '9999px',
+                    fontSize: 14, fontWeight: 700, color: '#3A0B00',
+                  }}>
+                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>public</span>
+                    Mở bộ sưu tập
+                  </div>
+                </div>
+
+                {/* cuisine count badges */}
+                <div style={{ position: 'absolute', top: 24, right: 24, display: 'flex', flexDirection: 'column', gap: 8, alignItems: 'flex-end' }}>
+                  {[{v:'18',l:'Quốc gia'},{v:'100+',l:'Món ăn'},{v:'34%',l:'Hoàn thành'}].map((s,i)=>(
+                    <div key={i} style={{ background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(8px)', borderRadius: '1rem', padding: '8px 16px', textAlign: 'right' }}>
+                      <div style={{ fontSize: 18, fontWeight: 800, color: '#FFB59E' }}>{s.v}</div>
+                      <div style={{ fontSize: 11, color: '#E6BEB2' }}>{s.l}</div>
+                    </div>
+                  ))}
+                </div>
+
               </div>
             </section>
 

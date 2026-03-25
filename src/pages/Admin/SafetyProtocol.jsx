@@ -6,35 +6,35 @@ const SafetyProtocol = () => {
   const [toggles, setToggles] = useState({ toxicLang: true, suspiciousIP: true, twoFactor: false });
 
   const stats = [
-    { label: 'Bao cao cho xu ly', value: 23, icon: 'flag', color: '#FF571A' },
-    { label: 'Tai khoan bi khoa', value: 8, icon: 'block', color: '#FDF9F3' },
-    { label: 'Xac minh cho duyet', value: 45, icon: 'verified_user', color: '#FFD54F' },
-    { label: 'Vi pham hom nay', value: 3, icon: 'warning', color: '#FF571A' },
+    { label: 'Báo cáo chờ xử lý', value: 23, icon: 'flag', color: '#FF571A' },
+    { label: 'Tài khoản bị khóa', value: 8, icon: 'block', color: '#FDF9F3' },
+    { label: 'Xác minh chờ duyệt', value: 45, icon: 'verified_user', color: '#FFD54F' },
+    { label: 'Vi phạm hôm nay', value: 3, icon: 'warning', color: '#FF571A' },
   ];
 
   const alerts = [
-    { id: 1, title: 'Phat hien tai khoan spam hang loat', desc: '12 tai khoan moi co hanh vi gui tin nhan giong nhau trong 1 gio qua. Can xem xet va xu ly ngay.' },
-    { id: 2, title: 'Noi dung khong phu hop duoc bao cao nhieu', desc: 'Bai dang #4521 bi 8 nguoi dung bao cao trong 30 phut. Noi dung co the vi pham chinh sach cong dong.' },
+    { id: 1, title: 'Phát hiện tài khoản spam hàng loạt', desc: '12 tài khoản mới có hành vi gửi tin nhắn giống nhau trong 1 giờ qua. Cần xem xét và xử lý ngay.' },
+    { id: 2, title: 'Nội dung không phù hợp được báo cáo nhiều', desc: 'Bài đăng #4521 bị 8 người dùng báo cáo trong 30 phút. Nội dung có thể vi phạm chính sách cộng đồng.' },
   ];
 
   const watchlist = [
-    { id: 1, name: 'Nguyen Van Tung', avatar: 'T', reason: 'Quay roi nguoi dung', severity: 'Cao', days: 5 },
-    { id: 2, name: 'Le Hoang Mai', avatar: 'M', reason: 'Ngon ngu doc hai', severity: 'Trung binh', days: 3 },
-    { id: 3, name: 'Tran Bao Ngoc', avatar: 'N', reason: 'Tai khoan gia mao', severity: 'Cao', days: 7 },
-    { id: 4, name: 'Pham Duc Thinh', avatar: 'T', reason: 'Spam tin nhan', severity: 'Thap', days: 2 },
-    { id: 5, name: 'Vo Thanh Tam', avatar: 'T', reason: 'Noi dung khong phu hop', severity: 'Trung binh', days: 4 },
+    { id: 1, name: 'Nguyen Van Tung', avatar: 'T', reason: 'Quấy rối người dùng', severity: 'Cao', days: 5 },
+    { id: 2, name: 'Le Hoang Mai', avatar: 'M', reason: 'Ngôn ngữ độc hại', severity: 'Trung bình', days: 3 },
+    { id: 3, name: 'Tran Bao Ngoc', avatar: 'N', reason: 'Tài khoản giả mạo', severity: 'Cao', days: 7 },
+    { id: 4, name: 'Pham Duc Thinh', avatar: 'T', reason: 'Spam tin nhắn', severity: 'Thấp', days: 2 },
+    { id: 5, name: 'Vo Thanh Tam', avatar: 'T', reason: 'Nội dung không phù hợp', severity: 'Trung bình', days: 4 },
   ];
 
   const steps = [
-    { label: 'Tiep nhan', icon: 'inbox' },
-    { label: 'Xem xet', icon: 'search' },
-    { label: 'Quyet dinh', icon: 'gavel' },
-    { label: 'Thong bao', icon: 'notifications' },
+    { label: 'Tiếp nhận', icon: 'inbox' },
+    { label: 'Xem xét', icon: 'search' },
+    { label: 'Quyết định', icon: 'gavel' },
+    { label: 'Thông báo', icon: 'notifications' },
   ];
 
   const severityColor = (sev) => {
     if (sev === 'Cao') return { bg: 'rgba(255,87,26,0.15)', text: '#FF571A' };
-    if (sev === 'Trung binh') return { bg: 'rgba(255,213,79,0.15)', text: '#FFD54F' };
+    if (sev === 'Trung bình') return { bg: 'rgba(255,213,79,0.15)', text: '#FFD54F' };
     return { bg: '#2A2A2A', text: '#E6BEB2' };
   };
 
@@ -80,12 +80,12 @@ const SafetyProtocol = () => {
 
   return (
     <div style={s.page}>
-      <div style={s.header}><span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>shield</span><h1 style={s.title}>Giao thuc an toan</h1></div>
+      <div style={s.header}><span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>shield</span><h1 style={s.title}>Giao thức an toàn</h1></div>
       <div style={s.statsGrid}>{stats.map((st, i) => (<div key={i} style={s.statCard}><div style={s.statIconWrap(st.color)}><span aria-hidden="true" className="material-symbols-outlined" style={s.statIcon(st.color)}>{st.icon}</span></div><div><div style={s.statValue}>{st.value}</div><div style={s.statLabel}>{st.label}</div></div></div>))}</div>
-      <div style={s.section}><h2 style={s.sectionTitle}>Canh bao khan cap</h2>{alerts.map((a) => (<div key={a.id} style={s.alertCard}><span aria-hidden="true" className="material-symbols-outlined" style={s.alertIcon}>warning</span><div><div style={s.alertTitle}>{a.title}</div><div style={s.alertDesc}>{a.desc}</div><button style={s.alertBtn}>Xu ly ngay</button></div></div>))}</div>
-      <div style={s.section}><h2 style={s.sectionTitle}>Danh sach theo doi</h2><div style={s.table}><div style={s.tableRow(true)}><div></div><div>Ten</div><div>Ly do</div><div>Muc do</div><div>Ngay</div><div>Hanh dong</div></div>{watchlist.map((u) => (<div key={u.id} style={s.tableRow(false)}><div style={s.avatar}>{u.avatar}</div><div style={{ fontWeight: 500 }}>{u.name}</div><div style={{ color: '#E6BEB2', fontSize: '13px' }}>{u.reason}</div><div><span style={s.sevChip(u.severity)}>{u.severity}</span></div><div style={{ fontSize: '13px', color: '#E6BEB2' }}>{u.days} ngay</div><div style={s.actionBtns}><button style={s.detailBtn}>Xem chi tiet</button><button style={s.lockBtn}>Gio khoa</button></div></div>))}</div></div>
-      <div style={s.section}><h2 style={s.sectionTitle}>Quy trinh xu ly</h2><div style={s.flowWrap}>{steps.map((step, i) => (<React.Fragment key={i}><div style={s.flowStep}><div style={s.flowCircle}><span aria-hidden="true" className="material-symbols-outlined" style={s.flowIcon}>{step.icon}</span></div><div style={s.flowLabel}>{step.label}</div></div>{i < steps.length - 1 && (<span aria-hidden="true" className="material-symbols-outlined" style={s.flowArrow}>arrow_forward</span>)}</React.Fragment>))}</div></div>
-      <div style={s.section}><h2 style={s.sectionTitle}>Thiet lap</h2><div style={s.settingsCard}><div style={s.toggleRow}><div style={s.toggleLabel}>Tu dong phat hien ngon ngu doc hai</div><div style={s.toggleTrack(toggles.toxicLang)} onClick={() => handleToggle('toxicLang')}><div style={s.toggleThumb(toggles.toxicLang)} /></div></div><div style={s.toggleRow}><div style={s.toggleLabel}>Chan IP dang ngo</div><div style={s.toggleTrack(toggles.suspiciousIP)} onClick={() => handleToggle('suspiciousIP')}><div style={s.toggleThumb(toggles.suspiciousIP)} /></div></div><div style={s.toggleRow}><div style={s.toggleLabel}>Yeu cau xac minh 2 buoc</div><div style={s.toggleTrack(toggles.twoFactor)} onClick={() => handleToggle('twoFactor')}><div style={s.toggleThumb(toggles.twoFactor)} /></div></div></div></div>
+      <div style={s.section}><h2 style={s.sectionTitle}>Cảnh báo khẩn cấp</h2>{alerts.map((a) => (<div key={a.id} style={s.alertCard}><span aria-hidden="true" className="material-symbols-outlined" style={s.alertIcon}>warning</span><div><div style={s.alertTitle}>{a.title}</div><div style={s.alertDesc}>{a.desc}</div><button style={s.alertBtn}>Xử lý ngay</button></div></div>))}</div>
+      <div style={s.section}><h2 style={s.sectionTitle}>Danh sách theo dõi</h2><div style={s.table}><div style={s.tableRow(true)}><div></div><div>Tên</div><div>Lý do</div><div>Mức độ</div><div>Ngày</div><div>Hành động</div></div>{watchlist.map((u) => (<div key={u.id} style={s.tableRow(false)}><div style={s.avatar}>{u.avatar}</div><div style={{ fontWeight: 500 }}>{u.name}</div><div style={{ color: '#E6BEB2', fontSize: '13px' }}>{u.reason}</div><div><span style={s.sevChip(u.severity)}>{u.severity}</span></div><div style={{ fontSize: '13px', color: '#E6BEB2' }}>{u.days} ngay</div><div style={s.actionBtns}><button style={s.detailBtn}>Xem chi tiết</button><button style={s.lockBtn}>Giờ khóa</button></div></div>))}</div></div>
+      <div style={s.section}><h2 style={s.sectionTitle}>Quy trình xử lý</h2><div style={s.flowWrap}>{steps.map((step, i) => (<React.Fragment key={i}><div style={s.flowStep}><div style={s.flowCircle}><span aria-hidden="true" className="material-symbols-outlined" style={s.flowIcon}>{step.icon}</span></div><div style={s.flowLabel}>{step.label}</div></div>{i < steps.length - 1 && (<span aria-hidden="true" className="material-symbols-outlined" style={s.flowArrow}>arrow_forward</span>)}</React.Fragment>))}</div></div>
+      <div style={s.section}><h2 style={s.sectionTitle}>Thiết lập</h2><div style={s.settingsCard}><div style={s.toggleRow}><div style={s.toggleLabel}>Tự động phát hiện ngôn ngữ độc hại</div><div style={s.toggleTrack(toggles.toxicLang)} onClick={() => handleToggle('toxicLang')}><div style={s.toggleThumb(toggles.toxicLang)} /></div></div><div style={s.toggleRow}><div style={s.toggleLabel}>Chặn IP đáng ngờ</div><div style={s.toggleTrack(toggles.suspiciousIP)} onClick={() => handleToggle('suspiciousIP')}><div style={s.toggleThumb(toggles.suspiciousIP)} /></div></div><div style={s.toggleRow}><div style={s.toggleLabel}>Yêu cầu xác minh 2 bước</div><div style={s.toggleTrack(toggles.twoFactor)} onClick={() => handleToggle('twoFactor')}><div style={s.toggleThumb(toggles.twoFactor)} /></div></div></div></div>
     </div>
   );
 };

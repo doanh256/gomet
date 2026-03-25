@@ -9,16 +9,16 @@ const rmmKeyframes = `
 `;
 
 const quickActions = [
-  { icon: 'restaurant_menu', label: 'Cap Nhat Menu', color: '#6C63FF' },
-  { icon: 'calendar_month', label: 'Xem Dat Ban', color: '#E8900C' },
-  { icon: 'group', label: 'Lich Nhan Vien', color: '#00C9A7' },
+  { icon: 'restaurant_menu', label: 'Cập Nhật Menu', color: '#6C63FF' },
+  { icon: 'calendar_month', label: 'Xem Đặt Bàn', color: '#E8900C' },
+  { icon: 'group', label: 'Lịch Nhân Viên', color: '#00C9A7' },
 ];
 
 const recentOrders = [
-  { id: '#2847', items: 'Pho Bo x2, Nem Ran x1', total: '185.000', time: '12:34', status: 'Dang lam' },
-  { id: '#2846', items: 'Bun Cha x1, Cha Gio x2', total: '165.000', time: '12:28', status: 'Hoan thanh' },
-  { id: '#2845', items: 'Com Tam x3', total: '210.000', time: '12:15', status: 'Hoan thanh' },
-  { id: '#2844', items: 'Banh Cuon x2, Ca Phe x2', total: '120.000', time: '12:01', status: 'Hoan thanh' },
+  { id: '#2847', items: 'Phở Bò x2, Nem Rán x1', total: '185.000', time: '12:34', status: 'Đang làm' },
+  { id: '#2846', items: 'Bún Chả x1, Chả Giò x2', total: '165.000', time: '12:28', status: 'Hoàn thành' },
+  { id: '#2845', items: 'Cơm Tấm x3', total: '210.000', time: '12:15', status: 'Hoàn thành' },
+  { id: '#2844', items: 'Bánh Cuốn x2, Cà Phê x2', total: '120.000', time: '12:01', status: 'Hoàn thành' },
 ];
 
 const tables = Array.from({ length: 20 }, (_, i) => ({ id: i + 1, occupied: i < 12 }));
@@ -36,8 +36,8 @@ const RestaurantManagerMobilePage = () => {
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#1A1A2E' }}>arrow_back</span>
         </button>
         <div style={{ flex: 1 }}>
-          <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>Nhip Hom Nay</h1>
-          <p style={{ margin: 0, fontSize: 12, color: '#888' }}>Nha hang Pho Thin</p>
+          <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>Nhịp Hôm Nay</h1>
+          <p style={{ margin: 0, fontSize: 12, color: '#888' }}>Nhà hàng Phở Thìn</p>
         </div>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#E8900C' }}>storefront</span>
       </div>
@@ -48,12 +48,12 @@ const RestaurantManagerMobilePage = () => {
           background: 'linear-gradient(135deg, #E8900C, #F5C542)', borderRadius: 20, padding: 24,
           color: '#fff', animation: 'fadeInUp 0.5s ease both'
         }}>
-          <div style={{ fontSize: 13, opacity: 0.9, marginBottom: 4 }}>Doanh thu hom nay</div>
+          <div style={{ fontSize: 13, opacity: 0.9, marginBottom: 4 }}>Doanh thu hôm nay</div>
           <div style={{ fontSize: 32, fontWeight: 900 }}>4.280.000</div>
           <div style={{ fontSize: 14, opacity: 0.9 }}>VND</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 12 }}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>trending_up</span>
-            <span style={{ fontSize: 13, fontWeight: 600 }}>+18% so voi hom qua</span>
+            <span style={{ fontSize: 13, fontWeight: 600 }}>+18% so với hôm qua</span>
           </div>
         </div>
       </div>
@@ -63,9 +63,9 @@ const RestaurantManagerMobilePage = () => {
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 12 }}>
           <h2 style={{ margin: 0, fontSize: 17, fontWeight: 700 }}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#6C63FF' }}>table_restaurant</span>
-            Trang Thai San
+            Trạng Thái Sàn
           </h2>
-          <span style={{ fontSize: 13, color: '#888', fontWeight: 600 }}>12/20 ban</span>
+          <span style={{ fontSize: 13, color: '#888', fontWeight: 600 }}>12/20 bàn</span>
         </div>
         <div style={{
           background: '#fff', borderRadius: 16, padding: 16, boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
@@ -95,8 +95,8 @@ const RestaurantManagerMobilePage = () => {
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#FFD700' }}>toll</span>
           </div>
           <div style={{ flex: 1 }}>
-            <div style={{ fontSize: 14, fontWeight: 700 }}>Vang Milestone</div>
-            <div style={{ fontSize: 12, color: '#888' }}>234 mon da xac thuc thang nay</div>
+            <div style={{ fontSize: 14, fontWeight: 700 }}>Vàng Milestone</div>
+            <div style={{ fontSize: 12, color: '#888' }}>234 món đã xác thực tháng này</div>
           </div>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#ccc' }}>chevron_right</span>
         </div>
@@ -127,7 +127,7 @@ const RestaurantManagerMobilePage = () => {
       <div style={{ padding: '0 16px' }}>
         <h2 style={{ fontSize: 17, fontWeight: 700, marginBottom: 12 }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>receipt_long</span>
-          Don Gan Day
+          Đơn Gần Đây
         </h2>
         {recentOrders.map((o, i) => (
           <div key={i} style={{
@@ -139,14 +139,14 @@ const RestaurantManagerMobilePage = () => {
               <span style={{ fontSize: 14, fontWeight: 700 }}>{o.id}</span>
               <span style={{
                 fontSize: 11, fontWeight: 700, padding: '3px 10px', borderRadius: 10,
-                background: o.status === 'Dang lam' ? 'rgba(232,144,12,0.15)' : 'rgba(0,201,167,0.15)',
-                color: o.status === 'Dang lam' ? '#E8900C' : '#00C9A7'
+                background: o.status === 'Đang làm' ? 'rgba(232,144,12,0.15)' : 'rgba(0,201,167,0.15)',
+                color: o.status === 'Đang làm' ? '#E8900C' : '#00C9A7'
               }}>{o.status}</span>
             </div>
             <div style={{ fontSize: 12, color: '#888', marginBottom: 4 }}>{o.items}</div>
             <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <span style={{ fontSize: 12, color: '#aaa' }}>{o.time}</span>
-              <span style={{ fontSize: 13, fontWeight: 700, color: '#E8900C' }}>{o.total}d</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: '#E8900C' }}>{o.total}đ</span>
             </div>
           </div>
         ))}

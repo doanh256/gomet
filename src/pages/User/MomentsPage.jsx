@@ -3,28 +3,28 @@ import { useNavigate } from 'react-router-dom';
 
 const moments = [
   {
-    id: 1, user: 'Linh Chi', avatar: '👩', caption: 'Pho bo truyen thong Ha Noi, nuoc dung ninh xuong 12 tieng thom nuc mui...',
-    dish: 'Pho Bo', restaurant: 'Pho Thin Lo Duc', likes: 1243, comments: 89, shares: 34,
+    id: 1, user: 'Linh Chi', avatar: '👩', caption: 'Phở bò truyền thống Hà Nội, nước dùng ninh xương 12 tiếng thơm nức mũi...',
+    dish: 'Phở Bò', restaurant: 'Phở Thìn Lò Đúc', likes: 1243, comments: 89, shares: 34,
     gradient: 'linear-gradient(135deg, #FFB59E 0%, #FF571A 100%)', emoji: '🍜', tried: false,
   },
   {
-    id: 2, user: 'Duc Minh', avatar: '👨', caption: 'Banh mi Sai Gon gion rum, nhan dac biet voi pa-te va thit nguoi...',
-    dish: 'Banh Mi', restaurant: 'Banh Mi Huynh Hoa', likes: 987, comments: 56, shares: 22,
+    id: 2, user: 'Đức Minh', avatar: '👨', caption: 'Bánh mì Sài Gòn giòn rụm, nhân đặc biệt với pa-tê và thịt nguội...',
+    dish: 'Bánh Mì', restaurant: 'Bánh Mì Huỳnh Hoa', likes: 987, comments: 56, shares: 22,
     gradient: 'linear-gradient(135deg, #FFD54F 0%, #FF8F00 100%)', emoji: '🥖', tried: false,
   },
   {
-    id: 3, user: 'Thu Ha', avatar: '👩', caption: 'Ca phe trung Ha Noi, beo ngay thom nong, ngoi ngam pho co chieu dong...',
-    dish: 'Ca Phe Trung', restaurant: 'Cafe Giang', likes: 2105, comments: 134, shares: 67,
+    id: 3, user: 'Thu Hà', avatar: '👩', caption: 'Cà phê trứng Hà Nội, béo ngậy thơm nóng, ngồi ngắm phố cổ chiều đông...',
+    dish: 'Cà Phê Trứng', restaurant: 'Cafe Giang', likes: 2105, comments: 134, shares: 67,
     gradient: 'linear-gradient(135deg, #8D6E63 0%, #4E342E 100%)', emoji: '☕', tried: true,
   },
   {
-    id: 4, user: 'Hoang Nam', avatar: '👨', caption: 'Bun bo Hue cay nong dam da, thit bo mem, gia vi hue dac trung...',
-    dish: 'Bun Bo Hue', restaurant: 'Bun Bo Ba Tuyet', likes: 756, comments: 42, shares: 15,
+    id: 4, user: 'Hoàng Nam', avatar: '👨', caption: 'Bún bò Huế cay nóng đậm đà, thịt bò mềm, gia vị Huế đặc trưng...',
+    dish: 'Bún Bò Huế', restaurant: 'Bún Bò Bà Tuyết', likes: 756, comments: 42, shares: 15,
     gradient: 'linear-gradient(135deg, #EF5350 0%, #B71C1C 100%)', emoji: '🌶️', tried: false,
   },
   {
-    id: 5, user: 'Mai Phuong', avatar: '👩', caption: 'Com tam suon bi cha Sai Gon, hat com tam deo vua, suon nuong thom lung...',
-    dish: 'Com Tam', restaurant: 'Com Tam Ba Ghien', likes: 1567, comments: 98, shares: 45,
+    id: 5, user: 'Mai Phương', avatar: '👩', caption: 'Cơm tấm sườn bì chả Sài Gòn, hạt cơm tấm dẻo vừa, sườn nướng thơm lừng...',
+    dish: 'Cơm Tấm', restaurant: 'Cơm Tấm Bà Ghiền', likes: 1567, comments: 98, shares: 45,
     gradient: 'linear-gradient(135deg, #FFA726 0%, #E65100 100%)', emoji: '🍚', tried: false,
   },
 ];

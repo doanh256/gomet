@@ -10,7 +10,7 @@ const recentSparks = [
 
 const steps = [
   { num: 1, icon: 'queue', label: 'Vào hàng đợi' },
-  { num: 2, icon: 'videocam', label: '5 phút hẹn đó' },
+  { num: 2, icon: 'videocam', label: '5 phút hẹn hò' },
   { num: 3, icon: 'handshake', label: 'Quyết định kết nối' },
 ];
 

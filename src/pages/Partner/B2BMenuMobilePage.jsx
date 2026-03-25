@@ -12,22 +12,22 @@ const categories = ['Khai vi', 'Mon chinh', 'Trang mieng', 'Nuoc uong'];
 
 const menuItems = {
   0: [
-    { name: 'Nem Ran', price: '45.000', sold: 128, img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=120&h=120&fit=crop', soldOut: false },
-    { name: 'Goi Cuon Tom', price: '55.000', sold: 96, img: 'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=120&h=120&fit=crop', soldOut: false },
-    { name: 'Cha Gio Re', price: '40.000', sold: 74, img: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=120&h=120&fit=crop', soldOut: true },
+    { name: 'Nem Rán', price: '45.000', sold: 128, img: 'https://images.unsplash.com/photo-1544025162-d76694265947?w=120&h=120&fit=crop', soldOut: false },
+    { name: 'Gỏi Cuốn Tôm', price: '55.000', sold: 96, img: 'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=120&h=120&fit=crop', soldOut: false },
+    { name: 'Chả Giò Rế', price: '40.000', sold: 74, img: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=120&h=120&fit=crop', soldOut: true },
   ],
   1: [
-    { name: 'Pho Bo Dac Biet', price: '85.000', sold: 312, img: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=120&h=120&fit=crop', soldOut: false },
-    { name: 'Bun Cha Ha Noi', price: '75.000', sold: 245, img: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=120&h=120&fit=crop', soldOut: false },
-    { name: 'Com Tam Suon Bi', price: '70.000', sold: 189, img: 'https://images.unsplash.com/photo-1569058242567-93de6f36f8eb?w=120&h=120&fit=crop', soldOut: false },
+    { name: 'Phở Bò Đặc Biệt', price: '85.000', sold: 312, img: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=120&h=120&fit=crop', soldOut: false },
+    { name: 'Bún Chả Hà Nội', price: '75.000', sold: 245, img: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=120&h=120&fit=crop', soldOut: false },
+    { name: 'Cơm Tấm Sườn Bì', price: '70.000', sold: 189, img: 'https://images.unsplash.com/photo-1569058242567-93de6f36f8eb?w=120&h=120&fit=crop', soldOut: false },
   ],
   2: [
-    { name: 'Che Ba Mau', price: '35.000', sold: 67, img: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=120&h=120&fit=crop', soldOut: false },
-    { name: 'Banh Flan', price: '30.000', sold: 54, img: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=120&h=120&fit=crop', soldOut: false },
+    { name: 'Chè Ba Màu', price: '35.000', sold: 67, img: 'https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=120&h=120&fit=crop', soldOut: false },
+    { name: 'Bánh Flan', price: '30.000', sold: 54, img: 'https://images.unsplash.com/photo-1488477181946-6428a0291777?w=120&h=120&fit=crop', soldOut: false },
   ],
   3: [
-    { name: 'Ca Phe Sua Da', price: '35.000', sold: 410, img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefda?w=120&h=120&fit=crop', soldOut: false },
-    { name: 'Tra Da', price: '10.000', sold: 380, img: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=120&h=120&fit=crop', soldOut: false },
+    { name: 'Cà Phê Sữa Đá', price: '35.000', sold: 410, img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefda?w=120&h=120&fit=crop', soldOut: false },
+    { name: 'Trà Đá', price: '10.000', sold: 380, img: 'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=120&h=120&fit=crop', soldOut: false },
   ],
 };
 
@@ -49,7 +49,7 @@ const B2BMenuMobilePage = () => {
         <div style={{ flex: 1 }}>
           <h1 style={{ margin: 0, fontSize: 20, fontWeight: 700 }}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, verticalAlign: 'middle', marginRight: 6, color: '#E8900C' }}>restaurant_menu</span>
-            Quan Ly Menu
+            Quản Lý Menu
           </h1>
         </div>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#888' }}>more_vert</span>

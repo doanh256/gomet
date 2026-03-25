@@ -274,7 +274,7 @@ const RegionalExplorePage = () => {
 
       <button style={s.backBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
-        Quay lai
+        Quay lại
       </button>
 
       <div style={s.headerPill}>
@@ -336,7 +336,7 @@ const RegionalExplorePage = () => {
                   <div style={s.progressTrack}>
                     <div style={s.progressFill(pct, r.color)} />
                   </div>
-                  <span style={s.progressLabel}>{r.tried}/{r.total} mon</span>
+                  <span style={s.progressLabel}>{r.tried}/{r.total} món</span>
                 </div>
                 <button style={s.exploreBtn} onClick={() => navigate(`/app/regional/${r.id}`)}>
                   Khám phá

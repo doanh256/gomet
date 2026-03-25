@@ -506,7 +506,7 @@ const MyDatesPage = () => {
                                     }}
                                   >
                                     <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>person</span>
-                                    Xem Trang Cá
+                                    Xem Trang Cá Nhân
                                   </button>
                                   <button
                                     onClick={() => handleReject(app.id)}

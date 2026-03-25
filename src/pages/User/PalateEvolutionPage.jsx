@@ -27,11 +27,11 @@ const monthlyData = [
 ];
 
 const topDishes = [
-  { name: 'Pho Bo Ha Noi', restaurant: 'Pho Thin', tries: 18, img: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=80&h=80&fit=crop' },
-  { name: 'Bun Cha Dac Kim', restaurant: 'Bun Cha 34', tries: 14, img: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=80&h=80&fit=crop' },
-  { name: 'Banh Mi Sai Gon', restaurant: 'Banh Mi Huynh Hoa', tries: 12, img: 'https://images.unsplash.com/photo-1600454021915-de753e6b5dfe?w=80&h=80&fit=crop' },
-  { name: 'Com Tam Suon Bi', restaurant: 'Com Tam Ba Ghien', tries: 11, img: 'https://images.unsplash.com/photo-1569058242567-93de6f36f8eb?w=80&h=80&fit=crop' },
-  { name: 'Cao Lau Hoi An', restaurant: 'Cao Lau Thanh', tries: 9, img: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=80&h=80&fit=crop' },
+  { name: 'Phở Bò Hà Nội', restaurant: 'Phở Thìn', tries: 18, img: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=80&h=80&fit=crop' },
+  { name: 'Bún Chả Đắc Kim', restaurant: 'Bún Chả 34', tries: 14, img: 'https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=80&h=80&fit=crop' },
+  { name: 'Bánh Mì Sài Gòn', restaurant: 'Bánh Mì Huỳnh Hoa', tries: 12, img: 'https://images.unsplash.com/photo-1600454021915-de753e6b5dfe?w=80&h=80&fit=crop' },
+  { name: 'Cơm Tấm Sườn Bì', restaurant: 'Cơm Tấm Bà Ghiền', tries: 11, img: 'https://images.unsplash.com/photo-1569058242567-93de6f36f8eb?w=80&h=80&fit=crop' },
+  { name: 'Cao Lầu Hội An', restaurant: 'Cao Lầu Thanh', tries: 9, img: 'https://images.unsplash.com/photo-1555126634-323283e090fa?w=80&h=80&fit=crop' },
 ];
 
 const maxMonthly = Math.max(...monthlyData.map(d => d.value));
@@ -133,17 +133,41 @@ const PalateEvolutionPage = () => {
           <span aria-hidden="true" className="material-symbols-outlined" style={{ position: 'absolute', top: -10, right: -10, fontSize: 100, opacity: 0.15 }}>map</span>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22 }}>location_on</span>
-            <span style={{ fontSize: 13, fontWeight: 600, opacity: 0.9 }}>Vung Kham Pha Nhieu Nhat</span>
+            <span style={{ fontSize: 13, fontWeight: 600, opacity: 0.9 }}>Vùng Khám Phá Nhiều Nhất</span>
           </div>
           <div style={{ fontSize: 24, fontWeight: 800, marginBottom: 4 }}>Quan 1, TP.HCM</div>
-          <div style={{ fontSize: 13, opacity: 0.9 }}>78 mon an tai 23 nha hang</div>
+          <div style={{ fontSize: 13, opacity: 0.9 }}>78 món ăn tại 23 nhà hàng</div>
           <div style={{
             marginTop: 12, display: 'inline-flex', alignItems: 'center', gap: 6,
             background: 'rgba(255,255,255,0.25)', borderRadius: 20, padding: '6px 14px'
           }}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>military_tech</span>
-            <span style={{ fontSize: 12, fontWeight: 700 }}>Nha Tham Hiem Quan 1</span>
+            <span style={{ fontSize: 12, fontWeight: 700 }}>Nhà Thám Hiểm Quận 1</span>
           </div>
+        </div>
+      </div>
+
+      {/* World Food Map CTA */}
+      <div style={{ padding: '0 16px', marginBottom: 16 }}>
+        <div
+          onClick={() => navigate('/app/world-food-map')}
+          style={{
+            background: 'linear-gradient(135deg, #0D0D1A, #1a1040)',
+            borderRadius: 20, padding: 20, cursor: 'pointer',
+            display: 'flex', alignItems: 'center', gap: 16,
+            border: '1px solid rgba(232,144,12,0.3)',
+          }}
+        >
+          <span style={{ fontSize: 40 }}>🌍</span>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontSize: 14, fontWeight: 700, color: '#FDF9F3', marginBottom: 4 }}>
+              Bản đồ Ẩm thực Thế giới
+            </div>
+            <div style={{ fontSize: 12, color: '#E6BEB2' }}>
+              Sưu tầm món từ 18+ quốc gia · Trở thành chuyên gia
+            </div>
+          </div>
+          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: '#E8900C' }}>arrow_forward</span>
         </div>
       </div>
 
@@ -152,10 +176,11 @@ const PalateEvolutionPage = () => {
         <button style={{
           width: '100%', padding: '16px 0', borderRadius: 16, border: 'none', cursor: 'pointer',
           background: 'linear-gradient(135deg, #E8900C, #F5C542)', color: '#fff',
-          fontSize: 16, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
+          fontSize: 16, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+          fontFamily: 'var(--font-body)',
         }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>share</span>
-          Chia Se Bao Cao
+          Chia sẻ báo cáo
         </button>
       </div>
     </div>

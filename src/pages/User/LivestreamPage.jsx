@@ -8,9 +8,9 @@ const LivestreamPage = () => {
   const [showEventInfo, setShowEventInfo] = useState(false);
   const [chatMessages, setChatMessages] = useState([
     { id: 1, user: 'Minh Anh', avatar: '🧑', msg: 'Wow sự kiện tuyệt vời quá!' },
-    { id: 2, user: 'Hoang Nam', avatar: '👨', msg: 'Ai ở Sài Gòn không, gặp nhau đi' },
-    { id: 3, user: 'Thu Huong', avatar: '👩', msg: 'Nhạc hay quá mọi người ơi ❤️' },
-    { id: 4, user: 'Duc Thinh', avatar: '🧔', msg: 'Lần đầu tham gia, vui thật' },
+    { id: 2, user: 'Hoàng Nam', avatar: '👨', msg: 'Ai ở Sài Gòn không, gặp nhau đi' },
+    { id: 3, user: 'Thu Hương', avatar: '👩', msg: 'Nhạc hay quá mọi người ơi ❤️' },
+    { id: 4, user: 'Đức Thịnh', avatar: '🧔', msg: 'Lần đầu tham gia, vui thật' },
     { id: 5, user: 'Linh Chi', avatar: '👧', msg: 'Có ai muốn làm bạn không 😊' },
   ]);
 

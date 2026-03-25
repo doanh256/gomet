@@ -18,11 +18,78 @@ const MapExplorePage = () => {
         <div style={{ width: 24 }} />
       </div>
       <div style={{ maxWidth: 540, margin: '0 auto', padding: '0 16px 100px' }}>
-        <div style={{ width: '100%', height: 400, backgroundColor: '#2A2A2A', borderRadius: '1.5rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', margin: '16px 0', position: 'relative', overflow: 'hidden' }}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 56, color: '#E6BEB2', opacity: 0.5 }}>place</span>
-          <p style={{ fontSize: 14, color: '#E6BEB2', marginTop: 8 }}>Bản đồ đang tải...</p>
-          {[...Array(5)].map((_, i) => (<div key={`h${i}`} style={{ position: 'absolute', top: `${20 + i * 20}%`, left: 0, right: 0, height: 1, background: '#353535', opacity: 0.3 }} />))}
-          {[...Array(5)].map((_, i) => (<div key={`v${i}`} style={{ position: 'absolute', left: `${20 + i * 20}%`, top: 0, bottom: 0, width: 1, background: '#353535', opacity: 0.3 }} />))}
+        <div style={{ width: '100%', height: 400, borderRadius: '1.5rem', margin: '16px 0', position: 'relative', overflow: 'hidden', background: '#1a2535' }}>
+          {/* Static map background */}
+          <svg width="100%" height="100%" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            {/* Base roads */}
+            <rect width="400" height="400" fill="#1a2535"/>
+            {/* Blocks */}
+            <rect x="0" y="60" width="110" height="80" fill="#1e2d40" rx="2"/>
+            <rect x="130" y="60" width="90" height="80" fill="#1e2d40" rx="2"/>
+            <rect x="240" y="60" width="160" height="80" fill="#1e2d40" rx="2"/>
+            <rect x="0" y="170" width="70" height="100" fill="#1e2d40" rx="2"/>
+            <rect x="90" y="170" width="130" height="100" fill="#1e2d40" rx="2"/>
+            <rect x="240" y="170" width="80" height="100" fill="#1e2d40" rx="2"/>
+            <rect x="340" y="170" width="60" height="100" fill="#1e2d40" rx="2"/>
+            <rect x="0" y="300" width="120" height="100" fill="#1e2d40" rx="2"/>
+            <rect x="140" y="300" width="100" height="100" fill="#1e2d40" rx="2"/>
+            <rect x="260" y="300" width="140" height="100" fill="#1e2d40" rx="2"/>
+            {/* Main roads */}
+            <rect x="110" y="0" width="20" height="400" fill="#243347"/>
+            <rect x="220" y="0" width="20" height="400" fill="#243347"/>
+            <rect x="320" y="0" width="20" height="400" fill="#243347"/>
+            <rect x="0" y="140" width="400" height="18" fill="#243347"/>
+            <rect x="0" y="270" width="400" height="18" fill="#243347"/>
+            {/* Road center lines */}
+            <line x1="120" y1="0" x2="120" y2="400" stroke="#2e4060" strokeWidth="1" strokeDasharray="8,8"/>
+            <line x1="230" y1="0" x2="230" y2="400" stroke="#2e4060" strokeWidth="1" strokeDasharray="8,8"/>
+            <line x1="0" y1="149" x2="400" y2="149" stroke="#2e4060" strokeWidth="1" strokeDasharray="8,8"/>
+            <line x1="0" y1="279" x2="400" y2="279" stroke="#2e4060" strokeWidth="1" strokeDasharray="8,8"/>
+            {/* Park */}
+            <circle cx="330" cy="215" r="35" fill="#1a3020" opacity="0.8"/>
+            <circle cx="330" cy="215" r="28" fill="#1e3a24" opacity="0.8"/>
+            <text x="330" y="220" textAnchor="middle" fill="#2a6040" fontSize="10" fontFamily="sans-serif">🌿</text>
+            {/* Water */}
+            <ellipse cx="60" cy="370" rx="55" ry="25" fill="#1a2a45" opacity="0.9"/>
+            {/* Venue pins */}
+            <g transform="translate(180,200)">
+              <circle cx="0" cy="0" r="18" fill="#FF571A" opacity="0.25"/>
+              <circle cx="0" cy="0" r="10" fill="#FF571A"/>
+              <text x="0" y="4" textAnchor="middle" fill="white" fontSize="10" fontFamily="sans-serif">🍽</text>
+            </g>
+            <g transform="translate(80,110)">
+              <circle cx="0" cy="0" r="14" fill="#FFB59E" opacity="0.25"/>
+              <circle cx="0" cy="0" r="8" fill="#FFB59E"/>
+              <text x="0" y="3" textAnchor="middle" fill="#3A0B00" fontSize="9" fontFamily="sans-serif">☕</text>
+            </g>
+            <g transform="translate(290,110)">
+              <circle cx="0" cy="0" r="14" fill="#FFD54F" opacity="0.25"/>
+              <circle cx="0" cy="0" r="8" fill="#FFD54F"/>
+              <text x="0" y="3" textAnchor="middle" fill="#3A0B00" fontSize="9" fontFamily="sans-serif">🍸</text>
+            </g>
+            <g transform="translate(160,320)">
+              <circle cx="0" cy="0" r="14" fill="#117500" opacity="0.25"/>
+              <circle cx="0" cy="0" r="8" fill="#117500"/>
+              <text x="0" y="3" textAnchor="middle" fill="white" fontSize="9" fontFamily="sans-serif">🎉</text>
+            </g>
+            {/* You are here */}
+            <g transform="translate(200,200)">
+              <circle cx="0" cy="0" r="22" fill="#FF571A" opacity="0.15"/>
+              <circle cx="0" cy="0" r="14" fill="#FF571A" opacity="0.25"/>
+              <circle cx="0" cy="0" r="7" fill="#FF571A"/>
+              <circle cx="0" cy="0" r="3" fill="white"/>
+            </g>
+          </svg>
+          {/* Overlay label */}
+          <div style={{ position: 'absolute', bottom: 12, left: 12, right: 12, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <div style={{ background: 'rgba(19,19,19,0.85)', backdropFilter: 'blur(8px)', borderRadius: '9999px', padding: '6px 14px', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16, color: '#FF571A' }}>my_location</span>
+              <span style={{ fontSize: 12, fontWeight: 600, color: '#FDF9F3', fontFamily: 'Inter, sans-serif' }}>TP. Hồ Chí Minh</span>
+            </div>
+            <div style={{ background: 'rgba(19,19,19,0.85)', backdropFilter: 'blur(8px)', borderRadius: '9999px', padding: '6px 14px' }}>
+              <span style={{ fontSize: 12, fontWeight: 600, color: '#FFB59E', fontFamily: 'Inter, sans-serif' }}>{venues.length} địa điểm</span>
+            </div>
+          </div>
         </div>
         <div style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '16px 18px', marginBottom: 16 }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}><span style={{ fontSize: 14, fontWeight: 600, color: '#FDF9F3' }}>Bán kính</span><span style={{ background: '#FF571A30', color: '#FFB59E', borderRadius: '9999px', padding: '4px 12px', fontSize: 13, fontWeight: 700 }}>{radius} km</span></div>
@@ -34,7 +101,7 @@ const MapExplorePage = () => {
         </div>
         <h2 style={{ fontFamily: 'var(--font-headline)', fontSize: 16, fontWeight: 700, marginBottom: 12, color: '#FDF9F3' }}>Kết quả gần bạn</h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 28 }}>
-          {venues.map((v, i) => { const cat = categoryColors[v.category] || categoryColors['Su kien']; return (<div key={i} style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '16px' }}><div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}><div><h3 style={{ fontSize: 15, fontWeight: 700, color: '#FDF9F3', marginBottom: 6 }}>{v.name}</h3><div style={{ display: 'flex', alignItems: 'center', gap: 8 }}><span style={{ background: cat.bg, color: cat.color, borderRadius: '9999px', padding: '3px 10px', fontSize: 11, fontWeight: 600 }}>{v.category}</span><div style={{ display: 'flex', alignItems: 'center', gap: 3, fontSize: 13, color: '#E6BEB2' }}><span className="material-symbols-outlined filled" style={{ fontSize: 16, color: '#FFD54F' }}>star</span>{v.rating}</div></div></div><span style={{ background: '#FFB59E30', color: '#FFB59E', borderRadius: '9999px', padding: '4px 10px', fontSize: 12, fontWeight: 700, whiteSpace: 'nowrap' }}>{v.distance}</span></div><div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 13, color: '#E6BEB2', marginBottom: 12 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>{v.address}</div><div style={{ display: 'flex', gap: 8 }}><button style={{ flex: 1, padding: '9px 0', borderRadius: '1.5rem', border: 'none', background: '#2A2A2A', color: '#FFB59E', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, fontFamily: 'var(--font-body)' }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>directions</span>Chỉ đường</button><button onClick={() => navigate(`/venue/${i + 1}`)} style={{ flex: 1, padding: '9px 0', borderRadius: '1.5rem', border: 'none', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#3A0B00', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, fontFamily: 'var(--font-body)' }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>visibility</span>Xem</button></div></div>); })}
+          {venues.map((v, i) => { const cat = categoryColors[v.category] || categoryColors['Sự kiện']; return (<div key={i} style={{ background: '#1C1B1B', borderRadius: '1.5rem', padding: '16px' }}><div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 8 }}><div><h3 style={{ fontSize: 15, fontWeight: 700, color: '#FDF9F3', marginBottom: 6 }}>{v.name}</h3><div style={{ display: 'flex', alignItems: 'center', gap: 8 }}><span style={{ background: cat.bg, color: cat.color, borderRadius: '9999px', padding: '3px 10px', fontSize: 11, fontWeight: 600 }}>{v.category}</span><div style={{ display: 'flex', alignItems: 'center', gap: 3, fontSize: 13, color: '#E6BEB2' }}><span className="material-symbols-outlined filled" style={{ fontSize: 16, color: '#FFD54F' }}>star</span>{v.rating}</div></div></div><span style={{ background: '#FFB59E30', color: '#FFB59E', borderRadius: '9999px', padding: '4px 10px', fontSize: 12, fontWeight: 700, whiteSpace: 'nowrap' }}>{v.distance}</span></div><div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 13, color: '#E6BEB2', marginBottom: 12 }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>{v.address}</div><div style={{ display: 'flex', gap: 8 }}><button style={{ flex: 1, padding: '9px 0', borderRadius: '1.5rem', border: 'none', background: '#2A2A2A', color: '#FFB59E', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, fontFamily: 'var(--font-body)' }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>directions</span>Chỉ đường</button><button onClick={() => navigate(`/venue/${i + 1}`)} style={{ flex: 1, padding: '9px 0', borderRadius: '1.5rem', border: 'none', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#3A0B00', fontSize: 13, fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4, fontFamily: 'var(--font-body)' }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>visibility</span>Xem</button></div></div>); })}
         </div>
         <h2 style={{ fontFamily: 'var(--font-headline)', fontSize: 16, fontWeight: 700, marginBottom: 12, color: '#FDF9F3' }}>Sự kiện gần đây</h2>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>

@@ -2,30 +2,30 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const restaurants = [
-  { id: 1, name: 'Pho Thin', address: '13 Lo Duc, Ha Noi', rating: 4.8, price: '50,000d' },
-  { id: 2, name: 'Pho Gia Truyen', address: '49 Bat Dan, Ha Noi', rating: 4.6, price: '45,000d' },
-  { id: 3, name: 'Pho 10 Ly Quoc Su', address: '10 Ly Quoc Su, Ha Noi', rating: 4.5, price: '55,000d' },
+  { id: 1, name: 'Phở Thìn', address: '13 Lò Đúc, Hà Nội', rating: 4.8, price: '50.000đ' },
+  { id: 2, name: 'Phở Gia Truyền', address: '49 Bát Đàn, Hà Nội', rating: 4.6, price: '45.000đ' },
+  { id: 3, name: 'Phở 10 Lý Quốc Sư', address: '10 Lý Quốc Sư, Hà Nội', rating: 4.5, price: '55.000đ' },
 ];
 
 const reviews = [
-  { id: 1, name: 'Thanh Tung', rating: 5, text: 'Nuoc dung dam da, banh pho mem. Tuyet voi!', date: '20/03' },
-  { id: 2, name: 'Ngoc Anh', rating: 4, text: 'Thit bo tai chin rat ngon, phan luong vua du.', date: '18/03' },
-  { id: 3, name: 'Minh Duc', rating: 5, text: 'Pho ngon nhat toi tung an, se quay lai!', date: '15/03' },
+  { id: 1, name: 'Thành Tùng', rating: 5, text: 'Nước dùng đậm đà, bánh phở mềm. Tuyệt vời!', date: '20/03' },
+  { id: 2, name: 'Ngọc Anh', rating: 4, text: 'Thịt bò tái chín rất ngon, phần lượng vừa đủ.', date: '18/03' },
+  { id: 3, name: 'Minh Đức', rating: 5, text: 'Phở ngon nhất tôi từng ăn, sẽ quay lại!', date: '15/03' },
 ];
 
 const nutritionInfo = [
   { label: 'Calo', value: '350 kcal' },
   { label: 'Protein', value: '25g' },
   { label: 'Carbs', value: '42g' },
-  { label: 'Chat beo', value: '8g' },
-  { label: 'Chat xo', value: '2g' },
+  { label: 'Chất béo', value: '8g' },
+  { label: 'Chất xơ', value: '2g' },
 ];
 
 const relatedDishes = [
-  { id: 1, name: 'Bun bo Hue', region: 'Trung Bo', color: '#2196F3' },
-  { id: 2, name: 'Hu tieu', region: 'Nam Bo', color: '#00BCD4' },
-  { id: 3, name: 'Bun rieu', region: 'Bac Bo', color: '#FF9800' },
-  { id: 4, name: 'Mi Quang', region: 'Trung Bo', color: '#FF5722' },
+  { id: 1, name: 'Bún bò Huế', region: 'Trung Bộ', color: '#2196F3' },
+  { id: 2, name: 'Hủ tiếu', region: 'Nam Bộ', color: '#00BCD4' },
+  { id: 3, name: 'Bún riêu', region: 'Bắc Bộ', color: '#FF9800' },
+  { id: 4, name: 'Mì Quảng', region: 'Trung Bộ', color: '#FF5722' },
 ];
 
 const DishDetailPage = () => {
@@ -181,16 +181,16 @@ const DishDetailPage = () => {
       </div>
 
       <div style={s.body}>
-        <div style={s.dishName}>Pho Bo Ha Noi</div>
+        <div style={s.dishName}>Phở Bò Hà Nội</div>
 
         <div style={s.metaRow}>
           <div style={s.metaItem}>
             <span aria-hidden="true" className="material-symbols-outlined" style={s.metaIcon}>location_on</span>
-            Dong bang song Hong
+            Đồng bằng sông Hồng
           </div>
           <div style={s.vangBadge}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
-            +30 VANG
+            +30 VÀNG
           </div>
         </div>
 
@@ -199,7 +199,7 @@ const DishDetailPage = () => {
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>
             {tried ? 'check_circle' : 'add_circle'}
           </span>
-          {tried ? 'Da thu!' : 'Danh dau da thu'}
+          {tried ? 'Đã thử!' : 'Đánh dấu đã thử'}
         </button>
 
         {/* Vang Credibility Badge */}
@@ -217,14 +217,14 @@ const DishDetailPage = () => {
         {/* Flavor Profile */}
         <div style={s.sectionTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>equalizer</span>
-          Flavor Profile
+          Hương vị đặc trưng
         </div>
         <div style={{ backgroundColor: '#ffffff', borderRadius: '1rem', padding: '20px', marginBottom: 28, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
           {[
-            { name: 'Sweet', pct: 85 },
-            { name: 'Salty', pct: 42 },
+            { name: 'Ngọt', pct: 85 },
+            { name: 'Mặn', pct: 42 },
             { name: 'Umami', pct: 78 },
-            { name: 'Sour', pct: 35 },
+            { name: 'Chua', pct: 35 },
           ].map(f => (
             <div key={f.name} style={{ marginBottom: 14 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
@@ -241,7 +241,7 @@ const DishDetailPage = () => {
         {/* Restaurant Recommendations */}
         <div style={s.sectionTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>storefront</span>
-          Tim o dau
+          Tìm ở đâu
         </div>
         {restaurants.map(r => (
           <div key={r.id} style={s.restaurantCard}>
@@ -265,7 +265,7 @@ const DishDetailPage = () => {
         {/* Critics Circle */}
         <div style={{ ...s.sectionTitle, marginTop: 28 }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>forum</span>
-          Critics Circle
+          Nhận xét cộng đồng
         </div>
         {reviews.map(rv => (
           <div key={rv.id} style={s.reviewCard}>
@@ -287,7 +287,7 @@ const DishDetailPage = () => {
           <button style={s.nutritionToggle} onClick={() => setNutritionOpen(!nutritionOpen)}>
             <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FF571A' }}>nutrition</span>
-              Thong tin dinh duong
+              Thông tin dinh dưỡng
             </span>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>
               {nutritionOpen ? 'expand_less' : 'expand_more'}
@@ -308,18 +308,18 @@ const DishDetailPage = () => {
         {/* Discovery Map */}
         <div style={{ ...s.sectionTitle, marginTop: 16 }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>explore</span>
-          Ban do kham pha
+          Bản đồ khám phá
         </div>
         <div style={s.mapSection}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.mapIcon}>map</span>
-          <div style={s.mapLabel}>Xuat xu</div>
-          <div style={s.mapRegion}>Dong bang song Hong</div>
+          <div style={s.mapLabel}>Xuất xứ</div>
+          <div style={s.mapRegion}>Đồng bằng sông Hồng</div>
         </div>
 
         {/* Related Dishes */}
         <div style={s.sectionTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>apps</span>
-          Mon tuong tu
+          Món tương tự
         </div>
         <div style={s.relatedScroll}>
           {relatedDishes.map(d => (

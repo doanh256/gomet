@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 
 const squadMembers = [
   { id: 1, name: 'Linh Chi', avatar: '👩', compatibility: 95, taste: 'Spicy lover' },
-  { id: 2, name: 'Duc Minh', avatar: '👨', compatibility: 88, taste: 'Umami seeker' },
-  { id: 3, name: 'Thu Ha', avatar: '👩', compatibility: 92, taste: 'Sweet tooth' },
-  { id: 4, name: 'Hoang Nam', avatar: '👨', compatibility: 85, taste: 'Sour fan' },
-  { id: 5, name: 'Mai Phuong', avatar: '👩', compatibility: 91, taste: 'All-rounder' },
+  { id: 2, name: 'Đức Minh', avatar: '👨', compatibility: 88, taste: 'Umami seeker' },
+  { id: 3, name: 'Thu Hà', avatar: '👩', compatibility: 92, taste: 'Sweet tooth' },
+  { id: 4, name: 'Hoàng Nam', avatar: '👨', compatibility: 85, taste: 'Sour fan' },
+  { id: 5, name: 'Mai Phương', avatar: '👩', compatibility: 91, taste: 'All-rounder' },
 ];
 
 const aiVenueRec = {

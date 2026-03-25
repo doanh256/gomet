@@ -51,9 +51,9 @@ const ReviewDesktopPage = () => {
             background: '#ffffff', borderRadius: 20, padding: 20,
             border: '1px solid rgba(0,0,0,0.06)', boxShadow: '0 2px 12px rgba(0,0,0,0.06)'
           }}>
-            <h3 style={{ margin: '0 0 8px', fontSize: 20, fontWeight: 800 }}>Pho Bo Ha Noi</h3>
-            <div style={{ fontSize: 14, color: '#888', marginBottom: 4 }}>Pho Thin - 13 Lo Duc</div>
-            <div style={{ fontSize: 13, color: '#666' }}>Quan Hai Ba Trung, Ha Noi</div>
+            <h3 style={{ margin: '0 0 8px', fontSize: 20, fontWeight: 800 }}>Phở Bò Hà Nội</h3>
+            <div style={{ fontSize: 14, color: '#888', marginBottom: 4 }}>Phở Thìn - 13 Lò Đúc</div>
+            <div style={{ fontSize: 13, color: '#666' }}>Quận Hai Bà Trưng, Hà Nội</div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 12 }}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#F5C542' }}>star</span>
               <span style={{ fontSize: 15, fontWeight: 700 }}>4.8</span>

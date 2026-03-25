@@ -8,13 +8,13 @@ const MOCK_VENUE = {
   verified: true,
   cuisine: 'Au - Viet fusion',
   priceRange: '$$',
-  location: '45 Le Loi, Quan 1, TP.HCM',
+  location: '45 Lê Lợi, Quận 1, TP.HCM',
   description:
     'Nhà hàng phong cách hiện đại kết hợp ẩm thực Âu - Việt, không gian ấm cúng thích hợp cho những buổi hẹn hò lãng mạn. Menu được thiết kế bởi đầu bếp từ Paris với nguyên liệu địa phương tươi ngon. Không gian ngoài trời với tầm nhìn thành phố tuyệt đẹp.',
   menu: [
-    { id: 1, name: 'Bo Wagyu Sot Truffle', price: '680.000', image: null },
-    { id: 2, name: 'Risotto Nam Rung', price: '320.000', image: null },
-    { id: 3, name: 'Banh Creme Brulee Matcha', price: '180.000', image: null },
+    { id: 1, name: 'Bò Wagyu Sốt Truffle', price: '680.000', image: null },
+    { id: 2, name: 'Risotto Nấm Rừng', price: '320.000', image: null },
+    { id: 3, name: 'Bánh Crème Brûlée Matcha', price: '180.000', image: null },
   ],
   reviews: [
     { id: 1, name: 'Linh Chi', rating: 5, text: 'Không gian rất đẹp, đồ ăn ngon, nhân viên nhiệt tình. Sẽ quay lại!' },
@@ -22,10 +22,10 @@ const MOCK_VENUE = {
     { id: 3, name: 'Thảo Nhi', rating: 5, text: 'Buổi hẹn hò hoàn hảo! Ánh sáng đẹp, nhạc nhẹ nhàng, món tráng miệng siêu ngon.' },
   ],
   hours: [
-    { day: 'Thu 2 - Thu 5', time: '11:00 - 22:00' },
-    { day: 'Thu 6', time: '11:00 - 23:00' },
-    { day: 'Thu 7', time: '10:00 - 23:00' },
-    { day: 'Chu Nhat', time: '10:00 - 22:00' },
+    { day: 'Thứ 2 - Thứ 5', time: '11:00 - 22:00' },
+    { day: 'Thứ 6', time: '11:00 - 23:00' },
+    { day: 'Thứ 7', time: '10:00 - 23:00' },
+    { day: 'Chủ Nhật', time: '10:00 - 22:00' },
   ],
 };
 
@@ -350,7 +350,7 @@ const VenueProfilePage = () => {
         <span style={styles.priceChip}>{venue.priceRange}</span>
         <span style={styles.locationChip}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>location_on</span>
-          Quan 1, TP.HCM
+          Quận 1, TP.HCM
         </span>
       </div>
 

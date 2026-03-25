@@ -14,17 +14,17 @@ const KarmaPage = () => {
   ];
   const currentLevel = levels.find(l => score >= l.min && score <= l.max) || levels[4];
   const scoringRules = [
-    { activity: 'Hoan thanh hen do', points: '+50', icon: 'restaurant', color: '#117500' },
-    { activity: 'Danh gia tot', points: '+30', icon: 'thumb_up', color: '#FFB59E' },
-    { activity: 'Xac minh tai khoan', points: '+100', icon: 'verified', color: '#FFD54F' },
-    { activity: 'Bi bao cao', points: '-100', icon: 'flag', color: '#FF571A' },
-    { activity: 'Huy hen', points: '-20', icon: 'cancel', color: '#FF571A' },
+    { activity: 'Hoàn thành hẹn đó', points: '+50', icon: 'restaurant', color: '#117500' },
+    { activity: 'Đánh giá tốt', points: '+30', icon: 'thumb_up', color: '#FFB59E' },
+    { activity: 'Xác minh tài khoản', points: '+100', icon: 'verified', color: '#FFD54F' },
+    { activity: 'Bị báo cáo', points: '-100', icon: 'flag', color: '#FF571A' },
+    { activity: 'Huỷ hẹn', points: '-20', icon: 'cancel', color: '#FF571A' },
   ];
   const history = [
-    { date: '20/03/2026', reason: 'Hoan thanh hen tai Runam Bistro', change: '+50', total: 850 },
-    { date: '18/03/2026', reason: 'Nhan danh gia 5 sao', change: '+30', total: 800 },
-    { date: '15/03/2026', reason: 'Xac minh CCCD', change: '+100', total: 770 },
-    { date: '12/03/2026', reason: 'Hoan thanh hen tai The Coffee House', change: '+50', total: 670 },
+    { date: '20/03/2026', reason: 'Hoàn thành hẹn tại Runam Bistro', change: '+50', total: 850 },
+    { date: '18/03/2026', reason: 'Nhận đánh giá 5 sao', change: '+30', total: 800 },
+    { date: '15/03/2026', reason: 'Xác minh CCCD', change: '+100', total: 770 },
+    { date: '12/03/2026', reason: 'Hoàn thành hẹn tại The Coffee House', change: '+50', total: 670 },
     { date: '10/03/2026', reason: 'Huỷ hẹn cuối tuần', change: '-20', total: 620 },
   ];
   const perks = [
@@ -76,20 +76,20 @@ const KarmaPage = () => {
 
   return (
     <div style={s.page}>
-      <div style={s.header}><button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined">arrow_back</span></button><h1 style={s.pageTitle}>Diem uy tin</h1><span className="material-symbols-outlined filled" style={s.verifiedIcon}>verified</span></div>
+      <div style={s.header}><button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined">arrow_back</span></button><h1 style={s.pageTitle}>Điểm uy tín</h1><span className="material-symbols-outlined filled" style={s.verifiedIcon}>verified</span></div>
       <div style={s.scoreSection}>
         <div style={s.scoreRing}>
           <svg width="160" height="160" viewBox="0 0 160 160"><circle cx="80" cy="80" r="68" fill="none" stroke="#353535" strokeWidth="10" /><circle cx="80" cy="80" r="68" fill="none" stroke="url(#karmaGrad)" strokeWidth="10" strokeDasharray={circumference} strokeDashoffset={dashOffset} strokeLinecap="round" transform="rotate(-90 80 80)" style={{ transition: 'stroke-dashoffset 1s ease' }} /><defs><linearGradient id="karmaGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stopColor="#FFB59E" /><stop offset="100%" stopColor="#FF571A" /></linearGradient></defs></svg>
           <div style={s.scoreValue}><div style={s.scoreNumber}>{score}</div><div style={s.scoreMax}>/ {maxScore}</div></div>
         </div>
-        <div style={s.scoreLabel}>Xuat sac</div>
+        <div style={s.scoreLabel}>Xuất sắc</div>
         <div style={s.starRow}>{[1, 2, 3, 4, 5].map(i => (<span key={i} className="material-symbols-outlined filled" style={{ color: '#FFD54F', fontSize: '20px' }}>star</span>))}</div>
       </div>
-      <h2 style={s.sectionTitle}>Cap do</h2>
+      <h2 style={s.sectionTitle}>Cấp độ</h2>
       <div style={s.levelsRow}>{levels.map(level => (<div key={level.name} style={s.levelBadge(level)}><span style={s.levelEmoji}>{level.emoji}</span><span style={s.levelName}>{level.name}</span><span style={s.levelRange}>{level.min}-{level.max}</span></div>))}</div>
-      <div style={s.scoringSection}><h2 style={s.sectionTitle}>Cach tinh diem</h2>{scoringRules.map((rule, i) => (<div key={i} style={s.scoringRow}><div style={s.scoringIcon(rule.color)}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>{rule.icon}</span></div><span style={s.scoringActivity}>{rule.activity}</span><span style={s.pointsBadge(rule.points.startsWith('+'))}>{rule.points}</span></div>))}</div>
-      <div style={s.historySection}><h2 style={s.sectionTitle}>Lich su diem</h2>{history.map((item, i) => { const positive = item.change.startsWith('+'); return (<div key={i} style={s.historyItem}><div style={s.historyDot(positive)} /><div style={s.historyInfo}><div style={s.historyReason}>{item.reason}</div><div style={s.historyDate}>{item.date}</div></div><span style={s.historyChange(positive)}>{item.change}</span><span style={s.historyTotal}>{item.total}</span></div>); })}</div>
-      <div style={s.perksSection}><h2 style={s.sectionTitle}>Dac quyen cua ban</h2>{perks.map((perk, i) => (<div key={i} style={s.perkCard}><div style={s.perkIconWrap}><span aria-hidden="true" className="material-symbols-outlined">{perk.icon}</span></div><div><div style={s.perkTitle}>{perk.title}</div><div style={s.perkDesc}>{perk.desc}</div></div></div>))}</div>
+      <div style={s.scoringSection}><h2 style={s.sectionTitle}>Cách tính điểm</h2>{scoringRules.map((rule, i) => (<div key={i} style={s.scoringRow}><div style={s.scoringIcon(rule.color)}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>{rule.icon}</span></div><span style={s.scoringActivity}>{rule.activity}</span><span style={s.pointsBadge(rule.points.startsWith('+'))}>{rule.points}</span></div>))}</div>
+      <div style={s.historySection}><h2 style={s.sectionTitle}>Lịch sử điểm</h2>{history.map((item, i) => { const positive = item.change.startsWith('+'); return (<div key={i} style={s.historyItem}><div style={s.historyDot(positive)} /><div style={s.historyInfo}><div style={s.historyReason}>{item.reason}</div><div style={s.historyDate}>{item.date}</div></div><span style={s.historyChange(positive)}>{item.change}</span><span style={s.historyTotal}>{item.total}</span></div>); })}</div>
+      <div style={s.perksSection}><h2 style={s.sectionTitle}>Đặc quyền của bạn</h2>{perks.map((perk, i) => (<div key={i} style={s.perkCard}><div style={s.perkIconWrap}><span aria-hidden="true" className="material-symbols-outlined">{perk.icon}</span></div><div><div style={s.perkTitle}>{perk.title}</div><div style={s.perkDesc}>{perk.desc}</div></div></div>))}</div>
     </div>
   );
 };

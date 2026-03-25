@@ -5,17 +5,17 @@ const ManageEvents = () => {
   const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = useState('all');
   const events = [
-    { id: 1, name: 'Wine & Dine Night', date: '25/03/2026', time: '19:00 - 22:00', venue: 'Velvet Bistro - Tang 2', attendees: 28, maxAttendees: 40, status: 'upcoming', revenue: '3.500.000', avatars: ['NV', 'TH', 'LM', 'PD'] },
-    { id: 2, name: 'Speed Dating - Singles Mixer', date: '22/03/2026', time: '18:00 - 21:00', venue: 'Velvet Bistro - Khu vuon', attendees: 36, maxAttendees: 36, status: 'ongoing', revenue: '5.400.000', avatars: ['MA', 'DT', 'LC', 'HN'] },
-    { id: 3, name: 'Cooking Class Date', date: '28/03/2026', time: '17:00 - 20:00', venue: 'Velvet Bistro - Bep mo', attendees: 12, maxAttendees: 20, status: 'upcoming', revenue: '2.500.000', avatars: ['QA', 'BT'] },
-    { id: 4, name: 'Jazz & Cocktails Evening', date: '15/03/2026', time: '20:00 - 23:00', venue: 'Velvet Bistro - San thuong', attendees: 45, maxAttendees: 50, status: 'ended', revenue: '8.100.000', avatars: ['KL', 'MT', 'NP', 'VH'] },
+    { id: 1, name: 'Wine & Dine Night', date: '25/03/2026', time: '19:00 - 22:00', venue: 'Velvet Bistro - Tầng 2', attendees: 28, maxAttendees: 40, status: 'upcoming', revenue: '3.500.000', avatars: ['NV', 'TH', 'LM', 'PD'] },
+    { id: 2, name: 'Speed Dating - Singles Mixer', date: '22/03/2026', time: '18:00 - 21:00', venue: 'Velvet Bistro - Khu vườn', attendees: 36, maxAttendees: 36, status: 'ongoing', revenue: '5.400.000', avatars: ['MA', 'DT', 'LC', 'HN'] },
+    { id: 3, name: 'Cooking Class Date', date: '28/03/2026', time: '17:00 - 20:00', venue: 'Velvet Bistro - Bếp mở', attendees: 12, maxAttendees: 20, status: 'upcoming', revenue: '2.500.000', avatars: ['QA', 'BT'] },
+    { id: 4, name: 'Jazz & Cocktails Evening', date: '15/03/2026', time: '20:00 - 23:00', venue: 'Velvet Bistro - Sân thượng', attendees: 45, maxAttendees: 50, status: 'ended', revenue: '8.100.000', avatars: ['KL', 'MT', 'NP', 'VH'] },
   ];
-  const filters = [{ key: 'all', label: 'Tat ca' }, { key: 'upcoming', label: 'Sap dien ra' }, { key: 'ongoing', label: 'Dang dien ra' }, { key: 'ended', label: 'Da ket thuc' }];
+  const filters = [{ key: 'all', label: 'Tất cả' }, { key: 'upcoming', label: 'Sắp diễn ra' }, { key: 'ongoing', label: 'Đang diễn ra' }, { key: 'ended', label: 'Đã kết thúc' }];
   const filtered = activeFilter === 'all' ? events : events.filter(e => e.status === activeFilter);
   const statusConfig = {
-    upcoming: { label: 'Sap dien ra', bg: 'rgba(255,181,158,0.15)', color: '#FFB59E', dot: false },
-    ongoing: { label: 'Dang dien ra', bg: 'rgba(17,117,0,0.15)', color: '#117500', dot: true },
-    ended: { label: 'Da ket thuc', bg: '#2A2A2A', color: '#E6BEB2', dot: false },
+    upcoming: { label: 'Sắp diễn ra', bg: 'rgba(255,181,158,0.15)', color: '#FFB59E', dot: false },
+    ongoing: { label: 'Đang diễn ra', bg: 'rgba(17,117,0,0.15)', color: '#117500', dot: true },
+    ended: { label: 'Đã kết thúc', bg: '#2A2A2A', color: '#E6BEB2', dot: false },
   };
   const gradients = ['linear-gradient(135deg, #FF571A, #FFB59E)', 'linear-gradient(135deg, #5a3028, #FFB59E)', 'linear-gradient(135deg, #353535, #FF571A)', 'linear-gradient(135deg, #FFB59E, #5a3028)'];
 
@@ -49,9 +49,9 @@ const ManageEvents = () => {
   return (
     <div style={styles.page}>
       <style>{styles.pulseKeyframes}</style>
-      <div style={styles.topRow}><div style={styles.header}><span aria-hidden="true" className="material-symbols-outlined" style={styles.headerIcon}>event</span><h1 style={styles.title}>Quan ly su kien</h1></div><button style={styles.createBtn} onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.03)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>add</span>Tao su kien moi</button></div>
+      <div style={styles.topRow}><div style={styles.header}><span aria-hidden="true" className="material-symbols-outlined" style={styles.headerIcon}>event</span><h1 style={styles.title}>Quản lý sự kiện</h1></div><button style={styles.createBtn} onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.03)'; }} onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>add</span>Tạo sự kiện mới</button></div>
       <div style={{ display: 'flex', gap: 10, marginBottom: 24 }}>{filters.map((f) => (<button key={f.key} style={styles.filterChip(activeFilter === f.key)} onClick={() => setActiveFilter(f.key)}>{f.label}</button>))}</div>
-      {filtered.length === 0 ? (<div style={styles.emptyState}><span aria-hidden="true" className="material-symbols-outlined" style={styles.emptyIcon}>event_busy</span><div style={{ fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 600, marginBottom: 8 }}>Khong co su kien nao</div><div style={{ fontSize: 14 }}>Khong tim thay su kien trong muc nay.</div></div>) : (
+      {filtered.length === 0 ? (<div style={styles.emptyState}><span aria-hidden="true" className="material-symbols-outlined" style={styles.emptyIcon}>event_busy</span><div style={{ fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 600, marginBottom: 8 }}>Không có sự kiện nào</div><div style={{ fontSize: 14 }}>Không tìm thấy sự kiện trong mục này.</div></div>) : (
         filtered.map((event, idx) => (
           <div key={event.id} style={styles.eventCard}>
             <div style={styles.eventImage(gradients[idx % gradients.length])}><span aria-hidden="true" className="material-symbols-outlined" style={styles.eventImageIcon}>celebration</span></div>
@@ -62,7 +62,7 @@ const ManageEvents = () => {
                 <span style={styles.statusBadge(event.status)}>{statusConfig[event.status].dot && <span style={styles.pulsingDot} />}{statusConfig[event.status].label}</span>
                 <div><div style={styles.revenue}>{event.revenue} VND</div><div style={styles.revenueLabel}>Doanh thu</div></div>
               </div>
-              <div style={{ display: 'flex', gap: 8, marginTop: 4 }}><button style={styles.actionBtn('default')}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>edit</span>Chinh sua</button><button style={styles.actionBtn('default')}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>visibility</span>Xem chi tiet</button>{event.status !== 'ended' && (<button style={styles.actionBtn('error')}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>cancel</span>Huy</button>)}</div>
+              <div style={{ display: 'flex', gap: 8, marginTop: 4 }}><button style={styles.actionBtn('default')}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>edit</span>Chỉnh sửa</button><button style={styles.actionBtn('default')}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>visibility</span>Xem chi tiết</button>{event.status !== 'ended' && (<button style={styles.actionBtn('error')}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>cancel</span>Hủy</button>)}</div>
             </div>
           </div>
         ))

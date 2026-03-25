@@ -14,16 +14,16 @@ const missionKeyframes = `
 
 const checkpoints = [
   {
-    id: 1, name: 'Pho Thin', dish: 'Pho bo tai lan',
-    completed: true, restaurant: '13 Lo Duc, Ha Noi', vang: 80,
+    id: 1, name: 'Phở Thìn', dish: 'Phở bò tái lăn',
+    completed: true, restaurant: '13 Lò Đúc, Hà Nội', vang: 80,
   },
   {
-    id: 2, name: 'Pho Gia Truyen', dish: 'Pho bo nam gau',
-    completed: true, restaurant: '49 Bat Dan, Ha Noi', vang: 80,
+    id: 2, name: 'Phở Gia Truyền', dish: 'Phở bò nạm gầu',
+    completed: true, restaurant: '49 Bát Đàn, Hà Nội', vang: 80,
   },
   {
-    id: 3, name: 'Pho 10 Ly Quoc Su', dish: 'Pho bo dac biet',
-    completed: false, restaurant: '10 Ly Quoc Su, Ha Noi', vang: 90,
+    id: 3, name: 'Phở 10 Lý Quốc Sư', dish: 'Phở bò đặc biệt',
+    completed: false, restaurant: '10 Lý Quốc Sư, Hà Nội', vang: 90,
   },
 ];
 
@@ -154,7 +154,7 @@ const MissionDetailPage = () => {
 
       <button style={s.backBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
-        Quay lai
+        Quay lại
       </button>
 
       {/* Header */}

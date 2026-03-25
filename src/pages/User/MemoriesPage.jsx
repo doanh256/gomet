@@ -17,7 +17,7 @@ const timelineMemories = [
   {
     id: 1, partner: { name: 'Minh Anh', avatar: 'MA' },
     restaurant: 'The Coffee House - Nguyen Hue', date: '08/03/2026',
-    dishes: ['Ca Phe Sua Da', 'Banh Flan'], vangEarned: 50,
+    dishes: ['Cà Phê Sữa Đá', 'Bánh Flan'], vangEarned: 50,
     note: 'Afternoon coffee date, laughing over iced coffee and flan.',
   },
   {
@@ -29,13 +29,13 @@ const timelineMemories = [
   {
     id: 3, partner: { name: 'Hoang Nam', avatar: 'HN' },
     restaurant: 'Bun Bo Ba Tuyet', date: '14/02/2026',
-    dishes: ['Bun Bo Hue', 'Che'], vangEarned: 40,
+    dishes: ['Bún Bò Huế', 'Chè'], vangEarned: 40,
     note: 'Valentine bun bo session. The spice brought happy tears.',
   },
   {
     id: 4, partner: { name: 'Mai Phuong', avatar: 'MP' },
-    restaurant: 'Com Tam Ba Ghien', date: '01/02/2026',
-    dishes: ['Com Tam Suon Bi Cha'], vangEarned: 35,
+    restaurant: 'Cơm Tấm Bà Ghiền', date: '01/02/2026',
+    dishes: ['Cơm Tấm Sườn Bì Chả'], vangEarned: 35,
     note: 'Late night com tam run after a long day. Comfort food at its best.',
   },
 ];

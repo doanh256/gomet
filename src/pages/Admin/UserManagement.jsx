@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const mockUsers = [
-  { id: 1, name: 'Nguyen Minh Anh', email: 'minhanh@gmail.com', joinDate: '15/01/2026', status: 'active', verified: true },
-  { id: 2, name: 'Tran Duc Huy', email: 'duchuy92@gmail.com', joinDate: '20/01/2026', status: 'active', verified: true },
-  { id: 3, name: 'Le Thi Bich Ngoc', email: 'bichngoc@yahoo.com', joinDate: '03/02/2026', status: 'locked', verified: false },
-  { id: 4, name: 'Pham Hoang Long', email: 'hoanglong@gmail.com', joinDate: '10/02/2026', status: 'active', verified: true },
-  { id: 5, name: 'Vo Thanh Tam', email: 'thanhtam@outlook.com', joinDate: '18/02/2026', status: 'unverified', verified: false },
-  { id: 6, name: 'Dang Thi Huong', email: 'huongdang@gmail.com', joinDate: '25/02/2026', status: 'active', verified: true },
-  { id: 7, name: 'Bui Van Khanh', email: 'khanh.bui@gmail.com', joinDate: '01/03/2026', status: 'active', verified: true },
-  { id: 8, name: 'Ho Ngoc Ha', email: 'haho@yahoo.com', joinDate: '05/03/2026', status: 'locked', verified: false },
-  { id: 9, name: 'Ly Quoc Bao', email: 'quocbao@outlook.com', joinDate: '12/03/2026', status: 'unverified', verified: false },
-  { id: 10, name: 'Truong My Linh', email: 'mylinh.t@gmail.com', joinDate: '18/03/2026', status: 'active', verified: true },
+  { id: 1, name: 'Nguyễn Minh Anh', email: 'minhanh@gmail.com', joinDate: '15/01/2026', status: 'active', verified: true },
+  { id: 2, name: 'Trần Đức Huy', email: 'duchuy92@gmail.com', joinDate: '20/01/2026', status: 'active', verified: true },
+  { id: 3, name: 'Lê Thị Bích Ngọc', email: 'bichngoc@yahoo.com', joinDate: '03/02/2026', status: 'locked', verified: false },
+  { id: 4, name: 'Phạm Hoàng Long', email: 'hoanglong@gmail.com', joinDate: '10/02/2026', status: 'active', verified: true },
+  { id: 5, name: 'Võ Thành Tâm', email: 'thanhtam@outlook.com', joinDate: '18/02/2026', status: 'unverified', verified: false },
+  { id: 6, name: 'Đặng Thị Hương', email: 'huongdang@gmail.com', joinDate: '25/02/2026', status: 'active', verified: true },
+  { id: 7, name: 'Bùi Văn Khánh', email: 'khanh.bui@gmail.com', joinDate: '01/03/2026', status: 'active', verified: true },
+  { id: 8, name: 'Hồ Ngọc Hà', email: 'haho@yahoo.com', joinDate: '05/03/2026', status: 'locked', verified: false },
+  { id: 9, name: 'Lý Quốc Bảo', email: 'quocbao@outlook.com', joinDate: '12/03/2026', status: 'unverified', verified: false },
+  { id: 10, name: 'Trương Mỹ Linh', email: 'mylinh.t@gmail.com', joinDate: '18/03/2026', status: 'active', verified: true },
 ];
 
 const UserManagement = () => {
@@ -22,10 +22,10 @@ const UserManagement = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const filters = [
-    { key: 'all', label: 'Tat ca' },
-    { key: 'active', label: 'Hoat dong' },
-    { key: 'locked', label: 'Bi khoa' },
-    { key: 'unverified', label: 'Chua xac minh' },
+    { key: 'all', label: 'Tất cả' },
+    { key: 'active', label: 'Hoạt động' },
+    { key: 'locked', label: 'Bị khóa' },
+    { key: 'unverified', label: 'Chưa xác minh' },
   ];
 
   const filteredUsers = users.filter((user) => {
@@ -40,16 +40,16 @@ const UserManagement = () => {
   const reportedCount = users.filter((u) => u.status === 'locked').length;
 
   const miniStats = [
-    { label: 'Tong nguoi dung', value: totalUsers, icon: 'group' },
-    { label: 'Hoat dong hom nay', value: activeToday, icon: 'person' },
-    { label: 'Da xac minh', value: verifiedCount, icon: 'verified' },
-    { label: 'Bi bao cao', value: reportedCount, icon: 'report' },
+    { label: 'Tổng người dùng', value: totalUsers, icon: 'group' },
+    { label: 'Hoạt động hôm nay', value: activeToday, icon: 'person' },
+    { label: 'Đã xác minh', value: verifiedCount, icon: 'verified' },
+    { label: 'Bị báo cáo', value: reportedCount, icon: 'report' },
   ];
 
   const statusConfig = {
-    active: { label: 'Hoat dong', bg: 'rgba(17,117,0,0.15)', color: '#117500' },
-    locked: { label: 'Bi khoa', bg: 'rgba(255,87,26,0.15)', color: '#FF571A' },
-    unverified: { label: 'Cho duyet', bg: 'rgba(255,213,79,0.15)', color: '#FFD54F' },
+    active: { label: 'Hoạt động', bg: 'rgba(17,117,0,0.15)', color: '#117500' },
+    locked: { label: 'Bị khóa', bg: 'rgba(255,87,26,0.15)', color: '#FF571A' },
+    unverified: { label: 'Chờ duyệt', bg: 'rgba(255,213,79,0.15)', color: '#FFD54F' },
   };
 
   const handleBlock = (id) => {
@@ -57,7 +57,7 @@ const UserManagement = () => {
   };
 
   const handleDelete = (id) => {
-    if (window.confirm('Ban co chac chan muon xoa nguoi dung nay?')) {
+    if (window.confirm('Bạn có chắc chắn muốn xóa người dùng này?')) {
       setUsers(users.filter((u) => u.id !== id));
     }
   };
@@ -68,12 +68,12 @@ const UserManagement = () => {
     <div style={{ fontFamily: 'var(--font-body)', color: '#FDF9F3' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '24px' }}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '32px', color: '#FFB59E' }}>manage_accounts</span>
-        <h1 style={{ margin: 0, fontSize: '28px', fontWeight: 700, fontFamily: 'var(--font-headline)' }}>Quan ly nguoi dung</h1>
+        <h1 style={{ margin: 0, fontSize: '28px', fontWeight: 700, fontFamily: 'var(--font-headline)' }}>Quản lý người dùng</h1>
       </div>
 
       <div style={{ display: 'flex', alignItems: 'center', gap: '12px', background: '#1C1B1B', borderRadius: '1.5rem', padding: '12px 20px', marginBottom: '20px' }}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px', color: '#E6BEB2' }}>search</span>
-        <input type="text" placeholder="Tim kiem theo ten hoac email..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} style={{ border: 'none', outline: 'none', flex: 1, fontSize: '15px', fontFamily: 'var(--font-body)', background: 'transparent', color: '#FDF9F3' }} />
+        <input type="text" placeholder="Tìm kiếm theo tên hoặc email..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} style={{ border: 'none', outline: 'none', flex: 1, fontSize: '15px', fontFamily: 'var(--font-body)', background: 'transparent', color: '#FDF9F3' }} />
       </div>
 
       <div style={{ display: 'flex', gap: '10px', marginBottom: '24px', flexWrap: 'wrap' }}>
@@ -96,7 +96,7 @@ const UserManagement = () => {
 
       <div style={{ background: '#1C1B1B', borderRadius: '1.5rem', overflow: 'hidden' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 2fr 1.2fr 1fr 1fr 1.2fr', padding: '14px 24px', background: '#2A2A2A', fontSize: '13px', fontWeight: 600, color: '#E6BEB2' }}>
-          <span>Nguoi dung</span><span>Email</span><span>Ngay tham gia</span><span>Trang thai</span><span>Xac minh</span><span style={{ textAlign: 'center' }}>Hanh dong</span>
+          <span>Người dùng</span><span>Email</span><span>Ngày tham gia</span><span>Trạng thái</span><span>Xác minh</span><span style={{ textAlign: 'center' }}>Hành động</span>
         </div>
         {filteredUsers.map((user) => {
           const st = statusConfig[user.status] || statusConfig.active;
@@ -130,13 +130,13 @@ const UserManagement = () => {
         {filteredUsers.length === 0 && (
           <div style={{ padding: '40px', textAlign: 'center', color: '#E6BEB2' }}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '40px', display: 'block', marginBottom: '8px', opacity: 0.4 }}>search_off</span>
-            Khong tim thay nguoi dung nao
+            Không tìm thấy người dùng nào
           </div>
         )}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 24px', fontSize: '14px', color: '#E6BEB2' }}>
           <span>Trang {currentPage}/{totalPages}</span>
           <div style={{ display: 'flex', gap: '8px' }}>
-            <button onClick={() => setCurrentPage(Math.max(1, currentPage - 1))} disabled={currentPage === 1} style={{ padding: '8px 16px', borderRadius: '8px', border: 'none', background: '#2A2A2A', cursor: currentPage === 1 ? 'not-allowed' : 'pointer', opacity: currentPage === 1 ? 0.5 : 1, fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 600, color: '#FDF9F3' }}>Truoc</button>
+            <button onClick={() => setCurrentPage(Math.max(1, currentPage - 1))} disabled={currentPage === 1} style={{ padding: '8px 16px', borderRadius: '8px', border: 'none', background: '#2A2A2A', cursor: currentPage === 1 ? 'not-allowed' : 'pointer', opacity: currentPage === 1 ? 0.5 : 1, fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 600, color: '#FDF9F3' }}>Trước</button>
             <button onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))} disabled={currentPage === totalPages} style={{ padding: '8px 16px', borderRadius: '8px', border: 'none', background: '#2A2A2A', cursor: currentPage === totalPages ? 'not-allowed' : 'pointer', opacity: currentPage === totalPages ? 0.5 : 1, fontFamily: 'var(--font-body)', fontSize: '13px', fontWeight: 600, color: '#FDF9F3' }}>Sau</button>
           </div>
         </div>

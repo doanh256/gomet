@@ -11,18 +11,18 @@ const srKeyframes = `
 const resultTabs = ['Địa điểm', 'Món ăn', 'Sự kiện', 'Người'];
 const sortOpts = ['Phù hợp', 'Đánh giá', 'Khoảng cách'];
 
-const cuisines = ['Viet Nam', 'Nhat Ban', 'Han Quoc', 'Y', 'Thai', 'Phap'];
+const cuisines = ['Việt Nam', 'Nhật Bản', 'Hàn Quốc', 'Ý', 'Thái', 'Pháp'];
 const priceRanges = ['Dưới 100k', '100k - 300k', '300k - 500k', 'Trên 500k'];
 
 const results = [
-  { name: 'Pho Thin', type: 'Viet Nam', rating: 4.8, price: '$$', dist: '0.5km', img: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=300&h=200&fit=crop' },
-  { name: 'Sushi Rei', type: 'Nhat Ban', rating: 4.9, price: '$$$', dist: '1.2km', img: 'https://images.unsplash.com/photo-1579027989536-b7b1f875659b?w=300&h=200&fit=crop' },
-  { name: 'Banh Mi Huynh Hoa', type: 'Viet Nam', rating: 4.7, price: '$', dist: '0.8km', img: 'https://images.unsplash.com/photo-1600454021915-de753e6b5dfe?w=300&h=200&fit=crop' },
-  { name: 'Pizza 4P\'s', type: 'Y', rating: 4.6, price: '$$', dist: '1.5km', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=300&h=200&fit=crop' },
-  { name: 'Som Tam Thai', type: 'Thai', rating: 4.5, price: '$$', dist: '2.0km', img: 'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=300&h=200&fit=crop' },
-  { name: 'Le Petit Saigon', type: 'Phap', rating: 4.8, price: '$$$', dist: '1.8km', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&h=200&fit=crop' },
-  { name: 'Com Tam Ba Ghien', type: 'Viet Nam', rating: 4.6, price: '$', dist: '0.3km', img: 'https://images.unsplash.com/photo-1569058242567-93de6f36f8eb?w=300&h=200&fit=crop' },
-  { name: 'Gogi House', type: 'Han Quoc', rating: 4.4, price: '$$', dist: '2.5km', img: 'https://images.unsplash.com/photo-1553163147-622ab57be1c7?w=300&h=200&fit=crop' },
+  { name: 'Phở Thìn', type: 'Việt Nam', rating: 4.8, price: '$$', dist: '0.5km', img: 'https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?w=300&h=200&fit=crop' },
+  { name: 'Sushi Rei', type: 'Nhật Bản', rating: 4.9, price: '$$$', dist: '1.2km', img: 'https://images.unsplash.com/photo-1579027989536-b7b1f875659b?w=300&h=200&fit=crop' },
+  { name: 'Bánh Mì Huỳnh Hoa', type: 'Việt Nam', rating: 4.7, price: '$', dist: '0.8km', img: 'https://images.unsplash.com/photo-1600454021915-de753e6b5dfe?w=300&h=200&fit=crop' },
+  { name: "Pizza 4P's", type: 'Ý', rating: 4.6, price: '$$', dist: '1.5km', img: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=300&h=200&fit=crop' },
+  { name: 'Som Tam Thai', type: 'Thái', rating: 4.5, price: '$$', dist: '2.0km', img: 'https://images.unsplash.com/photo-1562565652-a0d8f0c59eb4?w=300&h=200&fit=crop' },
+  { name: 'Le Petit Saigon', type: 'Pháp', rating: 4.8, price: '$$$', dist: '1.8km', img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=300&h=200&fit=crop' },
+  { name: 'Cơm Tấm Bà Ghiền', type: 'Việt Nam', rating: 4.6, price: '$', dist: '0.3km', img: 'https://images.unsplash.com/photo-1569058242567-93de6f36f8eb?w=300&h=200&fit=crop' },
+  { name: 'Gogi House', type: 'Hàn Quốc', rating: 4.4, price: '$$', dist: '2.5km', img: 'https://images.unsplash.com/photo-1553163147-622ab57be1c7?w=300&h=200&fit=crop' },
   { name: 'Noir Dining', type: 'Fusion', rating: 4.9, price: '$$$$', dist: '1.0km', img: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=300&h=200&fit=crop' },
 ];
 

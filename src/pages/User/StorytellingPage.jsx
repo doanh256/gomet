@@ -278,7 +278,7 @@ const StorytellingPage = () => {
               <div style={s.avatar}>
                 <span aria-hidden="true" className="material-symbols-outlined" style={s.avatarIcon}>person</span>
               </div>
-              <span>Hoang Yen</span>
+              <span>Hoàng Yến</span>
               <div style={s.readTime}>
                 <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>schedule</span>
                 5 phút đọc

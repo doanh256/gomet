@@ -25,17 +25,17 @@ const SecretEventPage = () => {
   const [registered, setRegistered] = useState(false);
 
   const revealedItems = [
-    { text: 'Ngay: 28/03/2026' },
-    { text: 'Khu vuc: Quan 1, TP.HCM' },
-    { text: 'So luong: 20 nguoi' },
+    { text: 'Ngày: 28/03/2026' },
+    { text: 'Khu vực: Quận 1, TP.HCM' },
+    { text: 'Số lượng: 20 người' },
   ];
 
-  const hiddenItems = ['Dia diem: ???', 'Chu de: ???', 'Dress code: ???'];
+  const hiddenItems = ['Địa điểm: ???', 'Chủ đề: ???', 'Dress code: ???'];
 
   const rules = [
-    { num: 1, text: 'Khong tiet lo dia diem va chu de cho nguoi ngoai' },
-    { num: 2, text: 'Tuan thu dress code khi duoc cong bo' },
-    { num: 3, text: 'Den dung gio - Tre 15 phut se mat suat' },
+    { num: 1, text: 'Không tiết lộ địa điểm và chủ đề cho người ngoài' },
+    { num: 2, text: 'Tuân thủ dress code khi được công bố' },
+    { num: 3, text: 'Đến đúng giờ - Trễ 15 phút sẽ mất suất' },
   ];
 
   const goldColor = '#FFD54F';
@@ -80,40 +80,40 @@ const SecretEventPage = () => {
           <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
         </button>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>lock</span>
-        <h1 style={s.headerTitle}>Su kien bi mat</h1>
+        <h1 style={s.headerTitle}>Sự kiện bí mật</h1>
       </div>
 
       <div style={s.mysteryCard}>
         <div style={s.mysteryOverlay} />
         <div style={s.mysteryContent}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.mysteryIcon}>help</span>
-          <p style={s.mysteryText}>Chi tiet duoc tiet lo truoc 24h</p>
+          <p style={s.mysteryText}>Chi tiết được tiết lộ trước 24h</p>
         </div>
       </div>
 
       <div style={s.section}>
-        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>visibility</span>Thong tin da biet</div>
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>visibility</span>Thông tin đã biết</div>
         {revealedItems.map((item, i) => (<div key={i} style={s.revealedItem}><span aria-hidden="true" className="material-symbols-outlined" style={s.checkIcon}>check_circle</span><span style={s.revealedText}>{item.text}</span></div>))}
       </div>
 
       <div style={s.section}>
-        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>visibility_off</span>Con an</div>
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>visibility_off</span>Còn ẩn</div>
         {hiddenItems.map((item, i) => (<div key={i} style={s.hiddenItem}><span aria-hidden="true" className="material-symbols-outlined" style={s.lockIcon}>lock</span><span style={s.hiddenText}>{item}</span></div>))}
       </div>
 
       <div style={s.registerSection}>
-        <div style={s.urgencyBadge}><div style={s.urgencyDot} />Chi con 5 suat</div>
+        <div style={s.urgencyBadge}><div style={s.urgencyDot} />Chỉ còn 5 suất</div>
         <div style={{ marginBottom: '4px' }} />
         {!registered ? (
-          <button style={s.goldBtn} onClick={() => setRegistered(true)}>Dang ky tham gia</button>
+          <button style={s.goldBtn} onClick={() => setRegistered(true)}>Đăng ký tham gia</button>
         ) : (
-          <div style={s.registeredBtn}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px' }}>check_circle</span>Da dang ky thanh cong</div>
+          <div style={s.registeredBtn}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px' }}>check_circle</span>Đã đăng ký thành công</div>
         )}
         <div style={s.price}>500.000 VND</div>
       </div>
 
       <div style={s.section}>
-        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>gavel</span>Quy tac</div>
+        <div style={s.sectionTitle}><span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>gavel</span>Quy tắc</div>
         {rules.map((rule) => (<div key={rule.num} style={s.ruleItem}><div style={s.ruleNum}>{rule.num}</div><span style={s.ruleText}>{rule.text}</span></div>))}
       </div>
     </div>

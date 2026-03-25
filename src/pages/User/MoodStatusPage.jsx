@@ -2,24 +2,24 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const moods = [
-  { emoji: '\u{1F60A}', label: 'Vui ve' },
-  { emoji: '\u{1F60D}', label: 'Dang yeu' },
-  { emoji: '\u{1F929}', label: 'Phau khich' },
-  { emoji: '\u{1F60C}', label: 'Binh yen' },
-  { emoji: '\u{1F970}', label: 'Hanh phuc' },
-  { emoji: '\u{1F60E}', label: 'Tu tin' },
-  { emoji: '\u{1F914}', label: 'Suy tu' },
-  { emoji: '\u{1F634}', label: 'Met moi' },
-  { emoji: '\u{1F97A}', label: 'Co don' },
+  { emoji: '\u{1F60A}', label: 'Vui vẻ' },
+  { emoji: '\u{1F60D}', label: 'Đang yêu' },
+  { emoji: '\u{1F929}', label: 'Phấn khích' },
+  { emoji: '\u{1F60C}', label: 'Bình yên' },
+  { emoji: '\u{1F970}', label: 'Hạnh phúc' },
+  { emoji: '\u{1F60E}', label: 'Tự tin' },
+  { emoji: '\u{1F914}', label: 'Suy tư' },
+  { emoji: '\u{1F634}', label: 'Mệt mỏi' },
+  { emoji: '\u{1F97A}', label: 'Cô đơn' },
 ];
 
 const activities = [
-  { icon: 'coffee', label: 'Ca phe' },
+  { icon: 'coffee', label: 'Cà phê' },
   { icon: 'movie', label: 'Xem phim' },
-  { icon: 'restaurant', label: 'An uong' },
-  { icon: 'sports_soccer', label: 'The thao' },
-  { icon: 'directions_walk', label: 'Dao pho' },
-  { icon: 'menu_book', label: 'Doc sach' },
+  { icon: 'restaurant', label: 'Ăn uống' },
+  { icon: 'sports_soccer', label: 'Thể thao' },
+  { icon: 'directions_walk', label: 'Dạo phố' },
+  { icon: 'menu_book', label: 'Đọc sách' },
 ];
 
 const MoodStatusPage = () => {
@@ -145,7 +145,7 @@ const MoodStatusPage = () => {
 
   return (
     <div style={s.page}>
-      <h1 style={s.heading}>Hom nay ban cam thay the nao?</h1>
+      <h1 style={s.heading}>Hôm nay bạn cảm thấy thế nào?</h1>
 
       <div style={s.moodGrid}>
         {moods.map((mood, i) => (
@@ -160,7 +160,7 @@ const MoodStatusPage = () => {
         ))}
       </div>
 
-      <div style={s.sectionTitle}>Hoat dong ban muon lam</div>
+      <div style={s.sectionTitle}>Hoạt động bạn muốn làm</div>
       <div style={s.chipsScroll}>
         {activities.map((act, i) => (
           <button
@@ -182,12 +182,12 @@ const MoodStatusPage = () => {
         }}
         onClick={() => navigate(-1)}
       >
-        Cap nhat trang thai
+        Cập nhật trạng thái
       </button>
 
       {(selectedMoodData || selectedActivityData) && (
         <div style={s.preview}>
-          <div style={s.previewLabel}>Nguoi khac se thay:</div>
+          <div style={s.previewLabel}>Người khác sẽ thấy:</div>
           <div style={s.previewContent}>
             {selectedMoodData ? `${selectedMoodData.emoji} ${selectedMoodData.label}` : ''}
             {selectedMoodData && selectedActivityData ? ' - ' : ''}

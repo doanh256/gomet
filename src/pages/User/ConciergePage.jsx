@@ -18,7 +18,7 @@ const initialMessages = [
 
 const specialServices = [
   { icon: 'star', title: 'Đặt chỗ VIP', desc: 'Để GOMET lo toàn mọi thứ' },
-  { icon: 'event', title: 'Lên kế hoạch hẹn đó', desc: 'Từ địa điểm đến menu' },
+  { icon: 'event', title: 'Lên kế hoạch hẹn hò', desc: 'Từ địa điểm đến menu' },
 ];
 
 const ConciergePage = () => {

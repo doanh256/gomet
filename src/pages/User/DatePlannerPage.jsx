@@ -14,34 +14,34 @@ const DatePlannerPage = () => {
   const [reminder, setReminder] = useState(true);
 
   const dateTypes = [
-    { id: 'coffee', label: 'Ca phe', icon: 'local_cafe' },
-    { id: 'dinner', label: 'An toi', icon: 'restaurant' },
-    { id: 'activity', label: 'Hoat dong', icon: 'sports_tennis' },
-    { id: 'adventure', label: 'Phieu luu', icon: 'hiking' },
+    { id: 'coffee', label: 'Cà phê', icon: 'local_cafe' },
+    { id: 'dinner', label: 'Ăn tối', icon: 'restaurant' },
+    { id: 'activity', label: 'Hoạt động', icon: 'sports_tennis' },
+    { id: 'adventure', label: 'Phiêu lưu', icon: 'hiking' },
   ];
 
   const timeSlots = [
-    { id: 'morning', label: 'Sang', icon: 'wb_sunny', time: '8:00 - 11:00' },
-    { id: 'noon', label: 'Trua', icon: 'wb_twilight', time: '11:00 - 14:00' },
-    { id: 'afternoon', label: 'Chieu', icon: 'routine', time: '14:00 - 18:00' },
-    { id: 'evening', label: 'Toi', icon: 'nightlight', time: '18:00 - 22:00' },
+    { id: 'morning', label: 'Sáng', icon: 'wb_sunny', time: '8:00 - 11:00' },
+    { id: 'noon', label: 'Trưa', icon: 'wb_twilight', time: '11:00 - 14:00' },
+    { id: 'afternoon', label: 'Chiều', icon: 'routine', time: '14:00 - 18:00' },
+    { id: 'evening', label: 'Tối', icon: 'nightlight', time: '18:00 - 22:00' },
   ];
 
   const venuesByType = {
     coffee: [
-      { id: 'v1', name: 'The Coffee House', address: 'Quan 1, TP.HCM', rating: 4.5 },
-      { id: 'v2', name: 'Maison Marou', address: 'Quan 3, TP.HCM', rating: 4.7 },
-      { id: 'v3', name: 'The Workshop', address: 'Quan 1, TP.HCM', rating: 4.6 },
+      { id: 'v1', name: 'The Coffee House', address: 'Quận 1, TP.HCM', rating: 4.5 },
+      { id: 'v2', name: 'Maison Marou', address: 'Quận 3, TP.HCM', rating: 4.7 },
+      { id: 'v3', name: 'The Workshop', address: 'Quận 1, TP.HCM', rating: 4.6 },
     ],
     dinner: [
-      { id: 'v4', name: 'Pizza 4P\'s', address: 'Quan 2, TP.HCM', rating: 4.8 },
-      { id: 'v5', name: 'Noir Dining', address: 'Quan 1, TP.HCM', rating: 4.9 },
-      { id: 'v6', name: 'Cuc Gach Quan', address: 'Quan 1, TP.HCM', rating: 4.6 },
+      { id: 'v4', name: 'Pizza 4P\'s', address: 'Quận 2, TP.HCM', rating: 4.8 },
+      { id: 'v5', name: 'Noir Dining', address: 'Quận 1, TP.HCM', rating: 4.9 },
+      { id: 'v6', name: 'Cúc Gạch Quán', address: 'Quận 1, TP.HCM', rating: 4.6 },
     ],
     activity: [
-      { id: 'v7', name: 'Pottery Workshop', address: 'Quan 3, TP.HCM', rating: 4.5 },
-      { id: 'v8', name: 'Cooking Class', address: 'Quan 1, TP.HCM', rating: 4.7 },
-      { id: 'v9', name: 'Art Jamming Studio', address: 'Quan 7, TP.HCM', rating: 4.4 },
+      { id: 'v7', name: 'Pottery Workshop', address: 'Quận 3, TP.HCM', rating: 4.5 },
+      { id: 'v8', name: 'Cooking Class', address: 'Quận 1, TP.HCM', rating: 4.7 },
+      { id: 'v9', name: 'Art Jamming Studio', address: 'Quận 7, TP.HCM', rating: 4.4 },
     ],
     adventure: [
       { id: 'v10', name: 'Can Gio Mangrove', address: 'Can Gio, TP.HCM', rating: 4.3 },
@@ -54,20 +54,20 @@ const DatePlannerPage = () => {
 
   const tips = {
     coffee: [
-      { title: 'Chon cho ngoi thoai mai', text: 'Nen chon quan co goc yen tinh de tro chuyen, tranh cho qua on ao.' },
-      { title: 'Den som 5 phut', text: 'The hien su chu dao bang cach den truoc va chon ban tot nhat cho ca hai.' },
+      { title: 'Chọn chỗ ngồi thoải mái', text: 'Nên chọn quán có góc yên tĩnh để trò chuyện, tránh chỗ quá ồn ào.' },
+      { title: 'Đến sớm 5 phút', text: 'Thể hiện sự chu đáo bằng cách đến trước và chọn bàn tốt nhất cho cả hai.' },
     ],
     dinner: [
-      { title: 'Dat ban truoc', text: 'Nen dat truoc it nhat 1 ngay, nhat la vao cuoi tuan de dam bao co cho tot.' },
-      { title: 'Tim hieu menu', text: 'Xem truoc menu de co the goi y mon cho doi phuong mot cach tu tin.' },
+      { title: 'Đặt bàn trước', text: 'Nên đặt trước ít nhất 1 ngày, nhất là vào cuối tuần để đảm bảo có chỗ tốt.' },
+      { title: 'Tìm hiểu menu', text: 'Xem trước menu để có thể gợi ý món cho đối phương một cách tự tin.' },
     ],
     activity: [
-      { title: 'Mac thoai mai', text: 'Chon trang phuc thoai mai phu hop voi hoat dong, nhung van lich su.' },
-      { title: 'Chuan bi tinh than', text: 'Hoat dong nhom giup pha bang tu nhien, hay vui ve va co gang het minh!' },
+      { title: 'Mặc thoải mái', text: 'Chọn trang phục thoải mái phù hợp với hoạt động, nhưng vẫn lịch sự.' },
+      { title: 'Chuẩn bị tinh thần', text: 'Hoạt động nhóm giúp phá băng tự nhiên, hãy vui vẻ và cố gắng hết mình!' },
     ],
     adventure: [
-      { title: 'Kiem tra thoi tiet', text: 'Xem du bao thoi tiet truoc 1 ngay de chuan bi tot nhat cho chuyen di.' },
-      { title: 'Mang do du phong', text: 'Nuoc uong, kem chong nang va mu la nhung thu khong the thieu.' },
+      { title: 'Kiểm tra thời tiết', text: 'Xem dự báo thời tiết trước 1 ngày để chuẩn bị tốt nhất cho chuyến đi.' },
+      { title: 'Mang đồ dự phòng', text: 'Nước uống, kem chống nắng và mũ là những thứ không thể thiếu.' },
     ],
   };
 
@@ -75,7 +75,7 @@ const DatePlannerPage = () => {
   const currentTips = tips[dateType] || tips.coffee;
 
   const getSelectedVenueName = () => {
-    if (venue === 'custom') return customVenue || 'Tu chon';
+    if (venue === 'custom') return customVenue || 'Tự chọn';
     const found = currentVenues.find(v => v.id === venue);
     return found ? found.name : '—';
   };
@@ -478,9 +478,9 @@ const DatePlannerPage = () => {
       <div style={s.hero}>
         <div style={s.heroRow}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>event_note</span>
-          <h1 style={s.heroTitle}>Len ke hoach hen do</h1>
+          <h1 style={s.heroTitle}>Lên kế hoạch hẹn hò</h1>
         </div>
-        <p style={s.heroSub}>Tao buoi hen hoan hao chi trong vai buoc</p>
+        <p style={s.heroSub}>Tạo buổi hẹn hoàn hảo chỉ trong vài bước</p>
       </div>
 
       {/* Progress */}
@@ -490,7 +490,7 @@ const DatePlannerPage = () => {
         ))}
       </div>
       <div style={s.stepLabel}>
-        <span>Loai hen</span><span>Thoi gian</span><span>Dia diem</span><span>Chi tiet</span>
+        <span>Loại hẹn</span><span>Thời gian</span><span>Địa điểm</span><span>Chi tiết</span>
       </div>
 
       {/* Step 1 */}
@@ -498,7 +498,7 @@ const DatePlannerPage = () => {
         <div style={s.section}>
           <div style={s.sectionTitle}>
             <span style={s.stepNum}>1</span>
-            Chon loai hen
+            Chọn loại hẹn
           </div>
           <div style={s.typeGrid}>
             {dateTypes.map(t => (
@@ -516,7 +516,7 @@ const DatePlannerPage = () => {
         <div style={s.section}>
           <div style={s.sectionTitle}>
             <span style={s.stepNum}>2</span>
-            Chon ngay gio
+            Chọn ngày giờ
           </div>
           <input
             type="date"
@@ -543,7 +543,7 @@ const DatePlannerPage = () => {
         <div style={s.section}>
           <div style={s.sectionTitle}>
             <span style={s.stepNum}>3</span>
-            Chon dia diem
+            Chọn địa điểm
           </div>
           <div style={s.venueCards}>
             {currentVenues.map(v => (
@@ -566,14 +566,14 @@ const DatePlannerPage = () => {
                 <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>edit_location</span>
               </div>
               <div>
-                <div style={s.venueName}>Tu chon dia diem</div>
-                <div style={s.venueAddr}>Nhap dia diem cua ban</div>
+                <div style={s.venueName}>Tự chọn địa điểm</div>
+                <div style={s.venueAddr}>Nhập địa điểm của bạn</div>
               </div>
             </div>
             {venue === 'custom' && (
               <input
                 style={s.customInput}
-                placeholder="Nhap ten dia diem..."
+                placeholder="Nhập tên địa điểm..."
                 value={customVenue}
                 onChange={e => setCustomVenue(e.target.value)}
               />
@@ -587,11 +587,11 @@ const DatePlannerPage = () => {
         <div style={s.section}>
           <div style={s.sectionTitle}>
             <span style={s.stepNum}>4</span>
-            Chi tiet them
+            Chi tiết thêm
           </div>
 
           <div style={{ marginBottom: 16 }}>
-            <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 8 }}>Ngan sach du kien</div>
+            <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 8 }}>Ngân sách dự kiến</div>
             <div style={s.budgetTrack}>
               <div style={s.budgetFill} />
               <input
@@ -610,10 +610,10 @@ const DatePlannerPage = () => {
           </div>
 
           <div style={{ marginBottom: 12 }}>
-            <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 8 }}>Ghi chu dac biet</div>
+            <div style={{ fontSize: 14, fontWeight: 600, marginBottom: 8 }}>Ghi chú đặc biệt</div>
             <textarea
               style={s.textarea}
-              placeholder="Vi du: Nguoi ay thich hoa hong, hoac bi di ung hai san..."
+              placeholder="Ví dụ: Người ấy thích hoa hồng, hoặc bị dị ứng hải sản..."
               value={notes}
               onChange={e => setNotes(e.target.value)}
             />
@@ -622,7 +622,7 @@ const DatePlannerPage = () => {
           <div style={s.toggleRow}>
             <div style={s.toggleLabel}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E' }}>notifications_active</span>
-              Them nhac nho
+              Thêm nhắc nhở
             </div>
             <button style={s.toggleSwitch(reminder)} onClick={() => setReminder(!reminder)}>
               <div style={s.toggleKnob(reminder)} />
@@ -633,31 +633,31 @@ const DatePlannerPage = () => {
           <div style={{ ...s.summaryCard, marginTop: 20 }}>
             <div style={s.summaryTitle}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E' }}>summarize</span>
-              Tong ket ke hoach
+              Tổng kết kế hoạch
             </div>
             <div style={s.summaryRow}>
-              <span style={s.summaryLabel}>Loai hen</span>
+              <span style={s.summaryLabel}>Loại hẹn</span>
               <span style={s.summaryValue}>{dateTypes.find(t => t.id === dateType)?.label || '—'}</span>
             </div>
             <div style={s.summaryRow}>
-              <span style={s.summaryLabel}>Ngay</span>
+              <span style={s.summaryLabel}>Ngày</span>
               <span style={s.summaryValue}>{dateDate || '—'}</span>
             </div>
             <div style={s.summaryRow}>
-              <span style={s.summaryLabel}>Khung gio</span>
+              <span style={s.summaryLabel}>Khung giờ</span>
               <span style={s.summaryValue}>{timeSlots.find(t => t.id === timeSlot)?.label || '—'}</span>
             </div>
             <div style={s.summaryRow}>
-              <span style={s.summaryLabel}>Dia diem</span>
+              <span style={s.summaryLabel}>Địa điểm</span>
               <span style={s.summaryValue}>{getSelectedVenueName()}</span>
             </div>
             <div style={{ ...s.summaryRow, borderBottom: 'none' }}>
-              <span style={s.summaryLabel}>Ngan sach</span>
+              <span style={s.summaryLabel}>Ngân sách</span>
               <span style={s.summaryValue}>{budgetLabels[budget]}</span>
             </div>
             <button style={s.ctaBtn}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>send</span>
-              Gui loi moi
+              Gửi lời mời
             </button>
           </div>
         </div>
@@ -668,7 +668,7 @@ const DatePlannerPage = () => {
         {step > 1 && (
           <button style={s.navBtn(false)} onClick={() => setStep(step - 1)}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_back</span>
-            Quay lai
+            Quay lại
           </button>
         )}
         {step < 4 && (
@@ -677,7 +677,7 @@ const DatePlannerPage = () => {
             onClick={() => setStep(step + 1)}
             disabled={step === 1 && !dateType}
           >
-            Tiep theo
+            Tiếp theo
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>arrow_forward</span>
           </button>
         )}
@@ -687,7 +687,7 @@ const DatePlannerPage = () => {
       <div style={s.section}>
         <div style={s.sectionTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FFB59E' }}>tips_and_updates</span>
-          Meo hay
+          Mẹo hay
         </div>
         <div style={s.tipCards}>
           {currentTips.map((tip, i) => (

@@ -112,8 +112,8 @@ const ProfilePage = () => {
     }
   };
 
-  // Points and tier
-  const vangPoints = walletBalance || 12450;
+  // Points and tier (gamification points — separate from wallet VND balance)
+  const vangPoints = 12450;
   const dishCount = 84;
   const tierTarget = 15000;
   const tierProgress = Math.min((vangPoints / tierTarget) * 100, 100);

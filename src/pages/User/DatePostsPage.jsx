@@ -80,7 +80,7 @@ const DatePostsPage = () => {
 
   const formatPrice = (price) => {
     if (!price) return '';
-    return price.toLocaleString('vi-VN') + 'd';
+    return price.toLocaleString('vi-VN') + 'đ';
   };
 
   return (
@@ -593,9 +593,11 @@ const CreatePostModal = ({ category: initialCategory, onClose, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title) return;
+    const parsedPrice = parseInt(price);
+    if (category === 'tra_phi' && (!parsedPrice || parsedPrice <= 0)) return;
     onSubmit({
       title, description, image: imageUrl || undefined, time, place, category,
-      price: category === 'tra_phi' ? parseInt(price) || 0 : undefined,
+      price: category === 'tra_phi' ? parsedPrice : undefined,
     });
   };
 
@@ -729,7 +731,8 @@ const CreatePostModal = ({ category: initialCategory, onClose, onSubmit }) => {
           {category === 'tra_phi' && (
             <div>
               <label style={labelStyle}>Chi phí (VND) *</label>
-              <input value={price} onChange={e => setPrice(e.target.value)} type="number" placeholder="VD: 200000" style={inputStyle} />
+              <input value={price} onChange={e => setPrice(e.target.value)} type="number" min="1000" placeholder="VD: 200000" style={inputStyle} required />
+              {price && parseInt(price) <= 0 && <p style={{ fontSize: 11, color: '#FF571A', marginTop: 4, fontFamily: 'Inter, sans-serif' }}>Chi phí phải lớn hơn 0đ</p>}
             </div>
           )}
 
