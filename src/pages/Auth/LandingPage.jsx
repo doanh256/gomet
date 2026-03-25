@@ -15,25 +15,25 @@ const LandingPage = () => {
 
   const communityCards = [
     {
-      img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDAB1DZU13HzbegFZpF5pzwNut-MoFPdBaFDoPkq2ZFTWeb8fLRwNdZhxYeB7g1v78HClmpPQXnUN9NpKWDaXTr2BvUXwuAk-eUgoGxdwYgS01sja8SRP3n30TtNjuG2_7aZozAp2Q2UlfM-2Bv8lAnwfWtCR-FyL5PNVQFZoyPibNOtBl4hj65zLKQqjmqrIRZwrjW81ptj9VqMJBeGP2xfjvXs5iG4wutVMWKzGBt0DdBzDXPvjINoeVWBjcRJeuAxgGTNydhdCE',
-      avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuChJ0bbHW-Ya11G2I8RJSa564x8vE3L_X9d7C9hLk3xVEjZTgt2siMK8K4CTxaFDvJaqtOKsAcUlIX6A5ANGqPiu9Al5flRgDyNKbBJEpNl-HsM-92ne-9Q9opcnLev6u1iMZZ7OOyEUwyKUsVPSlGQ7eFE_-fS6sgdkB60F4A6bK7pfC-Gm_73S63TMkW9r-QHlCdjh4iNttzoehh9A_4EbY2AOoWFM6TgrRbgsD34JHXrAqc4ZaZHUz1LXjG1NWXFwP8n0ENZYng',
-      name: 'Marcus Chen',
-      event: 'Sự Kiện Chef\'s Table',
-      quote: 'Buổi gặp mặt trên sân thượng Sài Gòn thật tuyệt vời. Gặp ba nhiếp ảnh gia ẩm thực và khám phá một quán bánh mì ấn tượng.',
+      img: 'https://images.unsplash.com/photo-1529543544282-ea57407bc2f7?w=600&h=400&fit=crop',
+      avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face',
+      name: 'Minh Anh',
+      event: 'Date Cà Phê Sài Gòn',
+      quote: 'Lần đầu hẹn hò qua GOMET, hai đứa cùng ghiền phở và cà phê sữa đá. Bây giờ mỗi sáng đều cùng nhau ăn phở rồi đi làm.',
     },
     {
-      img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCah4O4PEU2JoecG72K4TrcI1nHwywiyrrCjvTKMtTJPKTwW5tJpcWZeAYC69ZNVSvQ_ylph_M4lvEhgUewstHuf-qI32BdiACBMEtCDiWXkjydcXDtZL4cex5_h_Cye1juWHOfXxllYDku0GvTIpJGn1RC6BTPCecQXKvQyiOWbbgcxXSLjegBW7SmCoRfa5479ZEdBAgSz02AwkgUMwORr78bRFvUoU__Bf9schG-khWtDK-nTxjmJ6OKIILJ9BP9d7SqAjyqh7o',
-      avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA5rB1flkHEhk2SK5klq_WS3m6gQFN6FlewshkwrKVs0wVPc3hX-_yntdlv-rj2L1PMCgnHpoEWP1kDQnmynuLCgTkzEb0RQShs5leLxwpsXRqknM9NJxXfOMdZ3__zr-ds6ypBH7HHa0nnxbzXGI_JafQEeVJJgGSF2A5r8U9JgoQSyhmIAyiDjzY8A0WJw8xsuDQd6IBpr_CEo3KgWHMQbDozGzvX2r_qqdPJr1-9ZVdzGJg4FCOXETMHfCcBLqG8Ghu_DOVRym4',
-      name: 'Eliza Thorne',
-      event: 'Khám Phá Đà Lạt',
-      quote: 'Cuối cùng đạt hạng Connoisseur! Điểm Vàng mở khóa buổi ăn farm-to-table độc quyền trên cao nguyên. Xứng đáng từng bước chân.',
+      img: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&h=400&fit=crop',
+      avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
+      name: 'Hoàng Nam',
+      event: 'Khám Phá Ẩm Thực Đà Lạt',
+      quote: 'Nhờ GOMET mà tìm được bạn gái cùng đam mê ẩm thực vùng miền. Chúng mình đã cùng nhau khám phá hết 8 vùng Việt Nam!',
     },
     {
-      img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAOzOouEgrK9iEq569gppoJ7FQQeChfTPQylhDbMJ89NWtCHtN22rb3OckzQIzIgML-oZf6cVoYJzvWPOUcMuUtzPl3rYijKXITsl9328noY728Koshn5659ujhGRREuHtVj9SUsVEys67fcyItzPBJ2j5T_1cZFL7VYCyo2QMlTLH5vjOw3MZ7guwgz75fs1PsGqodNfTup16-UtrQKPEiXJc5ZPvjAY_p-x0Y7Ptn_5CcWayZcOm7-qcjFpA_yksMvbaSy5zqoUM',
-      avatar: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAkUq9aQsY6EGFTaqugWZeifRSdb6MwJjTcCt0KMNRtriYZ9RSl9sS7epzD39CRpkSXOuh4ITBr2w7t8Dksav3tornbDkVBkE0-mzScjKougCKxf3huOcJrE-U5b1_lXOlXKkEQUfZbihP93FZ3hvf--NWcDxuNwiRICQbYIMpmlCcz8fRI6456C5pOyfl6qaVkeH0b3JUiglvLVstO4BVKdpooPO2zPc4Nm82QjGpUNNH6KnwK2CgFtzebLtcL6B2StjmyZdw5S_o',
-      name: 'Julian Voss',
-      event: 'Hotspot Hunter',
-      quote: 'Lập bản đồ vị cay-umami của miền Trung Việt Nam là dự án 6 tháng của tôi. Công cụ cộng đồng GOMET không gì sánh bằng.',
+      img: 'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=600&h=400&fit=crop',
+      avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face',
+      name: 'Thanh Hà',
+      event: 'Group Date Lẩu Thái',
+      quote: 'Đi group date lẩu Thái, quen được nhóm bạn mới siêu vui. Giờ cuối tuần nào cũng hẹn nhau thử quán mới trên GOMET.',
     },
   ];
 
@@ -79,7 +79,7 @@ const LandingPage = () => {
         }}>
           <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
             <img
-              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop"
+              src="https://images.unsplash.com/photo-1596436889106-be35e843f974?w=1200&h=800&fit=crop"
               alt="Couple dining together"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
@@ -153,7 +153,7 @@ const LandingPage = () => {
               {/* Large Feature */}
               <div style={{ position: 'relative', borderRadius: 16, overflow: 'hidden' }}>
                 <img
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgqcSQ3i6DxJVKPyc2RFs6ICJCx-lLOiwMxH2ozS1aUlQyn7W0bH79h8kt9eHyCugUDn6mjO61mXWXTd3Y22dOmR6KEtvwqSpkMIw_9yjYGlpKxoJ4eOgcplhMr4yV1hzYDpn6pN3e0eFeIQoA7VMKNxG8e-r86RLK71ZSHPGWlADqv_Orw58IIn6-qilAtCosoS6pDxtPs-xdj4uzT5SkP2bFm0alKVox7JlkP8K9bZIQVgaD8Kxrh1Wo_eBFuMk5lI9ptFmUVA0"
+                  src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=500&fit=crop"
                   alt="Vietnamese feast"
                   style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
@@ -183,7 +183,7 @@ const LandingPage = () => {
                     <p style={{ color: '#666460', margin: 0, fontSize: 15 }}>Nghe thuat uop muoi va vi cay nong cua di san cung dinh Hue.</p>
                   </div>
                   <img
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbgdFWhEG_qpqctmdm6eluBSqfg2E5UPukmiC6dHMLA6Pwjv2J9FFdJAzLLnLmdknAga8VQJlMD9dnBxLjmOBBwWSERKmDNMvkWE7G-E2lmOZSCpcDMfjw0aoY6y0mCSMwp4xBxkeB5_ZOl09YeTo_yDOfskT-VM1YVzLLp2AU70mu_lZhJ-nYgMMUo8be33w88yRGkYJy_2K19DVim6ZI-nu7TrPFQX-IcGUy8zQ1K4y9Q0HN4o3hS6U0ckfS4AvftsdFDAEbWIE"
+                    src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=500&h=300&fit=crop"
                     alt="Spring rolls"
                     style={{ width: '100%', height: 128, objectFit: 'cover', borderRadius: 8, marginTop: 16 }}
                   />
@@ -298,7 +298,7 @@ const LandingPage = () => {
         }}>
           <div style={{ position: 'absolute', inset: 0, opacity: 0.2 }}>
             <img
-              src="https://images.unsplash.com/photo-1529543544282-ea57407bc2f7?w=1200&h=600&fit=crop"
+              src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&h=600&fit=crop"
               alt="Abstract food preparation"
               style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(1)' }}
             />
