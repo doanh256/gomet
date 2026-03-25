@@ -79,8 +79,8 @@ const LandingPage = () => {
         }}>
           <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwL5VSBVKnlwsXrFTqmEqcccLMK7L2Ln4hO0y0p_BV-9n1YrSkUJBSkcPFZ2V24idTvGQL9KWUX45E5GEb6EeaGSNAyPFUtwd8WLStMiAsp4fMTrMviYFPIIbgSXL4D5pjDypwlF7IWv6Wfg9vX9LKqcpeNFsekZmXArX3ofJFHJE0Lsc7brkDuKA1HdF8M_qSEcAkB7oJMeNTJsnS4g3_9tmbn-mhkKmZDt97xYi8OBNE35SGYzsE6bXDlm8BHHygWf2-AoYpwME"
-              alt="Chef in kitchen"
+              src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200&h=800&fit=crop"
+              alt="Couple dining together"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
             <div style={{
@@ -298,7 +298,7 @@ const LandingPage = () => {
         }}>
           <div style={{ position: 'absolute', inset: 0, opacity: 0.2 }}>
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwtNfeNa7LC9JPKzXrVar3B9jrLpKBc523Vyx4mfVVIJaSjxUNO3HSIHgvlb6IpKQggo4r3l-aoN53FbuZhf6didaTffKzVs2HlNaFXaV80B5ErtTlNi7zONwbmJBEj-IzeN-jmCnZtaGw4Yp_9F6rbyB6-eP4ARvYvRokAv2gud0lLHk_5oZ_sBJg5q1AhSpUfITvlMm3DYQxHxAHkpgfvqEPcc7_FCD_i5sqy_Ap8GpvTllXLnB0klL1zRGrADcohrDP3Mkg_zk"
+              src="https://images.unsplash.com/photo-1529543544282-ea57407bc2f7?w=1200&h=600&fit=crop"
               alt="Abstract food preparation"
               style={{ width: '100%', height: '100%', objectFit: 'cover', filter: 'grayscale(1)' }}
             />
