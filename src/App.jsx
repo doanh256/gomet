@@ -26,6 +26,7 @@ import Reports from './pages/Admin/Reports';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 import OnboardingPage from './pages/Auth/OnboardingPage';
+import ProfileSetupPage from './pages/Auth/ProfileSetupPage';
 import LandingPage from './pages/Auth/LandingPage';
 import NotFound from './pages/NotFound';
 
@@ -174,6 +175,7 @@ function App() {
             <Route element={<AuthLayout />}>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/profile-setup" element={<ProfileSetupPage />} />
               <Route path="/onboarding" element={<OnboardingPage />} />
             </Route>
 
