@@ -15,16 +15,16 @@ const gsKeyframes = `
 const members = [
   { name: 'Minh', avatar: 'https://i.pravatar.cc/60?img=11', color: '#6C63FF' },
   { name: 'Linh', avatar: 'https://i.pravatar.cc/60?img=5', color: '#FF6B9D' },
-  { name: 'Tuan', avatar: 'https://i.pravatar.cc/60?img=12', color: '#00C9A7' },
+  { name: 'Tuấn', avatar: 'https://i.pravatar.cc/60?img=12', color: '#00C9A7' },
   { name: 'Hoa', avatar: 'https://i.pravatar.cc/60?img=9', color: '#FFD700' },
 ];
 
-const axes = ['Cay', 'Ngot', 'Man', 'Chua', 'Dang', 'Umami'];
+const axes = ['Cay', 'Ngọt', 'Mặn', 'Chua', 'Đắng', 'Umami'];
 
 const tasteBars = [
   { name: 'Minh', scores: { cay: 85, nuoc: 70, street: 90, fine: 40 }, color: '#6C63FF' },
   { name: 'Linh', scores: { cay: 50, nuoc: 90, street: 60, fine: 80 }, color: '#FF6B9D' },
-  { name: 'Tuan', scores: { cay: 75, nuoc: 65, street: 85, fine: 55 }, color: '#00C9A7' },
+  { name: 'Tuấn', scores: { cay: 75, nuoc: 65, street: 85, fine: 55 }, color: '#00C9A7' },
   { name: 'Hoa', scores: { cay: 60, nuoc: 80, street: 70, fine: 75 }, color: '#FFD700' },
 ];
 
@@ -64,7 +64,7 @@ const GroupSynergyPage = () => {
 
       {/* Squad */}
       <div style={{ padding: '20px 16px', display: 'flex', alignItems: 'center', gap: 12 }}>
-        <div style={{ fontSize: 16, fontWeight: 700, marginRight: 8 }}>Biet doi Am Thuc</div>
+        <div style={{ fontSize: 16, fontWeight: 700, marginRight: 8 }}>Biệt đội Ẩm Thực</div>
         <div style={{ display: 'flex' }}>
           {members.map((m, i) => (
             <img key={i} src={m.avatar} alt={m.name} style={{
@@ -113,8 +113,8 @@ const GroupSynergyPage = () => {
 
       {/* Member Taste Bars */}
       <div style={{ padding: '0 16px', marginBottom: 24 }}>
-        <h3 style={{ fontSize: 15, fontWeight: 700, marginBottom: 14, color: '#fff' }}>So Sanh Vi Giac</h3>
-        {['Cay', 'Mon nuoc', 'Street food', 'Fine dining'].map((cat, ci) => (
+        <h3 style={{ fontSize: 15, fontWeight: 700, marginBottom: 14, color: '#fff' }}>So Sánh Vị Giác</h3>
+        {['Cay', 'Món nước', 'Street food', 'Fine dining'].map((cat, ci) => (
           <div key={ci} style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 12, color: '#888', marginBottom: 6 }}>{cat}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
@@ -143,12 +143,12 @@ const GroupSynergyPage = () => {
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 22, color: '#6C63FF' }}>smart_toy</span>
-            <span style={{ fontSize: 14, fontWeight: 700 }}>AI Goi Y Dia Diem</span>
+            <span style={{ fontSize: 14, fontWeight: 700 }}>AI Gợi Ý Địa Điểm</span>
           </div>
-          <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 4 }}>Nha Hang Secret Garden</div>
-          <div style={{ fontSize: 13, color: '#aaa', marginBottom: 8 }}>158 Pasteur, Q.1 - Phu hop 95% nhom cua ban</div>
+          <div style={{ fontSize: 18, fontWeight: 800, marginBottom: 4 }}>Nhà Hàng Secret Garden</div>
+          <div style={{ fontSize: 13, color: '#aaa', marginBottom: 8 }}>158 Pasteur, Q.1 - Phù hợp 95% nhóm của bạn</div>
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-            {['Viet fusion', 'San vuon', 'Nhom 4-6'].map((t, i) => (
+            {['Viet fusion', 'Sân vườn', 'Nhóm 4-6'].map((t, i) => (
               <span key={i} style={{ background: 'rgba(108,99,255,0.2)', color: '#A5A0FF', borderRadius: 14, padding: '3px 10px', fontSize: 11, fontWeight: 600 }}>{t}</span>
             ))}
           </div>
@@ -163,7 +163,7 @@ const GroupSynergyPage = () => {
           fontSize: 16, fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8
         }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>calendar_month</span>
-          Len Lich Nhom
+          Lên Lịch Nhóm
         </button>
       </div>
     </div>

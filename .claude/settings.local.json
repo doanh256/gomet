@@ -37,7 +37,13 @@
       "WebFetch(domain:web-production-745ab4.up.railway.app)",
       "WebFetch(domain:www.gomet.vn)",
       "Read(//c/Users/doanh/Downloads/stitch \\(2\\)/GOMET_MASTER//**)",
-      "Read(//c/Users/doanh/Downloads/stitch \\(2\\)//**)"
+      "Read(//c/Users/doanh/Downloads/stitch \\(2\\)//**)",
+      "Bash(xargs grep:*)",
+      "Bash(xargs sed:*)",
+      "Read(//c/Users/doanh/Desktop/ungdungmoi/**)",
+      "Bash(node -e \"const fs=require\\(''fs''\\); const c=fs.readFileSync\\(''src/layouts/UserLayout.jsx'',''utf8''\\); console.log\\(''lines:'',c.split\\(''\\\\n''\\).length,''size:'',c.length\\)\")",
+      "Bash(grep -v \"vangEarned\\\\|walletBalance\\\\|vang}\\\\|\\\\.vang\\\\|vangBalance\\\\|vang:\\\\|key.*vang\\\\|type.*vang\\\\|id.*vang\\\\|path.*vang\\\\|icon.*vang\\\\|/\\\\*.*Vang\\\\|//.*Vang\")",
+      "Bash(grep -v \"vangEarned\\\\|walletBalance\\\\|\\\\.vang\\\\|vangBalance\\\\|vang:\\\\|type.*vang\\\\|id.*vang\\\\|path.*vang\\\\|/\\\\*\\\\|//\")"
     ]
   }
 }

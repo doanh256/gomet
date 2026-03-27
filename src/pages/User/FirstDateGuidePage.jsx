@@ -4,33 +4,33 @@ import { useNavigate } from 'react-router-dom';
 const tips = [
   {
     icon: 'location_on',
-    title: 'Chon dia diem phu hop',
-    desc: 'Chon noi yeu tinh, thoai mai de ca hai co the tro chuyen thoai mai. Quan ca phe hoac cong vien la lua chon tuyet voi.',
+    title: 'Chọn địa điểm phù hợp',
+    desc: 'Chọn nơi yên tĩnh, thoải mái để cả hai có thể trò chuyện dễ dàng. Quán cà phê hoặc công viên là lựa chọn tuyệt vời.',
   },
   {
     icon: 'checkroom',
-    title: 'An mac tu tin',
-    desc: 'Mac trang phuc gon gang, lich su va phu hop voi dia diem. Tu tin voi phong cach cua ban se tao an tuong tot.',
+    title: 'Ăn mặc tự tin',
+    desc: 'Mặc trang phục gọn gàng, lịch sự và phù hợp với địa điểm. Tự tin với phong cách của bạn sẽ tạo ấn tượng tốt.',
   },
   {
     icon: 'schedule',
-    title: 'Den dung gio',
-    desc: 'Dung gio the hien su ton trong. Hay den som 5-10 phut de chuan bi tinh than va tao khong khi thoai mai.',
+    title: 'Đến đúng giờ',
+    desc: 'Đúng giờ thể hiện sự tôn trọng. Hãy đến sớm 5-10 phút để chuẩn bị tinh thần và tạo không khí thoải mái.',
   },
   {
     icon: 'hearing',
-    title: 'Lang nghe nhieu hon',
-    desc: 'Dat cau hoi va lang nghe chan thanh. Moi nguoi deu thich cam giac duoc quan tam va thau hieu.',
+    title: 'Lắng nghe nhiều hơn',
+    desc: 'Đặt câu hỏi và lắng nghe chân thành. Mỗi người đều thích cảm giác được quan tâm và thấu hiểu.',
   },
   {
     icon: 'phonelink_off',
-    title: 'Dat dien thoai xuong',
-    desc: 'Tap trung vao nguoi doi dien. Tat thong bao va dat dien thoai sang mot ben the hien su ton trong.',
+    title: 'Đặt điện thoại xuống',
+    desc: 'Tập trung vào người đối diện. Tắt thông báo và đặt điện thoại sang một bên thể hiện sự tôn trọng.',
   },
   {
     icon: 'favorite',
-    title: 'La chinh minh',
-    desc: 'Dung co tao an tuong bang hinh anh gia tao. Su chan thanh va tu nhien la dieu hap dan nhat.',
+    title: 'Là chính mình',
+    desc: 'Đừng cố tạo ấn tượng bằng hình ảnh giả tạo. Sự chân thành và tự nhiên là điều hấp dẫn nhất.',
   },
 ];
 
@@ -161,9 +161,9 @@ const FirstDateGuidePage = () => {
       <div style={s.hero}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>handshake</span>
         <h1 style={s.heading}>
-          Cam nang <span style={s.headingAccent}>hen ho dau tien</span>
+          Cẩm nang <span style={s.headingAccent}>hẹn hò đầu tiên</span>
         </h1>
-        <p style={s.heroSub}>6 bi quyet giup buoi hen dau tien cua ban tro nen tuyet voi</p>
+        <p style={s.heroSub}>6 bí quyết giúp buổi hẹn đầu tiên của bạn trở nên tuyệt vời</p>
       </div>
 
       <div style={s.grid}>
@@ -191,10 +191,10 @@ const FirstDateGuidePage = () => {
       </div>
 
       <div style={s.cta}>
-        <div style={s.ctaTitle}>San sang hen ho?</div>
+        <div style={s.ctaTitle}>Sẵn sàng hẹn hò?</div>
         <button style={s.ctaBtn} onClick={() => navigate('/app')}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>explore</span>
-          Tim nguoi phu hop
+          Tìm người phù hợp
         </button>
       </div>
     </div>

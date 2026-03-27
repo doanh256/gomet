@@ -14,16 +14,16 @@ const missionKeyframes = `
 
 const checkpoints = [
   {
-    id: 1, name: 'Pho Thin', dish: 'Pho bo tai lan',
-    completed: true, restaurant: '13 Lo Duc, Ha Noi', vang: 80,
+    id: 1, name: 'Phở Thìn', dish: 'Phở bò tái lăn',
+    completed: true, restaurant: '13 Lò Đúc, Hà Nội', vang: 80,
   },
   {
-    id: 2, name: 'Pho Gia Truyen', dish: 'Pho bo nam gau',
-    completed: true, restaurant: '49 Bat Dan, Ha Noi', vang: 80,
+    id: 2, name: 'Phở Gia Truyền', dish: 'Phở bò nạm gầu',
+    completed: true, restaurant: '49 Bát Đàn, Hà Nội', vang: 80,
   },
   {
-    id: 3, name: 'Pho 10 Ly Quoc Su', dish: 'Pho bo dac biet',
-    completed: false, restaurant: '10 Ly Quoc Su, Ha Noi', vang: 90,
+    id: 3, name: 'Phở 10 Lý Quốc Sư', dish: 'Phở bò đặc biệt',
+    completed: false, restaurant: '10 Lý Quốc Sư, Hà Nội', vang: 90,
   },
 ];
 
@@ -154,7 +154,7 @@ const MissionDetailPage = () => {
 
       <button style={s.backBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
-        Quay lai
+        Quay lại
       </button>
 
       {/* Header */}
@@ -165,20 +165,20 @@ const MissionDetailPage = () => {
         <div style={s.missionName}>The Pho Trinity</div>
         <div style={s.timer}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>schedule</span>
-          3 ngay con lai
+          3 ngày còn lại
         </div>
       </div>
 
       {/* Reward */}
       <div style={s.rewardBadge}>
         <span aria-hidden="true" className="material-symbols-outlined" style={s.rewardIcon}>toll</span>
-        <div style={s.rewardText}>+{totalReward} VANG</div>
-        <div style={s.rewardLabel}>tong thuong</div>
+        <div style={s.rewardText}>+{totalReward} VÀNG</div>
+        <div style={s.rewardLabel}>tổng thưởng</div>
       </div>
 
       {/* Progress */}
       <div style={s.progressRow}>
-        <div style={s.progressLabel}>Tien trinh nhiem vu</div>
+        <div style={s.progressLabel}>Tiến trình nhiệm vụ</div>
         <div style={s.progressCount}>{completedCount}/{checkpoints.length}</div>
       </div>
       <div style={s.progressBar}>
@@ -189,7 +189,7 @@ const MissionDetailPage = () => {
       <div style={s.mapSection}>
         <div style={s.sectionTitle}>
           <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>flag</span>
-          Ban do nhiem vu
+          Bản đồ nhiệm vụ
         </div>
         <div style={s.checkpointList}>
           <div style={s.cpLine} />
@@ -207,7 +207,7 @@ const MissionDetailPage = () => {
                     <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>
                       {cp.completed ? 'check_circle' : 'lock'}
                     </span>
-                    {cp.completed ? 'Hoan thanh' : 'Chua mo'}
+                    {cp.completed ? 'Hoàn thành' : 'Chưa mở'}
                   </div>
                 </div>
                 <div style={s.cpDish(cp.completed)}>{cp.dish}</div>
@@ -218,7 +218,7 @@ const MissionDetailPage = () => {
                 {cp.completed && (
                   <div style={s.cpVang}>
                     <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 12 }}>toll</span>
-                    +{cp.vang} Vang
+                    +{cp.vang} Vàng
                   </div>
                 )}
               </div>
@@ -230,7 +230,7 @@ const MissionDetailPage = () => {
       {/* Continue CTA */}
       <button style={s.continueCta}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>play_arrow</span>
-        Tiep tuc nhiem vu
+        Tiếp tục nhiệm vụ
       </button>
     </div>
   );
