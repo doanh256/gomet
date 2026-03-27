@@ -140,34 +140,23 @@ export default function ExplorePage() {
   return (
     <div style={{ minHeight: '100dvh', background: T.bg, fontFamily: T.body, color: T.onSurface, overflowX: 'hidden' }}>
 
-      <header style={{ background: T.bg, position: 'sticky', top: 0, zIndex: 50 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 32px', maxWidth: '1280px', margin: '0 auto' }}>
-          <div style={{ fontSize: '22px', fontWeight: 900, fontFamily: T.headline, color: T.primary, letterSpacing: '-0.05em' }}>GoMet</div>
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
-            {[
-              { label: 'Khám phá', active: false },
-              { label: 'Sự kiện', active: false },
-              { label: 'Scanner', active: false },
-              { label: 'Cẩm nang', active: true },
-            ].map((item) => (
-              <span
-                key={item.label}
-                style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.18em', fontFamily: T.body, color: item.active ? T.primary : T.onSurface, opacity: item.active ? 1 : 0.55, cursor: 'pointer', transition: 'opacity 0.15s' }}
-              >
-                {item.label}
-              </span>
-            ))}
-          </nav>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: T.primary, display: 'flex', alignItems: 'center', transition: 'opacity 0.15s' }}>
-              <span className="material-symbols-outlined">notifications</span>
-            </button>
-            <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: T.primary, display: 'flex', alignItems: 'center', transition: 'opacity 0.15s' }}>
-              <span className="material-symbols-outlined">qr_code_scanner</span>
-            </button>
-          </div>
+      <div style={{ background: T.bg, position: 'sticky', top: 0, zIndex: 40, borderBottom: `1px solid ${T.outlineVariant}40` }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '40px', padding: '0 32px', maxWidth: '1280px', margin: '0 auto', height: '48px', overflowX: 'auto', scrollbarWidth: 'none' }}>
+          {[
+            { label: 'Khám phá', active: false },
+            { label: 'Sự kiện', active: false },
+            { label: 'Scanner', active: false },
+            { label: 'Cẩm nang', active: true },
+          ].map((item) => (
+            <span
+              key={item.label}
+              style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.18em', fontFamily: T.body, color: item.active ? T.primary : T.onSurface, opacity: item.active ? 1 : 0.5, cursor: 'pointer', transition: 'opacity 0.15s', whiteSpace: 'nowrap', flexShrink: 0, borderBottom: item.active ? `2px solid ${T.primary}` : '2px solid transparent', paddingBottom: '4px' }}
+            >
+              {item.label}
+            </span>
+          ))}
         </div>
-      </header>
+      </div>
 
       <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px 120px' }}>
 
@@ -368,23 +357,6 @@ export default function ExplorePage() {
         <span className="material-symbols-outlined">edit</span>
       </button>
 
-      <nav style={{ position: 'fixed', bottom: '24px', left: '50%', transform: 'translateX(-50%)', width: '90%', maxWidth: '440px', borderRadius: '9999px', background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', boxShadow: '0 10px 40px rgba(28,27,27,0.08)', display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '64px', padding: '0 12px', zIndex: 50 }}>
-        {[
-          { icon: 'restaurant', label: 'Discover', path: '/app/home', active: false },
-          { icon: 'calendar_today', label: 'Events', path: '/app/events', active: false },
-          { icon: 'qr_code_2', label: 'Scanner', path: '/app/scanner', active: false },
-          { icon: 'menu_book', label: 'Cẩm nang', path: null, active: true, filled: true },
-        ].map((item) => (
-          <button
-            key={item.label}
-            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2px', cursor: 'pointer', border: 'none', padding: '8px 12px', borderRadius: '9999px', background: item.active ? T.primary : 'none', color: item.active ? T.onPrimary : T.onSurface, transition: 'all 0.2s' }}
-            onClick={() => item.path && navigate(item.path)}
-          >
-            <span className="material-symbols-outlined" style={item.filled ? { fontVariationSettings: "'FILL' 1", fontSize: '22px' } : { fontSize: '22px' }}>{item.icon}</span>
-            <span style={{ fontSize: '9px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: T.body }}>{item.label}</span>
-          </button>
-        ))}
-      </nav>
     </div>
   );
 }

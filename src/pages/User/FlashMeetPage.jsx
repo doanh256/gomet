@@ -449,21 +449,7 @@ const FlashMeetPage = () => {
 
   return (
     <div style={styles.page}>
-      <header style={styles.header}>
-        <div style={styles.headerInner}>
-          <h1 style={styles.logo}>GoMet</h1>
-          <div style={styles.headerActions}>
-            <button style={styles.iconBtn}>
-              <span className="material-symbols-outlined">notifications</span>
-            </button>
-            <button style={styles.iconBtn}>
-              <span className="material-symbols-outlined">account_circle</span>
-            </button>
-          </div>
-        </div>
-      </header>
-
-      <main>
+      <div style={{ ...styles.header, position: 'sticky', top: 0, zIndex: 40 }}>
         <section style={styles.tabsSection}>
           <div style={styles.tabsRow}>
             <button
@@ -482,7 +468,9 @@ const FlashMeetPage = () => {
             </button>
           </div>
         </section>
+      </div>
 
+      <main>
         <section style={styles.darkCardSection}>
           <div style={styles.darkCard}>
             <div style={styles.darkCardGlow1} />
@@ -599,45 +587,6 @@ const FlashMeetPage = () => {
         </section>
       </main>
 
-      <nav style={styles.bottomNav}>
-        <button
-          style={styles.navItemInactive}
-          onClick={() => navigate('/app')}
-        >
-          <span className="material-symbols-outlined" style={{ marginBottom: '2px' }}>restaurant</span>
-          <span style={styles.navLabel}>Khám phá</span>
-        </button>
-        <button
-          style={styles.navItemActive}
-          onClick={() => navigate('/app/flash-meet')}
-        >
-          <span
-            className="material-symbols-outlined"
-            style={{ marginBottom: '2px', fontVariationSettings: "'FILL' 1" }}
-          >
-            bolt
-          </span>
-          <span style={styles.navLabel}>Hẹn nhanh</span>
-        </button>
-        <button
-          style={styles.navItemInactive}
-          onClick={() => navigate('/app/profile')}
-        >
-          <span className="material-symbols-outlined" style={{ marginBottom: '2px' }}>style</span>
-          <span style={styles.navLabel}>Visa</span>
-        </button>
-        <button
-          style={styles.navItemInactive}
-          onClick={() => navigate('/app/profile')}
-        >
-          <span className="material-symbols-outlined" style={{ marginBottom: '2px' }}>person</span>
-          <span style={styles.navLabel}>Cá nhân</span>
-        </button>
-      </nav>
-
-      <button style={styles.fab}>
-        <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>auto_awesome</span>
-      </button>
     </div>
   );
 };
