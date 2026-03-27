@@ -7,72 +7,44 @@ const COUNTRIES = [
   { code: 'OTHER', name: 'Quốc gia khác', flag: '🌏' },
 ];
 
+// Danh sách 34 tỉnh thành Việt Nam (hiệu lực từ 01/07/2025 theo NQ 202/2025/QH15)
 const VN_PROVINCES = [
-  // Thành phố trực thuộc Trung ương
-  { id: 'hn',  name: 'Hà Nội',              type: 'city' },
-  { id: 'hcm', name: 'TP. Hồ Chí Minh',    type: 'city' },
-  { id: 'dn',  name: 'Đà Nẵng',             type: 'city' },
-  { id: 'hp',  name: 'Hải Phòng',           type: 'city' },
-  { id: 'ct',  name: 'Cần Thơ',             type: 'city' },
-  // Tỉnh (alphabetical)
-  { id: 'ag',  name: 'An Giang',            type: 'province' },
-  { id: 'brvt',name: 'Bà Rịa - Vũng Tàu',  type: 'province' },
-  { id: 'bg',  name: 'Bắc Giang',           type: 'province' },
-  { id: 'bk',  name: 'Bắc Kạn',             type: 'province' },
-  { id: 'bl',  name: 'Bạc Liêu',            type: 'province' },
-  { id: 'bn',  name: 'Bắc Ninh',            type: 'province' },
-  { id: 'bt',  name: 'Bến Tre',             type: 'province' },
-  { id: 'bdi', name: 'Bình Định',           type: 'province' },
-  { id: 'bdu', name: 'Bình Dương',          type: 'province' },
-  { id: 'bph', name: 'Bình Phước',          type: 'province' },
-  { id: 'bth', name: 'Bình Thuận',          type: 'province' },
-  { id: 'cm',  name: 'Cà Mau',              type: 'province' },
-  { id: 'cb',  name: 'Cao Bằng',            type: 'province' },
-  { id: 'dlk', name: 'Đắk Lắk',            type: 'province' },
-  { id: 'dno', name: 'Đắk Nông',            type: 'province' },
-  { id: 'db',  name: 'Điện Biên',           type: 'province' },
-  { id: 'dna', name: 'Đồng Nai',            type: 'province' },
-  { id: 'dt',  name: 'Đồng Tháp',           type: 'province' },
-  { id: 'gl',  name: 'Gia Lai',             type: 'province' },
-  { id: 'hg',  name: 'Hà Giang',            type: 'province' },
-  { id: 'hna', name: 'Hà Nam',              type: 'province' },
-  { id: 'hti', name: 'Hà Tĩnh',             type: 'province' },
-  { id: 'hd',  name: 'Hải Dương',           type: 'province' },
-  { id: 'hgi', name: 'Hậu Giang',           type: 'province' },
-  { id: 'hob', name: 'Hòa Bình',            type: 'province' },
-  { id: 'hy',  name: 'Hưng Yên',            type: 'province' },
-  { id: 'kh',  name: 'Khánh Hòa',           type: 'province' },
-  { id: 'kg',  name: 'Kiên Giang',          type: 'province' },
-  { id: 'kt',  name: 'Kon Tum',             type: 'province' },
-  { id: 'lc',  name: 'Lai Châu',            type: 'province' },
-  { id: 'ld',  name: 'Lâm Đồng',            type: 'province' },
-  { id: 'ls',  name: 'Lạng Sơn',            type: 'province' },
-  { id: 'lca', name: 'Lào Cai',             type: 'province' },
-  { id: 'la',  name: 'Long An',             type: 'province' },
-  { id: 'nd',  name: 'Nam Định',            type: 'province' },
-  { id: 'na',  name: 'Nghệ An',             type: 'province' },
-  { id: 'nb',  name: 'Ninh Bình',           type: 'province' },
-  { id: 'nt',  name: 'Ninh Thuận',          type: 'province' },
-  { id: 'pt',  name: 'Phú Thọ',             type: 'province' },
-  { id: 'py',  name: 'Phú Yên',             type: 'province' },
-  { id: 'qb',  name: 'Quảng Bình',          type: 'province' },
-  { id: 'qna', name: 'Quảng Nam',           type: 'province' },
-  { id: 'qng', name: 'Quảng Ngãi',          type: 'province' },
-  { id: 'qni', name: 'Quảng Ninh',          type: 'province' },
-  { id: 'qt',  name: 'Quảng Trị',           type: 'province' },
-  { id: 'st',  name: 'Sóc Trăng',           type: 'province' },
-  { id: 'sl',  name: 'Sơn La',              type: 'province' },
-  { id: 'tn',  name: 'Tây Ninh',            type: 'province' },
-  { id: 'tbi', name: 'Thái Bình',           type: 'province' },
-  { id: 'tng', name: 'Thái Nguyên',         type: 'province' },
-  { id: 'th',  name: 'Thanh Hóa',           type: 'province' },
-  { id: 'tth', name: 'Thừa Thiên Huế',      type: 'province' },
-  { id: 'tg',  name: 'Tiền Giang',          type: 'province' },
-  { id: 'tv',  name: 'Trà Vinh',            type: 'province' },
-  { id: 'tq',  name: 'Tuyên Quang',         type: 'province' },
-  { id: 'vl',  name: 'Vĩnh Long',           type: 'province' },
-  { id: 'vp',  name: 'Vĩnh Phúc',           type: 'province' },
-  { id: 'yb',  name: 'Yên Bái',             type: 'province' },
+  // 6 Thành phố trực thuộc Trung ương
+  { id: 'hn',  name: 'Hà Nội',           type: 'city' },
+  { id: 'hcm', name: 'TP. Hồ Chí Minh', type: 'city' },
+  { id: 'hp',  name: 'Hải Phòng',        type: 'city' },
+  { id: 'hue', name: 'Huế',              type: 'city' },
+  { id: 'dn',  name: 'Đà Nẵng',          type: 'city' },
+  { id: 'ct',  name: 'Cần Thơ',          type: 'city' },
+  // 28 Tỉnh (alphabetical)
+  { id: 'ag',  name: 'An Giang',         type: 'province' }, // + Kiên Giang
+  { id: 'bn',  name: 'Bắc Ninh',         type: 'province' }, // + Bắc Giang
+  { id: 'cm',  name: 'Cà Mau',           type: 'province' }, // + Bạc Liêu
+  { id: 'cb',  name: 'Cao Bằng',         type: 'province' },
+  { id: 'dlk', name: 'Đắk Lắk',         type: 'province' }, // + Phú Yên
+  { id: 'db',  name: 'Điện Biên',        type: 'province' },
+  { id: 'dna', name: 'Đồng Nai',         type: 'province' }, // + Bình Phước
+  { id: 'dt',  name: 'Đồng Tháp',        type: 'province' }, // + Tiền Giang
+  { id: 'gl',  name: 'Gia Lai',          type: 'province' }, // + Bình Định
+  { id: 'hti', name: 'Hà Tĩnh',          type: 'province' },
+  { id: 'hy',  name: 'Hưng Yên',         type: 'province' }, // + Thái Bình
+  { id: 'kh',  name: 'Khánh Hòa',        type: 'province' }, // + Ninh Thuận
+  { id: 'lc',  name: 'Lai Châu',         type: 'province' },
+  { id: 'ld',  name: 'Lâm Đồng',         type: 'province' }, // + Đắk Nông + Bình Thuận
+  { id: 'ls',  name: 'Lạng Sơn',         type: 'province' },
+  { id: 'lca', name: 'Lào Cai',          type: 'province' }, // + Yên Bái
+  { id: 'na',  name: 'Nghệ An',          type: 'province' },
+  { id: 'nb',  name: 'Ninh Bình',        type: 'province' }, // + Hà Nam + Nam Định
+  { id: 'pt',  name: 'Phú Thọ',          type: 'province' }, // + Vĩnh Phúc + Hòa Bình
+  { id: 'qng', name: 'Quảng Ngãi',       type: 'province' }, // + Kon Tum
+  { id: 'qni', name: 'Quảng Ninh',       type: 'province' },
+  { id: 'qt',  name: 'Quảng Trị',        type: 'province' }, // + Quảng Bình
+  { id: 'sl',  name: 'Sơn La',           type: 'province' },
+  { id: 'tn',  name: 'Tây Ninh',         type: 'province' }, // + Long An
+  { id: 'tng', name: 'Thái Nguyên',      type: 'province' }, // + Bắc Kạn
+  { id: 'th',  name: 'Thanh Hóa',        type: 'province' },
+  { id: 'tq',  name: 'Tuyên Quang',      type: 'province' }, // + Hà Giang
+  { id: 'vl',  name: 'Vĩnh Long',        type: 'province' }, // + Bến Tre + Trà Vinh
 ];
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
@@ -268,12 +240,12 @@ const ProfileSetupPage = () => {
                   onBlur={e => { e.target.style.boxShadow = 'none'; e.target.style.borderColor = border; }}
                 >
                   <option value="" style={{ backgroundColor: surface }} disabled>Chọn tỉnh / thành phố</option>
-                  <optgroup label="— Thành phố trực thuộc TW —" style={{ backgroundColor: surface, color: textMuted }}>
+                  <optgroup label="— Thành phố trực thuộc TW (6) —" style={{ backgroundColor: surface, color: textMuted }}>
                     {currentProvinces.filter(p => p.type === 'city').map(p => (
                       <option key={p.id} value={p.id} style={{ backgroundColor: surface }}>{p.name}</option>
                     ))}
                   </optgroup>
-                  <optgroup label="— Tỉnh —" style={{ backgroundColor: surface, color: textMuted }}>
+                  <optgroup label="— Tỉnh (28) —" style={{ backgroundColor: surface, color: textMuted }}>
                     {currentProvinces.filter(p => p.type === 'province').map(p => (
                       <option key={p.id} value={p.id} style={{ backgroundColor: surface }}>{p.name}</option>
                     ))}
