@@ -21,8 +21,9 @@ const UserLayout = () => {
   const desktopNav = [
     { label: 'Trang chủ', path: '/app' },
     { label: 'Bản đồ', path: '/app/explore' },
+    { label: 'Ưu đãi', path: '/app/deals-map' },
     { label: 'Nhiệm vụ', path: '/app/karma' },
-    { label: 'Flash Meet', path: '/app/flash-meet' },
+    { label: 'Đổi thưởng', path: '/app/rewards' },
   ];
 
   const mobileNav = [

@@ -121,7 +121,7 @@ const RefundStatusPage = () => {
           <div style={s.supportTitle}>Cần trợ giúp?</div>
           <div style={s.supportSub}>Liên hệ hỗ trợ 24/7</div>
         </div>
-        <button style={s.supportBtn} onClick={() => navigate('/help')}>Liên hệ</button>
+        <button style={s.supportBtn} onClick={() => navigate('/app/help')}>Liên hệ</button>
       </div>
 
       <div style={s.card}>

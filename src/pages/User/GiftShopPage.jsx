@@ -321,7 +321,7 @@ const GiftShopPage = () => {
           <div style={s.balanceLabel}>Số dư của bạn</div>
           <div style={s.balanceValue}>2.450 xu</div>
         </div>
-        <span style={s.topUpLink} onClick={() => navigate('/wallet')}>Nạp thêm</span>
+        <span style={s.topUpLink} onClick={() => navigate('/app/wallet')}>Nạp thêm</span>
       </div>
 
       <div style={s.section}>

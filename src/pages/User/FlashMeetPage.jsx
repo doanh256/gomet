@@ -149,7 +149,7 @@ const DesktopLayout = ({ distanceKm, setDistanceKm, selectedTags, toggleTag, nav
                 <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: 16, opacity: 0.8 }}>timer</span>
                 <span style={{ fontSize: 13, opacity: 0.85 }}>Bắt đầu lúc 20:00 hôm nay</span>
               </div>
-              <button style={ds.blindSoupBtn}>
+              <button style={ds.blindSoupBtn} onClick={() => navigate("/app/blind-soup-date")}>
                 <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: 18 }}>shuffle</span>
                 Tham gia Ghép đôi
               </button>
@@ -200,7 +200,7 @@ const DesktopLayout = ({ distanceKm, setDistanceKm, selectedTags, toggleTag, nav
                 </div>
               </div>
 
-              <button style={ds.applyBtn}>Áp dụng bộ lọc</button>
+              <button style={ds.applyBtn} onClick={() => {}}>Áp dụng bộ lọc</button>
             </div>
           </div>
 
@@ -210,7 +210,7 @@ const DesktopLayout = ({ distanceKm, setDistanceKm, selectedTags, toggleTag, nav
             {/* Đang diễn ra section */}
             <div style={ds.sectionHeader}>
               <h2 style={ds.sectionTitle}>Đang diễn ra</h2>
-              <button style={ds.seeAllBtn}>Xem tất cả</button>
+              <button style={ds.seeAllBtn} onClick={() => navigate("/app/group-dining")}>Xem tất cả</button>
             </div>
 
             <div style={ds.ongoingGrid}>
@@ -235,7 +235,7 @@ const DesktopLayout = ({ distanceKm, setDistanceKm, selectedTags, toggleTag, nav
                         ))}
                         <span style={{ ...ds.spotsLabel, color: ev.spotsColor }}>{ev.spots}</span>
                       </div>
-                      <button style={ds.joinEventBtn}>Tham gia</button>
+                      <button style={ds.joinEventBtn} onClick={() => navigate("/app/event/" + ev.id)}>Tham gia</button>
                     </div>
                   </div>
                 </div>
@@ -245,7 +245,7 @@ const DesktopLayout = ({ distanceKm, setDistanceKm, selectedTags, toggleTag, nav
             {/* Ăn theo nhóm section */}
             <div style={{ ...ds.sectionHeader, marginTop: 32 }}>
               <h2 style={ds.sectionTitle}>Ăn theo nhóm</h2>
-              <button style={ds.createGroupBtn}>
+              <button style={ds.createGroupBtn} onClick={() => navigate("/app/group-dining")}>
                 <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: 16 }}>add</span>
                 Tạo nhóm
               </button>
@@ -268,7 +268,7 @@ const DesktopLayout = ({ distanceKm, setDistanceKm, selectedTags, toggleTag, nav
                       <div style={{ ...ds.groupProgressBar, width: `${(g.members / g.maxMembers) * 100}%` }} />
                     </div>
                   </div>
-                  <button style={ds.joinGroupBtn}>Tham gia</button>
+                  <button style={ds.joinGroupBtn} onClick={() => navigate("/app/group-chat/" + g.id)}>Tham gia</button>
                 </div>
               ))}
             </div>
@@ -330,7 +330,7 @@ const MobileLayout = ({ activeTab, setActiveTab, showBanner, setShowBanner, navi
         {/* Đang diễn ra gần đây */}
         <div style={ms.sectionHeader}>
           <h2 style={ms.sectionTitle}>Đang diễn ra gần đây</h2>
-          <button style={ms.seeAllBtn}>Xem tất cả</button>
+          <button style={ms.seeAllBtn} onClick={() => navigate("/app/group-dining")}>Xem tất cả</button>
         </div>
 
         {/* Food cards */}
@@ -355,7 +355,7 @@ const MobileLayout = ({ activeTab, setActiveTab, showBanner, setShowBanner, navi
                   ))}
                   <span style={ms.spotsLabel}>+2 đang tham gia</span>
                 </div>
-                <button style={ms.joinBtn}>Tham gia ngay</button>
+                <button style={ms.joinBtn} onClick={() => navigate("/app/flash-meet")}>Tham gia ngay</button>
               </div>
             </div>
           </div>
@@ -378,7 +378,7 @@ const MobileLayout = ({ activeTab, setActiveTab, showBanner, setShowBanner, navi
                   ))}
                   <span style={ms.spotsLabel}>Còn 3 chỗ</span>
                 </div>
-                <button style={ms.joinBtn}>Tham gia ngay</button>
+                <button style={ms.joinBtn} onClick={() => navigate("/app/flash-meet")}>Tham gia ngay</button>
               </div>
             </div>
           </div>
@@ -388,7 +388,7 @@ const MobileLayout = ({ activeTab, setActiveTab, showBanner, setShowBanner, navi
         {/* Ăn theo nhóm */}
         <div style={{ ...ms.sectionHeader, marginTop: 8 }}>
           <h2 style={ms.sectionTitle}>Ăn theo nhóm</h2>
-          <button style={ms.createGroupBtn}>
+          <button style={ms.createGroupBtn} onClick={() => navigate("/app/group-dining")}>
             <span className="material-symbols-outlined" aria-hidden="true" style={{ fontSize: 16 }}>add</span>
             Tạo nhóm
           </button>
@@ -407,7 +407,7 @@ const MobileLayout = ({ activeTab, setActiveTab, showBanner, setShowBanner, navi
                   <div style={{ ...ms.groupProgressBar, width: `${(g.members / g.maxMembers) * 100}%` }} />
                 </div>
               </div>
-              <button style={ms.joinGroupBtn}>Tham gia</button>
+              <button style={ms.joinGroupBtn} onClick={() => navigate("/app/group-chat/" + g.id)}>Tham gia</button>
             </div>
           ))}
         </div>

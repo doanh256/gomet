@@ -124,7 +124,7 @@ function MobileView({ navigate }) {
                   <span style={{ fontSize: 12, color: '#e7bdb2' }}>{hotQuest.progress}/{hotQuest.total} hoàn thành</span>
                   <VangBadge amount={hotQuest.reward} size="sm" />
                 </div>
-                <button style={{ width: '100%', backgroundColor: '#ad2c00', color: '#fff', border: 'none', borderRadius: 12, padding: '12px 0', fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 15, cursor: 'pointer' }}>
+                <button onClick={() => navigate('/app/rewards')} style={{ width: '100%', backgroundColor: '#ad2c00', color: '#fff', border: 'none', borderRadius: 12, padding: '12px 0', fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 15, cursor: 'pointer' }}>
                   Nhận Thưởng
                 </button>
               </div>
@@ -248,14 +248,15 @@ function DesktopView({ navigate }) {
         {/* Nav items */}
         <nav style={{ flex: 1, padding: '20px 12px' }}>
           {[
-            { icon: 'explore', label: 'Discover', active: false },
-            { icon: 'local_fire_department', label: 'Quests', active: true },
-            { icon: 'leaderboard', label: 'Leaderboard', active: false },
-            { icon: 'kitchen', label: 'Kitchen', active: false },
-            { icon: 'person', label: 'Profile', active: false },
+            { icon: 'explore', label: 'Discover', active: false, path: '/app/explore' },
+            { icon: 'local_fire_department', label: 'Quests', active: true, path: '/app/karma' },
+            { icon: 'leaderboard', label: 'Leaderboard', active: false, path: '/app/leaderboard' },
+            { icon: 'kitchen', label: 'Kitchen', active: false, path: '/app/kitchen-cards' },
+            { icon: 'person', label: 'Profile', active: false, path: '/app/profile' },
           ].map(item => (
             <button
               key={item.label}
+              onClick={() => navigate(item.path)}
               style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 12, padding: '11px 14px', borderRadius: 12, border: 'none', cursor: 'pointer', backgroundColor: item.active ? '#fff0ed' : 'transparent', color: item.active ? '#ad2c00' : '#5d4038', fontFamily: 'var(--font-headline)', fontWeight: item.active ? 700 : 500, fontSize: 14, marginBottom: 4, textAlign: 'left', transition: 'background 0.15s' }}
             >
               <span className="material-symbols-outlined" style={{ fontSize: 22 }}>{item.icon}</span>
@@ -266,7 +267,7 @@ function DesktopView({ navigate }) {
 
         {/* Host a Dinner CTA */}
         <div style={{ padding: '0 16px' }}>
-          <button style={{ width: '100%', backgroundColor: '#ad2c00', color: '#fff', border: 'none', borderRadius: 14, padding: '13px 0', fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}>
+          <button onClick={() => navigate('/app/group-dining')} style={{ width: '100%', backgroundColor: '#ad2c00', color: '#fff', border: 'none', borderRadius: 14, padding: '13px 0', fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}>
             Host a Dinner
           </button>
         </div>
@@ -300,7 +301,7 @@ function DesktopView({ navigate }) {
         {/* Section label */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
           <span style={{ fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 16, color: '#1c1b1b' }}>Nhiệm vụ Đang thực hiện</span>
-          <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ad2c00', fontWeight: 600, fontSize: 13, fontFamily: 'var(--font-headline)' }}>Xem tất cả thử thách →</button>
+          <button onClick={() => navigate('/app/quests')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ad2c00', fontWeight: 600, fontSize: 13, fontFamily: 'var(--font-headline)' }}>Xem tất cả thử thách →</button>
         </div>
 
         {/* Featured dark quest card */}
@@ -322,7 +323,7 @@ function DesktopView({ navigate }) {
                   <span style={{ fontSize: 13, color: '#e7bdb2' }}>Tiến độ: {hotQuest.progress}/{hotQuest.total}</span>
                   <VangBadge amount={hotQuest.reward} size="md" />
                 </div>
-                <button style={{ backgroundColor: '#ad2c00', color: '#fff', border: 'none', borderRadius: 14, padding: '13px 28px', fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 15, cursor: 'pointer' }}>
+                <button onClick={() => navigate('/app/mission/' + hotQuest.id)} style={{ backgroundColor: '#ad2c00', color: '#fff', border: 'none', borderRadius: 14, padding: '13px 28px', fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 15, cursor: 'pointer' }}>
                   Tiếp tục hành trình
                 </button>
               </div>
@@ -353,7 +354,7 @@ function DesktopView({ navigate }) {
                 <span style={{ fontSize: 12, color: '#5d4038' }}>{quest.progress}/{quest.total}</span>
                 <VangBadge amount={quest.reward} size="sm" />
               </div>
-              <button style={{ width: '100%', marginTop: 14, backgroundColor: '#fff0ed', color: '#ad2c00', border: '1px solid #e7bdb2', borderRadius: 10, padding: '10px 0', fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 13, cursor: 'pointer' }}>
+              <button onClick={() => navigate('/app/mission/' + quest.id)} style={{ width: '100%', marginTop: 14, backgroundColor: '#fff0ed', color: '#ad2c00', border: '1px solid #e7bdb2', borderRadius: 10, padding: '10px 0', fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 13, cursor: 'pointer' }}>
                 Tiếp tục
               </button>
             </div>

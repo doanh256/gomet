@@ -220,7 +220,7 @@ const HomePage = () => {
           </div>
 
           <button
-            onClick={() => navigate('/matches')}
+            onClick={() => navigate('/app/matches')}
             style={{
               width: '100%',
               padding: '14px',
@@ -277,7 +277,7 @@ const HomePage = () => {
           </p>
           <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
             <button
-              onClick={() => navigate('/visa')}
+              onClick={() => navigate('/app/vang-dashboard')}
               style={{
                 padding: '16px 36px',
                 background: C.primary,
@@ -293,7 +293,7 @@ const HomePage = () => {
               Khám phá Visa
             </button>
             <button
-              onClick={() => navigate('/matches')}
+              onClick={() => navigate('/app/matches')}
               style={{
                 padding: '16px 36px',
                 background: 'transparent',
@@ -355,7 +355,7 @@ const HomePage = () => {
                   gap: '12px',
                   cursor: 'pointer',
                 }}
-                onClick={() => navigate('/visa')}
+                onClick={() => navigate('/app/vang-dashboard')}
               >
                 <span style={{ fontSize: '40px' }}>{vs.emoji}</span>
                 <div style={{ fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)', fontSize: '20px', fontWeight: 700, color: '#fff' }}>{vs.name}</div>
@@ -436,7 +436,7 @@ const HomePage = () => {
           Hàng nghìn hương vị đang chờ bạn khám phá.
         </p>
         <button
-          onClick={() => navigate('/visa')}
+          onClick={() => navigate('/app/vang-dashboard')}
           style={{
             padding: '18px 48px',
             background: C.primary,

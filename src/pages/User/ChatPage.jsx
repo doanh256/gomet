@@ -355,7 +355,7 @@ const ChatPage = () => {
         {/* Tìm bạn mới */}
         <div style={{ padding: '0 20px' }}>
           <button
-            onClick={() => navigate('/app/discover')}
+            onClick={() => navigate('/app/explore')}
             style={{
               width: '100%', background: '#ad2c00', color: '#fff',
               border: 'none', borderRadius: 12, padding: '13px 0',
