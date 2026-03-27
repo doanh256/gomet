@@ -1,97 +1,423 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+const quests = [
+  { id: 1, name: 'Chuyên Gia Ramen', desc: 'Tìm kiếm và review tô ramen ngon nhất', reward: 800, progress: 3, total: 5, hot: true, category: 'Ẩm Thực' },
+  { id: 2, name: 'Sáng Tạo', desc: 'Tạo 5 công thức mới', reward: 300, progress: 2, total: 5 },
+  { id: 3, name: 'Vị Ngọt Ngào', desc: 'Thử 10 món tráng miệng', reward: 500, progress: 7, total: 10 },
+  { id: 4, name: 'Thử thách Sushi 7 ngày', desc: 'Khám phá tinh hoa ẩm thực Nhật Bản trong 7 ngày', reward: 400, progress: 4, total: 7 },
+  { id: 5, name: 'Coffee Explorer', desc: 'Ghé thăm 3 quán cà phê độc đáo', reward: 200, progress: 1, total: 3 },
+];
+
+const leaderboard = [
+  { rank: 1, name: 'Minh A...', title: 'MASTER CHEF', vang: 45200 },
+  { rank: 2, name: 'Trần H...', title: 'FOOD CRITIC', vang: 42850 },
+  { rank: 3, name: 'Lê Th...', title: 'GOURMET', vang: 39400 },
+  { rank: 4, name: 'Nguyễn V...', title: 'FOOD LOVER', vang: 28100 },
+  { rank: 5, name: 'Phạm Q...', title: 'EXPLORER', vang: 21750 },
+];
+
+const rankMedals = { 1: '🥇', 2: '🥈', 3: '🥉' };
+const rankTitleColors = { 1: '#FFD700', 2: '#C0C0C0', 3: '#CD7F32' };
+
+// ─── Shared sub-components ───────────────────────────────────────────────────
+
+function VangBadge({ amount, size = 'md' }) {
+  const fontSize = size === 'lg' ? 22 : size === 'sm' ? 12 : 15;
+  const iconSize = size === 'lg' ? 22 : size === 'sm' ? 14 : 16;
+  return (
+    <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontFamily: 'var(--font-headline)', fontWeight: 800, fontSize, color: '#FFD700' }}>
+      <span className="material-symbols-outlined filled" style={{ fontSize: iconSize, color: '#FFD700' }}>star</span>
+      {amount.toLocaleString('vi-VN')}
+    </span>
+  );
+}
+
+function ProgressBar({ progress, total }) {
+  const pct = Math.min(100, Math.round((progress / total) * 100));
+  return (
+    <div style={{ position: 'relative', height: 8, borderRadius: 999, backgroundColor: '#e7bdb2', overflow: 'hidden', marginTop: 8 }}>
+      <div style={{ position: 'absolute', left: 0, top: 0, height: '100%', width: `${pct}%`, borderRadius: 999, backgroundColor: '#ad2c00', transition: 'width 0.6s ease' }} />
+    </div>
+  );
+}
+
+// ─── Mobile view ─────────────────────────────────────────────────────────────
+
+function MobileView({ navigate }) {
+  const [activeTab, setActiveTab] = useState('nhiem-vu');
+  const hotQuest = quests.find(q => q.hot);
+  const otherQuests = quests.filter(q => !q.hot);
+
+  return (
+    <div style={{ flex: 1, backgroundColor: '#fcf9f8', minHeight: '100vh', overflowY: 'auto', fontFamily: 'var(--font-body)' }}>
+      {/* Mobile Header */}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 20px 12px', backgroundColor: '#fff', borderBottom: '1px solid #e7bdb2' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <button
+            onClick={() => navigate(-1)}
+            style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', color: '#ad2c00', padding: 0 }}
+            aria-label="Quay lại"
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: 24 }}>arrow_back</span>
+          </button>
+          <span className="material-symbols-outlined filled" style={{ fontSize: 26, color: '#ad2c00' }}>local_fire_department</span>
+          <h1 style={{ fontFamily: 'var(--font-headline)', fontSize: 20, fontWeight: 800, color: '#1c1b1b', margin: 0 }}>Culinary Quests</h1>
+        </div>
+        <div style={{ width: 38, height: 38, borderRadius: '50%', backgroundColor: '#f0edec', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', border: '2px solid #ad2c00' }}>
+          <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#5d4038' }}>person</span>
+        </div>
+      </div>
+
+      {/* Stats row */}
+      <div style={{ display: 'flex', backgroundColor: '#fff', borderBottom: '1px solid #f0edec' }}>
+        {[
+          { label: 'VÀNG', value: '8,450' },
+          { label: 'Xếp hạng', value: '#12' },
+          { label: 'Nhiệm vụ', value: '14' },
+        ].map((stat, i) => (
+          <div key={i} style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '10px 8px', borderRight: i < 2 ? '1px solid #f0edec' : 'none' }}>
+            <span style={{ fontFamily: 'var(--font-headline)', fontSize: 17, fontWeight: 800, color: '#ad2c00' }}>{stat.value}</span>
+            <span style={{ fontSize: 11, color: '#5d4038', marginTop: 2 }}>{stat.label}</span>
+          </div>
+        ))}
+      </div>
+
+      {/* Tab switcher */}
+      <div style={{ display: 'flex', margin: '16px 20px 0', backgroundColor: '#f0edec', borderRadius: 999, padding: 4, gap: 4 }}>
+        {[{ key: 'nhiem-vu', label: 'Nhiệm vụ' }, { key: 'xep-hang', label: 'Xếp hạng' }].map(tab => (
+          <button
+            key={tab.key}
+            onClick={() => setActiveTab(tab.key)}
+            style={{
+              flex: 1, padding: '9px 12px', borderRadius: 999, border: 'none', cursor: 'pointer',
+              fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 14,
+              backgroundColor: activeTab === tab.key ? '#fff' : 'transparent',
+              color: activeTab === tab.key ? '#ad2c00' : '#5d4038',
+              boxShadow: activeTab === tab.key ? '0 1px 4px rgba(0,0,0,0.12)' : 'none',
+              transition: 'all 0.2s',
+            }}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab content */}
+      <div style={{ padding: '16px 20px 80px' }}>
+        {activeTab === 'nhiem-vu' ? (
+          <>
+            <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.2, color: '#5d4038', marginBottom: 12, marginTop: 4 }}>ĐANG THỰC HIỆN</p>
+
+            {/* Featured hot quest card */}
+            {hotQuest && (
+              <div style={{ backgroundColor: '#1a1a1a', borderRadius: 20, padding: '20px 18px', marginBottom: 16, position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', top: 0, right: 0, width: 120, height: 120, borderRadius: '50%', backgroundColor: '#ad2c0020', transform: 'translate(30px,-30px)' }} />
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 10 }}>
+                  <span style={{ backgroundColor: '#ad2c00', color: '#fff', fontSize: 10, fontWeight: 800, letterSpacing: 1, padding: '3px 10px', borderRadius: 999, fontFamily: 'var(--font-headline)' }}>HOT QUEST</span>
+                  <span style={{ fontSize: 12, color: '#e7bdb2' }}>PHẦN THƯỞNG: {hotQuest.reward}+</span>
+                </div>
+                <div style={{ fontFamily: 'var(--font-headline)', fontSize: 22, fontWeight: 800, color: '#fff', marginBottom: 4 }}>{hotQuest.name}</div>
+                <div style={{ fontSize: 13, color: '#e7bdb2', marginBottom: 12 }}>{hotQuest.desc}</div>
+                <ProgressBar progress={hotQuest.progress} total={hotQuest.total} />
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 8, marginBottom: 14 }}>
+                  <span style={{ fontSize: 12, color: '#e7bdb2' }}>{hotQuest.progress}/{hotQuest.total} hoàn thành</span>
+                  <VangBadge amount={hotQuest.reward} size="sm" />
+                </div>
+                <button style={{ width: '100%', backgroundColor: '#ad2c00', color: '#fff', border: 'none', borderRadius: 12, padding: '12px 0', fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 15, cursor: 'pointer' }}>
+                  Nhận Thưởng
+                </button>
+              </div>
+            )}
+
+            {/* Other quest cards */}
+            {otherQuests.map(quest => (
+              <div key={quest.id} style={{ backgroundColor: '#fff', borderRadius: 16, padding: '16px', marginBottom: 12, border: '1px solid #f0edec' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', marginBottom: 6 }}>
+                  <div>
+                    <div style={{ fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 15, color: '#1c1b1b' }}>{quest.name}</div>
+                    <div style={{ fontSize: 12, color: '#5d4038', marginTop: 2 }}>{quest.desc}</div>
+                  </div>
+                  <VangBadge amount={quest.reward} size="sm" />
+                </div>
+                <ProgressBar progress={quest.progress} total={quest.total} />
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 6 }}>
+                  <span style={{ fontSize: 11, color: '#5d4038' }}>{quest.progress}/{quest.total}</span>
+                  <span style={{ fontSize: 11, color: '#ad2c00', fontWeight: 600 }}>{Math.round((quest.progress / quest.total) * 100)}%</span>
+                </div>
+              </div>
+            ))}
+
+            {/* Leaderboard preview */}
+            <div style={{ marginTop: 8 }}>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.2, color: '#5d4038', marginBottom: 12 }}>TOP THẦN ĂN</p>
+              {leaderboard.slice(0, 3).map(entry => (
+                <div key={entry.rank} style={{ display: 'flex', alignItems: 'center', gap: 12, backgroundColor: '#fff', borderRadius: 12, padding: '10px 14px', marginBottom: 8, border: '1px solid #f0edec' }}>
+                  <span style={{ fontSize: 22 }}>{rankMedals[entry.rank]}</span>
+                  <div style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: '#f6f3f2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#5d4038' }}>person</span>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontWeight: 700, fontSize: 14, color: '#1c1b1b', fontFamily: 'var(--font-headline)' }}>{entry.name}</div>
+                    <div style={{ fontSize: 11, color: rankTitleColors[entry.rank] || '#5d4038', fontWeight: 600 }}>{entry.title}</div>
+                  </div>
+                  <VangBadge amount={entry.vang} size="sm" />
+                </div>
+              ))}
+            </div>
+          </>
+        ) : (
+          <>
+            <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: 4, marginTop: 4 }}>
+              <p style={{ fontSize: 11, fontWeight: 700, letterSpacing: 1.2, color: '#5d4038', margin: 0 }}>TOP THẦN ĂN</p>
+              <span style={{ fontSize: 12, color: '#5d4038' }}>Bảng xếp hạng tuần 42</span>
+            </div>
+
+            {/* Top 3 large cards */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginTop: 12, marginBottom: 16 }}>
+              {leaderboard.slice(0, 3).map(entry => (
+                <div key={entry.rank} style={{ backgroundColor: '#fff', borderRadius: 20, padding: '18px 16px', display: 'flex', alignItems: 'center', gap: 14, border: `2px solid ${entry.rank === 1 ? '#FFD700' : entry.rank === 2 ? '#C0C0C0' : '#CD7F32'}`, boxShadow: '0 2px 8px rgba(0,0,0,0.07)' }}>
+                  <span style={{ fontSize: 32 }}>{rankMedals[entry.rank]}</span>
+                  <div style={{ width: 48, height: 48, borderRadius: '50%', backgroundColor: '#f0edec', display: 'flex', alignItems: 'center', justifyContent: 'center', border: `2px solid ${rankTitleColors[entry.rank]}` }}>
+                    <span className="material-symbols-outlined" style={{ fontSize: 26, color: '#5d4038' }}>person</span>
+                  </div>
+                  <div style={{ flex: 1 }}>
+                    <div style={{ fontFamily: 'var(--font-headline)', fontWeight: 800, fontSize: 16, color: '#1c1b1b' }}>{entry.name}</div>
+                    <div style={{ fontSize: 12, fontWeight: 700, color: rankTitleColors[entry.rank], marginBottom: 4 }}>{entry.title}</div>
+                    <VangBadge amount={entry.vang} size="md" />
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Rank 4-5 smaller items */}
+            {leaderboard.slice(3).map(entry => (
+              <div key={entry.rank} style={{ backgroundColor: '#fff', borderRadius: 12, padding: '12px 14px', display: 'flex', alignItems: 'center', gap: 10, marginBottom: 8, border: '1px solid #f0edec' }}>
+                <span style={{ fontFamily: 'var(--font-headline)', fontWeight: 800, fontSize: 16, color: '#5d4038', width: 24, textAlign: 'center' }}>#{entry.rank}</span>
+                <div style={{ width: 36, height: 36, borderRadius: '50%', backgroundColor: '#f6f3f2', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 20, color: '#5d4038' }}>person</span>
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontWeight: 700, fontSize: 14, color: '#1c1b1b' }}>{entry.name}</div>
+                  <div style={{ fontSize: 11, color: '#5d4038' }}>{entry.title}</div>
+                </div>
+                <VangBadge amount={entry.vang} size="sm" />
+              </div>
+            ))}
+
+            {/* User position */}
+            <div style={{ backgroundColor: '#ad2c00', borderRadius: 14, padding: '14px 16px', display: 'flex', alignItems: 'center', gap: 12, marginTop: 16 }}>
+              <span style={{ fontFamily: 'var(--font-headline)', fontWeight: 800, fontSize: 18, color: '#fff' }}>#14</span>
+              <div style={{ width: 38, height: 38, borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 22, color: '#fff' }}>person</span>
+              </div>
+              <div style={{ flex: 1 }}>
+                <div style={{ fontWeight: 700, fontSize: 15, color: '#fff', fontFamily: 'var(--font-headline)' }}>Huy Hoàng</div>
+                <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.75)' }}>Vị trí của bạn</div>
+              </div>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontFamily: 'var(--font-headline)', fontWeight: 800, fontSize: 15, color: '#FFD700' }}>
+                <span className="material-symbols-outlined filled" style={{ fontSize: 16, color: '#FFD700' }}>star</span>
+                12,450
+              </span>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ─── Desktop view ─────────────────────────────────────────────────────────────
+
+function DesktopView({ navigate }) {
+  const hotQuest = quests.find(q => q.hot);
+  const gridQuests = quests.filter(q => !q.hot);
+
+  return (
+    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#fcf9f8', fontFamily: 'var(--font-body)' }}>
+      {/* Left sidebar */}
+      <aside style={{ width: 240, minWidth: 240, backgroundColor: '#fff', borderRight: '1px solid #e7bdb2', display: 'flex', flexDirection: 'column', padding: '28px 0 24px', position: 'sticky', top: 0, height: '100vh' }}>
+        {/* Brand */}
+        <div style={{ padding: '0 20px 24px', borderBottom: '1px solid #f0edec' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <span className="material-symbols-outlined filled" style={{ fontSize: 28, color: '#ad2c00' }}>restaurant</span>
+            <span style={{ fontFamily: 'var(--font-headline)', fontWeight: 800, fontSize: 15, color: '#1c1b1b', lineHeight: 1.2 }}>The Curated<br />Table</span>
+          </div>
+        </div>
+
+        {/* Nav items */}
+        <nav style={{ flex: 1, padding: '20px 12px' }}>
+          {[
+            { icon: 'explore', label: 'Discover', active: false },
+            { icon: 'local_fire_department', label: 'Quests', active: true },
+            { icon: 'leaderboard', label: 'Leaderboard', active: false },
+            { icon: 'kitchen', label: 'Kitchen', active: false },
+            { icon: 'person', label: 'Profile', active: false },
+          ].map(item => (
+            <button
+              key={item.label}
+              style={{ width: '100%', display: 'flex', alignItems: 'center', gap: 12, padding: '11px 14px', borderRadius: 12, border: 'none', cursor: 'pointer', backgroundColor: item.active ? '#fff0ed' : 'transparent', color: item.active ? '#ad2c00' : '#5d4038', fontFamily: 'var(--font-headline)', fontWeight: item.active ? 700 : 500, fontSize: 14, marginBottom: 4, textAlign: 'left', transition: 'background 0.15s' }}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: 22 }}>{item.icon}</span>
+              {item.label}
+            </button>
+          ))}
+        </nav>
+
+        {/* Host a Dinner CTA */}
+        <div style={{ padding: '0 16px' }}>
+          <button style={{ width: '100%', backgroundColor: '#ad2c00', color: '#fff', border: 'none', borderRadius: 14, padding: '13px 0', fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 14, cursor: 'pointer' }}>
+            Host a Dinner
+          </button>
+        </div>
+
+        {/* Stats footer */}
+        <div style={{ margin: '20px 12px 0', backgroundColor: '#f6f3f2', borderRadius: 14, padding: '14px 12px' }}>
+          {[
+            { label: 'TỔNG HÀNG PHỔ', value: '12.4k' },
+            { label: 'HẠNG', value: 'Plati...' },
+            { label: 'NHIỆM VỤ HOÀN', value: '24' },
+          ].map((s, i) => (
+            <div key={i} style={{ display: 'flex', justifyContent: 'space-between', marginBottom: i < 2 ? 8 : 0 }}>
+              <span style={{ fontSize: 10, color: '#5d4038', fontWeight: 600, letterSpacing: 0.5 }}>{s.label}</span>
+              <span style={{ fontSize: 12, fontWeight: 800, color: '#ad2c00', fontFamily: 'var(--font-headline)' }}>{s.value}</span>
+            </div>
+          ))}
+        </div>
+      </aside>
+
+      {/* Center content */}
+      <main style={{ flex: 1, padding: '36px 32px 60px', overflowY: 'auto', minWidth: 0 }}>
+        {/* Page heading */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 4 }}>
+          <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#5d4038', display: 'flex', alignItems: 'center' }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 22 }}>arrow_back</span>
+          </button>
+          <h1 style={{ fontFamily: 'var(--font-headline)', fontSize: 30, fontWeight: 800, color: '#1c1b1b', margin: 0 }}>Quests &amp; Rewards</h1>
+        </div>
+        <p style={{ fontSize: 14, color: '#5d4038', marginBottom: 28, marginLeft: 34 }}>Hoàn thành các thử thách ẩm thực để nhận phần thưởng hấp dẫn.</p>
+
+        {/* Section label */}
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
+          <span style={{ fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 16, color: '#1c1b1b' }}>Nhiệm vụ Đang thực hiện</span>
+          <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#ad2c00', fontWeight: 600, fontSize: 13, fontFamily: 'var(--font-headline)' }}>Xem tất cả thử thách →</button>
+        </div>
+
+        {/* Featured dark quest card */}
+        {hotQuest && (
+          <div style={{ backgroundColor: '#1a1a1a', borderRadius: 24, padding: '28px 28px 24px', marginBottom: 20, position: 'relative', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', top: -40, right: -40, width: 200, height: 200, borderRadius: '50%', backgroundColor: '#ad2c0015' }} />
+            <div style={{ position: 'absolute', bottom: -60, left: -20, width: 160, height: 160, borderRadius: '50%', backgroundColor: '#ffffff08' }} />
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: 24, position: 'relative' }}>
+              <div style={{ flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12 }}>
+                  <span style={{ backgroundColor: '#ad2c00', color: '#fff', fontSize: 10, fontWeight: 800, letterSpacing: 1.2, padding: '4px 12px', borderRadius: 999, fontFamily: 'var(--font-headline)' }}>HOT QUEST</span>
+                  <span style={{ fontSize: 12, color: '#e7bdb2' }}>NO.AI</span>
+                </div>
+                <div style={{ fontFamily: 'var(--font-headline)', fontSize: 11, fontWeight: 700, letterSpacing: 1.5, color: '#e7bdb2', marginBottom: 6 }}>KEY THỰC THÔNG: 5</div>
+                <div style={{ fontFamily: 'var(--font-headline)', fontSize: 28, fontWeight: 800, color: '#fff', marginBottom: 8, lineHeight: 1.2 }}>{hotQuest.name}</div>
+                <div style={{ fontSize: 14, color: '#e7bdb2', marginBottom: 16 }}>Chinh phục 5 món miền Tây đặc sắc nhất trong hành trình khám phá ẩm thực</div>
+                <ProgressBar progress={hotQuest.progress} total={hotQuest.total} />
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 8, marginBottom: 20 }}>
+                  <span style={{ fontSize: 13, color: '#e7bdb2' }}>Tiến độ: {hotQuest.progress}/{hotQuest.total}</span>
+                  <VangBadge amount={hotQuest.reward} size="md" />
+                </div>
+                <button style={{ backgroundColor: '#ad2c00', color: '#fff', border: 'none', borderRadius: 14, padding: '13px 28px', fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 15, cursor: 'pointer' }}>
+                  Tiếp tục hành trình
+                </button>
+              </div>
+              <div style={{ width: 120, height: 120, borderRadius: 20, backgroundColor: '#2a2a2a', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <span className="material-symbols-outlined filled" style={{ fontSize: 56, color: '#ad2c00' }}>ramen_dining</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 2-column grid for other quests */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+          {gridQuests.slice(0, 2).map(quest => (
+            <div key={quest.id} style={{ backgroundColor: '#fff', borderRadius: 20, padding: '20px', border: '1px solid #f0edec', boxShadow: '0 1px 4px rgba(0,0,0,0.05)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 12 }}>
+                <div style={{ width: 44, height: 44, borderRadius: 14, backgroundColor: '#fff0ed', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <span className="material-symbols-outlined filled" style={{ fontSize: 24, color: '#ad2c00' }}>
+                    {quest.id === 4 ? 'set_meal' : 'local_cafe'}
+                  </span>
+                </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 15, color: '#1c1b1b', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{quest.name}</div>
+                  <div style={{ fontSize: 12, color: '#5d4038', marginTop: 2, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{quest.desc}</div>
+                </div>
+              </div>
+              <ProgressBar progress={quest.progress} total={quest.total} />
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 10 }}>
+                <span style={{ fontSize: 12, color: '#5d4038' }}>{quest.progress}/{quest.total}</span>
+                <VangBadge amount={quest.reward} size="sm" />
+              </div>
+              <button style={{ width: '100%', marginTop: 14, backgroundColor: '#fff0ed', color: '#ad2c00', border: '1px solid #e7bdb2', borderRadius: 10, padding: '10px 0', fontFamily: 'var(--font-headline)', fontWeight: 700, fontSize: 13, cursor: 'pointer' }}>
+                Tiếp tục
+              </button>
+            </div>
+          ))}
+        </div>
+      </main>
+
+      {/* Right sidebar — Leaderboard */}
+      <aside style={{ width: 280, minWidth: 280, backgroundColor: '#fff', borderLeft: '1px solid #e7bdb2', padding: '36px 20px 60px', overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 0 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 4 }}>
+          <span className="material-symbols-outlined filled" style={{ fontSize: 22, color: '#ad2c00' }}>leaderboard</span>
+          <h2 style={{ fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 800, color: '#1c1b1b', margin: 0 }}>Top Thần Ăn</h2>
+        </div>
+        <p style={{ fontSize: 12, color: '#5d4038', marginBottom: 20 }}>Bảng xếp hạng tuần 42</p>
+
+        {leaderboard.map(entry => (
+          <div key={entry.rank} style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '11px 12px', borderRadius: 12, marginBottom: 8, backgroundColor: '#f6f3f2', border: '1px solid transparent' }}>
+            <span style={{ fontSize: entry.rank <= 3 ? 22 : 14, minWidth: 28, textAlign: 'center', fontFamily: 'var(--font-headline)', fontWeight: 800, color: '#5d4038' }}>
+              {entry.rank <= 3 ? rankMedals[entry.rank] : `#${entry.rank}`}
+            </span>
+            <div style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: '#f0edec', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#5d4038' }}>person</span>
+            </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontWeight: 700, fontSize: 13, color: '#1c1b1b', fontFamily: 'var(--font-headline)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{entry.name}</div>
+              {entry.title && <div style={{ fontSize: 10, fontWeight: 700, color: rankTitleColors[entry.rank] || '#5d4038', letterSpacing: 0.5 }}>{entry.title}</div>}
+            </div>
+            <VangBadge amount={entry.vang} size="sm" />
+          </div>
+        ))}
+
+        {/* User position */}
+        <div style={{ backgroundColor: '#ad2c00', borderRadius: 14, padding: '14px 14px', display: 'flex', alignItems: 'center', gap: 10, marginTop: 8 }}>
+          <span style={{ fontFamily: 'var(--font-headline)', fontWeight: 800, fontSize: 15, color: '#fff', minWidth: 28 }}>#14</span>
+          <div style={{ width: 34, height: 34, borderRadius: '50%', backgroundColor: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 18, color: '#fff' }}>person</span>
+          </div>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ fontWeight: 700, fontSize: 13, color: '#fff', fontFamily: 'var(--font-headline)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>Huy Hoàng</div>
+            <div style={{ fontSize: 10, color: 'rgba(255,255,255,0.75)' }}>Vị trí của bạn</div>
+          </div>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 3, fontFamily: 'var(--font-headline)', fontWeight: 800, fontSize: 13, color: '#FFD700' }}>
+            <span className="material-symbols-outlined filled" style={{ fontSize: 14, color: '#FFD700' }}>star</span>
+            12,450
+          </span>
+        </div>
+      </aside>
+    </div>
+  );
+}
+
+// ─── Main component ───────────────────────────────────────────────────────────
 
 const KarmaPage = () => {
   const navigate = useNavigate();
-  const [score] = useState(850);
-  const maxScore = 1000;
-  const levels = [
-    { name: 'Đồng', min: 0, max: 200, color: '#cd7f32', emoji: '🥉' },
-    { name: 'Bạc', min: 200, max: 400, color: '#c0c0c0', emoji: '🥈' },
-    { name: 'Vàng', min: 400, max: 600, color: '#FFD54F', emoji: '🥇' },
-    { name: 'Bạch Kim', min: 600, max: 800, color: '#E6BEB2', emoji: '💎' },
-    { name: 'Kim Cương', min: 800, max: 1000, color: '#FFB59E', emoji: '👑' },
-  ];
-  const currentLevel = levels.find(l => score >= l.min && score <= l.max) || levels[4];
-  const scoringRules = [
-    { activity: 'Hoan thanh hen do', points: '+50', icon: 'restaurant', color: '#117500' },
-    { activity: 'Danh gia tot', points: '+30', icon: 'thumb_up', color: '#FFB59E' },
-    { activity: 'Xac minh tai khoan', points: '+100', icon: 'verified', color: '#FFD54F' },
-    { activity: 'Bi bao cao', points: '-100', icon: 'flag', color: '#FF571A' },
-    { activity: 'Huy hen', points: '-20', icon: 'cancel', color: '#FF571A' },
-  ];
-  const history = [
-    { date: '20/03/2026', reason: 'Hoan thanh hen tai Runam Bistro', change: '+50', total: 850 },
-    { date: '18/03/2026', reason: 'Nhan danh gia 5 sao', change: '+30', total: 800 },
-    { date: '15/03/2026', reason: 'Xac minh CCCD', change: '+100', total: 770 },
-    { date: '12/03/2026', reason: 'Hoan thanh hen tai The Coffee House', change: '+50', total: 670 },
-    { date: '10/03/2026', reason: 'Huỷ hẹn cuối tuần', change: '-20', total: 620 },
-  ];
-  const perks = [
-    { icon: 'visibility', title: 'Hiển thị ưu tiên', desc: 'Profile của bạn được xếp hạng cao hơn' },
-    { icon: 'verified', title: 'Huy hiệu Kim Cương', desc: 'Huy hiệu Kim Cương độc quyền trên profile' },
-    { icon: 'event_available', title: 'Truy cập sự kiện VIP', desc: 'Tham gia các sự kiện giới hạn' },
-  ];
-  const circumference = 2 * Math.PI * 68;
-  const dashOffset = circumference - (score / maxScore) * circumference;
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
-  const s = {
-    page: { flex: 1, backgroundColor: '#131313', overflowY: 'auto', padding: '40px 32px 80px' },
-    header: { display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '32px' },
-    backBtn: { background: 'none', border: 'none', cursor: 'pointer', color: '#FDF9F3', display: 'flex', alignItems: 'center' },
-    pageTitle: { fontFamily: 'var(--font-headline)', fontSize: '28px', fontWeight: 800, color: '#FDF9F3' },
-    verifiedIcon: { color: '#FFB59E', fontSize: '28px' },
-    scoreSection: { display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '40px 0', marginBottom: '32px' },
-    scoreRing: { position: 'relative', width: '160px', height: '160px' },
-    scoreValue: { position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center' },
-    scoreNumber: { fontFamily: 'var(--font-headline)', fontSize: '36px', fontWeight: 800, color: '#FDF9F3' },
-    scoreMax: { fontSize: '14px', color: '#E6BEB2', fontFamily: 'var(--font-body)' },
-    scoreLabel: { marginTop: '16px', fontFamily: 'var(--font-headline)', fontSize: '20px', fontWeight: 700, color: '#FFB59E' },
-    starRow: { display: 'flex', gap: '4px', marginTop: '8px' },
-    sectionTitle: { fontFamily: 'var(--font-headline)', fontSize: '20px', fontWeight: 700, color: '#FDF9F3', marginBottom: '16px' },
-    levelsRow: { display: 'flex', gap: '12px', marginBottom: '36px', overflowX: 'auto', paddingBottom: '8px' },
-    levelBadge: (level) => ({ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', padding: '16px 14px', borderRadius: '1.5rem', backgroundColor: '#1C1B1B', border: level.name === currentLevel.name ? '2px solid #FFB59E' : '2px solid transparent', boxShadow: level.name === currentLevel.name ? '0 0 16px rgba(255,181,158,0.2)' : 'none', minWidth: '80px', transition: 'all 0.3s' }),
-    levelEmoji: { fontSize: '28px' },
-    levelName: { fontSize: '12px', fontWeight: 600, fontFamily: 'var(--font-headline)', color: '#FDF9F3' },
-    levelRange: { fontSize: '10px', color: '#E6BEB2' },
-    scoringSection: { marginBottom: '36px' },
-    scoringRow: { display: 'flex', alignItems: 'center', gap: '12px', padding: '14px 16px', backgroundColor: '#1C1B1B', borderRadius: '1.5rem', marginBottom: '8px' },
-    scoringIcon: (color) => ({ width: '40px', height: '40px', borderRadius: '9999px', backgroundColor: color + '30', display: 'flex', alignItems: 'center', justifyContent: 'center', color: color, fontSize: '20px', flexShrink: 0 }),
-    scoringActivity: { flex: 1, fontSize: '14px', fontWeight: 500, color: '#FDF9F3' },
-    pointsBadge: (positive) => ({ padding: '4px 12px', borderRadius: '9999px', backgroundColor: positive ? '#11750030' : '#FF571A30', color: positive ? '#117500' : '#FF571A', fontSize: '13px', fontWeight: 700, fontFamily: 'var(--font-headline)' }),
-    historySection: { marginBottom: '36px' },
-    historyItem: { display: 'flex', alignItems: 'center', gap: '12px', padding: '14px 0', borderBottom: '1px solid #2A2A2A' },
-    historyDot: (positive) => ({ width: '8px', height: '8px', borderRadius: '9999px', backgroundColor: positive ? '#117500' : '#FF571A', flexShrink: 0 }),
-    historyInfo: { flex: 1 },
-    historyReason: { fontSize: '14px', fontWeight: 500, color: '#FDF9F3' },
-    historyDate: { fontSize: '12px', color: '#E6BEB2', marginTop: '2px' },
-    historyChange: (positive) => ({ fontSize: '14px', fontWeight: 700, color: positive ? '#117500' : '#FF571A', marginRight: '12px' }),
-    historyTotal: { fontSize: '12px', color: '#E6BEB2', fontWeight: 600, minWidth: '40px', textAlign: 'right' },
-    perksSection: { marginBottom: '36px' },
-    perkCard: { display: 'flex', alignItems: 'center', gap: '16px', padding: '20px', backgroundColor: '#1C1B1B', borderRadius: '1.5rem', marginBottom: '12px' },
-    perkIconWrap: { width: '48px', height: '48px', borderRadius: '1.5rem', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#3A0B00', flexShrink: 0 },
-    perkTitle: { fontSize: '15px', fontWeight: 700, color: '#FDF9F3', fontFamily: 'var(--font-headline)' },
-    perkDesc: { fontSize: '13px', color: '#E6BEB2', marginTop: '2px' },
-  };
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 1024);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
 
-  return (
-    <div style={s.page}>
-      <div style={s.header}><button style={s.backBtn} onClick={() => navigate(-1)}><span aria-hidden="true" className="material-symbols-outlined">arrow_back</span></button><h1 style={s.pageTitle}>Diem uy tin</h1><span className="material-symbols-outlined filled" style={s.verifiedIcon}>verified</span></div>
-      <div style={s.scoreSection}>
-        <div style={s.scoreRing}>
-          <svg width="160" height="160" viewBox="0 0 160 160"><circle cx="80" cy="80" r="68" fill="none" stroke="#353535" strokeWidth="10" /><circle cx="80" cy="80" r="68" fill="none" stroke="url(#karmaGrad)" strokeWidth="10" strokeDasharray={circumference} strokeDashoffset={dashOffset} strokeLinecap="round" transform="rotate(-90 80 80)" style={{ transition: 'stroke-dashoffset 1s ease' }} /><defs><linearGradient id="karmaGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stopColor="#FFB59E" /><stop offset="100%" stopColor="#FF571A" /></linearGradient></defs></svg>
-          <div style={s.scoreValue}><div style={s.scoreNumber}>{score}</div><div style={s.scoreMax}>/ {maxScore}</div></div>
-        </div>
-        <div style={s.scoreLabel}>Xuat sac</div>
-        <div style={s.starRow}>{[1, 2, 3, 4, 5].map(i => (<span key={i} className="material-symbols-outlined filled" style={{ color: '#FFD54F', fontSize: '20px' }}>star</span>))}</div>
-      </div>
-      <h2 style={s.sectionTitle}>Cap do</h2>
-      <div style={s.levelsRow}>{levels.map(level => (<div key={level.name} style={s.levelBadge(level)}><span style={s.levelEmoji}>{level.emoji}</span><span style={s.levelName}>{level.name}</span><span style={s.levelRange}>{level.min}-{level.max}</span></div>))}</div>
-      <div style={s.scoringSection}><h2 style={s.sectionTitle}>Cach tinh diem</h2>{scoringRules.map((rule, i) => (<div key={i} style={s.scoringRow}><div style={s.scoringIcon(rule.color)}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>{rule.icon}</span></div><span style={s.scoringActivity}>{rule.activity}</span><span style={s.pointsBadge(rule.points.startsWith('+'))}>{rule.points}</span></div>))}</div>
-      <div style={s.historySection}><h2 style={s.sectionTitle}>Lich su diem</h2>{history.map((item, i) => { const positive = item.change.startsWith('+'); return (<div key={i} style={s.historyItem}><div style={s.historyDot(positive)} /><div style={s.historyInfo}><div style={s.historyReason}>{item.reason}</div><div style={s.historyDate}>{item.date}</div></div><span style={s.historyChange(positive)}>{item.change}</span><span style={s.historyTotal}>{item.total}</span></div>); })}</div>
-      <div style={s.perksSection}><h2 style={s.sectionTitle}>Dac quyen cua ban</h2>{perks.map((perk, i) => (<div key={i} style={s.perkCard}><div style={s.perkIconWrap}><span aria-hidden="true" className="material-symbols-outlined">{perk.icon}</span></div><div><div style={s.perkTitle}>{perk.title}</div><div style={s.perkDesc}>{perk.desc}</div></div></div>))}</div>
-    </div>
-  );
+  return isMobile ? <MobileView navigate={navigate} /> : <DesktopView navigate={navigate} />;
 };
 
 export default KarmaPage;
