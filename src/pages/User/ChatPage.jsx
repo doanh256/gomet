@@ -1,100 +1,121 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// ─── Mock data ───────────────────────────────────────────────────────────────
 const conversations = [
-  { id: 1, name: 'Hoàng Nam', lastMsg: 'Mình đi ăn Phở Thin nhé?', time: '10:45 SA', matchDish: 'PHỞ BÒ', unread: 2, match: 82, color: '#ad2c00' },
-  { id: 2, name: 'Linh Chi',  lastMsg: 'Đã gửi một ảnh',            time: 'Thứ 3',    matchDish: 'PIZZA',  unread: 0, match: 88, color: '#6b3fa0' },
-  { id: 3, name: 'Đức Duy',   lastMsg: 'Hẹn gặp sau nhé!',          time: 'Thứ 2',    matchDish: 'SUSHI',  unread: 1, match: 74, color: '#1565c0' },
-];
-
-const selectedUser = { name: 'Linh Chi', age: 24, location: 'Hoàn Kiếm, Hà Nội', match: 98, color: '#6b3fa0' };
-
-const messages = [
-  { id: 1, from: 'other', text: 'Chào Linh! Thấy profile của bạn có "Visa Phở Bò" hạng Diamond, mình rất tương đồng! Bạn hay ăn Phở ở đâu thế?', time: '09:41 SA' },
-  { id: 2, from: 'me',    text: 'Hi Phi! Phải công nhận là mình nghiện Phở thật. Mình hay ghé quán Phở Thin Lô Đức, vì ở đó nước dùng đặc trưng. Bạn đã thử chưa?', time: '09:47 SA' },
-  { id: 3, from: 'other', text: 'Lí mình cũng thích chỗ đó đấy! Đây là bát phở mình vừa ăn sáng nay 🍜', time: '09:49 SA' },
+  { id: 1, name: 'Hoàng Nam', lastMsg: 'Mình đi ăn Phở Thìn nhé?', time: '10:45 SA', matchDish: 'Phở bò', unread: 2, color: '#ad2c00', online: true },
+  { id: 2, name: 'Linh Chi', lastMsg: 'Đã gửi một ảnh', time: 'Thứ 3', matchDish: 'Pizza', unread: 0, color: '#6b3fa0', online: false },
+  { id: 3, name: 'Đức Duy', lastMsg: 'Hẹn gặp bạn sau nha!', time: 'Thứ 2', matchDish: 'Sushi', unread: 1, color: '#1565c0', online: false },
 ];
 
 const newMatches = [
-  { id: 1, name: 'Minh Ánh', color: '#2e7d32' },
+  { id: 1, name: 'Minh Anh', color: '#2e7d32' },
   { id: 2, name: 'Thu Thủy', color: '#c62828' },
 ];
 
-const sharedDishes = ['PHỞ BÒ', 'PIZZA', 'BÚN CHẢ', 'BÁNH MÌ', 'MÌ QUẢNG', 'LẨU THÁI'];
+const chatMessages = [
+  { id: 1, from: 'other', text: 'Chào bạn! Mình thấy bạn cũng thích món Phở bò Thìn. Cuối tuần này bạn có rảnh không?', time: '10:45 SA' },
+  { id: 2, from: 'me', text: 'Chào Nam! Mình rảnh nè. Phở Thìn Lò Đúc đúng không bạn? Mình cực thích ở đó luôn!', time: '10:47 SA' },
+  { id: 3, from: 'shared_card', time: '10:48 SA' },
+  { id: 4, from: 'me', text: 'Mình đi lúc 10h sáng chủ nhật nhé?', time: '10:49 SA' },
+];
 
-// ─── Taste Match Radar SVG (pentagon) ────────────────────────────────────────
-const TasteRadar = ({ match = 98 }) => {
-  const cx = 100, cy = 100, r = 75;
-  const axes = 5;
-
-  const point = (angle, radius) => {
-    const rad = (angle - 90) * (Math.PI / 180);
-    return [cx + radius * Math.cos(rad), cy + radius * Math.sin(rad)];
-  };
-
-  const pentagonPoints = (radius) =>
-    Array.from({ length: axes }, (_, i) => point((360 / axes) * i, radius));
-
-  const toPath = (pts) => pts.map((p, i) => `${i === 0 ? 'M' : 'L'}${p[0].toFixed(2)},${p[1].toFixed(2)}`).join(' ') + ' Z';
-
-  const outerPts = pentagonPoints(r);
-  const innerPts = pentagonPoints(r * (match / 100));
-
-  return (
-    <svg viewBox="0 0 200 200" width="160" height="160" style={{ display: 'block', margin: '0 auto' }}>
-      {/* Grid rings */}
-      {[0.25, 0.5, 0.75, 1].map((scale, i) => (
-        <path key={i} d={toPath(pentagonPoints(r * scale))} fill="none" stroke="#e7bdb2" strokeWidth="1" />
-      ))}
-      {/* Spokes */}
-      {outerPts.map((p, i) => (
-        <line key={i} x1={cx} y1={cy} x2={p[0]} y2={p[1]} stroke="#e7bdb2" strokeWidth="1" />
-      ))}
-      {/* Filled radar area */}
-      <path d={toPath(innerPts)} fill="rgba(173,44,0,0.18)" stroke="#ad2c00" strokeWidth="2" />
-      {/* Dots */}
-      {innerPts.map((p, i) => (
-        <circle key={i} cx={p[0]} cy={p[1]} r="4" fill="#ad2c00" />
-      ))}
-      {/* Center label */}
-      <text x={cx} y={cy - 6} textAnchor="middle" fontSize="18" fontWeight="800" fill="#ad2c00">{match}%</text>
-      <text x={cx} y={cy + 12} textAnchor="middle" fontSize="8" fill="#5d4038">TƯƠNG HỢP</text>
-    </svg>
-  );
-};
-
-// ─── Avatar circle ────────────────────────────────────────────────────────────
 const Avatar = ({ name = '', color = '#ad2c00', size = 44 }) => (
   <div style={{
-    width: size, height: size, borderRadius: '50%',
+    width: size,
+    height: size,
+    borderRadius: '50%',
     background: color,
-    display: 'flex', alignItems: 'center', justifyContent: 'center',
-    color: '#fff', fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-    fontWeight: 700, fontSize: size * 0.4, flexShrink: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#ffffff',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: 700,
+    fontSize: size * 0.38,
+    flexShrink: 0,
+    letterSpacing: 0.5,
   }}>
     {name.charAt(0).toUpperCase()}
   </div>
 );
 
-// ─── Main component ───────────────────────────────────────────────────────────
-const ChatPage = () => {
-  const navigate = useNavigate();
-  const [searchText, setSearchText] = useState('');
-  const [activeId, setActiveId] = useState(2); // Linh Chi selected by default
-  const [isMobileChat, setIsMobileChat] = useState(false);
+const SharedDishCard = () => (
+  <div style={{
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: 280,
+    background: '#ffffff',
+    borderRadius: 16,
+    overflow: 'hidden',
+    boxShadow: '0 4px 24px rgba(173,44,0,0.08)',
+    border: '1px solid rgba(173,44,0,0.1)',
+  }}>
+    <div style={{
+      position: 'relative',
+      height: 140,
+      background: 'linear-gradient(135deg, #ad2c00 0%, #d84000 40%, #ff7852 100%)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
+      <span className="material-symbols-outlined" style={{
+        fontSize: 64,
+        color: 'rgba(255,255,255,0.7)',
+        fontVariationSettings: "'FILL' 1",
+      }}>ramen_dining</span>
+      <div style={{
+        position: 'absolute',
+        top: 12,
+        right: 12,
+        background: '#ad2c00',
+        color: '#ffffff',
+        padding: '3px 10px',
+        borderRadius: 9999,
+        fontSize: 9,
+        fontWeight: 700,
+        fontFamily: "'Manrope', sans-serif",
+        letterSpacing: 1,
+        textTransform: 'uppercase',
+      }}>Visa Món Ăn</div>
+    </div>
+    <div style={{ padding: '16px 20px 20px', textAlign: 'center' }}>
+      <h5 style={{
+        margin: '0 0 4px',
+        fontSize: 17,
+        fontWeight: 700,
+        color: '#1c1b1b',
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+      }}>Phở Bò Tái Lăn</h5>
+      <p style={{
+        margin: '0 0 16px',
+        fontSize: 12,
+        color: '#5d4038',
+        fontFamily: "'Manrope', sans-serif",
+      }}>Món ăn chung của hai bạn</p>
+      <button style={{
+        width: '100%',
+        padding: '11px 0',
+        background: '#f0edec',
+        color: '#ad2c00',
+        border: 'none',
+        borderRadius: 12,
+        fontSize: 11,
+        fontWeight: 700,
+        fontFamily: "'Manrope', sans-serif",
+        letterSpacing: 1.5,
+        textTransform: 'uppercase',
+        cursor: 'pointer',
+      }}>Xem chi tiết</button>
+    </div>
+  </div>
+);
+
+const ChatWindow = ({ conv, onBack, messages, setMessages }) => {
   const [inputText, setInputText] = useState('');
-  const [chatMsgs, setChatMsgs] = useState(messages);
-
-  const activeConv = conversations.find(c => c.id === activeId);
-
-  const filtered = conversations.filter(c =>
-    !searchText.trim() || c.name.toLowerCase().includes(searchText.toLowerCase())
-  );
 
   const handleSend = () => {
     if (!inputText.trim()) return;
-    setChatMsgs(prev => [...prev, { id: Date.now(), from: 'me', text: inputText, time: 'Vừa xong' }]);
+    setMessages(prev => [...prev, { id: Date.now(), from: 'me', text: inputText, time: 'Vừa xong' }]);
     setInputText('');
   };
 
@@ -102,500 +123,600 @@ const ChatPage = () => {
     if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
   };
 
-  // ─── Responsive: detect desktop ───────────────────────────────────────────
-  const isDesktop = window.innerWidth >= 900;
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // MOBILE LAYOUT
-  // ═══════════════════════════════════════════════════════════════════════════
-  if (!isDesktop) {
-    return (
-      <div style={{
-        minHeight: '100dvh', background: '#fcf9f8',
-        fontFamily: 'var(--font-body, "Manrope", sans-serif)',
-        display: 'flex', flexDirection: 'column',
-      }}>
-        {/* ── Chat window (mobile) ── */}
-        {isMobileChat && activeConv ? (
-          <div style={{ display: 'flex', flexDirection: 'column', height: '100dvh' }}>
-            {/* Header */}
-            <div style={{
-              background: '#fff', borderBottom: '1px solid #e7bdb2',
-              padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 12,
-            }}>
-              <button onClick={() => setIsMobileChat(false)} style={{
-                background: 'none', border: 'none', cursor: 'pointer',
-                color: '#ad2c00', fontSize: 22, padding: 0, lineHeight: 1,
-              }}>←</button>
-              <Avatar name={activeConv.name} color={activeConv.color} size={38} />
-              <div>
-                <div style={{ fontWeight: 700, fontSize: 15, color: '#1c1b1b',
-                  fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)' }}>
-                  {activeConv.name}
-                </div>
-                <div style={{ fontSize: 11, color: '#5d4038' }}>
-                  MATCHINGDISH: {activeConv.matchDish}
-                </div>
-              </div>
-            </div>
-
-            {/* Messages */}
-            <div style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column', gap: 12 }}>
-              {chatMsgs.map(msg => (
-                <div key={msg.id} style={{
-                  display: 'flex', flexDirection: msg.from === 'me' ? 'row-reverse' : 'row',
-                  gap: 8, alignItems: 'flex-end',
-                }}>
-                  {msg.from === 'other' && <Avatar name={activeConv.name} color={activeConv.color} size={30} />}
-                  <div style={{ maxWidth: '72%' }}>
-                    <div style={{
-                      background: msg.from === 'me' ? '#ad2c00' : '#fff',
-                      color: msg.from === 'me' ? '#fff' : '#1c1b1b',
-                      borderRadius: msg.from === 'me' ? '18px 18px 4px 18px' : '18px 18px 18px 4px',
-                      padding: '10px 14px', fontSize: 14, lineHeight: 1.5,
-                      border: msg.from === 'me' ? 'none' : '1px solid #e7bdb2',
-                    }}>{msg.text}</div>
-                    <div style={{ fontSize: 10, color: '#5d4038', marginTop: 4,
-                      textAlign: msg.from === 'me' ? 'right' : 'left' }}>{msg.time}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Input */}
-            <div style={{
-              background: '#fff', borderTop: '1px solid #e7bdb2',
-              padding: '10px 12px', display: 'flex', gap: 8, alignItems: 'center',
-            }}>
-              <input
-                value={inputText}
-                onChange={e => setInputText(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Nhắn tin..."
-                style={{
-                  flex: 1, border: '1.5px solid #e7bdb2', borderRadius: 24,
-                  padding: '10px 16px', fontSize: 14, outline: 'none',
-                  background: '#fcf9f8', color: '#1c1b1b',
-                  fontFamily: 'var(--font-body, "Manrope", sans-serif)',
-                }}
-              />
-              <button onClick={handleSend} style={{
-                background: '#ad2c00', border: 'none', borderRadius: '50%',
-                width: 40, height: 40, cursor: 'pointer', color: '#fff',
-                fontSize: 18, display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>➤</button>
-            </div>
-          </div>
-        ) : (
-          /* ── Conversation list (mobile) ── */
-          <div style={{ flex: 1, overflowY: 'auto' }}>
-            {/* Header */}
-            <div style={{ padding: '20px 20px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <h1 style={{
-                margin: 0, fontSize: 28, fontWeight: 800, color: '#1c1b1b',
-                fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-              }}>Tin nhắn</h1>
-              <Avatar name="T" color="#ad2c00" size={38} />
-            </div>
-
-            {/* Search */}
-            <div style={{ padding: '0 20px 16px' }}>
-              <div style={{ position: 'relative' }}>
-                <span style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: '#5d4038', fontSize: 16 }}>🔍</span>
-                <input
-                  value={searchText}
-                  onChange={e => setSearchText(e.target.value)}
-                  placeholder="Tìm kiếm bạn bè hoặc món ăn..."
-                  style={{
-                    width: '100%', boxSizing: 'border-box',
-                    border: '1.5px solid #e7bdb2', borderRadius: 24,
-                    padding: '11px 16px 11px 40px', fontSize: 14,
-                    background: '#fff', color: '#1c1b1b', outline: 'none',
-                    fontFamily: 'var(--font-body, "Manrope", sans-serif)',
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* New Matches */}
-            <div style={{ padding: '0 20px 12px' }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: '#5d4038', letterSpacing: 1, marginBottom: 12 }}>
-                LƯỢT TƯƠNG HỢP MỚI
-              </div>
-              <div style={{ display: 'flex', gap: 16, overflowX: 'auto', paddingBottom: 4 }}>
-                {newMatches.map(m => (
-                  <div key={m.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, flexShrink: 0 }}>
-                    <Avatar name={m.name} color={m.color} size={52} />
-                    <span style={{ fontSize: 12, color: '#1c1b1b', fontWeight: 600, textAlign: 'center', maxWidth: 56 }}>{m.name}</span>
-                  </div>
-                ))}
-                {/* Tin thêm button */}
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, flexShrink: 0 }}>
-                  <div style={{
-                    width: 52, height: 52, borderRadius: '50%',
-                    border: '2px dashed #ad2c00', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    cursor: 'pointer', color: '#ad2c00', fontSize: 22, fontWeight: 300,
-                  }}>+</div>
-                  <span style={{ fontSize: 12, color: '#ad2c00', fontWeight: 600 }}>Tin thêm</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Divider */}
-            <div style={{ height: 1, background: '#e7bdb2', margin: '0 20px 4px' }} />
-
-            {/* Conversation list */}
-            <div>
-              {filtered.map(conv => (
-                <div
-                  key={conv.id}
-                  onClick={() => { setActiveId(conv.id); setIsMobileChat(true); }}
-                  style={{
-                    display: 'flex', alignItems: 'center', gap: 14,
-                    padding: '14px 20px', cursor: 'pointer',
-                    background: activeId === conv.id ? '#fff5f2' : 'transparent',
-                    borderBottom: '1px solid #faeae5',
-                    transition: 'background 0.15s',
-                  }}
-                >
-                  <div style={{ position: 'relative' }}>
-                    <Avatar name={conv.name} color={conv.color} size={48} />
-                    {conv.unread > 0 && (
-                      <div style={{
-                        position: 'absolute', top: -2, right: -2,
-                        background: '#ad2c00', color: '#fff', borderRadius: '50%',
-                        width: 18, height: 18, fontSize: 10, fontWeight: 700,
-                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      }}>{conv.unread}</div>
-                    )}
-                  </div>
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 3 }}>
-                      <span style={{ fontWeight: 700, fontSize: 15, color: '#1c1b1b',
-                        fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)' }}>
-                        {conv.name}
-                      </span>
-                      <span style={{ fontSize: 11, color: '#5d4038' }}>{conv.time}</span>
-                    </div>
-                    <div style={{ fontSize: 13, color: '#5d4038', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', marginBottom: 5 }}>
-                      {conv.lastMsg}
-                    </div>
-                    <span style={{
-                      display: 'inline-block', background: '#fff0ed',
-                      border: '1px solid #ad2c00', color: '#ad2c00',
-                      borderRadius: 20, padding: '2px 10px', fontSize: 10, fontWeight: 700, letterSpacing: 0.5,
-                    }}>
-                      MATCHINGDISH: {conv.matchDish}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  }
-
-  // ═══════════════════════════════════════════════════════════════════════════
-  // DESKTOP LAYOUT — 3 panels
-  // ═══════════════════════════════════════════════════════════════════════════
   return (
     <div style={{
-      display: 'flex', height: '100vh', background: '#fcf9f8',
-      fontFamily: 'var(--font-body, "Manrope", sans-serif)',
-      overflow: 'hidden',
+      position: 'fixed',
+      inset: 0,
+      background: '#fcf9f8',
+      zIndex: 60,
+      display: 'flex',
+      flexDirection: 'column',
+      fontFamily: "'Manrope', sans-serif",
     }}>
-
-      {/* ── LEFT PANEL (280px) ── */}
       <div style={{
-        width: 280, flexShrink: 0,
-        background: '#fff',
-        borderRight: '1px solid #e7bdb2',
-        display: 'flex', flexDirection: 'column',
-        padding: '28px 0',
+        padding: '16px 24px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        background: '#fcf9f8',
+        borderBottom: 'none',
       }}>
-        {/* Brand */}
-        <div style={{ padding: '0 28px 24px' }}>
-          <div style={{
-            fontSize: 26, fontWeight: 800, color: '#ad2c00', letterSpacing: 1,
-            fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-          }}>GOMET</div>
-          <div style={{ fontSize: 11, color: '#5d4038', fontWeight: 600, letterSpacing: 1.5, marginTop: 2 }}>
-            HẸN HÒ ẨM THỰC
-          </div>
-        </div>
-
-        {/* Nav */}
-        <nav style={{ flex: 1, padding: '0 12px' }}>
-          {[
-            { icon: '💬', label: 'Trò chuyện', active: true,  path: '/app/chat' },
-            { icon: '🔍', label: 'Khám phá',   active: false, path: '/app/discover' },
-            { icon: '❤️', label: 'Yêu thích',  active: false, path: '/app/favorites' },
-            { icon: '👤', label: 'Cá nhân',    active: false, path: '/app/profile' },
-          ].map(item => (
-            <div
-              key={item.label}
-              onClick={() => navigate(item.path)}
-              style={{
-                display: 'flex', alignItems: 'center', gap: 14,
-                padding: '12px 16px', borderRadius: 12, cursor: 'pointer', marginBottom: 4,
-                background: item.active ? '#fff0ed' : 'transparent',
-                color: item.active ? '#ad2c00' : '#5d4038',
-                fontWeight: item.active ? 700 : 500, fontSize: 15,
-                transition: 'background 0.15s',
-              }}
-            >
-              <span style={{ fontSize: 18 }}>{item.icon}</span>
-              {item.label}
-            </div>
-          ))}
-        </nav>
-
-        {/* Tìm bạn mới */}
-        <div style={{ padding: '0 20px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
           <button
-            onClick={() => navigate('/app/explore')}
+            onClick={onBack}
             style={{
-              width: '100%', background: '#ad2c00', color: '#fff',
-              border: 'none', borderRadius: 12, padding: '13px 0',
-              fontSize: 14, fontWeight: 700, cursor: 'pointer',
-              fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-              letterSpacing: 0.5,
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '8px',
+              marginLeft: -8,
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#1c1b1b',
             }}
           >
-            Tìm bạn mới
+            <span className="material-symbols-outlined" style={{ fontSize: 22 }}>arrow_back_ios_new</span>
+          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <Avatar name={conv.name} color={conv.color} size={40} />
+            <div>
+              <div style={{
+                fontWeight: 700,
+                fontSize: 15,
+                color: '#1c1b1b',
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                lineHeight: 1.2,
+              }}>{conv.name}</div>
+              <div style={{
+                fontSize: 10,
+                color: '#ad2c00',
+                fontWeight: 700,
+                letterSpacing: 0.5,
+                textTransform: 'uppercase',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 4,
+                marginTop: 2,
+              }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ad2c00', display: 'inline-block' }} />
+                Đang hoạt động
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', gap: 8 }}>
+          <button style={{
+            width: 40,
+            height: 40,
+            borderRadius: '50%',
+            border: 'none',
+            background: '#f6f3f2',
+            color: '#1c1b1b',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+          }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 20 }}>call</span>
+          </button>
+          <button style={{
+            width: 40,
+            height: 40,
+            borderRadius: '50%',
+            border: 'none',
+            background: '#f6f3f2',
+            color: '#1c1b1b',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+          }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 20 }}>videocam</span>
           </button>
         </div>
       </div>
 
-      {/* ── CENTER PANEL (flex-1) ── */}
       <div style={{
-        flex: 1, display: 'flex', flexDirection: 'column',
-        borderRight: '1px solid #e7bdb2', minWidth: 0,
+        flex: 1,
+        overflowY: 'auto',
+        padding: '24px 24px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 20,
+        msOverflowStyle: 'none',
+        scrollbarWidth: 'none',
       }}>
-        {/* Center header */}
-        <div style={{
-          padding: '20px 24px', borderBottom: '1px solid #e7bdb2',
-          background: '#fff',
+        <div style={{ alignSelf: 'center' }}>
+          <span style={{
+            fontSize: 10,
+            fontWeight: 700,
+            color: 'rgba(93,64,56,0.5)',
+            textTransform: 'uppercase',
+            letterSpacing: 3,
+            fontFamily: "'Manrope', sans-serif",
+          }}>Hôm nay, 10:45 SA</span>
+        </div>
+
+        {messages.map(msg => {
+          if (msg.from === 'shared_card') {
+            return <SharedDishCard key={msg.id} />;
+          }
+          if (msg.from === 'other') {
+            return (
+              <div key={msg.id} style={{ display: 'flex', gap: 10, maxWidth: '85%', alignItems: 'flex-end' }}>
+                <Avatar name={conv.name} color={conv.color} size={32} />
+                <div style={{
+                  background: '#f6f3f2',
+                  color: '#1c1b1b',
+                  borderRadius: '16px 16px 16px 4px',
+                  padding: '12px 16px',
+                  fontSize: 14,
+                  lineHeight: 1.55,
+                  fontFamily: "'Manrope', sans-serif",
+                }}>{msg.text}</div>
+              </div>
+            );
+          }
+          return (
+            <div key={msg.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4, maxWidth: '85%', alignSelf: 'flex-end' }}>
+              <div style={{
+                background: '#ad2c00',
+                color: '#ffffff',
+                borderRadius: '16px 16px 4px 16px',
+                padding: '12px 16px',
+                fontSize: 14,
+                lineHeight: 1.55,
+                fontFamily: "'Manrope', sans-serif",
+                boxShadow: '0 2px 12px rgba(173,44,0,0.2)',
+              }}>{msg.text}</div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{
+        padding: '16px 24px 24px',
+        background: '#fcf9f8',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <button style={{
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            color: '#ad2c00',
+            display: 'flex',
+            alignItems: 'center',
+            padding: 0,
+          }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 30 }}>add_circle</span>
+          </button>
+          <div style={{ flex: 1, position: 'relative' }}>
+            <input
+              value={inputText}
+              onChange={e => setInputText(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Nhắn tin..."
+              style={{
+                width: '100%',
+                boxSizing: 'border-box',
+                background: '#ebe7e7',
+                border: 'none',
+                borderRadius: 9999,
+                padding: '14px 52px 14px 20px',
+                fontSize: 14,
+                color: '#1c1b1b',
+                outline: 'none',
+                fontFamily: "'Manrope', sans-serif",
+              }}
+            />
+            <button
+              onClick={handleSend}
+              style={{
+                position: 'absolute',
+                right: 16,
+                top: '50%',
+                transform: 'translateY(-50%)',
+                background: 'none',
+                border: 'none',
+                cursor: 'pointer',
+                color: '#ad2c00',
+                display: 'flex',
+                alignItems: 'center',
+                padding: 0,
+              }}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: 22, fontVariationSettings: "'FILL' 1" }}>send</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const ChatPage = () => {
+  const navigate = useNavigate();
+  const [selectedChat, setSelectedChat] = useState(null);
+  const [searchText, setSearchText] = useState('');
+  const [messages, setMessages] = useState(chatMessages);
+
+  const activeConv = conversations.find(c => c.id === selectedChat);
+
+  const filtered = conversations.filter(c =>
+    !searchText.trim() || c.name.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+  if (selectedChat && activeConv) {
+    return (
+      <ChatWindow
+        conv={activeConv}
+        onBack={() => setSelectedChat(null)}
+        messages={messages}
+        setMessages={setMessages}
+      />
+    );
+  }
+
+  return (
+    <div style={{
+      maxWidth: 480,
+      margin: '0 auto',
+      minHeight: '100dvh',
+      background: '#fcf9f8',
+      display: 'flex',
+      flexDirection: 'column',
+      position: 'relative',
+      overflow: 'hidden',
+      fontFamily: "'Manrope', sans-serif",
+      color: '#1c1b1b',
+    }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingBottom: 96 }}>
+        <header style={{
+          paddingTop: 40,
+          paddingLeft: 32,
+          paddingRight: 32,
+          paddingBottom: 24,
+          background: '#fcf9f8',
         }}>
-          <h2 style={{
-            margin: '0 0 14px', fontSize: 20, fontWeight: 800, color: '#1c1b1b',
-            fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-          }}>Tin nhắn</h2>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
+            marginBottom: 32,
+          }}>
+            <h1 style={{
+              margin: 0,
+              fontSize: 36,
+              fontWeight: 800,
+              color: '#1c1b1b',
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              letterSpacing: -0.5,
+              lineHeight: 1.1,
+            }}>Tin nhắn</h1>
+            <div style={{
+              width: 48,
+              height: 48,
+              borderRadius: '50%',
+              background: '#f0edec',
+              overflow: 'hidden',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <Avatar name="T" color="#ad2c00" size={48} />
+            </div>
+          </div>
+
           <div style={{ position: 'relative' }}>
-            <span style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: '#5d4038' }}>🔍</span>
+            <span className="material-symbols-outlined" style={{
+              position: 'absolute',
+              left: 16,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              color: '#5d4038',
+              fontSize: 22,
+            }}>search</span>
             <input
               value={searchText}
               onChange={e => setSearchText(e.target.value)}
               placeholder="Tìm kiếm bạn bè hoặc món ăn..."
               style={{
-                width: '100%', boxSizing: 'border-box',
-                border: '1.5px solid #e7bdb2', borderRadius: 24,
-                padding: '10px 16px 10px 40px', fontSize: 14,
-                background: '#fcf9f8', color: '#1c1b1b', outline: 'none',
-                fontFamily: 'var(--font-body, "Manrope", sans-serif)',
+                width: '100%',
+                boxSizing: 'border-box',
+                background: '#ebe7e7',
+                border: 'none',
+                borderRadius: 16,
+                padding: '16px 16px 16px 48px',
+                fontSize: 14,
+                color: '#1c1b1b',
+                outline: 'none',
+                fontFamily: "'Manrope', sans-serif",
               }}
             />
           </div>
-        </div>
+        </header>
 
-        {/* New matches row */}
-        <div style={{ padding: '16px 24px 12px', borderBottom: '1px solid #faeae5', background: '#fff' }}>
-          <div style={{ fontSize: 10, fontWeight: 700, color: '#5d4038', letterSpacing: 1, marginBottom: 10 }}>
-            LƯỢT TƯƠNG HỢP MỚI
-          </div>
-          <div style={{ display: 'flex', gap: 16 }}>
+        <div style={{ paddingLeft: 32, paddingRight: 32, marginBottom: 40 }}>
+          <h3 style={{
+            margin: '0 0 16px',
+            fontSize: 12,
+            fontWeight: 700,
+            color: '#5d4038',
+            textTransform: 'uppercase',
+            letterSpacing: 2,
+            fontFamily: "'Manrope', sans-serif",
+          }}>Lượt tương hợp mới</h3>
+          <div style={{
+            display: 'flex',
+            gap: 16,
+            overflowX: 'auto',
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'none',
+          }}>
             {newMatches.map(m => (
-              <div key={m.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5, cursor: 'pointer' }}>
-                <Avatar name={m.name} color={m.color} size={46} />
-                <span style={{ fontSize: 11, color: '#1c1b1b', fontWeight: 600 }}>{m.name}</span>
+              <div key={m.id} style={{
+                flexShrink: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 8,
+                cursor: 'pointer',
+              }}>
+                <div style={{
+                  width: 64,
+                  height: 64,
+                  borderRadius: '50%',
+                  padding: 3,
+                  border: '2px solid #ad2c00',
+                  boxSizing: 'border-box',
+                }}>
+                  <Avatar name={m.name} color={m.color} size={54} />
+                </div>
+                <span style={{ fontSize: 12, fontWeight: 600, color: '#1c1b1b' }}>{m.name}</span>
               </div>
             ))}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 5, cursor: 'pointer' }}>
+            <div style={{
+              flexShrink: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 8,
+              cursor: 'pointer',
+              color: '#ad2c00',
+            }}>
               <div style={{
-                width: 46, height: 46, borderRadius: '50%',
-                border: '2px dashed #ad2c00', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: '#ad2c00', fontSize: 20,
-              }}>+</div>
-              <span style={{ fontSize: 11, color: '#ad2c00', fontWeight: 600 }}>Tin thêm</span>
+                width: 64,
+                height: 64,
+                borderRadius: '50%',
+                background: '#ffdbd1',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 28 }}>add</span>
+              </div>
+              <span style={{ fontSize: 12, fontWeight: 600 }}>Tìm thêm</span>
             </div>
           </div>
         </div>
 
-        {/* Conversation list */}
-        <div style={{ flex: 1, overflowY: 'auto' }}>
+        <div style={{ flex: 1, paddingLeft: 16, paddingRight: 16 }}>
           {filtered.map(conv => (
             <div
               key={conv.id}
-              onClick={() => setActiveId(conv.id)}
+              onClick={() => setSelectedChat(conv.id)}
               style={{
-                display: 'flex', alignItems: 'center', gap: 14,
-                padding: '14px 24px', cursor: 'pointer',
-                background: activeId === conv.id ? '#fff5f2' : '#fff',
-                borderBottom: '1px solid #faeae5',
-                borderLeft: activeId === conv.id ? '3px solid #ad2c00' : '3px solid transparent',
-                transition: 'background 0.15s',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 16,
+                padding: 16,
+                marginBottom: 8,
+                borderRadius: 16,
+                background: '#ffffff',
+                cursor: 'pointer',
+                transition: 'transform 0.1s',
               }}
+              onMouseDown={e => e.currentTarget.style.transform = 'scale(0.97)'}
+              onMouseUp={e => e.currentTarget.style.transform = 'scale(1)'}
+              onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
             >
-              <div style={{ position: 'relative' }}>
-                <Avatar name={conv.name} color={conv.color} size={46} />
-                {conv.unread > 0 && (
+              <div style={{ position: 'relative', flexShrink: 0 }}>
+                <Avatar name={conv.name} color={conv.color} size={56} />
+                {conv.online && (
                   <div style={{
-                    position: 'absolute', top: -2, right: -2,
-                    background: '#ad2c00', color: '#fff', borderRadius: '50%',
-                    width: 18, height: 18, fontSize: 10, fontWeight: 700,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}>{conv.unread}</div>
+                    position: 'absolute',
+                    bottom: 1,
+                    right: 1,
+                    width: 14,
+                    height: 14,
+                    background: '#22c55e',
+                    border: '2px solid #ffffff',
+                    borderRadius: '50%',
+                  }} />
                 )}
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 3 }}>
-                  <span style={{ fontWeight: 700, fontSize: 14, color: '#1c1b1b',
-                    fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)' }}>
-                    {conv.name}
-                  </span>
-                  <span style={{ fontSize: 11, color: '#5d4038' }}>{conv.time}</span>
-                </div>
-                <div style={{ fontSize: 12, color: '#5d4038', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', marginBottom: 5 }}>
-                  {conv.lastMsg}
-                </div>
-                <span style={{
-                  display: 'inline-block', background: '#fff0ed',
-                  border: '1px solid #ad2c00', color: '#ad2c00',
-                  borderRadius: 20, padding: '2px 10px', fontSize: 10, fontWeight: 700, letterSpacing: 0.4,
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: 4,
                 }}>
-                  MATCHINGDISH: {conv.matchDish}
-                </span>
+                  <span style={{
+                    fontWeight: 700,
+                    fontSize: 15,
+                    color: '#1c1b1b',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  }}>{conv.name}</span>
+                  <span style={{
+                    fontSize: 10,
+                    color: '#5d4038',
+                    fontWeight: 500,
+                  }}>{conv.time}</span>
+                </div>
+                <p style={{
+                  margin: '0 0 8px',
+                  fontSize: 13,
+                  color: '#5d4038',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  fontWeight: conv.unread > 0 ? 600 : 400,
+                }}>{conv.lastMsg}</p>
+                <div style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  padding: '4px 10px',
+                  borderRadius: 9999,
+                  background: conv.id === 1 ? 'rgba(255,120,82,0.1)' : '#ebe7e7',
+                  border: conv.id === 1 ? '1px solid rgba(255,120,82,0.2)' : '1px solid rgba(231,189,178,0.3)',
+                }}>
+                  <span className="material-symbols-outlined" style={{
+                    fontSize: 14,
+                    color: conv.id === 1 ? '#ad2c00' : '#5d4038',
+                    fontVariationSettings: "'FILL' 1",
+                  }}>restaurant_menu</span>
+                  <span style={{
+                    fontSize: 10,
+                    fontWeight: 700,
+                    color: conv.id === 1 ? '#ad2c00' : '#5d4038',
+                    textTransform: 'uppercase',
+                    letterSpacing: 0.5,
+                  }}>Matching Dish: {conv.matchDish}</span>
+                </div>
               </div>
             </div>
           ))}
         </div>
-
-        {/* Chat window (bottom of center panel) */}
-        {activeId && (
-          <div style={{
-            height: 320, borderTop: '1px solid #e7bdb2',
-            display: 'flex', flexDirection: 'column', background: '#fcf9f8',
-          }}>
-            <div style={{ flex: 1, overflowY: 'auto', padding: '14px 24px', display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {chatMsgs.map(msg => (
-                <div key={msg.id} style={{
-                  display: 'flex',
-                  flexDirection: msg.from === 'me' ? 'row-reverse' : 'row',
-                  gap: 8, alignItems: 'flex-end',
-                }}>
-                  {msg.from === 'other' && activeConv && (
-                    <Avatar name={activeConv.name} color={activeConv.color} size={28} />
-                  )}
-                  <div style={{ maxWidth: '68%' }}>
-                    <div style={{
-                      background: msg.from === 'me' ? '#ad2c00' : '#fff',
-                      color: msg.from === 'me' ? '#fff' : '#1c1b1b',
-                      borderRadius: msg.from === 'me' ? '16px 16px 4px 16px' : '16px 16px 16px 4px',
-                      padding: '9px 14px', fontSize: 13, lineHeight: 1.5,
-                      border: msg.from === 'me' ? 'none' : '1px solid #e7bdb2',
-                    }}>{msg.text}</div>
-                    <div style={{ fontSize: 10, color: '#5d4038', marginTop: 3, textAlign: msg.from === 'me' ? 'right' : 'left' }}>
-                      {msg.time}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-            <div style={{
-              padding: '10px 16px', borderTop: '1px solid #e7bdb2',
-              background: '#fff', display: 'flex', gap: 8, alignItems: 'center',
-            }}>
-              <input
-                value={inputText}
-                onChange={e => setInputText(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Nhắn tin..."
-                style={{
-                  flex: 1, border: '1.5px solid #e7bdb2', borderRadius: 24,
-                  padding: '9px 16px', fontSize: 13, outline: 'none',
-                  background: '#fcf9f8', color: '#1c1b1b',
-                  fontFamily: 'var(--font-body, "Manrope", sans-serif)',
-                }}
-              />
-              <button onClick={handleSend} style={{
-                background: '#ad2c00', border: 'none', borderRadius: '50%',
-                width: 36, height: 36, cursor: 'pointer', color: '#fff',
-                fontSize: 16, display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>➤</button>
-            </div>
-          </div>
-        )}
       </div>
 
-      {/* ── RIGHT PANEL (320px) ── */}
-      <div style={{
-        width: 320, flexShrink: 0,
-        background: '#fff', display: 'flex', flexDirection: 'column',
-        overflowY: 'auto', padding: '28px 24px',
+      <nav style={{
+        position: 'fixed',
+        bottom: 24,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '90%',
+        maxWidth: 400,
+        zIndex: 50,
       }}>
-        {activeConv ? (
-          <>
-            {/* Profile header */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 24, gap: 10 }}>
-              <Avatar name={selectedUser.name} color={selectedUser.color} size={72} />
-              <div style={{ textAlign: 'center' }}>
-                <div style={{
-                  fontSize: 20, fontWeight: 800, color: '#1c1b1b',
-                  fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-                }}>{selectedUser.name}, {selectedUser.age}</div>
-                <div style={{ fontSize: 12, color: '#5d4038', marginTop: 4 }}>📍 {selectedUser.location}</div>
-              </div>
-            </div>
+        <div style={{
+          background: 'rgba(252,249,248,0.85)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderRadius: 9999,
+          paddingLeft: 24,
+          paddingRight: 24,
+          paddingTop: 16,
+          paddingBottom: 16,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          boxShadow: '0 20px 40px -15px rgba(173,44,0,0.15)',
+          border: '1px solid rgba(255,255,255,0.2)',
+        }}>
+          <button
+            onClick={() => navigate('/app')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 4,
+              padding: 0,
+            }}
+          >
+            <span className="material-symbols-outlined" style={{ color: '#5d4038', fontSize: 24 }}>explore</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: '#5d4038', textTransform: 'uppercase', letterSpacing: 0.5, fontFamily: "'Manrope', sans-serif" }}>Khám phá</span>
+          </button>
 
-            {/* Radar chart */}
+          <button
+            onClick={() => navigate('/app/chat')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 4,
+              padding: 0,
+              position: 'relative',
+            }}
+          >
             <div style={{
-              background: '#fcf9f8', border: '1px solid #e7bdb2',
-              borderRadius: 16, padding: '20px 16px', marginBottom: 20,
-            }}>
-              <div style={{
-                fontSize: 11, fontWeight: 700, color: '#5d4038',
-                letterSpacing: 1, textAlign: 'center', marginBottom: 12,
-              }}>VỊ GIÁC TƯƠNG HỢP</div>
-              <TasteRadar match={selectedUser.match} />
-            </div>
+              position: 'absolute',
+              top: -2,
+              right: -4,
+              width: 8,
+              height: 8,
+              background: '#ad2c00',
+              borderRadius: '50%',
+            }} />
+            <span className="material-symbols-outlined" style={{ color: '#ad2c00', fontSize: 24, fontVariationSettings: "'FILL' 1" }}>chat_bubble</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: '#ad2c00', textTransform: 'uppercase', letterSpacing: 0.5, fontFamily: "'Manrope', sans-serif" }}>Trò chuyện</span>
+          </button>
 
-            {/* Shared dishes */}
-            <div style={{ marginBottom: 20 }}>
-              <div style={{
-                fontSize: 11, fontWeight: 700, color: '#5d4038',
-                letterSpacing: 1, marginBottom: 12,
-              }}>BẢNG CHUYÊN VỊ CHUNG</div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-                {sharedDishes.map(dish => (
-                  <span key={dish} style={{
-                    background: '#fff0ed', border: '1px solid #ad2c00',
-                    color: '#ad2c00', borderRadius: 20,
-                    padding: '4px 12px', fontSize: 11, fontWeight: 700,
-                  }}>{dish}</span>
-                ))}
-              </div>
-            </div>
+          <button
+            onClick={() => navigate('/app')}
+            style={{
+              width: 56,
+              height: 56,
+              background: '#ad2c00',
+              color: '#ffffff',
+              border: '4px solid #fcf9f8',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              marginTop: -40,
+              boxShadow: '0 8px 24px rgba(173,44,0,0.3)',
+              flexShrink: 0,
+            }}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: 26, fontVariationSettings: "'FILL' 1" }}>restaurant</span>
+          </button>
 
-            {/* CTA button */}
-            <button style={{
-              width: '100%', background: '#ad2c00', color: '#fff',
-              border: 'none', borderRadius: 12, padding: '14px 0',
-              fontSize: 15, fontWeight: 700, cursor: 'pointer',
-              fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-              letterSpacing: 0.5, marginTop: 'auto',
-            }}>
-              Hẹn gặp {selectedUser.name}
-            </button>
-          </>
-        ) : (
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#5d4038', textAlign: 'center', gap: 12 }}>
-            <span style={{ fontSize: 40 }}>💬</span>
-            <div style={{ fontSize: 14 }}>Chọn một cuộc trò chuyện để bắt đầu</div>
-          </div>
-        )}
-      </div>
+          <button
+            onClick={() => navigate('/app/favorites')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 4,
+              padding: 0,
+            }}
+          >
+            <span className="material-symbols-outlined" style={{ color: '#5d4038', fontSize: 24 }}>favorite</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: '#5d4038', textTransform: 'uppercase', letterSpacing: 0.5, fontFamily: "'Manrope', sans-serif" }}>Yêu thích</span>
+          </button>
+
+          <button
+            onClick={() => navigate('/app/profile')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 4,
+              padding: 0,
+            }}
+          >
+            <span className="material-symbols-outlined" style={{ color: '#5d4038', fontSize: 24 }}>person_2</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: '#5d4038', textTransform: 'uppercase', letterSpacing: 0.5, fontFamily: "'Manrope', sans-serif" }}>Cá nhân</span>
+          </button>
+        </div>
+      </nav>
     </div>
   );
 };

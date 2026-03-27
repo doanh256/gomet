@@ -1,999 +1,390 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const isMobile = window.innerWidth < 1024;
+const T = {
+  bg: '#fcf9f8',
+  surface: '#ffffff',
+  surfaceContainer: '#f0edec',
+  surfaceContainerLow: '#f6f3f2',
+  surfaceContainerHigh: '#ebe7e7',
+  onSurface: '#1c1b1b',
+  onSurfaceVariant: '#5d4038',
+  primary: '#ad2c00',
+  primaryFixed: '#ffdbd1',
+  outlineVariant: '#e7bdb2',
+  onPrimary: '#ffffff',
+  headline: "'Plus Jakarta Sans', sans-serif",
+  body: "'Manrope', sans-serif",
+};
 
-// Map dot markers: [leftPercent, topPercent, label, color, flag]
-const mapMarkers = [
-  { left: 72, top: 52, label: 'Việt Nam', color: '#ad2c00', flag: '🇻🇳', active: true },
-  { left: 82, top: 35, label: 'Nhật Bản', color: '#c97d10', flag: '🇯🇵', active: false },
-  { left: 53, top: 32, label: 'Ý', color: '#c97d10', flag: '🇮🇹', active: false },
-  { left: 20, top: 48, label: 'Mexico', color: '#c97d10', flag: '🇲🇽', active: false },
-  { left: 50, top: 28, label: 'Pháp', color: '#c97d10', flag: '🇫🇷', active: false },
+const categories = [
+  { id: 'all', label: 'Tất cả', icon: 'restaurant_menu' },
+  { id: 'vn', label: 'Việt Nam', icon: 'flag', emoji: '🇻🇳' },
+  { id: 'jp', label: 'Nhật Bản', icon: 'flag', emoji: '🇯🇵' },
+  { id: 'kr', label: 'Hàn Quốc', icon: 'flag', emoji: '🇰🇷' },
+  { id: 'it', label: 'Ý', icon: 'flag', emoji: '🇮🇹' },
+  { id: 'th', label: 'Thái Lan', icon: 'flag', emoji: '🇹🇭' },
+  { id: 'fr', label: 'Pháp', icon: 'flag', emoji: '🇫🇷' },
 ];
 
-const visaCards = [
+const editorialCards = [
   {
     id: 1,
-    title: 'Phở Bò Hà Nội',
-    region: 'LOCAL · VN',
-    type: 'SIGNATURE VISA',
-    flag: '🇻🇳',
-    goldBorder: true,
-    badge: null,
-    color: '#c97d10',
-    emoji: '🍜',
+    category: 'vn',
+    tag: 'Mẹo thưởng thức',
+    title: 'Ăn Phở đúng điệu: Giấm tỏi hay Chanh?',
+    desc: 'Sự tranh cãi không hồi kết về việc giữ trọn vẹn hương vị nước dùng truyền thống.',
+    gradient: 'linear-gradient(135deg, #c8785a 0%, #8b3a1a 100%)',
+    readTime: '5 phút đọc',
   },
   {
     id: 2,
-    title: 'Sushi Omakase',
-    region: 'INTERNATIONAL · JPN',
-    type: 'TINH HOA',
-    flag: '🇯🇵',
-    goldBorder: false,
-    badge: 'SƯU TẦM',
-    badgeColor: '#ad2c00',
-    color: '#ad2c00',
-    emoji: '🍣',
+    category: 'vn',
+    tag: 'Câu chuyện đầu bếp',
+    title: 'Người giữ lửa cho những nồi nước dùng 24 tiếng',
+    desc: '"Nước dùng là linh hồn, nó không chỉ là xương hầm, nó là ký ức của cả một gia đình qua ba thế hệ."',
+    gradient: 'linear-gradient(135deg, #d4a574 0%, #a07040 100%)',
+    readTime: '8 phút đọc',
+    featured: true,
+    author: { name: 'Nghệ nhân Hùng', venue: 'Phở Thìn Lò Đúc' },
   },
   {
     id: 3,
-    title: 'Pad Thai',
-    region: 'INTERNATIONAL · THA',
-    type: 'PHỔ THÔNG',
-    flag: '🇹🇭',
-    goldBorder: false,
-    badge: 'SƯU TẦM',
-    badgeColor: '#5d4038',
-    color: '#5d4038',
-    emoji: '🍝',
+    category: 'vn',
+    tag: 'Ẩm thực hiện đại',
+    title: 'Fusion: Khi món Việt "gặp gỡ" Fine Dining',
+    desc: 'Cách các đầu bếp trẻ nâng tầm nguyên liệu Việt trên bản đồ thế giới.',
+    gradient: 'linear-gradient(135deg, #6a9b7a 0%, #3a6a4a 100%)',
+    readTime: '6 phút đọc',
+  },
+  {
+    id: 4,
+    category: 'jp',
+    tag: 'Văn hóa ẩm thực',
+    title: 'Ramen Hokkaido và bí quyết nước dùng miso đậm đà',
+    desc: 'Hành trình khám phá những tô ramen ấm lòng trong tiết trời lạnh giá Hokkaido.',
+    gradient: 'linear-gradient(135deg, #7a8fac 0%, #3a5070 100%)',
+    readTime: '7 phút đọc',
+  },
+  {
+    id: 5,
+    category: 'kr',
+    tag: 'Xu hướng',
+    title: 'Korean BBQ: Nghệ thuật nướng thịt giữa lòng Seoul',
+    desc: 'Khám phá văn hóa ăn nhậu đặc sắc của người Hàn Quốc qua từng que thịt nướng.',
+    gradient: 'linear-gradient(135deg, #c87878 0%, #8b3838 100%)',
+    readTime: '5 phút đọc',
+  },
+  {
+    id: 6,
+    category: 'it',
+    tag: 'Cổ điển',
+    title: 'Carbonara chính thống: Không kem, không hành tây',
+    desc: 'Bí mật đằng sau sợi pasta óng ả và sốt trứng chuẩn vị La Mã cổ đại.',
+    gradient: 'linear-gradient(135deg, #b09060 0%, #7a6030 100%)',
+    readTime: '4 phút đọc',
   },
 ];
 
-// ─── Desktop Layout ──────────────────────────────────────────────────────────
+const collections = [
+  {
+    id: 1,
+    category: 'vn',
+    title: 'Cà phê trứng: Những góc nhỏ thời gian',
+    badge: '5 Địa điểm',
+    gradient: 'linear-gradient(160deg, #8b6040 0%, #4a2810 60%, #1a0800 100%)',
+    wide: true,
+  },
+  {
+    id: 2,
+    category: 'vn',
+    title: 'Chợ đêm & Ăn vặt',
+    gradient: 'linear-gradient(160deg, #c87040 0%, #8b3010 60%, #3a1000 100%)',
+    wide: false,
+  },
+  {
+    id: 3,
+    category: 'jp',
+    title: 'Izakaya: Nhậu kiểu Nhật',
+    gradient: 'linear-gradient(160deg, #607090 0%, #304050 60%, #101820 100%)',
+    wide: false,
+  },
+  {
+    id: 4,
+    category: 'kr',
+    title: 'Street Food Seoul',
+    gradient: 'linear-gradient(160deg, #c06060 0%, #803030 60%, #2a1010 100%)',
+    wide: false,
+  },
+  {
+    id: 5,
+    category: 'it',
+    title: 'Nhà hàng đạt sao Michelin',
+    gradient: 'linear-gradient(160deg, #907040 0%, #604820 60%, #201800 100%)',
+    wide: false,
+  },
+];
 
-const DesktopLayout = ({ activeTab, setActiveTab }) => {
+export default function ExplorePage() {
   const navigate = useNavigate();
-  const [hoveredCard, setHoveredCard] = useState(null);
-  const [hoveredMarker, setHoveredMarker] = useState(null);
+  const [activeCategory, setActiveCategory] = useState('all');
+
+  const filteredCards = activeCategory === 'all'
+    ? editorialCards
+    : editorialCards.filter((c) => c.category === activeCategory);
+
+  const filteredCollections = activeCategory === 'all'
+    ? collections
+    : collections.filter((c) => c.category === activeCategory);
 
   return (
-    <div style={{
-      flex: 1,
-      backgroundColor: '#fcf9f8',
-      overflowY: 'auto',
-      fontFamily: 'var(--font-body, Manrope, sans-serif)',
-      minHeight: '100vh',
-      padding: '40px 40px 80px',
-    }}>
-      {/* Page heading */}
-      <h1 style={{
-        fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-        fontSize: 40,
-        fontWeight: 700,
-        color: '#1c1b1b',
-        margin: '0 0 8px',
-        lineHeight: 1.2,
-      }}>
-        Bản đồ Ẩm thực &amp; Visa Tổng thể
-      </h1>
-      <p style={{
-        fontSize: 16,
-        color: '#5d4038',
-        margin: '0 0 36px',
-        maxWidth: 680,
-        lineHeight: 1.6,
-      }}>
-        Hành trình khám phá hương vị từ những gánh hàng rong tại Việt Nam đến những nhà hàng cao cấp trên toàn thế giới.
-      </p>
+    <div style={{ minHeight: '100dvh', background: T.bg, fontFamily: T.body, color: T.onSurface, overflowX: 'hidden' }}>
 
-      {/* Two-column layout */}
-      <div style={{ display: 'flex', gap: 28, alignItems: 'flex-start' }}>
-
-        {/* ── Left column ── */}
-        <div style={{ flex: 1, minWidth: 0 }}>
-
-          {/* Filter tabs */}
-          <div style={{
-            display: 'flex',
-            gap: 8,
-            marginBottom: 20,
-            backgroundColor: '#f0edec',
-            borderRadius: 12,
-            padding: 4,
-            alignSelf: 'flex-start',
-            width: 'fit-content',
-          }}>
+      <header style={{ background: T.bg, position: 'sticky', top: 0, zIndex: 50 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 32px', maxWidth: '1280px', margin: '0 auto' }}>
+          <div style={{ fontSize: '22px', fontWeight: 900, fontFamily: T.headline, color: T.primary, letterSpacing: '-0.05em' }}>GoMet</div>
+          <nav style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
             {[
-              { id: 'global', label: 'Toàn cầu' },
-              { id: 'vietnam', label: 'Việt Nam (8 Vùng)' },
-            ].map(tab => (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                style={{
-                  padding: '8px 20px',
-                  borderRadius: 10,
-                  border: 'none',
-                  backgroundColor: activeTab === tab.id ? '#ad2c00' : 'transparent',
-                  color: activeTab === tab.id ? '#fff' : '#5d4038',
-                  fontFamily: 'var(--font-body, Manrope, sans-serif)',
-                  fontSize: 14,
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  transition: 'all 0.15s ease',
-                }}
+              { label: 'Khám phá', active: false },
+              { label: 'Sự kiện', active: false },
+              { label: 'Scanner', active: false },
+              { label: 'Cẩm nang', active: true },
+            ].map((item) => (
+              <span
+                key={item.label}
+                style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.18em', fontFamily: T.body, color: item.active ? T.primary : T.onSurface, opacity: item.active ? 1 : 0.55, cursor: 'pointer', transition: 'opacity 0.15s' }}
               >
-                {tab.label}
-              </button>
-            ))}
-          </div>
-
-          {/* World map */}
-          <div style={{
-            backgroundColor: '#1a1a1a',
-            borderRadius: 20,
-            minHeight: 500,
-            position: 'relative',
-            overflow: 'hidden',
-            marginBottom: 20,
-          }}>
-            {/* Grid lines overlay */}
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              backgroundImage: `
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-              `,
-              backgroundSize: '60px 60px',
-            }} />
-
-            {/* Equator line */}
-            <div style={{
-              position: 'absolute',
-              top: '50%',
-              left: 0,
-              right: 0,
-              height: 1,
-              backgroundColor: 'rgba(255,255,255,0.07)',
-            }} />
-            {/* Prime meridian line */}
-            <div style={{
-              position: 'absolute',
-              left: '50%',
-              top: 0,
-              bottom: 0,
-              width: 1,
-              backgroundColor: 'rgba(255,255,255,0.07)',
-            }} />
-
-            {/* Continent blobs (simplified SVG) */}
-            <svg
-              viewBox="0 0 1000 500"
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.18 }}
-              preserveAspectRatio="xMidYMid slice"
-            >
-              {/* North America */}
-              <ellipse cx="180" cy="200" rx="120" ry="100" fill="#4a4a4a" />
-              {/* South America */}
-              <ellipse cx="230" cy="360" rx="70" ry="90" fill="#4a4a4a" />
-              {/* Europe */}
-              <ellipse cx="500" cy="160" rx="70" ry="50" fill="#4a4a4a" />
-              {/* Africa */}
-              <ellipse cx="510" cy="310" rx="80" ry="110" fill="#4a4a4a" />
-              {/* Asia */}
-              <ellipse cx="720" cy="200" rx="180" ry="100" fill="#4a4a4a" />
-              {/* Australia */}
-              <ellipse cx="820" cy="380" rx="70" ry="50" fill="#4a4a4a" />
-            </svg>
-
-            {/* Map markers */}
-            {mapMarkers.map((marker, idx) => (
-              <div
-                key={idx}
-                onMouseEnter={() => setHoveredMarker(idx)}
-                onMouseLeave={() => setHoveredMarker(null)}
-                style={{
-                  position: 'absolute',
-                  left: `${marker.left}%`,
-                  top: `${marker.top}%`,
-                  transform: 'translate(-50%, -50%)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  cursor: 'pointer',
-                  zIndex: marker.active ? 2 : 1,
-                }}
-              >
-                {/* Pulse ring for active marker */}
-                {marker.active && (
-                  <div style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: 32,
-                    height: 32,
-                    borderRadius: '50%',
-                    backgroundColor: 'rgba(173,44,0,0.25)',
-                    animation: 'mapPulse 2s ease-in-out infinite',
-                  }} />
-                )}
-                <div style={{
-                  width: marker.active ? 16 : 11,
-                  height: marker.active ? 16 : 11,
-                  borderRadius: '50%',
-                  backgroundColor: marker.color,
-                  border: `2px solid ${marker.active ? '#fff' : 'rgba(255,255,255,0.5)'}`,
-                  boxShadow: marker.active ? `0 0 0 3px rgba(173,44,0,0.35)` : 'none',
-                  transition: 'transform 0.15s',
-                  transform: hoveredMarker === idx ? 'scale(1.3)' : 'scale(1)',
-                  position: 'relative',
-                  zIndex: 1,
-                }} />
-                {(marker.active || hoveredMarker === idx) && (
-                  <div style={{
-                    marginTop: 5,
-                    fontSize: 11,
-                    fontWeight: 700,
-                    color: marker.active ? '#fff' : 'rgba(255,255,255,0.85)',
-                    backgroundColor: 'rgba(0,0,0,0.55)',
-                    padding: '2px 8px',
-                    borderRadius: 6,
-                    whiteSpace: 'nowrap',
-                    backdropFilter: 'blur(4px)',
-                  }}>
-                    {marker.flag} {marker.label}
-                  </div>
-                )}
-              </div>
-            ))}
-
-            {/* Map label bottom-left */}
-            <div style={{
-              position: 'absolute',
-              bottom: 20,
-              left: 20,
-              backgroundColor: 'rgba(0,0,0,0.5)',
-              borderRadius: 10,
-              padding: '8px 14px',
-              backdropFilter: 'blur(6px)',
-            }}>
-              <span style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', marginRight: 4 }}>
-                Đã khám phá:
+                {item.label}
               </span>
-              <span style={{ fontSize: 12, fontWeight: 700, color: '#fff' }}>5 / 195 Quốc gia</span>
-            </div>
-          </div>
-
-          {/* Current location label */}
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 8,
-            marginBottom: 20,
-          }}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#ad2c00' }}>location_on</span>
-            <span style={{ fontSize: 14, color: '#5d4038', fontWeight: 500 }}>
-              Vị trí hiện tại: <strong style={{ color: '#1c1b1b' }}>Hà Nội, Việt Nam</strong> 🇻🇳
-            </span>
-          </div>
-
-          {/* Two progress cards */}
-          <div style={{ display: 'flex', gap: 16, marginBottom: 40 }}>
-
-            {/* Card 1: Chinh phục Việt Nam */}
-            <div style={{
-              flex: 1,
-              backgroundColor: '#fff',
-              borderRadius: 16,
-              padding: '20px 22px',
-              border: '1px solid #e7bdb2',
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
-                <div>
-                  <div style={{
-                    fontSize: 11,
-                    fontWeight: 700,
-                    color: '#ad2c00',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.08em',
-                    marginBottom: 4,
-                  }}>Chinh phục</div>
-                  <div style={{
-                    fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-                    fontSize: 18,
-                    fontWeight: 700,
-                    color: '#1c1b1b',
-                  }}>Việt Nam</div>
-                </div>
-                <span style={{ fontSize: 22 }}>🇻🇳</span>
-              </div>
-
-              <div style={{ display: 'flex', gap: 16, marginBottom: 14 }}>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 22, fontWeight: 700, color: '#1c1b1b' }}>0<span style={{ fontSize: 14, color: '#5d4038' }}>/8</span></div>
-                  <div style={{ fontSize: 11, color: '#5d4038' }}>Vùng miền</div>
-                </div>
-                <div style={{ width: 1, backgroundColor: '#e7bdb2' }} />
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 22, fontWeight: 700, color: '#1c1b1b' }}>0<span style={{ fontSize: 14, color: '#5d4038' }}>/100</span></div>
-                  <div style={{ fontSize: 11, color: '#5d4038' }}>Quốc gia</div>
-                </div>
-              </div>
-
-              {/* Progress bar */}
-              <div style={{
-                height: 6,
-                backgroundColor: '#f0edec',
-                borderRadius: 3,
-                overflow: 'hidden',
-                marginBottom: 12,
-              }}>
-                <div style={{
-                  height: '100%',
-                  width: '0%',
-                  backgroundColor: '#ad2c00',
-                  borderRadius: 3,
-                }} />
-              </div>
-
-              <div style={{
-                fontSize: 10,
-                fontWeight: 700,
-                color: '#5d4038',
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-              }}>
-                TIẾP THEO: MIỀN TRUNG · ĐÀ NẴNG
-              </div>
-            </div>
-
-            {/* Card 2: Hành trình Thế giới */}
-            <div style={{
-              flex: 1,
-              backgroundColor: '#fff',
-              borderRadius: 16,
-              padding: '20px 22px',
-              border: '1px solid #e7bdb2',
-            }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 10 }}>
-                <div>
-                  <div style={{
-                    fontSize: 11,
-                    fontWeight: 700,
-                    color: '#c97d10',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.08em',
-                    marginBottom: 4,
-                  }}>Hành trình</div>
-                  <div style={{
-                    fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-                    fontSize: 18,
-                    fontWeight: 700,
-                    color: '#1c1b1b',
-                  }}>Thế giới</div>
-                </div>
-                <span style={{ fontSize: 22 }}>🌏</span>
-              </div>
-
-              <div style={{ marginBottom: 14 }}>
-                <div style={{ fontSize: 22, fontWeight: 700, color: '#1c1b1b' }}>
-                  2<span style={{ fontSize: 14, color: '#5d4038' }}>/195 Quốc gia</span>
-                </div>
-              </div>
-
-              {/* Progress bar */}
-              <div style={{
-                height: 6,
-                backgroundColor: '#f0edec',
-                borderRadius: 3,
-                overflow: 'hidden',
-                marginBottom: 12,
-              }}>
-                <div style={{
-                  height: '100%',
-                  width: '1%',
-                  backgroundColor: '#c97d10',
-                  borderRadius: 3,
-                }} />
-              </div>
-
-              <div style={{
-                fontSize: 10,
-                fontWeight: 700,
-                color: '#5d4038',
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-              }}>
-                TIẾP THEO: DONCHAMMA
-              </div>
-            </div>
-          </div>
-
-          {/* Bộ sưu tập Visa */}
-          <div>
-            <div style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              marginBottom: 20,
-            }}>
-              <h2 style={{
-                fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-                fontSize: 22,
-                fontWeight: 700,
-                color: '#1c1b1b',
-                margin: 0,
-              }}>
-                Bộ sưu tập Visa
-              </h2>
-              <div style={{ display: 'flex', gap: 8 }}>
-                <button style={{
-                  width: 36, height: 36, borderRadius: 10, border: '1px solid #e7bdb2',
-                  backgroundColor: '#fff', cursor: 'pointer',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#5d4038' }}>filter_list</span>
-                </button>
-                <button style={{
-                  width: 36, height: 36, borderRadius: 10, border: '1px solid #e7bdb2',
-                  backgroundColor: '#fff', cursor: 'pointer',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                }}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#5d4038' }}>grid_view</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Visa card grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-              {visaCards.map(card => (
-                <div
-                  key={card.id}
-                  onMouseEnter={() => setHoveredCard(card.id)}
-                  onMouseLeave={() => setHoveredCard(null)}
-                  style={{
-                    backgroundColor: '#fff',
-                    borderRadius: 16,
-                    overflow: 'hidden',
-                    border: card.goldBorder ? `2px solid ${card.color}` : '1px solid #e7bdb2',
-                    cursor: 'pointer',
-                    transform: hoveredCard === card.id ? 'translateY(-3px)' : 'translateY(0)',
-                    transition: 'transform 0.15s ease, box-shadow 0.15s ease',
-                    boxShadow: hoveredCard === card.id ? '0 8px 24px rgba(0,0,0,0.1)' : '0 2px 8px rgba(0,0,0,0.04)',
-                  }}
-                >
-                  {/* Card header / image area */}
-                  <div style={{
-                    height: 100,
-                    backgroundColor: card.goldBorder ? '#fff8ef' : '#f6f3f2',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    fontSize: 48,
-                    position: 'relative',
-                  }}>
-                    {card.emoji}
-                    {card.badge && (
-                      <div style={{
-                        position: 'absolute',
-                        top: 10,
-                        right: 10,
-                        backgroundColor: card.badgeColor,
-                        color: '#fff',
-                        fontSize: 9,
-                        fontWeight: 700,
-                        letterSpacing: '0.06em',
-                        padding: '3px 8px',
-                        borderRadius: 6,
-                      }}>
-                        {card.badge}
-                      </div>
-                    )}
-                    {card.goldBorder && (
-                      <div style={{
-                        position: 'absolute',
-                        top: 10,
-                        right: 10,
-                        backgroundColor: '#c97d10',
-                        color: '#fff',
-                        fontSize: 9,
-                        fontWeight: 700,
-                        letterSpacing: '0.06em',
-                        padding: '3px 8px',
-                        borderRadius: 6,
-                      }}>
-                        ★ SIGNATURE
-                      </div>
-                    )}
-                  </div>
-
-                  <div style={{ padding: '14px 16px' }}>
-                    <div style={{
-                      fontSize: 10,
-                      fontWeight: 700,
-                      color: card.color,
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.08em',
-                      marginBottom: 4,
-                    }}>
-                      {card.flag} {card.region}
-                    </div>
-                    <div style={{
-                      fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-                      fontSize: 15,
-                      fontWeight: 700,
-                      color: '#1c1b1b',
-                      marginBottom: 4,
-                    }}>
-                      {card.title}
-                    </div>
-                    <div style={{
-                      fontSize: 11,
-                      color: '#5d4038',
-                      fontWeight: 500,
-                    }}>
-                      {card.type}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            ))}
+          </nav>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+            <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: T.primary, display: 'flex', alignItems: 'center', transition: 'opacity 0.15s' }}>
+              <span className="material-symbols-outlined">notifications</span>
+            </button>
+            <button style={{ background: 'none', border: 'none', cursor: 'pointer', color: T.primary, display: 'flex', alignItems: 'center', transition: 'opacity 0.15s' }}>
+              <span className="material-symbols-outlined">qr_code_scanner</span>
+            </button>
           </div>
         </div>
+      </header>
 
-        {/* ── Right sidebar (320px) ── */}
-        <div style={{ width: 320, flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <main style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 32px 120px' }}>
 
-          {/* Vị giác Tiến hóa card */}
-          <div style={{
-            backgroundColor: '#fff',
-            borderRadius: 20,
-            padding: '22px 22px',
-            border: '1px solid #e7bdb2',
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
-              <div style={{
-                width: 48,
-                height: 48,
-                borderRadius: 14,
-                backgroundColor: '#fff8ef',
-                border: '2px solid #c97d10',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 24,
-              }}>
-                🏆
+        <section style={{ marginTop: '32px', marginBottom: '72px', display: 'grid', gridTemplateColumns: 'repeat(12, 1fr)', gap: '48px', alignItems: 'center' }}>
+          <div style={{ gridColumn: 'span 5', display: 'flex', flexDirection: 'column', gap: '28px', order: 2 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+              <span style={{ background: T.primary, color: T.onPrimary, padding: '6px 16px', borderRadius: '9999px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.2em', fontFamily: T.body }}>Văn hóa ẩm thực</span>
+              <span style={{ color: T.onSurfaceVariant, fontSize: '11px', fontWeight: 500, letterSpacing: '0.04em' }}>12 Tháng 10, 2023</span>
+            </div>
+            <h1 style={{ fontFamily: T.headline, fontWeight: 700, fontSize: 'clamp(32px, 4vw, 64px)', lineHeight: 1.05, color: T.onSurface, letterSpacing: '-0.02em', margin: 0 }}>
+              Tinh hoa Phở Hà Nội — Hành trình xuyên thế kỷ
+            </h1>
+            <p style={{ color: T.onSurfaceVariant, fontFamily: T.body, fontSize: '17px', lineHeight: 1.7, maxWidth: '440px', margin: 0 }}>
+              Từ gánh hàng rong ven đường phố cổ đến biểu tượng văn hóa toàn cầu, Phở là sự kết tinh của thời gian và tâm huyết người đầu bếp.
+            </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginTop: '8px' }}>
+              <button
+                style={{ background: T.primary, color: T.onPrimary, borderRadius: '9999px', padding: '16px 32px', fontWeight: 700, fontSize: '15px', letterSpacing: '0.03em', border: 'none', cursor: 'pointer', boxShadow: '0 8px 24px rgba(173,44,0,0.18)', transition: 'transform 0.15s, background 0.15s' }}
+                onClick={() => navigate('/app/dish/pho-ha-noi')}
+                onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.96)'; }}
+                onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+              >
+                Đọc tiếp
+              </button>
+              <div style={{ display: 'flex', gap: '10px' }}>
+                {['share', 'bookmark'].map((icon) => (
+                  <button key={icon} style={{ width: '48px', height: '48px', borderRadius: '50%', border: `1px solid ${T.outlineVariant}`, background: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: T.onSurface, transition: 'background 0.15s' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = T.surfaceContainerLow; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = 'none'; }}
+                  >
+                    <span className="material-symbols-outlined">{icon}</span>
+                  </button>
+                ))}
               </div>
-              <div>
-                <div style={{
-                  fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-                  fontSize: 16,
-                  fontWeight: 700,
-                  color: '#1c1b1b',
-                }}>Master Foodie</div>
-                <div style={{
-                  fontSize: 12,
-                  color: '#c97d10',
+            </div>
+          </div>
+          <div style={{ gridColumn: 'span 7', order: 1, position: 'relative' }}>
+            <div style={{ position: 'absolute', inset: 0, background: `${T.primary}10`, borderRadius: '16px', transform: 'rotate(-2deg)', transition: 'transform 0.5s' }} />
+            <div style={{ position: 'relative', zIndex: 1, width: '100%', height: '420px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 24px 60px rgba(28,27,27,0.15)' }}>
+              <div style={{ width: '100%', height: '100%', background: 'linear-gradient(135deg, #c87050 0%, #8b3a18 40%, #4a1a08 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div style={{ textAlign: 'center', color: 'rgba(255,255,255,0.25)' }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: '80px', display: 'block' }}>ramen_dining</span>
+                  <span style={{ fontSize: '13px', fontWeight: 600, letterSpacing: '0.08em', marginTop: '8px', display: 'block' }}>Phở Hà Nội</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div style={{ display: 'flex', gap: '10px', overflowX: 'auto', paddingBottom: '8px', marginBottom: '40px' }}>
+          {categories.map((cat) => {
+            const isActive = activeCategory === cat.id;
+            return (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                style={{
+                  flexShrink: 0,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '10px 20px',
+                  borderRadius: '9999px',
+                  border: isActive ? 'none' : `1px solid ${T.outlineVariant}`,
+                  background: isActive ? T.primary : T.surface,
+                  color: isActive ? T.onPrimary : T.onSurface,
+                  fontFamily: T.body,
+                  fontSize: '13px',
                   fontWeight: 600,
-                }}>Cấp độ 3</div>
-              </div>
-            </div>
+                  cursor: 'pointer',
+                  transition: 'all 0.15s',
+                  boxShadow: isActive ? '0 4px 14px rgba(173,44,0,0.2)' : 'none',
+                }}
+              >
+                {cat.emoji ? (
+                  <span style={{ fontSize: '14px' }}>{cat.emoji}</span>
+                ) : (
+                  <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>{cat.icon}</span>
+                )}
+                {cat.label}
+              </button>
+            );
+          })}
+        </div>
 
-            <div style={{
-              fontSize: 12,
-              fontWeight: 700,
-              color: '#5d4038',
-              textTransform: 'uppercase',
-              letterSpacing: '0.08em',
-              marginBottom: 14,
-            }}>
-              Vị giác Tiến hóa
-            </div>
-
-            {[
-              { label: 'Ẩm thực Việt', pct: 85, color: '#ad2c00' },
-              { label: 'Ẩm thực Á Đông', pct: 42, color: '#c97d10' },
-              { label: 'Ẩm thực Âu - Mỹ', pct: 15, color: '#5d4038' },
-            ].map(bar => (
-              <div key={bar.label} style={{ marginBottom: 12 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
-                  <span style={{ fontSize: 13, color: '#1c1b1b', fontWeight: 500 }}>{bar.label}</span>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: bar.color }}>{bar.pct}%</span>
+        {filteredCards.length > 0 && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px', marginBottom: '80px' }}>
+            {filteredCards.map((card) => (
+              <article
+                key={card.id}
+                style={{ background: card.featured ? T.surfaceContainerLow : T.surface, borderRadius: '16px', padding: '32px', display: 'flex', flexDirection: 'column', gap: '20px', cursor: 'pointer', transition: 'box-shadow 0.3s, transform 0.3s', border: card.featured ? `1px solid ${T.outlineVariant}` : 'none', boxShadow: card.featured ? 'none' : '0 2px 12px rgba(28,27,27,0.05)', gridColumn: card.featured ? 'auto' : 'auto' }}
+                onClick={() => navigate('/app/editorial/' + card.id)}
+                onMouseEnter={(e) => { e.currentTarget.style.boxShadow = '0 16px 40px rgba(28,27,27,0.08)'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.boxShadow = card.featured ? 'none' : '0 2px 12px rgba(28,27,27,0.05)'; e.currentTarget.style.transform = 'translateY(0)'; }}
+              >
+                {!card.featured ? (
+                  <div style={{ overflow: 'hidden', borderRadius: '12px', height: '180px', flexShrink: 0 }}>
+                    <div style={{ width: '100%', height: '100%', background: card.gradient, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'transform 0.5s' }}>
+                      <span className="material-symbols-outlined" style={{ fontSize: '48px', color: 'rgba(255,255,255,0.3)' }}>restaurant</span>
+                    </div>
+                  </div>
+                ) : null}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: card.featured ? 'none' : 1 }}>
+                  <span style={{ color: T.primary, fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.18em', fontFamily: T.body }}>{card.tag}</span>
+                  <h3 style={{ fontFamily: T.headline, fontWeight: 700, fontSize: card.featured ? '26px' : '20px', color: T.onSurface, lineHeight: 1.2, margin: 0 }}>{card.title}</h3>
+                  <p style={{ color: T.onSurfaceVariant, fontSize: '14px', lineHeight: 1.65, margin: 0, fontStyle: card.featured ? 'italic' : 'normal' }}>{card.desc}</p>
                 </div>
-                <div style={{
-                  height: 8,
-                  backgroundColor: '#f0edec',
-                  borderRadius: 4,
-                  overflow: 'hidden',
-                }}>
-                  <div style={{
-                    height: '100%',
-                    width: `${bar.pct}%`,
-                    backgroundColor: bar.color,
-                    borderRadius: 4,
-                    transition: 'width 0.5s ease',
-                  }} />
+                {card.author && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                    <div style={{ width: '52px', height: '52px', borderRadius: '50%', background: 'linear-gradient(135deg, #d4a574 0%, #8b6030 100%)', flexShrink: 0 }} />
+                    <div>
+                      <div style={{ fontFamily: T.headline, fontWeight: 700, fontSize: '14px', color: T.onSurface }}>{card.author.name}</div>
+                      <div style={{ color: T.onSurfaceVariant, fontSize: '12px', fontWeight: 500 }}>{card.author.venue}</div>
+                    </div>
+                  </div>
+                )}
+                {card.featured && (
+                  <div style={{ overflow: 'hidden', borderRadius: '12px', height: '140px', flexShrink: 0, marginTop: '4px' }}>
+                    <div style={{ width: '100%', height: '100%', background: card.gradient }}>
+                      <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <span className="material-symbols-outlined" style={{ fontSize: '40px', color: 'rgba(255,255,255,0.3)' }}>restaurant</span>
+                      </div>
+                    </div>
+                  </div>
+                )}
+                <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: T.onSurface, fontWeight: 700, fontSize: '13px', letterSpacing: '-0.01em' }}>
+                    Khám phá ngay
+                    <span className="material-symbols-outlined" style={{ fontSize: '18px', transition: 'transform 0.2s' }}>arrow_forward</span>
+                  </div>
+                  <span style={{ color: T.onSurfaceVariant, fontSize: '11px', fontWeight: 500 }}>{card.readTime}</span>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
+        )}
 
-          {/* Thành tựu mới notification */}
-          <div style={{
-            backgroundColor: '#fff',
-            borderRadius: 14,
-            padding: '14px 18px',
-            border: '1px solid #e7bdb2',
-            display: 'flex',
-            alignItems: 'center',
-            gap: 12,
-          }}>
-            <div style={{
-              width: 36,
-              height: 36,
-              borderRadius: '50%',
-              backgroundColor: '#f0edec',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexShrink: 0,
-            }}>
-              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#ad2c00' }}>emoji_events</span>
-            </div>
-            <div style={{ flex: 1 }}>
-              <div style={{ fontSize: 13, fontWeight: 700, color: '#1c1b1b' }}>Thành tựu mới</div>
-              <div style={{ fontSize: 12, color: '#5d4038' }}>Mở khóa: Khách du lịch ẩm thực</div>
-            </div>
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18, color: '#ad2c00' }}>check_circle</span>
+        {filteredCards.length === 0 && (
+          <div style={{ textAlign: 'center', padding: '60px 24px', color: T.onSurfaceVariant }}>
+            <span className="material-symbols-outlined" style={{ fontSize: '56px', color: T.outlineVariant, display: 'block', marginBottom: '16px' }}>menu_book</span>
+            <p style={{ fontWeight: 700, fontSize: '16px', fontFamily: T.headline, color: T.onSurface, margin: '0 0 6px 0' }}>Chưa có nội dung</p>
+            <p style={{ fontSize: '14px', margin: 0 }}>Danh mục này đang được cập nhật.</p>
           </div>
+        )}
 
-          {/* Gợi ý Visa mới card (red bg) */}
-          <div style={{
-            backgroundColor: '#ad2c00',
-            borderRadius: 20,
-            padding: '22px 22px',
-          }}>
-            <div style={{
-              fontSize: 11,
-              fontWeight: 700,
-              color: 'rgba(255,255,255,0.7)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.08em',
-              marginBottom: 10,
-            }}>
-              Gợi ý Visa mới
+        {filteredCollections.length > 0 && (
+          <section style={{ marginTop: '16px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '40px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                <h2 style={{ fontFamily: T.headline, fontWeight: 700, fontSize: 'clamp(24px, 3vw, 36px)', color: T.onSurface, letterSpacing: '-0.02em', margin: 0 }}>Bộ sưu tập tuần này</h2>
+                <p style={{ color: T.onSurfaceVariant, fontSize: '15px', margin: 0 }}>Những địa điểm được biên tập viên lựa chọn</p>
+              </div>
+              <button
+                style={{ color: T.primary, fontWeight: 700, fontSize: '14px', background: 'none', border: 'none', borderBottom: `2px solid ${T.primaryFixed}`, paddingBottom: '4px', cursor: 'pointer', transition: 'border-color 0.15s', fontFamily: T.body }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderBottomColor = T.primary; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderBottomColor = T.primaryFixed; }}
+              >
+                Xem tất cả
+              </button>
             </div>
-            <p style={{
-              fontSize: 14,
-              color: '#fff',
-              lineHeight: 1.6,
-              margin: '0 0 18px',
-            }}>
-              Bạn đã thử <strong>"Bánh Mì Huỳnh Hoa"</strong> tại TPHCM chưa? Đây là mảnh ghép còn thiếu trong bộ sưu tập <em>Bánh Mì Sài Gòn</em> của bạn.
-            </p>
-            <button style={{
-              backgroundColor: '#fff',
-              color: '#ad2c00',
-              border: 'none',
-              borderRadius: 10,
-              padding: '10px 20px',
-              fontSize: 13,
-              fontWeight: 700,
-              cursor: 'pointer',
-              width: '100%',
-              transition: 'opacity 0.15s',
-            }}
-              onMouseEnter={e => e.currentTarget.style.opacity = '0.88'}
-              onMouseLeave={e => e.currentTarget.style.opacity = '1'}
-            >
-              Tìm hiểu ngay
-            </button>
-          </div>
-        </div>
-      </div>
 
-      <style>{`
-        @keyframes mapPulse {
-          0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
-          50% { transform: translate(-50%, -50%) scale(1.6); opacity: 0.2; }
-        }
-      `}</style>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '20px' }}>
+              {filteredCollections.map((col, idx) => {
+                const isWide = col.wide && idx === 0;
+                return (
+                  <div
+                    key={col.id}
+                    onClick={() => navigate('/app/collection/' + col.id)}
+                    style={{ gridColumn: isWide ? 'span 2' : 'span 1', position: 'relative', borderRadius: '16px', overflow: 'hidden', height: '360px', cursor: 'pointer', transition: 'transform 0.3s' }}
+                    onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.01)'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+                  >
+                    <div style={{ position: 'absolute', inset: 0, background: col.gradient, transition: 'transform 1s' }} />
+                    <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,27,27,0.9) 0%, rgba(28,27,27,0.15) 50%, transparent 100%)' }} />
+                    <div style={{ position: 'absolute', bottom: '28px', left: '28px', right: '28px' }}>
+                      {col.badge && (
+                        <span style={{ display: 'inline-block', background: 'rgba(255,255,255,0.2)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', color: '#ffffff', padding: '4px 12px', borderRadius: '9999px', fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.16em', marginBottom: '12px', fontFamily: T.body }}>{col.badge}</span>
+                      )}
+                      <h4 style={{ fontFamily: T.headline, fontWeight: 700, fontSize: isWide ? '22px' : '18px', color: '#ffffff', lineHeight: 1.25, margin: 0 }}>{col.title}</h4>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+      </main>
+
+      <button
+        style={{ position: 'fixed', bottom: '112px', right: '32px', background: T.primary, color: T.onPrimary, width: '56px', height: '56px', borderRadius: '50%', boxShadow: '0 8px 24px rgba(173,44,0,0.3)', display: 'flex', alignItems: 'center', justifyContent: 'center', border: 'none', cursor: 'pointer', zIndex: 40, transition: 'transform 0.15s' }}
+        onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
+        onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
+        onMouseDown={(e) => { e.currentTarget.style.transform = 'scale(0.9)'; }}
+        onMouseUp={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
+      >
+        <span className="material-symbols-outlined">edit</span>
+      </button>
+
+      <nav style={{ position: 'fixed', bottom: '24px', left: '50%', transform: 'translateX(-50%)', width: '90%', maxWidth: '440px', borderRadius: '9999px', background: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', boxShadow: '0 10px 40px rgba(28,27,27,0.08)', display: 'flex', justifyContent: 'space-around', alignItems: 'center', height: '64px', padding: '0 12px', zIndex: 50 }}>
+        {[
+          { icon: 'restaurant', label: 'Discover', path: '/app/home', active: false },
+          { icon: 'calendar_today', label: 'Events', path: '/app/events', active: false },
+          { icon: 'qr_code_2', label: 'Scanner', path: '/app/scanner', active: false },
+          { icon: 'menu_book', label: 'Cẩm nang', path: null, active: true, filled: true },
+        ].map((item) => (
+          <button
+            key={item.label}
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2px', cursor: 'pointer', border: 'none', padding: '8px 12px', borderRadius: '9999px', background: item.active ? T.primary : 'none', color: item.active ? T.onPrimary : T.onSurface, transition: 'all 0.2s' }}
+            onClick={() => item.path && navigate(item.path)}
+          >
+            <span className="material-symbols-outlined" style={item.filled ? { fontVariationSettings: "'FILL' 1", fontSize: '22px' } : { fontSize: '22px' }}>{item.icon}</span>
+            <span style={{ fontSize: '9px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: T.body }}>{item.label}</span>
+          </button>
+        ))}
+      </nav>
     </div>
   );
-};
-
-// ─── Mobile Layout ───────────────────────────────────────────────────────────
-
-const MobileLayout = ({ activeTab, setActiveTab }) => {
-  const navigate = useNavigate();
-
-  const mobileFoodCards = [
-    { id: 1, title: 'Phở Bò Hà Nội', region: 'Hà Nội · VN', emoji: '🍜', color: '#ad2c00' },
-    { id: 2, title: 'Bánh Mì...', region: 'TPHCM · VN', emoji: '🥖', color: '#c97d10' },
-    { id: 3, title: 'Bún Bò Huế', region: 'Huế · VN', emoji: '🌶️', color: '#ad2c00' },
-  ];
-
-  return (
-    <div style={{
-      flex: 1,
-      backgroundColor: '#fcf9f8',
-      overflowY: 'auto',
-      fontFamily: 'var(--font-body, Manrope, sans-serif)',
-      minHeight: '100vh',
-      paddingBottom: 80,
-    }}>
-      {/* Header */}
-      <div style={{
-        backgroundColor: '#ad2c00',
-        padding: '24px 20px 28px',
-        color: '#fff',
-      }}>
-        <div style={{
-          fontSize: 11,
-          fontWeight: 700,
-          letterSpacing: '0.1em',
-          textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.7)',
-          marginBottom: 6,
-        }}>
-          Food Pokédex
-        </div>
-        <h1 style={{
-          fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-          fontSize: 26,
-          fontWeight: 700,
-          margin: '0 0 16px',
-          lineHeight: 1.2,
-        }}>
-          Bản đồ Ẩm thực &amp; Visa
-        </h1>
-
-        {/* Stats row */}
-        <div style={{ display: 'flex', gap: 20 }}>
-          <div>
-            <div style={{ fontSize: 22, fontWeight: 700 }}>68%</div>
-            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Việt Nam</div>
-          </div>
-          <div style={{ width: 1, backgroundColor: 'rgba(255,255,255,0.2)' }} />
-          <div>
-            <div style={{ fontSize: 22, fontWeight: 700 }}>24%</div>
-            <div style={{ fontSize: 11, color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>Thế giới</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Map filter tabs */}
-      <div style={{ padding: '16px 20px 0' }}>
-        <div style={{
-          display: 'flex',
-          backgroundColor: '#f0edec',
-          borderRadius: 12,
-          padding: 4,
-          marginBottom: 16,
-        }}>
-          {[
-            { id: 'map', label: 'Bản đồ Ẩm thực' },
-            { id: 'progress', label: 'Tiến độ' },
-          ].map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              style={{
-                flex: 1,
-                padding: '9px 12px',
-                borderRadius: 10,
-                border: 'none',
-                backgroundColor: activeTab === tab.id ? '#ad2c00' : 'transparent',
-                color: activeTab === tab.id ? '#fff' : '#5d4038',
-                fontSize: 13,
-                fontWeight: 600,
-                cursor: 'pointer',
-                transition: 'all 0.15s',
-                fontFamily: 'var(--font-body, Manrope, sans-serif)',
-              }}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-        {/* Mini map area */}
-        <div style={{
-          backgroundColor: '#1a1a1a',
-          borderRadius: 16,
-          height: 200,
-          position: 'relative',
-          overflow: 'hidden',
-          marginBottom: 16,
-        }}>
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: `
-              linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)
-            `,
-            backgroundSize: '40px 40px',
-          }} />
-          {/* Vietnam silhouette hint */}
-          <svg viewBox="0 0 1000 500" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', opacity: 0.15 }} preserveAspectRatio="xMidYMid slice">
-            <ellipse cx="720" cy="250" rx="180" ry="100" fill="#4a4a4a" />
-          </svg>
-          {/* Markers (simplified for mobile) */}
-          {mapMarkers.map((marker, idx) => (
-            <div key={idx} style={{
-              position: 'absolute',
-              left: `${marker.left}%`,
-              top: `${marker.top}%`,
-              transform: 'translate(-50%, -50%)',
-            }}>
-              <div style={{
-                width: marker.active ? 12 : 8,
-                height: marker.active ? 12 : 8,
-                borderRadius: '50%',
-                backgroundColor: marker.color,
-                border: `2px solid ${marker.active ? '#fff' : 'rgba(255,255,255,0.4)'}`,
-              }} />
-            </div>
-          ))}
-          <button style={{
-            position: 'absolute',
-            bottom: 14,
-            left: '50%',
-            transform: 'translateX(-50%)',
-            backgroundColor: '#ad2c00',
-            color: '#fff',
-            border: 'none',
-            borderRadius: 10,
-            padding: '9px 22px',
-            fontSize: 13,
-            fontWeight: 700,
-            cursor: 'pointer',
-            whiteSpace: 'nowrap',
-          }}>
-            Khám phá Vùng miền
-          </button>
-        </div>
-      </div>
-
-      {/* Dấu ấn Việt Nam section */}
-      <div style={{ padding: '0 20px' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
-          <h2 style={{
-            fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-            fontSize: 18,
-            fontWeight: 700,
-            color: '#1c1b1b',
-            margin: 0,
-          }}>
-            Dấu ấn Việt Nam
-          </h2>
-          <button style={{
-            fontSize: 13, fontWeight: 600, color: '#ad2c00',
-            background: 'none', border: 'none', cursor: 'pointer',
-          }}>
-            Xem tất cả
-          </button>
-        </div>
-
-        {/* Horizontal scroll food cards */}
-        <div style={{
-          display: 'flex',
-          gap: 12,
-          overflowX: 'auto',
-          paddingBottom: 8,
-          marginBottom: 24,
-          scrollbarWidth: 'none',
-        }}>
-          {mobileFoodCards.map(card => (
-            <div key={card.id} style={{
-              flexShrink: 0,
-              width: 140,
-              backgroundColor: '#fff',
-              borderRadius: 14,
-              overflow: 'hidden',
-              border: '1px solid #e7bdb2',
-            }}>
-              <div style={{
-                height: 80,
-                backgroundColor: '#f6f3f2',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                fontSize: 36,
-              }}>
-                {card.emoji}
-              </div>
-              <div style={{ padding: '10px 12px' }}>
-                <div style={{
-                  fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-                  fontSize: 13,
-                  fontWeight: 700,
-                  color: '#1c1b1b',
-                  marginBottom: 2,
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap',
-                }}>
-                  {card.title}
-                </div>
-                <div style={{ fontSize: 11, color: card.color, fontWeight: 600 }}>{card.region}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Tinh hoa Thế giới */}
-        <h2 style={{
-          fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-          fontSize: 18,
-          fontWeight: 700,
-          color: '#1c1b1b',
-          margin: '0 0 14px',
-        }}>
-          Tinh hoa Thế giới
-        </h2>
-
-        <div style={{
-          backgroundColor: '#fff',
-          borderRadius: 16,
-          overflow: 'hidden',
-          border: '1px solid #e7bdb2',
-          marginBottom: 16,
-          display: 'flex',
-          alignItems: 'center',
-          gap: 16,
-          padding: '16px',
-        }}>
-          <div style={{
-            width: 64,
-            height: 64,
-            borderRadius: 12,
-            backgroundColor: '#f6f3f2',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: 32,
-            flexShrink: 0,
-          }}>
-            🍣
-          </div>
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div style={{ fontSize: 11, fontWeight: 700, color: '#ad2c00', textTransform: 'uppercase', letterSpacing: '0.06em', marginBottom: 2 }}>
-              🇯🇵 NHẬT BẢN
-            </div>
-            <div style={{
-              fontFamily: 'var(--font-headline, "Plus Jakarta Sans", sans-serif)',
-              fontSize: 15,
-              fontWeight: 700,
-              color: '#1c1b1b',
-              marginBottom: 2,
-            }}>
-              Sushi &amp; Sashimi
-            </div>
-            <div style={{ fontSize: 12, color: '#5d4038' }}>Tinh hoa biển cả Nhật Bản</div>
-          </div>
-          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#e7bdb2', flexShrink: 0 }}>chevron_right</span>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-// ─── Main component ──────────────────────────────────────────────────────────
-
-const ExplorePage = () => {
-  const [activeTab, setActiveTab] = useState('global');
-
-  if (isMobile) {
-    return <MobileLayout activeTab={activeTab} setActiveTab={setActiveTab} />;
-  }
-
-  return <DesktopLayout activeTab={activeTab} setActiveTab={setActiveTab} />;
-};
-
-export default ExplorePage;
+}

@@ -1,221 +1,478 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, Bell, Heart, MessageCircle, CalendarCheck, Check } from 'lucide-react';
 
-const demoNotifications = [
+const COLORS = {
+  background: '#fcf9f8',
+  surfaceContainerLowest: '#ffffff',
+  surfaceContainer: '#f0edec',
+  surfaceContainerLow: '#f6f3f2',
+  surfaceContainerHigh: '#ebe7e7',
+  onSurface: '#1c1b1b',
+  onSurfaceVariant: '#5d4038',
+  primary: '#ad2c00',
+  primaryFixed: '#ffdbd1',
+  outlineVariant: '#e7bdb2',
+};
+
+const notificationGroups = [
   {
-    id: 1,
-    type: 'match',
-    icon: <Heart size={20} color="#3A0B00" />,
-    iconBg: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-    text: 'Bạn có match mới!',
-    detail: 'Hãy bắt đầu trò chuyện ngay',
-    time: '5 phút trước',
-    read: false,
-    action: 'view_match',
+    label: 'Hôm nay',
+    items: [
+      {
+        id: 1,
+        type: 'match',
+        icon: 'favorite',
+        iconColor: '#ad2c00',
+        iconBg: '#ffdbd1',
+        category: 'Ghép đôi mới',
+        categoryColor: '#ad2c00',
+        title: 'Chúc mừng! Bạn có một ghép đôi mới với Minh Châu.',
+        time: '2 giờ trước',
+        read: false,
+        actions: [{ label: 'Xem ghép đôi', icon: 'visibility', primary: true }],
+      },
+      {
+        id: 2,
+        type: 'event',
+        icon: 'calendar_month',
+        iconColor: '#0075d5',
+        iconBg: '#d4e3ff',
+        category: 'Nhắc nhở sự kiện',
+        categoryColor: '#0075d5',
+        title: 'Flash Meet "Phở Bò Hà Nội" diễn ra vào tối nay lúc 19:00.',
+        time: '5 giờ trước',
+        read: false,
+        actions: [
+          { label: 'Xem chi tiết', icon: 'info', primary: true },
+          { label: 'Từ chối', icon: 'close', primary: false },
+        ],
+      },
+      {
+        id: 3,
+        type: 'vang',
+        icon: 'workspace_premium',
+        iconColor: '#ad2c00',
+        iconBg: '#ffdbd1',
+        category: 'Thành tích mới',
+        categoryColor: '#ad2c00',
+        title: 'Chúc mừng! Bạn đã nhận được Visa Phở Bò hạng Vàng.',
+        time: '5 giờ trước',
+        read: false,
+        actions: [{ label: 'Xem chi tiết', icon: 'toll', primary: true }],
+      },
+    ],
   },
   {
-    id: 2,
-    type: 'vang',
-    icon: <Heart size={20} color="#3A0B00" />,
-    iconBg: 'linear-gradient(135deg, #FFD54F, #F57C00)',
-    text: 'Bạn nhận được +50 Vàng!',
-    detail: 'Thưởng tuần cho hoạt động ẩm thực',
-    time: '15 phút trước',
-    read: false,
-    action: 'claim_vang',
+    label: 'Hôm qua',
+    items: [
+      {
+        id: 4,
+        type: 'message',
+        icon: 'chat_bubble',
+        iconColor: '#5d4038',
+        iconBg: '#ebe7e7',
+        category: 'Tin nhắn',
+        categoryColor: '#5d4038',
+        title: 'Lê Minh đã gửi lời mời Flash Meet: Món Thái tối nay.',
+        time: 'Hôm qua, 18:42',
+        read: true,
+        actions: [
+          { label: 'Xem chi tiết', icon: 'visibility', primary: true },
+          { label: 'Từ chối', icon: 'close', primary: false },
+        ],
+      },
+      {
+        id: 5,
+        type: 'upgrade',
+        icon: 'military_tech',
+        iconColor: '#5d4038',
+        iconBg: '#e5e2e1',
+        category: 'Nâng cấp Visa',
+        categoryColor: '#5d4038',
+        title: 'Visa Bánh Mì của bạn đã được nâng cấp lên hạng Bạc.',
+        time: 'Hôm qua, 09:15',
+        read: true,
+        actions: [{ label: 'Xem chi tiết', icon: 'info', primary: true }],
+      },
+    ],
   },
   {
-    id: 3,
-    type: 'message',
-    icon: <MessageCircle size={20} color="#FDF9F3" />,
-    iconBg: '#2A2A2A',
-    text: 'Minh Anh gửi tin nhắn mới',
-    detail: '"Chào bạn! Rảnh cuối tuần không?"',
-    time: '1 giờ trước',
-    read: false,
-    action: null,
-  },
-  {
-    id: 4,
-    type: 'date',
-    icon: <CalendarCheck size={20} color="#FDF9F3" />,
-    iconBg: '#353535',
-    text: 'Kỳ Duyên đã ứng tuyển kèo của bạn',
-    detail: 'Kèo: Cà phê chiều Chủ nhật',
-    time: '3 giờ trước',
-    read: true,
-    action: 'accept_invite',
-  },
-  {
-    id: 5,
-    type: 'vang',
-    icon: <Heart size={20} color="#3A0B00" />,
-    iconBg: 'linear-gradient(135deg, #FFD54F, #F57C00)',
-    text: '+30 Vàng từ Phở Bò Hà Nội',
-    detail: 'Đánh dấu đã thử thành công',
-    time: '1 ngày trước',
-    read: true,
-    action: 'claim_vang',
-  },
-  {
-    id: 6,
-    type: 'match',
-    icon: <Heart size={20} color="#3A0B00" />,
-    iconBg: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-    text: 'Thanh Hằng đã match với bạn',
-    detail: 'Gửi lời chào đầu tiên đi!',
-    time: '1 ngày trước',
-    read: true,
-    action: 'view_match',
+    label: 'Tuần này',
+    items: [
+      {
+        id: 6,
+        type: 'community',
+        icon: 'favorite',
+        iconColor: '#a83918',
+        iconBg: '#ffdbd1',
+        category: 'Cộng đồng',
+        categoryColor: '#a83918',
+        title: '5 người vừa thích bài đăng Date Post của bạn.',
+        time: '3 ngày trước',
+        read: true,
+        actions: [{ label: 'Xem chi tiết', icon: 'visibility', primary: true }],
+      },
+      {
+        id: 7,
+        type: 'system',
+        icon: 'info',
+        iconColor: '#5d4038',
+        iconBg: '#f0edec',
+        category: 'Hệ thống',
+        categoryColor: '#5d4038',
+        title: 'Hồ sơ của bạn đã được xác minh thành công. Khám phá thêm tính năng!',
+        time: '5 ngày trước',
+        read: true,
+        actions: [],
+      },
+    ],
   },
 ];
 
 const NotificationsPage = () => {
   const navigate = useNavigate();
-  const [notifications, setNotifications] = useState(demoNotifications);
+  const [groups, setGroups] = useState(notificationGroups);
 
   const markAsRead = (id) => {
-    setNotifications((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, read: true } : n))
+    setGroups((prev) =>
+      prev.map((g) => ({
+        ...g,
+        items: g.items.map((n) => (n.id === id ? { ...n, read: true } : n)),
+      }))
     );
   };
 
   const markAllRead = () => {
-    setNotifications((prev) => prev.map((n) => ({ ...n, read: true })));
+    setGroups((prev) =>
+      prev.map((g) => ({
+        ...g,
+        items: g.items.map((n) => ({ ...n, read: true })),
+      }))
+    );
   };
 
-  const unreadCount = notifications.filter((n) => !n.read).length;
-
-  if (notifications.length === 0) {
-    return (
-      <div style={{ minHeight: '100vh', backgroundColor: '#131313' }}>
-        <div style={{
-          background: 'rgba(57,57,57,0.6)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)',
-          padding: '16px 24px',
-          display: 'flex',
-          alignItems: 'center',
-        }}>
-          <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: '#E6BEB2', display: 'flex', alignItems: 'center' }}>
-            <ArrowLeft size={24} />
-          </button>
-          <h1 style={{ flex: 1, margin: 0, fontSize: '18px', fontWeight: 700, textAlign: 'center', color: '#FDF9F3' }}>Thông báo</h1>
-          <div style={{ width: '24px' }} />
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '80px 24px', textAlign: 'center' }}>
-          <Bell size={56} color="#353535" />
-          <p style={{ fontSize: '16px', color: '#E6BEB2', marginTop: '16px' }}>Chưa có thông báo nào</p>
-        </div>
-      </div>
-    );
-  }
+  const unreadCount = groups.reduce(
+    (acc, g) => acc + g.items.filter((n) => !n.read).length,
+    0
+  );
 
   return (
-    <div style={{ minHeight: '100vh', backgroundColor: '#131313' }}>
-      {/* Header */}
-      <div style={{
-        background: 'rgba(57,57,57,0.6)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
-        padding: '16px 24px',
-        display: 'flex',
-        alignItems: 'center',
-        position: 'sticky',
-        top: 0,
-        zIndex: 10,
-      }}>
-        <button onClick={() => navigate(-1)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: '#E6BEB2', display: 'flex', alignItems: 'center' }}>
-          <ArrowLeft size={24} />
-        </button>
-        <h1 style={{ flex: 1, margin: 0, fontSize: '18px', fontWeight: 700, textAlign: 'center', color: '#FDF9F3' }}>
-          Thông báo
-          {unreadCount > 0 && (
-            <span style={{ marginLeft: '8px', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#3A0B00', fontSize: '12px', fontWeight: 700, padding: '2px 8px', borderRadius: '9999px', verticalAlign: 'middle' }}>
-              {unreadCount}
-            </span>
-          )}
-        </h1>
-        {unreadCount > 0 ? (
-          <button onClick={markAllRead} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 0, color: '#FFB59E', fontSize: '13px', fontWeight: 600 }}>
-            <Check size={20} />
+    <div
+      style={{
+        minHeight: '100vh',
+        backgroundColor: COLORS.background,
+        fontFamily: "'Manrope', sans-serif",
+        color: COLORS.onSurface,
+      }}
+    >
+      <header
+        style={{
+          position: 'sticky',
+          top: 0,
+          zIndex: 50,
+          backgroundColor: COLORS.background,
+          borderBottom: `1px solid ${COLORS.outlineVariant}`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0 32px',
+          height: '72px',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <button
+            onClick={() => navigate(-1)}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '8px',
+              borderRadius: '9999px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: COLORS.onSurface,
+              transition: 'background-color 0.15s',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = COLORS.surfaceContainerLow)}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '24px' }}>arrow_back</span>
           </button>
-        ) : (
-          <div style={{ width: '24px' }} />
+          <h1
+            style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontSize: '28px',
+              fontWeight: 800,
+              letterSpacing: '-0.5px',
+              color: COLORS.onSurface,
+              margin: 0,
+            }}
+          >
+            Thông báo
+            {unreadCount > 0 && (
+              <span
+                style={{
+                  marginLeft: '10px',
+                  backgroundColor: COLORS.primary,
+                  color: '#ffffff',
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  padding: '2px 10px',
+                  borderRadius: '9999px',
+                  verticalAlign: 'middle',
+                }}
+              >
+                {unreadCount}
+              </span>
+            )}
+          </h1>
+        </div>
+
+        {unreadCount > 0 && (
+          <button
+            onClick={markAllRead}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              padding: '10px 20px',
+              borderRadius: '9999px',
+              border: `1px solid ${COLORS.outlineVariant}`,
+              backgroundColor: 'transparent',
+              color: COLORS.primary,
+              fontSize: '14px',
+              fontWeight: 700,
+              cursor: 'pointer',
+              fontFamily: "'Manrope', sans-serif",
+              transition: 'background-color 0.15s',
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = COLORS.surfaceContainerLow)}
+            onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = 'transparent')}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '18px' }}>done_all</span>
+            Đánh dấu đã đọc tất cả
+          </button>
+        )}
+      </header>
+
+      <main
+        style={{
+          maxWidth: '900px',
+          margin: '0 auto',
+          padding: '48px 24px 80px',
+        }}
+      >
+        <p
+          style={{
+            color: COLORS.onSurfaceVariant,
+            fontSize: '16px',
+            marginBottom: '40px',
+            marginTop: 0,
+          }}
+        >
+          Cập nhật hoạt động ẩm thực và Visa của bạn
+        </p>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+          {groups.map((group) => (
+            <section key={group.label}>
+              <h2
+                style={{
+                  fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  fontSize: '13px',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.1em',
+                  color: COLORS.onSurfaceVariant,
+                  margin: '0 0 16px 0',
+                }}
+              >
+                {group.label}
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {group.items.map((n) => (
+                  <NotificationCard
+                    key={n.id}
+                    notification={n}
+                    onRead={() => markAsRead(n.id)}
+                  />
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      </main>
+    </div>
+  );
+};
+
+const NotificationCard = ({ notification: n, onRead }) => {
+  const [hovered, setHovered] = useState(false);
+
+  return (
+    <div
+      onClick={onRead}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        backgroundColor: n.read
+          ? hovered ? COLORS.surfaceContainerLow : COLORS.surfaceContainerLowest
+          : hovered ? '#f5ded9' : COLORS.primaryFixed,
+        borderRadius: '16px',
+        padding: '28px',
+        display: 'flex',
+        gap: '20px',
+        alignItems: 'flex-start',
+        cursor: 'pointer',
+        transition: 'background-color 0.15s, transform 0.1s',
+        transform: hovered ? 'scale(0.99)' : 'scale(1)',
+        border: n.read ? `1px solid ${COLORS.outlineVariant}` : `1px solid ${COLORS.primaryFixed}`,
+      }}
+    >
+      <div
+        style={{
+          width: '52px',
+          height: '52px',
+          borderRadius: '9999px',
+          backgroundColor: n.iconBg,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+        }}
+      >
+        <span
+          className="material-symbols-outlined"
+          style={{
+            fontSize: '26px',
+            color: n.iconColor,
+            fontVariationSettings: "'FILL' 1",
+          }}
+        >
+          {n.icon}
+        </span>
+      </div>
+
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-start',
+            marginBottom: '8px',
+            gap: '12px',
+          }}
+        >
+          <span
+            style={{
+              fontSize: '11px',
+              fontWeight: 700,
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+              color: n.categoryColor,
+              fontFamily: "'Manrope', sans-serif",
+            }}
+          >
+            {n.category}
+          </span>
+          <span
+            style={{
+              fontSize: '12px',
+              color: COLORS.onSurfaceVariant,
+              opacity: 0.7,
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
+            }}
+          >
+            {n.time}
+          </span>
+        </div>
+
+        <p
+          style={{
+            fontSize: '16px',
+            fontWeight: n.read ? 500 : 600,
+            color: COLORS.onSurface,
+            margin: '0 0 16px 0',
+            lineHeight: 1.5,
+          }}
+        >
+          {n.title}
+        </p>
+
+        {n.actions.length > 0 && (
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+            {n.actions.map((action) => (
+              <ActionButton key={action.label} action={action} />
+            ))}
+          </div>
         )}
       </div>
 
-      {/* Notification list */}
-      <div style={{ maxWidth: '680px', margin: '0 auto' }}>
-        {notifications.map((n) => (
-          <div
-            key={n.id}
-            onClick={() => markAsRead(n.id)}
-            style={{
-              display: 'flex',
-              gap: '14px',
-              padding: '16px 24px',
-              backgroundColor: n.read ? 'transparent' : 'rgba(255,181,158,0.05)',
-              borderBottom: '1px solid rgba(255,255,255,0.06)',
-              cursor: 'pointer',
-              transition: 'background-color 0.15s',
-            }}
-          >
-            {/* Icon */}
-            <div
-              style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '50%',
-                background: n.iconBg,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-              }}
-            >
-              {n.icon}
-            </div>
-
-            {/* Content */}
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <p style={{ fontSize: '14px', fontWeight: n.read ? 500 : 700, color: '#FDF9F3', margin: '0 0 2px 0' }}>
-                {n.text}
-              </p>
-              <p style={{ fontSize: '13px', color: '#E6BEB2', margin: '0 0 4px 0', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                {n.detail}
-              </p>
-              <p style={{ fontSize: '12px', color: '#666', margin: 0 }}>{n.time}</p>
-              {/* Action buttons */}
-              {n.action === 'claim_vang' && (
-                <button onClick={(e) => { e.stopPropagation(); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFD54F, #F57C00)', color: '#3A0B00', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
-                  Nhận Vàng
-                </button>
-              )}
-              {n.action === 'view_match' && (
-                <button onClick={(e) => { e.stopPropagation(); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: 'none', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#FDF9F3', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>visibility</span>
-                  Xem ghép đôi
-                </button>
-              )}
-              {n.action === 'accept_invite' && (
-                <button onClick={(e) => { e.stopPropagation(); }} style={{ marginTop: 8, padding: '6px 16px', borderRadius: '9999px', border: '1px solid #FFB59E', background: '#1C1B1B', color: '#FFB59E', fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: 4 }}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>check_circle</span>
-                  Chấp nhận lời mời
-                </button>
-              )}
-            </div>
-
-            {/* Unread dot */}
-            {!n.read && (
-              <div style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#FFB59E', flexShrink: 0, marginTop: '6px' }} />
-            )}
-          </div>
-        ))}
-      </div>
+      {!n.read && (
+        <div
+          style={{
+            width: '10px',
+            height: '10px',
+            borderRadius: '9999px',
+            backgroundColor: COLORS.primary,
+            flexShrink: 0,
+            marginTop: '4px',
+          }}
+        />
+      )}
     </div>
+  );
+};
+
+const ActionButton = ({ action }) => {
+  const [hovered, setHovered] = useState(false);
+
+  const primaryStyle = {
+    padding: '8px 20px',
+    borderRadius: '9999px',
+    border: 'none',
+    backgroundColor: hovered ? '#8f2300' : COLORS.primary,
+    color: '#ffffff',
+    fontSize: '13px',
+    fontWeight: 700,
+    cursor: 'pointer',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '6px',
+    fontFamily: "'Manrope', sans-serif",
+    transition: 'background-color 0.15s',
+  };
+
+  const secondaryStyle = {
+    padding: '8px 20px',
+    borderRadius: '9999px',
+    border: `1px solid ${COLORS.outlineVariant}`,
+    backgroundColor: hovered ? COLORS.surfaceContainerLow : 'transparent',
+    color: COLORS.onSurface,
+    fontSize: '13px',
+    fontWeight: 700,
+    cursor: 'pointer',
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '6px',
+    fontFamily: "'Manrope', sans-serif",
+    transition: 'background-color 0.15s',
+  };
+
+  return (
+    <button
+      onClick={(e) => e.stopPropagation()}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={action.primary ? primaryStyle : secondaryStyle}
+    >
+      <span className="material-symbols-outlined" style={{ fontSize: '16px' }}>
+        {action.icon}
+      </span>
+      {action.label}
+    </button>
   );
 };
 

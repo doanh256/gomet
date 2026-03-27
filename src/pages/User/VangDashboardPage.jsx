@@ -1,314 +1,664 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const categoryData = [
-  { label: 'Ăn uống', icon: 'restaurant', points: 4820, color: '#FF571A' },
-  { label: 'Đánh giá', icon: 'rate_review', points: 3200, color: '#FFB59E' },
-  { label: 'Thử thách', icon: 'emoji_events', points: 2680, color: '#FFD54F' },
-  { label: 'Xã hội', icon: 'groups', points: 1750, color: '#117500' },
-];
-
-const monthlyData = [
-  { month: 'T10', value: 820 },
-  { month: 'T11', value: 1450 },
-  { month: 'T12', value: 980 },
-  { month: 'T1', value: 2100 },
-  { month: 'T2', value: 1780 },
-  { month: 'T3', value: 3320 },
-];
-
-const regionBadges = [
-  { name: 'Tây Bắc', earned: true, color: '#8BC34A' },
-  { name: 'Đông Bắc', earned: false, color: '#4CAF50' },
-  { name: 'Sông Hồng', earned: true, color: '#FF9800' },
-  { name: 'Trung Bộ', earned: true, color: '#2196F3' },
-  { name: 'Nam Trung', earned: false, color: '#FF5722' },
-  { name: 'Tây Nguyên', earned: false, color: '#795548' },
-  { name: 'Đông Nam Bộ', earned: true, color: '#E91E63' },
-  { name: 'Tây Nam Bộ', earned: true, color: '#00BCD4' },
+const missions = [
+  {
+    id: 1,
+    icon: 'restaurant',
+    iconColor: '#ad2c00',
+    iconBg: 'rgba(173,44,0,0.12)',
+    title: 'Check-in tại quán ăn',
+    desc: 'Nhận ngay 200 VÀNG khi chụp ảnh món ăn.',
+    progress: 2,
+    total: 3,
+    reward: '+200 VÀNG',
+    progressColor: '#ad2c00',
+  },
+  {
+    id: 2,
+    icon: 'rate_review',
+    iconColor: '#005daa',
+    iconBg: 'rgba(0,93,170,0.10)',
+    title: 'Đánh giá 5 sao',
+    desc: 'Chia sẻ cảm nhận về đơn hàng gần nhất.',
+    progress: 0,
+    total: 1,
+    reward: '+50 VÀNG',
+    progressColor: '#005daa',
+  },
+  {
+    id: 3,
+    icon: 'emoji_events',
+    iconColor: '#ad2c00',
+    iconBg: 'rgba(173,44,0,0.10)',
+    title: 'Hoàn thành thử thách',
+    desc: 'Tham gia thử thách ẩm thực cuối tuần.',
+    progress: 1,
+    total: 5,
+    reward: '+500 VÀNG',
+    progressColor: '#ad2c00',
+  },
 ];
 
 const rewardCards = [
-  { id: 1, icon: 'confirmation_number', title: 'Voucher 100k', cost: 2000, desc: 'Giảm giá tại nhà hàng đối tác' },
-  { id: 2, icon: 'workspace_premium', title: 'Khung VIP 7 ngày', cost: 1500, desc: 'Nổi bật hồ sơ của bạn' },
-  { id: 3, icon: 'local_activity', title: 'Vé Secret Table', cost: 5000, desc: 'Tham gia sự kiện độc quyền' },
+  {
+    id: 1,
+    gradient: 'linear-gradient(135deg, #ff7852 0%, #ad2c00 100%)',
+    emoji: '🍕',
+    title: 'Voucher Pizza 4P\'s 50k',
+    remaining: 12,
+    cost: '5.000',
+  },
+  {
+    id: 2,
+    gradient: 'linear-gradient(135deg, #a8d8ea 0%, #005daa 100%)',
+    emoji: '☕',
+    title: 'Highland Coffee Voucher 20k',
+    remaining: 45,
+    cost: '2.500',
+  },
+  {
+    id: 3,
+    gradient: 'linear-gradient(135deg, #ffd54f 0%, #f57c00 100%)',
+    emoji: '🎁',
+    title: 'Khung VIP 7 ngày',
+    remaining: 20,
+    cost: '1.500',
+  },
+  {
+    id: 4,
+    gradient: 'linear-gradient(135deg, #b2dfdb 0%, #00796b 100%)',
+    emoji: '🎟️',
+    title: 'Vé Secret Table',
+    remaining: 5,
+    cost: '5.000',
+  },
 ];
 
-const transactions = [
-  { id: 1, icon: 'restaurant', label: 'Ăn tại Phở Thìn', points: '+30', date: '24/03', type: 'earn' },
-  { id: 2, icon: 'rate_review', label: 'Đánh giá Bún Chả', points: '+15', date: '23/03', type: 'earn' },
-  { id: 3, icon: 'redeem', label: 'Đổi Voucher 50k', points: '-1000', date: '22/03', type: 'spend' },
-  { id: 4, icon: 'emoji_events', label: 'Hoàn thành thử thách', points: '+250', date: '21/03', type: 'earn' },
-  { id: 5, icon: 'groups', label: 'Mời bạn bè', points: '+100', date: '20/03', type: 'earn' },
-  { id: 6, icon: 'restaurant', label: 'Ăn tại Cơm Tấm Bà Ghiền', points: '+20', date: '19/03', type: 'earn' },
+const badges = [
+  { id: 1, icon: 'workspace_premium', earned: true, fill: true },
+  { id: 2, icon: 'local_fire_department', earned: false, fill: false },
+  { id: 3, icon: 'star', earned: false, fill: false },
+  { id: 4, icon: 'military_tech', earned: false, fill: false },
+];
+
+const history = [
+  { id: 1, icon: 'add_circle', iconColor: '#166534', iconBg: '#dcfce7', label: 'Hoàn thành: Ăn sáng lành mạnh', date: 'Hôm nay, 08:30', points: '+100', earn: true },
+  { id: 2, icon: 'shopping_bag', iconColor: '#ad2c00', iconBg: 'rgba(173,44,0,0.10)', label: 'Đổi thưởng: Pizza 4P\'s', date: 'Hôm qua, 19:15', points: '-5.000', earn: false },
+  { id: 3, icon: 'add_circle', iconColor: '#166534', iconBg: '#dcfce7', label: 'Thưởng nhiệm vụ tuần', date: '22 Thg 10, 2023', points: '+500', earn: true },
+  { id: 4, icon: 'rate_review', iconColor: '#166534', iconBg: '#dcfce7', label: 'Đánh giá Bún Chả', date: '23/03', points: '+15', earn: true },
+  { id: 5, icon: 'groups', iconColor: '#166534', iconBg: '#dcfce7', label: 'Mời bạn bè', date: '20/03', points: '+100', earn: true },
 ];
 
 const VangDashboardPage = () => {
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('overview');
-  const maxMonthly = Math.max(...monthlyData.map(d => d.value));
 
-  const s = {
-    page: {
-      flex: 1,
-      backgroundColor: 'var(--surface, #FDF9F3)',
-      overflowY: 'auto',
-      padding: '40px 24px 100px',
-      maxWidth: 600,
-      margin: '0 auto',
-      fontFamily: 'var(--font-body, "Inter", sans-serif)',
-      color: 'var(--on-surface, #2A2A2A)',
-    },
-    backBtn: {
-      background: 'none', border: 'none', cursor: 'pointer',
-      color: 'var(--on-surface-variant, #6B6B6B)',
-      display: 'flex', alignItems: 'center', gap: 4,
-      fontSize: 14, fontFamily: 'var(--font-body)', marginBottom: 24, padding: 0,
-    },
-    tierBadge: {
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      gap: 12, padding: '20px 24px', borderRadius: '1.5rem',
-      background: 'linear-gradient(135deg, #FFD54F 0%, #F57C00 100%)',
-      marginBottom: 28, position: 'relative', overflow: 'hidden',
-    },
-    tierShine: {
-      position: 'absolute', top: -30, right: -30, width: 120, height: 120,
-      borderRadius: '50%', background: 'rgba(255,255,255,0.2)', pointerEvents: 'none',
-    },
-    tierIcon: { fontSize: 40, color: '#1a1a1a', zIndex: 1 },
-    tierInfo: { zIndex: 1 },
-    tierLabel: {
-      fontFamily: 'var(--font-headline, "Plus Jakarta Sans")',
-      fontSize: 11, fontWeight: 700, letterSpacing: '0.12em',
-      textTransform: 'uppercase', color: 'rgba(26,26,26,0.7)', marginBottom: 2,
-    },
-    tierPoints: {
-      fontFamily: 'var(--font-headline)', fontSize: 32,
-      fontWeight: 800, color: '#1a1a1a',
-    },
-    tierUnit: { fontSize: 14, fontWeight: 600, marginLeft: 4 },
-    tabs: {
-      display: 'flex', gap: 8, marginBottom: 28, overflowX: 'auto',
-    },
-    tab: (active) => ({
-      padding: '8px 18px', borderRadius: '9999px', border: 'none',
-      fontFamily: 'var(--font-body)', fontSize: 13, fontWeight: 600, cursor: 'pointer',
-      background: active ? '#FF571A' : 'var(--surface-container, #F0EBE3)',
-      color: active ? '#FDF9F3' : 'var(--on-surface-variant, #6B6B6B)',
-      whiteSpace: 'nowrap',
-    }),
-    sectionTitle: {
-      fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 700,
-      color: 'var(--on-surface)', marginBottom: 16,
-      display: 'flex', alignItems: 'center', gap: 8,
-    },
-    sectionIcon: { fontSize: 22, color: '#FF571A' },
-    catGrid: { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12, marginBottom: 32 },
-    catCard: (color) => ({
-      padding: '18px 16px', borderRadius: '1.5rem',
-      backgroundColor: 'var(--surface-container-low, #F5F0E8)',
-      border: `2px solid ${color}20`,
-    }),
-    catIcon: (color) => ({ fontSize: 28, color, marginBottom: 8, display: 'block' }),
-    catLabel: { fontSize: 12, color: 'var(--on-surface-variant)', marginBottom: 4 },
-    catPoints: {
-      fontFamily: 'var(--font-headline)', fontSize: 22,
-      fontWeight: 800, color: 'var(--on-surface)',
-    },
-    mapSection: { marginBottom: 32 },
-    badgeGrid: {
-      display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10,
-    },
-    badge: (earned, color) => ({
-      textAlign: 'center', padding: '14px 6px', borderRadius: '1rem',
-      backgroundColor: earned ? `${color}15` : 'var(--surface-container, #F0EBE3)',
-      border: earned ? `2px solid ${color}` : '2px solid transparent',
-      opacity: earned ? 1 : 0.5,
-    }),
-    badgeIcon: (earned, color) => ({
-      fontSize: 24, color: earned ? color : '#999', display: 'block', marginBottom: 4,
-    }),
-    badgeName: { fontSize: 10, fontWeight: 600, color: 'var(--on-surface-variant)' },
-    chartSection: { marginBottom: 32 },
-    chartBars: {
-      display: 'flex', alignItems: 'flex-end', gap: 10, height: 140,
-      padding: '0 4px',
-    },
-    barCol: { flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 },
-    bar: (h) => ({
-      width: '100%', height: `${h}%`, borderRadius: '8px 8px 4px 4px',
-      background: 'linear-gradient(180deg, #FF571A, #FFB59E)',
-      minHeight: 8, transition: 'height 0.5s ease',
-    }),
-    barLabel: { fontSize: 11, color: 'var(--on-surface-variant)', fontWeight: 600 },
-    barValue: { fontSize: 10, color: '#FF571A', fontWeight: 700 },
-    rewardSection: { marginBottom: 32 },
-    rewardScroll: {
-      display: 'flex', gap: 14, overflowX: 'auto', paddingBottom: 8,
-    },
-    rewardCard: {
-      minWidth: 180, padding: '20px 16px', borderRadius: '1.5rem',
-      backgroundColor: 'var(--surface-container-low, #F5F0E8)',
-      flexShrink: 0,
-    },
-    rewardIcon: { fontSize: 32, color: '#FFD54F', marginBottom: 10, display: 'block' },
-    rewardTitle: {
-      fontFamily: 'var(--font-headline)', fontSize: 15, fontWeight: 700,
-      marginBottom: 4, color: 'var(--on-surface)',
-    },
-    rewardDesc: { fontSize: 12, color: 'var(--on-surface-variant)', marginBottom: 12 },
-    rewardCost: {
-      display: 'inline-flex', alignItems: 'center', gap: 4,
-      padding: '6px 12px', borderRadius: '9999px',
-      background: 'linear-gradient(135deg, #FFD54F, #F57C00)',
-      fontSize: 12, fontWeight: 700, color: '#1a1a1a', cursor: 'pointer',
-      border: 'none', fontFamily: 'var(--font-body)',
-    },
-    txList: { display: 'flex', flexDirection: 'column', gap: 10 },
-    txItem: {
-      display: 'flex', alignItems: 'center', gap: 14,
-      padding: '14px 16px', borderRadius: '1rem',
-      backgroundColor: 'var(--surface-container-low, #F5F0E8)',
-    },
-    txIconWrap: (type) => ({
-      width: 42, height: 42, borderRadius: '50%',
-      backgroundColor: type === 'earn' ? '#11750015' : '#FF571A15',
-      display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-    }),
-    txIconEl: (type) => ({ fontSize: 20, color: type === 'earn' ? '#117500' : '#FF571A' }),
-    txInfo: { flex: 1 },
-    txLabel: { fontSize: 14, fontWeight: 600, color: 'var(--on-surface)', marginBottom: 2 },
-    txDate: { fontSize: 11, color: 'var(--on-surface-variant)' },
-    txPoints: (type) => ({
-      fontFamily: 'var(--font-headline)', fontSize: 15, fontWeight: 800,
-      color: type === 'earn' ? '#117500' : '#FF571A',
-    }),
+  const pageStyle = {
+    backgroundColor: '#fcf9f8',
+    minHeight: '100dvh',
+    fontFamily: "'Manrope', sans-serif",
+    color: '#1c1b1b',
+    paddingBottom: 120,
+  };
+
+  const headerStyle = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 50,
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '20px 32px',
+    backgroundColor: '#fcf9f8',
+    maxWidth: 600,
+    margin: '0 auto',
+  };
+
+  const headerWrapStyle = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 50,
+    backgroundColor: '#fcf9f8',
+  };
+
+  const headerInnerStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '20px 24px',
+    maxWidth: 480,
+    margin: '0 auto',
+  };
+
+  const titleStyle = {
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontSize: 22,
+    fontWeight: 900,
+    color: '#1c1b1b',
+    letterSpacing: '-0.04em',
+  };
+
+  const headerActionsStyle = {
+    display: 'flex',
+    gap: 16,
+  };
+
+  const iconBtnStyle = {
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    color: '#1c1b1b',
+    opacity: 0.6,
+    padding: 0,
+    display: 'flex',
+    alignItems: 'center',
+  };
+
+  const mainStyle = {
+    paddingTop: 88,
+    paddingLeft: 24,
+    paddingRight: 24,
+    maxWidth: 480,
+    margin: '0 auto',
+  };
+
+  const heroStyle = {
+    marginBottom: 48,
+    textAlign: 'center',
+  };
+
+  const balanceLabelStyle = {
+    fontSize: 11,
+    fontWeight: 700,
+    textTransform: 'uppercase',
+    letterSpacing: '0.12em',
+    color: '#5d4038',
+    opacity: 0.6,
+    marginBottom: 8,
+  };
+
+  const balanceRowStyle = {
+    display: 'flex',
+    alignItems: 'baseline',
+    justifyContent: 'center',
+    gap: 8,
+  };
+
+  const balanceNumberStyle = {
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontSize: 64,
+    fontWeight: 800,
+    letterSpacing: '-0.04em',
+    color: '#1c1b1b',
+    lineHeight: 1,
+  };
+
+  const balanceUnitStyle = {
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: 900,
+    fontSize: 24,
+    color: '#ad2c00',
+  };
+
+  const redeemBtnStyle = {
+    marginTop: 32,
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 8,
+    backgroundColor: '#ad2c00',
+    color: '#ffffff',
+    border: 'none',
+    borderRadius: 9999,
+    padding: '16px 32px',
+    fontFamily: "'Manrope', sans-serif",
+    fontWeight: 700,
+    fontSize: 17,
+    cursor: 'pointer',
+    boxShadow: '0 8px 24px rgba(173,44,0,0.28)',
+  };
+
+  const sectionSpacingStyle = {
+    marginBottom: 40,
+  };
+
+  const sectionHeaderStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'flex-end',
+    marginBottom: 20,
+  };
+
+  const sectionTitleStyle = {
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontSize: 22,
+    fontWeight: 700,
+    letterSpacing: '-0.02em',
+    color: '#1c1b1b',
+  };
+
+  const seeAllStyle = {
+    fontFamily: "'Manrope', sans-serif",
+    fontSize: 13,
+    fontWeight: 600,
+    color: '#ad2c00',
+    background: 'none',
+    border: 'none',
+    cursor: 'pointer',
+    padding: 0,
+  };
+
+  const missionsScrollStyle = {
+    display: 'flex',
+    gap: 16,
+    overflowX: 'auto',
+    paddingBottom: 16,
+    scrollbarWidth: 'none',
+    msOverflowStyle: 'none',
+  };
+
+  const missionCardStyle = {
+    minWidth: 280,
+    backgroundColor: '#ffffff',
+    padding: 24,
+    borderRadius: 16,
+    boxShadow: '0 2px 8px rgba(28,27,27,0.06)',
+    border: '1px solid rgba(231,189,178,0.15)',
+    flexShrink: 0,
+  };
+
+  const missionIconWrapStyle = (bg) => ({
+    width: 48,
+    height: 48,
+    borderRadius: '50%',
+    backgroundColor: bg,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 16,
+  });
+
+  const missionTitleStyle = {
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: 700,
+    fontSize: 17,
+    marginBottom: 4,
+    color: '#1c1b1b',
+  };
+
+  const missionDescStyle = {
+    color: '#5d4038',
+    fontSize: 13,
+    marginBottom: 16,
+    lineHeight: 1.5,
+  };
+
+  const progressTrackStyle = {
+    width: '100%',
+    backgroundColor: '#ebe7e7',
+    height: 6,
+    borderRadius: 9999,
+    overflow: 'hidden',
+  };
+
+  const progressBarStyle = (pct, color) => ({
+    backgroundColor: color,
+    height: '100%',
+    width: `${pct}%`,
+    borderRadius: 9999,
+  });
+
+  const progressMetaStyle = {
+    display: 'flex',
+    justifyContent: 'space-between',
+    marginTop: 8,
+    fontSize: 10,
+    fontWeight: 700,
+    textTransform: 'uppercase',
+    letterSpacing: '0.08em',
+    color: '#5d4038',
+    opacity: 0.6,
+  };
+
+  const rewardsGridStyle = {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: 16,
+  };
+
+  const rewardCardStyle = {
+    position: 'relative',
+    overflow: 'hidden',
+    borderRadius: 16,
+    backgroundColor: '#ffffff',
+    boxShadow: '0 2px 8px rgba(28,27,27,0.06)',
+  };
+
+  const rewardImageStyle = (gradient) => ({
+    aspectRatio: '4/5',
+    background: gradient,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: 48,
+    position: 'relative',
+  });
+
+  const rewardCostBadgeStyle = {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    backgroundColor: 'rgba(255,255,255,0.92)',
+    backdropFilter: 'blur(8px)',
+    padding: '4px 8px',
+    borderRadius: 8,
+    fontSize: 10,
+    fontWeight: 900,
+    color: '#ad2c00',
+  };
+
+  const rewardInfoStyle = {
+    padding: 14,
+  };
+
+  const rewardTitleStyle = {
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: 700,
+    fontSize: 13,
+    lineHeight: 1.3,
+    marginBottom: 4,
+    color: '#1c1b1b',
+  };
+
+  const rewardRemainingStyle = {
+    fontSize: 10,
+    color: '#5d4038',
+    opacity: 0.7,
+  };
+
+  const badgesSectionStyle = {
+    marginTop: 24,
+    backgroundColor: '#f6f3f2',
+    padding: 24,
+    borderRadius: 16,
+  };
+
+  const badgesHeaderStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+  };
+
+  const badgesTitleStyle = {
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: 700,
+    fontSize: 15,
+    color: '#1c1b1b',
+  };
+
+  const badgesRowStyle = {
+    display: 'flex',
+    gap: 16,
+  };
+
+  const badgeCircleStyle = (earned) => ({
+    width: 64,
+    height: 64,
+    borderRadius: '50%',
+    backgroundColor: '#ffffff',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    boxShadow: '0 2px 6px rgba(28,27,27,0.08)',
+    border: earned ? '2px solid rgba(173,44,0,0.2)' : '2px solid transparent',
+    opacity: earned ? 1 : 0.3,
+    filter: earned ? 'none' : 'grayscale(1)',
+  });
+
+  const historyListStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 8,
+    paddingBottom: 40,
+  };
+
+  const historyItemStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '18px 20px',
+    backgroundColor: '#ffffff',
+    borderRadius: 16,
+    boxShadow: '0 1px 4px rgba(28,27,27,0.05)',
+  };
+
+  const historyLeftStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 16,
+  };
+
+  const historyIconStyle = (bg) => ({
+    width: 40,
+    height: 40,
+    borderRadius: '50%',
+    backgroundColor: bg,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexShrink: 0,
+  });
+
+  const historyLabelStyle = {
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: 700,
+    fontSize: 13,
+    color: '#1c1b1b',
+    marginBottom: 2,
+  };
+
+  const historyDateStyle = {
+    fontSize: 11,
+    color: '#5d4038',
+  };
+
+  const historyPointsStyle = (earn) => ({
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: 900,
+    fontSize: 13,
+    color: earn ? '#166534' : '#ad2c00',
+  });
+
+  const navWrapStyle = {
+    position: 'fixed',
+    bottom: 24,
+    left: 0,
+    right: 0,
+    zIndex: 50,
+    display: 'flex',
+    justifyContent: 'center',
+  };
+
+  const navInnerStyle = {
+    width: '90%',
+    maxWidth: 420,
+    backgroundColor: 'rgba(252,249,248,0.85)',
+    backdropFilter: 'blur(20px)',
+    borderRadius: 9999,
+    boxShadow: '0 20px 40px rgba(28,27,27,0.08)',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: '8px 8px',
+  };
+
+  const navItemStyle = (active) => ({
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '8px 20px',
+    borderRadius: 9999,
+    backgroundColor: active ? '#ffffff' : 'transparent',
+    color: active ? '#ad2c00' : '#1c1b1b',
+    opacity: active ? 1 : 0.4,
+    cursor: 'pointer',
+    border: 'none',
+    gap: 2,
+    transition: 'all 0.2s',
+  });
+
+  const navLabelStyle = {
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontSize: 9,
+    fontWeight: 600,
+    textTransform: 'uppercase',
+    letterSpacing: '0.08em',
+    marginTop: 2,
   };
 
   return (
-    <div style={s.page}>
-      <button style={s.backBtn} onClick={() => navigate(-1)}>
-        <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
-        Quay lại
-      </button>
-
-      {/* Tier Badge */}
-      <div style={s.tierBadge}>
-        <div style={s.tierShine} />
-        <span aria-hidden="true" className="material-symbols-outlined" style={s.tierIcon}>diamond</span>
-        <div style={s.tierInfo}>
-          <div style={s.tierLabel}>VÀNG</div>
-          <div style={s.tierPoints}>12,450<span style={s.tierUnit}>VÀNG</span></div>
+    <div style={pageStyle}>
+      <div style={headerWrapStyle}>
+        <div style={headerInnerStyle}>
+          <div style={titleStyle}>VÀNG Points</div>
+          <div style={headerActionsStyle}>
+            <button style={iconBtnStyle}>
+              <span className="material-symbols-outlined">notifications</span>
+            </button>
+            <button style={iconBtnStyle}>
+              <span className="material-symbols-outlined">account_circle</span>
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Tabs */}
-      <div style={s.tabs}>
-        {['overview', 'rewards', 'history'].map(tab => (
-          <button key={tab} style={s.tab(activeTab === tab)} onClick={() => setActiveTab(tab)}>
-            {tab === 'overview' ? 'Tổng quan' : tab === 'rewards' ? 'Đổi thưởng' : 'Lịch sử'}
+      <main style={mainStyle}>
+        <section style={heroStyle}>
+          <p style={balanceLabelStyle}>Số dư hiện tại</p>
+          <div style={balanceRowStyle}>
+            <h1 style={balanceNumberStyle}>12.450</h1>
+            <span style={balanceUnitStyle}>VÀNG</span>
+          </div>
+          <div style={{ marginTop: 32, display: 'flex', justifyContent: 'center' }}>
+            <button style={redeemBtnStyle} onClick={() => navigate('/app/rewards')}>
+              Đổi thưởng ngay
+              <span className="material-symbols-outlined" style={{ fontSize: 22 }}>celebration</span>
+            </button>
+          </div>
+        </section>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 0 }}>
+          <section style={sectionSpacingStyle}>
+            <div style={sectionHeaderStyle}>
+              <h2 style={sectionTitleStyle}>Nhiệm vụ mới</h2>
+              <button style={seeAllStyle} onClick={() => navigate('/app/quests')}>Xem tất cả</button>
+            </div>
+            <div style={missionsScrollStyle}>
+              {missions.map(m => (
+                <div key={m.id} style={missionCardStyle}>
+                  <div style={missionIconWrapStyle(m.iconBg)}>
+                    <span className="material-symbols-outlined" style={{ color: m.iconColor }}>{m.icon}</span>
+                  </div>
+                  <h3 style={missionTitleStyle}>{m.title}</h3>
+                  <p style={missionDescStyle}>{m.desc}</p>
+                  <div style={progressTrackStyle}>
+                    <div style={progressBarStyle(m.total > 0 ? (m.progress / m.total) * 100 : 0, m.progressColor)} />
+                  </div>
+                  <div style={progressMetaStyle}>
+                    <span>{m.progress === 0 ? 'Chưa bắt đầu' : `Tiến độ ${m.progress}/${m.total}`}</span>
+                    <span>{m.reward}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section style={sectionSpacingStyle}>
+            <h2 style={{ ...sectionTitleStyle, marginBottom: 20 }}>Kho phần thưởng</h2>
+            <div style={rewardsGridStyle}>
+              {rewardCards.map(r => (
+                <div key={r.id} style={rewardCardStyle}>
+                  <div style={rewardImageStyle(r.gradient)}>
+                    <span style={{ fontSize: 52, lineHeight: 1 }}>{r.emoji}</span>
+                    <div style={rewardCostBadgeStyle}>-{r.cost} VÀNG</div>
+                  </div>
+                  <div style={rewardInfoStyle}>
+                    <h4 style={rewardTitleStyle}>{r.title}</h4>
+                    <p style={rewardRemainingStyle}>Còn lại: {r.remaining}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div style={badgesSectionStyle}>
+              <div style={badgesHeaderStyle}>
+                <h3 style={badgesTitleStyle}>Huy hiệu đặc biệt</h3>
+                <span className="material-symbols-outlined" style={{ color: '#5d4038', fontSize: 22 }}>military_tech</span>
+              </div>
+              <div style={badgesRowStyle}>
+                {badges.map(b => (
+                  <div key={b.id} style={badgeCircleStyle(b.earned)}>
+                    <span
+                      className="material-symbols-outlined"
+                      style={{
+                        fontSize: 28,
+                        color: b.earned ? '#ad2c00' : '#1c1b1b',
+                        fontVariationSettings: b.fill ? "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24" : "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24",
+                      }}
+                    >{b.icon}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section>
+            <h2 style={{ ...sectionTitleStyle, marginBottom: 20 }}>Lịch sử điểm</h2>
+            <div style={historyListStyle}>
+              {history.map(tx => (
+                <div key={tx.id} style={historyItemStyle}>
+                  <div style={historyLeftStyle}>
+                    <div style={historyIconStyle(tx.iconBg)}>
+                      <span className="material-symbols-outlined" style={{ color: tx.iconColor, fontSize: 18 }}>{tx.icon}</span>
+                    </div>
+                    <div>
+                      <h4 style={historyLabelStyle}>{tx.label}</h4>
+                      <p style={historyDateStyle}>{tx.date}</p>
+                    </div>
+                  </div>
+                  <div style={historyPointsStyle(tx.earn)}>{tx.points}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
+      </main>
+
+      <nav style={navWrapStyle}>
+        <div style={navInnerStyle}>
+          <button style={navItemStyle(false)} onClick={() => navigate('/app')}>
+            <span className="material-symbols-outlined" style={{ fontSize: 22 }}>home</span>
+            <span style={navLabelStyle}>Khám phá</span>
           </button>
-        ))}
-      </div>
-
-      {(activeTab === 'overview' || activeTab === 'rewards') && (
-        <>
-          {/* Culinary Journey */}
-          <div style={s.sectionTitle}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>route</span>
-            Hành trình ẩm thực
-          </div>
-          <div style={s.catGrid}>
-            {categoryData.map(cat => (
-              <div key={cat.label} style={s.catCard(cat.color)}>
-                <span aria-hidden="true" className="material-symbols-outlined" style={s.catIcon(cat.color)}>{cat.icon}</span>
-                <div style={s.catLabel}>{cat.label}</div>
-                <div style={s.catPoints}>{cat.points.toLocaleString()}</div>
-              </div>
-            ))}
-          </div>
-
-          {/* Regional Footprint */}
-          <div style={s.mapSection}>
-            <div style={s.sectionTitle}>
-              <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>map</span>
-              Dấu chân vùng miền
-            </div>
-            <div style={s.badgeGrid}>
-              {regionBadges.map(b => (
-                <div key={b.name} style={s.badge(b.earned, b.color)}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={s.badgeIcon(b.earned, b.color)}>
-                    {b.earned ? 'verified' : 'lock'}
-                  </span>
-                  <div style={s.badgeName}>{b.name}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Monthly Velocity */}
-          <div style={s.chartSection}>
-            <div style={s.sectionTitle}>
-              <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>trending_up</span>
-              Tốc độ hàng tháng
-            </div>
-            <div style={s.chartBars}>
-              {monthlyData.map(d => (
-                <div key={d.month} style={s.barCol}>
-                  <div style={s.barValue}>{d.value}</div>
-                  <div style={s.bar((d.value / maxMonthly) * 100)} />
-                  <div style={s.barLabel}>{d.month}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </>
-      )}
-
-      {(activeTab === 'overview' || activeTab === 'rewards') && (
-        <div style={s.rewardSection}>
-          <div style={s.sectionTitle}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>redeem</span>
-            Đổi thưởng
-          </div>
-          <div style={s.rewardScroll}>
-            {rewardCards.map(r => (
-              <div key={r.id} style={s.rewardCard}>
-                <span aria-hidden="true" className="material-symbols-outlined" style={s.rewardIcon}>{r.icon}</span>
-                <div style={s.rewardTitle}>{r.title}</div>
-                <div style={s.rewardDesc}>{r.desc}</div>
-                <button style={s.rewardCost}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
-                  {r.cost.toLocaleString()} Vàng
-                </button>
-              </div>
-            ))}
-          </div>
+          <button style={navItemStyle(true)} onClick={() => navigate('/app/wallet')}>
+            <span className="material-symbols-outlined" style={{ fontSize: 22, fontVariationSettings: "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24" }}>account_balance_wallet</span>
+            <span style={navLabelStyle}>Ví VÀNG</span>
+          </button>
+          <button style={navItemStyle(false)} onClick={() => navigate('/app/quests')}>
+            <span className="material-symbols-outlined" style={{ fontSize: 22 }}>task_alt</span>
+            <span style={navLabelStyle}>Nhiệm vụ</span>
+          </button>
+          <button style={navItemStyle(false)} onClick={() => navigate('/app/profile')}>
+            <span className="material-symbols-outlined" style={{ fontSize: 22 }}>person</span>
+            <span style={navLabelStyle}>Cá nhân</span>
+          </button>
         </div>
-      )}
-
-      {(activeTab === 'overview' || activeTab === 'history') && (
-        <div>
-          <div style={s.sectionTitle}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>receipt_long</span>
-            Lịch sử giao dịch
-          </div>
-          <div style={s.txList}>
-            {transactions.map(tx => (
-              <div key={tx.id} style={s.txItem}>
-                <div style={s.txIconWrap(tx.type)}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={s.txIconEl(tx.type)}>{tx.icon}</span>
-                </div>
-                <div style={s.txInfo}>
-                  <div style={s.txLabel}>{tx.label}</div>
-                  <div style={s.txDate}>{tx.date}</div>
-                </div>
-                <div style={s.txPoints(tx.type)}>{tx.points}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      </nav>
     </div>
   );
 };

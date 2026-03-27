@@ -1,309 +1,656 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const REWARD_CATEGORIES = ['Tất cả', 'Ẩm thực', 'Đổi quyền Visa', 'Du lịch', 'Sức khỏe'];
+const colors = {
+  background: '#fcf9f8',
+  surfaceContainerLowest: '#ffffff',
+  surfaceContainerLow: '#f6f3f2',
+  surfaceContainer: '#f0edec',
+  surfaceContainerHigh: '#ebe7e7',
+  onSurface: '#1c1b1b',
+  onSurfaceVariant: '#5d4038',
+  primary: '#ad2c00',
+  primaryFixed: '#ffdbd1',
+  outlineVariant: '#e7bdb2',
+};
+
+const fontHeadline = "'Plus Jakarta Sans', sans-serif";
+const fontBody = "'Manrope', sans-serif";
+
+const CATEGORIES = ['Tất cả', 'Ẩm thực', 'Trải nghiệm', 'Thẻ quà tặng'];
 
 const REWARDS = [
   {
     id: 1,
-    category: 'Đổi quyền Visa',
-    title: 'Nâng cấp Visa Signature Elite',
-    description: 'Mở khóa đặc quyền nhà hàng 5 sao toàn cầu',
-    points: 15000,
-    featured: true,
-    badge: 'Nổi bật',
-    icon: '💎',
-    tag: 'VIP',
+    category: 'Ẩm thực',
+    title: 'Bữa tối 5 món tại Le Gourmet',
+    description: 'Trải nghiệm ẩm thực Pháp tinh tế',
+    points: 1200,
+    badge: '-20% Bill',
   },
   {
     id: 2,
     category: 'Ẩm thực',
-    title: 'Pizza 4P\'s — Voucher 200k',
-    description: 'Sử dụng tại tất cả chi nhánh Pizza 4P\'s',
-    points: 2000,
-    featured: false,
-    icon: '🍕',
-    tag: 'Phổ biến',
+    title: 'Thẻ Cà Phê Đặc Sản',
+    description: 'Áp dụng cho mọi loại đồ uống size L',
+    points: 450,
+    badge: 'Mua 1 Tặng 1',
   },
   {
     id: 3,
-    category: 'Ẩm thực',
-    title: 'The Coffee House — 5 ly cà phê',
-    description: 'Đổi lấy 5 ly Signature Coffee bất kỳ',
-    points: 500,
-    featured: false,
-    icon: '☕',
-    tag: null,
+    category: 'Trải nghiệm',
+    title: 'Gói spa thư giãn',
+    description: 'Massage toàn thân 90 phút tại spa đối tác',
+    points: 3000,
+    badge: 'Nổi bật',
   },
   {
     id: 4,
-    category: 'Ẩm thực',
-    title: 'La Gourmet — Set menu 5 món',
-    description: 'Trải nghiệm fine dining đẳng cấp quốc tế',
-    points: 1200,
-    featured: false,
-    icon: '🍽️',
-    tag: 'Nổi bật tuần này',
+    category: 'Thẻ quà tặng',
+    title: 'Voucher ẩm thực 200k',
+    description: 'Sử dụng tại các nhà hàng đối tác GoMet',
+    points: 2000,
+    badge: 'Phổ biến',
   },
   {
     id: 5,
     category: 'Ẩm thực',
-    title: 'Thả Cà Phê Đặc Sản — Trọn gói',
-    description: 'Tận hưởng cà phê rang xay nguyên chất',
-    points: 450,
-    featured: false,
-    icon: '🫖',
-    tag: null,
+    title: 'Combo sushi cao cấp',
+    description: 'Set sushi thượng hạng cho 2 người',
+    points: 800,
+    badge: null,
   },
   {
     id: 6,
-    category: 'Du lịch',
-    title: 'Khách sạn 5 sao — 1 đêm',
-    description: 'Nghỉ dưỡng tại các khách sạn đối tác GoMet',
-    points: 8000,
-    featured: false,
-    icon: '🏨',
-    tag: null,
-  },
-  {
-    id: 7,
-    category: 'Sức khỏe',
-    title: 'Gói spa thư giãn',
-    description: 'Massage toàn thân 90 phút tại spa đối tác',
-    points: 3000,
-    featured: false,
-    icon: '💆',
-    tag: null,
+    category: 'Thẻ quà tặng',
+    title: 'Thẻ quà 500k đa năng',
+    description: 'Dùng tại hơn 50 đối tác GoMet',
+    points: 4500,
+    badge: 'VIP',
   },
 ];
 
+const RewardIcon = ({ points }) => {
+  if (points >= 3000) return (
+    <span className="material-symbols-outlined" style={{ fontSize: 36, color: colors.primary, fontVariationSettings: "'FILL' 0, 'wght' 300" }}>workspace_premium</span>
+  );
+  if (points >= 1000) return (
+    <span className="material-symbols-outlined" style={{ fontSize: 36, color: colors.primary, fontVariationSettings: "'FILL' 0, 'wght' 300" }}>restaurant</span>
+  );
+  return (
+    <span className="material-symbols-outlined" style={{ fontSize: 36, color: colors.primary, fontVariationSettings: "'FILL' 0, 'wght' 300" }}>local_cafe</span>
+  );
+};
+
 export default function RewardsPage() {
-  const [activeTab, setActiveTab] = useState('Tất cả');
-  const userPoints = 2450;
-  const nextTierPoints = 3000;
-  const progress = Math.round((userPoints / nextTierPoints) * 100);
+  const navigate = useNavigate();
+  const [activeCategory, setActiveCategory] = useState('Tất cả');
+  const [confirmReward, setConfirmReward] = useState(null);
+  const [confirmed, setConfirmed] = useState(null);
+  const [userPoints, setUserPoints] = useState(2450);
 
-  const filtered = activeTab === 'Tất cả'
+  const nextTierPoints = 3250;
+  const progress = Math.min(100, Math.round((userPoints / nextTierPoints) * 100));
+
+  const filtered = activeCategory === 'Tất cả'
     ? REWARDS
-    : REWARDS.filter(r => r.category === activeTab);
+    : REWARDS.filter(r => r.category === activeCategory);
 
-  const featured = filtered.find(r => r.featured);
-  const rest = filtered.filter(r => !r.featured);
+  const handleRedeem = (reward) => {
+    if (userPoints >= reward.points) {
+      setConfirmReward(reward);
+    }
+  };
+
+  const handleConfirm = () => {
+    setUserPoints(prev => prev - confirmReward.points);
+    setConfirmed(confirmReward);
+    setConfirmReward(null);
+  };
+
+  const handleCloseSuccess = () => {
+    setConfirmed(null);
+  };
 
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--md-sys-color-background, #fcf9f8)', paddingBottom: 80 }}>
-      {/* Header balance card */}
-      <div style={{
-        background: 'linear-gradient(135deg, #ad2c00 0%, #d44500 100%)',
-        padding: '24px 20px 32px',
-        color: '#fff',
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 16 }}>
-          <h1 style={{ margin: 0, fontSize: 22, fontWeight: 700, fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-            Đổi Thưởng
-          </h1>
-          <span style={{
-            background: 'rgba(255,255,255,0.25)',
-            borderRadius: 20,
-            padding: '4px 12px',
-            fontSize: 13,
-            fontWeight: 700,
-            letterSpacing: 0.5,
-          }}>
-            🏅 {userPoints.toLocaleString()} VÀNG
-          </span>
-        </div>
-
-        <div style={{
-          background: 'rgba(255,255,255,0.15)',
-          borderRadius: 16,
-          padding: '16px 20px',
-          backdropFilter: 'blur(8px)',
-        }}>
-          <p style={{ margin: '0 0 4px', fontSize: 12, opacity: 0.85, letterSpacing: 1, textTransform: 'uppercase' }}>
-            Số dư điểm của bạn
-          </p>
-          <p style={{ margin: '0 0 12px', fontSize: 32, fontWeight: 800, fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-            {userPoints.toLocaleString()} <span style={{ fontSize: 18, fontWeight: 600 }}>VÀNG</span>
-          </p>
-
-          {/* Progress bar */}
-          <div style={{ marginBottom: 6 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, opacity: 0.85, marginBottom: 6 }}>
-              <span>Hạng Bạch Kim</span>
-              <span>Thẻ Vàng</span>
-            </div>
-            <div style={{ background: 'rgba(255,255,255,0.25)', borderRadius: 8, height: 8, overflow: 'hidden' }}>
-              <div style={{
-                width: `${progress}%`,
-                height: '100%',
-                background: '#FFD700',
-                borderRadius: 8,
-                transition: 'width 0.6s ease',
-              }} />
-            </div>
-            <p style={{ margin: '6px 0 0', fontSize: 12, opacity: 0.85 }}>
-              {progress}% đến Thẻ Vàng — cần thêm {(nextTierPoints - userPoints).toLocaleString()} điểm
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Weekend promo banner */}
-      <div style={{
-        margin: '16px 16px 0',
-        background: 'linear-gradient(90deg, #ff7043, #ff8a65)',
-        borderRadius: 12,
-        padding: '12px 16px',
+    <div style={{
+      minHeight: '100dvh',
+      background: colors.background,
+      fontFamily: fontBody,
+      color: colors.onSurface,
+      paddingBottom: 120,
+    }}>
+      <header style={{
+        background: colors.background,
+        position: 'sticky',
+        top: 0,
+        zIndex: 40,
+        padding: '16px 24px',
         display: 'flex',
+        justifyContent: 'space-between',
         alignItems: 'center',
-        gap: 10,
-        color: '#fff',
+        borderBottom: `1px solid ${colors.outlineVariant}44`,
       }}>
-        <span style={{ fontSize: 20 }}>⚡</span>
-        <div>
-          <p style={{ margin: 0, fontWeight: 700, fontSize: 14 }}>Ưu đãi cuối tuần</p>
-          <p style={{ margin: 0, fontSize: 12, opacity: 0.9 }}>Giảm 20% điểm đổi thưởng — Hết hạn Chủ nhật</p>
+        <span style={{
+          fontSize: 24,
+          fontWeight: 900,
+          color: colors.onSurface,
+          fontFamily: fontHeadline,
+          letterSpacing: '-0.03em',
+        }}>GoMet</span>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 8,
+          background: colors.surfaceContainerHigh,
+          padding: '8px 16px',
+          borderRadius: 9999,
+        }}>
+          <span className="material-symbols-outlined" style={{
+            color: colors.primary,
+            fontSize: 20,
+            fontVariationSettings: "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24",
+          }}>stars</span>
+          <span style={{
+            fontFamily: fontHeadline,
+            fontWeight: 700,
+            color: colors.primary,
+            fontSize: 14,
+          }}>{userPoints.toLocaleString('vi-VN')} VÀNG</span>
         </div>
-      </div>
+      </header>
 
-      {/* Category tabs */}
-      <div style={{
-        overflowX: 'auto',
-        padding: '16px 16px 0',
-        display: 'flex',
-        gap: 8,
-        scrollbarWidth: 'none',
-        msOverflowStyle: 'none',
-      }}>
-        {REWARD_CATEGORIES.map(tab => (
-          <button
-            key={tab}
-            onClick={() => setActiveTab(tab)}
-            style={{
-              flexShrink: 0,
-              padding: '8px 16px',
-              borderRadius: 20,
-              border: activeTab === tab ? 'none' : '1.5px solid #e0d8d5',
-              background: activeTab === tab ? '#ad2c00' : '#fff',
-              color: activeTab === tab ? '#fff' : '#505965',
-              fontWeight: activeTab === tab ? 700 : 500,
-              fontSize: 14,
-              cursor: 'pointer',
-              whiteSpace: 'nowrap',
-              fontFamily: 'Manrope, sans-serif',
-            }}
-          >
-            {tab}
-          </button>
-        ))}
-      </div>
-
-      <div style={{ padding: '16px 16px 0' }}>
-        <h2 style={{ margin: '0 0 12px', fontSize: 16, fontWeight: 700, fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#1a1a1a' }}>
-          Khám phá ưu đãi
-        </h2>
-
-        {/* Featured card */}
-        {featured && (
+      <main style={{ padding: '16px 24px 0', maxWidth: 448, margin: '0 auto' }}>
+        <section style={{ marginBottom: 40 }}>
           <div style={{
-            background: 'linear-gradient(135deg, #1a1a2e, #16213e)',
-            borderRadius: 20,
-            padding: 20,
-            marginBottom: 16,
-            color: '#fff',
+            background: colors.primary,
+            borderRadius: 16,
+            padding: 32,
+            color: '#ffffff',
             position: 'relative',
             overflow: 'hidden',
+            boxShadow: `0 8px 32px ${colors.primary}33`,
           }}>
             <div style={{
-              position: 'absolute', top: 0, right: 0,
-              background: '#FFD700', color: '#1a1a1a',
-              padding: '4px 12px', borderRadius: '0 20px 0 12px',
-              fontSize: 12, fontWeight: 700,
-            }}>
-              {featured.badge}
+              position: 'absolute',
+              right: -40,
+              top: -40,
+              width: 160,
+              height: 160,
+              background: 'rgba(255,255,255,0.10)',
+              borderRadius: '9999px',
+              filter: 'blur(24px)',
+              pointerEvents: 'none',
+            }} />
+            <p style={{
+              fontFamily: fontBody,
+              fontSize: 12,
+              fontWeight: 600,
+              textTransform: 'uppercase',
+              letterSpacing: '0.12em',
+              opacity: 0.8,
+              margin: '0 0 8px',
+            }}>Số dư điểm của bạn</p>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 8, marginBottom: 24 }}>
+              <span style={{
+                fontFamily: fontHeadline,
+                fontSize: 52,
+                fontWeight: 800,
+                letterSpacing: '-0.03em',
+                lineHeight: 1,
+              }}>{userPoints.toLocaleString('vi-VN')}</span>
+              <span style={{
+                fontFamily: fontHeadline,
+                fontSize: 20,
+                fontWeight: 700,
+                opacity: 0.9,
+              }}>VÀNG</span>
             </div>
-            <div style={{ fontSize: 36, marginBottom: 8 }}>{featured.icon}</div>
-            <span style={{
-              background: 'rgba(255,215,0,0.2)', color: '#FFD700',
-              padding: '2px 10px', borderRadius: 12, fontSize: 11, fontWeight: 700,
-              letterSpacing: 1,
-            }}>
-              {featured.tag}
-            </span>
-            <h3 style={{ margin: '8px 0 4px', fontSize: 18, fontWeight: 700, fontFamily: 'Plus Jakarta Sans, sans-serif' }}>
-              {featured.title}
-            </h3>
-            <p style={{ margin: '0 0 16px', fontSize: 13, opacity: 0.8 }}>{featured.description}</p>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: 20, fontWeight: 800, color: '#FFD700' }}>
-                {featured.points.toLocaleString()} điểm
-              </span>
-              <button style={{
-                background: '#FFD700', color: '#1a1a1a',
-                border: 'none', borderRadius: 12,
-                padding: '10px 20px', fontWeight: 700, fontSize: 14,
-                cursor: 'pointer',
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              <div style={{
+                flex: 1,
+                height: 4,
+                background: 'rgba(255,255,255,0.20)',
+                borderRadius: 9999,
+                overflow: 'hidden',
               }}>
-                Đổi ngay
-              </button>
+                <div style={{
+                  width: `${progress}%`,
+                  height: '100%',
+                  background: '#ffffff',
+                  borderRadius: 9999,
+                  transition: 'width 0.6s ease',
+                }} />
+              </div>
+              <span style={{ fontSize: 12, fontWeight: 700, whiteSpace: 'nowrap' }}>
+                {progress}% đến Thẻ Vàng
+              </span>
             </div>
           </div>
-        )}
+        </section>
 
-        {/* Reward grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
-          {rest.map(reward => (
-            <div key={reward.id} style={{
-              background: '#fff',
-              borderRadius: 16,
-              padding: 16,
-              border: '1px solid #f0ebe8',
-              boxShadow: '0 1px 4px rgba(0,0,0,0.06)',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: 6,
+        <section style={{ marginBottom: 40 }}>
+          <h3 style={{
+            fontFamily: fontHeadline,
+            fontSize: 20,
+            fontWeight: 700,
+            margin: '0 0 16px',
+            color: colors.onSurface,
+          }}>Khám phá ưu đãi</h3>
+          <div style={{
+            display: 'flex',
+            gap: 12,
+            overflowX: 'auto',
+            paddingBottom: 8,
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+          }}>
+            {CATEGORIES.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                style={{
+                  flexShrink: 0,
+                  padding: '12px 24px',
+                  borderRadius: 9999,
+                  border: 'none',
+                  background: activeCategory === cat ? colors.primary : colors.surfaceContainerLow,
+                  color: activeCategory === cat ? '#ffffff' : colors.onSurface,
+                  fontFamily: fontBody,
+                  fontWeight: 700,
+                  fontSize: 14,
+                  cursor: 'pointer',
+                  transition: 'background 0.15s, color 0.15s',
+                }}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <section style={{ marginBottom: 40 }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
+            marginBottom: 24,
+          }}>
+            <h3 style={{
+              fontFamily: fontHeadline,
+              fontSize: 20,
+              fontWeight: 700,
+              margin: 0,
+              color: colors.onSurface,
+            }}>Nổi bật tuần này</h3>
+            <span style={{
+              fontFamily: fontBody,
+              fontWeight: 700,
+              fontSize: 14,
+              color: colors.primary,
+              cursor: 'pointer',
+            }}>Xem tất cả</span>
+          </div>
+
+          {filtered.length === 0 ? (
+            <div style={{
+              textAlign: 'center',
+              padding: '48px 16px',
+              color: colors.onSurfaceVariant,
             }}>
-              <div style={{ fontSize: 28 }}>{reward.icon}</div>
-              {reward.tag && (
-                <span style={{
-                  background: '#fff3e0', color: '#ad2c00',
-                  padding: '2px 8px', borderRadius: 8, fontSize: 10, fontWeight: 700,
-                  alignSelf: 'flex-start',
-                }}>
-                  {reward.tag}
+              <span className="material-symbols-outlined" style={{ fontSize: 48, opacity: 0.4, display: 'block', marginBottom: 12 }}>redeem</span>
+              <p style={{ margin: 0, fontSize: 15 }}>Không có ưu đãi trong danh mục này</p>
+            </div>
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+              {filtered.map(reward => {
+                const canRedeem = userPoints >= reward.points;
+                return (
+                  <article key={reward.id} style={{
+                    background: colors.surfaceContainerLowest,
+                    borderRadius: 16,
+                    overflow: 'hidden',
+                    boxShadow: '0 2px 8px rgba(28,27,27,0.06)',
+                  }}>
+                    <div style={{
+                      height: 160,
+                      background: colors.surfaceContainer,
+                      position: 'relative',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}>
+                      <div style={{
+                        width: 80,
+                        height: 80,
+                        background: colors.primaryFixed,
+                        borderRadius: 9999,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                      }}>
+                        <RewardIcon points={reward.points} />
+                      </div>
+                      {reward.badge && (
+                        <div style={{
+                          position: 'absolute',
+                          top: 16,
+                          left: 16,
+                          background: 'rgba(255,255,255,0.92)',
+                          backdropFilter: 'blur(8px)',
+                          padding: '4px 12px',
+                          borderRadius: 9999,
+                          fontSize: 12,
+                          fontWeight: 700,
+                          color: colors.primary,
+                          fontFamily: fontBody,
+                        }}>{reward.badge}</div>
+                      )}
+                    </div>
+                    <div style={{ padding: 24 }}>
+                      <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'flex-start',
+                        marginBottom: 16,
+                      }}>
+                        <div style={{ flex: 1, marginRight: 16 }}>
+                          <h4 style={{
+                            fontFamily: fontHeadline,
+                            fontSize: 17,
+                            fontWeight: 700,
+                            margin: '0 0 4px',
+                            color: colors.onSurface,
+                            lineHeight: 1.3,
+                          }}>{reward.title}</h4>
+                          <p style={{
+                            fontFamily: fontBody,
+                            fontSize: 13,
+                            color: colors.onSurfaceVariant,
+                            margin: 0,
+                            lineHeight: 1.5,
+                          }}>{reward.description}</p>
+                        </div>
+                        <div style={{ textAlign: 'right', flexShrink: 0 }}>
+                          <span style={{
+                            display: 'block',
+                            fontFamily: fontHeadline,
+                            fontWeight: 800,
+                            fontSize: 18,
+                            color: colors.primary,
+                            lineHeight: 1,
+                          }}>{reward.points.toLocaleString('vi-VN')}</span>
+                          <span style={{
+                            fontSize: 10,
+                            fontWeight: 700,
+                            textTransform: 'uppercase',
+                            letterSpacing: '0.05em',
+                            color: colors.onSurfaceVariant,
+                            opacity: 0.6,
+                          }}>VÀNG Points</span>
+                        </div>
+                      </div>
+                      <button
+                        onClick={() => handleRedeem(reward)}
+                        style={{
+                          width: '100%',
+                          padding: '16px',
+                          background: canRedeem ? colors.primary : colors.surfaceContainerHigh,
+                          color: canRedeem ? '#ffffff' : colors.onSurfaceVariant,
+                          border: 'none',
+                          borderRadius: 12,
+                          fontFamily: fontBody,
+                          fontWeight: 700,
+                          fontSize: 15,
+                          cursor: canRedeem ? 'pointer' : 'default',
+                          boxShadow: canRedeem ? `0 4px 16px ${colors.primary}22` : 'none',
+                          transition: 'transform 0.15s',
+                        }}
+                      >
+                        {canRedeem ? 'Đổi Thưởng Ngay' : `Cần thêm ${(reward.points - userPoints).toLocaleString('vi-VN')} điểm`}
+                      </button>
+                    </div>
+                  </article>
+                );
+              })}
+            </div>
+          )}
+        </section>
+
+        <section style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: 16,
+          marginBottom: 40,
+        }}>
+          <div style={{
+            background: colors.surfaceContainerHigh,
+            borderRadius: 16,
+            padding: 24,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 8,
+          }}>
+            <span className="material-symbols-outlined" style={{ color: colors.primary, fontSize: 24 }}>history</span>
+            <p style={{ fontFamily: fontHeadline, fontWeight: 700, fontSize: 14, margin: 0, color: colors.onSurface }}>Lịch sử đổi</p>
+            <p style={{ fontSize: 12, color: colors.onSurfaceVariant, margin: 0, lineHeight: 1.4 }}>Xem lại các phần quà đã nhận</p>
+          </div>
+          <div style={{
+            background: colors.surfaceContainerHigh,
+            borderRadius: 16,
+            padding: 24,
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 8,
+          }}>
+            <span className="material-symbols-outlined" style={{ color: colors.primary, fontSize: 24 }}>help</span>
+            <p style={{ fontFamily: fontHeadline, fontWeight: 700, fontSize: 14, margin: 0, color: colors.onSurface }}>Trợ giúp</p>
+            <p style={{ fontSize: 12, color: colors.onSurfaceVariant, margin: 0, lineHeight: 1.4 }}>Cách tích thêm điểm VÀNG</p>
+          </div>
+        </section>
+      </main>
+
+      {confirmReward && (
+        <div
+          onClick={() => setConfirmReward(null)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(28,27,27,0.5)',
+            zIndex: 100,
+            display: 'flex',
+            alignItems: 'flex-end',
+            justifyContent: 'center',
+          }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: colors.surfaceContainerLowest,
+              borderRadius: '24px 24px 0 0',
+              padding: '8px 24px 48px',
+              width: '100%',
+              maxWidth: 480,
+            }}
+          >
+            <div style={{
+              width: 40,
+              height: 4,
+              background: colors.outlineVariant,
+              borderRadius: 9999,
+              margin: '12px auto 24px',
+            }} />
+            <div style={{
+              width: 64,
+              height: 64,
+              background: colors.primaryFixed,
+              borderRadius: 9999,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 16px',
+            }}>
+              <span className="material-symbols-outlined" style={{ fontSize: 32, color: colors.primary }}>redeem</span>
+            </div>
+            <h3 style={{
+              fontFamily: fontHeadline,
+              fontSize: 20,
+              fontWeight: 700,
+              textAlign: 'center',
+              margin: '0 0 8px',
+              color: colors.onSurface,
+            }}>Xác nhận đổi thưởng</h3>
+            <p style={{
+              fontFamily: fontBody,
+              fontSize: 14,
+              color: colors.onSurfaceVariant,
+              textAlign: 'center',
+              margin: '0 0 24px',
+              lineHeight: 1.5,
+            }}>{confirmReward.title}</p>
+            <div style={{
+              background: colors.surfaceContainerLow,
+              borderRadius: 12,
+              padding: '16px 20px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: 24,
+            }}>
+              <div>
+                <p style={{ margin: '0 0 2px', fontSize: 12, color: colors.onSurfaceVariant, fontFamily: fontBody }}>Số điểm cần dùng</p>
+                <span style={{ fontFamily: fontHeadline, fontWeight: 800, fontSize: 22, color: colors.primary }}>
+                  {confirmReward.points.toLocaleString('vi-VN')} VÀNG
                 </span>
-              )}
-              <h4 style={{ margin: 0, fontSize: 13, fontWeight: 700, fontFamily: 'Plus Jakarta Sans, sans-serif', color: '#1a1a1a', lineHeight: 1.3 }}>
-                {reward.title}
-              </h4>
-              <p style={{ margin: 0, fontSize: 11, color: '#757575', lineHeight: 1.4 }}>
-                {reward.description}
-              </p>
-              <div style={{ marginTop: 'auto', paddingTop: 8, borderTop: '1px solid #f5f5f5', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: '#ad2c00' }}>
-                  {reward.points.toLocaleString()} điểm
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <p style={{ margin: '0 0 2px', fontSize: 12, color: colors.onSurfaceVariant, fontFamily: fontBody }}>Số dư sau đổi</p>
+                <span style={{ fontFamily: fontHeadline, fontWeight: 700, fontSize: 18, color: colors.onSurface }}>
+                  {(userPoints - confirmReward.points).toLocaleString('vi-VN')} VÀNG
                 </span>
-                <button style={{
-                  background: userPoints >= reward.points ? '#ad2c00' : '#e0e0e0',
-                  color: userPoints >= reward.points ? '#fff' : '#9e9e9e',
-                  border: 'none', borderRadius: 8,
-                  padding: '6px 12px', fontSize: 11, fontWeight: 700,
-                  cursor: userPoints >= reward.points ? 'pointer' : 'default',
-                }}>
-                  Đổi
-                </button>
               </div>
             </div>
-          ))}
-        </div>
-
-        {filtered.length === 0 && (
-          <div style={{ textAlign: 'center', padding: '48px 16px', color: '#9e9e9e' }}>
-            <div style={{ fontSize: 48, marginBottom: 12 }}>🎁</div>
-            <p style={{ margin: 0, fontSize: 15 }}>Không có ưu đãi trong danh mục này</p>
+            <button
+              onClick={handleConfirm}
+              style={{
+                width: '100%',
+                padding: '18px',
+                background: colors.primary,
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: 14,
+                fontFamily: fontBody,
+                fontWeight: 700,
+                fontSize: 16,
+                cursor: 'pointer',
+                boxShadow: `0 4px 16px ${colors.primary}33`,
+                marginBottom: 12,
+              }}
+            >
+              Đổi thưởng
+            </button>
+            <button
+              onClick={() => setConfirmReward(null)}
+              style={{
+                width: '100%',
+                padding: '16px',
+                background: 'transparent',
+                color: colors.onSurface,
+                border: 'none',
+                borderRadius: 14,
+                fontFamily: fontBody,
+                fontWeight: 600,
+                fontSize: 15,
+                cursor: 'pointer',
+              }}
+            >
+              Huỷ
+            </button>
           </div>
-        )}
-      </div>
+        </div>
+      )}
+
+      {confirmed && (
+        <div
+          onClick={handleCloseSuccess}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            background: 'rgba(28,27,27,0.5)',
+            zIndex: 100,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 24,
+          }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              background: colors.surfaceContainerLowest,
+              borderRadius: 24,
+              padding: '40px 28px',
+              width: '100%',
+              maxWidth: 360,
+              textAlign: 'center',
+            }}
+          >
+            <div style={{
+              width: 72,
+              height: 72,
+              background: colors.primaryFixed,
+              borderRadius: 9999,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              margin: '0 auto 20px',
+            }}>
+              <span className="material-symbols-outlined" style={{
+                fontSize: 36,
+                color: colors.primary,
+                fontVariationSettings: "'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24",
+              }}>check_circle</span>
+            </div>
+            <h3 style={{
+              fontFamily: fontHeadline,
+              fontSize: 22,
+              fontWeight: 700,
+              margin: '0 0 8px',
+              color: colors.onSurface,
+            }}>Đổi thưởng thành công!</h3>
+            <p style={{
+              fontFamily: fontBody,
+              fontSize: 14,
+              color: colors.onSurfaceVariant,
+              margin: '0 0 8px',
+              lineHeight: 1.5,
+            }}>{confirmed.title}</p>
+            <p style={{
+              fontFamily: fontBody,
+              fontSize: 13,
+              color: colors.onSurfaceVariant,
+              margin: '0 0 28px',
+            }}>Voucher đã được gửi vào mục Ưu đãi của bạn.</p>
+            <button
+              onClick={handleCloseSuccess}
+              style={{
+                width: '100%',
+                padding: '16px',
+                background: colors.primary,
+                color: '#ffffff',
+                border: 'none',
+                borderRadius: 12,
+                fontFamily: fontBody,
+                fontWeight: 700,
+                fontSize: 15,
+                cursor: 'pointer',
+              }}
+            >
+              Tuyệt vời!
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
