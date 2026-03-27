@@ -1,381 +1,303 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const foodItems = [
-  'Phở', 'Bún chả', 'Cơm tấm', 'Sushi', 'Pizza', 'Pasta',
-  'Salad', 'BBQ', 'Dimsum', 'Lẩu', 'Bánh mì', 'Dessert',
-];
+const T = {
+  bg: '#fcf9f8',
+  surfaceLowest: '#ffffff',
+  surface: '#fcf9f8',
+  surfaceLow: '#f6f3f2',
+  surfaceContainer: '#f0edec',
+  surfaceHigh: '#ebe7e7',
+  surfaceHighest: '#e5e2e1',
+  onSurface: '#1c1b1b',
+  onSurfaceVariant: '#5d4038',
+  primary: '#ad2c00',
+  primaryContainer: '#d83900',
+  primaryFixed: '#ffdbd1',
+  primaryFixedDim: '#ffb5a0',
+  outlineVariant: '#e7bdb2',
+  outline: '#926f66',
+  secondary: '#a83918',
+  secondaryFixed: '#ffdbd1',
+  tertiaryFixed: '#d4e3ff',
+  tertiary: '#005daa',
+  white: '#ffffff',
+};
 
-const dietOptions = [
-  'Không kiêng cử', 'Ăn chay', 'Không gluten', 'Halal', 'Keto',
-];
-
-const priceOptions = [
-  { symbol: '$', label: 'Bình dân', range: '<100k' },
-  { symbol: '$$', label: 'Trung cấp', range: '100-300k' },
-  { symbol: '$$$', label: 'Cao cấp', range: '300k+' },
-];
-
-const allergyItems = [
-  'Hải sản', 'Đậu phộng', 'Sữa', 'Trứng', 'Không có',
-];
-
-const experienceOptions = [
-  { icon: 'local_cafe', label: 'Ấm cúng' },
-  { icon: 'dinner_dining', label: 'Sang trọng' },
-  { icon: 'celebration', label: 'Vui nhộn' },
+const features = [
+  {
+    icon: 'restaurant_menu',
+    iconBg: T.secondaryFixed,
+    iconColor: T.primary,
+    title: 'Hành trình Visa',
+    desc: 'Sưu tầm các địa điểm ẩm thực biểu tượng.',
+  },
+  {
+    icon: 'group',
+    iconBg: T.tertiaryFixed,
+    iconColor: T.tertiary,
+    title: 'Taste Twin',
+    desc: 'Kết nối với những người cùng gu vị giác.',
+  },
+  {
+    icon: 'explore',
+    iconBg: T.primaryFixed,
+    iconColor: T.primary,
+    title: 'Khám phá Món ăn',
+    desc: 'Gợi ý nhà hàng & món theo khẩu vị cá nhân.',
+  },
 ];
 
 const FoodPreferencePage = () => {
   const navigate = useNavigate();
-  const [selectedFoods, setSelectedFoods] = useState(['Phở', 'Sushi', 'Lẩu']);
-  const [selectedDiet, setSelectedDiet] = useState('Không kiêng cử');
-  const [selectedPrice, setSelectedPrice] = useState('$$');
-  const [selectedAllergies, setSelectedAllergies] = useState(['Không có']);
-  const [selectedExperiences, setSelectedExperiences] = useState(['Ấm cúng']);
-
-  const toggleFood = (item) => {
-    setSelectedFoods(prev =>
-      prev.includes(item) ? prev.filter(f => f !== item) : [...prev, item]
-    );
-  };
-
-  const toggleAllergy = (item) => {
-    if (item === 'Không có') {
-      setSelectedAllergies(['Không có']);
-    } else {
-      setSelectedAllergies(prev => {
-        const without = prev.filter(a => a !== 'Không có');
-        return without.includes(item) ? without.filter(a => a !== item) : [...without, item];
-      });
-    }
-  };
-
-  const toggleExperience = (item) => {
-    setSelectedExperiences(prev =>
-      prev.includes(item) ? prev.filter(e => e !== item) : [...prev, item]
-    );
-  };
-
-  const totalSelected = selectedFoods.length + (selectedDiet ? 1 : 0) + (selectedPrice ? 1 : 0) + selectedAllergies.length + selectedExperiences.length;
-  const progress = Math.min(Math.round((totalSelected / 15) * 100), 100);
-
-  const s = {
-    page: {
-      flex: 1,
-      backgroundColor: '#131313',
-      overflowY: 'auto',
-      padding: '40px 24px 80px',
-      maxWidth: 600,
-      margin: '0 auto',
-    },
-    header: {
-      textAlign: 'center',
-      marginBottom: 28,
-    },
-    headerIcon: {
-      fontSize: 48,
-      color: '#FFB59E',
-      marginBottom: 8,
-    },
-    heading: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: 28,
-      fontWeight: 800,
-      color: '#FDF9F3',
-      marginBottom: 6,
-    },
-    subtitle: {
-      fontFamily: 'var(--font-body)',
-      fontSize: 14,
-      color: '#E6BEB2',
-    },
-    sectionTitle: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: 18,
-      fontWeight: 700,
-      color: '#FDF9F3',
-      marginBottom: 14,
-      marginTop: 28,
-    },
-    chipsGrid: {
-      display: 'grid',
-      gridTemplateColumns: 'repeat(4, 1fr)',
-      gap: 10,
-    },
-    chip: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: 6,
-      padding: '12px 8px',
-      borderRadius: '1.5rem',
-      fontSize: 13,
-      fontFamily: 'var(--font-body)',
-      fontWeight: 600,
-      cursor: 'pointer',
-      transition: 'all 0.2s',
-      border: 'none',
-      backgroundColor: '#1C1B1B',
-      color: '#FDF9F3',
-    },
-    chipActive: {
-      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-      color: '#3A0B00',
-    },
-    chipCheck: {
-      fontSize: 16,
-    },
-    dietRow: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: 10,
-    },
-    dietChip: {
-      padding: '10px 18px',
-      borderRadius: '9999px',
-      fontSize: 13,
-      fontFamily: 'var(--font-body)',
-      fontWeight: 600,
-      cursor: 'pointer',
-      border: 'none',
-      backgroundColor: '#1C1B1B',
-      color: '#FDF9F3',
-    },
-    dietActive: {
-      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-      color: '#3A0B00',
-    },
-    priceRow: {
-      display: 'flex',
-      gap: 12,
-    },
-    priceCard: {
-      flex: 1,
-      backgroundColor: '#1C1B1B',
-      borderRadius: '1.5rem',
-      padding: '20px 12px',
-      textAlign: 'center',
-      cursor: 'pointer',
-      border: 'none',
-    },
-    priceCardActive: {
-      backgroundColor: '#FF571A',
-    },
-    priceSymbol: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: 24,
-      fontWeight: 800,
-      color: '#FFB59E',
-      marginBottom: 6,
-    },
-    priceLabel: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: 14,
-      fontWeight: 700,
-      color: '#FDF9F3',
-      marginBottom: 4,
-    },
-    priceRange: {
-      fontFamily: 'var(--font-body)',
-      fontSize: 12,
-      color: '#E6BEB2',
-    },
-    allergyRow: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      gap: 10,
-    },
-    expRow: {
-      display: 'flex',
-      gap: 12,
-    },
-    expCard: {
-      flex: 1,
-      backgroundColor: '#1C1B1B',
-      borderRadius: '1.5rem',
-      padding: '20px 12px',
-      textAlign: 'center',
-      cursor: 'pointer',
-      border: 'none',
-    },
-    expCardActive: {
-      backgroundColor: '#FF571A',
-    },
-    expIcon: {
-      fontSize: 32,
-      color: '#FFB59E',
-      marginBottom: 8,
-    },
-    expLabel: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: 14,
-      fontWeight: 700,
-      color: '#FDF9F3',
-    },
-    saveBtn: {
-      width: '100%',
-      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-      color: '#3A0B00',
-      border: 'none',
-      borderRadius: '9999px',
-      padding: '18px 24px',
-      fontSize: 18,
-      fontWeight: 700,
-      fontFamily: 'var(--font-headline)',
-      cursor: 'pointer',
-      marginTop: 32,
-      marginBottom: 16,
-    },
-    progressSection: {
-      textAlign: 'center',
-    },
-    progressLabel: {
-      fontFamily: 'var(--font-body)',
-      fontSize: 13,
-      color: '#E6BEB2',
-      marginBottom: 10,
-    },
-    progressTrack: {
-      height: 10,
-      backgroundColor: '#2A2A2A',
-      borderRadius: '9999px',
-      overflow: 'hidden',
-    },
-    progressFill: {
-      height: '100%',
-      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-      borderRadius: '9999px',
-      transition: 'width 0.4s ease',
-    },
-  };
 
   return (
-    <div style={s.page}>
-      {/* Header */}
-      <div style={s.header}>
-        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>restaurant</span>
-        <h1 style={s.heading}>Hồ sơ ẩm thực</h1>
-        <div style={s.subtitle}>Cho chúng tôi biết khẩu vị của bạn</div>
+    <div style={{ minHeight: '100vh', backgroundColor: T.bg, fontFamily: "'Manrope', sans-serif", color: T.onSurface }}>
+      <div style={{
+        position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 50,
+        padding: '20px 32px', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        pointerEvents: 'none',
+      }}>
+        <button
+          onClick={() => navigate(-1)}
+          style={{
+            pointerEvents: 'auto', background: 'none', border: 'none', cursor: 'pointer',
+            display: 'flex', alignItems: 'center', gap: 6,
+            color: T.onSurfaceVariant, fontFamily: "'Manrope', sans-serif",
+            fontSize: 14, fontWeight: 600,
+          }}
+        >
+          <span className="material-symbols-outlined" style={{ fontSize: 22 }}>arrow_back</span>
+          Quay lại
+        </button>
+        <div style={{
+          pointerEvents: 'auto',
+          fontFamily: "'Plus Jakarta Sans', sans-serif",
+          fontWeight: 800,
+          fontSize: 26,
+          letterSpacing: '-0.04em',
+          color: T.primary,
+        }}>
+          GoMet
+        </div>
+        <button style={{
+          pointerEvents: 'auto',
+          backgroundColor: 'rgba(255,255,255,0.85)',
+          backdropFilter: 'blur(12px)',
+          border: 'none',
+          borderRadius: 9999,
+          padding: '8px 22px',
+          fontSize: 13,
+          fontWeight: 600,
+          color: T.onSurface,
+          cursor: 'pointer',
+          fontFamily: "'Manrope', sans-serif",
+        }}>
+          Hỗ trợ
+        </button>
       </div>
 
-      {/* Favorite Foods */}
-      <div style={s.sectionTitle}>Món yêu thích</div>
-      <div style={s.chipsGrid} role="group" aria-label="Món yêu thích">
-        {foodItems.map(item => {
-          const active = selectedFoods.includes(item);
-          return (
-            <div
-              key={item}
-              role="checkbox"
-              aria-checked={active}
-              tabIndex={0}
-              style={{ ...s.chip, ...(active ? s.chipActive : {}) }}
-              onClick={() => toggleFood(item)}
-              onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), toggleFood(item))}
-            >
-              {active && <span aria-hidden="true" className="material-symbols-outlined" style={s.chipCheck}>check</span>}
-              {item}
+      <div style={{
+        position: 'fixed', top: 80, right: 80,
+        width: 256, height: 256,
+        backgroundColor: `${T.primary}0D`,
+        borderRadius: '50%',
+        filter: 'blur(100px)',
+        zIndex: 0,
+        pointerEvents: 'none',
+      }} />
+      <div style={{
+        position: 'fixed', bottom: 80, left: 80,
+        width: 384, height: 384,
+        backgroundColor: `${T.tertiary}0D`,
+        borderRadius: '50%',
+        filter: 'blur(120px)',
+        zIndex: 0,
+        pointerEvents: 'none',
+      }} />
+
+      <div style={{
+        position: 'relative', zIndex: 1,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        minHeight: '100vh', padding: '100px 32px 60px',
+      }}>
+        <div style={{ maxWidth: 480, width: '100%' }}>
+          <div style={{ marginBottom: 48 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 4, marginBottom: 16 }}>
+              <span style={{
+                fontFamily: "'Manrope', sans-serif",
+                fontWeight: 700,
+                fontSize: 11,
+                textTransform: 'uppercase',
+                letterSpacing: '0.15em',
+                color: T.primary,
+              }}>
+                Bước 1 trên 3
+              </span>
+              <span style={{
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                fontWeight: 700,
+                fontSize: 16,
+                color: T.onSurface,
+              }}>
+                Khởi tạo hồ sơ
+              </span>
             </div>
-          );
-        })}
-      </div>
-
-      {/* Diet */}
-      <div style={s.sectionTitle}>Chế độ ăn</div>
-      <div style={s.dietRow} role="radiogroup" aria-label="Chế độ ăn">
-        {dietOptions.map(item => {
-          const active = selectedDiet === item;
-          return (
-            <div
-              key={item}
-              role="radio"
-              aria-checked={active}
-              tabIndex={active ? 0 : -1}
-              style={{ ...s.dietChip, ...(active ? s.dietActive : {}) }}
-              onClick={() => setSelectedDiet(item)}
-              onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), setSelectedDiet(item))}
-            >
-              {item}
+            <div style={{ display: 'flex', gap: 6 }}>
+              <div style={{ width: 48, height: 6, borderRadius: 9999, backgroundColor: T.primary }} />
+              <div style={{ width: 48, height: 6, borderRadius: 9999, backgroundColor: T.surfaceHighest }} />
+              <div style={{ width: 48, height: 6, borderRadius: 9999, backgroundColor: T.surfaceHighest }} />
             </div>
-          );
-        })}
-      </div>
+          </div>
 
-      {/* Price Preference */}
-      <div style={s.sectionTitle}>Mức giá ưa thích</div>
-      <div style={s.priceRow} role="radiogroup" aria-label="Mức giá ưa thích">
-        {priceOptions.map(opt => {
-          const active = selectedPrice === opt.symbol;
-          return (
-            <div
-              key={opt.symbol}
-              role="radio"
-              aria-checked={active}
-              tabIndex={active ? 0 : -1}
-              style={{ ...s.priceCard, ...(active ? s.priceCardActive : {}) }}
-              onClick={() => setSelectedPrice(opt.symbol)}
-              onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), setSelectedPrice(opt.symbol))}
+          <div style={{ marginBottom: 40 }}>
+            <h1 style={{
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              fontWeight: 800,
+              fontSize: 52,
+              lineHeight: 1.1,
+              letterSpacing: '-0.02em',
+              color: T.onSurface,
+              margin: '0 0 20px',
+            }}>
+              Chào mừng trải nghiệm{' '}
+              <span style={{ color: T.primary }}>khẩu vị</span>
+            </h1>
+            <p style={{
+              fontFamily: "'Manrope', sans-serif",
+              fontSize: 17,
+              lineHeight: 1.7,
+              color: T.onSurfaceVariant,
+              margin: 0,
+            }}>
+              Bắt đầu hành trình sưu tầm Visa Món ăn và tìm kiếm Taste Twin của bạn. Trắc nghiệm khẩu vị giúp chúng tôi hiểu phong cách ẩm thực riêng biệt của bạn.
+            </p>
+          </div>
+
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 40 }}>
+            {features.map((f, i) => (
+              <div
+                key={i}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  padding: '20px 24px',
+                  backgroundColor: T.surfaceLowest,
+                  borderRadius: 16,
+                  border: `1px solid ${T.outlineVariant}40`,
+                  boxShadow: '0 1px 4px rgba(28,27,27,0.06)',
+                  gap: 16,
+                  cursor: 'default',
+                }}
+              >
+                <div style={{
+                  width: 48, height: 48, borderRadius: '50%',
+                  backgroundColor: f.iconBg,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  flexShrink: 0,
+                }}>
+                  <span
+                    className="material-symbols-outlined"
+                    style={{
+                      fontSize: 24,
+                      color: f.iconColor,
+                      fontVariationSettings: "'FILL' 1",
+                    }}
+                  >
+                    {f.icon}
+                  </span>
+                </div>
+                <div style={{ flex: 1 }}>
+                  <div style={{
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                    fontWeight: 700,
+                    fontSize: 15,
+                    color: T.onSurface,
+                    marginBottom: 3,
+                  }}>
+                    {f.title}
+                  </div>
+                  <div style={{
+                    fontFamily: "'Manrope', sans-serif",
+                    fontSize: 13,
+                    color: T.onSurfaceVariant,
+                    lineHeight: 1.5,
+                  }}>
+                    {f.desc}
+                  </div>
+                </div>
+                <span className="material-symbols-outlined" style={{ fontSize: 20, color: T.outlineVariant }}>
+                  arrow_forward
+                </span>
+              </div>
+            ))}
+          </div>
+
+          <div style={{ padding: '8px 0 0' }}>
+            <button
+              onClick={() => navigate('/app/taste-quiz')}
+              style={{
+                width: '100%',
+                backgroundColor: T.primary,
+                color: T.white,
+                border: 'none',
+                borderRadius: 16,
+                padding: '20px 32px',
+                fontSize: 17,
+                fontWeight: 700,
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                cursor: 'pointer',
+                boxShadow: `0 20px 40px ${T.primary}1A`,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 12,
+                transition: 'opacity 0.2s, transform 0.1s',
+              }}
+              onMouseEnter={e => e.currentTarget.style.opacity = '0.9'}
+              onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+              onMouseDown={e => e.currentTarget.style.transform = 'scale(0.97)'}
+              onMouseUp={e => e.currentTarget.style.transform = 'scale(1)'}
             >
-              <div style={s.priceSymbol}>{opt.symbol}</div>
-              <div style={s.priceLabel}>{opt.label}</div>
-              <div style={s.priceRange}>{opt.range}</div>
-            </div>
-          );
-        })}
-      </div>
+              Bắt đầu khám phá
+              <span className="material-symbols-outlined" style={{ fontSize: 22 }}>quiz</span>
+            </button>
+            <p style={{
+              textAlign: 'center',
+              marginTop: 20,
+              fontSize: 13,
+              color: T.onSurfaceVariant,
+              fontFamily: "'Manrope', sans-serif",
+            }}>
+              Mất khoảng 2 phút để hoàn thành trắc nghiệm.
+            </p>
+          </div>
 
-      {/* Allergies */}
-      <div style={s.sectionTitle}>Dị ứng thực phẩm</div>
-      <div style={s.allergyRow} role="group" aria-label="Dị ứng thực phẩm">
-        {allergyItems.map(item => {
-          const active = selectedAllergies.includes(item);
-          return (
-            <div
-              key={item}
-              role="checkbox"
-              aria-checked={active}
-              tabIndex={0}
-              style={{ ...s.dietChip, ...(active ? s.dietActive : {}) }}
-              onClick={() => toggleAllergy(item)}
-              onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), toggleAllergy(item))}
-            >
-              {item}
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Experience Preference */}
-      <div style={s.sectionTitle}>Trải nghiệm mong muốn</div>
-      <div style={s.expRow} role="group" aria-label="Trải nghiệm mong muốn">
-        {experienceOptions.map(opt => {
-          const active = selectedExperiences.includes(opt.label);
-          return (
-            <div
-              key={opt.label}
-              role="checkbox"
-              aria-checked={active}
-              tabIndex={0}
-              style={{ ...s.expCard, ...(active ? s.expCardActive : {}) }}
-              onClick={() => toggleExperience(opt.label)}
-              onKeyDown={e => (e.key === 'Enter' || e.key === ' ') && (e.preventDefault(), toggleExperience(opt.label))}
-            >
-              <span aria-hidden="true" className="material-symbols-outlined" style={s.expIcon}>{opt.icon}</span>
-              <div style={s.expLabel}>{opt.label}</div>
-            </div>
-          );
-        })}
-      </div>
-
-      {/* Save Button */}
-      <button style={s.saveBtn}>Lưu thay đổi</button>
-
-      {/* Progress */}
-      <div style={s.progressSection}>
-        <div style={s.progressLabel}>Hồ sơ ẩm thực của bạn: {progress}% hoàn thành</div>
-        <div style={s.progressTrack}>
-          <div style={{ ...s.progressFill, width: `${progress}%` }} />
+          <div style={{
+            marginTop: 48,
+            paddingTop: 24,
+            borderTop: `1px solid ${T.outlineVariant}50`,
+            display: 'flex',
+            gap: 32,
+          }}>
+            {['Điều khoản', 'Quyền riêng tư', 'Ngôn ngữ: Tiếng Việt'].map(link => (
+              <a
+                key={link}
+                href="#"
+                style={{
+                  fontFamily: "'Manrope', sans-serif",
+                  fontSize: 11,
+                  fontWeight: 600,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.12em',
+                  color: `${T.onSurfaceVariant}66`,
+                  textDecoration: 'none',
+                }}
+              >
+                {link}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </div>

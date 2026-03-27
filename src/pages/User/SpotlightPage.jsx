@@ -279,7 +279,7 @@ const SpotlightPage = () => {
               <span aria-hidden="true" className="material-symbols-outlined" style={s.verifiedIcon}>verified</span>
             </div>
             <p style={s.featuredBio}>Yêu thích cà phê sáng và những chuyến đi bất ngờ. Tìm một người đồng hành chân thành.</p>
-            <button style={s.viewProfileBtn} onClick={() => navigate('/profile')}>
+            <button style={s.viewProfileBtn} onClick={() => navigate('/app/profile')}>
               <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>person</span>
               Xem hồ sơ
             </button>
@@ -330,7 +330,7 @@ const SpotlightPage = () => {
         <span aria-hidden="true" className="material-symbols-outlined" style={s.premiumIcon}>diamond</span>
         <div style={s.premiumTitle}>Nâng cấp để xem thêm</div>
         <p style={s.premiumDesc}>Mở khóa tất cả gương mặt nổi bật và tính năng độc quyền với GOMET Premium</p>
-        <button style={s.premiumBtn} onClick={() => navigate('/premium')}>
+        <button style={s.premiumBtn} onClick={() => navigate('/app/premium')}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 18 }}>workspace_premium</span>
           Nâng cấp ngay
         </button>

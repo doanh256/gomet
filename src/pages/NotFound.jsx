@@ -4,88 +4,263 @@ import { useNavigate } from 'react-router-dom';
 const NotFound = () => {
   const navigate = useNavigate();
 
-  const styles = {
-    page: { minHeight: '100vh', background: '#131313', color: '#FDF9F3', fontFamily: 'var(--font-body)', display: 'flex', flexDirection: 'column' },
-    container: { maxWidth: '1152px', margin: '0 auto', padding: '48px 24px', flex: 1 },
-    heroRow: { display: 'flex', alignItems: 'center', gap: '48px', marginBottom: '64px', flexWrap: 'wrap' },
-    heroLeft: { flex: '7 1 400px', minWidth: 0 },
-    heroRight: { flex: '5 1 300px', minWidth: 0, display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative', minHeight: '320px' },
-    pill: { display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#2A2A2A', color: '#FFB59E', borderRadius: '9999px', padding: '8px 20px', fontSize: '13px', fontWeight: 600, fontFamily: 'var(--font-headline)', marginBottom: '24px' },
-    heading: { fontFamily: 'var(--font-headline)', fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 800, lineHeight: 1.08, marginBottom: '20px', color: '#FDF9F3' },
-    headingAccent: { color: '#FFB59E', fontStyle: 'italic' },
-    description: { fontSize: '16px', lineHeight: 1.7, color: '#E6BEB2', marginBottom: '32px', maxWidth: '480px' },
-    buttonRow: { display: 'flex', gap: '12px', flexWrap: 'wrap' },
-    btnPrimary: { display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', color: '#3A0B00', border: 'none', borderRadius: '9999px', padding: '14px 28px', fontSize: '15px', fontWeight: 700, fontFamily: 'var(--font-headline)', cursor: 'pointer', transition: 'transform 0.2s, box-shadow 0.2s' },
-    btnSecondary: { display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#353535', color: '#FDF9F3', border: 'none', borderRadius: '9999px', padding: '14px 28px', fontSize: '15px', fontWeight: 600, fontFamily: 'var(--font-headline)', cursor: 'pointer', transition: 'transform 0.2s' },
-    decoBase: { position: 'absolute', borderRadius: '1.5rem' },
-    decoShape1: { width: '200px', height: '240px', background: 'linear-gradient(135deg, #FFB59E, #FF571A)', transform: 'rotate(-8deg)', top: '10px', right: '40px', opacity: 0.9, borderRadius: '1.5rem' },
-    decoShape2: { width: '180px', height: '200px', background: '#2A2A2A', transform: 'rotate(6deg)', top: '40px', right: '80px', borderRadius: '1.5rem' },
-    decoShape3: { width: '160px', height: '160px', background: '#353535', transform: 'rotate(-3deg)', top: '80px', right: '20px', borderRadius: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center' },
-    decoIcon: { fontSize: '64px', color: '#FFB59E', opacity: 0.6 },
-    sectionTitle: { fontFamily: 'var(--font-headline)', fontSize: '24px', fontWeight: 800, marginBottom: '24px', color: '#FDF9F3' },
-    bentoGrid: { display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '16px', marginBottom: '48px' },
-    bentoCard: { background: '#1C1B1B', borderRadius: '1.5rem', padding: '28px 24px', display: 'flex', flexDirection: 'column', gap: '12px', transition: 'transform 0.2s, box-shadow 0.2s', cursor: 'pointer' },
-    bentoCardIcon: { width: '48px', height: '48px', borderRadius: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#2A2A2A', color: '#FFB59E' },
-    bentoCardTitle: { fontFamily: 'var(--font-headline)', fontSize: '16px', fontWeight: 700, color: '#FDF9F3' },
-    bentoCardDesc: { fontSize: '13px', color: '#E6BEB2', lineHeight: 1.5 },
-    footer: { padding: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', maxWidth: '1152px', margin: '0 auto', width: '100%' },
-    footerText: { fontSize: '13px', color: '#E6BEB2' },
-    footerLinks: { display: 'flex', gap: '24px' },
-    footerLink: { fontSize: '13px', color: '#E6BEB2', cursor: 'pointer', background: 'none', border: 'none', fontFamily: 'var(--font-body)', textDecoration: 'none' },
+  const colors = {
+    background: '#fcf9f8',
+    surfaceContainerLowest: '#ffffff',
+    surfaceContainerLow: '#f6f3f2',
+    surfaceContainer: '#f0edec',
+    surfaceContainerHigh: '#ebe7e7',
+    onSurface: '#1c1b1b',
+    onSurfaceVariant: '#5d4038',
+    primary: '#ad2c00',
+    primaryFixed: '#ffdbd1',
+    outlineVariant: '#e7bdb2',
   };
 
-  const bentoCards = [
-    { icon: 'favorite', title: 'Tìm Hẹn Hò', desc: 'Khám phá những kết nối mới mẻ và thú vị dành cho bạn.', colSpan: 2, bg: '#1C1B1B' },
-    { icon: 'restaurant', title: 'Khám Phá Địa Điểm', desc: 'Tìm địa điểm hẹn hò tuyệt vời.', colSpan: 1, bg: '#1C1B1B' },
-    { icon: 'auto_awesome', title: 'Hồ Sơ Ẩm Thực', desc: 'Phân tích sở thích của bạn.', colSpan: 1, bg: '#1C1B1B' },
-    { icon: 'calendar_today', title: 'Lên Kế Hoạch', desc: 'Lên lịch hẹn hoàn hảo.', colSpan: 2, bg: '#353535', centered: true },
-    { icon: 'chat', title: 'Trợ Lý Cá Nhân', desc: 'Trợ lý hẹn hò cá nhân, sẵn sàng giúp bạn bất cứ lúc nào.', colSpan: 3, bg: '#2A2A2A', hasChat: true },
-  ];
+  const fontHeadline = "'Plus Jakarta Sans', sans-serif";
+  const fontBody = "'Manrope', sans-serif";
+
+  const [btnHover, setBtnHover] = React.useState(false);
+  const [backBtnHover, setBackBtnHover] = React.useState(false);
 
   return (
-    <div style={styles.page}>
-      <div style={styles.container}>
-        <div style={styles.heroRow}>
-          <div style={styles.heroLeft}>
-            <div style={styles.pill}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '16px' }}>error</span>Error 404</div>
-            <h1 style={styles.heading}>Ôi! Bạn đã{' '}<span style={styles.headingAccent}>lạc đường</span>{' '}rồi.</h1>
-            <p style={styles.description}>Trang bạn đang tìm không tồn tại hoặc đã bị di chuyển. Đừng lo, chúng tôi sẽ giúp bạn tìm đường về nhà.</p>
-            <div style={styles.buttonRow}>
-              <button style={styles.btnPrimary} onClick={() => navigate('/')} onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }} onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>home</span>Quay về Trang chủ</button>
-              <button style={styles.btnSecondary} onClick={() => navigate('/faq')} onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; }} onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>support_agent</span>Liên hệ Hỗ trợ</button>
+    <div style={{
+      minHeight: '100dvh',
+      background: colors.background,
+      fontFamily: fontBody,
+      color: colors.onSurface,
+      display: 'flex',
+      flexDirection: 'column',
+    }}>
+      <header style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        padding: '0 32px',
+        height: 80,
+        background: colors.background,
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span style={{
+            fontSize: 24,
+            fontWeight: 900,
+            color: colors.onSurface,
+            fontFamily: fontHeadline,
+            letterSpacing: '-0.03em',
+          }}>GoMet</span>
+        </div>
+        <div style={{ display: 'flex', gap: 16 }}>
+          <span className="material-symbols-outlined" style={{ color: colors.onSurface, opacity: 0.6 }}>notifications</span>
+          <span className="material-symbols-outlined" style={{ color: colors.onSurface, opacity: 0.6 }}>account_circle</span>
+        </div>
+      </header>
+
+      <main style={{
+        flex: 1,
+        minHeight: '100dvh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: '80px 24px 40px',
+      }}>
+        <div style={{
+          width: '100%',
+          maxWidth: 384,
+          marginBottom: 48,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          position: 'relative',
+        }}>
+          <div style={{
+            position: 'absolute',
+            width: 256,
+            height: 256,
+            background: colors.surfaceContainerLow,
+            borderRadius: '9999px',
+            zIndex: 0,
+            filter: 'blur(48px)',
+            opacity: 0.6,
+          }} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <div style={{
+              width: 288,
+              height: 288,
+              borderRadius: 16,
+              background: colors.surfaceContainer,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              boxShadow: '0 20px 40px rgba(28,27,27,0.10)',
+              overflow: 'hidden',
+            }}>
+              <div style={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 16,
+              }}>
+                <span className="material-symbols-outlined" style={{
+                  fontSize: 80,
+                  color: colors.onSurfaceVariant,
+                  opacity: 0.35,
+                  fontVariationSettings: "'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 48",
+                }}>dinner_dining</span>
+                <div style={{
+                  width: 120,
+                  height: 2,
+                  background: colors.outlineVariant,
+                  borderRadius: 2,
+                }} />
+                <span className="material-symbols-outlined" style={{
+                  fontSize: 32,
+                  color: colors.onSurfaceVariant,
+                  opacity: 0.25,
+                  fontVariationSettings: "'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24",
+                }}>close</span>
+              </div>
+            </div>
+            <div style={{
+              position: 'absolute',
+              bottom: -24,
+              right: -16,
+              background: colors.surfaceContainerLowest,
+              padding: 16,
+              borderRadius: 16,
+              boxShadow: '0 20px 40px rgba(28,27,27,0.06)',
+              border: `1px solid ${colors.outlineVariant}22`,
+            }}>
+              <span className="material-symbols-outlined" style={{
+                fontSize: 36,
+                color: colors.primary,
+                display: 'block',
+                fontVariationSettings: "'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24",
+              }}>restaurant</span>
             </div>
           </div>
-          <div style={styles.heroRight} className="not-found-deco">
-            <div style={{ ...styles.decoBase, ...styles.decoShape2 }} />
-            <div style={{ ...styles.decoBase, ...styles.decoShape1 }} />
-            <div style={{ ...styles.decoBase, ...styles.decoShape3 }}><span aria-hidden="true" className="material-symbols-outlined" style={styles.decoIcon}>explore_off</span></div>
-          </div>
         </div>
-        <h2 style={styles.sectionTitle}>Điểm Đến Phổ Biến</h2>
-        <div style={styles.bentoGrid}>
-          {bentoCards.map((card, i) => (
-            <div key={i} style={{ ...styles.bentoCard, gridColumn: `span ${card.colSpan}`, background: card.bg, alignItems: card.centered ? 'center' : undefined, textAlign: card.centered ? 'center' : undefined }} onClick={() => navigate('/')} onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; }} onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; }}>
-              <div style={{ ...styles.bentoCardIcon, background: card.bg === '#2A2A2A' ? 'rgba(255,255,255,0.08)' : '#2A2A2A', color: card.bg === '#2A2A2A' ? '#FDF9F3' : '#FFB59E' }}><span aria-hidden="true" className="material-symbols-outlined">{card.icon}</span></div>
-              <div style={{ ...styles.bentoCardTitle, color: '#FDF9F3' }}>{card.title}</div>
-              <div style={{ ...styles.bentoCardDesc }}>{card.desc}</div>
-              {card.hasChat && (<button style={{ marginTop: '8px', display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(255,255,255,0.08)', color: '#FDF9F3', border: 'none', borderRadius: '9999px', padding: '10px 20px', fontSize: '13px', fontWeight: 600, cursor: 'pointer', fontFamily: 'var(--font-headline)' }}><span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>chat</span>Chat với Concierge</button>)}
-            </div>
-          ))}
+
+        <div style={{
+          textAlign: 'center',
+          maxWidth: 320,
+          marginBottom: 0,
+        }}>
+          <h1 style={{
+            fontFamily: fontHeadline,
+            fontSize: 80,
+            fontWeight: 800,
+            letterSpacing: '-0.04em',
+            color: colors.onSurface,
+            margin: '0 0 8px',
+            lineHeight: 1,
+          }}>404</h1>
+          <h2 style={{
+            fontFamily: fontHeadline,
+            fontSize: 20,
+            fontWeight: 700,
+            color: `${colors.onSurface}CC`,
+            margin: '0 0 16px',
+            lineHeight: 1.3,
+          }}>Món này không có trong thực đơn</h2>
+          <p style={{
+            fontFamily: fontBody,
+            fontSize: 14,
+            color: colors.onSurfaceVariant,
+            lineHeight: 1.6,
+            margin: 0,
+            padding: '0 16px',
+          }}>
+            Có vẻ như món ăn bạn đang tìm kiếm đã được phục vụ cho một bàn khác hoặc không còn trong thực đơn hôm nay.
+          </p>
         </div>
-      </div>
-      <div style={styles.footer}>
-        <span style={styles.footerText}>&copy; 2026 GOMET. All rights reserved.</span>
-        <div style={styles.footerLinks}>
-          <span style={styles.footerLink} onClick={() => navigate('/privacy')}>Privacy</span>
-          <span style={styles.footerLink} onClick={() => navigate('/terms')}>Terms</span>
-          <span style={styles.footerLink} onClick={() => navigate('/safety')}>Safety</span>
-          <span style={styles.footerLink} onClick={() => navigate('/faq')}>Help</span>
+
+        <div style={{
+          marginTop: 48,
+          width: '100%',
+          maxWidth: 320,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+        }}>
+          <button
+            onClick={() => navigate('/app')}
+            onMouseEnter={() => setBtnHover(true)}
+            onMouseLeave={() => setBtnHover(false)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 8,
+              width: '100%',
+              padding: '20px 32px',
+              background: btnHover ? '#d83900' : colors.primary,
+              color: '#ffffff',
+              border: 'none',
+              borderRadius: 16,
+              fontFamily: fontBody,
+              fontSize: 15,
+              fontWeight: 700,
+              cursor: 'pointer',
+              boxShadow: `0 8px 24px ${colors.primary}33`,
+              transition: 'background 0.2s, transform 0.15s',
+              transform: btnHover ? 'scale(0.98)' : 'scale(1)',
+            }}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: 20 }}>home</span>
+            Về trang chủ
+          </button>
+
+          <button
+            onClick={() => navigate(-1)}
+            onMouseEnter={() => setBackBtnHover(true)}
+            onMouseLeave={() => setBackBtnHover(false)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: 8,
+              width: '100%',
+              padding: '16px 32px',
+              background: backBtnHover ? colors.surfaceContainerLow : 'transparent',
+              color: colors.onSurface,
+              border: `1px solid ${colors.outlineVariant}4D`,
+              borderRadius: 16,
+              fontFamily: fontBody,
+              fontSize: 15,
+              fontWeight: 600,
+              cursor: 'pointer',
+              transition: 'background 0.2s',
+            }}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
+            Quay lại
+          </button>
         </div>
-      </div>
-      <style>{`
-        @media (max-width: 768px) { .not-found-deco { display: none !important; } }
-        @media (max-width: 640px) { div[style*="grid-template-columns: repeat(6"] { grid-template-columns: repeat(2, 1fr) !important; } div[style*="grid-column: span 3"] { grid-column: span 2 !important; } }
-      `}</style>
+
+        <div style={{
+          marginTop: 'auto',
+          paddingTop: 64,
+          opacity: 0.07,
+          userSelect: 'none',
+          pointerEvents: 'none',
+        }}>
+          <span style={{
+            fontFamily: fontHeadline,
+            fontWeight: 900,
+            fontSize: 60,
+            letterSpacing: '-0.04em',
+            textTransform: 'uppercase',
+            color: colors.onSurface,
+          }}>GOMET</span>
+        </div>
+      </main>
     </div>
   );
 };

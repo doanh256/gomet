@@ -30,7 +30,7 @@ const Register = () => {
     setIsLoading(true);
     try {
       await register(cleanName, cleanEmail, password);
-      navigate('/onboarding');
+      navigate('/profile-setup');
     } catch (err) {
       setError(err.message || 'Đăng ký thất bại');
     } finally {

@@ -26,6 +26,7 @@ import Reports from './pages/Admin/Reports';
 import Login from './pages/Auth/Login';
 import Register from './pages/Auth/Register';
 import OnboardingPage from './pages/Auth/OnboardingPage';
+import ProfileSetupPage from './pages/Auth/ProfileSetupPage';
 import LandingPage from './pages/Auth/LandingPage';
 import NotFound from './pages/NotFound';
 
@@ -118,6 +119,16 @@ const SecretTableSelectionPage = lazy(() => import('./pages/User/SecretTableSele
 const SecretTableBookingPage = lazy(() => import('./pages/User/SecretTableBookingPage'));
 const EliteLandingPage = lazy(() => import('./pages/User/EliteLandingPage'));
 
+// New pages from Stitch designs
+const RewardsPage = lazy(() => import('./pages/User/RewardsPage'));
+const DealsMapPage = lazy(() => import('./pages/User/DealsMapPage'));
+const MomentsPage = lazy(() => import('./pages/User/MomentsPage'));
+const TasteQuizPage = lazy(() => import('./pages/User/TasteQuizPage'));
+const KitchenCardsPage = lazy(() => import('./pages/User/KitchenCardsPage'));
+const BlindSoupDatePage = lazy(() => import('./pages/User/BlindSoupDatePage'));
+const ChemistryScorePage = lazy(() => import('./pages/User/ChemistryScorePage'));
+const RegionalExplorePage = lazy(() => import('./pages/User/RegionalExplorePage'));
+
 // Phase 10 - Final 13 pages (88/88 MASTER coverage)
 const PalateEvolutionPage = lazy(() => import('./pages/User/PalateEvolutionPage'));
 const TasteTwinPage = lazy(() => import('./pages/User/TasteTwinPage'));
@@ -164,6 +175,7 @@ function App() {
             <Route element={<AuthLayout />}>
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/profile-setup" element={<ProfileSetupPage />} />
               <Route path="/onboarding" element={<OnboardingPage />} />
             </Route>
 
@@ -268,6 +280,14 @@ function App() {
               <Route path="empty-states" element={<EmptyStatesPage />} />
               <Route path="moment/:id" element={<MomentDetailPage />} />
               <Route path="elite-upgrade-success" element={<EliteUpgradeSuccessPage />} />
+              <Route path="rewards" element={<RewardsPage />} />
+              <Route path="deals-map" element={<DealsMapPage />} />
+              <Route path="moments" element={<MomentsPage />} />
+              <Route path="taste-quiz" element={<TasteQuizPage />} />
+              <Route path="kitchen-cards" element={<KitchenCardsPage />} />
+              <Route path="blind-soup-date" element={<BlindSoupDatePage />} />
+              <Route path="chemistry/:id" element={<ChemistryScorePage />} />
+              <Route path="regional-explore" element={<RegionalExplorePage />} />
             </Route>
 
             {/* Admin */}

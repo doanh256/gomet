@@ -468,7 +468,7 @@ const ChemistryScorePage = () => {
           </div>
           <div style={s.venueName}>{venue.name}</div>
           <div style={s.venueCuisine}>{venue.cuisine} · {venue.address}</div>
-          <button style={s.bookBtn} onClick={() => navigate('/app/booking')}>
+          <button style={s.bookBtn} onClick={() => navigate('/app/booking-confirm')}>
             Đặt ngay
             <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>arrow_forward</span>
           </button>

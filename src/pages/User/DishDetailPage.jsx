@@ -1,337 +1,681 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const restaurants = [
-  { id: 1, name: 'Pho Thin', address: '13 Lo Duc, Ha Noi', rating: 4.8, price: '50,000d' },
-  { id: 2, name: 'Pho Gia Truyen', address: '49 Bat Dan, Ha Noi', rating: 4.6, price: '45,000d' },
-  { id: 3, name: 'Pho 10 Ly Quoc Su', address: '10 Ly Quoc Su, Ha Noi', rating: 4.5, price: '55,000d' },
-];
+const dish = {
+  id: 'pho-bo',
+  name: 'Phở Bò Tái Lăn',
+  subtitle: 'Biểu tượng văn hóa ẩm thực Việt Nam trong từng sợi bánh phở trắng ngần.',
+  story: 'Phở bò không chỉ là một món ăn, mà là cả một bầu trời ký ức của người Hà Nội. Ra đời từ đầu thế kỷ 20, món ăn là sự giao thoa tinh tế giữa sợi bánh phở mềm mại và nước dùng thanh ngọt được ninh từ xương ống bò trong suốt 12 giờ. Mỗi bát phở là một tác phẩm nghệ thuật của hương vị và tâm hồn người nấu.',
+  ingredients: [
+    'Thăn bò tươi',
+    'Xương ống bò',
+    'Quế, Hồi, Gừng',
+    'Bánh phở tươi',
+  ],
+  vangPoints: 50,
+  rating: 4,
+  restaurants: [
+    {
+      name: 'Phở Gia Truyền Bát Đàn',
+      address: '49 Bát Đàn, Hoàn Kiếm, Hà Nội',
+    },
+    {
+      name: 'Phở Lý Quốc Sư',
+      address: '10 Lý Quốc Sư, Hoàn Kiếm, Hà Nội',
+    },
+    {
+      name: 'Phở Tàu Bay',
+      address: '433 Lý Thường Kiệt, Tân Bình, TP.HCM',
+    },
+  ],
+};
 
-const reviews = [
-  { id: 1, name: 'Thanh Tung', rating: 5, text: 'Nuoc dung dam da, banh pho mem. Tuyet voi!', date: '20/03' },
-  { id: 2, name: 'Ngoc Anh', rating: 4, text: 'Thit bo tai chin rat ngon, phan luong vua du.', date: '18/03' },
-  { id: 3, name: 'Minh Duc', rating: 5, text: 'Pho ngon nhat toi tung an, se quay lai!', date: '15/03' },
-];
+const colors = {
+  background: '#fcf9f8',
+  surfaceLowest: '#ffffff',
+  surfaceContainer: '#f0edec',
+  surfaceContainerLow: '#f6f3f2',
+  surfaceContainerHigh: '#ebe7e7',
+  onSurface: '#1c1b1b',
+  onSurfaceVariant: '#5d4038',
+  primary: '#ad2c00',
+  outlineVariant: '#e7bdb2',
+  primaryFixed: '#ffdbd1',
+  onSecondaryFixedVariant: '#872101',
+};
 
-const nutritionInfo = [
-  { label: 'Calo', value: '350 kcal' },
-  { label: 'Protein', value: '25g' },
-  { label: 'Carbs', value: '42g' },
-  { label: 'Chat beo', value: '8g' },
-  { label: 'Chat xo', value: '2g' },
-];
-
-const relatedDishes = [
-  { id: 1, name: 'Bun bo Hue', region: 'Trung Bo', color: '#2196F3' },
-  { id: 2, name: 'Hu tieu', region: 'Nam Bo', color: '#00BCD4' },
-  { id: 3, name: 'Bun rieu', region: 'Bac Bo', color: '#FF9800' },
-  { id: 4, name: 'Mi Quang', region: 'Trung Bo', color: '#FF5722' },
-];
+const fontHeadline = "'Plus Jakarta Sans', sans-serif";
+const fontBody = "'Manrope', sans-serif";
 
 const DishDetailPage = () => {
   const navigate = useNavigate();
-  const [tried, setTried] = useState(false);
-  const [nutritionOpen, setNutritionOpen] = useState(false);
 
-  const s = {
-    page: {
-      flex: 1, backgroundColor: '#FDF9F3', overflowY: 'auto',
-      maxWidth: 600, margin: '0 auto',
-      fontFamily: 'var(--font-body, "Inter", sans-serif)', color: '#393834',
-    },
-    hero: {
-      width: '100%', height: 320, position: 'relative',
-      background: 'linear-gradient(180deg, #FFB59E 0%, #FF571A 100%)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-    },
-    heroIcon: { fontSize: 80, color: 'rgba(255,255,255,0.3)' },
-    heroOverlay: {
-      position: 'absolute', bottom: 0, left: 0, right: 0, height: 80,
-      background: 'linear-gradient(transparent, #FDF9F3)',
-    },
-    backBtnFloat: {
-      position: 'absolute', top: 20, left: 16, width: 40, height: 40,
-      borderRadius: '50%', background: 'rgba(0,0,0,0.3)', border: 'none',
-      color: '#FDF9F3', display: 'flex', alignItems: 'center', justifyContent: 'center',
-      cursor: 'pointer', zIndex: 2,
-    },
-    body: { padding: '0 24px 100px', marginTop: -20, position: 'relative', zIndex: 1 },
-    dishName: {
-      fontFamily: 'var(--font-headline, "Plus Jakarta Sans")',
-      fontSize: 28, fontWeight: 800, color: '#393834', marginBottom: 8,
-    },
-    metaRow: {
-      display: 'flex', alignItems: 'center', gap: 16, marginBottom: 20,
-    },
-    metaItem: {
-      display: 'flex', alignItems: 'center', gap: 4,
-      fontSize: 13, color: '#666460',
-    },
-    metaIcon: { fontSize: 18 },
-    vangBadge: {
-      display: 'inline-flex', alignItems: 'center', gap: 4,
-      padding: '6px 14px', borderRadius: '9999px',
-      background: 'linear-gradient(135deg, #FFD54F, #F57C00)',
-      fontSize: 13, fontWeight: 700, color: '#1a1a1a',
-    },
-    tryBtn: (done) => ({
-      width: '100%', padding: '16px', borderRadius: '9999px', border: 'none',
-      background: done ? '#117500' : 'linear-gradient(135deg, #117500, #4CAF50)',
-      color: '#FDF9F3', fontSize: 16, fontWeight: 700,
-      fontFamily: 'var(--font-headline)', cursor: 'pointer',
-      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
-      marginBottom: 32,
-    }),
-    sectionTitle: {
-      fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 700,
-      color: '#393834', marginBottom: 16,
-      display: 'flex', alignItems: 'center', gap: 8,
-    },
-    sectionIcon: { fontSize: 22, color: '#FF571A' },
-    restaurantCard: {
-      display: 'flex', alignItems: 'center', gap: 14,
-      padding: '14px 16px', borderRadius: '1rem',
-      backgroundColor: '#ffffff',
-      marginBottom: 10,
-      boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-    },
-    restIcon: {
-      width: 48, height: 48, borderRadius: '0.75rem',
-      background: 'linear-gradient(135deg, #FF571A20, #FFB59E20)',
-      display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
-    },
-    restInfo: { flex: 1 },
-    restName: { fontSize: 15, fontWeight: 700, color: '#393834', marginBottom: 2 },
-    restAddr: { fontSize: 12, color: '#666460' },
-    restRight: { textAlign: 'right' },
-    restRating: {
-      display: 'flex', alignItems: 'center', gap: 2,
-      fontSize: 13, fontWeight: 700, color: '#FF571A',
-    },
-    restPrice: { fontSize: 12, color: '#666460', marginTop: 2 },
-    reviewCard: {
-      padding: '16px', borderRadius: '1rem',
-      backgroundColor: '#ffffff',
-      marginBottom: 10,
-      boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-    },
-    reviewHeader: {
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8,
-    },
-    reviewName: { fontSize: 14, fontWeight: 700, color: '#393834' },
-    reviewDate: { fontSize: 11, color: '#666460' },
-    reviewStars: { display: 'flex', gap: 2, marginBottom: 6 },
-    starIcon: (filled) => ({ fontSize: 16, color: filled ? '#FFD54F' : '#ddd' }),
-    reviewText: { fontSize: 13, color: '#666460', lineHeight: 1.5 },
-    nutritionToggle: {
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      padding: '16px', borderRadius: '1rem',
-      backgroundColor: '#ffffff',
-      marginBottom: 10, border: 'none', width: '100%', cursor: 'pointer',
-      fontFamily: 'var(--font-headline)', fontSize: 15, fontWeight: 700,
-      color: '#393834', boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-    },
-    nutritionGrid: {
-      display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 8,
-      padding: '0 16px 16px', marginBottom: 20,
-    },
-    nutriItem: {
-      textAlign: 'center', padding: '12px 8px', borderRadius: '0.75rem',
-      backgroundColor: '#ffffff',
-    },
-    nutriValue: {
-      fontFamily: 'var(--font-headline)', fontSize: 16, fontWeight: 800,
-      color: '#FF571A',
-    },
-    nutriLabel: { fontSize: 11, color: '#666460', marginTop: 2 },
-    relatedScroll: {
-      display: 'flex', gap: 12, overflowX: 'auto', paddingBottom: 8,
-    },
-    relatedCard: (color) => ({
-      minWidth: 140, padding: '20px 16px', borderRadius: '1rem',
-      backgroundColor: `${color}15`, flexShrink: 0, cursor: 'pointer',
-    }),
-    relatedName: {
-      fontFamily: 'var(--font-headline)', fontSize: 14, fontWeight: 700,
-      color: '#393834', marginBottom: 4,
-    },
-    relatedRegion: { fontSize: 11, color: '#666460' },
-    mapSection: {
-      padding: '24px', borderRadius: '1.5rem',
-      background: 'linear-gradient(135deg, #FFB59E20, #FF571A10)',
-      marginBottom: 28, textAlign: 'center',
-    },
-    mapIcon: { fontSize: 48, color: '#FF571A', marginBottom: 8, display: 'block' },
-    mapLabel: { fontSize: 14, color: '#393834', fontWeight: 600 },
-    mapRegion: {
-      fontFamily: 'var(--font-headline)', fontSize: 18, fontWeight: 800,
-      color: '#FF571A', marginTop: 4,
-    },
-  };
+  const [storyOpen, setStoryOpen] = useState(false);
+  const [ingredientsOpen, setIngredientsOpen] = useState(false);
+  const [placesOpen, setPlacesOpen] = useState(true);
 
   return (
-    <div style={s.page}>
-      {/* Hero */}
-      <div style={s.hero}>
-        <button style={s.backBtnFloat} onClick={() => navigate(-1)}>
-          <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
-        </button>
-        <span aria-hidden="true" className="material-symbols-outlined" style={s.heroIcon}>ramen_dining</span>
-        <div style={s.heroOverlay} />
-      </div>
-
-      <div style={s.body}>
-        <div style={s.dishName}>Pho Bo Ha Noi</div>
-
-        <div style={s.metaRow}>
-          <div style={s.metaItem}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={s.metaIcon}>location_on</span>
-            Dong bang song Hong
-          </div>
-          <div style={s.vangBadge}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>toll</span>
-            +30 VANG
-          </div>
+    <div
+      style={{
+        minHeight: '100dvh',
+        backgroundColor: colors.background,
+        fontFamily: fontBody,
+        color: colors.onSurface,
+        display: 'flex',
+        flexDirection: 'column',
+        position: 'relative',
+      }}
+    >
+      <nav
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 50,
+          backgroundColor: 'rgba(252,249,248,0.85)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          padding: '0 32px',
+          height: 64,
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <button
+            onClick={() => navigate(-1)}
+            aria-label="Quay lại"
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: colors.primary,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 4,
+            }}
+          >
+            <span className="material-symbols-outlined">arrow_back</span>
+          </button>
+          <h1
+            style={{
+              fontFamily: fontHeadline,
+              fontWeight: 700,
+              fontSize: 20,
+              letterSpacing: '-0.02em',
+              color: colors.onSurface,
+              margin: 0,
+            }}
+          >
+            Dish Details
+          </h1>
         </div>
-
-        {/* Mark as Tried */}
-        <button style={s.tryBtn(tried)} onClick={() => setTried(!tried)}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>
-            {tried ? 'check_circle' : 'add_circle'}
-          </span>
-          {tried ? 'Da thu!' : 'Danh dau da thu'}
-        </button>
-
-        {/* Vang Credibility Badge */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '16px 20px', borderRadius: '1rem', backgroundColor: '#ffffff', boxShadow: '0 2px 8px rgba(0,0,0,0.04)', marginBottom: 24 }}>
-          <div style={{ width: 48, height: 48, borderRadius: '50%', background: 'linear-gradient(135deg, #FFD54F, #F57C00)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#3A0B00' }}>verified</span>
-          </div>
-          <div style={{ flex: 1 }}>
-            <div style={{ fontFamily: 'var(--font-headline)', fontSize: 14, fontWeight: 700, color: '#393834', marginBottom: 2 }}>Độ tin cậy Vàng</div>
-            <div style={{ fontSize: 12, color: '#666460' }}>Xác nhận bởi cộng đồng GOMET</div>
-          </div>
-          <div style={{ fontFamily: 'var(--font-headline)', fontSize: 24, fontWeight: 800, color: '#b83500' }}>+30</div>
-        </div>
-
-        {/* Flavor Profile */}
-        <div style={s.sectionTitle}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>equalizer</span>
-          Flavor Profile
-        </div>
-        <div style={{ backgroundColor: '#ffffff', borderRadius: '1rem', padding: '20px', marginBottom: 28, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
-          {[
-            { name: 'Sweet', pct: 85 },
-            { name: 'Salty', pct: 42 },
-            { name: 'Umami', pct: 78 },
-            { name: 'Sour', pct: 35 },
-          ].map(f => (
-            <div key={f.name} style={{ marginBottom: 14 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6 }}>
-                <span style={{ fontSize: 13, fontWeight: 600, color: '#393834' }}>{f.name}</span>
-                <span style={{ fontSize: 12, fontWeight: 700, color: '#b83500' }}>{f.pct}%</span>
-              </div>
-              <div style={{ height: 8, borderRadius: 4, backgroundColor: '#F0EBE3', overflow: 'hidden' }}>
-                <div style={{ height: '100%', width: `${f.pct}%`, borderRadius: 4, backgroundColor: '#b83500', transition: 'width 0.5s ease' }} />
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Restaurant Recommendations */}
-        <div style={s.sectionTitle}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>storefront</span>
-          Tim o dau
-        </div>
-        {restaurants.map(r => (
-          <div key={r.id} style={s.restaurantCard}>
-            <div style={s.restIcon}>
-              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#FF571A' }}>restaurant</span>
-            </div>
-            <div style={s.restInfo}>
-              <div style={s.restName}>{r.name}</div>
-              <div style={s.restAddr}>{r.address}</div>
-            </div>
-            <div style={s.restRight}>
-              <div style={s.restRating}>
-                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 14 }}>star</span>
-                {r.rating}
-              </div>
-              <div style={s.restPrice}>{r.price}</div>
-            </div>
-          </div>
-        ))}
-
-        {/* Critics Circle */}
-        <div style={{ ...s.sectionTitle, marginTop: 28 }}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>forum</span>
-          Critics Circle
-        </div>
-        {reviews.map(rv => (
-          <div key={rv.id} style={s.reviewCard}>
-            <div style={s.reviewHeader}>
-              <div style={s.reviewName}>{rv.name}</div>
-              <div style={s.reviewDate}>{rv.date}</div>
-            </div>
-            <div style={s.reviewStars}>
-              {[1, 2, 3, 4, 5].map(i => (
-                <span key={i} aria-hidden="true" className="material-symbols-outlined" style={s.starIcon(i <= rv.rating)}>star</span>
-              ))}
-            </div>
-            <div style={s.reviewText}>{rv.text}</div>
-          </div>
-        ))}
-
-        {/* Nutritional Info */}
-        <div style={{ marginTop: 28, marginBottom: 12 }}>
-          <button style={s.nutritionToggle} onClick={() => setNutritionOpen(!nutritionOpen)}>
-            <span style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20, color: '#FF571A' }}>nutrition</span>
-              Thong tin dinh duong
-            </span>
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>
-              {nutritionOpen ? 'expand_less' : 'expand_more'}
-            </span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+          <button
+            aria-label="Chia sẻ"
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: colors.primary,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 4,
+            }}
+          >
+            <span className="material-symbols-outlined">share</span>
+          </button>
+          <button
+            aria-label="Thêm tùy chọn"
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              color: colors.primary,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: 4,
+            }}
+          >
+            <span className="material-symbols-outlined">more_vert</span>
           </button>
         </div>
-        {nutritionOpen && (
-          <div style={s.nutritionGrid}>
-            {nutritionInfo.map(n => (
-              <div key={n.label} style={s.nutriItem}>
-                <div style={s.nutriValue}>{n.value}</div>
-                <div style={s.nutriLabel}>{n.label}</div>
-              </div>
-            ))}
+      </nav>
+
+      <main style={{ paddingTop: 64, paddingBottom: 128 }}>
+        <section
+          style={{
+            position: 'relative',
+            height: 397,
+            width: '100%',
+            overflow: 'hidden',
+            background:
+              'linear-gradient(160deg, #ff6b35 0%, #ad2c00 40%, #7a1e00 70%, #3d0f00 100%)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background:
+                'radial-gradient(ellipse at 60% 40%, rgba(255,180,100,0.35) 0%, transparent 65%)',
+              pointerEvents: 'none',
+            }}
+          />
+          <div
+            style={{
+              fontSize: 120,
+              lineHeight: 1,
+              filter: 'drop-shadow(0 8px 32px rgba(0,0,0,0.35))',
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            🍜
           </div>
-        )}
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background:
+                'linear-gradient(to top, #fcf9f8 0%, transparent 50%)',
+              opacity: 0.6,
+              pointerEvents: 'none',
+            }}
+          />
+        </section>
 
-        {/* Discovery Map */}
-        <div style={{ ...s.sectionTitle, marginTop: 16 }}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>explore</span>
-          Ban do kham pha
-        </div>
-        <div style={s.mapSection}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={s.mapIcon}>map</span>
-          <div style={s.mapLabel}>Xuat xu</div>
-          <div style={s.mapRegion}>Dong bang song Hong</div>
-        </div>
+        <section
+          style={{
+            padding: '0 32px',
+            marginTop: -48,
+            position: 'relative',
+            zIndex: 10,
+          }}
+        >
+          <div
+            style={{
+              backgroundColor: colors.surfaceLowest,
+              padding: 32,
+              borderRadius: 16,
+              boxShadow: '0 20px 40px rgba(28,27,27,0.06)',
+            }}
+          >
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                marginBottom: 16,
+              }}
+            >
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  padding: '4px 12px',
+                  borderRadius: 9999,
+                  backgroundColor: colors.primaryFixed,
+                }}
+              >
+                <span
+                  className="material-symbols-outlined"
+                  style={{
+                    fontSize: 14,
+                    color: colors.onSecondaryFixedVariant,
+                    fontVariationSettings: "'FILL' 1",
+                  }}
+                >
+                  workspace_premium
+                </span>
+                <span
+                  style={{
+                    fontSize: 10,
+                    fontWeight: 700,
+                    letterSpacing: '0.08em',
+                    textTransform: 'uppercase',
+                    color: colors.onSecondaryFixedVariant,
+                    fontFamily: fontBody,
+                  }}
+                >
+                  Visa Món Ăn
+                </span>
+              </div>
 
-        {/* Related Dishes */}
-        <div style={s.sectionTitle}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={s.sectionIcon}>apps</span>
-          Mon tuong tu
-        </div>
-        <div style={s.relatedScroll}>
-          {relatedDishes.map(d => (
-            <div key={d.id} style={s.relatedCard(d.color)}>
-              <div style={s.relatedName}>{d.name}</div>
-              <div style={s.relatedRegion}>{d.region}</div>
+              <div style={{ display: 'flex', gap: 2, alignItems: 'center' }}>
+                {[1, 2, 3, 4, 5].map((star) => (
+                  <span
+                    key={star}
+                    className="material-symbols-outlined"
+                    style={{
+                      fontSize: 16,
+                      color: colors.primary,
+                      fontVariationSettings:
+                        star <= dish.rating ? "'FILL' 1" : "'FILL' 0",
+                    }}
+                  >
+                    star
+                  </span>
+                ))}
+              </div>
             </div>
-          ))}
-        </div>
+
+            <h2
+              style={{
+                fontFamily: fontHeadline,
+                fontSize: 36,
+                fontWeight: 800,
+                letterSpacing: '-0.02em',
+                color: colors.onSurface,
+                margin: '0 0 8px',
+                lineHeight: 1.1,
+              }}
+            >
+              {dish.name}
+            </h2>
+
+            <p
+              style={{
+                fontFamily: fontBody,
+                fontSize: 14,
+                fontWeight: 500,
+                color: colors.onSurfaceVariant,
+                margin: 0,
+                lineHeight: 1.6,
+              }}
+            >
+              {dish.subtitle}
+            </p>
+
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 6,
+                marginTop: 16,
+                padding: '6px 14px',
+                borderRadius: 9999,
+                backgroundColor: colors.surfaceContainerLow,
+                border: `1px solid ${colors.outlineVariant}`,
+              }}
+            >
+              <span
+                className="material-symbols-outlined"
+                style={{
+                  fontSize: 16,
+                  color: colors.primary,
+                  fontVariationSettings: "'FILL' 1",
+                }}
+              >
+                stars
+              </span>
+              <span
+                style={{
+                  fontFamily: fontBody,
+                  fontSize: 12,
+                  fontWeight: 700,
+                  color: colors.primary,
+                }}
+              >
+                +{dish.vangPoints} điểm VÀNG khi check-in
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <section
+          style={{
+            marginTop: 40,
+            padding: '0 32px',
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 16,
+          }}
+        >
+          <AccordionSection
+            open={storyOpen}
+            onToggle={() => setStoryOpen(!storyOpen)}
+            icon="auto_stories"
+            title="Câu chuyện"
+          >
+            <p
+              style={{
+                fontSize: 14,
+                fontFamily: fontBody,
+                color: colors.onSurfaceVariant,
+                lineHeight: 1.75,
+                margin: 0,
+              }}
+            >
+              {dish.story}
+            </p>
+          </AccordionSection>
+
+          <AccordionSection
+            open={ingredientsOpen}
+            onToggle={() => setIngredientsOpen(!ingredientsOpen)}
+            icon="soup_kitchen"
+            title="Thành phần"
+          >
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: 12,
+              }}
+            >
+              {dish.ingredients.map((ing) => (
+                <div
+                  key={ing}
+                  style={{
+                    backgroundColor: colors.background,
+                    padding: '12px 14px',
+                    borderRadius: 12,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 10,
+                  }}
+                >
+                  <span
+                    className="material-symbols-outlined"
+                    style={{ fontSize: 18, color: '#a83918' }}
+                  >
+                    check_circle
+                  </span>
+                  <span
+                    style={{
+                      fontSize: 13,
+                      fontWeight: 500,
+                      fontFamily: fontBody,
+                      color: colors.onSurface,
+                    }}
+                  >
+                    {ing}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </AccordionSection>
+
+          <AccordionSection
+            open={placesOpen}
+            onToggle={() => setPlacesOpen(!placesOpen)}
+            icon="near_me"
+            title="Địa điểm gợi ý"
+          >
+            <div
+              style={{
+                position: 'relative',
+                width: '100%',
+                height: 160,
+                borderRadius: 12,
+                overflow: 'hidden',
+                marginBottom: 16,
+                border: `1px solid ${colors.outlineVariant}`,
+                background:
+                  'linear-gradient(135deg, #e8f4f8 0%, #d4e8f0 50%, #c8dfe8 100%)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <div
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  backgroundColor: `rgba(173,44,0,0.06)`,
+                  pointerEvents: 'none',
+                }}
+              />
+              <div
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(5, 1fr)',
+                  gridTemplateRows: 'repeat(4, 1fr)',
+                  gap: 1,
+                  width: '100%',
+                  height: '100%',
+                  opacity: 0.25,
+                }}
+              >
+                {Array.from({ length: 20 }).map((_, i) => (
+                  <div
+                    key={i}
+                    style={{
+                      backgroundColor:
+                        i % 3 === 0
+                          ? '#c8dfe8'
+                          : i % 5 === 0
+                          ? '#a8c8d8'
+                          : '#ddeef5',
+                    }}
+                  />
+                ))}
+              </div>
+              <span
+                className="material-symbols-outlined"
+                style={{
+                  position: 'absolute',
+                  fontSize: 40,
+                  color: colors.primary,
+                  fontVariationSettings: "'FILL' 1",
+                  filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))',
+                }}
+              >
+                location_on
+              </span>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+              {dish.restaurants.map((r) => (
+                <button
+                  key={r.name}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 14,
+                    backgroundColor: colors.background,
+                    padding: '14px 16px',
+                    borderRadius: 12,
+                    border: 'none',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                    width: '100%',
+                  }}
+                >
+                  <div
+                    style={{
+                      width: 48,
+                      height: 48,
+                      borderRadius: 10,
+                      backgroundColor: colors.surfaceContainer,
+                      flexShrink: 0,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: 22,
+                    }}
+                  >
+                    🍜
+                  </div>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div
+                      style={{
+                        fontFamily: fontBody,
+                        fontWeight: 700,
+                        fontSize: 14,
+                        color: colors.onSurface,
+                        marginBottom: 2,
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                      }}
+                    >
+                      {r.name}
+                    </div>
+                    <div
+                      style={{
+                        fontSize: 12,
+                        color: colors.onSurfaceVariant,
+                        fontFamily: fontBody,
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                      }}
+                    >
+                      {r.address}
+                    </div>
+                  </div>
+                  <span
+                    className="material-symbols-outlined"
+                    style={{ fontSize: 20, color: colors.primary, flexShrink: 0 }}
+                  >
+                    chevron_right
+                  </span>
+                </button>
+              ))}
+            </div>
+          </AccordionSection>
+        </section>
+      </main>
+
+      <div
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          padding: '0 24px 24px',
+          background:
+            'linear-gradient(to top, #fcf9f8 60%, rgba(252,249,248,0.95) 80%, transparent 100%)',
+          zIndex: 40,
+        }}
+      >
+        <button
+          onClick={() => navigate('/app/booking')}
+          style={{
+            width: '100%',
+            height: 64,
+            backgroundColor: colors.primary,
+            color: '#ffffff',
+            border: 'none',
+            borderRadius: 9999,
+            fontFamily: fontHeadline,
+            fontWeight: 800,
+            fontSize: 18,
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 10,
+            boxShadow: '0 12px 24px rgba(173,44,0,0.3)',
+          }}
+        >
+          <span
+            className="material-symbols-outlined"
+            style={{ fontVariationSettings: "'FILL' 1", fontSize: 22 }}
+          >
+            add_circle
+          </span>
+          Đặt chỗ
+          <span
+            style={{
+              backgroundColor: 'rgba(255,255,255,0.2)',
+              padding: '4px 12px',
+              borderRadius: 9999,
+              fontSize: 12,
+              fontWeight: 700,
+            }}
+          >
+            +{dish.vangPoints} VÀNG
+          </span>
+        </button>
       </div>
     </div>
   );
 };
+
+const AccordionSection = ({ open, onToggle, icon, title, children }) => (
+  <div
+    style={{
+      borderRadius: 16,
+      backgroundColor: open ? colors.surfaceLowest : colors.surfaceContainerLow,
+      transition: 'background-color 0.3s',
+      overflow: 'hidden',
+    }}
+  >
+    <button
+      onClick={onToggle}
+      aria-expanded={open}
+      style={{
+        width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: '20px 24px',
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        listStyle: 'none',
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+        <div
+          style={{
+            width: 40,
+            height: 40,
+            borderRadius: '50%',
+            backgroundColor: 'rgba(173,44,0,0.08)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexShrink: 0,
+          }}
+        >
+          <span
+            className="material-symbols-outlined"
+            style={{ fontSize: 20, color: colors.primary }}
+          >
+            {icon}
+          </span>
+        </div>
+        <span
+          style={{
+            fontFamily: fontHeadline,
+            fontWeight: 700,
+            fontSize: 17,
+            color: colors.onSurface,
+          }}
+        >
+          {title}
+        </span>
+      </div>
+      <span
+        className="material-symbols-outlined"
+        style={{
+          fontSize: 22,
+          color: '#926f66',
+          display: 'inline-block',
+          transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+          transition: 'transform 0.25s',
+        }}
+      >
+        expand_more
+      </span>
+    </button>
+    {open && (
+      <div style={{ padding: '0 24px 28px' }}>{children}</div>
+    )}
+  </div>
+);
 
 export default DishDetailPage;

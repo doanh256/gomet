@@ -279,9 +279,9 @@ const VerifyIdentityPage = () => {
 
   const renderStep1 = () => (
     <>
-      <div style={styles.stepTitle}>Chup anh selfie</div>
+      <div style={styles.stepTitle}>Chụp ảnh selfie</div>
       <p style={styles.stepDescription}>
-        Chup mot tam anh ro mat de xac minh danh tinh cua ban. Vui long dam bao anh sang tot va nhin thang vao camera.
+        Chụp một tấm ảnh rõ mặt để xác minh danh tính của bạn. Vui lòng đảm bảo ánh sáng tốt và nhìn thẳng vào camera.
       </p>
       <div style={styles.cameraCircle}>
         {selfiePreview ? (
@@ -296,15 +296,15 @@ const VerifyIdentityPage = () => {
         ) : (
           <>
             <span aria-hidden="true" className="material-symbols-outlined" style={styles.cameraIcon}>photo_camera</span>
-            <span style={styles.cameraText}>Nhan de chup</span>
+            <span style={styles.cameraText}>Nhấn để chụp</span>
           </>
         )}
       </div>
       <div style={styles.instructionsList}>
         {[
-          { icon: 'light_mode', text: 'Dam bao du anh sang' },
-          { icon: 'face', text: 'Nhin thang vao camera' },
-          { icon: 'visibility_off', text: 'Khong doi kinh ram hoac khau trang' },
+          { icon: 'light_mode', text: 'Đảm bảo đủ ánh sáng' },
+          { icon: 'face', text: 'Nhìn thẳng vào camera' },
+          { icon: 'visibility_off', text: 'Không đội kính râm hoặc khẩu trang' },
         ].map((item, i) => (
           <div key={i} style={styles.instructionItem}>
             <div style={styles.instructionIcon}>
@@ -319,9 +319,9 @@ const VerifyIdentityPage = () => {
 
   const renderStep2 = () => (
     <>
-      <div style={styles.stepTitle}>Tai CMND/CCCD</div>
+      <div style={styles.stepTitle}>Tải CMND/CCCD</div>
       <p style={styles.stepDescription}>
-        Chup anh mat truoc va mat sau giay to tuy than cua ban. Vui long dam bao anh ro net va khong bi cat goc.
+        Chụp ảnh mặt trước và mặt sau giấy tờ tùy thân của bạn. Vui lòng đảm bảo ảnh rõ nét và không bị cắt góc.
       </p>
       <div style={styles.uploadArea}>
         <div style={styles.uploadCard} onClick={() => setFrontId(true)}>
@@ -341,7 +341,7 @@ const VerifyIdentityPage = () => {
           ) : (
             <>
               <span aria-hidden="true" className="material-symbols-outlined" style={styles.uploadIcon}>add_a_photo</span>
-              <span style={styles.uploadLabel}>Mat truoc</span>
+              <span style={styles.uploadLabel}>Mặt trước</span>
             </>
           )}
         </div>
@@ -362,16 +362,16 @@ const VerifyIdentityPage = () => {
           ) : (
             <>
               <span aria-hidden="true" className="material-symbols-outlined" style={styles.uploadIcon}>add_a_photo</span>
-              <span style={styles.uploadLabel}>Mat sau</span>
+              <span style={styles.uploadLabel}>Mặt sau</span>
             </>
           )}
         </div>
       </div>
       <div style={styles.instructionsList}>
         {[
-          { icon: 'crop_free', text: 'Dat giay to nam trong khung hinh' },
-          { icon: 'blur_on', text: 'Anh khong bi mo hoac choi sang' },
-          { icon: 'content_cut', text: 'Khong cat goc giay to' },
+          { icon: 'crop_free', text: 'Đặt giấy tờ nằm trong khung hình' },
+          { icon: 'blur_on', text: 'Ảnh không bị mờ hoặc chói sáng' },
+          { icon: 'content_cut', text: 'Không cắt góc giấy tờ' },
         ].map((item, i) => (
           <div key={i} style={styles.instructionItem}>
             <div style={styles.instructionIcon}>
@@ -391,11 +391,11 @@ const VerifyIdentityPage = () => {
       </div>
       <div style={styles.verifiedBadge}>
         <span className="material-symbols-outlined filled" style={{ fontSize: 18 }}>verified</span>
-        Da xac minh
+        Đã xác minh
       </div>
-      <div style={styles.successHeading}>Ho so cua ban da duoc xac minh!</div>
+      <div style={styles.successHeading}>Hồ sơ của bạn đã được xác minh!</div>
       <p style={styles.successSub}>
-        Cam on ban da hoan tat xac minh danh tinh. Bay gio ban co the su dung day du tinh nang cua GOMET.
+        Cảm ơn bạn đã hoàn tất xác minh danh tính. Bây giờ bạn có thể sử dụng đầy đủ tính năng của GOMET.
       </p>
     </>
   );
@@ -411,7 +411,7 @@ const VerifyIdentityPage = () => {
           }}
         >
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>photo_camera</span>
-          Chup ngay
+          Chụp ngay
         </button>
       );
     }
@@ -429,14 +429,14 @@ const VerifyIdentityPage = () => {
           }}
         >
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>upload</span>
-          Tai len
+          Tải lên
         </button>
       );
     }
     return (
       <button style={styles.nextBtn} onClick={() => navigate(-1)}>
         <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>person</span>
-        Quay ve trang ca nhan
+        Quay về trang cá nhân
       </button>
     );
   };
@@ -448,8 +448,8 @@ const VerifyIdentityPage = () => {
         <button style={styles.backBtn} onClick={handleBack}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 20 }}>arrow_back</span>
         </button>
-        <span style={styles.headerTitle}>Xac minh danh tinh</span>
-        <span style={styles.stepLabel}>Buoc {step}/{totalSteps}</span>
+        <span style={styles.headerTitle}>Xác minh danh tính</span>
+        <span style={styles.stepLabel}>Bước {step}/{totalSteps}</span>
       </div>
 
       {/* Progress Bar */}
@@ -476,7 +476,7 @@ const VerifyIdentityPage = () => {
         </div>
         <div style={styles.privacyNote}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>lock</span>
-          Thong tin cua ban duoc ma hoa va bao mat tuyet doi.
+          Thông tin của bạn được mã hóa và bảo mật tuyệt đối.
         </div>
       </div>
     </div>

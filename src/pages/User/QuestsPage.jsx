@@ -1,353 +1,221 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const dailyQuests = [
-  { id: 1, icon: 'message', color: '#FF571A', title: 'Gửi 3 tin nhắn', desc: 'Kết nối với những người bạn mới', progress: 2, total: 3, reward: 50, done: false },
-  { id: 2, icon: 'favorite', color: '#FFB59E', title: 'Thích 5 hồ sơ', desc: 'Khám phá và thể hiện sự quan tâm', progress: 5, total: 5, reward: 50, done: true },
-  { id: 3, icon: 'restaurant', color: '#2A2A2A', title: 'Đặt 1 buổi hẹn', desc: 'Lên lịch hẹn hò tại nhà hàng', progress: 0, total: 1, reward: 50, done: false },
-];
-
-const specialQuests = [
-  { id: 10, icon: 'local_fire_department', title: 'Chuỗi 14 ngày hoạt động', desc: 'Đăng nhập và tương tác mỗi ngày trong 14 ngày liên tiếp để nhận thưởng đặc biệt', reward: 500, deadline: '3 ngày còn lại' },
-  { id: 11, icon: 'diversity_3', title: 'Giới thiệu 3 bạn bè', desc: 'Mời bạn bè tham gia GOMET và cùng trải nghiệm hẹn hò tuyệt vời', reward: 500, deadline: '5 ngày còn lại' },
-];
-
-const claimedRewards = [
-  { icon: 'monetization_on', name: '100 xu', date: '20/03' },
-  { icon: 'star', name: 'Huy hiệu Vàng', date: '18/03' },
-  { icon: 'card_giftcard', name: 'Voucher 50k', date: '15/03' },
-  { icon: 'workspace_premium', name: 'Khung ảnh VIP', date: '12/03' },
-  { icon: 'redeem', name: '200 xu', date: '10/03' },
-];
-
 const QuestsPage = () => {
   const navigate = useNavigate();
-  const [level] = useState(5);
-  const [points] = useState(1250);
-  const [streak] = useState(7);
+  const [activeTab, setActiveTab] = useState('quests');
 
-  const s = {
-    page: {
-      flex: 1,
-      backgroundColor: '#131313',
-      overflowY: 'auto',
-      padding: '40px 24px 80px',
-      maxWidth: 600,
-      margin: '0 auto',
-    },
-    header: {
-      textAlign: 'center',
-      marginBottom: 28,
-    },
-    headerIcon: {
-      fontSize: 48,
-      color: '#FFB59E',
-      marginBottom: 8,
-    },
-    heading: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: 28,
-      fontWeight: 800,
-      color: '#FDF9F3',
-      marginBottom: 6,
-    },
-    subtitle: {
-      fontFamily: 'var(--font-body)',
-      fontSize: 14,
-      color: '#E6BEB2',
-    },
-    statsRow: {
-      display: 'flex',
-      gap: 12,
-      marginBottom: 32,
-    },
-    statCard: {
-      flex: 1,
-      backgroundColor: '#1C1B1B',
-      borderRadius: '1.5rem',
-      padding: '16px 12px',
-      textAlign: 'center',
-      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
-    },
-    statIcon: {
-      fontSize: 28,
-      color: '#FFB59E',
-      marginBottom: 4,
-    },
-    statValue: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: 22,
-      fontWeight: 800,
-      color: '#FDF9F3',
-    },
-    statLabel: {
-      fontFamily: 'var(--font-body)',
-      fontSize: 12,
-      color: '#E6BEB2',
-      marginTop: 2,
-    },
-    section: {
-      marginBottom: 28,
-    },
-    sectionTitle: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: 18,
-      fontWeight: 700,
-      color: '#FDF9F3',
-      marginBottom: 14,
-    },
-    questCard: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 14,
-      backgroundColor: '#1C1B1B',
-      borderRadius: '1.5rem',
-      padding: '16px',
-      marginBottom: 10,
-      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
-    },
-    questCardDone: {
-      opacity: 0.6,
-    },
-    questIconWrap: {
-      width: 48,
-      height: 48,
-      borderRadius: '9999px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      flexShrink: 0,
-    },
-    questIcon: {
-      fontSize: 24,
-      color: '#fff',
-    },
-    questCenter: {
-      flex: 1,
-      minWidth: 0,
-    },
-    questTitle: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: 15,
-      fontWeight: 700,
-      color: '#FDF9F3',
-      marginBottom: 2,
-    },
-    questDesc: {
-      fontFamily: 'var(--font-body)',
-      fontSize: 12,
-      color: '#E6BEB2',
-      marginBottom: 8,
-    },
-    progressBar: {
-      height: 6,
-      backgroundColor: '#353535',
-      borderRadius: '9999px',
-      overflow: 'hidden',
-    },
-    progressFill: {
-      height: '100%',
-      borderRadius: '9999px',
-      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-      transition: 'width 0.3s',
-    },
-    progressText: {
-      fontFamily: 'var(--font-body)',
-      fontSize: 11,
-      color: '#E6BEB2',
-      marginTop: 4,
-    },
-    rewardBadge: {
-      backgroundColor: 'rgba(255,181,158,0.15)',
-      color: '#FFB59E',
-      fontFamily: 'var(--font-headline)',
-      fontSize: 12,
-      fontWeight: 700,
-      padding: '6px 10px',
-      borderRadius: '9999px',
-      whiteSpace: 'nowrap',
-      flexShrink: 0,
-    },
-    doneBadge: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 4,
-      color: '#117500',
-      fontFamily: 'var(--font-body)',
-      fontSize: 12,
-      flexShrink: 0,
-    },
-    specialCard: {
-      backgroundColor: '#2A2A2A',
-      borderRadius: '1.5rem',
-      padding: '24px 20px',
-      marginBottom: 12,
-    },
-    specialTop: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: 12,
-      marginBottom: 10,
-    },
-    specialIcon: {
-      fontSize: 32,
-      color: '#FF571A',
-    },
-    specialTitle: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: 17,
-      fontWeight: 700,
-      color: '#FDF9F3',
-    },
-    specialDesc: {
-      fontFamily: 'var(--font-body)',
-      fontSize: 13,
-      color: '#E6BEB2',
-      opacity: 0.8,
-      lineHeight: 1.5,
-      marginBottom: 12,
-    },
-    specialBottom: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-    },
-    specialReward: {
-      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-      color: '#3A0B00',
-      fontFamily: 'var(--font-headline)',
-      fontSize: 14,
-      fontWeight: 700,
-      padding: '6px 14px',
-      borderRadius: '9999px',
-    },
-    specialDeadline: {
-      fontFamily: 'var(--font-body)',
-      fontSize: 12,
-      color: '#E6BEB2',
-      opacity: 0.6,
-      display: 'flex',
-      alignItems: 'center',
-      gap: 4,
-    },
-    rewardsScroll: {
-      display: 'flex',
-      gap: 12,
-      overflowX: 'auto',
-      paddingBottom: 8,
-    },
-    rewardItem: {
-      flex: '0 0 auto',
-      width: 100,
-      backgroundColor: '#1C1B1B',
-      borderRadius: '1.5rem',
-      padding: '14px 10px',
-      textAlign: 'center',
-    },
-    rewardItemIcon: {
-      fontSize: 28,
-      color: '#FFD54F',
-      marginBottom: 6,
-    },
-    rewardItemName: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: 13,
-      fontWeight: 600,
-      color: '#FDF9F3',
-      marginBottom: 2,
-    },
-    rewardItemDate: {
-      fontFamily: 'var(--font-body)',
-      fontSize: 11,
-      color: '#E6BEB2',
-    },
+  const colors = {
+    background: '#fcf9f8',
+    surfaceContainerLowest: '#ffffff',
+    surfaceContainer: '#f0edec',
+    surfaceContainerLow: '#f6f3f2',
+    surfaceContainerHigh: '#ebe7e7',
+    onSurface: '#1c1b1b',
+    onSurfaceVariant: '#5d4038',
+    primary: '#ad2c00',
+    secondary: '#a83918',
+    secondaryContainer: '#ff7852',
+    outlineVariant: '#e7bdb2',
+    primaryFixed: '#ffdbd1',
   };
 
+  const fontHeadline = "'Plus Jakarta Sans', sans-serif";
+  const fontBody = "'Manrope', sans-serif";
+
+  const leaderboardUsers = [
+    { rank: 1, initials: 'MA', name: 'Minh Anh Lê', title: 'Bậc thầy Ẩm thực', points: '12,450', isTop: true, avatarBg: '#ad2c00', avatarColor: '#fff' },
+    { rank: 2, initials: 'HN', name: 'Hoàng Nam', title: 'Người Sành Ăn', points: '10,820', isTop: false, avatarBg: '#ffdbd1', avatarColor: '#ad2c00' },
+    { rank: 3, initials: 'TN', name: 'Trâm Nguyễn', title: 'Người Khám Phá', points: '9,150', isTop: false, avatarBg: '#f0edec', avatarColor: '#5d4038' },
+  ];
+
   return (
-    <div style={s.page}>
-      <div style={s.header}>
-        <span aria-hidden="true" className="material-symbols-outlined" style={s.headerIcon}>emoji_events</span>
-        <h1 style={s.heading}>Trung tâm thử thách</h1>
-        <p style={s.subtitle}>Hoàn thành nhiệm vụ, nhận thưởng lớn!</p>
-      </div>
-
-      <div style={s.statsRow}>
-        <div style={s.statCard}>
-          <span className="material-symbols-outlined filled" style={s.statIcon}>star</span>
-          <div style={s.statValue}>{level}</div>
-          <div style={s.statLabel}>Cấp độ</div>
-        </div>
-        <div style={s.statCard}>
-          <span className="material-symbols-outlined filled" style={s.statIcon}>toll</span>
-          <div style={s.statValue}>{points.toLocaleString()}</div>
-          <div style={s.statLabel}>Điểm tích lũy</div>
-        </div>
-        <div style={s.statCard}>
-          <span className="material-symbols-outlined filled" style={{...s.statIcon, color: '#FF571A'}}>local_fire_department</span>
-          <div style={s.statValue}>{streak}</div>
-          <div style={s.statLabel}>Chuỗi ngày</div>
-        </div>
-      </div>
-
-      <div style={s.section}>
-        <h2 style={s.sectionTitle}>Nhiệm vụ hàng ngày</h2>
-        {dailyQuests.map(q => (
-          <div key={q.id} style={{...s.questCard, ...(q.done ? s.questCardDone : {})}}>
-            <div style={{...s.questIconWrap, backgroundColor: q.color}}>
-              <span className="material-symbols-outlined filled" style={s.questIcon}>{q.icon}</span>
-            </div>
-            <div style={s.questCenter}>
-              <div style={s.questTitle}>{q.title}</div>
-              <div style={s.questDesc}>{q.desc}</div>
-              <div style={s.progressBar}>
-                <div style={{...s.progressFill, width: `${(q.progress / q.total) * 100}%`}} />
-              </div>
-              <div style={s.progressText}>{q.progress}/{q.total}</div>
-            </div>
-            {q.done ? (
-              <div style={s.doneBadge}>
-                <span className="material-symbols-outlined filled" style={{ fontSize: 20 }}>check_circle</span>
-                Xong
-              </div>
-            ) : (
-              <div style={s.rewardBadge}>+{q.reward} xu</div>
-            )}
+    <div style={{ backgroundColor: colors.background, minHeight: '100dvh', fontFamily: fontHeadline, color: colors.onSurface, WebkitFontSmoothing: 'antialiased' }}>
+      <header style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 50, backgroundColor: colors.background }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 32px', height: 80, maxWidth: 896, margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 28, color: colors.primary }}>restaurant_menu</span>
+            <h1 style={{ fontFamily: fontHeadline, fontWeight: 800, color: colors.primary, letterSpacing: '-0.05em', fontSize: 24, margin: 0 }}>Culinary Quests</h1>
           </div>
-        ))}
-      </div>
+          <div style={{ width: 40, height: 40, borderRadius: '9999px', backgroundColor: colors.surfaceContainerHigh, display: 'flex', alignItems: 'center', justifyContent: 'center', border: `2px solid rgba(173,44,0,0.1)`, overflow: 'hidden' }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 24, color: colors.onSurfaceVariant }}>person</span>
+          </div>
+        </div>
+      </header>
 
-      <div style={s.section}>
-        <h2 style={s.sectionTitle}>Thử thách đặc biệt</h2>
-        {specialQuests.map(q => (
-          <div key={q.id} style={s.specialCard}>
-            <div style={s.specialTop}>
-              <span className="material-symbols-outlined filled" style={s.specialIcon}>{q.icon}</span>
-              <div style={s.specialTitle}>{q.title}</div>
+      <main style={{ paddingTop: 96, paddingBottom: 128, paddingLeft: 24, paddingRight: 24, maxWidth: 672, margin: '0 auto' }}>
+        <div style={{ display: 'flex', padding: 6, backgroundColor: colors.surfaceContainerLow, borderRadius: '0.75rem', marginBottom: 40, position: 'sticky', top: 96, zIndex: 40, boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
+          <button
+            onClick={() => setActiveTab('quests')}
+            style={{ flex: 1, padding: '12px 0', textAlign: 'center', borderRadius: '0.5rem', fontFamily: fontHeadline, fontWeight: 700, fontSize: 14, letterSpacing: '0.025em', border: 'none', cursor: 'pointer', transition: 'all 0.3s', backgroundColor: activeTab === 'quests' ? colors.surfaceContainerLowest : 'transparent', color: activeTab === 'quests' ? colors.primary : colors.onSurfaceVariant, boxShadow: activeTab === 'quests' ? '0 1px 3px rgba(0,0,0,0.08)' : 'none' }}
+          >
+            Nhiệm vụ
+          </button>
+          <button
+            onClick={() => setActiveTab('ranking')}
+            style={{ flex: 1, padding: '12px 0', textAlign: 'center', borderRadius: '0.5rem', fontFamily: fontHeadline, fontWeight: 700, fontSize: 14, letterSpacing: '0.025em', border: 'none', cursor: 'pointer', transition: 'all 0.3s', backgroundColor: activeTab === 'ranking' ? colors.surfaceContainerLowest : 'transparent', color: activeTab === 'ranking' ? colors.primary : colors.onSurfaceVariant, boxShadow: activeTab === 'ranking' ? '0 1px 3px rgba(0,0,0,0.08)' : 'none' }}
+          >
+            Xếp hạng
+          </button>
+        </div>
+
+        <section>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16, marginBottom: 32 }}>
+            <div style={{ backgroundColor: colors.surfaceContainerLowest, padding: 16, borderRadius: '0.75rem', boxShadow: '0 1px 2px rgba(0,0,0,0.05)', border: `1px solid rgba(231,189,178,0.05)` }}>
+              <p style={{ fontSize: 10, fontWeight: 700, color: colors.onSurfaceVariant, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 4, margin: '0 0 4px 0', fontFamily: fontBody }}>TỔNG VÀNG POINTS</p>
+              <p style={{ fontSize: 20, fontWeight: 800, color: colors.primary, margin: 0, fontFamily: fontHeadline }}>8,450</p>
             </div>
-            <div style={s.specialDesc}>{q.desc}</div>
-            <div style={s.specialBottom}>
-              <div style={s.specialReward}>+{q.reward} xu</div>
-              <div style={s.specialDeadline}>
-                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 16 }}>schedule</span>
-                {q.deadline}
-              </div>
+            <div style={{ backgroundColor: colors.surfaceContainerLowest, padding: 16, borderRadius: '0.75rem', boxShadow: '0 1px 2px rgba(0,0,0,0.05)', border: `1px solid rgba(231,189,178,0.05)` }}>
+              <p style={{ fontSize: 10, fontWeight: 700, color: colors.onSurfaceVariant, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 4, margin: '0 0 4px 0', fontFamily: fontBody }}>HẠNG HIỆN TẠI</p>
+              <p style={{ fontSize: 20, fontWeight: 800, color: colors.onSurface, margin: 0, fontFamily: fontHeadline }}>#12</p>
+            </div>
+            <div style={{ backgroundColor: colors.surfaceContainerLowest, padding: 16, borderRadius: '0.75rem', boxShadow: '0 1px 2px rgba(0,0,0,0.05)', border: `1px solid rgba(231,189,178,0.05)` }}>
+              <p style={{ fontSize: 10, fontWeight: 700, color: colors.onSurfaceVariant, textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: 4, margin: '0 0 4px 0', fontFamily: fontBody }}>NHIỆM VỤ XONG</p>
+              <p style={{ fontSize: 20, fontWeight: 800, color: colors.onSurface, margin: 0, fontFamily: fontHeadline }}>14</p>
             </div>
           </div>
-        ))}
-      </div>
 
-      <div style={s.section}>
-        <h2 style={s.sectionTitle}>Phần thưởng đã nhận</h2>
-        <div style={s.rewardsScroll}>
-          {claimedRewards.map((r, i) => (
-            <div key={i} style={s.rewardItem}>
-              <span className="material-symbols-outlined filled" style={s.rewardItemIcon}>{r.icon}</span>
-              <div style={s.rewardItemName}>{r.name}</div>
-              <div style={s.rewardItemDate}>{r.date}</div>
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', padding: '0 8px', marginBottom: 24 }}>
+            <div>
+              <span style={{ color: colors.primary, fontWeight: 700, fontSize: 12, textTransform: 'uppercase', letterSpacing: '0.1em', display: 'block', marginBottom: 8, fontFamily: fontBody }}>Hôm nay</span>
+              <h2 style={{ fontSize: 30, fontWeight: 800, letterSpacing: '-0.025em', margin: 0, fontFamily: fontHeadline }}>Thử thách mới</h2>
             </div>
-          ))}
+            <span style={{ color: colors.onSurfaceVariant, fontWeight: 500, fontSize: 14, fontFamily: fontBody }}>3/5 hoàn thành</span>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+            <div style={{ gridColumn: '1 / -1', position: 'relative', overflow: 'hidden', borderRadius: '1rem', backgroundColor: colors.surfaceContainerLowest, padding: 32 }}>
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 24 }}>
+                  <div style={{ padding: 12, backgroundColor: colors.primaryFixed, borderRadius: '9999px', color: colors.primary, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1", fontSize: 24 }}>ramen_dining</span>
+                  </div>
+                  <span style={{ backgroundColor: 'rgba(168,57,24,0.1)', color: colors.secondary, fontWeight: 700, fontSize: 12, padding: '4px 12px', borderRadius: '9999px', fontFamily: fontBody }}>+500 PTS</span>
+                </div>
+                <h3 style={{ fontSize: 24, fontWeight: 700, margin: '0 0 8px 0', fontFamily: fontHeadline }}>Chuyên Gia Ramen</h3>
+                <p style={{ color: colors.onSurfaceVariant, fontSize: 14, margin: '0 0 24px 0', lineHeight: 1.6, fontFamily: fontBody }}>Ghé thăm và đánh giá 3 quán mì Ramen bất kỳ trong tuần này.</p>
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '-0.025em', marginBottom: 8, fontFamily: fontHeadline }}>
+                    <span>Tiến độ</span>
+                    <span>66%</span>
+                  </div>
+                  <div style={{ width: '100%', height: 8, backgroundColor: colors.surfaceContainer, borderRadius: '9999px', overflow: 'hidden' }}>
+                    <div style={{ height: '100%', backgroundColor: colors.primary, borderRadius: '9999px', width: '66.6%', transition: 'width 0.7s' }} />
+                  </div>
+                </div>
+              </div>
+              <div style={{ position: 'absolute', right: -32, bottom: -32, opacity: 0.05 }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 160 }}>restaurant</span>
+              </div>
+            </div>
+
+            <div style={{ backgroundColor: colors.surfaceContainerLow, borderRadius: '1rem', padding: 24, border: `1px solid rgba(231,189,178,0.1)` }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+                <div style={{ width: 48, height: 48, borderRadius: '0.75rem', backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.primary, boxShadow: '0 1px 3px rgba(0,0,0,0.1)', flexShrink: 0 }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 24 }}>local_cafe</span>
+                </div>
+                <div>
+                  <h4 style={{ fontWeight: 700, fontSize: 16, margin: '0 0 2px 0', fontFamily: fontHeadline }}>Sáng Tỉnh Táo</h4>
+                  <span style={{ fontSize: 12, color: colors.onSurfaceVariant, fontFamily: fontBody }}>Thưởng thức Cà phê</span>
+                </div>
+              </div>
+              <div style={{ width: '100%', height: 6, backgroundColor: colors.surfaceContainer, borderRadius: '9999px', marginTop: 16 }}>
+                <div style={{ height: '100%', backgroundColor: colors.secondaryContainer, borderRadius: '9999px', width: '100%' }} />
+              </div>
+              <div style={{ marginTop: 16, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ fontSize: 10, fontWeight: 700, color: colors.primary, textTransform: 'uppercase', fontFamily: fontBody }}>Hoàn thành</span>
+                <span className="material-symbols-outlined" style={{ color: colors.primary, fontSize: 18 }}>check_circle</span>
+              </div>
+            </div>
+
+            <div style={{ backgroundColor: colors.surfaceContainerLow, borderRadius: '1rem', padding: 24, border: `1px solid rgba(231,189,178,0.1)` }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+                <div style={{ width: 48, height: 48, borderRadius: '0.75rem', backgroundColor: '#ffffff', display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.primary, boxShadow: '0 1px 3px rgba(0,0,0,0.1)', flexShrink: 0 }}>
+                  <span className="material-symbols-outlined" style={{ fontSize: 24 }}>bakery_dining</span>
+                </div>
+                <div>
+                  <h4 style={{ fontWeight: 700, fontSize: 16, margin: '0 0 2px 0', fontFamily: fontHeadline }}>Vị Ngọt Ngào</h4>
+                  <span style={{ fontSize: 12, color: colors.onSurfaceVariant, fontFamily: fontBody }}>Tiệm bánh thủ công</span>
+                </div>
+              </div>
+              <div style={{ width: '100%', height: 6, backgroundColor: colors.surfaceContainer, borderRadius: '9999px', marginTop: 16 }}>
+                <div style={{ height: '100%', backgroundColor: 'rgba(173,44,0,0.2)', borderRadius: '9999px', width: '25%' }} />
+              </div>
+              <div style={{ marginTop: 16, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ fontSize: 10, fontWeight: 700, color: colors.onSurfaceVariant, textTransform: 'uppercase', fontFamily: fontBody }}>1/4 Địa điểm</span>
+                <span className="material-symbols-outlined" style={{ color: colors.onSurfaceVariant, fontSize: 18 }}>hourglass_empty</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section style={{ marginTop: 64 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 8px', marginBottom: 32 }}>
+            <h2 style={{ fontSize: 24, fontWeight: 800, letterSpacing: '-0.025em', margin: 0, fontFamily: fontHeadline }}>Xếp hạng tuần</h2>
+            <button style={{ color: colors.primary, fontWeight: 700, fontSize: 14, display: 'flex', alignItems: 'center', gap: 4, background: 'none', border: 'none', cursor: 'pointer', fontFamily: fontBody }}>
+              Xem tất cả
+              <span className="material-symbols-outlined" style={{ fontSize: 18 }}>chevron_right</span>
+            </button>
+          </div>
+          <div style={{ backgroundColor: colors.surfaceContainerLowest, borderRadius: '1rem', boxShadow: '0 1px 3px rgba(0,0,0,0.06)', overflow: 'hidden' }}>
+            {leaderboardUsers.map((user, index) => (
+              <div
+                key={user.rank}
+                style={{ display: 'flex', alignItems: 'center', padding: 20, borderBottom: index < leaderboardUsers.length - 1 ? `1px solid ${colors.surfaceContainerLow}` : 'none' }}
+              >
+                <div style={{ width: 32, fontWeight: 700, fontStyle: 'italic', color: user.isTop ? colors.primary : colors.onSurfaceVariant, fontFamily: fontHeadline, fontSize: 14 }}>#{user.rank}</div>
+                <div style={{ position: 'relative', flexShrink: 0 }}>
+                  <div style={{ width: 48, height: 48, borderRadius: '9999px', border: user.isTop ? `2px solid rgba(173,44,0,0.2)` : `1px solid ${colors.surfaceContainerHigh}`, padding: 2, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '100%', height: '100%', borderRadius: '9999px', backgroundColor: user.avatarBg, display: 'flex', alignItems: 'center', justifyContent: 'center', color: user.avatarColor, fontWeight: 700, fontSize: 14, fontFamily: fontHeadline }}>
+                      {user.initials}
+                    </div>
+                  </div>
+                  {user.isTop && (
+                    <div style={{ position: 'absolute', bottom: -4, right: -4, backgroundColor: colors.primary, color: '#ffffff', fontSize: 8, padding: '2px 4px', borderRadius: '9999px', border: '2px solid #ffffff', fontWeight: 700, fontFamily: fontBody }}>TOP</div>
+                  )}
+                </div>
+                <div style={{ marginLeft: 16, flex: 1 }}>
+                  <h4 style={{ fontWeight: 700, fontSize: 14, margin: '0 0 2px 0', fontFamily: fontHeadline }}>{user.name}</h4>
+                  <span style={{ fontSize: 10, color: colors.onSurfaceVariant, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', fontFamily: fontBody }}>{user.title}</span>
+                </div>
+                <div style={{ textAlign: 'right' }}>
+                  <div style={{ fontWeight: 800, color: user.isTop ? colors.primary : colors.onSurface, fontFamily: fontHeadline, fontSize: 15 }}>{user.points}</div>
+                  <div style={{ fontSize: 10, color: colors.onSurfaceVariant, fontFamily: fontBody }}>Điểm tích lũy</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </main>
+
+      <nav style={{ position: 'fixed', bottom: 32, left: 0, width: '100%', zIndex: 50, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '0 24px' }}>
+        <div style={{ backgroundColor: 'rgba(255,255,255,0.85)', backdropFilter: 'blur(20px)', borderRadius: '9999px', display: 'flex', justifyContent: 'space-around', alignItems: 'center', width: '90%', paddingTop: 12, paddingBottom: 12, paddingLeft: 24, paddingRight: 24, boxShadow: '0 20px 40px rgba(28,27,27,0.06)', border: `1px solid rgba(235,231,231,0.2)` }}>
+          <button
+            onClick={() => navigate('/app')}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.onSurface, width: 48, height: 48, background: 'none', border: 'none', cursor: 'pointer', borderRadius: '9999px' }}
+          >
+            <span className="material-symbols-outlined">explore</span>
+          </button>
+          <button
+            onClick={() => navigate('/app/wallet')}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.onSurface, width: 48, height: 48, background: 'none', border: 'none', cursor: 'pointer', borderRadius: '9999px' }}
+          >
+            <span className="material-symbols-outlined">toll</span>
+          </button>
+          <button
+            onClick={() => navigate('/app/quests')}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', backgroundColor: colors.primary, color: '#ffffff', width: 48, height: 48, borderRadius: '9999px', border: 'none', cursor: 'pointer' }}
+          >
+            <span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>emoji_events</span>
+          </button>
+          <button
+            onClick={() => navigate('/app/profile')}
+            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: colors.onSurface, width: 48, height: 48, background: 'none', border: 'none', cursor: 'pointer', borderRadius: '9999px' }}
+          >
+            <span className="material-symbols-outlined">person</span>
+          </button>
         </div>
-      </div>
+      </nav>
     </div>
   );
 };

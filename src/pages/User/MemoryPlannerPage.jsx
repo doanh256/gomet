@@ -63,10 +63,10 @@ const MemoryPlannerPage = () => {
       <h2 style={s.sectionTitle}>Ngày đặc biệt sắp tới</h2>
       <div style={s.countdownRow}>{upcomingDates.map((d) => (<div key={d.id} style={s.countdownCard(d.color)}><span aria-hidden="true" className="material-symbols-outlined" style={s.countdownIcon(d.color)}>{d.icon}</span><div style={s.countdownLabel}>{d.label}</div><div style={s.countdownDays}><span style={s.countdownNumber}>{d.daysLeft}</span> ngày nữa</div></div>))}</div>
       <h2 style={s.sectionTitle}>Gợi ý kế hoạch</h2>
-      <div style={s.ideaGrid}>{planIdeas.map((idea) => (<div key={idea.id} style={s.ideaCard}><span aria-hidden="true" className="material-symbols-outlined" style={s.ideaIcon}>{idea.icon}</span><div style={s.ideaTitle}>{idea.title}</div><div style={s.ideaDesc}>{idea.desc}</div><button style={s.ideaBtn}>{idea.btn}</button></div>))}</div>
+      <div style={s.ideaGrid}>{planIdeas.map((idea) => (<div key={idea.id} style={s.ideaCard}><span aria-hidden="true" className="material-symbols-outlined" style={s.ideaIcon}>{idea.icon}</span><div style={s.ideaTitle}>{idea.title}</div><div style={s.ideaDesc}>{idea.desc}</div><button style={s.ideaBtn} onClick={() => alert(`${idea.title}: ${idea.desc}`)}>{idea.btn}</button></div>))}</div>
       <h2 style={s.sectionTitle}>Lịch sử kỷ niệm</h2>
       <div style={s.timelineSection}>{pastMemories.map((mem, i) => (<div key={mem.id} style={s.memoryItem}>{i < pastMemories.length - 1 && <div style={s.memoryLine} />}<div style={s.memoryDot}><div style={s.memoryDotInner} /></div><div style={s.memoryContent}><div style={s.memoryDate}>{mem.date}</div><div style={s.memoryTitle}>{mem.title}</div><div style={s.memoryPhoto}><span aria-hidden="true" className="material-symbols-outlined" style={s.memoryPhotoIcon}>image</span></div><div style={s.memoryNote}>{mem.note}</div></div></div>))}</div>
-      <button style={s.addBtn}><span aria-hidden="true" className="material-symbols-outlined" style={s.addIcon}>add_circle</span>Thêm ngày đặc biệt</button>
+      <button style={s.addBtn} onClick={() => alert("Tính năng thêm ngày đặc biệt sẽ sớm ra mắt!")}><span aria-hidden="true" className="material-symbols-outlined" style={s.addIcon}>add_circle</span>Thêm ngày đặc biệt</button>
     </div>
   );
 };

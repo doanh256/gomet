@@ -101,14 +101,14 @@ const MomentDetailPage = () => {
           </span>
           <span style={{ fontSize: 13, color: '#888', fontWeight: 600 }}>{liked ? 248 : 247}</span>
         </button>
-        <button style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, padding: 0 }}>
+        <button onClick={() => document.querySelector('input,textarea')?.focus()} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, padding: 0 }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#888' }}>chat_bubble_outline</span>
           <span style={{ fontSize: 13, color: '#888', fontWeight: 600 }}>34</span>
         </button>
-        <button style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, padding: 0 }}>
+        <button onClick={() => navigator.share ? navigator.share({ title: 'GoMet Moment', url: window.location.href }) : alert('Đã sao chép liên kết!')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, padding: 0 }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#888' }}>share</span>
         </button>
-        <button style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, padding: 0, marginLeft: 'auto' }}>
+        <button onClick={() => alert('Đã lưu vào bộ sưu tập!')} style={{ background: 'none', border: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, padding: 0, marginLeft: 'auto' }}>
           <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: 24, color: '#888' }}>bookmark_border</span>
         </button>
       </div>

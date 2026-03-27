@@ -1,66 +1,77 @@
 /* Fonts are loaded via <link> in index.html for optimal mobile performance */
 
 :root {
-  /* === PERSIMMON PULSE NOCTURNAL (Dark Mode - Primary) === */
+  /* === GOMET LIGHT THEME — Warm Cream × Deep Red === */
 
-  /* Primary Persimmon */
-  --primary: #FFB59E;
-  --primary-container: #FF571A;
-  --on-primary: #3A0B00;
-  --on-primary-container: #FFDBD1;
-  --primary-fixed: #FFDBD1;
+  /* Primary — Deep Red */
+  --primary: #ad2c00;
+  --primary-container: #d83900;
+  --on-primary: #ffffff;
+  --on-primary-container: #fffbff;
+  --primary-fixed: #ffdbd1;
+  --primary-fixed-dim: #ffb5a0;
+  --inverse-primary: #ffb5a0;
 
-  /* Secondary (Neon Green - "Tried" status) */
-  --secondary: #117500;
-  --secondary-container: #842502;
+  /* Secondary — Burnt Sienna */
+  --secondary: #a83918;
+  --secondary-container: #ff7852;
   --on-secondary: #ffffff;
+  --on-secondary-container: #6c1800;
+  --secondary-fixed: #ffdbd1;
+  --secondary-fixed-dim: #ffb5a0;
 
-  /* Tertiary (Gold - Vang points) */
-  --tertiary: #815f00;
-  --tertiary-container: #FFD54F;
+  /* Tertiary — Blue accent */
+  --tertiary: #005daa;
+  --tertiary-container: #0075d5;
+  --on-tertiary: #ffffff;
+  --on-tertiary-container: #fefcff;
 
-  /* Surface Hierarchy (Nocturnal) */
-  --surface: #131313;
-  --surface-dim: #131313;
-  --surface-bright: #393939;
-  --surface-container-lowest: #0E0E0E;
-  --surface-container-low: #1C1B1B;
-  --surface-container: #20201F;
-  --surface-container-high: #2A2A2A;
-  --surface-container-highest: #353535;
-  --surface-variant: #353535;
+  /* Surface Hierarchy (Light / Warm Cream) */
+  --background: #fcf9f8;
+  --surface: #fcf9f8;
+  --surface-bright: #fcf9f8;
+  --surface-dim: #dcd9d9;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f6f3f2;
+  --surface-container: #f0edec;
+  --surface-container-high: #ebe7e7;
+  --surface-container-highest: #e5e2e1;
+  --surface-variant: #e5e2e1;
+  --surface-tint: #b12d00;
 
   /* On-Surface */
-  --on-surface: #FDF9F3;
-  --on-surface-variant: #E6BEB2;
-  --on-background: #E5E2E1;
+  --on-surface: #1c1b1b;
+  --on-surface-variant: #5d4038;
+  --on-background: #1c1b1b;
 
   /* Outline */
-  --outline: #8c706f;
-  --outline-variant: #453533;
+  --outline: #926f66;
+  --outline-variant: #e7bdb2;
 
   /* Error */
-  --error: #FFB4AB;
-  --error-container: #93000A;
+  --error: #ba1a1a;
+  --error-container: #ffdad6;
+  --on-error: #ffffff;
+  --on-error-container: #93000a;
 
   /* Inverse */
-  --inverse-surface: #E5E2E1;
-  --inverse-on-surface: #313030;
+  --inverse-surface: #313030;
+  --inverse-on-surface: #f3f0ef;
 
   /* Gradients */
-  --primary-gradient: linear-gradient(135deg, #FFB59E, #FF571A);
-  --primary-gradient-light: linear-gradient(135deg, #b83500, #ff784d);
+  --primary-gradient: linear-gradient(135deg, #d83900, #ad2c00);
+  --primary-gradient-warm: linear-gradient(135deg, #ff7852, #d83900);
 
-  /* Shadows (Ghost shadows - 6% opacity) */
-  --ghost-shadow: 0px 16px 40px rgba(0, 0, 0, 0.25);
-  --editorial-shadow: 0px 20px 40px rgba(0, 0, 0, 0.4);
-  --card-shadow: 0px 8px 24px rgba(0, 0, 0, 0.15);
+  /* Shadows (light theme — soft warm) */
+  --ghost-shadow: 0px 4px 20px rgba(28, 27, 27, 0.06);
+  --card-shadow: 0px 10px 40px rgba(28, 27, 27, 0.04);
+  --elevated-shadow: 0px 16px 48px rgba(173, 44, 0, 0.12);
 
   /* Glass */
-  --glass-bg: rgba(57, 57, 57, 0.6);
+  --glass-bg: rgba(252, 249, 248, 0.85);
   --glass-blur: 20px;
 
-  /* Radius (24px cards, pill buttons) */
+  /* Radius */
   --radius: 1rem;
   --radius-lg: 1.5rem;
   --radius-xl: 2rem;
@@ -68,47 +79,29 @@
 
   /* Typography */
   --font-headline: 'Plus Jakarta Sans', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-body: 'Manrope', sans-serif;
 
-  /* Vang Gold */
-  --vang-gold: #FFD54F;
+  /* Vàng Gold tiers */
+  --vang-gold: #c97d10;
   --vang-bronze: #CD7F32;
-  --vang-silver: #C0C0C0;
-  --vang-diamond: #B9F2FF;
+  --vang-silver: #8a8fa3;
+  --vang-diamond: #005daa;
 
-  /* Legacy compat */
-  --primary-color: #FF571A;
-  --secondary-color: #FFB59E;
-  --accent-gold: #FFD54F;
-  --bg-color: #131313;
-  --text-color: #FDF9F3;
-  --text-light: #E6BEB2;
-  --border-color: #353535;
-}
-
-/* Light mode override */
-@media (prefers-color-scheme: light) {
-  :root.light {
-    --primary: #b83500;
-    --primary-container: #FF571A;
-    --on-primary: #ffffff;
-    --surface: #FDF9F3;
-    --surface-container-lowest: #ffffff;
-    --surface-container-low: #fdf9f2;
-    --surface-container: #f1ede7;
-    --surface-container-high: #ebe8e2;
-    --surface-container-highest: #e6e2dc;
-    --on-surface: #393834;
-    --on-surface-variant: #584140;
-    --primary-gradient: linear-gradient(135deg, #b83500, #ff784d);
-  }
+  /* Legacy compat aliases */
+  --primary-color: #ad2c00;
+  --secondary-color: #ff7852;
+  --accent-gold: #c97d10;
+  --bg-color: #fcf9f8;
+  --text-color: #1c1b1b;
+  --text-light: #5d4038;
+  --border-color: #e7bdb2;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: var(--font-body);
-  background-color: var(--surface);
+  background-color: var(--background);
   color: var(--on-surface);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -142,11 +135,8 @@ h1, h2, h3, h4, h5, h6 {
   font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
-/* Scrollbar - dark themed */
+/* Scrollbar — light theme */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: var(--surface-variant); border-radius: 3px; }
-::selection { background: var(--primary-container); color: var(--on-primary); }
-
-/* No-Line Rule: no 1px borders anywhere. Use bg color shifts */
-/* Ghost borders max 15% opacity */
+::-webkit-scrollbar-thumb { background: var(--outline-variant); border-radius: 3px; }
+::selection { background: var(--primary-fixed); color: var(--primary); }

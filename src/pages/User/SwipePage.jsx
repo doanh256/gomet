@@ -1,750 +1,212 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import MatchPopup from '../../components/User/MatchPopup';
-import { useAppContext } from '../../AppContext';
-import { useToast } from '../../components/ToastNotification';
-import ProfileDetailModal from '../../components/User/ProfileDetailModal';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const SwipePage = () => {
-  const { profiles, swipe, fetchProfiles } = useAppContext();
-  const { addToast } = useToast();
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [animationClass, setAnimationClass] = useState('entering');
-  const [matchUser, setMatchUser] = useState(null);
-  const [isDetailOpen, setIsDetailOpen] = useState(false);
-  const [imgLoaded, setImgLoaded] = useState(false);
-  const [swipeFeedback, setSwipeFeedback] = useState(null);
-  const [dragX, setDragX] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const lastSwipeRef = useRef(0);
-  const swipeTimeoutRef = useRef(null);
-  const dragStartRef = useRef(0);
-
-  useEffect(() => {
-    fetchProfiles();
-  }, [fetchProfiles]);
-
-  const currentProfile = profiles[currentIndex];
-
-  const getImages = (profile) => {
-    if (!profile) return [];
-    if (profile.images && profile.images.length > 0) {
-      return profile.images.map(img => typeof img === 'string' ? img : img.url);
-    }
-    if (profile.avatar) return [profile.avatar];
-    return [];
-  };
-
-  const handleSwipe = useCallback(async (direction) => {
-    if (currentIndex >= profiles.length) return;
-    const now = Date.now();
-    if (now - lastSwipeRef.current < 400) return;
-    lastSwipeRef.current = now;
-
-    const action = direction === 'right' ? 'like' : 'dislike';
-    setSwipeFeedback(direction === 'right' ? 'like' : 'nope');
-    setAnimationClass(direction === 'right' ? 'exit-right' : 'exit-left');
-
-    const result = await swipe(currentProfile.id, action);
-    if (result?.matched && result?.matchUser) {
-      setMatchUser(result.matchUser);
-    }
-
-    if (swipeTimeoutRef.current) clearTimeout(swipeTimeoutRef.current);
-    swipeTimeoutRef.current = setTimeout(() => {
-      setCurrentIndex(prev => prev + 1);
-      setCurrentImageIndex(0);
-      setAnimationClass('entering');
-      setImgLoaded(false);
-      setSwipeFeedback(null);
-      setDragX(0);
-    }, 350);
-  }, [currentIndex, profiles.length, swipe, currentProfile]);
-
-  const handleSuperLike = useCallback(async () => {
-    if (!currentProfile) return;
-    setSwipeFeedback('like');
-    setAnimationClass('exit-right');
-    const result = await swipe(currentProfile.id, 'superlike');
-    if (result?.matched && result?.matchUser) {
-      setMatchUser(result.matchUser);
-    }
-    if (swipeTimeoutRef.current) clearTimeout(swipeTimeoutRef.current);
-    swipeTimeoutRef.current = setTimeout(() => {
-      setCurrentIndex(prev => prev + 1);
-      setCurrentImageIndex(0);
-      setAnimationClass('entering');
-      setImgLoaded(false);
-      setSwipeFeedback(null);
-      setDragX(0);
-    }, 350);
-  }, [currentProfile, swipe]);
-
-  // Touch/mouse drag
-  const handlePointerDown = (e) => {
-    dragStartRef.current = e.clientX;
-    setIsDragging(true);
-  };
-  const handlePointerMove = (e) => {
-    if (!isDragging) return;
-    const diff = e.clientX - dragStartRef.current;
-    setDragX(diff);
-    if (diff > 50) setSwipeFeedback('like');
-    else if (diff < -50) setSwipeFeedback('nope');
-    else setSwipeFeedback(null);
-  };
-  const handlePointerUp = () => {
-    if (!isDragging) return;
-    setIsDragging(false);
-    if (dragX > 100) handleSwipe('right');
-    else if (dragX < -100) handleSwipe('left');
-    else { setDragX(0); setSwipeFeedback(null); }
-  };
-
-  // Keyboard shortcuts
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (!currentProfile) return;
-      if (document.activeElement.tagName === 'INPUT' || document.activeElement.tagName === 'TEXTAREA') return;
-      switch (e.key) {
-        case 'ArrowLeft': handleSwipe('left'); break;
-        case 'ArrowRight': handleSwipe('right'); break;
-        case ' ':
-          e.preventDefault();
-          if (getImages(currentProfile).length > 1) {
-            setCurrentImageIndex(prev => prev < getImages(currentProfile).length - 1 ? prev + 1 : 0);
-          }
-          break;
-        case 'ArrowUp': e.preventDefault(); setIsDetailOpen(true); break;
-        case 'ArrowDown': e.preventDefault(); setIsDetailOpen(false); break;
-        case 'Enter': e.preventDefault(); handleSuperLike(); break;
-        default: break;
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      if (swipeTimeoutRef.current) clearTimeout(swipeTimeoutRef.current);
-    };
-  }, [currentIndex, currentImageIndex, currentProfile, handleSwipe, handleSuperLike]);
-
-  useEffect(() => {
-    document.title = currentProfile
-      ? `GOMET: ${currentProfile.name}${currentProfile.age ? ` (${currentProfile.age})` : ''}`
-      : 'GOMET - Tìm người phù hợp';
-  }, [currentProfile]);
-
-  const images = currentProfile ? getImages(currentProfile) : [];
-  const currentImg = images[currentImageIndex] || currentProfile?.avatar;
-
-  const cardTransform = isDragging
-    ? `translateX(${dragX}px) rotate(${dragX * 0.05}deg)`
-    : animationClass === 'exit-right'
-      ? 'translateX(120%) rotate(15deg)'
-      : animationClass === 'exit-left'
-        ? 'translateX(-120%) rotate(-15deg)'
-        : 'translateX(0) rotate(0)';
-
-  const cardOpacity = animationClass === 'exit-right' || animationClass === 'exit-left' ? 0 : 1;
-
-  // Taste profile data
-  const tasteProfile = currentProfile?.tasteProfile || {
-    spice: 3,
-    style: 'Street food',
-    region: 'Nam Bộ',
-  };
-
-  // Deterministic score based on profile ID — not random per render
-  const getMatchScore = (profileId) => {
-    if (!profileId) return 85;
-    const hash = String(profileId).split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
-    return (hash % 16) + 82; // 82–97
-  };
-  const matchScore = currentProfile?.matchScore || getMatchScore(currentProfile?.id);
-
-  // Icebreaker
-  const icebreakers = [
-    'Bạn thích ăn phở hay bún bò hơn?',
-    'Quán cà phê nào là số một của bạn?',
-    'Món ăn comfort food của bạn là gì?',
-    'Bạn có thích nấu ăn không?',
-  ];
-  const icebreaker = currentProfile?.icebreaker || icebreakers[currentIndex % icebreakers.length];
-
-  // Next profiles preview
-  const nextProfiles = profiles.slice(currentIndex + 1, currentIndex + 4);
-
-  // Vang tier
-  const tierLabels = ['Bạc', 'Vàng', 'Bạch Kim', 'Kim Cương'];
-  const tier = currentProfile?.tier || tierLabels[currentIndex % tierLabels.length];
-
-  const s = {
-    container: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      padding: '16px 16px 24px',
-      maxWidth: '440px',
-      margin: '0 auto',
-      width: '100%',
-      minHeight: '100vh',
-      backgroundColor: 'var(--surface)',
-      fontFamily: 'var(--font-body)',
-    },
-    header: {
-      width: '100%',
-      marginBottom: '12px',
-      textAlign: 'center',
-    },
-    headerLabel: {
-      fontSize: '11px',
-      fontWeight: 700,
-      letterSpacing: '2px',
-      color: 'var(--primary)',
-      textTransform: 'uppercase',
-      marginBottom: '2px',
-      fontFamily: 'var(--font-headline)',
-    },
-    headerTitle: {
-      fontSize: '22px',
-      fontWeight: 800,
-      color: 'var(--on-surface)',
-      fontFamily: 'var(--font-headline)',
-      margin: 0,
-    },
-
-    // Main card
-    cardWrapper: {
-      position: 'relative',
-      width: '100%',
-      aspectRatio: '3/4.5',
-      maxHeight: '580px',
-      borderRadius: '1.5rem',
-      overflow: 'hidden',
-      boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
-      cursor: 'grab',
-      userSelect: 'none',
-      transform: cardTransform,
-      opacity: cardOpacity,
-      transition: isDragging ? 'none' : 'transform 0.35s cubic-bezier(.4,0,.2,1), opacity 0.35s ease',
-      touchAction: 'pan-y',
-    },
-    cardImage: {
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      display: 'block',
-    },
-    gradientOverlay: {
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      height: '65%',
-      background: 'linear-gradient(to top, #131313 0%, rgba(19,19,19,0.7) 40%, transparent 100%)',
-      pointerEvents: 'none',
-    },
-    gradientOverlayTop: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      height: '30%',
-      background: 'linear-gradient(to bottom, rgba(19,19,19,0.4) 0%, transparent 100%)',
-      pointerEvents: 'none',
-    },
-
-    // Match score badge
-    matchBadge: {
-      position: 'absolute',
-      top: '16px',
-      right: '16px',
-      width: '60px',
-      height: '60px',
-      borderRadius: '50%',
-      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 5,
-      boxShadow: '0 0 20px rgba(255,87,26,0.5)',
-    },
-    matchBadgeText: {
-      fontFamily: 'var(--font-headline)',
-      fontSize: '18px',
-      fontWeight: 800,
-      color: '#fff',
-    },
-
-    // Card info overlay
-    cardInfo: {
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      padding: '20px',
-      zIndex: 3,
-    },
-    nameRow: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '8px',
-      marginBottom: '6px',
-    },
-    name: {
-      fontSize: '28px',
-      fontWeight: 800,
-      color: '#fff',
-      fontFamily: 'var(--font-headline)',
-    },
-    age: {
-      fontSize: '24px',
-      fontWeight: 400,
-      color: 'rgba(255,255,255,0.9)',
-    },
-    verifiedBadge: {
-      display: 'inline-flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      width: '24px',
-      height: '24px',
-      borderRadius: '50%',
-      background: 'var(--primary)',
-      color: '#fff',
-      fontSize: '14px',
-    },
-    tierBadge: {
-      display: 'inline-flex',
-      alignItems: 'center',
-      gap: '4px',
-      fontSize: '11px',
-      fontWeight: 700,
-      color: '#FFD54F',
-      background: 'rgba(255,213,79,0.15)',
-      padding: '4px 10px',
-      borderRadius: '9999px',
-      marginLeft: '4px',
-    },
-
-    // Taste profile glass card
-    tasteCard: {
-      background: 'rgba(42,42,42,0.7)',
-      backdropFilter: 'blur(20px)',
-      WebkitBackdropFilter: 'blur(20px)',
-      borderRadius: '16px',
-      padding: '14px 16px',
-      marginTop: '10px',
-    },
-    tasteRow: {
-      display: 'flex',
-      alignItems: 'center',
-      gap: '8px',
-      marginBottom: '6px',
-    },
-    tasteLabel: {
-      fontSize: '12px',
-      color: 'rgba(255,255,255,0.6)',
-      width: '80px',
-      flexShrink: 0,
-    },
-    tasteValue: {
-      fontSize: '13px',
-      fontWeight: 600,
-      color: '#fff',
-    },
-
-    // Icebreaker
-    icebreakerBox: {
-      background: 'rgba(255,181,158,0.1)',
-      borderRadius: '12px',
-      padding: '12px 16px',
-      marginTop: '10px',
-    },
-    icebreakerLabel: {
-      fontSize: '10px',
-      fontWeight: 700,
-      letterSpacing: '1px',
-      color: 'var(--primary)',
-      textTransform: 'uppercase',
-      marginBottom: '4px',
-    },
-    icebreakerText: {
-      fontSize: '13px',
-      fontStyle: 'italic',
-      color: 'rgba(255,255,255,0.85)',
-      lineHeight: 1.5,
-    },
-
-    // Image indicators
-    imageIndicators: {
-      position: 'absolute',
-      top: '12px',
-      left: '12px',
-      right: '80px',
-      display: 'flex',
-      gap: '4px',
-      zIndex: 6,
-    },
-
-    // Feedback overlay
-    feedbackOverlay: (type) => ({
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%) rotate(-15deg)',
-      fontSize: '48px',
-      fontWeight: 900,
-      fontFamily: 'var(--font-headline)',
-      letterSpacing: '4px',
-      padding: '8px 24px',
-      borderRadius: '12px',
-      color: type === 'like' ? '#4CAF50' : '#FF5252',
-      opacity: type ? 1 : 0,
-      transition: 'opacity 0.15s',
-      pointerEvents: 'none',
-      zIndex: 7,
-      textShadow: '0 2px 12px rgba(0,0,0,0.5)',
-    }),
-
-    // Action buttons
-    actionsRow: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '24px',
-      marginTop: '20px',
-    },
-
-    // Waiting preview
-    waitingRow: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      gap: '8px',
-      marginTop: '20px',
-    },
-    waitingLabel: {
-      fontSize: '12px',
-      color: 'var(--on-surface-variant)',
-      marginBottom: '8px',
-      textAlign: 'center',
-      marginTop: '16px',
-    },
-    waitingThumb: {
-      width: '40px',
-      height: '40px',
-      borderRadius: '50%',
-      objectFit: 'cover',
-      opacity: 0.4,
-      background: 'var(--surface-container-high)',
-    },
-    waitingThumbFallback: {
-      width: '40px',
-      height: '40px',
-      borderRadius: '50%',
-      opacity: 0.4,
-      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: '#fff',
-      fontSize: '16px',
-      fontWeight: 700,
-      fontFamily: 'var(--font-headline)',
-    },
-
-    // Empty / Loading
-    emptyState: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: '400px',
-      textAlign: 'center',
-      padding: '24px',
-    },
-    emptyIcon: {
-      fontSize: '64px',
-      color: 'var(--primary-container)',
-      marginBottom: '16px',
-    },
-    emptyTitle: {
-      fontSize: '22px',
-      fontWeight: 700,
-      color: 'var(--on-surface)',
-      fontFamily: 'var(--font-headline)',
-      marginBottom: '8px',
-    },
-    emptySubtext: {
-      fontSize: '14px',
-      color: 'var(--on-surface-variant)',
-      lineHeight: 1.6,
-      maxWidth: '280px',
-      marginBottom: '24px',
-    },
-    refreshBtn: {
-      padding: '12px 32px',
-      borderRadius: '9999px',
-      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-      color: '#3A0B00',
-      border: 'none',
-      fontSize: '15px',
-      fontWeight: 700,
-      cursor: 'pointer',
-      boxShadow: '0 4px 16px rgba(255,87,26,0.3)',
-    },
-    loadingSpinner: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      minHeight: '400px',
-    },
-    spinner: {
-      width: '40px',
-      height: '40px',
-      borderRadius: '50%',
-      border: '3px solid var(--surface-container-high)',
-      borderTop: '3px solid var(--primary)',
-      animation: 'spin 0.8s linear infinite',
-    },
-    navZone: (side) => ({
-      position: 'absolute',
-      top: 0,
-      bottom: 0,
-      width: '40%',
-      [side]: 0,
-      zIndex: 2,
-      cursor: 'pointer',
-    }),
-  };
-
-  // Keyframes
-  useEffect(() => {
-    const styleId = 'swipe-keyframes';
-    if (!document.getElementById(styleId)) {
-      const styleEl = document.createElement('style');
-      styleEl.id = styleId;
-      styleEl.textContent = `@keyframes spin { to { transform: rotate(360deg); } }`;
-      document.head.appendChild(styleEl);
-    }
-  }, []);
-
-  const renderActionBtn = (size, bg, shadow, icon, iconSize, iconColor, onClick, label) => (
-    <button
-      onClick={onClick}
-      aria-label={label}
-      style={{
-        width: `${size}px`,
-        height: `${size}px`,
-        borderRadius: '50%',
-        border: 'none',
-        background: bg,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: 'pointer',
-        boxShadow: shadow || 'none',
-        transition: 'transform 0.15s, box-shadow 0.15s',
-        outline: 'none',
-      }}
-      onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.1)'; }}
-      onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; }}
-    >
-      <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: `${iconSize}px`, color: iconColor }}>{icon}</span>
-    </button>
-  );
-
-  return (
-    <div style={s.container}>
-      {matchUser && <MatchPopup user={matchUser} onClose={() => setMatchUser(null)} />}
-
-      {/* Header */}
-      <div style={s.header}>
-        <p style={s.headerLabel}>GOMET MEET</p>
-        <h1 style={s.headerTitle}>Tìm người phù hợp</h1>
-      </div>
-
-      {/* Main Card */}
-      {!profiles.length && !currentProfile ? (
-        <div style={s.loadingSpinner}>
-          <div style={s.spinner} />
-        </div>
-      ) : currentProfile ? (
-        <>
-          <div
-            style={s.cardWrapper}
-            onPointerDown={handlePointerDown}
-            onPointerMove={handlePointerMove}
-            onPointerUp={handlePointerUp}
-            onPointerLeave={handlePointerUp}
-          >
-            {/* Image indicators */}
-            {images.length > 1 && (
-              <div style={s.imageIndicators}>
-                {images.map((_, idx) => (
-                  <div key={idx} style={{
-                    flex: 1, height: '3px', borderRadius: '2px',
-                    background: idx === currentImageIndex ? '#fff' : 'rgba(255,255,255,0.4)',
-                    transition: 'background 0.2s',
-                  }} />
-                ))}
-              </div>
-            )}
-
-            {/* Loading shimmer */}
-            {!imgLoaded && (
-              <div style={{
-                position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
-                background: 'linear-gradient(110deg, var(--surface-container-high) 30%, var(--surface-container-low) 50%, var(--surface-container-high) 70%)',
-                zIndex: 1,
-              }} />
-            )}
-
-            {/* Photo */}
-            {currentImg ? (
-              <img
-                src={currentImg}
-                alt={currentProfile.name}
-                style={{ ...s.cardImage, opacity: imgLoaded ? 1 : 0 }}
-                onLoad={() => setImgLoaded(true)}
-                onError={(e) => { setImgLoaded(true); e.target.style.display = 'none'; }}
-                draggable={false}
-              />
-            ) : (
-              <div style={{
-                width: '100%', height: '100%',
-                background: 'linear-gradient(135deg, #FFB59E 0%, #FF571A 100%)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
-                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '80px', color: 'rgba(255,255,255,0.2)' }}>person</span>
-              </div>
-            )}
-
-            {/* Gradient overlays */}
-            <div style={s.gradientOverlayTop} />
-            <div style={s.gradientOverlay} />
-
-            {/* Match score badge */}
-            <div style={s.matchBadge}>
-              <span style={s.matchBadgeText}>{matchScore}%</span>
-            </div>
-
-            {/* Tap zones */}
-            {images.length > 1 && (
-              <>
-                <div style={s.navZone('left')} onClick={(e) => {
-                  e.stopPropagation();
-                  if (currentImageIndex > 0) setCurrentImageIndex(prev => prev - 1);
-                }} />
-                <div style={s.navZone('right')} onClick={(e) => {
-                  e.stopPropagation();
-                  if (currentImageIndex < images.length - 1) setCurrentImageIndex(prev => prev + 1);
-                }} />
-              </>
-            )}
-
-            {/* Swipe feedback */}
-            {swipeFeedback && (
-              <div style={s.feedbackOverlay(swipeFeedback)}>
-                {swipeFeedback === 'like' ? 'LIKE' : 'NOPE'}
-              </div>
-            )}
-
-            {/* Card info */}
-            <div style={s.cardInfo}>
-              <div style={s.nameRow}>
-                <span style={s.name}>{currentProfile.name}</span>
-                <span style={s.age}>{currentProfile.age}</span>
-                {currentProfile.verified && (
-                  <span style={s.verifiedBadge}>
-                    <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '14px' }}>verified</span>
-                  </span>
-                )}
-                <span style={s.tierBadge}>
-                  <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '12px' }}>toll</span>
-                  {tier}
-                </span>
-              </div>
-
-              {/* Taste profile glass card */}
-              <div style={s.tasteCard}>
-                <div style={s.tasteRow}>
-                  <span style={s.tasteLabel}>Độ cay:</span>
-                  <span style={s.tasteValue}>{'🌶️'.repeat(tasteProfile.spice || 2)}</span>
-                </div>
-                <div style={s.tasteRow}>
-                  <span style={s.tasteLabel}>Phong cách:</span>
-                  <span style={s.tasteValue}>{tasteProfile.style || 'Street food'}</span>
-                </div>
-                <div style={{ ...s.tasteRow, marginBottom: 0 }}>
-                  <span style={s.tasteLabel}>Vùng miền:</span>
-                  <span style={s.tasteValue}>{tasteProfile.region || 'Nam Bo'}</span>
-                </div>
-              </div>
-
-              {/* Culinary Spark icebreaker */}
-              <div style={s.icebreakerBox}>
-                <p style={s.icebreakerLabel}>Culinary Spark</p>
-                <p style={s.icebreakerText}>"{icebreaker}"</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Action Buttons */}
-          <div style={s.actionsRow}>
-            {renderActionBtn(56, 'var(--surface-variant)', '0px 8px 24px rgba(0,0,0,0.15)', 'close', 28, 'var(--on-surface-variant)', () => handleSwipe('left'), 'Bỏ qua')}
-            {renderActionBtn(48, 'var(--surface-container-high)', '0px 8px 24px rgba(0,0,0,0.15)', 'star', 22, '#FFD54F', handleSuperLike, 'Siêu thích')}
-            {renderActionBtn(64, 'linear-gradient(135deg, #FFB59E, #FF571A)', '0 0 20px rgba(255,87,26,0.4)', 'favorite', 32, '#fff', () => handleSwipe('right'), 'Thích')}
-          </div>
-
-          {/* Dang cho preview thumbnails */}
-          {nextProfiles.length > 0 && (
-            <>
-              <p style={s.waitingLabel}>Đang chờ</p>
-              <div style={s.waitingRow}>
-                {nextProfiles.map((p, idx) => {
-                  const av = getImages(p)[0] || p.avatar;
-                  return av ? (
-                    <img key={idx} src={av} alt="" style={s.waitingThumb} onError={(e) => { e.target.style.display = 'none'; }} />
-                  ) : (
-                    <div key={idx} style={s.waitingThumbFallback}>{p.name?.charAt(0) || '?'}</div>
-                  );
-                })}
-              </div>
-            </>
-          )}
-        </>
-      ) : (
-        <div style={s.emptyState}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={s.emptyIcon}>sentiment_satisfied</span>
-          <h3 style={s.emptyTitle}>Hết rồi!</h3>
-          <p style={s.emptySubtext}>Bạn đã xem hết các gợi ý. Quay lại sau để gặp người mới nhé!</p>
-          <button
-            style={s.refreshBtn}
-            onClick={() => {
-              setCurrentIndex(0);
-              setCurrentImageIndex(0);
-              setAnimationClass('entering');
-              setImgLoaded(false);
-              fetchProfiles();
-            }}
-          >
-            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>refresh</span>
-              Tải lại
-            </span>
-          </button>
-        </div>
-      )}
-
-      <ProfileDetailModal
-        isOpen={isDetailOpen}
-        onClose={() => setIsDetailOpen(false)}
-        profile={currentProfile}
-      />
-    </div>
-  );
+const T = {
+  bg: '#fcf9f8',
+  surface: '#ffffff',
+  surfaceContainer: '#f0edec',
+  surfaceContainerLow: '#f6f3f2',
+  surfaceContainerHigh: '#ebe7e7',
+  onSurface: '#1c1b1b',
+  onSurfaceVariant: '#5d4038',
+  primary: '#ad2c00',
+  outlineVariant: '#e7bdb2',
+  onPrimary: '#ffffff',
+  headline: "'Plus Jakarta Sans', sans-serif",
+  body: "'Manrope', sans-serif",
 };
 
-export default SwipePage;
+const profiles = [
+  {
+    id: 1,
+    name: 'Mia Patel',
+    age: 24,
+    match: 88,
+    bio: '"Tìm kiếm một nửa yêu thích #VisaSushi & #VisaPhoBo"',
+    sharedFoods: ['#VisaPhoBo', '#VisaSushi', '#VisaBanhMi'],
+    vangPoints: 2450,
+    visaCount: '12/20',
+    visaProgress: 60,
+    tasteProfile: { chua: 85, cay: 60, man: 70, ngot: 45, dang: 30 },
+    gradient: 'linear-gradient(160deg, #ffdbd1 0%, #ffb5a0 40%, #ff7852 70%, #ad2c00 100%)',
+    emoji: '👩',
+  },
+  {
+    id: 2,
+    name: 'Thanh Hà',
+    age: 26,
+    match: 82,
+    bio: '"Foodie chính hiệu, mê khám phá ẩm thực đường phố"',
+    sharedFoods: ['#VisaBunBo', '#VisaBanhXeo', '#VisaTreSua'],
+    vangPoints: 1820,
+    visaCount: '9/20',
+    visaProgress: 45,
+    tasteProfile: { chua: 65, cay: 88, man: 75, ngot: 55, dang: 40 },
+    gradient: 'linear-gradient(160deg, #d4e3ff 0%, #a5c8ff 40%, #4d8fd4 70%, #005daa 100%)',
+    emoji: '👨',
+  },
+  {
+    id: 3,
+    name: 'Ngọc Linh',
+    age: 28,
+    match: 79,
+    bio: '"Yêu ẩm thực truyền thống, thích những buổi sáng bình yên"',
+    sharedFoods: ['#VisaComTam', '#VisaCheBaMau', '#VisaBanhMi'],
+    vangPoints: 3100,
+    visaCount: '15/20',
+    visaProgress: 75,
+    tasteProfile: { chua: 55, cay: 40, man: 80, ngot: 70, dang: 25 },
+    gradient: 'linear-gradient(160deg, #e8d4f8 0%, #c8a0e8 40%, #a070c8 70%, #7040a0 100%)',
+    emoji: '🧑',
+  },
+];
+
+const visaItems = [
+  { id: 1, name: '#VisaSalad', status: 'locked', emoji: '🥗' },
+  { id: 2, name: '#VisaPhoBo', status: 'collected', emoji: '🍜' },
+  { id: 3, name: '#VisaSushi', status: 'progress', emoji: '🍣', pct: 80 },
+];
+
+export default function SwipePage() {
+  const navigate = useNavigate();
+  const [dismissed, setDismissed] = useState([]);
+  const [currentIdx, setCurrentIdx] = useState(0);
+
+  const available = profiles.filter((p) => !dismissed.includes(p.id));
+  const profile = available.length > 0 ? available[currentIdx % available.length] : null;
+
+  const handleConnect = () => navigate('/app/chat');
+  const handleSkip = () => {
+    if (!profile) return;
+    setDismissed([...dismissed, profile.id]);
+    setCurrentIdx(0);
+  };
+
+  if (!profile) {
+    return (
+      <div style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: T.onSurfaceVariant, padding: '48px 24px' }}>
+        <span className="material-symbols-outlined" style={{ fontSize: '64px', color: T.outlineVariant, marginBottom: '16px', display: 'block' }}>favorite</span>
+        <p style={{ fontWeight: 700, fontSize: '18px', fontFamily: T.headline, color: T.onSurface, margin: '0 0 8px 0' }}>Bạn đã xem hết rồi!</p>
+        <p style={{ fontSize: '14px', margin: 0 }}>Quay lại sau để khám phá thêm.</p>
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ background: T.bg, fontFamily: T.body, color: T.onSurface, paddingBottom: '16px' }}>
+      <div style={{ maxWidth: '480px', margin: '0 auto', padding: '16px 20px 0' }}>
+
+        {/* Bento Stats */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginBottom: '24px' }}>
+          <div style={{ background: T.surface, borderRadius: '16px', padding: '20px', boxShadow: '0 4px 16px rgba(28,27,27,0.04)', border: `1px solid ${T.outlineVariant}20` }}>
+            <p style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: T.onSurfaceVariant, margin: '0 0 8px' }}>VÀNG Points</p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <span style={{ fontFamily: T.headline, fontWeight: 900, fontSize: '28px', color: T.primary, lineHeight: 1 }}>
+                {profile.vangPoints.toLocaleString('vi-VN')}
+              </span>
+              <span className="material-symbols-outlined" style={{ color: T.primary, fontSize: '18px', fontVariationSettings: "'FILL' 1" }}>stars</span>
+            </div>
+          </div>
+          <div style={{ background: T.surface, borderRadius: '16px', padding: '20px', boxShadow: '0 4px 16px rgba(28,27,27,0.04)', border: `1px solid ${T.outlineVariant}20` }}>
+            <p style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: T.onSurfaceVariant, margin: '0 0 8px' }}>Visa Collection</p>
+            <p style={{ fontFamily: T.headline, fontWeight: 900, fontSize: '28px', color: T.onSurface, margin: '0 0 10px', lineHeight: 1 }}>{profile.visaCount}</p>
+            <div style={{ height: '6px', borderRadius: '999px', background: T.surfaceContainerHigh, overflow: 'hidden' }}>
+              <div style={{ height: '100%', width: `${profile.visaProgress}%`, background: T.primary, borderRadius: '999px' }} />
+            </div>
+          </div>
+        </div>
+
+        {/* Taste Twin Card */}
+        <div style={{ background: T.surface, borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(173,44,0,0.08)', border: `1px solid rgba(173,44,0,0.05)`, marginBottom: '24px' }}>
+          {/* Profile Image Area */}
+          <div style={{ position: 'relative', aspectRatio: '4/5', background: profile.gradient, display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden' }}>
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(28,27,27,0.75) 0%, rgba(28,27,27,0.15) 50%, transparent 100%)' }} />
+            <span style={{ fontSize: '96px', position: 'relative', zIndex: 1 }}>{profile.emoji}</span>
+
+            {/* Match Badge */}
+            <div style={{ position: 'absolute', top: '20px', right: '20px', background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(12px)', borderRadius: '16px', padding: '10px 14px', display: 'flex', flexDirection: 'column', alignItems: 'center', border: '1px solid rgba(255,255,255,0.3)', boxShadow: '0 8px 24px rgba(0,0,0,0.12)' }}>
+              <span style={{ fontFamily: T.headline, fontWeight: 900, fontSize: '22px', color: T.primary, lineHeight: 1 }}>{profile.match}%</span>
+              <span style={{ fontSize: '9px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: T.onSurfaceVariant, marginTop: '2px' }}>Palate Match</span>
+            </div>
+
+            {/* Identity Overlay */}
+            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '24px', color: '#ffffff' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                <h2 style={{ fontFamily: T.headline, fontWeight: 800, fontSize: '26px', margin: 0 }}>{profile.name}, {profile.age}</h2>
+                <span className="material-symbols-outlined" style={{ color: '#60a5fa', fontSize: '20px', fontVariationSettings: "'FILL' 1" }}>verified</span>
+              </div>
+              <p style={{ fontSize: '13px', fontWeight: 500, margin: 0, opacity: 0.85 }}>{profile.bio}</p>
+            </div>
+          </div>
+
+          {/* Card Content */}
+          <div style={{ padding: '24px' }}>
+            {/* Visa tags */}
+            <p style={{ fontSize: '10px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.12em', color: T.onSurfaceVariant, margin: '0 0 12px' }}>Visa Món Ăn Chung</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginBottom: '24px' }}>
+              {profile.sharedFoods.map((tag) => (
+                <span key={tag} style={{ padding: '8px 16px', background: `${T.primary}0D`, border: `1px solid ${T.primary}1A`, borderRadius: '999px', color: T.primary, fontSize: '13px', fontWeight: 700 }}>{tag}</span>
+              ))}
+            </div>
+
+            {/* Action buttons */}
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <button
+                onClick={handleSkip}
+                style={{ flex: '0 0 56px', height: '56px', background: T.surfaceContainerHigh, border: 'none', borderRadius: '14px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.15s' }}
+                onMouseEnter={e => e.currentTarget.style.background = T.surfaceContainerHigh}
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: '22px', color: T.onSurface }}>close</span>
+              </button>
+              <button
+                onClick={handleConnect}
+                style={{ flex: 1, height: '56px', background: T.primary, border: 'none', borderRadius: '14px', cursor: 'pointer', color: '#fff', fontFamily: T.headline, fontWeight: 700, fontSize: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', boxShadow: '0 8px 24px rgba(173,44,0,0.3)', transition: 'transform 0.15s' }}
+                onMouseDown={e => e.currentTarget.style.transform = 'scale(0.97)'}
+                onMouseUp={e => e.currentTarget.style.transform = 'scale(1)'}
+                onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: '18px', fontVariationSettings: "'FILL' 1" }}>favorite</span>
+                Gửi Lời Mời Ăn
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Visa Collection Preview */}
+        <div style={{ marginBottom: '24px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '16px' }}>
+            <div>
+              <h3 style={{ fontFamily: T.headline, fontWeight: 900, fontSize: '20px', margin: '0 0 2px', letterSpacing: '-0.03em' }}>Visa Collection</h3>
+              <p style={{ fontSize: '12px', color: T.onSurfaceVariant, margin: 0, fontWeight: 500 }}>Khám phá hương vị thế giới</p>
+            </div>
+            <button onClick={() => navigate('/app/badges')} style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: T.primary }}>Tất cả</button>
+          </div>
+          <div style={{ display: 'flex', gap: '12px', overflowX: 'auto', paddingBottom: '8px', scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            {visaItems.map((item) => (
+              <div key={item.id} style={{ flexShrink: 0, width: '128px', background: T.surface, borderRadius: '16px', padding: '12px', border: item.status === 'collected' ? `2px solid ${T.primary}33` : `1px solid ${T.outlineVariant}4D`, boxShadow: item.status === 'collected' ? `0 8px 24px rgba(173,44,0,0.08)` : 'none', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{ width: '100%', aspectRatio: '1', borderRadius: '12px', overflow: 'hidden', marginBottom: '10px', background: T.surfaceContainer, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', filter: item.status === 'locked' ? 'grayscale(1)' : 'none', opacity: item.status === 'locked' ? 0.5 : 1 }}>
+                  <span style={{ fontSize: '40px' }}>{item.emoji}</span>
+                  {item.status === 'collected' && (
+                    <div style={{ position: 'absolute', inset: 0, background: `${T.primary}1A`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span className="material-symbols-outlined" style={{ color: '#fff', fontSize: '28px', fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                    </div>
+                  )}
+                  {item.status === 'locked' && (
+                    <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.35)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <span className="material-symbols-outlined" style={{ color: '#fff', fontSize: '24px' }}>lock</span>
+                    </div>
+                  )}
+                </div>
+                <p style={{ fontSize: '11px', fontWeight: 700, color: item.status === 'collected' ? T.primary : T.onSurfaceVariant, textAlign: 'center', margin: '0 0 2px' }}>{item.name}</p>
+                <span style={{ fontSize: '9px', fontWeight: 600, textTransform: 'uppercase', color: item.status === 'collected' ? T.primary : T.onSurfaceVariant, opacity: item.status === 'locked' ? 0.6 : 1 }}>
+                  {item.status === 'collected' ? 'Đã Sưu Tập' : item.status === 'progress' ? `${item.pct}% Hoàn Thành` : 'Chưa Mở'}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+    </div>
+  );
+}

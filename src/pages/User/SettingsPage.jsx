@@ -1,300 +1,353 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useToast } from '../../components/ToastNotification';
-import { useAppContext } from '../../AppContext';
+
+const colors = {
+  background: '#fcf9f8',
+  surfaceContainerLowest: '#ffffff',
+  surfaceContainer: '#f0edec',
+  surfaceContainerLow: '#f6f3f2',
+  surfaceContainerHigh: '#ebe7e7',
+  onSurface: '#1c1b1b',
+  onSurfaceVariant: '#5d4038',
+  primary: '#ad2c00',
+  primaryFixed: '#ffdbd1',
+  outlineVariant: '#e7bdb2',
+  error: '#ba1a1a',
+  errorContainer: '#ffdad6',
+  onErrorContainer: '#93000a',
+};
+
+const Toggle = ({ checked, onChange }) => (
+  <div
+    onClick={() => onChange(!checked)}
+    role="switch"
+    aria-checked={checked}
+    tabIndex={0}
+    onKeyDown={e => (e.key === ' ' || e.key === 'Enter') && onChange(!checked)}
+    style={{
+      width: '44px',
+      height: '24px',
+      borderRadius: '12px',
+      backgroundColor: checked ? '#117500' : '#ccc',
+      position: 'relative',
+      cursor: 'pointer',
+      transition: 'background-color 0.25s ease',
+      flexShrink: 0,
+      outline: 'none',
+    }}
+  >
+    <div style={{
+      width: '18px',
+      height: '18px',
+      borderRadius: '50%',
+      backgroundColor: '#ffffff',
+      position: 'absolute',
+      top: '3px',
+      left: checked ? '23px' : '3px',
+      transition: 'left 0.25s ease',
+      boxShadow: '0 1px 3px rgba(0,0,0,0.25)',
+    }} />
+  </div>
+);
+
+const SectionHeader = ({ icon, label }) => (
+  <div style={{
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    fontSize: '11px',
+    fontWeight: 700,
+    textTransform: 'uppercase',
+    letterSpacing: '0.12em',
+    color: colors.onSurfaceVariant,
+    fontFamily: "'Manrope', sans-serif",
+    padding: '0 4px',
+    marginBottom: '4px',
+    marginTop: '8px',
+  }}>
+    <span className="material-symbols-outlined" style={{ fontSize: '18px', color: colors.primary }}>{icon}</span>
+    {label}
+  </div>
+);
+
+const Card = ({ children }) => (
+  <div style={{
+    backgroundColor: colors.surfaceContainerLowest,
+    borderRadius: '16px',
+    overflow: 'hidden',
+    boxShadow: '0 2px 12px rgba(28,27,27,0.06)',
+  }}>
+    {children}
+  </div>
+);
+
+const Divider = () => (
+  <div style={{ height: '1px', backgroundColor: colors.outlineVariant, margin: '0 20px' }} />
+);
+
+const SettingsRow = ({ icon, label, sublabel, action, onClick, chevron }) => (
+  <div
+    onClick={onClick}
+    style={{
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      padding: '16px 20px',
+      cursor: onClick ? 'pointer' : 'default',
+      gap: '12px',
+    }}
+  >
+    <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flex: 1, minWidth: 0 }}>
+      {icon && (
+        <div style={{
+          width: '40px',
+          height: '40px',
+          borderRadius: '12px',
+          backgroundColor: colors.surfaceContainerHigh,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexShrink: 0,
+        }}>
+          <span className="material-symbols-outlined" style={{ fontSize: '20px', color: colors.primary }}>{icon}</span>
+        </div>
+      )}
+      <div style={{ minWidth: 0 }}>
+        <div style={{
+          fontSize: '15px',
+          fontWeight: 600,
+          color: colors.onSurface,
+          fontFamily: "'Manrope', sans-serif",
+        }}>{label}</div>
+        {sublabel && (
+          <div style={{
+            fontSize: '13px',
+            color: colors.onSurfaceVariant,
+            fontFamily: "'Manrope', sans-serif",
+            marginTop: '2px',
+          }}>{sublabel}</div>
+        )}
+      </div>
+    </div>
+    {action && <div style={{ flexShrink: 0 }}>{action}</div>}
+    {chevron && (
+      <span className="material-symbols-outlined" style={{ fontSize: '20px', color: colors.onSurfaceVariant, opacity: 0.5, flexShrink: 0 }}>chevron_right</span>
+    )}
+  </div>
+);
 
 const SettingsPage = () => {
   const navigate = useNavigate();
-  const { addToast } = useToast();
-  const { logout, currentUser } = useAppContext();
-  const [distance, setDistance] = useState(25);
-  const [ageMin, setAgeMin] = useState(18);
-  const [ageMax, setAgeMax] = useState(35);
-  const [showInRange, setShowInRange] = useState(true);
-  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const cancelBtnRef = useRef(null);
-  useEffect(() => {
-    if (showDeleteConfirm) cancelBtnRef.current?.focus();
-  }, [showDeleteConfirm]);
 
-  const handleLogout = () => {
-    logout();
-    addToast('Đã đăng xuất thành công!', 'info');
-    navigate('/login');
-  };
+  const [toggles, setToggles] = useState({
+    show_profile: true,
+    show_location: false,
+    show_activity: true,
+    notifications_match: true,
+    notifications_event: true,
+    notifications_promo: false,
+  });
 
-  // Toggle component
-  const Toggle = ({ checked, onChange }) => (
-    <div
-      onClick={() => onChange(!checked)}
-      style={{
-        width: '52px', height: '28px',
-        borderRadius: '9999px',
-        backgroundColor: checked ? '#FF571A' : '#353535',
-        position: 'relative', cursor: 'pointer',
-        transition: 'background-color 0.25s ease',
-        flexShrink: 0,
-      }}
-    >
-      <div style={{
-        width: '22px', height: '22px', borderRadius: '50%',
-        backgroundColor: '#FDF9F3',
-        position: 'absolute', top: '3px',
-        left: checked ? '27px' : '3px',
-        transition: 'left 0.25s ease',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.3)',
-      }} />
-    </div>
-  );
-
-  const sectionHeader = {
-    fontSize: '11px', fontWeight: 700,
-    textTransform: 'uppercase', letterSpacing: '0.15em',
-    color: '#E6BEB2', marginBottom: '12px', marginTop: '8px',
-    fontFamily: "'Inter', sans-serif",
-    display: 'flex', alignItems: 'center', gap: '8px',
-  };
-
-  const card = {
-    backgroundColor: '#1C1B1B', borderRadius: '1.5rem',
-    padding: '0', overflow: 'hidden',
-    boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
-  };
-
-  const row = {
-    padding: '18px 24px',
-    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-    fontSize: '15px', fontFamily: "'Inter', sans-serif",
-    color: '#FDF9F3',
-  };
-
-  const divider = {
-    height: '1px', backgroundColor: '#2A2A2A', margin: '0 24px',
-  };
+  const setToggle = key => val => setToggles(prev => ({ ...prev, [key]: val }));
 
   return (
     <div style={{
-      flex: 1, backgroundColor: '#131313', overflowY: 'auto',
-      padding: '40px 32px 80px',
-      fontFamily: "'Inter', sans-serif",
+      flex: 1,
+      backgroundColor: colors.background,
+      overflowY: 'auto',
+      minHeight: '100vh',
+      fontFamily: "'Manrope', sans-serif",
     }}>
-      <h1 style={{
-        fontSize: '28px', fontWeight: 800, marginBottom: '32px',
-        color: '#FDF9F3', fontFamily: "'Plus Jakarta Sans', sans-serif",
-      }}>
-        Cài đặt
-      </h1>
+      <div style={{ maxWidth: '680px', margin: '0 auto', padding: '24px 20px 80px' }}>
 
-      <div style={{ maxWidth: '600px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
-
-        {/* ── Discovery ── */}
-        <div style={sectionHeader}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>explore</span>
-          KHÁM PHÁ
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
+          <button
+            onClick={() => navigate(-1)}
+            aria-label="Quay lại"
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '50%',
+              border: 'none',
+              backgroundColor: colors.surfaceContainerLow,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              flexShrink: 0,
+            }}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: '22px', color: colors.onSurface }}>arrow_back</span>
+          </button>
+          <h1 style={{
+            fontSize: '28px',
+            fontWeight: 800,
+            color: colors.onSurface,
+            fontFamily: "'Plus Jakarta Sans', sans-serif",
+            margin: 0,
+          }}>
+            Cài đặt
+          </h1>
         </div>
 
-        <div style={card}>
-          {/* Distance */}
-          <div style={{ ...row, flexDirection: 'column', alignItems: 'stretch', gap: '12px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontWeight: 600 }}>Khoảng cách</span>
-              <span style={{ fontWeight: 700, color: '#FFB59E' }}>Lên tới {distance}km</span>
-            </div>
-            <input
-              type="range" min="1" max="100" value={distance}
-              onChange={e => setDistance(+e.target.value)}
-              aria-label={`Khoảng cách tối đa ${distance}km`}
-              style={{ width: '100%', accentColor: '#FF571A' }}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+
+          <SectionHeader icon="lock" label="Cài đặt quyền riêng tư" />
+          <Card>
+            <SettingsRow
+              icon="person"
+              label="Hiển thị hồ sơ"
+              sublabel="Cho phép người khác tìm thấy bạn"
+              action={<Toggle checked={toggles.show_profile} onChange={setToggle('show_profile')} />}
             />
+            <Divider />
+            <SettingsRow
+              icon="location_on"
+              label="Hiển thị vị trí"
+              sublabel="Chia sẻ vị trí của bạn trên Radar"
+              action={<Toggle checked={toggles.show_location} onChange={setToggle('show_location')} />}
+            />
+            <Divider />
+            <SettingsRow
+              icon="visibility"
+              label="Hiển thị hoạt động"
+              sublabel="Cho phép thấy trạng thái hoạt động"
+              action={<Toggle checked={toggles.show_activity} onChange={setToggle('show_activity')} />}
+            />
+          </Card>
+
+          <SectionHeader icon="notifications" label="Thông báo" />
+          <Card>
+            <SettingsRow
+              icon="favorite"
+              label="Lượt Match & Tin nhắn"
+              sublabel="Thông báo khi có match hoặc tin mới"
+              action={<Toggle checked={toggles.notifications_match} onChange={setToggle('notifications_match')} />}
+            />
+            <Divider />
+            <SettingsRow
+              icon="event"
+              label="Sự kiện ẩm thực"
+              sublabel="Nhận thông báo về sự kiện gần bạn"
+              action={<Toggle checked={toggles.notifications_event} onChange={setToggle('notifications_event')} />}
+            />
+            <Divider />
+            <SettingsRow
+              icon="mail"
+              label="Tin tức & Ưu đãi"
+              sublabel="Email khuyến mãi và tin tức GoMet"
+              action={<Toggle checked={toggles.notifications_promo} onChange={setToggle('notifications_promo')} />}
+            />
+          </Card>
+
+          <SectionHeader icon="manage_accounts" label="Tài khoản" />
+          <Card>
+            <SettingsRow
+              icon="key"
+              label="Đổi mật khẩu"
+              sublabel="Cập nhật mật khẩu bảo mật tài khoản"
+              onClick={() => {}}
+              chevron
+            />
+            <Divider />
+            <SettingsRow
+              icon="vibration"
+              label="Xác thực 2 yếu tố"
+              sublabel="Bảo mật bằng mã SMS hoặc ứng dụng"
+              action={
+                <span style={{
+                  fontSize: '12px',
+                  fontWeight: 700,
+                  padding: '4px 10px',
+                  backgroundColor: '#dcfce7',
+                  color: '#166534',
+                  borderRadius: '9999px',
+                  fontFamily: "'Manrope', sans-serif",
+                }}>Đã bật</span>
+              }
+              onClick={() => {}}
+              chevron
+            />
+            <Divider />
+            <SettingsRow
+              icon="account_circle"
+              label="Thông tin cá nhân"
+              sublabel="Chỉnh sửa tên, ảnh đại diện, giới thiệu"
+              onClick={() => navigate('/app/profile')}
+              chevron
+            />
+          </Card>
+
+          <SectionHeader icon="help_outline" label="Hỗ trợ" />
+          <Card>
+            <SettingsRow
+              icon="quiz"
+              label="Câu hỏi thường gặp"
+              sublabel="Tìm câu trả lời cho thắc mắc của bạn"
+              onClick={() => {}}
+              chevron
+            />
+            <Divider />
+            <SettingsRow
+              icon="shield"
+              label="Trung tâm an toàn"
+              sublabel="Chính sách và hướng dẫn bảo mật"
+              onClick={() => {}}
+              chevron
+            />
+            <Divider />
+            <SettingsRow
+              icon="gavel"
+              label="Điều khoản & Chính sách"
+              sublabel="Điều khoản sử dụng và quyền riêng tư"
+              onClick={() => {}}
+              chevron
+            />
+          </Card>
+
+          <div style={{ marginTop: '8px' }}>
+            <button
+              onClick={() => navigate('/login')}
+              style={{
+                width: '100%',
+                padding: '16px',
+                borderRadius: '12px',
+                border: `2px solid ${colors.primary}`,
+                backgroundColor: 'transparent',
+                color: colors.primary,
+                fontSize: '15px',
+                fontWeight: 700,
+                fontFamily: "'Manrope', sans-serif",
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                transition: 'background-color 0.2s ease',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.backgroundColor = colors.primaryFixed; }}
+              onMouseLeave={e => { e.currentTarget.style.backgroundColor = 'transparent'; }}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '20px' }}>logout</span>
+              Đăng xuất
+            </button>
           </div>
 
-          <div style={divider} />
+          <p style={{
+            textAlign: 'center',
+            fontSize: '12px',
+            color: colors.onSurfaceVariant,
+            opacity: 0.5,
+            fontFamily: "'Manrope', sans-serif",
+            marginTop: '4px',
+          }}>
+            GoMet v1.0.0
+          </p>
 
-          {/* Show in range toggle */}
-          <div style={row}>
-            <span style={{ fontSize: '14px', color: '#E6BEB2' }}>Chỉ hiển thị người trong phạm vi</span>
-            <Toggle checked={showInRange} onChange={setShowInRange} />
-          </div>
         </div>
-
-        {/* Age range */}
-        <div style={card}>
-          <div style={{ ...row, flexDirection: 'column', alignItems: 'stretch', gap: '12px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span style={{ fontWeight: 600 }}>Độ tuổi</span>
-              <span style={{ fontWeight: 700, color: '#FFB59E' }}>{ageMin} - {ageMax}</span>
-            </div>
-            <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
-              <span style={{ fontSize: '13px', color: '#E6BEB2' }}>{ageMin}</span>
-              <input
-                type="range" min="18" max="60" value={ageMax}
-                onChange={e => setAgeMax(Math.max(+e.target.value, ageMin))}
-                aria-label={`Độ tuổi tối đa ${ageMax}`}
-                style={{ flex: 1, accentColor: '#FF571A' }}
-              />
-              <span style={{ fontSize: '13px', color: '#E6BEB2' }}>{ageMax}</span>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Account ── */}
-        <div style={sectionHeader}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>shield</span>
-          TÀI KHOẢN
-        </div>
-
-        <div style={card}>
-          <div style={row}>
-            <span style={{ fontWeight: 500 }}>Email</span>
-            <span style={{ color: '#E6BEB2', fontSize: '14px' }}>{currentUser?.email}</span>
-          </div>
-          <div style={divider} />
-          <div
-            onClick={() => navigate('/app/wallet')}
-            style={{ ...row, cursor: 'pointer' }}
-          >
-            <span style={{ fontWeight: 500 }}>Ví Gomet</span>
-            <span style={{ color: '#FFB59E', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
-              {(currentUser?.walletBalance || 0).toLocaleString('vi-VN')}đ
-              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px' }}>chevron_right</span>
-            </span>
-          </div>
-        </div>
-
-        {/* ── Actions ── */}
-        <div style={card}>
-          <div
-            onClick={handleLogout}
-            style={{
-              ...row, cursor: 'pointer', color: '#FF6B6B',
-              fontWeight: 600, gap: '10px', justifyContent: 'flex-start',
-            }}
-          >
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>logout</span>
-            Đăng xuất
-          </div>
-          <div style={divider} />
-          <div
-            onClick={() => setShowDeleteConfirm(true)}
-            style={{
-              ...row, cursor: 'pointer', color: '#FF4444',
-              fontWeight: 600, gap: '10px', justifyContent: 'flex-start',
-            }}
-          >
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>delete_forever</span>
-            Xóa tài khoản
-          </div>
-        </div>
-
-        {/* ── Legal ── */}
-        <div style={sectionHeader}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFB59E' }}>gavel</span>
-          PHÁP LÝ
-        </div>
-
-        <div style={card}>
-          {[
-            { label: 'Điều khoản sử dụng', path: '/terms' },
-            { label: 'Chính sách quyền riêng tư', path: '/privacy' },
-            { label: 'Câu hỏi thường gặp', path: '/faq' },
-            { label: 'Trung tâm an toàn', path: '/safety' },
-          ].map((item, i) => (
-            <React.Fragment key={i}>
-              <div
-                onClick={() => navigate(item.path)}
-                style={{ ...row, cursor: 'pointer', color: '#E6BEB2', fontSize: '14px' }}
-              >
-                <span>{item.label}</span>
-                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '18px', color: '#353535' }}>chevron_right</span>
-              </div>
-              {i < 3 && <div style={divider} />}
-            </React.Fragment>
-          ))}
-        </div>
-
-        <p style={{ textAlign: 'center', fontSize: '13px', color: '#353535', marginTop: '8px' }}>
-          Gomet v1.0.0
-        </p>
       </div>
-
-      {/* ── Delete Account Modal ── */}
-      {showDeleteConfirm && (
-        <div style={{
-          position: 'fixed', inset: 0,
-          backgroundColor: 'rgba(0,0,0,0.7)',
-          backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          zIndex: 1000,
-        }}>
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="delete-dialog-title"
-            style={{
-              backgroundColor: '#1C1B1B', borderRadius: '1.5rem',
-              padding: '32px', maxWidth: '400px', width: '90%',
-              textAlign: 'center',
-              boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
-            }}>
-            <div style={{
-              width: '56px', height: '56px', borderRadius: '50%',
-              backgroundColor: 'rgba(255,68,68,0.15)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              margin: '0 auto 16px',
-            }}>
-              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '28px', color: '#FF4444' }}>warning</span>
-            </div>
-            <h3 id="delete-dialog-title" style={{
-              fontSize: '20px', fontWeight: 800, marginBottom: '12px',
-              color: '#FDF9F3', fontFamily: "'Plus Jakarta Sans', sans-serif",
-            }}>
-              Xóa tài khoản?
-            </h3>
-            <p style={{ color: '#E6BEB2', fontSize: '14px', marginBottom: '24px', lineHeight: 1.6 }}>
-              Hành động này không thể hoàn tác. Tất cả dữ liệu, matches và tin nhắn sẽ bị xóa vĩnh viễn.
-            </p>
-            <div style={{ display: 'flex', gap: '12px' }}>
-              <button
-                ref={cancelBtnRef}
-                onClick={() => setShowDeleteConfirm(false)}
-                style={{
-                  flex: 1, padding: '14px', borderRadius: '9999px',
-                  backgroundColor: '#2A2A2A', border: 'none',
-                  color: '#FDF9F3', fontWeight: 700, fontSize: '15px',
-                  cursor: 'pointer', fontFamily: "'Inter', sans-serif",
-                }}
-              >
-                Hủy
-              </button>
-              <button
-                onClick={() => { addToast('Tính năng đang phát triển', 'info'); setShowDeleteConfirm(false); }}
-                style={{
-                  flex: 1, padding: '14px', borderRadius: '9999px',
-                  backgroundColor: '#FF4444', border: 'none',
-                  color: '#FDF9F3', fontWeight: 700, fontSize: '15px',
-                  cursor: 'pointer', fontFamily: "'Inter', sans-serif",
-                }}
-              >
-                Xóa
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <style>{`
-        input[type="range"] {
-          -webkit-appearance: none; appearance: none;
-          height: 4px; background: #2A2A2A; border-radius: 4px; outline: none;
-        }
-        input[type="range"]::-webkit-slider-thumb {
-          -webkit-appearance: none; appearance: none;
-          width: 20px; height: 20px; border-radius: 50%;
-          background: linear-gradient(135deg, #FFB59E, #FF571A);
-          cursor: pointer; box-shadow: 0 2px 8px rgba(255,87,26,0.4);
-        }
-      `}</style>
     </div>
   );
 };
+
 export default SettingsPage;

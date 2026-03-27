@@ -18,6 +18,15 @@ export const AppProvider = ({ children }) => {
   // Restore session from token on mount
   useEffect(() => {
     const token = localStorage.getItem('gomet_token');
+    // Dev preview bypass: token starting with 'mock-' skips API call
+    if (token && token.startsWith('mock-')) {
+      const stored = localStorage.getItem('gomet_user');
+      const user = stored ? JSON.parse(stored) : { id:'1', name:'Hằng Thị', email:'hang@gomet.app', role:'user', avatar:null };
+      setCurrentUser(user);
+      setIsLoggedIn(true);
+      setLoading(false);
+      return;
+    }
     if (token) {
       api.get('/auth/me')
         .then(data => {

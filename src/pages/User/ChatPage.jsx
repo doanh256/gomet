@@ -1,999 +1,722 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useAppContext } from '../../AppContext';
-import { api } from '../../api/client';
-import { getSocket, connectSocket } from '../../api/socket';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const ChatPage = () => {
-  const { currentUser, conversations, fetchConversations } = useAppContext();
-  const navigate = useNavigate();
+const conversations = [
+  { id: 1, name: 'Hoàng Nam', lastMsg: 'Mình đi ăn Phở Thìn nhé?', time: '10:45 SA', matchDish: 'Phở bò', unread: 2, color: '#ad2c00', online: true },
+  { id: 2, name: 'Linh Chi', lastMsg: 'Đã gửi một ảnh', time: 'Thứ 3', matchDish: 'Pizza', unread: 0, color: '#6b3fa0', online: false },
+  { id: 3, name: 'Đức Duy', lastMsg: 'Hẹn gặp bạn sau nha!', time: 'Thứ 2', matchDish: 'Sushi', unread: 1, color: '#1565c0', online: false },
+];
+
+const newMatches = [
+  { id: 1, name: 'Minh Anh', color: '#2e7d32' },
+  { id: 2, name: 'Thu Thủy', color: '#c62828' },
+];
+
+const chatMessages = [
+  { id: 1, from: 'other', text: 'Chào bạn! Mình thấy bạn cũng thích món Phở bò Thìn. Cuối tuần này bạn có rảnh không?', time: '10:45 SA' },
+  { id: 2, from: 'me', text: 'Chào Nam! Mình rảnh nè. Phở Thìn Lò Đúc đúng không bạn? Mình cực thích ở đó luôn!', time: '10:47 SA' },
+  { id: 3, from: 'shared_card', time: '10:48 SA' },
+  { id: 4, from: 'me', text: 'Mình đi lúc 10h sáng chủ nhật nhé?', time: '10:49 SA' },
+];
+
+const Avatar = ({ name = '', color = '#ad2c00', size = 44 }) => (
+  <div style={{
+    width: size,
+    height: size,
+    borderRadius: '50%',
+    background: color,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: '#ffffff',
+    fontFamily: "'Plus Jakarta Sans', sans-serif",
+    fontWeight: 700,
+    fontSize: size * 0.38,
+    flexShrink: 0,
+    letterSpacing: 0.5,
+  }}>
+    {name.charAt(0).toUpperCase()}
+  </div>
+);
+
+const SharedDishCard = () => (
+  <div style={{
+    alignSelf: 'center',
+    width: '100%',
+    maxWidth: 280,
+    background: '#ffffff',
+    borderRadius: 16,
+    overflow: 'hidden',
+    boxShadow: '0 4px 24px rgba(173,44,0,0.08)',
+    border: '1px solid rgba(173,44,0,0.1)',
+  }}>
+    <div style={{
+      position: 'relative',
+      height: 140,
+      background: 'linear-gradient(135deg, #ad2c00 0%, #d84000 40%, #ff7852 100%)',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}>
+      <span className="material-symbols-outlined" style={{
+        fontSize: 64,
+        color: 'rgba(255,255,255,0.7)',
+        fontVariationSettings: "'FILL' 1",
+      }}>ramen_dining</span>
+      <div style={{
+        position: 'absolute',
+        top: 12,
+        right: 12,
+        background: '#ad2c00',
+        color: '#ffffff',
+        padding: '3px 10px',
+        borderRadius: 9999,
+        fontSize: 9,
+        fontWeight: 700,
+        fontFamily: "'Manrope', sans-serif",
+        letterSpacing: 1,
+        textTransform: 'uppercase',
+      }}>Visa Món Ăn</div>
+    </div>
+    <div style={{ padding: '16px 20px 20px', textAlign: 'center' }}>
+      <h5 style={{
+        margin: '0 0 4px',
+        fontSize: 17,
+        fontWeight: 700,
+        color: '#1c1b1b',
+        fontFamily: "'Plus Jakarta Sans', sans-serif",
+      }}>Phở Bò Tái Lăn</h5>
+      <p style={{
+        margin: '0 0 16px',
+        fontSize: 12,
+        color: '#5d4038',
+        fontFamily: "'Manrope', sans-serif",
+      }}>Món ăn chung của hai bạn</p>
+      <button style={{
+        width: '100%',
+        padding: '11px 0',
+        background: '#f0edec',
+        color: '#ad2c00',
+        border: 'none',
+        borderRadius: 12,
+        fontSize: 11,
+        fontWeight: 700,
+        fontFamily: "'Manrope', sans-serif",
+        letterSpacing: 1.5,
+        textTransform: 'uppercase',
+        cursor: 'pointer',
+      }}>Xem chi tiết</button>
+    </div>
+  </div>
+);
+
+const ChatWindow = ({ conv, onBack, messages, setMessages }) => {
   const [inputText, setInputText] = useState('');
-  const [chatMessages, setChatMessages] = useState([]);
-  const [activeConvId, setActiveConvId] = useState(null);
-  const [otherUser, setOtherUser] = useState(null);
-  const [searchText, setSearchText] = useState('');
-  const [isMobileChat, setIsMobileChat] = useState(false);
-  const endRef = useRef(null);
-  const lastSentRef = useRef(0);
-  const location = useLocation();
-
-  const searchParams = new URLSearchParams(location.search);
-  const convIdFromUrl = searchParams.get('cid');
-
-  useEffect(() => { fetchConversations(); }, [fetchConversations]);
-
-  useEffect(() => {
-    if (convIdFromUrl) {
-      setActiveConvId(convIdFromUrl);
-      setIsMobileChat(true);
-    }
-  }, [convIdFromUrl]);
-
-  useEffect(() => {
-    if (activeConvId && conversations.length > 0) {
-      const conv = conversations.find(c => c.id === activeConvId);
-      if (conv) setOtherUser(conv.otherUser);
-    }
-  }, [activeConvId, conversations]);
-
-  useEffect(() => {
-    if (!activeConvId) return;
-    api.get(`/conversations/${activeConvId}/messages`).then(data => {
-      if (data?.messages) setChatMessages(data.messages);
-    }).catch(console.error);
-
-    const socket = getSocket() || connectSocket();
-    if (socket) {
-      socket.emit('join_conversation', { conversationId: activeConvId });
-      const handleNewMessage = ({ conversationId, message }) => {
-        if (conversationId === activeConvId) setChatMessages(prev => [...prev, message]);
-      };
-      socket.on('new_message', handleNewMessage);
-      return () => socket.off('new_message', handleNewMessage);
-    }
-  }, [activeConvId]);
-
-  useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [chatMessages]);
 
   const handleSend = () => {
-    if (!inputText.trim() || !activeConvId) return;
-    const now = Date.now();
-    if (now - lastSentRef.current < 500) return;
-    lastSentRef.current = now;
-    const socket = getSocket();
-    if (socket) socket.emit('send_message', { conversationId: activeConvId, text: inputText });
+    if (!inputText.trim()) return;
+    setMessages(prev => [...prev, { id: Date.now(), from: 'me', text: inputText, time: 'Vừa xong' }]);
     setInputText('');
   };
 
-  const getAvatarUrl = (user) => user?.avatar || '';
-
-  const selectConv = (conv) => {
-    setActiveConvId(conv.id);
-    setOtherUser(conv.otherUser);
-    setIsMobileChat(true);
-    navigate(`/app/chat?cid=${conv.id}`, { replace: true });
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSend(); }
   };
 
-  const goBackToList = () => {
-    setActiveConvId(null);
-    setOtherUser(null);
-    setIsMobileChat(false);
-    navigate('/app/chat', { replace: true });
-  };
-
-  const activeConv = conversations.find(c => c.id === activeConvId);
-  const proposal = activeConv?.datePost || null;
-
-  const filteredConversations = conversations.filter(c => {
-    if (!searchText.trim()) return true;
-    return c.otherUser?.name?.toLowerCase().includes(searchText.toLowerCase());
-  });
-
-  // ==================== PULSE DOT KEYFRAMES (injected once) ====================
-  useEffect(() => {
-    if (!document.getElementById('chat-pulse-anim')) {
-      const style = document.createElement('style');
-      style.id = 'chat-pulse-anim';
-      style.textContent = `
-        @keyframes chatPulse {
-          0%, 100% { transform: scale(1); opacity: 1; }
-          50% { transform: scale(1.6); opacity: 0.4; }
-        }
-      `;
-      document.head.appendChild(style);
-    }
-  }, []);
-
-  // ==================== CONVERSATION LIST PANEL ====================
-  const [activeTab, setActiveTab] = useState('Tất cả');
-  const chatTabs = ['Tất cả', 'Ghép đôi', 'Nhóm'];
-
-  const getTierBadge = (user) => {
-    const tier = user?.tier || (user?.name?.length > 5 ? 'Elite' : user?.name?.length > 3 ? 'Pro' : 'Legend');
-    const colors = { Elite: '#FFD54F', Pro: '#FFB59E', Legend: '#FF571A', vang: '#FFD54F' };
-    return { label: typeof tier === 'string' ? (tier === 'vang' ? 'Vàng' : tier.charAt(0).toUpperCase() + tier.slice(1)) : 'Pro', color: colors[tier] || '#FFB59E' };
-  };
-
-  const getMatchPercent = (user) => Math.floor(70 + (user?.name?.length || 5) * 3);
-
-  const ConversationListPanel = () => (
+  return (
     <div style={{
-      width: '320px',
-      flexShrink: 0,
-      backgroundColor: '#1C1B1B',
+      position: 'fixed',
+      inset: 0,
+      background: '#fcf9f8',
+      zIndex: 60,
       display: 'flex',
       flexDirection: 'column',
-      overflow: 'hidden',
+      fontFamily: "'Manrope', sans-serif",
     }}>
-      {/* Header - CONVERSATIONS italic uppercase */}
-      <div style={{ padding: '24px 20px 0' }}>
-        <h2 style={{
-          fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-          fontSize: '2.25rem',
-          fontWeight: 800,
-          fontStyle: 'italic',
-          color: '#FF4D00',
-          margin: '0 0 20px',
-          textTransform: 'uppercase',
-          letterSpacing: '-0.02em',
-        }}>
-          Tin nhắn
-        </h2>
-
-        {/* Segmented tabs: Tất cả / Ghép đôi / Nhóm */}
-        <div style={{
-          display: 'flex', gap: '4px', padding: '4px',
-          backgroundColor: '#2A2A2A', borderRadius: '9999px', marginBottom: '16px',
-        }}>
-          {chatTabs.map(tab => (
-            <button key={tab} onClick={() => setActiveTab(tab)} style={{
-              flex: 1, padding: '10px 0', borderRadius: '9999px', border: 'none',
-              background: activeTab === tab ? 'linear-gradient(135deg, #FFB59E, #FF571A)' : 'transparent',
-              color: activeTab === tab ? '#3A0B00' : '#E6BEB2',
-              fontFamily: 'Inter, var(--font-body)', fontSize: '0.75rem',
-              fontWeight: 700, cursor: 'pointer', transition: 'all 0.2s ease',
-              letterSpacing: '0.05em',
-            }}>{tab}</button>
-          ))}
-        </div>
-
-        {/* Search */}
-        <div style={{
-          display: 'flex', alignItems: 'center', gap: '8px',
-          backgroundColor: '#2A2A2A', borderRadius: '9999px',
-          padding: '10px 16px', border: 'none',
-        }}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>search</span>
-          <input
-            type="text" placeholder="Tìm kiếm..."
-            value={searchText} onChange={e => setSearchText(e.target.value)}
-            style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: '0.875rem', fontFamily: 'Inter, var(--font-body)', color: '#FDF9F3', flex: 1 }}
-          />
-        </div>
-      </div>
-
-      {/* Conversation list */}
-      <div style={{ flex: 1, overflowY: 'auto', marginTop: '8px' }}>
-        {filteredConversations.length === 0 ? (
-          <div style={{ textAlign: 'center', padding: '40px 20px', color: '#E6BEB2' }}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '48px', opacity: 0.3, display: 'block', marginBottom: '8px' }}>chat_bubble</span>
-            <p style={{ fontFamily: 'Inter, var(--font-body)', fontSize: '0.875rem' }}>Chưa có tin nhắn</p>
-          </div>
-        ) : (
-          <>
-          {filteredConversations.map(conv => {
-            const isActive = conv.id === activeConvId;
-            const unread = conv.unreadCount || 0;
-            const tier = getTierBadge(conv.otherUser);
-            const matchPct = getMatchPercent(conv.otherUser);
-            return (
-              <div
-                key={conv.id}
-                onClick={() => selectConv(conv)}
-                style={{
-                  display: 'flex', alignItems: 'center', gap: '12px',
-                  padding: '14px 20px', cursor: 'pointer',
-                  backgroundColor: isActive ? 'rgba(255,77,0,0.1)' : 'transparent',
-                  borderLeft: isActive ? '4px solid #FF4D00' : '4px solid transparent',
-                  transition: 'all 0.15s ease',
-                }}
-              >
-                {/* Avatar with tier badge */}
-                <div style={{
-                  position: 'relative', width: '48px', height: '48px',
-                  borderRadius: '9999px', overflow: 'hidden', flexShrink: 0,
-                  backgroundColor: '#2A2A2A',
-                }}>
-                  {getAvatarUrl(conv.otherUser) ? (
-                    <img src={getAvatarUrl(conv.otherUser)} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="" />
-                  ) : (
-                    <div style={{
-                      width: '100%', height: '100%',
-                      background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      color: '#3A0B00', fontWeight: 700, fontSize: '1.125rem',
-                      fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-                    }}>
-                      {(conv.otherUser?.name || '?')[0].toUpperCase()}
-                    </div>
-                  )}
-                  {/* Tier badge on avatar */}
-                  <div style={{
-                    position: 'absolute', bottom: '-2px', right: '-2px',
-                    padding: '1px 6px', borderRadius: '9999px',
-                    backgroundColor: tier.color, border: '2px solid #1C1B1B',
-                    fontSize: '8px', fontWeight: 800, color: '#3A0B00',
-                    fontFamily: 'Inter, var(--font-body)', lineHeight: '14px',
-                  }}>
-                    {tier.label}
-                  </div>
-                  {/* Online indicator */}
-                  {conv.otherUser?.isOnline && (
-                    <div style={{
-                      position: 'absolute', top: '1px', right: '1px',
-                      width: '10px', height: '10px', borderRadius: '9999px',
-                      backgroundColor: '#117500', border: '2px solid #1C1B1B',
-                    }} />
-                  )}
-                </div>
-
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2px' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <h4 style={{
-                        margin: 0, fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-                        fontSize: '0.9375rem', fontWeight: unread > 0 ? 700 : 600, color: '#FDF9F3',
-                      }}>
-                        {conv.otherUser?.name || 'Unknown'}
-                      </h4>
-                      {/* Match % pill */}
-                      <span style={{
-                        padding: '1px 8px', borderRadius: '9999px',
-                        backgroundColor: 'rgba(255,87,26,0.15)', color: '#FFB59E',
-                        fontSize: '0.625rem', fontWeight: 700,
-                      }}>{matchPct}%</span>
-                    </div>
-                    <span style={{
-                      fontSize: '0.6875rem', color: '#E6BEB2', flexShrink: 0,
-                      fontFamily: 'Inter, var(--font-body)',
-                    }}>
-                      {conv.lastMessage?.createdAt
-                        ? new Date(conv.lastMessage.createdAt).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' })
-                        : ''}
-                    </span>
-                  </div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                    <p style={{
-                      margin: '2px 0 0', fontSize: '0.8125rem', fontFamily: 'Inter, var(--font-body)',
-                      color: unread > 0 ? '#FDF9F3' : '#E6BEB2', fontWeight: unread > 0 ? 600 : 400,
-                      overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1,
-                    }}>
-                      {conv.lastMessage?.text || 'Nhấn để mở đoạn chat'}
-                    </p>
-                    {unread > 0 && (
-                      <span style={{
-                        position: 'relative', backgroundColor: '#FF571A', color: '#3A0B00',
-                        fontSize: '0.6875rem', fontWeight: 700, minWidth: '20px', height: '20px',
-                        borderRadius: '9999px', display: 'flex', alignItems: 'center',
-                        justifyContent: 'center', padding: '0 6px', flexShrink: 0,
-                        animation: 'chatPulse 2s ease-in-out infinite',
-                      }}>
-                        {unread}
-                      </span>
-                    )}
-                  </div>
-                </div>
+      <div style={{
+        padding: '16px 24px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        background: '#fcf9f8',
+        borderBottom: 'none',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <button
+            onClick={onBack}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '8px',
+              marginLeft: -8,
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: '#1c1b1b',
+            }}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: 22 }}>arrow_back_ios_new</span>
+          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+            <Avatar name={conv.name} color={conv.color} size={40} />
+            <div>
+              <div style={{
+                fontWeight: 700,
+                fontSize: 15,
+                color: '#1c1b1b',
+                fontFamily: "'Plus Jakarta Sans', sans-serif",
+                lineHeight: 1.2,
+              }}>{conv.name}</div>
+              <div style={{
+                fontSize: 10,
+                color: '#ad2c00',
+                fontWeight: 700,
+                letterSpacing: 0.5,
+                textTransform: 'uppercase',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 4,
+                marginTop: 2,
+              }}>
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ad2c00', display: 'inline-block' }} />
+                Đang hoạt động
               </div>
-            );
-          })}
-          {/* Grow your Squad CTA */}
-          <div style={{
-            margin: '16px 16px', padding: '20px',
-            borderRadius: '1.5rem', background: 'linear-gradient(135deg, rgba(255,181,158,0.1), rgba(255,87,26,0.1))',
-            textAlign: 'center',
-          }}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '32px', color: '#FFB59E', marginBottom: '8px', display: 'block' }}>group_add</span>
-            <h4 style={{
-              fontFamily: 'Plus Jakarta Sans, var(--font-headline)', fontSize: '0.9375rem',
-              fontWeight: 700, color: '#FDF9F3', margin: '0 0 4px',
-            }}>Mở rộng nhóm của bạn</h4>
-            <p style={{ fontSize: '0.75rem', color: '#E6BEB2', margin: '0 0 12px' }}>
-              Mời bạn bè cùng nấu ăn và ăn tối
-            </p>
-            <button style={{
-              padding: '8px 20px', borderRadius: '9999px', border: 'none',
-              background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-              color: '#3A0B00', fontSize: '0.8125rem', fontWeight: 700, cursor: 'pointer',
-            }}>Mời bạn bè</button>
+            </div>
           </div>
-          </>
-        )}
-      </div>
-    </div>
-  );
-
-  // ==================== CHAT MESSAGES PANEL ====================
-  const ChatPanel = () => (
-    <div style={{
-      flex: 1,
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: '#131313',
-      overflow: 'hidden',
-      minWidth: 0,
-    }}>
-      {!activeConvId || !otherUser ? (
-        <div style={{
-          flex: 1,
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          color: '#E6BEB2',
-        }}>
-          <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '72px', opacity: 0.2, marginBottom: '16px' }}>forum</span>
-          <h3 style={{
-            fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-            fontWeight: 700,
-            fontSize: '1.25rem',
-            color: '#FDF9F3',
-            margin: '0 0 8px',
-          }}>
-            Chọn một cuộc trò chuyện
-          </h3>
-          <p style={{ fontFamily: 'Inter, var(--font-body)', fontSize: '0.875rem' }}>
-            Chọn người bạn muốn nhắn tin từ danh sách bên trái
-          </p>
         </div>
-      ) : (
-        <>
-          {/* Chat Header - Glass */}
-          <div style={{
-            padding: '12px 20px',
+        <div style={{ display: 'flex', gap: 8 }}>
+          <button style={{
+            width: 40,
+            height: 40,
+            borderRadius: '50%',
+            border: 'none',
+            background: '#f6f3f2',
+            color: '#1c1b1b',
             display: 'flex',
             alignItems: 'center',
-            gap: '12px',
-            backgroundColor: 'rgba(19,19,19,0.6)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
-            flexShrink: 0,
+            justifyContent: 'center',
+            cursor: 'pointer',
           }}>
-            {/* Mobile back button */}
-            <button
-              onClick={goBackToList}
+            <span className="material-symbols-outlined" style={{ fontSize: 20 }}>call</span>
+          </button>
+          <button style={{
+            width: 40,
+            height: 40,
+            borderRadius: '50%',
+            border: 'none',
+            background: '#f6f3f2',
+            color: '#1c1b1b',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+          }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 20 }}>videocam</span>
+          </button>
+        </div>
+      </div>
+
+      <div style={{
+        flex: 1,
+        overflowY: 'auto',
+        padding: '24px 24px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 20,
+        msOverflowStyle: 'none',
+        scrollbarWidth: 'none',
+      }}>
+        <div style={{ alignSelf: 'center' }}>
+          <span style={{
+            fontSize: 10,
+            fontWeight: 700,
+            color: 'rgba(93,64,56,0.5)',
+            textTransform: 'uppercase',
+            letterSpacing: 3,
+            fontFamily: "'Manrope', sans-serif",
+          }}>Hôm nay, 10:45 SA</span>
+        </div>
+
+        {messages.map(msg => {
+          if (msg.from === 'shared_card') {
+            return <SharedDishCard key={msg.id} />;
+          }
+          if (msg.from === 'other') {
+            return (
+              <div key={msg.id} style={{ display: 'flex', gap: 10, maxWidth: '85%', alignItems: 'flex-end' }}>
+                <Avatar name={conv.name} color={conv.color} size={32} />
+                <div style={{
+                  background: '#f6f3f2',
+                  color: '#1c1b1b',
+                  borderRadius: '16px 16px 16px 4px',
+                  padding: '12px 16px',
+                  fontSize: 14,
+                  lineHeight: 1.55,
+                  fontFamily: "'Manrope', sans-serif",
+                }}>{msg.text}</div>
+              </div>
+            );
+          }
+          return (
+            <div key={msg.id} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4, maxWidth: '85%', alignSelf: 'flex-end' }}>
+              <div style={{
+                background: '#ad2c00',
+                color: '#ffffff',
+                borderRadius: '16px 16px 4px 16px',
+                padding: '12px 16px',
+                fontSize: 14,
+                lineHeight: 1.55,
+                fontFamily: "'Manrope', sans-serif",
+                boxShadow: '0 2px 12px rgba(173,44,0,0.2)',
+              }}>{msg.text}</div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{
+        padding: '16px 24px 24px',
+        background: '#fcf9f8',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+          <button style={{
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer',
+            color: '#ad2c00',
+            display: 'flex',
+            alignItems: 'center',
+            padding: 0,
+          }}>
+            <span className="material-symbols-outlined" style={{ fontSize: 30 }}>add_circle</span>
+          </button>
+          <div style={{ flex: 1, position: 'relative' }}>
+            <input
+              value={inputText}
+              onChange={e => setInputText(e.target.value)}
+              onKeyDown={handleKeyDown}
+              placeholder="Nhắn tin..."
               style={{
+                width: '100%',
+                boxSizing: 'border-box',
+                background: '#ebe7e7',
+                border: 'none',
+                borderRadius: 9999,
+                padding: '14px 52px 14px 20px',
+                fontSize: 14,
+                color: '#1c1b1b',
+                outline: 'none',
+                fontFamily: "'Manrope', sans-serif",
+              }}
+            />
+            <button
+              onClick={handleSend}
+              style={{
+                position: 'absolute',
+                right: 16,
+                top: '50%',
+                transform: 'translateY(-50%)',
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
-                padding: '8px',
+                color: '#ad2c00',
                 display: 'flex',
-                color: '#FDF9F3',
-                borderRadius: '9999px',
+                alignItems: 'center',
+                padding: 0,
               }}
             >
-              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '24px' }}>arrow_back</span>
+              <span className="material-symbols-outlined" style={{ fontSize: 22, fontVariationSettings: "'FILL' 1" }}>send</span>
             </button>
-
-            {/* Avatar */}
-            <div style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '9999px',
-              overflow: 'hidden',
-              flexShrink: 0,
-              backgroundColor: '#2A2A2A',
-            }}>
-              {getAvatarUrl(otherUser) ? (
-                <img src={getAvatarUrl(otherUser)} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="" />
-              ) : (
-                <div style={{
-                  width: '100%', height: '100%',
-                  background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: '#3A0B00', fontWeight: 700, fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-                }}>
-                  {(otherUser.name || '?')[0].toUpperCase()}
-                </div>
-              )}
-            </div>
-
-            <div style={{ flex: 1 }}>
-              <h3 style={{
-                margin: 0,
-                fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-                fontSize: '1rem',
-                fontWeight: 700,
-                color: '#FDF9F3',
-              }}>
-                {otherUser.name}
-              </h3>
-              <span style={{
-                fontSize: '0.75rem',
-                color: otherUser.isOnline ? '#117500' : '#E6BEB2',
-                fontFamily: 'Inter, var(--font-body)',
-                fontWeight: 500,
-              }}>
-                {otherUser.isOnline ? 'Đang hoạt động' : 'Ngoại tuyến'}
-              </span>
-            </div>
-
-            <div style={{ display: 'flex', gap: '4px' }}>
-              <button style={{
-                width: '40px', height: '40px',
-                borderRadius: '9999px',
-                border: 'none',
-                background: '#20201F',
-                color: '#E6BEB2',
-                cursor: 'pointer',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
-                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>call</span>
-              </button>
-              <button style={{
-                width: '40px', height: '40px',
-                borderRadius: '9999px',
-                border: 'none',
-                background: '#20201F',
-                color: '#E6BEB2',
-                cursor: 'pointer',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
-                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>videocam</span>
-              </button>
-            </div>
           </div>
-
-          {/* Messages Area */}
-          <div style={{
-            flex: 1,
-            overflowY: 'auto',
-            padding: '20px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '8px',
-          }}>
-            {chatMessages.map(msg => {
-              const isMine = msg.senderId === currentUser?.id;
-
-              if (msg.isSystem) {
-                return (
-                  <div key={msg.id} style={{
-                    alignSelf: 'center',
-                    maxWidth: '80%',
-                    margin: '12px 0',
-                  }}>
-                    <div style={{
-                      backgroundColor: '#20201F',
-                      borderRadius: '1.5rem',
-                      padding: '10px 16px',
-                      fontSize: '0.8125rem',
-                      color: '#E6BEB2',
-                      fontFamily: 'Inter, var(--font-body)',
-                      textAlign: 'center',
-                      lineHeight: 1.5,
-                    }}>
-                      {msg.text}
-                    </div>
-                  </div>
-                );
-              }
-
-              return (
-                <div key={msg.id} style={{
-                  alignSelf: isMine ? 'flex-end' : 'flex-start',
-                  maxWidth: '70%',
-                }}>
-                  <div style={{
-                    background: isMine
-                      ? 'linear-gradient(135deg, #FFB59E, #FF571A)'
-                      : '#2A2A2A',
-                    color: isMine ? '#FFFFFF' : '#FDF9F3',
-                    padding: '12px 16px',
-                    borderRadius: '20px',
-                    borderBottomLeftRadius: isMine ? '20px' : '6px',
-                    borderBottomRightRadius: isMine ? '6px' : '20px',
-                    boxShadow: isMine
-                      ? '0px 20px 40px rgba(0,0,0,0.4)'
-                      : 'none',
-                    fontSize: '0.9375rem',
-                    fontFamily: 'Inter, var(--font-body)',
-                    wordBreak: 'break-word',
-                    lineHeight: 1.5,
-                  }}>
-                    {msg.text}
-                  </div>
-                  <div style={{
-                    fontSize: '0.6875rem',
-                    color: '#E6BEB2',
-                    marginTop: '4px',
-                    textAlign: isMine ? 'right' : 'left',
-                    padding: '0 4px',
-                    fontFamily: 'Inter, var(--font-body)',
-                  }}>
-                    {msg.createdAt ? new Date(msg.createdAt).toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }) : ''}
-                  </div>
-                </div>
-              );
-            })}
-            <div ref={endRef} />
-          </div>
-
-          {/* Input Bar */}
-          <div style={{
-            padding: '12px 16px',
-            backgroundColor: '#1C1B1B',
-            flexShrink: 0,
-          }}>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              backgroundColor: '#2A2A2A',
-              borderRadius: '9999px',
-              padding: '6px 6px 6px 16px',
-              border: 'none',
-            }}>
-              <button style={{
-                background: 'none', border: 'none', cursor: 'pointer', padding: '4px',
-                color: '#E6BEB2', display: 'flex',
-              }}>
-                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px' }}>mood</span>
-              </button>
-
-              <input
-                type="text"
-                placeholder="Nhập tin nhắn..."
-                value={inputText}
-                onChange={e => setInputText(e.target.value)}
-                onKeyDown={e => { if (e.key === 'Enter') handleSend(); }}
-                maxLength={500}
-                style={{
-                  flex: 1,
-                  border: 'none',
-                  background: 'transparent',
-                  outline: 'none',
-                  fontSize: '0.9375rem',
-                  fontFamily: 'Inter, var(--font-body)',
-                  color: '#FDF9F3',
-                  padding: '8px 0',
-                }}
-              />
-
-              <button style={{
-                background: 'none', border: 'none', cursor: 'pointer', padding: '4px',
-                color: '#E6BEB2', display: 'flex',
-              }}>
-                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px' }}>image</span>
-              </button>
-
-              <button
-                onClick={handleSend}
-                style={{
-                  width: '40px',
-                  height: '40px',
-                  borderRadius: '9999px',
-                  background: inputText.trim() ? 'linear-gradient(135deg, #FFB59E, #FF571A)' : '#353535',
-                  border: 'none',
-                  color: inputText.trim() ? '#FFFFFF' : '#E6BEB2',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  cursor: inputText.trim() ? 'pointer' : 'default',
-                  transition: 'all 0.2s ease',
-                  flexShrink: 0,
-                }}
-              >
-                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>send</span>
-              </button>
-            </div>
-          </div>
-        </>
-      )}
+        </div>
+      </div>
     </div>
   );
+};
 
-  // ==================== PROPOSAL DETAILS PANEL ====================
-  const ProposalPanel = () => {
-    if (!activeConvId || !otherUser || !proposal) return null;
+const ChatPage = () => {
+  const navigate = useNavigate();
+  const [selectedChat, setSelectedChat] = useState(null);
+  const [searchText, setSearchText] = useState('');
+  const [messages, setMessages] = useState(chatMessages);
 
+  const activeConv = conversations.find(c => c.id === selectedChat);
+
+  const filtered = conversations.filter(c =>
+    !searchText.trim() || c.name.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+  if (selectedChat && activeConv) {
     return (
-      <div style={{
-        width: '384px',
-        flexShrink: 0,
-        backgroundColor: '#1C1B1B',
-        overflowY: 'auto',
-        padding: '24px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '20px',
-      }}>
-        {/* Active Proposal Header */}
-        <div>
-          <div style={{
-            fontSize: '0.6875rem',
-            fontWeight: 700,
-            textTransform: 'uppercase',
-            letterSpacing: '0.1em',
-            fontFamily: 'Inter, var(--font-body)',
-            color: '#FFB59E',
-            marginBottom: '12px',
-          }}>
-            Đề Xuất Hiện Tại
-          </div>
-          <h3 style={{
-            fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-            fontSize: '1.25rem',
-            fontWeight: 800,
-            color: '#FDF9F3',
-            margin: '0 0 6px',
-          }}>
-            {proposal.title}
-          </h3>
-          {proposal.description && (
-            <p style={{
-              fontStyle: 'italic',
-              color: '#E6BEB2',
-              fontSize: '0.875rem',
-              fontFamily: 'Inter, var(--font-body)',
-              margin: 0,
-              lineHeight: 1.5,
-            }}>
-              "{proposal.description}"
-            </p>
-          )}
-        </div>
-
-        {/* Budget */}
-        {proposal.price && (
-          <div style={{
-            backgroundColor: '#20201F',
-            borderRadius: '1.5rem',
-            padding: '16px',
-          }}>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '10px',
-            }}>
-              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '24px', color: '#FFB59E' }}>account_balance_wallet</span>
-              <div>
-                <div style={{
-                  fontSize: '0.75rem',
-                  color: '#E6BEB2',
-                  fontFamily: 'Inter, var(--font-body)',
-                  fontWeight: 500,
-                }}>
-                  Ngân Sách
-                </div>
-                <div style={{
-                  fontSize: '1.25rem',
-                  fontWeight: 800,
-                  color: '#FDF9F3',
-                  fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-                }}>
-                  {proposal.price.toLocaleString('vi-VN')}đ
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Venue */}
-        {proposal.place && (
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            padding: '12px 0',
-          }}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px', color: '#FFD54F' }}>restaurant</span>
-            <div>
-              <div style={{
-                fontSize: '0.75rem',
-                color: '#E6BEB2',
-                fontFamily: 'Inter, var(--font-body)',
-              }}>
-                Địa Điểm
-              </div>
-              <div style={{
-                fontFamily: 'Inter, var(--font-body)',
-                fontWeight: 600,
-                fontSize: '0.9375rem',
-                color: '#FDF9F3',
-              }}>
-                {proposal.place}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Date/Time */}
-        {proposal.time && (
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '12px',
-            padding: '12px 0',
-          }}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '22px', color: '#FFD54F' }}>calendar_today</span>
-            <div>
-              <div style={{
-                fontSize: '0.75rem',
-                color: '#E6BEB2',
-                fontFamily: 'Inter, var(--font-body)',
-              }}>
-                Thời Gian
-              </div>
-              <div style={{
-                fontFamily: 'Inter, var(--font-body)',
-                fontWeight: 600,
-                fontSize: '0.9375rem',
-                color: '#FDF9F3',
-              }}>
-                {proposal.time}
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Payment Status */}
-        {proposal.category === 'tra_phi' && (
-          <div style={{
-            backgroundColor: 'rgba(17,117,0,0.15)',
-            borderRadius: '1.5rem',
-            padding: '12px 16px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px',
-          }}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#117500' }}>verified</span>
-            <span style={{
-              fontFamily: 'Inter, var(--font-body)',
-              fontWeight: 600,
-              fontSize: '0.875rem',
-              color: '#117500',
-            }}>
-              Thanh toán tạm giữ (Escrow)
-            </span>
-          </div>
-        )}
-
-        {/* Action Buttons */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '8px' }}>
-          <button style={{
-            width: '100%',
-            padding: '14px',
-            borderRadius: '9999px',
-            border: 'none',
-            background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-            color: '#3A0B00',
-            fontWeight: 700,
-            fontSize: '0.9375rem',
-            fontFamily: 'Inter, var(--font-body)',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-            boxShadow: '0px 20px 40px rgba(0,0,0,0.4)',
-          }}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>handshake</span>
-            Xác Nhận Thoả Thuận
-          </button>
-          <button style={{
-            width: '100%',
-            padding: '14px',
-            borderRadius: '9999px',
-            border: 'none',
-            background: '#353535',
-            color: '#E6BEB2',
-            fontWeight: 600,
-            fontSize: '0.9375rem',
-            fontFamily: 'Inter, var(--font-body)',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: '8px',
-          }}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px' }}>close</span>
-            Từ Chối Đề Xuất
-          </button>
-        </div>
-
-        {/* Safety Info */}
-        <div style={{
-          backgroundColor: '#20201F',
-          borderRadius: '1.5rem',
-          padding: '16px',
-          marginTop: '8px',
-        }}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            marginBottom: '10px',
-          }}>
-            <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#FFD54F' }}>shield</span>
-            <span style={{
-              fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-              fontWeight: 700,
-              fontSize: '0.875rem',
-              color: '#FDF9F3',
-            }}>
-              An Toàn Hẹn Hò
-            </span>
-          </div>
-          <ul style={{
-            margin: 0,
-            paddingLeft: '20px',
-            color: '#E6BEB2',
-            fontSize: '0.8125rem',
-            fontFamily: 'Inter, var(--font-body)',
-            lineHeight: 1.7,
-          }}>
-            <li>Luôn gặp ở nơi công cộng</li>
-            <li>Báo bạn bè/người thân biết</li>
-            <li>Tin vào trực giác của bạn</li>
-            <li>Gomet bảo vệ thông tin cá nhân</li>
-          </ul>
-        </div>
-      </div>
-    );
-  };
-
-  // ==================== MOBILE VIEW ====================
-  const isMobileWidth = typeof window !== 'undefined' && window.innerWidth < 768;
-
-  if (isMobileWidth) {
-    if (isMobileChat && activeConvId && otherUser) {
-      return (
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden', backgroundColor: '#131313' }}>
-          <ChatPanel />
-        </div>
-      );
-    }
-    return (
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
-        <div style={{
-          flex: 1,
-          backgroundColor: '#1C1B1B',
-          display: 'flex',
-          flexDirection: 'column',
-          overflow: 'hidden',
-        }}>
-          {/* Header - TIN NHẮN italic */}
-          <div style={{ padding: '24px 20px 16px' }}>
-            <h2 style={{
-              fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-              fontSize: '2rem',
-              fontWeight: 800,
-              fontStyle: 'italic',
-              textTransform: 'uppercase',
-              color: '#FF4D00',
-              margin: '0 0 16px',
-              letterSpacing: '-0.02em',
-            }}>
-              Tin nhắn
-            </h2>
-            {/* Segmented tabs */}
-            <div style={{
-              display: 'flex', gap: '4px', padding: '4px',
-              backgroundColor: '#2A2A2A', borderRadius: '9999px', marginBottom: '12px',
-            }}>
-              {['Tất cả', 'Ghép đôi', 'Nhóm'].map(tab => (
-                <button key={tab} onClick={() => setActiveTab(tab)} style={{
-                  flex: 1, padding: '10px 0', borderRadius: '9999px', border: 'none',
-                  background: activeTab === tab ? 'linear-gradient(135deg, #FFB59E, #FF571A)' : 'transparent',
-                  color: activeTab === tab ? '#3A0B00' : '#E6BEB2',
-                  fontFamily: 'Inter, var(--font-body)', fontSize: '0.75rem',
-                  fontWeight: 700, cursor: 'pointer', letterSpacing: '0.05em',
-                }}>{tab}</button>
-              ))}
-            </div>
-            <div style={{
-              display: 'flex', alignItems: 'center', gap: '8px',
-              backgroundColor: '#2A2A2A', borderRadius: '9999px',
-              padding: '10px 16px', border: 'none',
-            }}>
-              <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '20px', color: '#E6BEB2' }}>search</span>
-              <input
-                type="text" placeholder="Tìm kiếm..."
-                value={searchText} onChange={e => setSearchText(e.target.value)}
-                style={{ border: 'none', background: 'transparent', outline: 'none', fontSize: '0.875rem', fontFamily: 'Inter, var(--font-body)', color: '#FDF9F3', flex: 1 }}
-              />
-            </div>
-          </div>
-          <div style={{ flex: 1, overflowY: 'auto' }}>
-            {filteredConversations.length === 0 ? (
-              <div style={{ textAlign: 'center', padding: '60px 20px', color: '#E6BEB2' }}>
-                <span aria-hidden="true" className="material-symbols-outlined" style={{ fontSize: '56px', opacity: 0.2, display: 'block', marginBottom: '12px' }}>chat_bubble</span>
-                <h3 style={{ fontFamily: 'Plus Jakarta Sans, var(--font-headline)', fontWeight: 700, color: '#FDF9F3', marginBottom: '8px' }}>Chưa có tin nhắn</h3>
-                <p style={{ fontFamily: 'Inter, var(--font-body)', fontSize: '0.875rem' }}>Match với ai đó để bắt đầu trò chuyện!</p>
-              </div>
-            ) : (
-              filteredConversations.map(conv => {
-                const unread = conv.unreadCount || 0;
-                return (
-                  <div
-                    key={conv.id}
-                    onClick={() => selectConv(conv)}
-                    style={{
-                      display: 'flex', alignItems: 'center', gap: '14px',
-                      padding: '14px 20px', cursor: 'pointer',
-                      transition: 'background 0.15s ease',
-                    }}
-                  >
-                    <div style={{
-                      position: 'relative', width: '52px', height: '52px',
-                      borderRadius: '9999px', overflow: 'hidden', flexShrink: 0,
-                      backgroundColor: '#2A2A2A',
-                    }}>
-                      {getAvatarUrl(conv.otherUser) ? (
-                        <img src={getAvatarUrl(conv.otherUser)} style={{ width: '100%', height: '100%', objectFit: 'cover' }} alt="" />
-                      ) : (
-                        <div style={{
-                          width: '100%', height: '100%', background: 'linear-gradient(135deg, #FFB59E, #FF571A)',
-                          display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          color: '#3A0B00', fontWeight: 700, fontSize: '1.25rem', fontFamily: 'Plus Jakarta Sans, var(--font-headline)',
-                        }}>
-                          {(conv.otherUser?.name || '?')[0].toUpperCase()}
-                        </div>
-                      )}
-                    </div>
-                    <div style={{ flex: 1, minWidth: 0 }}>
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <h4 style={{ margin: 0, fontFamily: 'Plus Jakarta Sans, var(--font-headline)', fontSize: '1rem', fontWeight: unread > 0 ? 700 : 600, color: '#FDF9F3' }}>
-                          {conv.otherUser?.name || 'Unknown'}
-                        </h4>
-                        <span style={{ fontSize: '0.75rem', color: '#E6BEB2', flexShrink: 0, fontFamily: 'Inter, var(--font-body)' }}>
-                          {conv.lastMessage?.createdAt ? new Date(conv.lastMessage.createdAt).toLocaleDateString('vi-VN', { day: '2-digit', month: '2-digit' }) : ''}
-                        </span>
-                      </div>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                        <p style={{
-                          margin: '2px 0 0', fontSize: '0.875rem', fontFamily: 'Inter, var(--font-body)',
-                          color: unread > 0 ? '#FDF9F3' : '#E6BEB2',
-                          fontWeight: unread > 0 ? 600 : 400,
-                          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', flex: 1,
-                        }}>
-                          {conv.lastMessage?.text || 'Nhấn để mở đoạn chat'}
-                        </p>
-                        {unread > 0 && (
-                          <span style={{
-                            backgroundColor: '#FF571A', color: '#3A0B00',
-                            fontSize: '0.6875rem', fontWeight: 700,
-                            minWidth: '20px', height: '20px', borderRadius: '9999px',
-                            display: 'flex', alignItems: 'center', justifyContent: 'center',
-                            padding: '0 6px', flexShrink: 0,
-                            animation: 'chatPulse 2s ease-in-out infinite',
-                          }}>
-                            {unread}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })
-            )}
-          </div>
-        </div>
-      </div>
+      <ChatWindow
+        conv={activeConv}
+        onBack={() => setSelectedChat(null)}
+        messages={messages}
+        setMessages={setMessages}
+      />
     );
   }
 
-  // ==================== DESKTOP 3-PANEL LAYOUT ====================
   return (
     <div style={{
-      flex: 1,
+      maxWidth: 480,
+      margin: '0 auto',
+      minHeight: '100dvh',
+      background: '#fcf9f8',
       display: 'flex',
+      flexDirection: 'column',
+      position: 'relative',
       overflow: 'hidden',
-      backgroundColor: '#131313',
+      fontFamily: "'Manrope', sans-serif",
+      color: '#1c1b1b',
     }}>
-      <ConversationListPanel />
-      <ChatPanel />
-      <ProposalPanel />
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', paddingBottom: 96 }}>
+        <header style={{
+          paddingTop: 40,
+          paddingLeft: 32,
+          paddingRight: 32,
+          paddingBottom: 24,
+          background: '#fcf9f8',
+        }}>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'flex-end',
+            marginBottom: 32,
+          }}>
+            <h1 style={{
+              margin: 0,
+              fontSize: 36,
+              fontWeight: 800,
+              color: '#1c1b1b',
+              fontFamily: "'Plus Jakarta Sans', sans-serif",
+              letterSpacing: -0.5,
+              lineHeight: 1.1,
+            }}>Tin nhắn</h1>
+            <div style={{
+              width: 48,
+              height: 48,
+              borderRadius: '50%',
+              background: '#f0edec',
+              overflow: 'hidden',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+              <Avatar name="T" color="#ad2c00" size={48} />
+            </div>
+          </div>
+
+          <div style={{ position: 'relative' }}>
+            <span className="material-symbols-outlined" style={{
+              position: 'absolute',
+              left: 16,
+              top: '50%',
+              transform: 'translateY(-50%)',
+              color: '#5d4038',
+              fontSize: 22,
+            }}>search</span>
+            <input
+              value={searchText}
+              onChange={e => setSearchText(e.target.value)}
+              placeholder="Tìm kiếm bạn bè hoặc món ăn..."
+              style={{
+                width: '100%',
+                boxSizing: 'border-box',
+                background: '#ebe7e7',
+                border: 'none',
+                borderRadius: 16,
+                padding: '16px 16px 16px 48px',
+                fontSize: 14,
+                color: '#1c1b1b',
+                outline: 'none',
+                fontFamily: "'Manrope', sans-serif",
+              }}
+            />
+          </div>
+        </header>
+
+        <div style={{ paddingLeft: 32, paddingRight: 32, marginBottom: 40 }}>
+          <h3 style={{
+            margin: '0 0 16px',
+            fontSize: 12,
+            fontWeight: 700,
+            color: '#5d4038',
+            textTransform: 'uppercase',
+            letterSpacing: 2,
+            fontFamily: "'Manrope', sans-serif",
+          }}>Lượt tương hợp mới</h3>
+          <div style={{
+            display: 'flex',
+            gap: 16,
+            overflowX: 'auto',
+            msOverflowStyle: 'none',
+            scrollbarWidth: 'none',
+          }}>
+            {newMatches.map(m => (
+              <div key={m.id} style={{
+                flexShrink: 0,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: 8,
+                cursor: 'pointer',
+              }}>
+                <div style={{
+                  width: 64,
+                  height: 64,
+                  borderRadius: '50%',
+                  padding: 3,
+                  border: '2px solid #ad2c00',
+                  boxSizing: 'border-box',
+                }}>
+                  <Avatar name={m.name} color={m.color} size={54} />
+                </div>
+                <span style={{ fontSize: 12, fontWeight: 600, color: '#1c1b1b' }}>{m.name}</span>
+              </div>
+            ))}
+            <div style={{
+              flexShrink: 0,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 8,
+              cursor: 'pointer',
+              color: '#ad2c00',
+            }}>
+              <div style={{
+                width: 64,
+                height: 64,
+                borderRadius: '50%',
+                background: '#ffdbd1',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <span className="material-symbols-outlined" style={{ fontSize: 28 }}>add</span>
+              </div>
+              <span style={{ fontSize: 12, fontWeight: 600 }}>Tìm thêm</span>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ flex: 1, paddingLeft: 16, paddingRight: 16 }}>
+          {filtered.map(conv => (
+            <div
+              key={conv.id}
+              onClick={() => setSelectedChat(conv.id)}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: 16,
+                padding: 16,
+                marginBottom: 8,
+                borderRadius: 16,
+                background: '#ffffff',
+                cursor: 'pointer',
+                transition: 'transform 0.1s',
+              }}
+              onMouseDown={e => e.currentTarget.style.transform = 'scale(0.97)'}
+              onMouseUp={e => e.currentTarget.style.transform = 'scale(1)'}
+              onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
+            >
+              <div style={{ position: 'relative', flexShrink: 0 }}>
+                <Avatar name={conv.name} color={conv.color} size={56} />
+                {conv.online && (
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 1,
+                    right: 1,
+                    width: 14,
+                    height: 14,
+                    background: '#22c55e',
+                    border: '2px solid #ffffff',
+                    borderRadius: '50%',
+                  }} />
+                )}
+              </div>
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  marginBottom: 4,
+                }}>
+                  <span style={{
+                    fontWeight: 700,
+                    fontSize: 15,
+                    color: '#1c1b1b',
+                    fontFamily: "'Plus Jakarta Sans', sans-serif",
+                  }}>{conv.name}</span>
+                  <span style={{
+                    fontSize: 10,
+                    color: '#5d4038',
+                    fontWeight: 500,
+                  }}>{conv.time}</span>
+                </div>
+                <p style={{
+                  margin: '0 0 8px',
+                  fontSize: 13,
+                  color: '#5d4038',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  fontWeight: conv.unread > 0 ? 600 : 400,
+                }}>{conv.lastMsg}</p>
+                <div style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: 6,
+                  padding: '4px 10px',
+                  borderRadius: 9999,
+                  background: conv.id === 1 ? 'rgba(255,120,82,0.1)' : '#ebe7e7',
+                  border: conv.id === 1 ? '1px solid rgba(255,120,82,0.2)' : '1px solid rgba(231,189,178,0.3)',
+                }}>
+                  <span className="material-symbols-outlined" style={{
+                    fontSize: 14,
+                    color: conv.id === 1 ? '#ad2c00' : '#5d4038',
+                    fontVariationSettings: "'FILL' 1",
+                  }}>restaurant_menu</span>
+                  <span style={{
+                    fontSize: 10,
+                    fontWeight: 700,
+                    color: conv.id === 1 ? '#ad2c00' : '#5d4038',
+                    textTransform: 'uppercase',
+                    letterSpacing: 0.5,
+                  }}>Matching Dish: {conv.matchDish}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <nav style={{
+        position: 'fixed',
+        bottom: 24,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '90%',
+        maxWidth: 400,
+        zIndex: 50,
+      }}>
+        <div style={{
+          background: 'rgba(252,249,248,0.85)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderRadius: 9999,
+          paddingLeft: 24,
+          paddingRight: 24,
+          paddingTop: 16,
+          paddingBottom: 16,
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          boxShadow: '0 20px 40px -15px rgba(173,44,0,0.15)',
+          border: '1px solid rgba(255,255,255,0.2)',
+        }}>
+          <button
+            onClick={() => navigate('/app')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 4,
+              padding: 0,
+            }}
+          >
+            <span className="material-symbols-outlined" style={{ color: '#5d4038', fontSize: 24 }}>explore</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: '#5d4038', textTransform: 'uppercase', letterSpacing: 0.5, fontFamily: "'Manrope', sans-serif" }}>Khám phá</span>
+          </button>
+
+          <button
+            onClick={() => navigate('/app/chat')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 4,
+              padding: 0,
+              position: 'relative',
+            }}
+          >
+            <div style={{
+              position: 'absolute',
+              top: -2,
+              right: -4,
+              width: 8,
+              height: 8,
+              background: '#ad2c00',
+              borderRadius: '50%',
+            }} />
+            <span className="material-symbols-outlined" style={{ color: '#ad2c00', fontSize: 24, fontVariationSettings: "'FILL' 1" }}>chat_bubble</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: '#ad2c00', textTransform: 'uppercase', letterSpacing: 0.5, fontFamily: "'Manrope', sans-serif" }}>Trò chuyện</span>
+          </button>
+
+          <button
+            onClick={() => navigate('/app')}
+            style={{
+              width: 56,
+              height: 56,
+              background: '#ad2c00',
+              color: '#ffffff',
+              border: '4px solid #fcf9f8',
+              borderRadius: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              cursor: 'pointer',
+              marginTop: -40,
+              boxShadow: '0 8px 24px rgba(173,44,0,0.3)',
+              flexShrink: 0,
+            }}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: 26, fontVariationSettings: "'FILL' 1" }}>restaurant</span>
+          </button>
+
+          <button
+            onClick={() => navigate('/app/favorites')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 4,
+              padding: 0,
+            }}
+          >
+            <span className="material-symbols-outlined" style={{ color: '#5d4038', fontSize: 24 }}>favorite</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: '#5d4038', textTransform: 'uppercase', letterSpacing: 0.5, fontFamily: "'Manrope', sans-serif" }}>Yêu thích</span>
+          </button>
+
+          <button
+            onClick={() => navigate('/app/profile')}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 4,
+              padding: 0,
+            }}
+          >
+            <span className="material-symbols-outlined" style={{ color: '#5d4038', fontSize: 24 }}>person_2</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: '#5d4038', textTransform: 'uppercase', letterSpacing: 0.5, fontFamily: "'Manrope', sans-serif" }}>Cá nhân</span>
+          </button>
+        </div>
+      </nav>
     </div>
   );
 };
